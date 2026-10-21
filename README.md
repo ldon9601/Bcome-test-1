@@ -62,11 +62,14 @@ Similarity = 1 − Σwᵢ|sᵢ − oᵢ| / Σwᵢ, with dimensions that matter m
 - Each period covers subject choices, a skill goal (e.g. "Move your communication confidence from 3/5 towards 4/5", with an activity), exploration, applications through the state's admissions centre, a backup route and starting roles.
 - With `ANTHROPIC_API_KEY` set, Claude personalises the prose. The response must keep the same careers and journey periods and must not call a student unsuitable; otherwise a deterministic template writes the plan. Scores, pay, durations and evidence are always attached from our data.
 
-### 5. Storage
+### 5. Accounts and storage (`src/lib/auth/`, `supabase/migrations/20261023000000_accounts.sql`)
 
-- Results record the instrument and algorithm versions and the Career DNA.
-- `match_results` stores each recommended career's three scores.
-- `career_feedback` stores students' reactions, to support calibrating the weights later.
+- **Schools register first.** A careers adviser registers the school: name, state, the email domain(s) students use, and their own account. They confirm their email with a code. A Bcome operator then approves the school (`npm run school -- list`, then `approve <id>`), and the advisers are emailed the school's **join code**, e.g. `K7PM-3QXD`.
+- **Students sign up** with the join code and a school email on one of the school's domains. Personal webmail is always refused. They give their first and last name, a username, a password, their school year, and their month and year of birth. That is all Bcome keeps about them. They confirm their email with a code before they can sign in.
+- **Sign in** is with a username or school email and a password, on separate tiles for students and advisers (`/login`). Students get an emailed code the first time they use a device; they can trust it for 90 days, or untick that on shared computers. "Remember me" keeps them signed in for 30 days. Advisers get a code at every sign-in and are signed out after 15 minutes without activity.
+- **Assessment history**: every Career Profile a signed-in student completes is saved on their account with its answers, profile, Career DNA, matches and plan (`assessments` table). Students see the history on `/account`, and advisers see it on each student's page.
+- **Security**: scrypt password hashing, account lockout, rate limits, hashed tokens, an audit log, deny-by-default database access and security headers. See [`docs/security/st4s-controls.md`](docs/security/st4s-controls.md) for how this maps to Safer Technologies 4 Schools.
+- Bcome runs its own sign-in rather than Supabase Auth, so it can do usernames, device codes and per-role timeouts. Only the server reads the account tables, with the service role key.
 
 ### 6. Screens (`src/app/`, `src/components/`)
 
@@ -76,6 +79,9 @@ Similarity = 1 − Σwᵢ|sᵢ − oᵢ| / Σwᵢ, with dimensions that matter m
 - **Journey** (`/journey`): the year-by-year plan for the top match.
 - **Explore Uni & TAFE** (`/explore`): the qualifications grouped by sector, each linked to the careers it leads to.
 - **Occupation pictures** (`OccupationArt.tsx`): licence-free illustrations, one per career family (`family` in the occupation data). To use a real photo, add `"photo": { "src": "/careers/xyz.jpg", "credit": "…" }` to the occupation and put the file in `public/`. The photo then replaces the illustration everywhere.
+- **Accounts**: `/login` (two tiles), `/signup`, `/register-school`, `/verify`, `/forgot-password`, `/invite/[token]`, `/privacy`.
+- **My profile** (`/account`): the student's details, every saved assessment (each opens as a full results page), password change, trusted devices, sign out everywhere, and delete account.
+- **School dashboard** (`/adviser`): students registered and completed, completion by year, the most recommended careers, career areas, RIASEC interest types, pathways and study length, values, enjoyed subjects, students worth a conversation and why, and a searchable student list with CSV export. It filters by year. Each student page shows their assessment history and full results. **School settings** (`/adviser/settings`) covers the join code, student email domains, the AI-plans switch, inviting or removing advisers, and the activity log.
 - **Progress, XP, levels and streaks** (`src/lib/progress/gamification.ts`): these come only from questions actually answered and days actually visited. They are stored in the student's browser (localStorage), so they don't follow a student between devices yet.
 
 ## About the data
@@ -99,28 +105,29 @@ cp .env.example .env.local   # fill in Supabase and (optionally) Anthropic keys
 npm run dev                  # http://localhost:3000
 ```
 
-The questionnaire and plans work without Supabase. Accounts and saving switch on once the Supabase variables are set.
+Without Supabase, `npm run dev` keeps accounts in memory and loads a **demo school** with 28 invented students and their assessments. The sign-in details are printed in the terminal (adviser `demo.adviser`, student `demo.student`, password `Careers demo 2026!`, school code `DEMO-2026`). Email codes are printed there too instead of being sent. Data is lost when the server restarts.
 
-### Supabase
+### Supabase and email
 
-1. Create a project in the **Sydney (ap-southeast-2)** region.
-2. Run the migrations in `supabase/migrations/` in order, then `supabase/seed.sql`. Use the SQL editor or `supabase db push`.
-3. In Auth settings, enable email sign-in and add `<your-site>/auth/callback` as a redirect URL.
+1. Create a Supabase project in the **Sydney (ap-southeast-2)** region.
+2. Run the migrations in `supabase/migrations/` in order, then `supabase/seed.sql` (SQL editor or `supabase db push`). The accounts migration replaces the earlier Supabase-Auth tables, which held no data.
+3. Schedule the clean-up job: `select cron.schedule('bcome-purge', '17 3 * * *', 'select public.purge_expired()');`
+4. Set `SUPABASE_SERVICE_ROLE_KEY`, `AUTH_SECRET` (`openssl rand -base64 48`) and `APP_URL`.
+5. Email: verify your sending domain in Amazon SES (Sydney), create an IAM key limited to `ses:SendEmail`, and set `EMAIL_PROVIDER=ses` with the AWS variables. Request SES production access so you can email any address.
+6. Deploy to Vercel. `vercel.json` pins functions to Sydney.
 
-Row Level Security:
-- Students see their own data.
-- Careers advisers see students at their school.
-- Parents see their child's plans only after the server links them (when a student invites them) and the parent consents.
-- Advisers can mark a plan reviewed but can't edit it.
-- Reference data (occupations, skills, qualifications, pathways) is readable by anyone and writable only by the service role.
+The browser never reads the account tables: row level security is on with no policies, and anon and authenticated roles have no privileges. `supabase/tests/accounts-checks.sql` checks this and the constraints on plain Postgres:
 
-`supabase/tests/rls-checks.sql` exercises these rules on plain Postgres. The `pathway_skills` view lists which skills each qualification builds for each job.
+```bash
+psql -d test -f supabase/tests/local-auth-stub.sql $(for f in supabase/migrations/*.sql; do echo "-f $f"; done) -f supabase/tests/accounts-checks.sql
+```
 
 ## Commands
 
 | Command | What it does |
 | --- | --- |
-| `npm test` | Unit tests (questionnaire, scores, skills graph, outlook, plan validation, importers) |
+| `npm test` | Unit tests (questionnaire, scores, skills graph, outlook, plan validation, importers, accounts and sign-in, adviser dashboard) |
+| `npm run school -- list` | Schools waiting for approval; `approve <id>`, `suspend <id>`, `activate <id>` |
 | `npm run test:profiles` | Runs six imaginary students through the whole pipeline and writes their plans to `test-output/` |
 | `npm run data:validate` | Checks the JSON in `data/` after edits |
 | `npm run data:import-jsa -- <file.xlsx>` | Loads occupation-level JSA projections |
@@ -159,10 +166,12 @@ Run `npm run data:validate` after any edit.
 - Not yet built from the requirements document:
   - the six-monthly "What's changed?" check-in;
   - the career explorer ("What would my life look like if I chose this?"); `/careers` is a simple browser for now;
-  - the counsellor and school dashboards;
+  - a district or system-level view across several schools (each school has its own adviser dashboard);
   - the Azure / Python (FastAPI) architecture the document recommends. This build stays on Next.js + Supabase; the scoring logic is self-contained and can be ported.
 
 - Only the 7 occupations JSA names in its summary have occupation-level projections until the full file is imported; the rest use labelled estimates.
 - Pay ranges are estimates until JSA earnings are imported.
 - Subject names are generic; NSW, VIC and QLD course names differ. State-specific subject lists are a good next step.
+- Sign-in is username and password plus email codes; Google or Microsoft single sign-on for schools isn't built yet.
+- The privacy notice (`/privacy`) is a draft and needs legal review before launch.
 - The Next.js app hasn't yet been built against installed packages in CI. Run `npm run build` after `npm install` and fix anything it flags.

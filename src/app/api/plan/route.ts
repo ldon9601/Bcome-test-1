@@ -4,7 +4,7 @@ import { ALGORITHM_VERSION } from "@/lib/careers/matching.ts";
 import { questionBank } from "@/lib/data.ts";
 import { IncompleteAnswersError } from "@/lib/questionnaire/scoring.ts";
 import type { Answers } from "@/lib/questionnaire/types.ts";
-import { createAdminClient, createClient, supabaseConfigured } from "@/lib/supabase/server.ts";
+import { auth, currentSession } from "@/lib/auth/server.ts";
 
 export const runtime = "nodejs";
 
@@ -32,16 +32,20 @@ function parseAnswers(body: unknown): Answers | null {
 
 /**
  * POST { answers } → { profile, matches, plan, saved }
- * Anyone can try the questionnaire. Results are only stored for signed-in students.
+ * Anyone can try the questionnaire. Results are stored on the account of a signed-in student.
  */
 export async function POST(request: Request) {
   const answers = parseAnswers(await request.json().catch(() => null));
   if (!answers) return NextResponse.json({ error: "Send { answers: { questionId: value } }" }, { status: 400 });
 
+  // A school decides whether its students' plans may be written by AI (ST4S AI controls).
+  const cur = await currentSession();
+  const aiAllowed = cur ? cur.school.allowAiPlans : process.env.GUEST_AI_PLANS !== "off";
+
   let result;
   try {
     result = await advise(answers, {
-      apiKey: process.env.ANTHROPIC_API_KEY || undefined,
+      apiKey: (aiAllowed && process.env.ANTHROPIC_API_KEY) || undefined,
       model: process.env.ANTHROPIC_MODEL || undefined,
     });
   } catch (e) {
@@ -54,67 +58,31 @@ export async function POST(request: Request) {
   const payload = resultPayload(result);
   const matches = payload.matches;
 
+  // Signed-in students keep every completed assessment on their account.
   let saved = false;
-  if (supabaseConfigured() && process.env.SUPABASE_SERVICE_ROLE_KEY) {
-    const supabase = await createClient();
-    const { data } = await supabase.auth.getUser();
-    if (data.user) {
-      const admin = createAdminClient();
-      const { data: session } = await admin
-        .from("questionnaire_sessions")
-        .insert({
-          student_id: data.user.id,
-          bank_id: questionBank.id,
-          bank_version: questionBank.version,
-          answers,
-          status: "complete",
-          completed_at: new Date().toISOString(),
-        })
-        .select("id")
-        .single();
-      if (session) {
-        const { data: res } = await admin
-          .from("results")
-          .insert({
-            session_id: session.id,
-            student_id: data.user.id,
-            holland_code: result.profile.riasec.code,
-            profile: result.profile,
-            dna: payload.dna,
-            matches,
-            instrument_version: result.profile.instrumentVersion,
-            algorithm_version: ALGORITHM_VERSION,
-          })
-          .select("id")
-          .single();
-        if (res) {
-          await admin.from("match_results").insert(
-            matches.map((m, i) => ({
-              result_id: res.id,
-              student_id: data.user!.id,
-              osca: m.osca,
-              group: m.group,
-              rank: i + 1,
-              personal_fit: m.scores.personalFit.score,
-              future_opportunity: m.scores.futureOpportunity.score,
-              pathway_feasibility: m.scores.pathwayFeasibility.score,
-              match_score: m.score,
-              confidence: m.confidence.level,
-            })),
-          );
-          const { error } = await admin.from("plans").insert({
-            result_id: res.id,
-            student_id: data.user.id,
-            plan: result.plan,
-            generated_by: result.plan.meta.generatedBy,
-            model: result.plan.meta.model ?? null,
-            data_source: result.plan.meta.dataSource,
-          });
-          saved = !error;
-        }
-      }
-    }
+  let assessmentId: string | null = null;
+  if (cur?.user.role === "student") {
+    const top = matches[0];
+    const r = await (await auth()).store.saveAssessment({
+      userId: cur.user.id,
+      schoolId: cur.school.id,
+      completedAt: new Date().toISOString(),
+      instrumentVersion: result.profile.instrumentVersion,
+      algorithmVersion: ALGORITHM_VERSION,
+      yearLevel: result.profile.yearLevel,
+      hollandCode: result.profile.riasec.code,
+      topOsca: top?.osca ?? null,
+      topTitle: top?.title ?? null,
+      answers,
+      profile: result.profile,
+      dna: payload.dna,
+      matches,
+      plan: result.plan,
+    });
+    assessmentId = r.id;
+    saved = true;
+    if (result.profile.yearLevel !== cur.user.yearLevel) await (await auth()).store.updateUser(cur.user.id, { yearLevel: result.profile.yearLevel });
   }
 
-  return NextResponse.json({ ...payload, saved });
+  return NextResponse.json({ ...payload, saved, assessmentId });
 }

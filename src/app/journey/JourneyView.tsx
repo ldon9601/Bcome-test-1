@@ -3,21 +3,10 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Icon } from "@/components/Icon.tsx";
+import { JourneyTimeline } from "@/components/JourneyTimeline.tsx";
 import { OccupationImage } from "@/components/OccupationArt.tsx";
 import type { MatchSummary } from "@/lib/careers/matching.ts";
 import type { CareerPlan } from "@/lib/plan/types.ts";
-
-const STEP_COLOURS = ["#6c5ce7", "#3b82f6", "#14b8a6", "#22c55e", "#f59e0b", "#f43f5e", "#a855f7"];
-const TYPE_LABEL: Record<string, string> = {
-  academic: "school",
-  skills: "skills",
-  exploration: "explore",
-  portfolio: "portfolio",
-  applications: "apply",
-  alternative: "plan B",
-  study: "study",
-  work: "work",
-};
 
 export default function JourneyView() {
   const [result, setResult] = useState<{ plan: CareerPlan; matches: MatchSummary[] } | null | undefined>(undefined);
@@ -61,27 +50,7 @@ export default function JourneyView() {
           </span>
         </div>
       )}
-      <ol className="timeline">
-        {journey.periods.map((p, i) => (
-          <li key={p.id}>
-            <span className="step-dot" style={{ background: STEP_COLOURS[i % STEP_COLOURS.length] }}>
-              {i + 1}
-            </span>
-            <div className="step-card">
-              <h3>{p.period}</h3>
-              <p className="step-focus">{p.focus}</p>
-              <ul>
-                {p.actions.map((a) => (
-                  <li key={a.text}>
-                    <span className="act-type">{TYPE_LABEL[a.type] ?? a.type}</span>
-                    {a.text}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </li>
-        ))}
-      </ol>
+      <JourneyTimeline periods={journey.periods} />
       <p style={{ marginTop: "1.5rem" }}>
         <Link href="/plan" className="button secondary">
           <Icon name="arrowLeft" size={18} /> Back to my matches

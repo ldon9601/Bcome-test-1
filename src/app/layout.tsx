@@ -3,6 +3,7 @@ import { Caveat, Plus_Jakarta_Sans } from "next/font/google";
 import { Header } from "@/components/Header.tsx";
 import { HarbourScene } from "@/components/OccupationArt.tsx";
 import { careerCatalogue, courseCatalogue, searchIndex } from "@/lib/careers/catalogue.ts";
+import { currentSession } from "@/lib/auth/server.ts";
 import { jsaOutlook, occupationData, qualificationData } from "@/lib/data.ts";
 import "./globals.css";
 
@@ -17,7 +18,9 @@ export const metadata: Metadata = {
 
 const index = searchIndex(careerCatalogue(occupationData.occupations, jsaOutlook), courseCatalogue(qualificationData, occupationData.occupations));
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const cur = await currentSession();
+  const user = cur ? { firstName: cur.user.firstName, lastName: cur.user.lastName, role: cur.user.role, yearLevel: cur.user.yearLevel } : null;
   return (
     <html lang="en-AU" className={`${sans.variable} ${hand.variable}`}>
       <body>
@@ -36,7 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </p>
           </aside>
           <div className="frame">
-            <Header searchIndex={index} />
+            <Header searchIndex={index} user={user} />
             {children}
           </div>
         </div>

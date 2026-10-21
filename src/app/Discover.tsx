@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { RiasecBars, RiasecRadar } from "@/components/Charts.tsx";
@@ -63,7 +64,7 @@ function isComplete(q: Question, v: AnswerValue | undefined): boolean {
   return typeof v === "string" && v !== "";
 }
 
-export default function Discover({ bank }: { bank: QuestionBank }) {
+export default function Discover({ bank, account = null }: { bank: QuestionBank; account?: { role: string; firstName: string } | null }) {
   const router = useRouter();
   const [answers, setAnswers] = useState<Answers>({});
   const [history, setHistory] = useState<string[][]>([]);
@@ -158,6 +159,18 @@ export default function Discover({ bank }: { bank: QuestionBank }) {
         </section>
 
         <StatsCard pct={pct} xp={xp} streak={streak} />
+
+        {account?.role === "student" ? (
+          <p className="notice success">
+            <Icon name="check" size={16} /> Signed in as {account.firstName}. Your results will be saved to <Link href="/account">your profile</Link>.
+          </p>
+        ) : account?.role === "adviser" ? (
+          <p className="notice">You&apos;re signed in as a careers adviser, so results from this device won&apos;t be saved to a student profile.</p>
+        ) : (
+          <p className="notice">
+            <Link href="/login/student">Sign in</Link> or <Link href="/signup">create a student account</Link> to save your results and see how they change over time.
+          </p>
+        )}
 
         <section className="question-card" aria-live="polite">
           {!loaded ? null : !page.length ? (

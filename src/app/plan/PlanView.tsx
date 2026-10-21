@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
+import { JourneyTimeline } from "@/components/JourneyTimeline.tsx";
 import { Meter, RiasecBars, RiasecRadar, ScoreRing } from "@/components/Charts.tsx";
 import { Icon } from "@/components/Icon.tsx";
 import { Modal } from "@/components/Modal.tsx";
@@ -25,7 +26,7 @@ interface DnaView {
   strongestSignals: Scored[];
   values: Scored[];
 }
-interface Result {
+export interface Result {
   dna: DnaView;
   matches: MatchSummary[];
   plan: CareerPlan;
@@ -65,13 +66,13 @@ function Bars({ items, colours }: { items: Scored[]; colours?: string[] }) {
   );
 }
 
-function CareerDnaReveal({ dna, summary, onNext }: { dna: DnaView; summary: string; onNext: () => void }) {
+function CareerDnaReveal({ dna, summary, onNext, adviser }: { dna: DnaView; summary: string; onNext?: () => void; adviser?: boolean }) {
   return (
     <section className="dna-card" aria-labelledby="dna">
       <h2 id="dna" style={{ fontSize: "1.6rem" }}>
-        <span className="grad-text">Your Career DNA</span>
+        <span className="grad-text">{adviser ? "Career DNA" : "Your Career DNA"}</span>
       </h2>
-      <p className="muted">Built from your 36 answers. These are your answers today, not fixed traits.</p>
+      <p className="muted">{adviser ? "Built from their 36 answers. These are answers on the day, not fixed traits." : "Built from your 36 answers. These are your answers today, not fixed traits."}</p>
       <div className="dna-dims">
         {dna.dimensions.map((d, i) => (
           <div key={d.id} className="dna-dim">
@@ -89,25 +90,28 @@ function CareerDnaReveal({ dna, summary, onNext }: { dna: DnaView; summary: stri
       </div>
       <div className="dna-cols">
         <div>
-          <h3>Your strongest signals</h3>
+          <h3>{adviser ? "Strongest signals" : "Your strongest signals"}</h3>
           <Bars items={dna.strongestSignals} colours={["#14b8a6"]} />
         </div>
         <div>
-          <h3>What you value most</h3>
+          <h3>{adviser ? "What they value most" : "What you value most"}</h3>
           <Bars items={dna.values.slice(0, 5)} colours={["#f43f5e"]} />
-          <p className="small">Compared with your other values.</p>
+          <p className="small">{adviser ? "Compared with their other values." : "Compared with your other values."}</p>
         </div>
       </div>
-      <p style={{ marginTop: "1.5rem", marginBottom: 0 }}>
-        <button className="button primary" onClick={onNext}>
-          See my career matches <Icon name="arrowRight" size={18} />
-        </button>
-      </p>
+      {onNext && (
+        <p style={{ marginTop: "1.5rem", marginBottom: 0 }}>
+          <button className="button primary" onClick={onNext}>
+            See my career matches <Icon name="arrowRight" size={18} />
+          </button>
+        </p>
+      )}
     </section>
   );
 }
 
-function SaveButton({ osca, saved, onToggle, title }: { osca: string; saved: boolean; onToggle: (osca: string) => void; title: string }) {
+function SaveButton({ osca, saved, onToggle, title }: { osca: string; saved: boolean; onToggle?: (osca: string) => void; title: string }) {
+  if (!onToggle) return null;
   return (
     <button className="save" aria-pressed={saved} onClick={() => onToggle(osca)} aria-label={saved ? `Remove ${title} from shortlist` : `Save ${title} to shortlist`}>
       <Icon name="bookmark" size={20} />
@@ -115,14 +119,14 @@ function SaveButton({ osca, saved, onToggle, title }: { osca: string; saved: boo
   );
 }
 
-function FeatureCard({ c, m, saved, onToggle, onOpen }: { c: PlanCareer; m: MatchSummary; saved: boolean; onToggle: (o: string) => void; onOpen: () => void }) {
+function FeatureCard({ c, m, saved, onToggle, onOpen, journeyHref }: { c: PlanCareer; m: MatchSummary; saved: boolean; onToggle?: (o: string) => void; onOpen: () => void; journeyHref: string }) {
   const s = c.scores!;
   return (
     <article className="feature-card" aria-labelledby={`t-${c.occupationId}`}>
       <div className="feature-art">
         <OccupationImage family={m.family} title={c.title} photo={m.photo} />
         <span className="top-badge">
-          <Icon name="star" size={16} /> #1 Match for You
+          <Icon name="star" size={16} /> {onToggle ? "#1 Match for You" : "#1 Match"}
         </span>
       </div>
       <div className="feature-main">
@@ -161,7 +165,7 @@ function FeatureCard({ c, m, saved, onToggle, onOpen }: { c: PlanCareer; m: Matc
           <button className="button secondary" onClick={onOpen}>
             Details
           </button>
-          <Link href="/journey" className="button primary">
+          <Link href={journeyHref} className="button primary">
             View Journey <Icon name="arrowRight" size={18} />
           </Link>
         </div>
@@ -170,7 +174,7 @@ function FeatureCard({ c, m, saved, onToggle, onOpen }: { c: PlanCareer; m: Matc
   );
 }
 
-function MatchCard({ c, m, saved, onToggle, onOpen }: { c: PlanCareer; m: MatchSummary; saved: boolean; onToggle: (o: string) => void; onOpen: () => void }) {
+function MatchCard({ c, m, saved, onToggle, onOpen }: { c: PlanCareer; m: MatchSummary; saved: boolean; onToggle?: (o: string) => void; onOpen: () => void }) {
   return (
     <article className="match-card" aria-labelledby={`t-${c.occupationId}`}>
       <div className="match-art">
@@ -310,14 +314,25 @@ function CareerDetail({ c, m }: { c: PlanCareer; m: MatchSummary }) {
   );
 }
 
-export default function PlanView() {
-  const [result, setResult] = useState<Result | null | undefined>(undefined);
-  const [showCareers, setShowCareers] = useState(false);
+export type PlanMode = "live" | "history" | "adviser";
+
+/**
+ * The results page. "live": straight after the questions (from sessionStorage). "history": a saved
+ * assessment on the student's profile. "adviser": a careers adviser viewing a student's assessment.
+ */
+export default function PlanView({ initial, mode = "live", title, subtitle }: { initial?: Result; mode?: PlanMode; title?: ReactNode; subtitle?: string }) {
+  const live = mode === "live";
+  const [result, setResult] = useState<Result | null | undefined>(initial);
+  const [showCareers, setShowCareers] = useState(!live);
   const [shortlist, setShortlist] = useState<string[]>([]);
   const [streak, setStreak] = useState(0);
   const [open, setOpen] = useState<string | null>(null);
 
   useEffect(() => {
+    if (!live) {
+      setShortlist(readShortlist());
+      return;
+    }
     try {
       const raw = sessionStorage.getItem("bcome:result");
       setResult(raw ? (JSON.parse(raw) as Result) : null);
@@ -328,7 +343,7 @@ export default function PlanView() {
     recordVisit();
     setStreak(streakFrom(readActivity()));
     setShortlist(readShortlist());
-  }, []);
+  }, [live]);
 
   if (result === undefined) return null;
   if (result === null || !result.dna) {
@@ -372,7 +387,7 @@ export default function PlanView() {
   };
 
   const card = (c: PlanCareer) => (
-    <MatchCard key={c.occupationId} c={c} m={matchFor(c.occupationId)!} saved={saved(c.occupationId)} onToggle={toggle} onOpen={() => setOpen(c.occupationId)} />
+    <MatchCard key={c.occupationId} c={c} m={matchFor(c.occupationId)!} saved={saved(c.occupationId)} onToggle={mode === "adviser" ? undefined : toggle} onOpen={() => setOpen(c.occupationId)} />
   );
 
   return (
@@ -381,7 +396,7 @@ export default function PlanView() {
         <section className="hero">
           <div>
             <h1>
-              {showCareers ? (
+              {title ?? (showCareers ? (
                 <>
                   Your <span className="grad-text">Career Matches</span>
                 </>
@@ -389,30 +404,40 @@ export default function PlanView() {
                 <>
                   Meet your <span className="grad-text">Career DNA</span>
                 </>
-              )}
+              ))}
             </h1>
             <p className="hero-sub">
-              {showCareers
+              {subtitle ?? (showCareers
                 ? "Based on your answers, here are the careers that fit you best, ordered by personal fit."
-                : "You've finished the questions. Here's what your answers say about you."}
+                : "You've finished the questions. Here's what your answers say about you.")}
             </p>
           </div>
+          {mode !== "adviser" && (
           <p className="hand hero-note" aria-hidden="true">
             Your future,
             <br />
             your way.
             <Icon name="sun" size={46} strokeWidth={1.6} className="hero-sun" />
           </p>
+          )}
         </section>
 
-        <StatsCard pct={100} xp={xp} streak={streak} />
+        {live && <StatsCard pct={100} xp={xp} streak={streak} />}
+        {!live && <CareerDnaReveal dna={dna} summary={plan.dnaSummary} adviser={mode === "adviser"} />}
 
         {!showCareers ? (
           <CareerDnaReveal dna={dna} summary={plan.dnaSummary} onNext={reveal} />
         ) : (
           <>
             {top && (
-              <FeatureCard c={top} m={matchFor(top.occupationId)!} saved={saved(top.occupationId)} onToggle={toggle} onOpen={() => setOpen(top.occupationId)} />
+              <FeatureCard
+                c={top}
+                m={matchFor(top.occupationId)!}
+                saved={saved(top.occupationId)}
+                onToggle={mode === "adviser" ? undefined : toggle}
+                onOpen={() => setOpen(top.occupationId)}
+                journeyHref={live ? "/journey" : "#journey"}
+              />
             )}
 
             {rest.length > 0 && (
@@ -499,20 +524,37 @@ export default function PlanView() {
               )}
             </section>
 
+            {!live && (
+              <section className="side-card" aria-labelledby="journey" id="journey">
+                <h2 id="journey">Journey towards {inSentence(plan.journey.title)}</h2>
+                <JourneyTimeline periods={plan.journey.periods} />
+              </section>
+            )}
+
             <div className="no-print" style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
-              <Link href="/journey" className="button primary">
-                See my journey to {inSentence(plan.journey.title)}
-              </Link>
+              {live && (
+                <Link href="/journey" className="button primary">
+                  See my journey to {inSentence(plan.journey.title)}
+                </Link>
+              )}
               <button className="button secondary" onClick={() => window.print()}>
                 Print or save as PDF
               </button>
-              <Link href="/" className="button ghost" onClick={restart}>
-                Start again
-              </Link>
+              {live && (
+                <Link href="/" className="button ghost" onClick={restart}>
+                  Start again
+                </Link>
+              )}
             </div>
-            {!result.saved && (
+            {live && !result.saved && (
               <p className="muted no-print">
-                This plan isn&apos;t saved. <Link href="/login">Sign in</Link> before you start to keep it and come back for a check-in in six months.
+                This plan isn&apos;t saved. <Link href="/login/student">Sign in</Link> or <Link href="/signup">create an account</Link> before you
+                start, to keep every result on your profile.
+              </p>
+            )}
+            {live && result.saved && (
+              <p className="notice success no-print">
+                <Icon name="check" size={16} /> Saved to your profile. <Link href="/account">See all your assessments</Link>
               </p>
             )}
             <p className="small-print">
@@ -532,8 +574,8 @@ export default function PlanView() {
               <Icon name="chart" size={22} />
             </span>
             <div>
-              <h2>Your RIASEC Profile</h2>
-              <p>How your interests line up</p>
+              <h2>{mode === "adviser" ? "RIASEC Profile" : "Your RIASEC Profile"}</h2>
+              <p>{mode === "adviser" ? "How their interests line up" : "How your interests line up"}</p>
             </div>
             <span className="pill">{plan.hollandCode}</span>
           </div>
@@ -547,7 +589,7 @@ export default function PlanView() {
                 <Icon name="spark" size={22} />
               </span>
               <div>
-                <span className="small">Your top profile types</span>
+                <span className="small">{mode === "adviser" ? "Top profile types" : "Your top profile types"}</span>
                 <h3>
                   {i1.label} + {i2.label}
                 </h3>
@@ -557,6 +599,8 @@ export default function PlanView() {
           )}
         </section>
 
+        {live && (
+          <>
         <section className="badge-card">
           <span className="medal" aria-hidden="true">
             <Icon name="trophy" size={30} />
@@ -588,6 +632,8 @@ export default function PlanView() {
             </span>
           </div>
         </section>
+          </>
+        )}
       </aside>
 
       <Modal open={!!openCareer} onClose={() => setOpen(null)} label={openCareer?.title ?? "Career"}>

@@ -18,10 +18,10 @@
     "data:validate": "node --experimental-strip-types scripts/validate-data.ts",
     "data:import-jsa": "node --experimental-strip-types scripts/import-jsa.ts",
     "db:seed-sql": "node --experimental-strip-types scripts/build-seed-sql.ts",
-    "data:import-earnings": "node --experimental-strip-types scripts/import-earnings.ts"
+    "data:import-earnings": "node --experimental-strip-types scripts/import-earnings.ts",
+    "school": "node --experimental-strip-types scripts/school-admin.ts"
   },
   "dependencies": {
-    "@supabase/ssr": "^0.7.0",
     "@supabase/supabase-js": "^2.57.0",
     "next": "^15.5.0",
     "react": "^19.1.0",

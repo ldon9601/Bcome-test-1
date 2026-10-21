@@ -82,38 +82,52 @@ function Search({ index }: { index: SearchItem[] }) {
   );
 }
 
-function StudentChip() {
-  const [year, setYear] = useState<string | null>(null);
-  useEffect(() => {
-    try {
-      const a = JSON.parse(sessionStorage.getItem("bcome:answers") ?? "{}");
-      if (a.year_level) setYear(`Year ${a.year_level}`);
-    } catch {
-      // no saved answers yet
-    }
-  }, []);
+export interface HeaderUser {
+  firstName: string;
+  lastName: string;
+  role: "student" | "adviser";
+  yearLevel: number | null;
+}
+
+function AccountChip({ user }: { user: HeaderUser | null }) {
+  if (!user) {
+    return (
+      <Link href="/login" className="student-chip" aria-label="Sign in">
+        <span className="avatar" aria-hidden="true">
+          <Icon name="user" size={20} />
+        </span>
+        <span className="who">
+          <strong>Guest</strong>
+          <span>Sign in to save</span>
+        </span>
+      </Link>
+    );
+  }
+  const adviser = user.role === "adviser";
   return (
-    <Link href="/login" className="student-chip" aria-label="Your account">
-      <span className="avatar" aria-hidden="true">
-        <Icon name="user" size={20} />
+    <Link href={adviser ? "/adviser/settings" : "/account"} className="student-chip" aria-label={`${user.firstName}'s account`}>
+      <span className={`avatar initials${adviser ? " adviser" : ""}`} aria-hidden="true">
+        {user.firstName[0]}
+        {user.lastName[0]}
       </span>
       <span className="who">
-        <strong>Guest</strong>
-        <span>{year ?? "Sign in to save"}</span>
+        <strong>{user.firstName}</strong>
+        <span>{adviser ? "Careers adviser" : user.yearLevel ? `Year ${user.yearLevel}` : "Student"}</span>
       </span>
     </Link>
   );
 }
 
-export function Header({ searchIndex }: { searchIndex: SearchItem[] }) {
+export function Header({ searchIndex, user }: { searchIndex: SearchItem[]; user: HeaderUser | null }) {
   const path = usePathname();
+  const nav = user?.role === "adviser" ? [{ href: "/adviser", label: "Dashboard", icon: "chart" as IconName }, ...NAV] : NAV;
   return (
     <header className="site-header">
       <Link href="/" className="brand" aria-label="Bcome home">
         <span className="brand-b">B</span>come
       </Link>
       <nav aria-label="Main">
-        {NAV.map((n) => {
+        {nav.map((n) => {
           const current = n.href === "/" ? path === "/" || path === "/questionnaire" : path?.startsWith(n.href);
           return (
             <Link key={n.href} href={n.href} className="nav-link" aria-current={current ? "page" : undefined}>
@@ -124,7 +138,7 @@ export function Header({ searchIndex }: { searchIndex: SearchItem[] }) {
         })}
       </nav>
       <Search index={searchIndex} />
-      <StudentChip />
+      <AccountChip user={user} />
     </header>
   );
 }
