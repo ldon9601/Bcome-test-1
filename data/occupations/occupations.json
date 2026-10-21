@@ -1,0 +1,2313 @@
+{
+  "version": "1.0.0",
+  "notes": [
+    "anzsco is the ANZSCO 2022 unit group (4-digit) used to join JSA projections. Verify against OSCA concordance when importing.",
+    "riasec codes, values, subjects, skills and pathways are editorial judgements for guidance, written for this project. Have a careers adviser review them.",
+    "aiExposure is an indicative judgement of how much of the work generative AI and automation could change (low/medium/high). It is not JSA data.",
+    "oftenRequired lists subjects that are commonly prerequisites or assumed knowledge. Requirements differ by institution and state; always check the admissions centre."
+  ],
+  "occupations": [
+    {
+      "id": "registered-nurse",
+      "title": "Registered Nurse",
+      "anzsco": "2544",
+      "majorGroup": 2,
+      "industry": "Health Care and Social Assistance",
+      "skillLevel": 1,
+      "riasec": "SIC",
+      "values": [
+        "helping",
+        "security",
+        "teamwork",
+        "impact"
+      ],
+      "subjects": {
+        "helpful": [
+          "biology",
+          "chemistry",
+          "pdhpe",
+          "english"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "patient care",
+        "clinical assessment",
+        "communication",
+        "teamwork under pressure",
+        "medication safety"
+      ],
+      "pathways": {
+        "university": "Bachelor of Nursing",
+        "vet": "Diploma of Nursing (Enrolled Nurse), then a bachelor's with credit"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "ageing-population",
+        "care-economy"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "nursing-support-personal-care-worker",
+      "title": "Nursing Support / Personal Care Worker",
+      "anzsco": "4233",
+      "majorGroup": 4,
+      "industry": "Health Care and Social Assistance",
+      "skillLevel": 4,
+      "riasec": "SRC",
+      "values": [
+        "helping",
+        "security",
+        "teamwork"
+      ],
+      "subjects": {
+        "helpful": [
+          "pdhpe",
+          "biology",
+          "english"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "personal care",
+        "observation and reporting",
+        "communication",
+        "infection control",
+        "empathy"
+      ],
+      "pathways": {
+        "vet": "Certificate III in Health Services Assistance or Individual Support",
+        "apprenticeship": "A traineeship in health services or individual support"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "ageing-population",
+        "care-economy"
+      ],
+      "apprenticeshipAreas": [
+        "care"
+      ]
+    },
+    {
+      "id": "aged-and-disability-carer",
+      "title": "Aged and Disability Carer",
+      "anzsco": "4231",
+      "majorGroup": 4,
+      "industry": "Health Care and Social Assistance",
+      "skillLevel": 4,
+      "riasec": "SRC",
+      "values": [
+        "helping",
+        "variety",
+        "security"
+      ],
+      "subjects": {
+        "helpful": [
+          "pdhpe",
+          "society_culture",
+          "english"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "personal care",
+        "supporting independence",
+        "communication",
+        "safety and risk",
+        "empathy"
+      ],
+      "pathways": {
+        "vet": "Certificate III in Individual Support; Certificate IV in Disability Support",
+        "apprenticeship": "A traineeship in individual support"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "ageing-population",
+        "care-economy"
+      ],
+      "apprenticeshipAreas": [
+        "care"
+      ]
+    },
+    {
+      "id": "physiotherapist",
+      "title": "Physiotherapist",
+      "anzsco": "2525",
+      "majorGroup": 2,
+      "industry": "Health Care and Social Assistance",
+      "skillLevel": 1,
+      "riasec": "SIR",
+      "values": [
+        "helping",
+        "impact",
+        "independence"
+      ],
+      "subjects": {
+        "helpful": [
+          "biology",
+          "physics",
+          "pdhpe",
+          "maths_advanced"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "anatomy and movement",
+        "clinical reasoning",
+        "rehabilitation planning",
+        "communication",
+        "hands-on treatment"
+      ],
+      "pathways": {
+        "university": "Bachelor of Physiotherapy, or a related bachelor's then Doctor of Physiotherapy"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "ageing-population"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "occupational-therapist",
+      "title": "Occupational Therapist",
+      "anzsco": "2524",
+      "majorGroup": 2,
+      "industry": "Health Care and Social Assistance",
+      "skillLevel": 1,
+      "riasec": "SIA",
+      "values": [
+        "helping",
+        "creativity",
+        "impact"
+      ],
+      "subjects": {
+        "helpful": [
+          "biology",
+          "society_culture",
+          "pdhpe"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "functional assessment",
+        "creative problem solving",
+        "rehabilitation planning",
+        "communication",
+        "home and work adaptation"
+      ],
+      "pathways": {
+        "university": "Bachelor of Occupational Therapy"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "ageing-population",
+        "care-economy"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "speech-pathologist-audiologist",
+      "title": "Speech Pathologist / Audiologist",
+      "anzsco": "2527",
+      "majorGroup": 2,
+      "industry": "Health Care and Social Assistance",
+      "skillLevel": 1,
+      "riasec": "SIA",
+      "values": [
+        "helping",
+        "impact",
+        "independence"
+      ],
+      "subjects": {
+        "helpful": [
+          "english",
+          "biology",
+          "languages"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "communication assessment",
+        "therapy planning",
+        "working with children and families",
+        "clinical reasoning"
+      ],
+      "pathways": {
+        "university": "Bachelor of Speech Pathology; Master of Audiology"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "ageing-population",
+        "care-economy"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "general-practitioner-doctor",
+      "title": "General Practitioner (Doctor)",
+      "anzsco": "2531",
+      "majorGroup": 2,
+      "industry": "Health Care and Social Assistance",
+      "skillLevel": 1,
+      "riasec": "ISE",
+      "values": [
+        "helping",
+        "impact",
+        "income"
+      ],
+      "subjects": {
+        "helpful": [
+          "chemistry",
+          "biology",
+          "maths_advanced",
+          "english"
+        ],
+        "oftenRequired": [
+          "chemistry"
+        ]
+      },
+      "skills": [
+        "diagnosis",
+        "clinical reasoning",
+        "communication",
+        "evidence-based practice",
+        "decision making under uncertainty"
+      ],
+      "pathways": {
+        "university": "Undergraduate medicine, or a bachelor's then Doctor of Medicine (UCAT or GAMSAT entry)"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "ageing-population"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "pharmacist",
+      "title": "Pharmacist",
+      "anzsco": "2515",
+      "majorGroup": 2,
+      "industry": "Health Care and Social Assistance",
+      "skillLevel": 1,
+      "riasec": "ICS",
+      "values": [
+        "helping",
+        "security",
+        "impact"
+      ],
+      "subjects": {
+        "helpful": [
+          "chemistry",
+          "biology",
+          "maths_advanced"
+        ],
+        "oftenRequired": [
+          "chemistry"
+        ]
+      },
+      "skills": [
+        "medicines knowledge",
+        "attention to detail",
+        "patient counselling",
+        "clinical checking"
+      ],
+      "pathways": {
+        "university": "Bachelor of Pharmacy"
+      },
+      "aiExposure": "medium",
+      "drivers": [
+        "ageing-population"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "dietitian",
+      "title": "Dietitian",
+      "anzsco": "2511",
+      "majorGroup": 2,
+      "industry": "Health Care and Social Assistance",
+      "skillLevel": 1,
+      "riasec": "ISE",
+      "values": [
+        "helping",
+        "impact",
+        "independence"
+      ],
+      "subjects": {
+        "helpful": [
+          "biology",
+          "chemistry",
+          "food_tech",
+          "pdhpe"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "nutrition science",
+        "counselling",
+        "meal planning",
+        "research literacy"
+      ],
+      "pathways": {
+        "university": "Bachelor of Nutrition and Dietetics"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "ageing-population"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "psychologist",
+      "title": "Psychologist",
+      "anzsco": "2723",
+      "majorGroup": 2,
+      "industry": "Health Care and Social Assistance",
+      "skillLevel": 1,
+      "riasec": "SIA",
+      "values": [
+        "helping",
+        "impact",
+        "independence"
+      ],
+      "subjects": {
+        "helpful": [
+          "society_culture",
+          "biology",
+          "english",
+          "maths_general"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "assessment",
+        "counselling",
+        "research and statistics",
+        "ethics",
+        "active listening"
+      ],
+      "pathways": {
+        "university": "Bachelor of Psychology (Honours), then a master's or supervised practice"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "care-economy"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "social-worker",
+      "title": "Social Worker",
+      "anzsco": "2725",
+      "majorGroup": 2,
+      "industry": "Health Care and Social Assistance",
+      "skillLevel": 1,
+      "riasec": "SEC",
+      "values": [
+        "helping",
+        "impact",
+        "teamwork"
+      ],
+      "subjects": {
+        "helpful": [
+          "society_culture",
+          "legal",
+          "english"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "case management",
+        "advocacy",
+        "crisis support",
+        "communication",
+        "understanding systems"
+      ],
+      "pathways": {
+        "university": "Bachelor of Social Work",
+        "vet": "Diploma of Community Services as a pathway"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "care-economy"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "counsellor",
+      "title": "Counsellor",
+      "anzsco": "2721",
+      "majorGroup": 2,
+      "industry": "Health Care and Social Assistance",
+      "skillLevel": 1,
+      "riasec": "SAI",
+      "values": [
+        "helping",
+        "independence",
+        "impact"
+      ],
+      "subjects": {
+        "helpful": [
+          "society_culture",
+          "english",
+          "pdhpe"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "active listening",
+        "counselling techniques",
+        "empathy",
+        "ethics"
+      ],
+      "pathways": {
+        "university": "Bachelor of Counselling",
+        "vet": "Diploma of Counselling"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "care-economy"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "paramedic",
+      "title": "Paramedic",
+      "anzsco": "4111",
+      "majorGroup": 4,
+      "industry": "Health Care and Social Assistance",
+      "skillLevel": 2,
+      "riasec": "SRI",
+      "values": [
+        "helping",
+        "variety",
+        "teamwork",
+        "impact"
+      ],
+      "subjects": {
+        "helpful": [
+          "biology",
+          "pdhpe",
+          "chemistry"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "emergency care",
+        "calm decision making",
+        "teamwork",
+        "physical fitness",
+        "communication"
+      ],
+      "pathways": {
+        "university": "Bachelor of Paramedicine"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "ageing-population"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "dental-assistant",
+      "title": "Dental Assistant",
+      "anzsco": "4232",
+      "majorGroup": 4,
+      "industry": "Health Care and Social Assistance",
+      "skillLevel": 4,
+      "riasec": "SCR",
+      "values": [
+        "helping",
+        "security",
+        "teamwork"
+      ],
+      "subjects": {
+        "helpful": [
+          "biology",
+          "pdhpe"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "infection control",
+        "chairside assisting",
+        "patient care",
+        "record keeping"
+      ],
+      "pathways": {
+        "vet": "Certificate III / IV in Dental Assisting",
+        "apprenticeship": "A traineeship in dental assisting"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "ageing-population"
+      ],
+      "apprenticeshipAreas": [
+        "care"
+      ]
+    },
+    {
+      "id": "health-and-welfare-services-manager",
+      "title": "Health and Welfare Services Manager",
+      "anzsco": "1342",
+      "majorGroup": 1,
+      "industry": "Health Care and Social Assistance",
+      "skillLevel": 1,
+      "riasec": "ESC",
+      "values": [
+        "leadership",
+        "helping",
+        "impact"
+      ],
+      "subjects": {
+        "helpful": [
+          "business",
+          "society_culture",
+          "english"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "leadership",
+        "planning and budgeting",
+        "quality and safety",
+        "people management"
+      ],
+      "pathways": {
+        "university": "Bachelor of Health Administration, or a clinical degree plus experience"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "ageing-population",
+        "care-economy"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "early-childhood-educator",
+      "title": "Early Childhood Educator",
+      "anzsco": "4211",
+      "majorGroup": 4,
+      "industry": "Health Care and Social Assistance",
+      "skillLevel": 4,
+      "riasec": "SAR",
+      "values": [
+        "helping",
+        "creativity",
+        "teamwork"
+      ],
+      "subjects": {
+        "helpful": [
+          "society_culture",
+          "english",
+          "visual_arts",
+          "music"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "child development",
+        "play-based learning",
+        "communication with families",
+        "safety and wellbeing"
+      ],
+      "pathways": {
+        "vet": "Certificate III / Diploma of Early Childhood Education and Care",
+        "apprenticeship": "A traineeship in early childhood education and care"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "care-economy"
+      ],
+      "apprenticeshipAreas": [
+        "care"
+      ]
+    },
+    {
+      "id": "early-childhood-teacher",
+      "title": "Early Childhood Teacher",
+      "anzsco": "2411",
+      "majorGroup": 2,
+      "industry": "Education and Training",
+      "skillLevel": 1,
+      "riasec": "SAE",
+      "values": [
+        "helping",
+        "creativity",
+        "impact"
+      ],
+      "subjects": {
+        "helpful": [
+          "english",
+          "society_culture",
+          "visual_arts"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "child development",
+        "curriculum planning",
+        "communication",
+        "creativity"
+      ],
+      "pathways": {
+        "university": "Bachelor of Early Childhood Education",
+        "vet": "Diploma of Early Childhood Education and Care as a pathway"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "care-economy"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "primary-school-teacher",
+      "title": "Primary School Teacher",
+      "anzsco": "2412",
+      "majorGroup": 2,
+      "industry": "Education and Training",
+      "skillLevel": 1,
+      "riasec": "SAE",
+      "values": [
+        "helping",
+        "variety",
+        "impact",
+        "security"
+      ],
+      "subjects": {
+        "helpful": [
+          "english",
+          "maths_general",
+          "history",
+          "geography"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "teaching and explaining",
+        "classroom management",
+        "planning",
+        "communication",
+        "patience"
+      ],
+      "pathways": {
+        "university": "Bachelor of Education (Primary)"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "population-growth"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "secondary-school-teacher",
+      "title": "Secondary School Teacher",
+      "anzsco": "2414",
+      "majorGroup": 2,
+      "industry": "Education and Training",
+      "skillLevel": 1,
+      "riasec": "SAI",
+      "values": [
+        "helping",
+        "variety",
+        "security",
+        "impact"
+      ],
+      "subjects": {
+        "helpful": [
+          "english",
+          "maths_advanced",
+          "biology",
+          "history"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "subject expertise",
+        "teaching and explaining",
+        "classroom management",
+        "mentoring"
+      ],
+      "pathways": {
+        "university": "Bachelor of Education (Secondary), or a bachelor's then Master of Teaching"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "population-growth"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "software-developer-programmer",
+      "title": "Software Developer / Programmer",
+      "anzsco": "2613",
+      "majorGroup": 2,
+      "industry": "Professional, Scientific and Technical Services",
+      "skillLevel": 1,
+      "riasec": "IRC",
+      "values": [
+        "creativity",
+        "independence",
+        "income"
+      ],
+      "subjects": {
+        "helpful": [
+          "maths_advanced",
+          "maths_extension",
+          "it_software",
+          "physics"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "programming",
+        "problem solving",
+        "system design",
+        "testing",
+        "working with AI tools"
+      ],
+      "pathways": {
+        "university": "Bachelor of Computer Science, Software Engineering or IT",
+        "vet": "Diploma of Information Technology",
+        "apprenticeship": "A digital traineeship or cadetship, where you work while you study"
+      },
+      "aiExposure": "high",
+      "drivers": [
+        "digital"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "cyber-security-and-systems-specialist",
+      "title": "Cyber Security and Systems Specialist",
+      "anzsco": "2621",
+      "majorGroup": 2,
+      "industry": "Professional, Scientific and Technical Services",
+      "skillLevel": 1,
+      "riasec": "ICR",
+      "values": [
+        "security",
+        "income",
+        "independence"
+      ],
+      "subjects": {
+        "helpful": [
+          "it_software",
+          "maths_advanced"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "network security",
+        "risk analysis",
+        "systems administration",
+        "incident response"
+      ],
+      "pathways": {
+        "university": "Bachelor of Cyber Security or IT",
+        "vet": "Certificate IV in Cyber Security",
+        "apprenticeship": "A cyber security cadetship or traineeship, where you work while you study"
+      },
+      "aiExposure": "medium",
+      "drivers": [
+        "digital"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "ict-business-and-systems-analyst",
+      "title": "ICT Business and Systems Analyst",
+      "anzsco": "2611",
+      "majorGroup": 2,
+      "industry": "Professional, Scientific and Technical Services",
+      "skillLevel": 1,
+      "riasec": "ICE",
+      "values": [
+        "teamwork",
+        "variety",
+        "income"
+      ],
+      "subjects": {
+        "helpful": [
+          "it_software",
+          "business",
+          "maths_advanced"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "requirements analysis",
+        "process mapping",
+        "communication",
+        "data analysis"
+      ],
+      "pathways": {
+        "university": "Bachelor of Information Systems or IT",
+        "vet": "Diploma of Information Technology"
+      },
+      "aiExposure": "medium",
+      "drivers": [
+        "digital"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "ict-manager",
+      "title": "ICT Manager",
+      "anzsco": "1351",
+      "majorGroup": 1,
+      "industry": "Professional, Scientific and Technical Services",
+      "skillLevel": 1,
+      "riasec": "EIC",
+      "values": [
+        "leadership",
+        "income",
+        "variety"
+      ],
+      "subjects": {
+        "helpful": [
+          "it_software",
+          "business",
+          "maths_advanced"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "leadership",
+        "technology strategy",
+        "project management",
+        "budgeting"
+      ],
+      "pathways": {
+        "university": "IT or business degree plus several years' experience"
+      },
+      "aiExposure": "medium",
+      "drivers": [
+        "digital"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "data-scientist-statistician-actuary",
+      "title": "Data Scientist / Statistician / Actuary",
+      "anzsco": "2241",
+      "majorGroup": 2,
+      "industry": "Financial and Insurance Services",
+      "skillLevel": 1,
+      "riasec": "ICR",
+      "values": [
+        "independence",
+        "income",
+        "impact"
+      ],
+      "subjects": {
+        "helpful": [
+          "maths_extension",
+          "maths_advanced",
+          "it_software",
+          "economics"
+        ],
+        "oftenRequired": [
+          "maths_advanced"
+        ]
+      },
+      "skills": [
+        "statistics",
+        "programming",
+        "modelling",
+        "communicating findings"
+      ],
+      "pathways": {
+        "university": "Bachelor of Science (Statistics or Data Science), or Actuarial Studies"
+      },
+      "aiExposure": "medium",
+      "drivers": [
+        "digital"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "civil-engineer",
+      "title": "Civil Engineer",
+      "anzsco": "2332",
+      "majorGroup": 2,
+      "industry": "Construction",
+      "skillLevel": 1,
+      "riasec": "RIC",
+      "values": [
+        "impact",
+        "teamwork",
+        "income"
+      ],
+      "subjects": {
+        "helpful": [
+          "maths_advanced",
+          "maths_extension",
+          "physics",
+          "engineering_studies"
+        ],
+        "oftenRequired": [
+          "maths_advanced"
+        ]
+      },
+      "skills": [
+        "structural analysis",
+        "design software",
+        "project planning",
+        "problem solving"
+      ],
+      "pathways": {
+        "university": "Bachelor of Engineering (Civil)",
+        "vet": "Advanced Diploma of Civil Engineering Design as a pathway",
+        "apprenticeship": "An engineering cadetship, where you work while you study"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "infrastructure",
+        "population-growth"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "electrical-engineer",
+      "title": "Electrical Engineer",
+      "anzsco": "2333",
+      "majorGroup": 2,
+      "industry": "Professional, Scientific and Technical Services",
+      "skillLevel": 1,
+      "riasec": "IRC",
+      "values": [
+        "impact",
+        "income",
+        "creativity"
+      ],
+      "subjects": {
+        "helpful": [
+          "maths_advanced",
+          "maths_extension",
+          "physics",
+          "engineering_studies"
+        ],
+        "oftenRequired": [
+          "maths_advanced"
+        ]
+      },
+      "skills": [
+        "circuit and power systems",
+        "design",
+        "testing",
+        "renewable energy systems"
+      ],
+      "pathways": {
+        "university": "Bachelor of Engineering (Electrical)"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "net-zero",
+        "infrastructure"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "mechanical-industrial-engineer",
+      "title": "Mechanical / Industrial Engineer",
+      "anzsco": "2335",
+      "majorGroup": 2,
+      "industry": "Manufacturing",
+      "skillLevel": 1,
+      "riasec": "RIC",
+      "values": [
+        "creativity",
+        "income",
+        "teamwork"
+      ],
+      "subjects": {
+        "helpful": [
+          "maths_advanced",
+          "physics",
+          "engineering_studies",
+          "design_tech"
+        ],
+        "oftenRequired": [
+          "maths_advanced"
+        ]
+      },
+      "skills": [
+        "mechanical design",
+        "CAD",
+        "manufacturing processes",
+        "problem solving"
+      ],
+      "pathways": {
+        "university": "Bachelor of Engineering (Mechanical)"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "net-zero"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "architect-landscape-architect",
+      "title": "Architect / Landscape Architect",
+      "anzsco": "2321",
+      "majorGroup": 2,
+      "industry": "Professional, Scientific and Technical Services",
+      "skillLevel": 1,
+      "riasec": "AIR",
+      "values": [
+        "creativity",
+        "impact",
+        "independence"
+      ],
+      "subjects": {
+        "helpful": [
+          "visual_arts",
+          "design_tech",
+          "maths_advanced",
+          "physics"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "design",
+        "3D modelling",
+        "spatial thinking",
+        "client communication"
+      ],
+      "pathways": {
+        "university": "Bachelor then Master of Architecture"
+      },
+      "aiExposure": "medium",
+      "drivers": [
+        "infrastructure",
+        "population-growth"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "surveyor-spatial-scientist",
+      "title": "Surveyor / Spatial Scientist",
+      "anzsco": "2322",
+      "majorGroup": 2,
+      "industry": "Construction",
+      "skillLevel": 1,
+      "riasec": "RIC",
+      "values": [
+        "outdoors",
+        "variety",
+        "security"
+      ],
+      "subjects": {
+        "helpful": [
+          "maths_advanced",
+          "geography",
+          "physics"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "measurement",
+        "GIS and mapping",
+        "data accuracy",
+        "fieldwork"
+      ],
+      "pathways": {
+        "university": "Bachelor of Surveying or Spatial Science",
+        "vet": "Diploma of Surveying"
+      },
+      "aiExposure": "medium",
+      "drivers": [
+        "infrastructure",
+        "population-growth"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "urban-and-regional-planner",
+      "title": "Urban and Regional Planner",
+      "anzsco": "2326",
+      "majorGroup": 2,
+      "industry": "Public Administration and Safety",
+      "skillLevel": 1,
+      "riasec": "IEA",
+      "values": [
+        "impact",
+        "teamwork",
+        "variety"
+      ],
+      "subjects": {
+        "helpful": [
+          "geography",
+          "economics",
+          "legal",
+          "english"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "planning policy",
+        "spatial analysis",
+        "community consultation",
+        "report writing"
+      ],
+      "pathways": {
+        "university": "Bachelor of Urban and Regional Planning"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "infrastructure",
+        "population-growth"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "environmental-scientist",
+      "title": "Environmental Scientist",
+      "anzsco": "2343",
+      "majorGroup": 2,
+      "industry": "Professional, Scientific and Technical Services",
+      "skillLevel": 1,
+      "riasec": "IRC",
+      "values": [
+        "impact",
+        "outdoors",
+        "independence"
+      ],
+      "subjects": {
+        "helpful": [
+          "biology",
+          "chemistry",
+          "earth_env",
+          "geography"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "field sampling",
+        "data analysis",
+        "environmental law",
+        "report writing"
+      ],
+      "pathways": {
+        "university": "Bachelor of Environmental Science",
+        "vet": "Certificate IV / Diploma of Conservation and Ecosystem Management"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "net-zero"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "agricultural-scientist",
+      "title": "Agricultural Scientist",
+      "anzsco": "2341",
+      "majorGroup": 2,
+      "industry": "Agriculture, Forestry and Fishing",
+      "skillLevel": 1,
+      "riasec": "IRC",
+      "values": [
+        "outdoors",
+        "impact",
+        "independence"
+      ],
+      "subjects": {
+        "helpful": [
+          "agriculture",
+          "biology",
+          "chemistry"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "plant and animal science",
+        "field trials",
+        "data analysis",
+        "sustainability"
+      ],
+      "pathways": {
+        "university": "Bachelor of Agricultural Science",
+        "vet": "Diploma of Agriculture"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "net-zero"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "medical-laboratory-scientist",
+      "title": "Medical Laboratory Scientist",
+      "anzsco": "2346",
+      "majorGroup": 2,
+      "industry": "Health Care and Social Assistance",
+      "skillLevel": 1,
+      "riasec": "IRC",
+      "values": [
+        "security",
+        "impact",
+        "independence"
+      ],
+      "subjects": {
+        "helpful": [
+          "chemistry",
+          "biology",
+          "maths_advanced"
+        ],
+        "oftenRequired": [
+          "chemistry"
+        ]
+      },
+      "skills": [
+        "laboratory testing",
+        "precision",
+        "quality control",
+        "analysis"
+      ],
+      "pathways": {
+        "university": "Bachelor of Medical Laboratory Science",
+        "vet": "Certificate IV in Laboratory Techniques as a pathway"
+      },
+      "aiExposure": "medium",
+      "drivers": [
+        "ageing-population"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "veterinarian",
+      "title": "Veterinarian",
+      "anzsco": "2347",
+      "majorGroup": 2,
+      "industry": "Professional, Scientific and Technical Services",
+      "skillLevel": 1,
+      "riasec": "IRS",
+      "values": [
+        "helping",
+        "impact",
+        "independence"
+      ],
+      "subjects": {
+        "helpful": [
+          "biology",
+          "chemistry",
+          "agriculture"
+        ],
+        "oftenRequired": [
+          "chemistry"
+        ]
+      },
+      "skills": [
+        "animal health",
+        "diagnosis",
+        "surgery",
+        "client communication"
+      ],
+      "pathways": {
+        "university": "Bachelor of Veterinary Science / Doctor of Veterinary Medicine"
+      },
+      "aiExposure": "low",
+      "drivers": [],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "research-and-development-manager",
+      "title": "Research and Development Manager",
+      "anzsco": "1325",
+      "majorGroup": 1,
+      "industry": "Professional, Scientific and Technical Services",
+      "skillLevel": 1,
+      "riasec": "EIC",
+      "values": [
+        "leadership",
+        "impact",
+        "creativity"
+      ],
+      "subjects": {
+        "helpful": [
+          "maths_advanced",
+          "chemistry",
+          "physics",
+          "business"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "research leadership",
+        "innovation",
+        "project and budget management",
+        "communication"
+      ],
+      "pathways": {
+        "university": "Science or engineering degree, often with postgraduate study"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "digital",
+        "net-zero"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "accountant",
+      "title": "Accountant",
+      "anzsco": "2211",
+      "majorGroup": 2,
+      "industry": "Professional, Scientific and Technical Services",
+      "skillLevel": 1,
+      "riasec": "CEI",
+      "values": [
+        "security",
+        "income",
+        "independence"
+      ],
+      "subjects": {
+        "helpful": [
+          "maths_advanced",
+          "business",
+          "economics"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "financial analysis",
+        "tax and reporting",
+        "attention to detail",
+        "advising clients"
+      ],
+      "pathways": {
+        "university": "Bachelor of Commerce (Accounting), then CA or CPA",
+        "vet": "Diploma of Accounting",
+        "apprenticeship": "An accounting cadetship, where you work while you study"
+      },
+      "aiExposure": "high",
+      "drivers": [],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "management-consultant-business-analyst",
+      "title": "Management Consultant / Business Analyst",
+      "anzsco": "2247",
+      "majorGroup": 2,
+      "industry": "Professional, Scientific and Technical Services",
+      "skillLevel": 1,
+      "riasec": "EIC",
+      "values": [
+        "income",
+        "variety",
+        "leadership"
+      ],
+      "subjects": {
+        "helpful": [
+          "business",
+          "economics",
+          "maths_advanced",
+          "english"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "problem structuring",
+        "data analysis",
+        "presenting",
+        "stakeholder management"
+      ],
+      "pathways": {
+        "university": "Bachelor of Business or Commerce"
+      },
+      "aiExposure": "medium",
+      "drivers": [
+        "digital"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "marketing-professional",
+      "title": "Marketing Professional",
+      "anzsco": "2251",
+      "majorGroup": 2,
+      "industry": "Professional, Scientific and Technical Services",
+      "skillLevel": 1,
+      "riasec": "EAC",
+      "values": [
+        "creativity",
+        "variety",
+        "teamwork"
+      ],
+      "subjects": {
+        "helpful": [
+          "business",
+          "media",
+          "english",
+          "visual_arts"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "market research",
+        "content and campaigns",
+        "digital analytics",
+        "communication"
+      ],
+      "pathways": {
+        "university": "Bachelor of Business (Marketing) or Communications",
+        "vet": "Diploma of Marketing and Communication"
+      },
+      "aiExposure": "high",
+      "drivers": [
+        "digital"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "lawyer-solicitor",
+      "title": "Lawyer (Solicitor)",
+      "anzsco": "2713",
+      "majorGroup": 2,
+      "industry": "Professional, Scientific and Technical Services",
+      "skillLevel": 1,
+      "riasec": "EIS",
+      "values": [
+        "income",
+        "impact",
+        "leadership"
+      ],
+      "subjects": {
+        "helpful": [
+          "english",
+          "legal",
+          "history",
+          "economics"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "legal research",
+        "writing",
+        "negotiation",
+        "advocacy",
+        "ethics"
+      ],
+      "pathways": {
+        "university": "Bachelor of Laws, or a bachelor's then Juris Doctor"
+      },
+      "aiExposure": "medium",
+      "drivers": [],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "journalist-writer",
+      "title": "Journalist / Writer",
+      "anzsco": "2124",
+      "majorGroup": 2,
+      "industry": "Information Media and Telecommunications",
+      "skillLevel": 1,
+      "riasec": "AIS",
+      "values": [
+        "creativity",
+        "independence",
+        "variety"
+      ],
+      "subjects": {
+        "helpful": [
+          "english",
+          "history",
+          "media"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "writing",
+        "research and interviewing",
+        "editing",
+        "digital publishing"
+      ],
+      "pathways": {
+        "university": "Bachelor of Journalism, Communications or Arts",
+        "vet": "Diploma of Screen and Media"
+      },
+      "aiExposure": "high",
+      "drivers": [
+        "digital"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "graphic-web-designer",
+      "title": "Graphic / Web Designer",
+      "anzsco": "2324",
+      "majorGroup": 2,
+      "industry": "Professional, Scientific and Technical Services",
+      "skillLevel": 1,
+      "riasec": "ARE",
+      "values": [
+        "creativity",
+        "independence",
+        "variety"
+      ],
+      "subjects": {
+        "helpful": [
+          "visual_arts",
+          "design_tech",
+          "media",
+          "it_software"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "visual design",
+        "typography",
+        "UX and web tools",
+        "client briefs"
+      ],
+      "pathways": {
+        "university": "Bachelor of Design (Visual Communication)",
+        "vet": "Diploma of Graphic Design"
+      },
+      "aiExposure": "high",
+      "drivers": [
+        "digital"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "musician-music-professional",
+      "title": "Musician / Music Professional",
+      "anzsco": "2112",
+      "majorGroup": 2,
+      "industry": "Arts and Recreation Services",
+      "skillLevel": 1,
+      "riasec": "AES",
+      "values": [
+        "creativity",
+        "independence",
+        "variety"
+      ],
+      "subjects": {
+        "helpful": [
+          "music",
+          "drama"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "performance",
+        "composition",
+        "audio production",
+        "self-promotion"
+      ],
+      "pathways": {
+        "university": "Bachelor of Music",
+        "vet": "Diploma of Music"
+      },
+      "aiExposure": "medium",
+      "drivers": [],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "actor-dancer-entertainer",
+      "title": "Actor / Dancer / Entertainer",
+      "anzsco": "2111",
+      "majorGroup": 2,
+      "industry": "Arts and Recreation Services",
+      "skillLevel": 1,
+      "riasec": "AES",
+      "values": [
+        "creativity",
+        "variety",
+        "independence"
+      ],
+      "subjects": {
+        "helpful": [
+          "drama",
+          "music",
+          "pdhpe"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "performance",
+        "auditioning",
+        "teamwork",
+        "resilience"
+      ],
+      "pathways": {
+        "university": "Bachelor of Fine Arts (Acting) or Dance",
+        "vet": "Diploma of Musical Theatre or Dance"
+      },
+      "aiExposure": "low",
+      "drivers": [],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "electrician",
+      "title": "Electrician",
+      "anzsco": "3411",
+      "majorGroup": 3,
+      "industry": "Construction",
+      "skillLevel": 3,
+      "riasec": "RIC",
+      "values": [
+        "security",
+        "income",
+        "variety"
+      ],
+      "subjects": {
+        "helpful": [
+          "maths_general",
+          "physics",
+          "construction_vet"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "electrical installation",
+        "safety and compliance",
+        "fault finding",
+        "solar and battery systems"
+      ],
+      "pathways": {
+        "apprenticeship": "Certificate III in Electrotechnology Electrician (4-year apprenticeship)"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "net-zero",
+        "infrastructure",
+        "housing"
+      ],
+      "apprenticeshipAreas": [
+        "electrical"
+      ]
+    },
+    {
+      "id": "plumber",
+      "title": "Plumber",
+      "anzsco": "3341",
+      "majorGroup": 3,
+      "industry": "Construction",
+      "skillLevel": 3,
+      "riasec": "RCI",
+      "values": [
+        "security",
+        "income",
+        "independence"
+      ],
+      "subjects": {
+        "helpful": [
+          "maths_general",
+          "construction_vet",
+          "design_tech"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "installation and repair",
+        "reading plans",
+        "problem solving",
+        "customer service"
+      ],
+      "pathways": {
+        "apprenticeship": "Certificate III in Plumbing (4-year apprenticeship)"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "housing",
+        "infrastructure"
+      ],
+      "apprenticeshipAreas": [
+        "plumbing"
+      ]
+    },
+    {
+      "id": "carpenter-joiner",
+      "title": "Carpenter / Joiner",
+      "anzsco": "3312",
+      "majorGroup": 3,
+      "industry": "Construction",
+      "skillLevel": 3,
+      "riasec": "RCI",
+      "values": [
+        "outdoors",
+        "security",
+        "variety"
+      ],
+      "subjects": {
+        "helpful": [
+          "design_tech",
+          "maths_general",
+          "construction_vet"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "building and framing",
+        "measuring and cutting",
+        "reading plans",
+        "safety"
+      ],
+      "pathways": {
+        "apprenticeship": "Certificate III in Carpentry (apprenticeship)"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "housing"
+      ],
+      "apprenticeshipAreas": [
+        "building"
+      ]
+    },
+    {
+      "id": "motor-mechanic",
+      "title": "Motor Mechanic",
+      "anzsco": "3212",
+      "majorGroup": 3,
+      "industry": "Other Services",
+      "skillLevel": 3,
+      "riasec": "RIC",
+      "values": [
+        "security",
+        "independence",
+        "variety"
+      ],
+      "subjects": {
+        "helpful": [
+          "design_tech",
+          "construction_vet",
+          "physics"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "diagnostics",
+        "servicing",
+        "electric and hybrid vehicle systems",
+        "customer service"
+      ],
+      "pathways": {
+        "apprenticeship": "Certificate III in Light Vehicle Mechanical Technology (apprenticeship)"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "net-zero"
+      ],
+      "apprenticeshipAreas": [
+        "automotive"
+      ]
+    },
+    {
+      "id": "air-conditioning-and-refrigeration-mechanic",
+      "title": "Air Conditioning and Refrigeration Mechanic",
+      "anzsco": "3421",
+      "majorGroup": 3,
+      "industry": "Construction",
+      "skillLevel": 3,
+      "riasec": "RIC",
+      "values": [
+        "security",
+        "income",
+        "variety"
+      ],
+      "subjects": {
+        "helpful": [
+          "physics",
+          "construction_vet",
+          "maths_general"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "installation",
+        "electrical and refrigeration systems",
+        "fault finding",
+        "energy efficiency"
+      ],
+      "pathways": {
+        "apprenticeship": "Certificate III in Refrigeration and Air Conditioning (apprenticeship)"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "net-zero",
+        "housing"
+      ],
+      "apprenticeshipAreas": [
+        "electrical"
+      ]
+    },
+    {
+      "id": "metal-fitter-and-machinist",
+      "title": "Metal Fitter and Machinist",
+      "anzsco": "3232",
+      "majorGroup": 3,
+      "industry": "Manufacturing",
+      "skillLevel": 3,
+      "riasec": "RIC",
+      "values": [
+        "security",
+        "income",
+        "independence"
+      ],
+      "subjects": {
+        "helpful": [
+          "design_tech",
+          "engineering_studies",
+          "maths_general"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "machining",
+        "fitting and assembly",
+        "technical drawing",
+        "precision"
+      ],
+      "pathways": {
+        "apprenticeship": "Certificate III in Engineering – Mechanical Trade (apprenticeship)"
+      },
+      "aiExposure": "medium",
+      "drivers": [
+        "net-zero"
+      ],
+      "apprenticeshipAreas": [
+        "metal"
+      ]
+    },
+    {
+      "id": "welder-steel-fabricator",
+      "title": "Welder / Steel Fabricator",
+      "anzsco": "3223",
+      "majorGroup": 3,
+      "industry": "Manufacturing",
+      "skillLevel": 3,
+      "riasec": "RCI",
+      "values": [
+        "security",
+        "income",
+        "outdoors"
+      ],
+      "subjects": {
+        "helpful": [
+          "design_tech",
+          "engineering_studies",
+          "construction_vet"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "welding",
+        "fabrication",
+        "reading drawings",
+        "safety"
+      ],
+      "pathways": {
+        "apprenticeship": "Certificate III in Engineering – Fabrication Trade (apprenticeship)"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "infrastructure",
+        "net-zero"
+      ],
+      "apprenticeshipAreas": [
+        "metal"
+      ]
+    },
+    {
+      "id": "chef",
+      "title": "Chef",
+      "anzsco": "3513",
+      "majorGroup": 3,
+      "industry": "Accommodation and Food Services",
+      "skillLevel": 2,
+      "riasec": "ARE",
+      "values": [
+        "creativity",
+        "teamwork",
+        "variety"
+      ],
+      "subjects": {
+        "helpful": [
+          "food_tech",
+          "business"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "cooking techniques",
+        "menu creation",
+        "food safety",
+        "working under pressure"
+      ],
+      "pathways": {
+        "vet": "Certificate IV in Commercial Cookery",
+        "apprenticeship": "Certificate III in Commercial Cookery (apprenticeship)"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "population-growth"
+      ],
+      "apprenticeshipAreas": [
+        "hospitality"
+      ]
+    },
+    {
+      "id": "hairdresser",
+      "title": "Hairdresser",
+      "anzsco": "3911",
+      "majorGroup": 3,
+      "industry": "Other Services",
+      "skillLevel": 3,
+      "riasec": "ASR",
+      "values": [
+        "creativity",
+        "helping",
+        "independence"
+      ],
+      "subjects": {
+        "helpful": [
+          "visual_arts",
+          "business"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "cutting and colouring",
+        "customer service",
+        "trend awareness",
+        "small business skills"
+      ],
+      "pathways": {
+        "apprenticeship": "Certificate III in Hairdressing (apprenticeship)"
+      },
+      "aiExposure": "low",
+      "drivers": [],
+      "apprenticeshipAreas": [
+        "hair_beauty"
+      ]
+    },
+    {
+      "id": "police-officer",
+      "title": "Police Officer",
+      "anzsco": "4413",
+      "majorGroup": 4,
+      "industry": "Public Administration and Safety",
+      "skillLevel": 2,
+      "riasec": "RES",
+      "values": [
+        "helping",
+        "variety",
+        "teamwork",
+        "impact"
+      ],
+      "subjects": {
+        "helpful": [
+          "legal",
+          "pdhpe",
+          "english",
+          "society_culture"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "communication under pressure",
+        "investigation",
+        "law and procedure",
+        "physical fitness"
+      ],
+      "pathways": {
+        "university": "Some services offer degree pathways (e.g. policing degrees)",
+        "vet": "State police academy after recruitment"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "population-growth"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "defence-force-member",
+      "title": "Defence Force Member",
+      "anzsco": "4412",
+      "majorGroup": 4,
+      "industry": "Public Administration and Safety",
+      "skillLevel": 4,
+      "riasec": "RCE",
+      "values": [
+        "teamwork",
+        "variety",
+        "security",
+        "outdoors"
+      ],
+      "subjects": {
+        "helpful": [
+          "pdhpe",
+          "maths_general",
+          "engineering_studies"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "teamwork",
+        "discipline",
+        "technical trade skills",
+        "physical fitness"
+      ],
+      "pathways": {
+        "university": "ADFA for officer entry (with UNSW degree)",
+        "apprenticeship": "ADF technical trades training"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "defence"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "fitness-instructor",
+      "title": "Fitness Instructor",
+      "anzsco": "4521",
+      "majorGroup": 4,
+      "industry": "Arts and Recreation Services",
+      "skillLevel": 3,
+      "riasec": "SRE",
+      "values": [
+        "helping",
+        "variety",
+        "independence"
+      ],
+      "subjects": {
+        "helpful": [
+          "pdhpe",
+          "biology",
+          "business"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "exercise programming",
+        "coaching",
+        "motivating people",
+        "anatomy basics"
+      ],
+      "pathways": {
+        "university": "Bachelor of Exercise Science as a pathway to exercise physiology",
+        "vet": "Certificate III / IV in Fitness"
+      },
+      "aiExposure": "low",
+      "drivers": [],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "pilot",
+      "title": "Pilot",
+      "anzsco": "2311",
+      "majorGroup": 2,
+      "industry": "Transport, Postal and Warehousing",
+      "skillLevel": 1,
+      "riasec": "RIE",
+      "values": [
+        "variety",
+        "income",
+        "independence"
+      ],
+      "subjects": {
+        "helpful": [
+          "physics",
+          "maths_advanced",
+          "geography"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "aircraft operation",
+        "navigation",
+        "decision making",
+        "situational awareness"
+      ],
+      "pathways": {
+        "university": "Bachelor of Aviation",
+        "vet": "Diploma of Aviation (Commercial Pilot Licence)",
+        "apprenticeship": "Pilot training through the Australian Defence Force"
+      },
+      "aiExposure": "low",
+      "drivers": [],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "construction-manager",
+      "title": "Construction Manager",
+      "anzsco": "1331",
+      "majorGroup": 1,
+      "industry": "Construction",
+      "skillLevel": 1,
+      "riasec": "ERC",
+      "values": [
+        "leadership",
+        "income",
+        "variety"
+      ],
+      "subjects": {
+        "helpful": [
+          "maths_general",
+          "business",
+          "construction_vet",
+          "design_tech"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "project management",
+        "scheduling and budgeting",
+        "leadership",
+        "safety"
+      ],
+      "pathways": {
+        "university": "Bachelor of Construction Management",
+        "vet": "Diploma of Building and Construction",
+        "apprenticeship": "A building trade apprenticeship, then moving into site management"
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "housing",
+        "infrastructure"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "gardener-landscaper",
+      "title": "Gardener / Landscaper",
+      "anzsco": "3622",
+      "majorGroup": 3,
+      "industry": "Administrative and Support Services",
+      "skillLevel": 3,
+      "riasec": "RAC",
+      "values": [
+        "outdoors",
+        "independence",
+        "creativity"
+      ],
+      "subjects": {
+        "helpful": [
+          "agriculture",
+          "biology",
+          "design_tech"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "horticulture",
+        "landscape construction",
+        "plant care",
+        "customer service"
+      ],
+      "pathways": {
+        "vet": "Certificate III in Horticulture or Landscape Construction",
+        "apprenticeship": "An apprenticeship in horticulture or landscape construction"
+      },
+      "aiExposure": "low",
+      "drivers": [],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "truck-driver",
+      "title": "Truck Driver",
+      "anzsco": "7331",
+      "majorGroup": 7,
+      "industry": "Transport, Postal and Warehousing",
+      "skillLevel": 4,
+      "riasec": "RCE",
+      "values": [
+        "independence",
+        "security",
+        "outdoors"
+      ],
+      "subjects": {
+        "helpful": [],
+        "oftenRequired": []
+      },
+      "skills": [
+        "heavy vehicle operation",
+        "logistics",
+        "safety",
+        "fatigue management"
+      ],
+      "pathways": {
+        "vet": "Heavy vehicle licence"
+      },
+      "aiExposure": "high",
+      "drivers": [],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "real-estate-agent",
+      "title": "Real Estate Agent",
+      "anzsco": "6121",
+      "majorGroup": 6,
+      "industry": "Rental, Hiring and Real Estate Services",
+      "skillLevel": 3,
+      "riasec": "ECS",
+      "values": [
+        "income",
+        "independence",
+        "variety"
+      ],
+      "subjects": {
+        "helpful": [
+          "business",
+          "english",
+          "legal"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "sales and negotiation",
+        "property knowledge",
+        "marketing",
+        "client relationships"
+      ],
+      "pathways": {
+        "vet": "Certificate IV in Real Estate Practice"
+      },
+      "aiExposure": "medium",
+      "drivers": [
+        "population-growth",
+        "housing"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "id": "general-clerk-office-administrator",
+      "title": "General Clerk / Office Administrator",
+      "anzsco": "5311",
+      "majorGroup": 5,
+      "industry": "Administrative and Support Services",
+      "skillLevel": 4,
+      "riasec": "CES",
+      "values": [
+        "security",
+        "teamwork"
+      ],
+      "subjects": {
+        "helpful": [
+          "business",
+          "english",
+          "it_software"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "administration",
+        "data entry",
+        "digital tools",
+        "customer service"
+      ],
+      "pathways": {
+        "vet": "Certificate III / IV in Business",
+        "apprenticeship": "A business traineeship"
+      },
+      "aiExposure": "high",
+      "drivers": [],
+      "apprenticeshipAreas": []
+    }
+  ]
+}

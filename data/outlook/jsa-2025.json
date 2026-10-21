@@ -1,0 +1,67 @@
+{
+  "source": {
+    "title": "Jobs and Skills Australia, 2025 Employment Projections (May 2025 to May 2035)",
+    "url": "https://www.jobsandskills.gov.au/data/employment-projections",
+    "summaryUrl": "https://www.jobsandskills.gov.au/sites/default/files/2025-12/employment_projection_-_summary.pdf",
+    "publisher": "Jobs and Skills Australia (projections produced by Victoria University)",
+    "licence": "Check the JSA website for current licence and attribution terms before publishing",
+    "baseline": "May 2025",
+    "horizon5": "May 2030",
+    "horizon10": "May 2035",
+    "retrieved": "2026-10-21",
+    "coverage": "Summary figures only. Run `npm run data:import-jsa -- <file.xlsx>` with the official occupation file to load projections for every occupation."
+  },
+  "total": { "employed2025k": 14701.0, "growth5Pct": 6.5, "growth10Pct": 13.3, "growth10k": 1954.5 },
+  "majorGroups": {
+    "1": { "name": "Managers", "growth5Pct": 7.7, "growth10Pct": 14.9 },
+    "2": { "name": "Professionals", "growth5Pct": 11.6, "growth10Pct": 21.4 },
+    "3": { "name": "Technicians and Trades Workers", "growth5Pct": null, "growth10Pct": 9.8 },
+    "4": { "name": "Community and Personal Service Workers", "growth5Pct": 7.1, "growth10Pct": 13.7 },
+    "5": { "name": "Clerical and Administrative Workers", "growth5Pct": null, "growth10Pct": null, "qualitative": "weak or negative" },
+    "6": { "name": "Sales Workers", "growth5Pct": null, "growth10Pct": null },
+    "7": { "name": "Machinery Operators and Drivers", "growth5Pct": null, "growth10Pct": null },
+    "8": { "name": "Labourers", "growth5Pct": null, "growth10Pct": null, "qualitative": "weak or negative" }
+  },
+  "occupations": {
+    "2525": { "name": "Physiotherapists", "growth10Pct": 33.6 },
+    "4232": { "name": "Dental Assistants", "growth10Pct": 26.8 },
+    "1342": { "name": "Health and Welfare Services Managers", "growth10Pct": 27.1 },
+    "1351": { "name": "ICT Managers", "growth10Pct": 25.5 },
+    "4233": { "name": "Nursing Support and Personal Care Workers", "growth10Pct": 24.7 },
+    "1325": { "name": "Research and Development Managers", "growth10Pct": 22.8 },
+    "4111": { "name": "Ambulance Officers and Paramedics", "growth10Pct": 22.6 }
+  },
+  "industries": {
+    "Health Care and Social Assistance": 23,
+    "Professional, Scientific and Technical Services": 19,
+    "Financial and Insurance Services": 14,
+    "Rental, Hiring and Real Estate Services": 14,
+    "Information Media and Telecommunications": 13,
+    "Wholesale Trade": 13,
+    "Manufacturing": 12,
+    "Electricity, Gas, Water and Waste Services": 12,
+    "Construction": 12,
+    "Public Administration and Safety": 12,
+    "Education and Training": 12,
+    "Arts and Recreation Services": 11,
+    "Accommodation and Food Services": 10,
+    "Mining": 9,
+    "Transport, Postal and Warehousing": 9,
+    "Administrative and Support Services": 9,
+    "Other Services": 8,
+    "Retail Trade": 7,
+    "Agriculture, Forestry and Fishing": 5
+  },
+  "skillLevels": {
+    "1": { "label": "Bachelor degree or higher", "growth10Pct": 20.5 },
+    "2": { "label": "Advanced diploma or diploma", "growth10Pct": 11.5 },
+    "3": { "label": "Certificate IV or III (with experience)", "growth10Pct": 8.6 },
+    "4": { "label": "Certificate II or III", "growth10Pct": 11.0 },
+    "5": { "label": "Certificate I or secondary education", "growth10Pct": 5.4 }
+  },
+  "headlines": [
+    "Over 90% of employment growth to May 2035 is in jobs that usually need a post-school qualification (skill levels 1 to 4).",
+    "Services industries account for about 84% of projected employment growth.",
+    "Health Care and Social Assistance has the fastest projected industry growth (23% over 10 years)."
+  ]
+}

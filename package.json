@@ -1,0 +1,40 @@
+{
+  "name": "bcome",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Automated career advisor for Australian Year 10–12 students: RIASEC questionnaire, future-of-work data and AI-written career plans.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test --experimental-strip-types tests/*.test.ts",
+    "test:profiles": "node --experimental-strip-types scripts/run-test-profiles.ts",
+    "data:validate": "node --experimental-strip-types scripts/validate-data.ts",
+    "data:import-jsa": "node --experimental-strip-types scripts/import-jsa.ts",
+    "db:seed-sql": "node --experimental-strip-types scripts/build-seed-sql.ts"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.7.0",
+    "@supabase/supabase-js": "^2.57.0",
+    "next": "^15.5.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "server-only": "^0.0.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.0",
+    "@types/node": "^22.18.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "eslint": "^9.34.0",
+    "eslint-config-next": "^15.5.0",
+    "typescript": "^5.9.0",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
+  }
+}

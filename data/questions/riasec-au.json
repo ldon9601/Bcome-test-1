@@ -1,0 +1,1112 @@
+{
+  "id": "riasec-au",
+  "version": "1.0.0",
+  "title": "Bcome career interests questionnaire",
+  "likertScale": [
+    {
+      "value": "1",
+      "label": "Not at all"
+    },
+    {
+      "value": "2",
+      "label": "A little"
+    },
+    {
+      "value": "3",
+      "label": "Somewhat"
+    },
+    {
+      "value": "4",
+      "label": "Quite a lot"
+    },
+    {
+      "value": "5",
+      "label": "A lot"
+    }
+  ],
+  "sections": [
+    {
+      "id": "about",
+      "title": "About you",
+      "intro": "Two quick questions so we can tailor your plan to your year and state."
+    },
+    {
+      "id": "interests",
+      "title": "What you enjoy",
+      "intro": "How much would you enjoy each activity? Don't worry about whether you'd be good at it or whether it pays well."
+    },
+    {
+      "id": "values",
+      "title": "What matters to you",
+      "intro": "How important is each of these to you in a future job?"
+    },
+    {
+      "id": "subjects",
+      "title": "Your subjects",
+      "intro": "Your subjects help us check entry requirements and spot strengths."
+    },
+    {
+      "id": "plans",
+      "title": "Your plans",
+      "intro": "Nothing here is locked in. You can change your answers any time."
+    }
+  ],
+  "questions": [
+    {
+      "id": "year_level",
+      "section": "about",
+      "kind": "single",
+      "prompt": "What year are you in?",
+      "options": [
+        {
+          "value": "10",
+          "label": "Year 10"
+        },
+        {
+          "value": "11",
+          "label": "Year 11"
+        },
+        {
+          "value": "12",
+          "label": "Year 12"
+        }
+      ]
+    },
+    {
+      "id": "state",
+      "section": "about",
+      "kind": "single",
+      "prompt": "Which state or territory do you go to school in?",
+      "options": [
+        {
+          "value": "NSW",
+          "label": "NSW"
+        },
+        {
+          "value": "VIC",
+          "label": "VIC"
+        },
+        {
+          "value": "QLD",
+          "label": "QLD"
+        },
+        {
+          "value": "WA",
+          "label": "WA"
+        },
+        {
+          "value": "SA",
+          "label": "SA"
+        },
+        {
+          "value": "TAS",
+          "label": "TAS"
+        },
+        {
+          "value": "ACT",
+          "label": "ACT"
+        },
+        {
+          "value": "NT",
+          "label": "NT"
+        }
+      ]
+    },
+    {
+      "id": "r1",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Fix or put together things like bikes, furniture or electronics",
+      "scale": {
+        "type": "riasec",
+        "code": "R"
+      },
+      "tier": 1
+    },
+    {
+      "id": "r2",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Build or make something with tools in a workshop",
+      "scale": {
+        "type": "riasec",
+        "code": "R"
+      },
+      "tier": 1
+    },
+    {
+      "id": "r3",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Work outdoors, for example on a farm, worksite or in a national park",
+      "scale": {
+        "type": "riasec",
+        "code": "R"
+      },
+      "tier": 1
+    },
+    {
+      "id": "r4",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Learn how engines, machines or electrical systems work",
+      "scale": {
+        "type": "riasec",
+        "code": "R"
+      },
+      "tier": 2
+    },
+    {
+      "id": "r5",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Operate equipment such as drones, machinery or vehicles",
+      "scale": {
+        "type": "riasec",
+        "code": "R"
+      },
+      "tier": 2
+    },
+    {
+      "id": "r6",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Do practical, physical work where you can see the result at the end of the day",
+      "scale": {
+        "type": "riasec",
+        "code": "R"
+      },
+      "tier": 2
+    },
+    {
+      "id": "r7",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Install solar panels or wire up a house",
+      "scale": {
+        "type": "riasec",
+        "code": "R"
+      },
+      "tier": 3
+    },
+    {
+      "id": "r8",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Look after animals or plants",
+      "scale": {
+        "type": "riasec",
+        "code": "R"
+      },
+      "tier": 3
+    },
+    {
+      "id": "i1",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Do experiments to find out why something happens",
+      "scale": {
+        "type": "riasec",
+        "code": "I"
+      },
+      "tier": 1
+    },
+    {
+      "id": "i2",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Solve tricky maths or logic problems",
+      "scale": {
+        "type": "riasec",
+        "code": "I"
+      },
+      "tier": 1
+    },
+    {
+      "id": "i3",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Research a question until you really understand it",
+      "scale": {
+        "type": "riasec",
+        "code": "I"
+      },
+      "tier": 1
+    },
+    {
+      "id": "i4",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Analyse data to spot patterns",
+      "scale": {
+        "type": "riasec",
+        "code": "I"
+      },
+      "tier": 2
+    },
+    {
+      "id": "i5",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Learn how the human body or diseases work",
+      "scale": {
+        "type": "riasec",
+        "code": "I"
+      },
+      "tier": 2
+    },
+    {
+      "id": "i6",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Write code to solve a problem",
+      "scale": {
+        "type": "riasec",
+        "code": "I"
+      },
+      "tier": 2
+    },
+    {
+      "id": "i7",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Investigate questions about space, climate or the environment",
+      "scale": {
+        "type": "riasec",
+        "code": "I"
+      },
+      "tier": 3
+    },
+    {
+      "id": "i8",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Figure out why an idea failed and test a better one",
+      "scale": {
+        "type": "riasec",
+        "code": "I"
+      },
+      "tier": 3
+    },
+    {
+      "id": "a1",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Draw, design or create digital art",
+      "scale": {
+        "type": "riasec",
+        "code": "A"
+      },
+      "tier": 1
+    },
+    {
+      "id": "a2",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Write stories, songs, scripts or poetry",
+      "scale": {
+        "type": "riasec",
+        "code": "A"
+      },
+      "tier": 1
+    },
+    {
+      "id": "a3",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Perform in music, drama or dance",
+      "scale": {
+        "type": "riasec",
+        "code": "A"
+      },
+      "tier": 1
+    },
+    {
+      "id": "a4",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Design the look of a product, website or space",
+      "scale": {
+        "type": "riasec",
+        "code": "A"
+      },
+      "tier": 2
+    },
+    {
+      "id": "a5",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Make videos, podcasts or social media content",
+      "scale": {
+        "type": "riasec",
+        "code": "A"
+      },
+      "tier": 2
+    },
+    {
+      "id": "a6",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Come up with original ideas no one has tried",
+      "scale": {
+        "type": "riasec",
+        "code": "A"
+      },
+      "tier": 2
+    },
+    {
+      "id": "a7",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Take photographs or edit film",
+      "scale": {
+        "type": "riasec",
+        "code": "A"
+      },
+      "tier": 3
+    },
+    {
+      "id": "a8",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Express yourself in your own style rather than follow set rules",
+      "scale": {
+        "type": "riasec",
+        "code": "A"
+      },
+      "tier": 3
+    },
+    {
+      "id": "s1",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Help a friend work through a problem",
+      "scale": {
+        "type": "riasec",
+        "code": "S"
+      },
+      "tier": 1
+    },
+    {
+      "id": "s2",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Teach or coach someone to learn a new skill",
+      "scale": {
+        "type": "riasec",
+        "code": "S"
+      },
+      "tier": 1
+    },
+    {
+      "id": "s3",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Volunteer to help people in your community",
+      "scale": {
+        "type": "riasec",
+        "code": "S"
+      },
+      "tier": 1
+    },
+    {
+      "id": "s4",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Look after people who are sick, injured or elderly",
+      "scale": {
+        "type": "riasec",
+        "code": "S"
+      },
+      "tier": 2
+    },
+    {
+      "id": "s5",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Work with children or young people",
+      "scale": {
+        "type": "riasec",
+        "code": "S"
+      },
+      "tier": 2
+    },
+    {
+      "id": "s6",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Listen to people and help them feel understood",
+      "scale": {
+        "type": "riasec",
+        "code": "S"
+      },
+      "tier": 2
+    },
+    {
+      "id": "s7",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Help settle arguments so people get along",
+      "scale": {
+        "type": "riasec",
+        "code": "S"
+      },
+      "tier": 3
+    },
+    {
+      "id": "s8",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Work in a team where everyone supports each other",
+      "scale": {
+        "type": "riasec",
+        "code": "S"
+      },
+      "tier": 3
+    },
+    {
+      "id": "e1",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Lead a group project or a team",
+      "scale": {
+        "type": "riasec",
+        "code": "E"
+      },
+      "tier": 1
+    },
+    {
+      "id": "e2",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Convince people to back your idea",
+      "scale": {
+        "type": "riasec",
+        "code": "E"
+      },
+      "tier": 1
+    },
+    {
+      "id": "e3",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Start a small business or side hustle",
+      "scale": {
+        "type": "riasec",
+        "code": "E"
+      },
+      "tier": 1
+    },
+    {
+      "id": "e4",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Sell a product or raise money for a cause",
+      "scale": {
+        "type": "riasec",
+        "code": "E"
+      },
+      "tier": 2
+    },
+    {
+      "id": "e5",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Make the call when others aren't sure what to do",
+      "scale": {
+        "type": "riasec",
+        "code": "E"
+      },
+      "tier": 2
+    },
+    {
+      "id": "e6",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Negotiate a deal or argue a case",
+      "scale": {
+        "type": "riasec",
+        "code": "E"
+      },
+      "tier": 2
+    },
+    {
+      "id": "e7",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Organise an event and take charge on the day",
+      "scale": {
+        "type": "riasec",
+        "code": "E"
+      },
+      "tier": 3
+    },
+    {
+      "id": "e8",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Compete to be the best at something",
+      "scale": {
+        "type": "riasec",
+        "code": "E"
+      },
+      "tier": 3
+    },
+    {
+      "id": "c1",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Keep records, files or lists neat and organised",
+      "scale": {
+        "type": "riasec",
+        "code": "C"
+      },
+      "tier": 1
+    },
+    {
+      "id": "c2",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Work with numbers, budgets or spreadsheets",
+      "scale": {
+        "type": "riasec",
+        "code": "C"
+      },
+      "tier": 1
+    },
+    {
+      "id": "c3",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Follow clear steps to get a task done accurately",
+      "scale": {
+        "type": "riasec",
+        "code": "C"
+      },
+      "tier": 1
+    },
+    {
+      "id": "c4",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Check work carefully for mistakes",
+      "scale": {
+        "type": "riasec",
+        "code": "C"
+      },
+      "tier": 2
+    },
+    {
+      "id": "c5",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Plan schedules or timetables",
+      "scale": {
+        "type": "riasec",
+        "code": "C"
+      },
+      "tier": 2
+    },
+    {
+      "id": "c6",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Sort and manage information in a database",
+      "scale": {
+        "type": "riasec",
+        "code": "C"
+      },
+      "tier": 2
+    },
+    {
+      "id": "c7",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Work out the costs of a project and track spending",
+      "scale": {
+        "type": "riasec",
+        "code": "C"
+      },
+      "tier": 3
+    },
+    {
+      "id": "c8",
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Make sure rules and procedures are followed",
+      "scale": {
+        "type": "riasec",
+        "code": "C"
+      },
+      "tier": 3
+    },
+    {
+      "id": "val_helping",
+      "section": "values",
+      "kind": "likert",
+      "prompt": "A job that lets you help people",
+      "scale": {
+        "type": "value",
+        "code": "helping"
+      },
+      "tier": 1
+    },
+    {
+      "id": "val_security",
+      "section": "values",
+      "kind": "likert",
+      "prompt": "A job that is stable and secure",
+      "scale": {
+        "type": "value",
+        "code": "security"
+      },
+      "tier": 1
+    },
+    {
+      "id": "val_creativity",
+      "section": "values",
+      "kind": "likert",
+      "prompt": "A job that lets you be creative",
+      "scale": {
+        "type": "value",
+        "code": "creativity"
+      },
+      "tier": 1
+    },
+    {
+      "id": "val_independence",
+      "section": "values",
+      "kind": "likert",
+      "prompt": "A job that lets you work in your own way",
+      "scale": {
+        "type": "value",
+        "code": "independence"
+      },
+      "tier": 1
+    },
+    {
+      "id": "val_teamwork",
+      "section": "values",
+      "kind": "likert",
+      "prompt": "A job that involves working closely with a team",
+      "scale": {
+        "type": "value",
+        "code": "teamwork"
+      },
+      "tier": 1
+    },
+    {
+      "id": "val_outdoors",
+      "section": "values",
+      "kind": "likert",
+      "prompt": "A job that gets you out of an office",
+      "scale": {
+        "type": "value",
+        "code": "outdoors"
+      },
+      "tier": 1
+    },
+    {
+      "id": "val_variety",
+      "section": "values",
+      "kind": "likert",
+      "prompt": "A job that is different from day to day",
+      "scale": {
+        "type": "value",
+        "code": "variety"
+      },
+      "tier": 1
+    },
+    {
+      "id": "val_income",
+      "section": "values",
+      "kind": "likert",
+      "prompt": "A job that pays very well",
+      "scale": {
+        "type": "value",
+        "code": "income"
+      },
+      "tier": 1
+    },
+    {
+      "id": "val_impact",
+      "section": "values",
+      "kind": "likert",
+      "prompt": "A job that makes a difference to big issues like climate or health",
+      "scale": {
+        "type": "value",
+        "code": "impact"
+      },
+      "tier": 1
+    },
+    {
+      "id": "val_leadership",
+      "section": "values",
+      "kind": "likert",
+      "prompt": "A job that lets you lead and make decisions",
+      "scale": {
+        "type": "value",
+        "code": "leadership"
+      },
+      "tier": 1
+    },
+    {
+      "id": "subjects_enjoyed",
+      "section": "subjects",
+      "kind": "multi",
+      "max": 6,
+      "prompt": "Which subjects do you enjoy most? Pick up to six.",
+      "options": [
+        {
+          "value": "english",
+          "label": "English"
+        },
+        {
+          "value": "maths_advanced",
+          "label": "Maths (Advanced / Methods)"
+        },
+        {
+          "value": "maths_extension",
+          "label": "Maths (Extension / Specialist)"
+        },
+        {
+          "value": "maths_general",
+          "label": "Maths (General / Standard)"
+        },
+        {
+          "value": "biology",
+          "label": "Biology"
+        },
+        {
+          "value": "chemistry",
+          "label": "Chemistry"
+        },
+        {
+          "value": "physics",
+          "label": "Physics"
+        },
+        {
+          "value": "earth_env",
+          "label": "Earth and Environmental Science"
+        },
+        {
+          "value": "it_software",
+          "label": "IT / Software / Digital Tech"
+        },
+        {
+          "value": "engineering_studies",
+          "label": "Engineering Studies"
+        },
+        {
+          "value": "design_tech",
+          "label": "Design and Technology"
+        },
+        {
+          "value": "business",
+          "label": "Business Studies"
+        },
+        {
+          "value": "economics",
+          "label": "Economics"
+        },
+        {
+          "value": "legal",
+          "label": "Legal Studies"
+        },
+        {
+          "value": "history",
+          "label": "History"
+        },
+        {
+          "value": "geography",
+          "label": "Geography"
+        },
+        {
+          "value": "society_culture",
+          "label": "Society and Culture / Psychology"
+        },
+        {
+          "value": "visual_arts",
+          "label": "Visual Arts"
+        },
+        {
+          "value": "music",
+          "label": "Music"
+        },
+        {
+          "value": "drama",
+          "label": "Drama"
+        },
+        {
+          "value": "media",
+          "label": "Media / Film"
+        },
+        {
+          "value": "pdhpe",
+          "label": "PDHPE / Health and Movement"
+        },
+        {
+          "value": "languages",
+          "label": "Languages"
+        },
+        {
+          "value": "food_tech",
+          "label": "Food Technology / Hospitality"
+        },
+        {
+          "value": "agriculture",
+          "label": "Agriculture"
+        },
+        {
+          "value": "construction_vet",
+          "label": "VET Construction / Electrotechnology / Automotive"
+        }
+      ]
+    },
+    {
+      "id": "subjects_strong",
+      "section": "subjects",
+      "kind": "multi",
+      "max": 6,
+      "prompt": "Which subjects are you strongest in? Pick up to six.",
+      "help": "Go by your recent results, not just what you like.",
+      "options": [
+        {
+          "value": "english",
+          "label": "English"
+        },
+        {
+          "value": "maths_advanced",
+          "label": "Maths (Advanced / Methods)"
+        },
+        {
+          "value": "maths_extension",
+          "label": "Maths (Extension / Specialist)"
+        },
+        {
+          "value": "maths_general",
+          "label": "Maths (General / Standard)"
+        },
+        {
+          "value": "biology",
+          "label": "Biology"
+        },
+        {
+          "value": "chemistry",
+          "label": "Chemistry"
+        },
+        {
+          "value": "physics",
+          "label": "Physics"
+        },
+        {
+          "value": "earth_env",
+          "label": "Earth and Environmental Science"
+        },
+        {
+          "value": "it_software",
+          "label": "IT / Software / Digital Tech"
+        },
+        {
+          "value": "engineering_studies",
+          "label": "Engineering Studies"
+        },
+        {
+          "value": "design_tech",
+          "label": "Design and Technology"
+        },
+        {
+          "value": "business",
+          "label": "Business Studies"
+        },
+        {
+          "value": "economics",
+          "label": "Economics"
+        },
+        {
+          "value": "legal",
+          "label": "Legal Studies"
+        },
+        {
+          "value": "history",
+          "label": "History"
+        },
+        {
+          "value": "geography",
+          "label": "Geography"
+        },
+        {
+          "value": "society_culture",
+          "label": "Society and Culture / Psychology"
+        },
+        {
+          "value": "visual_arts",
+          "label": "Visual Arts"
+        },
+        {
+          "value": "music",
+          "label": "Music"
+        },
+        {
+          "value": "drama",
+          "label": "Drama"
+        },
+        {
+          "value": "media",
+          "label": "Media / Film"
+        },
+        {
+          "value": "pdhpe",
+          "label": "PDHPE / Health and Movement"
+        },
+        {
+          "value": "languages",
+          "label": "Languages"
+        },
+        {
+          "value": "food_tech",
+          "label": "Food Technology / Hospitality"
+        },
+        {
+          "value": "agriculture",
+          "label": "Agriculture"
+        },
+        {
+          "value": "construction_vet",
+          "label": "VET Construction / Electrotechnology / Automotive"
+        }
+      ]
+    },
+    {
+      "id": "study_preference",
+      "section": "plans",
+      "kind": "single",
+      "prompt": "After school, what sounds most like you right now?",
+      "options": [
+        {
+          "value": "university",
+          "label": "Going to university"
+        },
+        {
+          "value": "vet",
+          "label": "TAFE or another VET course"
+        },
+        {
+          "value": "apprenticeship",
+          "label": "An apprenticeship or traineeship"
+        },
+        {
+          "value": "work",
+          "label": "Getting straight into work"
+        },
+        {
+          "value": "unsure",
+          "label": "I'm not sure yet"
+        }
+      ]
+    },
+    {
+      "id": "apprenticeship_area",
+      "section": "plans",
+      "kind": "multi",
+      "max": 3,
+      "prompt": "Which kinds of apprenticeship interest you?",
+      "showIf": {
+        "answers": {
+          "study_preference": [
+            "apprenticeship"
+          ]
+        }
+      },
+      "options": [
+        {
+          "value": "electrical",
+          "label": "Electrical or solar"
+        },
+        {
+          "value": "building",
+          "label": "Building and carpentry"
+        },
+        {
+          "value": "plumbing",
+          "label": "Plumbing"
+        },
+        {
+          "value": "automotive",
+          "label": "Automotive"
+        },
+        {
+          "value": "metal",
+          "label": "Metal, welding and fitting"
+        },
+        {
+          "value": "hospitality",
+          "label": "Cooking and hospitality"
+        },
+        {
+          "value": "hair_beauty",
+          "label": "Hair and beauty"
+        },
+        {
+          "value": "care",
+          "label": "Aged care, disability or childcare"
+        }
+      ]
+    },
+    {
+      "id": "unsure_reason",
+      "section": "plans",
+      "kind": "single",
+      "prompt": "What is making it hard to decide?",
+      "showIf": {
+        "answers": {
+          "study_preference": [
+            "unsure"
+          ]
+        }
+      },
+      "options": [
+        {
+          "value": "too_many",
+          "label": "I like lots of things"
+        },
+        {
+          "value": "none",
+          "label": "Nothing stands out yet"
+        },
+        {
+          "value": "marks",
+          "label": "I'm worried about my marks or ATAR"
+        },
+        {
+          "value": "cost",
+          "label": "Cost or having to work while studying"
+        },
+        {
+          "value": "location",
+          "label": "Where I would have to live"
+        }
+      ]
+    },
+    {
+      "id": "relocation",
+      "section": "plans",
+      "kind": "single",
+      "prompt": "Would you move away from home for study or work?",
+      "options": [
+        {
+          "value": "local",
+          "label": "I'd rather stay close to home"
+        },
+        {
+          "value": "state",
+          "label": "Somewhere in my state"
+        },
+        {
+          "value": "anywhere",
+          "label": "Anywhere in Australia or overseas"
+        }
+      ]
+    }
+  ]
+}
