@@ -90,3 +90,20 @@ test("buildProfile reports what is missing", () => {
     (e: unknown) => e instanceof IncompleteAnswersError && e.missing.includes("state") && e.missing.includes("q34"),
   );
 });
+
+test("questions are shown up to three at a time within a section", async () => {
+  const { nextPage, sectionPosition } = await import("../src/lib/questionnaire/engine.ts");
+  assert.deepEqual(nextPage(questionBank, {}).map((q) => q.id), ["year_level", "state"]);
+  const base = { year_level: "11", state: "NSW", current_subjects: ["english"], geography: "state" };
+  const page = nextPage(questionBank, base);
+  assert.deepEqual(page.map((q) => q.number), [1, 2, 3]);
+  assert.deepEqual(sectionPosition(questionBank, base, page), { from: 1, to: 3, total: 12 });
+  // The last interest page stops at the section boundary.
+  const answered: Answers = { ...base };
+  for (let n = 1; n <= 10; n++) answered[`q${String(n).padStart(2, "0")}`] = "3";
+  assert.deepEqual(nextPage(questionBank, answered).map((q) => q.number), [11, 12]);
+  // Ranking and the subject grid get a screen of their own.
+  const rank = questionBank.questions.find((q) => q.id === "q29")!;
+  const before: Answers = Object.fromEntries(questionBank.questions.filter((q) => q.kind === "likert" || q.section === "about").map((q) => [q.id, q.kind === "multi" ? ["english"] : "3"]));
+  assert.deepEqual(nextPage(questionBank, before), [rank]);
+});

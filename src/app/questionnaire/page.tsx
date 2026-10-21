@@ -1,13 +1,6 @@
-import type { Metadata } from "next";
-import { questionBank } from "@/lib/data.ts";
-import Questionnaire from "./Questionnaire.tsx";
+import { redirect } from "next/navigation";
 
-export const metadata: Metadata = { title: "Questions | Bcome" };
-
+/** The questionnaire now lives on the Discover (home) page. */
 export default function QuestionnairePage() {
-  return (
-    <main className="page">
-      <Questionnaire bank={questionBank} />
-    </main>
-  );
+  redirect("/");
 }

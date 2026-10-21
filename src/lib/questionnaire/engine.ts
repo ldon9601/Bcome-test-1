@@ -39,3 +39,31 @@ export function progress(bank: QuestionBank, answers: Answers): { answered: numb
   const visible = bank.questions.filter((q) => isVisible(q, answers));
   return { answered: visible.filter((q) => isAnswered(q, answers[q.id])).length, estimatedTotal: visible.length };
 }
+
+const GROUPABLE = new Set<Question["kind"]>(["likert", "bipolar", "single"]);
+
+/**
+ * The next screen of questions: up to `max` consecutive unanswered rating, slider or single-choice
+ * questions from the same section. Ranking, grid and multi-select questions get a screen to themselves.
+ */
+export function nextPage(bank: QuestionBank, answers: Answers, max = 3): Question[] {
+  const visible = bank.questions.filter((q) => isVisible(q, answers));
+  const start = visible.findIndex((q) => !isAnswered(q, answers[q.id]));
+  if (start === -1) return [];
+  const first = visible[start];
+  if (!GROUPABLE.has(first.kind)) return [first];
+  const page = [first];
+  for (let j = start + 1; j < visible.length && page.length < max; j++) {
+    const q = visible[j];
+    if (q.section !== first.section || !GROUPABLE.has(q.kind) || isAnswered(q, answers[q.id])) break;
+    page.push(q);
+  }
+  return page;
+}
+
+/** Where a page sits within its section, e.g. questions 4–6 of 12. */
+export function sectionPosition(bank: QuestionBank, answers: Answers, page: Question[]) {
+  const inSection = bank.questions.filter((q) => q.section === page[0].section && isVisible(q, answers));
+  const from = inSection.indexOf(page[0]) + 1;
+  return { from, to: from + page.length - 1, total: inSection.length };
+}

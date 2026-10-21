@@ -1,4 +1,5 @@
 import { computeOutlook } from "./outlook.ts";
+import { careerTags } from "./tags.ts";
 import type { SkillsGraph } from "./skills.ts";
 import type { JsaOutlookData, Occupation, Outlook, OutlookBand, Route } from "./types.ts";
 import {
@@ -519,6 +520,12 @@ export function toMatchSummary(m: Match) {
     id: m.occupation.osca,
     osca: m.occupation.osca,
     title: m.occupation.title,
+    summary: m.occupation.summary,
+    family: m.occupation.family,
+    photo: (m.occupation as Occupation & { photo?: { src: string; credit?: string } }).photo,
+    tags: careerTags(m.occupation, m.outlook),
+    /** Personal-fit components (0–1): interests, skills, values, environment, subjects. */
+    fitParts: m.scores.personalFit.parts,
     score: m.score,
     group: m.group,
     scores: { personalFit: pick("personalFit"), futureOpportunity: pick("futureOpportunity"), pathwayFeasibility: pick("pathwayFeasibility") },

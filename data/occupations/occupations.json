@@ -147,7 +147,9 @@
           "english"
         ],
         "required": []
-      }
+      },
+      "family": "health",
+      "summary": "Care for patients in hospitals, clinics and the community, and coordinate their treatment."
     },
     {
       "osca": "442231",
@@ -281,7 +283,9 @@
           "english"
         ],
         "required": []
-      }
+      },
+      "family": "health",
+      "summary": "Help nurses look after patients with daily care, comfort and safety."
     },
     {
       "osca": "421331",
@@ -416,7 +420,9 @@
           "humanities"
         ],
         "required": []
-      }
+      },
+      "family": "care",
+      "summary": "Support older people in aged care homes to live comfortably and with dignity."
     },
     {
       "osca": "422231",
@@ -561,7 +567,9 @@
           "humanities"
         ],
         "required": []
-      }
+      },
+      "family": "care",
+      "summary": "Help people with disability live independently and do what matters to them."
     },
     {
       "osca": "262431",
@@ -688,7 +696,9 @@
           "physics"
         ],
         "required": []
-      }
+      },
+      "family": "care",
+      "summary": "Help people recover movement and manage pain after injury, illness or surgery."
     },
     {
       "osca": "262331",
@@ -813,7 +823,9 @@
           "humanities"
         ],
         "required": []
-      }
+      },
+      "family": "care",
+      "summary": "Help people build the skills to live independently and do the things that matter to them."
     },
     {
       "osca": "262631",
@@ -938,7 +950,9 @@
           "english"
         ],
         "required": []
-      }
+      },
+      "family": "care",
+      "summary": "Help children and adults communicate, speak and swallow with confidence."
     },
     {
       "osca": "264231",
@@ -1072,7 +1086,9 @@
         "required": [
           "chemistry"
         ]
-      }
+      },
+      "family": "health",
+      "summary": "Diagnose and treat a wide range of health problems as a community's family doctor."
     },
     {
       "osca": "263431",
@@ -1201,7 +1217,9 @@
         "required": [
           "chemistry"
         ]
-      }
+      },
+      "family": "health",
+      "summary": "Make sure people get the right medicines and know how to use them safely."
     },
     {
       "osca": "263231",
@@ -1327,7 +1345,9 @@
           "practical"
         ],
         "required": []
-      }
+      },
+      "family": "care",
+      "summary": "Use nutrition science to help people eat well and manage health conditions."
     },
     {
       "osca": "261231",
@@ -1455,7 +1475,9 @@
           "mathematics"
         ],
         "required": []
-      }
+      },
+      "family": "care",
+      "summary": "Help people understand their thoughts and behaviour and improve their mental health."
     },
     {
       "osca": "261331",
@@ -1589,7 +1611,9 @@
           "humanities"
         ],
         "required": []
-      }
+      },
+      "family": "care",
+      "summary": "Support people and families through tough times and connect them with help."
     },
     {
       "osca": "261131",
@@ -1723,7 +1747,9 @@
           "humanities"
         ],
         "required": []
-      }
+      },
+      "family": "care",
+      "summary": "Listen to people and help them work through personal challenges."
     },
     {
       "osca": "269432",
@@ -1848,7 +1874,9 @@
           "chemistry"
         ],
         "required": []
-      }
+      },
+      "family": "health",
+      "summary": "Respond to emergencies and give life-saving care on the way to hospital."
     },
     {
       "osca": "442331",
@@ -1979,7 +2007,9 @@
           "biology"
         ],
         "required": []
-      }
+      },
+      "family": "health",
+      "summary": "Assist dentists with patient care, equipment and infection control."
     },
     {
       "osca": "1413",
@@ -2107,7 +2137,9 @@
           "humanities"
         ],
         "required": []
-      }
+      },
+      "family": "business",
+      "summary": "Lead hospitals, clinics or community services so they run well for the people who use them."
     },
     {
       "osca": "431132",
@@ -2251,7 +2283,9 @@
           "humanities"
         ],
         "required": []
-      }
+      },
+      "family": "education",
+      "summary": "Care for and teach young children through play in early learning centres."
     },
     {
       "osca": "251131",
@@ -2385,7 +2419,9 @@
           "humanities"
         ],
         "required": []
-      }
+      },
+      "family": "education",
+      "summary": "Plan learning for children before they start school and help them thrive."
     },
     {
       "osca": "251231",
@@ -2511,7 +2547,9 @@
           "mathematics"
         ],
         "required": []
-      }
+      },
+      "family": "education",
+      "summary": "Teach children across all subjects and help them love learning."
     },
     {
       "osca": "251331",
@@ -2638,7 +2676,9 @@
           "mathematics"
         ],
         "required": []
-      }
+      },
+      "family": "education",
+      "summary": "Teach your favourite subjects to teenagers and help them plan their futures."
     },
     {
       "osca": "273333",
@@ -2783,7 +2823,9 @@
           "physics"
         ],
         "required": []
-      }
+      },
+      "family": "tech",
+      "summary": "Design and build the software and apps people use every day."
     },
     {
       "osca": "271133",
@@ -2925,7 +2967,9 @@
           "mathematics"
         ],
         "required": []
-      }
+      },
+      "family": "data",
+      "summary": "Protect organisations from hackers and keep their data safe."
     },
     {
       "osca": "273232",
@@ -3060,7 +3104,9 @@
           "mathematics"
         ],
         "required": []
-      }
+      },
+      "family": "tech",
+      "summary": "Work out what people need from technology and help design the right solution."
     },
     {
       "osca": "1132",
@@ -3188,7 +3234,9 @@
           "mathematics"
         ],
         "required": []
-      }
+      },
+      "family": "tech",
+      "summary": "Lead technology teams and projects that keep organisations running."
     },
     {
       "osca": "223234",
@@ -3319,7 +3367,9 @@
         "required": [
           "mathematics"
         ]
-      }
+      },
+      "family": "data",
+      "summary": "Turn data into insights that help organisations make better decisions."
     },
     {
       "osca": "243231",
@@ -3460,7 +3510,9 @@
         "required": [
           "mathematics"
         ]
-      }
+      },
+      "family": "engineering",
+      "summary": "Design roads, bridges, water systems and the infrastructure cities rely on."
     },
     {
       "osca": "243331",
@@ -3591,7 +3643,9 @@
         "required": [
           "mathematics"
         ]
-      }
+      },
+      "family": "engineering",
+      "summary": "Design the electrical and renewable energy systems that power our lives."
     },
     {
       "osca": "243532",
@@ -3722,7 +3776,9 @@
         "required": [
           "mathematics"
         ]
-      }
+      },
+      "family": "engineering",
+      "summary": "Design machines, products and systems, from medical devices to wind turbines."
     },
     {
       "osca": "241131",
@@ -3852,7 +3908,9 @@
           "practical"
         ],
         "required": []
-      }
+      },
+      "family": "built",
+      "summary": "Design buildings and spaces that are useful, sustainable and beautiful."
     },
     {
       "osca": "241234",
@@ -3979,7 +4037,9 @@
           "physics"
         ],
         "required": []
-      }
+      },
+      "family": "built",
+      "summary": "Measure and map land so cities, roads and buildings can be planned accurately."
     },
     {
       "osca": "241331",
@@ -4107,7 +4167,9 @@
           "humanities"
         ],
         "required": []
-      }
+      },
+      "family": "built",
+      "summary": "Plan how towns and cities grow, balancing homes, transport and the environment."
     },
     {
       "osca": "2444",
@@ -4244,7 +4306,9 @@
           "humanities"
         ],
         "required": []
-      }
+      },
+      "family": "environment",
+      "summary": "Study and protect the natural environment, from waterways to native wildlife."
     },
     {
       "osca": "244132",
@@ -4378,7 +4442,9 @@
           "chemistry"
         ],
         "required": []
-      }
+      },
+      "family": "environment",
+      "summary": "Use science to help farms grow food more sustainably."
     },
     {
       "osca": "244731",
@@ -4517,7 +4583,9 @@
         "required": [
           "chemistry"
         ]
-      }
+      },
+      "family": "science",
+      "summary": "Run the laboratory tests doctors use to diagnose and treat illness."
     },
     {
       "osca": "269531",
@@ -4643,7 +4711,9 @@
         "required": [
           "chemistry"
         ]
-      }
+      },
+      "family": "animals",
+      "summary": "Keep pets, farm animals and wildlife healthy, and treat them when they're sick."
     },
     {
       "osca": "111531",
@@ -4774,7 +4844,9 @@
           "physics"
         ],
         "required": []
-      }
+      },
+      "family": "science",
+      "summary": "Lead teams that research and develop new products, technologies and ideas."
     },
     {
       "osca": "211131",
@@ -4916,7 +4988,9 @@
           "mathematics"
         ],
         "required": []
-      }
+      },
+      "family": "business",
+      "summary": "Help people and organisations manage money, tax and financial decisions."
     },
     {
       "osca": "223432",
@@ -5043,7 +5117,9 @@
           "mathematics"
         ],
         "required": []
-      }
+      },
+      "family": "business",
+      "summary": "Help organisations solve problems and work better."
     },
     {
       "osca": "221534",
@@ -5180,7 +5256,9 @@
           "english"
         ],
         "required": []
-      }
+      },
+      "family": "creative",
+      "summary": "Create campaigns that connect people with products, causes and ideas."
     },
     {
       "osca": "281331",
@@ -5305,7 +5383,9 @@
           "humanities"
         ],
         "required": []
-      }
+      },
+      "family": "business",
+      "summary": "Give people legal advice and stand up for them when it matters."
     },
     {
       "osca": "231332",
@@ -5440,7 +5520,9 @@
           "humanities"
         ],
         "required": []
-      }
+      },
+      "family": "creative",
+      "summary": "Find, research and tell stories that keep people informed."
     },
     {
       "osca": "242332",
@@ -5575,7 +5657,9 @@
           "practical"
         ],
         "required": []
-      }
+      },
+      "family": "creative",
+      "summary": "Create visual designs for brands, websites, posters and products."
     },
     {
       "osca": "242133",
@@ -5711,7 +5795,9 @@
           "practical"
         ],
         "required": []
-      }
+      },
+      "family": "creative",
+      "summary": "Design websites that are simple, useful and inclusive."
     },
     {
       "osca": "231633",
@@ -5841,7 +5927,9 @@
           "arts"
         ],
         "required": []
-      }
+      },
+      "family": "performing",
+      "summary": "Perform, compose and record music for live and recorded audiences."
     },
     {
       "osca": "231131",
@@ -5964,7 +6052,9 @@
           "biology"
         ],
         "required": []
-      }
+      },
+      "family": "performing",
+      "summary": "Bring characters to life on stage, screen and in audio."
     },
     {
       "osca": "381231",
@@ -6095,7 +6185,9 @@
           "practical"
         ],
         "required": []
-      }
+      },
+      "family": "trades",
+      "summary": "Install and maintain the wiring, power and solar systems in homes and businesses."
     },
     {
       "osca": "363131",
@@ -6223,7 +6315,9 @@
           "practical"
         ],
         "required": []
-      }
+      },
+      "family": "trades",
+      "summary": "Install and repair the water, gas and drainage systems in buildings."
     },
     {
       "osca": "372132",
@@ -6349,7 +6443,9 @@
           "practical"
         ],
         "required": []
-      }
+      },
+      "family": "trades",
+      "summary": "Build and repair the timber frames, floors and fittings of homes and buildings."
     },
     {
       "osca": "351131",
@@ -6476,7 +6572,9 @@
           "practical"
         ],
         "required": []
-      }
+      },
+      "family": "workshop",
+      "summary": "Diagnose and repair cars, including electric and hybrid vehicles."
     },
     {
       "osca": "382131",
@@ -6605,7 +6703,9 @@
           "practical"
         ],
         "required": []
-      }
+      },
+      "family": "trades",
+      "summary": "Install and service air conditioning and refrigeration systems."
     },
     {
       "osca": "332232",
@@ -6733,7 +6833,9 @@
           "practical"
         ],
         "required": []
-      }
+      },
+      "family": "workshop",
+      "summary": "Make and maintain precision metal parts and machinery."
     },
     {
       "osca": "331133",
@@ -6859,7 +6961,9 @@
           "practical"
         ],
         "required": []
-      }
+      },
+      "family": "workshop",
+      "summary": "Join and shape metal to build structures, vehicles and equipment."
     },
     {
       "osca": "321131",
@@ -6992,7 +7096,9 @@
           "practical"
         ],
         "required": []
-      }
+      },
+      "family": "hospitality",
+      "summary": "Create menus and cook great food, leading a busy kitchen team."
     },
     {
       "osca": "392132",
@@ -7114,7 +7220,9 @@
           "business"
         ],
         "required": []
-      }
+      },
+      "family": "hospitality",
+      "summary": "Cut, colour and style hair, and help clients look and feel their best."
     },
     {
       "osca": "451331",
@@ -7241,7 +7349,9 @@
           "humanities"
         ],
         "required": []
-      }
+      },
+      "family": "safety",
+      "summary": "Keep communities safe, respond to incidents and investigate crime."
     },
     {
       "osca": "451131",
@@ -7367,7 +7477,9 @@
           "physics"
         ],
         "required": []
-      }
+      },
+      "family": "safety",
+      "summary": "Serve in the Navy, Army or Air Force in one of hundreds of roles."
     },
     {
       "osca": "462131",
@@ -7500,7 +7612,9 @@
           "business"
         ],
         "required": []
-      }
+      },
+      "family": "fitness",
+      "summary": "Help people get fit, stay motivated and reach their health goals."
     },
     {
       "osca": "299131",
@@ -7642,7 +7756,9 @@
           "physics"
         ],
         "required": []
-      }
+      },
+      "family": "transport",
+      "summary": "Fly aircraft safely, from regional routes to international flights."
     },
     {
       "osca": "131131",
@@ -7780,7 +7896,9 @@
           "practical"
         ],
         "required": []
-      }
+      },
+      "family": "built",
+      "summary": "Lead building projects from plans to finished construction."
     },
     {
       "osca": "342432",
@@ -7903,7 +8021,9 @@
           "practical"
         ],
         "required": []
-      }
+      },
+      "family": "environment",
+      "summary": "Design and build gardens, parks and outdoor spaces."
     },
     {
       "osca": "713131",
@@ -8017,7 +8137,9 @@
       "subjectAreas": {
         "helpful": [],
         "required": []
-      }
+      },
+      "family": "transport",
+      "summary": "Drive heavy vehicles that move goods across cities and the country."
     },
     {
       "osca": "622232",
@@ -8146,7 +8268,9 @@
           "humanities"
         ],
         "required": []
-      }
+      },
+      "family": "business",
+      "summary": "Help people buy, sell and rent homes and properties."
     },
     {
       "osca": "561131",
@@ -8278,7 +8402,9 @@
           "english"
         ],
         "required": []
-      }
+      },
+      "family": "business",
+      "summary": "Keep offices running with records, scheduling and administration."
     }
   ]
 }

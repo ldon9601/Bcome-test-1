@@ -25,6 +25,12 @@ export interface Pathway {
   years: [number, number];
 }
 
+export const CAREER_FAMILIES = [
+  "health", "care", "education", "tech", "data", "engineering", "built", "environment", "science", "animals",
+  "business", "creative", "performing", "trades", "workshop", "hospitality", "safety", "fitness", "transport",
+] as const;
+export type CareerFamily = (typeof CAREER_FAMILIES)[number];
+
 export type Competitiveness = "open" | "moderate" | "high";
 
 export interface Occupation {
@@ -36,6 +42,10 @@ export interface Occupation {
   /** Where the OSCA code was checked: the ABS publication itself, or the ANZSCO–OSCA correspondence. */
   oscaSource: "abs" | "correspondence";
   title: string;
+  /** One plain-English sentence describing the work, for cards. */
+  summary: string;
+  /** Illustration family used for the career's picture (see src/components/OccupationArt.tsx). */
+  family: CareerFamily;
   /** ANZSCO 2022 unit group (4-digit). Only used to join JSA projections, which are published on ANZSCO. */
   anzsco: string;
   /** ANZSIC division name, as used in the JSA industry projections. */

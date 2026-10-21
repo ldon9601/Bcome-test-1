@@ -3,6 +3,7 @@
  * Run after editing anything in /data:  npm run data:validate
  */
 import { earningsData, jsaOutlook, occupationData, qualificationData, questionBank, skillsData, subjectLabels } from "../src/lib/data.ts";
+import { CAREER_FAMILIES } from "../src/lib/careers/types.ts";
 import { RIASEC, SKILL_DIMS, STYLE_DIMS, SUBJECT_AREAS, VALUE_DIMS } from "../src/lib/questionnaire/types.ts";
 
 const DRIVERS = ["ageing-population", "care-economy", "net-zero", "digital", "infrastructure", "housing", "population-growth", "defence"];
@@ -63,6 +64,8 @@ export function validateData(): string[] {
     const len = o.oscaLevel === "occupation" ? 6 : 4;
     if (!new RegExp(`^\\d{${len}}$`).test(o.osca)) err(`${where}: OSCA ${o.oscaLevel} codes have ${len} digits`);
     if (o.oscaUnitGroup !== o.osca.slice(0, 4)) err(`${where}: oscaUnitGroup must be the first 4 digits`);
+    if (!(CAREER_FAMILIES as readonly string[]).includes(o.family)) err(`${where}: unknown family ${o.family}`);
+    if (!o.summary || o.summary.length > 120) err(`${where}: needs a one-sentence summary under 120 characters`);
     if (!/^\d{4}$/.test(o.anzsco)) err(`${where}: anzsco should be a 4-digit unit group`);
     if (!(o.skillLevel >= 1 && o.skillLevel <= 5)) err(`${where}: skillLevel must be 1–5`);
     if (!/^[RIASEC]{3}$/.test(o.riasec) || new Set(o.riasec).size !== 3) err(`${where}: riasec must be 3 distinct letters`);
