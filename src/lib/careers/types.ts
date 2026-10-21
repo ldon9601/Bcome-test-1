@@ -1,4 +1,4 @@
-import type { WorkValue } from "../questionnaire/types.ts";
+import type { RiasecType, SkillDim, StyleDim, SubjectArea, ValueDim } from "../questionnaire/types.ts";
 
 export type AiExposure = "low" | "medium" | "high";
 
@@ -44,8 +44,26 @@ export interface Occupation {
   skillLevel: number;
   /** Three-letter Holland code. */
   riasec: string;
-  values: WorkValue[];
+  /** Detailed school subjects (onboarding list ids) that help or are often prerequisites. */
   subjects: { helpful: string[]; oftenRequired: string[] };
+  /** The same subjects grouped into the questionnaire's ten subject areas. */
+  subjectAreas: { helpful: SubjectArea[]; required: SubjectArea[] };
+  /** 0–100 profile on the questionnaire's own dimensions, for personal-fit matching. */
+  profile: {
+    interests: Record<RiasecType, number>;
+    skills: Record<SkillDim, number>;
+    values: Record<ValueDim, number>;
+    environment: Record<StyleDim, number>;
+  };
+  /** Opportunity indicators, 0–100 unless stated. */
+  market: {
+    shortage: "shortage" | "no-shortage";
+    regionalBreadth: number;
+    graduateOutcome: number;
+    ai: { automation: number; augmentation: number };
+  };
+  /** Where each figure comes from, so every statement can show its source. */
+  evidence: Record<string, string>;
   /** Specialist skill ids (data/skills/skills.json). */
   skills: string[];
   /** Core competency ids, following the Australian Skills Classification. */
@@ -57,7 +75,6 @@ export interface Occupation {
   salary: { entry: [number, number]; experienced: [number, number]; note?: string };
   aiExposure: AiExposure;
   drivers: Driver[];
-  apprenticeshipAreas: string[];
 }
 
 export interface OccupationData {

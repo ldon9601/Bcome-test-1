@@ -1,0 +1,901 @@
+{
+  "id": "bcome-career-profile",
+  "version": "2.0.0",
+  "title": "Bcome Career Profile",
+  "scales": {
+    "interest": [
+      {
+        "value": "1",
+        "label": "Strongly dislike"
+      },
+      {
+        "value": "2",
+        "label": "Dislike"
+      },
+      {
+        "value": "3",
+        "label": "Not sure"
+      },
+      {
+        "value": "4",
+        "label": "Would enjoy it"
+      },
+      {
+        "value": "5",
+        "label": "Would love it"
+      }
+    ],
+    "confidence": [
+      {
+        "value": "1",
+        "label": "Not confident yet"
+      },
+      {
+        "value": "2",
+        "label": "A little"
+      },
+      {
+        "value": "3",
+        "label": "Fairly"
+      },
+      {
+        "value": "4",
+        "label": "Confident"
+      },
+      {
+        "value": "5",
+        "label": "Very confident"
+      }
+    ],
+    "importance": [
+      {
+        "value": "1",
+        "label": "Not important"
+      },
+      {
+        "value": "2",
+        "label": "Slightly"
+      },
+      {
+        "value": "3",
+        "label": "Moderately"
+      },
+      {
+        "value": "4",
+        "label": "Very"
+      },
+      {
+        "value": "5",
+        "label": "Extremely important"
+      }
+    ],
+    "enjoyment": [
+      {
+        "value": "1",
+        "label": "Not at all"
+      },
+      {
+        "value": "2",
+        "label": "A little"
+      },
+      {
+        "value": "3",
+        "label": "Somewhat"
+      },
+      {
+        "value": "4",
+        "label": "A lot"
+      },
+      {
+        "value": "5",
+        "label": "Love it"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "id": "about",
+      "title": "About you",
+      "intro": "A few quick questions so we can tailor your results. These don't affect your scores."
+    },
+    {
+      "id": "interests",
+      "title": "Section A: Interests",
+      "intro": "How much would you enjoy doing this activity, regardless of whether you think you're currently good at it?"
+    },
+    {
+      "id": "strengths",
+      "title": "Section B: Current skill confidence",
+      "intro": "Compared with activities you normally do at school and outside school, how confident are you doing the following?"
+    },
+    {
+      "id": "values",
+      "title": "Section C: Work values",
+      "intro": "Imagine you're 25 and choosing between two otherwise similar jobs. How important would each of these things be?"
+    },
+    {
+      "id": "environment",
+      "title": "Section D: Preferred work environment",
+      "intro": "There are no right answers. Go with your first instinct."
+    },
+    {
+      "id": "school",
+      "title": "Section E: School and education pathway",
+      "intro": "Nothing here is locked in. You can update it at your next check-in."
+    }
+  ],
+  "questions": [
+    {
+      "id": "year_level",
+      "section": "about",
+      "kind": "single",
+      "prompt": "What year are you in?",
+      "options": [
+        {
+          "value": "10",
+          "label": "Year 10"
+        },
+        {
+          "value": "11",
+          "label": "Year 11"
+        },
+        {
+          "value": "12",
+          "label": "Year 12"
+        }
+      ]
+    },
+    {
+      "id": "state",
+      "section": "about",
+      "kind": "single",
+      "prompt": "Which state or territory do you go to school in?",
+      "options": [
+        {
+          "value": "NSW",
+          "label": "NSW"
+        },
+        {
+          "value": "VIC",
+          "label": "VIC"
+        },
+        {
+          "value": "QLD",
+          "label": "QLD"
+        },
+        {
+          "value": "WA",
+          "label": "WA"
+        },
+        {
+          "value": "SA",
+          "label": "SA"
+        },
+        {
+          "value": "TAS",
+          "label": "TAS"
+        },
+        {
+          "value": "ACT",
+          "label": "ACT"
+        },
+        {
+          "value": "NT",
+          "label": "NT"
+        }
+      ]
+    },
+    {
+      "id": "current_subjects",
+      "section": "about",
+      "kind": "multi",
+      "max": 8,
+      "min": 1,
+      "prompt": "Which subjects are you studying this year?",
+      "help": "Pick up to eight. This helps us check prerequisites for courses.",
+      "options": [
+        {
+          "value": "english",
+          "label": "English"
+        },
+        {
+          "value": "maths_advanced",
+          "label": "Maths (Advanced / Methods)"
+        },
+        {
+          "value": "maths_extension",
+          "label": "Maths (Extension / Specialist)"
+        },
+        {
+          "value": "maths_general",
+          "label": "Maths (General / Standard)"
+        },
+        {
+          "value": "biology",
+          "label": "Biology"
+        },
+        {
+          "value": "chemistry",
+          "label": "Chemistry"
+        },
+        {
+          "value": "physics",
+          "label": "Physics"
+        },
+        {
+          "value": "earth_env",
+          "label": "Earth and Environmental Science"
+        },
+        {
+          "value": "it_software",
+          "label": "IT / Software / Digital Tech"
+        },
+        {
+          "value": "engineering_studies",
+          "label": "Engineering Studies"
+        },
+        {
+          "value": "design_tech",
+          "label": "Design and Technology"
+        },
+        {
+          "value": "business",
+          "label": "Business Studies"
+        },
+        {
+          "value": "economics",
+          "label": "Economics"
+        },
+        {
+          "value": "legal",
+          "label": "Legal Studies"
+        },
+        {
+          "value": "history",
+          "label": "History"
+        },
+        {
+          "value": "geography",
+          "label": "Geography"
+        },
+        {
+          "value": "society_culture",
+          "label": "Society and Culture / Psychology"
+        },
+        {
+          "value": "visual_arts",
+          "label": "Visual Arts"
+        },
+        {
+          "value": "music",
+          "label": "Music"
+        },
+        {
+          "value": "drama",
+          "label": "Drama"
+        },
+        {
+          "value": "media",
+          "label": "Media / Film"
+        },
+        {
+          "value": "pdhpe",
+          "label": "PDHPE / Health and Movement"
+        },
+        {
+          "value": "languages",
+          "label": "Languages"
+        },
+        {
+          "value": "food_tech",
+          "label": "Food Technology / Hospitality"
+        },
+        {
+          "value": "agriculture",
+          "label": "Agriculture"
+        },
+        {
+          "value": "construction_vet",
+          "label": "VET Construction / Electrotechnology / Automotive"
+        }
+      ]
+    },
+    {
+      "id": "geography",
+      "section": "about",
+      "kind": "single",
+      "prompt": "Where would you like to live and work after school?",
+      "options": [
+        {
+          "value": "near_home",
+          "label": "Near home"
+        },
+        {
+          "value": "state",
+          "label": "Anywhere in my state"
+        },
+        {
+          "value": "city",
+          "label": "In a capital city"
+        },
+        {
+          "value": "regional",
+          "label": "In a regional or country area"
+        },
+        {
+          "value": "anywhere",
+          "label": "Anywhere in Australia or overseas"
+        },
+        {
+          "value": "unsure",
+          "label": "I'm not sure yet"
+        }
+      ]
+    },
+    {
+      "id": "q01",
+      "number": 1,
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Build, assemble or repair something using tools or equipment.",
+      "scaleId": "interest",
+      "dimension": {
+        "type": "riasec",
+        "code": "R"
+      }
+    },
+    {
+      "id": "q02",
+      "number": 2,
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Work on a practical project where you can physically see what you've created.",
+      "scaleId": "interest",
+      "dimension": {
+        "type": "riasec",
+        "code": "R"
+      }
+    },
+    {
+      "id": "q03",
+      "number": 3,
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Investigate why something happens and work out the explanation.",
+      "scaleId": "interest",
+      "dimension": {
+        "type": "riasec",
+        "code": "I"
+      }
+    },
+    {
+      "id": "q04",
+      "number": 4,
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Solve a difficult problem using evidence, maths or data.",
+      "scaleId": "interest",
+      "dimension": {
+        "type": "riasec",
+        "code": "I"
+      }
+    },
+    {
+      "id": "q05",
+      "number": 5,
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Create an original design, story, image, video, piece of music or concept.",
+      "scaleId": "interest",
+      "dimension": {
+        "type": "riasec",
+        "code": "A"
+      }
+    },
+    {
+      "id": "q06",
+      "number": 6,
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Develop new ideas where there isn't one correct answer.",
+      "scaleId": "interest",
+      "dimension": {
+        "type": "riasec",
+        "code": "A"
+      }
+    },
+    {
+      "id": "q07",
+      "number": 7,
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Help someone learn something or overcome a problem.",
+      "scaleId": "interest",
+      "dimension": {
+        "type": "riasec",
+        "code": "S"
+      }
+    },
+    {
+      "id": "q08",
+      "number": 8,
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Work closely with people and understand what they need or how they feel.",
+      "scaleId": "interest",
+      "dimension": {
+        "type": "riasec",
+        "code": "S"
+      }
+    },
+    {
+      "id": "q09",
+      "number": 9,
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Lead a group toward a goal or convince others to support an idea.",
+      "scaleId": "interest",
+      "dimension": {
+        "type": "riasec",
+        "code": "E"
+      }
+    },
+    {
+      "id": "q10",
+      "number": 10,
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Pitch an idea, negotiate an outcome or start a new project/business.",
+      "scaleId": "interest",
+      "dimension": {
+        "type": "riasec",
+        "code": "E"
+      }
+    },
+    {
+      "id": "q11",
+      "number": 11,
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Organise information, schedules or resources so everything runs properly.",
+      "scaleId": "interest",
+      "dimension": {
+        "type": "riasec",
+        "code": "C"
+      }
+    },
+    {
+      "id": "q12",
+      "number": 12,
+      "section": "interests",
+      "kind": "likert",
+      "prompt": "Work carefully with details, records or processes where accuracy matters.",
+      "scaleId": "interest",
+      "dimension": {
+        "type": "riasec",
+        "code": "C"
+      }
+    },
+    {
+      "id": "q13",
+      "number": 13,
+      "section": "strengths",
+      "kind": "likert",
+      "prompt": "Working with numbers, maths or logical patterns.",
+      "scaleId": "confidence",
+      "dimension": {
+        "type": "skill",
+        "code": "quantitative"
+      }
+    },
+    {
+      "id": "q14",
+      "number": 14,
+      "section": "strengths",
+      "kind": "likert",
+      "prompt": "Explaining complicated ideas clearly in writing or conversation.",
+      "scaleId": "confidence",
+      "dimension": {
+        "type": "skill",
+        "code": "communication"
+      }
+    },
+    {
+      "id": "q15",
+      "number": 15,
+      "section": "strengths",
+      "kind": "likert",
+      "prompt": "Investigating evidence and reaching a logical conclusion.",
+      "scaleId": "confidence",
+      "dimension": {
+        "type": "skill",
+        "code": "scientific"
+      }
+    },
+    {
+      "id": "q16",
+      "number": 16,
+      "section": "strengths",
+      "kind": "likert",
+      "prompt": "Learning new software, digital tools or technology.",
+      "scaleId": "confidence",
+      "dimension": {
+        "type": "skill",
+        "code": "digital"
+      }
+    },
+    {
+      "id": "q17",
+      "number": 17,
+      "section": "strengths",
+      "kind": "likert",
+      "prompt": "Visualising how designs, spaces or objects fit together.",
+      "scaleId": "confidence",
+      "dimension": {
+        "type": "skill",
+        "code": "spatial"
+      }
+    },
+    {
+      "id": "q18",
+      "number": 18,
+      "section": "strengths",
+      "kind": "likert",
+      "prompt": "Building, fixing or making practical things.",
+      "scaleId": "confidence",
+      "dimension": {
+        "type": "skill",
+        "code": "practical"
+      }
+    },
+    {
+      "id": "q19",
+      "number": 19,
+      "section": "strengths",
+      "kind": "likert",
+      "prompt": "Understanding other people's perspectives and working effectively with them.",
+      "scaleId": "confidence",
+      "dimension": {
+        "type": "skill",
+        "code": "interpersonal"
+      }
+    },
+    {
+      "id": "q20",
+      "number": 20,
+      "section": "strengths",
+      "kind": "likert",
+      "prompt": "Taking initiative and helping organise people or activities toward a goal.",
+      "scaleId": "confidence",
+      "dimension": {
+        "type": "skill",
+        "code": "leadership"
+      }
+    },
+    {
+      "id": "q21",
+      "number": 21,
+      "section": "values",
+      "kind": "likert",
+      "prompt": "Doing work that has a positive impact on people or society.",
+      "scaleId": "importance",
+      "dimension": {
+        "type": "value",
+        "code": "purpose"
+      }
+    },
+    {
+      "id": "q22",
+      "number": 22,
+      "section": "values",
+      "kind": "likert",
+      "prompt": "Having strong income and long-term earning potential.",
+      "scaleId": "importance",
+      "dimension": {
+        "type": "value",
+        "code": "financial"
+      }
+    },
+    {
+      "id": "q23",
+      "number": 23,
+      "section": "values",
+      "kind": "likert",
+      "prompt": "Having good job security and stable employment opportunities.",
+      "scaleId": "importance",
+      "dimension": {
+        "type": "value",
+        "code": "security"
+      }
+    },
+    {
+      "id": "q24",
+      "number": 24,
+      "section": "values",
+      "kind": "likert",
+      "prompt": "Having freedom to decide how I approach my work.",
+      "scaleId": "importance",
+      "dimension": {
+        "type": "value",
+        "code": "autonomy"
+      }
+    },
+    {
+      "id": "q25",
+      "number": 25,
+      "section": "values",
+      "kind": "likert",
+      "prompt": "Being able to create, innovate and try new approaches.",
+      "scaleId": "importance",
+      "dimension": {
+        "type": "value",
+        "code": "creativity"
+      }
+    },
+    {
+      "id": "q26",
+      "number": 26,
+      "section": "values",
+      "kind": "likert",
+      "prompt": "Having opportunities to lead, influence others or take responsibility.",
+      "scaleId": "importance",
+      "dimension": {
+        "type": "value",
+        "code": "leadership"
+      }
+    },
+    {
+      "id": "q27",
+      "number": 27,
+      "section": "values",
+      "kind": "likert",
+      "prompt": "Having enough flexibility and personal time outside work.",
+      "scaleId": "importance",
+      "dimension": {
+        "type": "value",
+        "code": "worklife"
+      }
+    },
+    {
+      "id": "q28",
+      "number": 28,
+      "section": "values",
+      "kind": "likert",
+      "prompt": "Constantly learning and being intellectually challenged.",
+      "scaleId": "importance",
+      "dimension": {
+        "type": "value",
+        "code": "learning"
+      }
+    },
+    {
+      "id": "q29",
+      "number": 29,
+      "section": "environment",
+      "kind": "rank",
+      "prompt": "Rank these from most appealing to least appealing.",
+      "help": "Tap them in order, starting with the one that appeals most.",
+      "options": [
+        {
+          "value": "people",
+          "label": "People",
+          "detail": "Helping, teaching, caring for or persuading others"
+        },
+        {
+          "value": "ideas",
+          "label": "Ideas",
+          "detail": "Creating, theorising, designing or imagining"
+        },
+        {
+          "value": "data",
+          "label": "Data",
+          "detail": "Numbers, records, facts and systems"
+        },
+        {
+          "value": "things",
+          "label": "Things",
+          "detail": "Tools, machines, materials, plants or animals"
+        }
+      ]
+    },
+    {
+      "id": "q30",
+      "number": 30,
+      "section": "environment",
+      "kind": "bipolar",
+      "prompt": "Which sounds more attractive?",
+      "dimension": {
+        "type": "environment",
+        "code": "teamwork"
+      },
+      "left": "Mostly independent",
+      "right": "Mostly teamwork",
+      "middle": "A mix"
+    },
+    {
+      "id": "q31",
+      "number": 31,
+      "section": "environment",
+      "kind": "bipolar",
+      "prompt": "Which sounds more attractive?",
+      "dimension": {
+        "type": "environment",
+        "code": "flexibility"
+      },
+      "left": "Highly structured and predictable",
+      "right": "Highly flexible and self-directed",
+      "middle": "A mix"
+    },
+    {
+      "id": "q32",
+      "number": 32,
+      "section": "environment",
+      "kind": "bipolar",
+      "prompt": "Which sounds more attractive?",
+      "dimension": {
+        "type": "environment",
+        "code": "physical"
+      },
+      "left": "Mostly seated / digital",
+      "right": "Mostly active / hands-on",
+      "middle": "A mix"
+    },
+    {
+      "id": "q33",
+      "number": 33,
+      "section": "environment",
+      "kind": "bipolar",
+      "prompt": "Which sounds more attractive?",
+      "dimension": {
+        "type": "environment",
+        "code": "variety"
+      },
+      "left": "Regular and predictable work",
+      "right": "Constantly changing, varied work",
+      "middle": "A mix"
+    },
+    {
+      "id": "q34",
+      "number": 34,
+      "section": "school",
+      "kind": "matrix",
+      "prompt": "For each area, tell us how much you enjoy it and roughly how confident you feel in it.",
+      "rows": [
+        {
+          "value": "mathematics",
+          "label": "Mathematics"
+        },
+        {
+          "value": "biology",
+          "label": "Biology/health"
+        },
+        {
+          "value": "chemistry",
+          "label": "Chemistry"
+        },
+        {
+          "value": "physics",
+          "label": "Physics"
+        },
+        {
+          "value": "english",
+          "label": "English/languages"
+        },
+        {
+          "value": "humanities",
+          "label": "Humanities/social sciences"
+        },
+        {
+          "value": "business",
+          "label": "Business/economics"
+        },
+        {
+          "value": "computing",
+          "label": "Computing/technology"
+        },
+        {
+          "value": "arts",
+          "label": "Art/design/media"
+        },
+        {
+          "value": "practical",
+          "label": "Practical/trade subjects"
+        }
+      ],
+      "columns": [
+        {
+          "value": "enjoyment",
+          "label": "Enjoyment",
+          "scaleId": "enjoyment"
+        },
+        {
+          "value": "confidence",
+          "label": "Current confidence",
+          "scaleId": "confidence"
+        }
+      ]
+    },
+    {
+      "id": "q35",
+      "number": 35,
+      "section": "school",
+      "kind": "multi",
+      "exclusive": [
+        "unsure"
+      ],
+      "prompt": "Which paths would you genuinely consider after school? Select all that apply.",
+      "help": "\"I'm not sure yet\" is a perfectly good answer.",
+      "options": [
+        {
+          "value": "university",
+          "label": "University"
+        },
+        {
+          "value": "vet",
+          "label": "TAFE/VET"
+        },
+        {
+          "value": "apprenticeship",
+          "label": "Apprenticeship/traineeship"
+        },
+        {
+          "value": "work_learn",
+          "label": "Work and learn on the job"
+        },
+        {
+          "value": "business",
+          "label": "Starting a business"
+        },
+        {
+          "value": "defence_public",
+          "label": "Defence/public service pathway"
+        },
+        {
+          "value": "gap_year",
+          "label": "Gap year followed by study"
+        },
+        {
+          "value": "unsure",
+          "label": "I'm not sure yet"
+        }
+      ]
+    },
+    {
+      "id": "q36",
+      "number": 36,
+      "section": "school",
+      "kind": "single",
+      "prompt": "If a career really suited you, how long would you be comfortable studying or training before becoming fully qualified?",
+      "options": [
+        {
+          "value": "lt1",
+          "label": "Less than 1 year"
+        },
+        {
+          "value": "1-2",
+          "label": "1–2 years"
+        },
+        {
+          "value": "3-4",
+          "label": "3–4 years"
+        },
+        {
+          "value": "5-6",
+          "label": "5–6 years"
+        },
+        {
+          "value": "7+",
+          "label": "7+ years"
+        },
+        {
+          "value": "any",
+          "label": "I'd consider any duration for the right career"
+        },
+        {
+          "value": "unknown",
+          "label": "I don't know yet"
+        }
+      ]
+    }
+  ]
+}

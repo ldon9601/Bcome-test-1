@@ -35,7 +35,7 @@ export interface CareerFacts {
   pathways: PathwayFact[];
   skills: string[];
   coreCompetencies: string[];
-  relatedCareers: { osca: string; title: string; sharedSkills: string[] }[];
+  relatedCareers: { osca: string; title: string; sharedSkills: string[]; maxYears: number }[];
 }
 
 /** Whole years of school left after this one, for a student asked during the school year. */
@@ -85,6 +85,7 @@ export function careerFacts(occ: Occupation, graph: SkillsGraph, earnings: Earni
       osca: r.occupation.osca,
       title: r.occupation.title,
       sharedSkills: r.shared.map((s) => graph.label(s)),
+      maxYears: r.occupation.timeToQualify.years[1],
     })),
   };
 }

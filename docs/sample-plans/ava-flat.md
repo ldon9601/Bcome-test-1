@@ -1,138 +1,300 @@
 # Ava, Year 12, SA: mild interest in everything, unsure
 
-Holland code **RIA** · 65 questions asked · plan by template
+40 questions · Holland code **RAE** · plan by template · instrument v2.0.0
 
-Interest scores: R 47 · I 47 · A 47 · S 47 · E 47 · C 47
+## Your Career DNA
 
-## Top matches
+```
+Analytical                       ████░░░░░░ 43
+Creative                         █████░░░░░ 54
+Interpersonal                    ██████░░░░ 60
+Technical                        ████░░░░░░ 38
+Entrepreneurial                  █████░░░░░ 50
+Structured working preference    █████░░░░░ 46
+Continuous-learning appetite     █████░░░░░ 46
 
-| # | Career | OSCA | Overall | Personal fit | Future opportunity | Pathway feasibility | 10-yr growth | Starting pay | Years after school |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | Aged Care Worker | 421331 | 66 | 37 | 100 | 91 | 24.7% | $55k–$62k | 6 months to 1 year |
-| 2 | Assistant in Nursing | 442231 | 66 | 37 | 100 | 91 | 24.7% | $55k–$62k | 6 months to 1 year |
-| 3 | Urban and Regional Planner | 241331 | 64 | 39 | 91 | 87 | 20.8% (est.) | $70k–$85k | 4–5 years |
-| 4 | Early Childhood Educator | 431132 | 63 | 34 | 91 | 91 | 18.5% (est.) | $52k–$60k | 6 months to 2 years |
-| 5 | Primary School Teacher | 251231 | 63 | 38 | 91 | 85 | 20.8% (est.) | $80k–$90k | 4 years |
-| 6 | Dental Assistant | 442331 | 62 | 32 | 92 | 91 | 26.8% | $52k–$58k | 1–1.5 years |
-| 7 | Land Surveyor | 241234 | 62 | 34 | 91 | 87 | 20.8% (est.) | $70k–$85k | 5–6 years |
-| 8 | Registered Nurse | 2654 | 62 | 35 | 91 | 88 | 26.3% (est.) | $75k–$85k | 3–4 years |
-| 9 | Disability Support Worker | 422231 | 61 | 30 | 91 | 91 | 18.5% (est.) | $55k–$65k | 6 months to 1 year |
-| 10 | Social Worker | 261331 | 61 | 34 | 91 | 86 | 26.3% (est.) | $75k–$85k | 4–5 years |
+CORE INTERESTS
+Realistic                        █████░░░░░ 50
+Artistic                         █████░░░░░ 50
+Enterprising                     █████░░░░░ 50
+Investigative                    ████░░░░░░ 38
+Social                           ████░░░░░░ 38
+Conventional                     ████░░░░░░ 38
 
-## Plan
+YOUR STRONGEST SIGNALS
+Quantitative reasoning           50
+Communication                    50
+Scientific thinking              50
+Technology                       50
+Spatial and design thinking      50
 
-Your interests are spread fairly evenly, with no single area standing out yet. That's common, and it keeps lots of doors open. Careers like aged care worker and assistant in nursing fit your answers and have a positive job outlook. It's worth trying out a few of these before you decide.
+WHAT YOU VALUE (relative to your other values)
+Positive impact                  50
+Income potential                 50
+Job security                     50
+Autonomy                         50
+Innovation                       50
+Leadership                       50
+Work-life balance                50
+Continuous learning              50
+```
 
-### Aged Care Worker (OSCA 421331)
+**What this suggests:** Your interests are spread fairly evenly, with no single area standing out yet. That's common at your stage and keeps lots of doors open, so trying a few different things will tell you most.
 
-Personal fit 37 · Future opportunity 100 · Pathway feasibility 91
+## Careers that fit you
 
-It's a looser fit with your interests, has a strong job outlook and the way in fits your plans.
+Your interests are spread fairly evenly, so these careers are a starting point to explore rather than a final answer. Musician and early childhood teacher are your strongest personal fits. Each career below shows how well it fits you, its future opportunities and how realistic the pathway is from where you are now.
 
-**Outlook:** Jobs and Skills Australia projects employment to grow 24.7% by May 2035, compared with 13.3% for all jobs.
+| Group | Career | OSCA | Personal fit | Opportunity | Pathway | Match | Confidence |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Best matches | Musician | 231633 | **80** | 54 | 81 | 74% | Moderate |
+| Best matches | Early Childhood Teacher | 251131 | **79** | 83 | 92 | 82% | Moderate |
+| Best matches | Disability Support Worker | 422231 | **79** | 79 | 92 | 81% | Moderate |
+| Best matches | Occupational Therapist | 262331 | **79** | 84 | 84 | 81% | Moderate |
+| Best matches | Urban and Regional Planner | 241331 | **79** | 77 | 87 | 80% | Moderate |
+| Worth exploring | Assistant in Nursing | 442231 | **76** | 83 | 91 | 80% | Moderate |
+| Worth exploring | Carpenter | 372132 | **77** | 76 | 89 | 79% | Moderate |
+| Wildcard | Marketing Specialist | 221534 | **77** | 63 | 90 | 75% | Moderate |
 
-**How to get there:** Certificate III in Individual Support (Ageing) (6 months to 1 year). Another route: A traineeship in individual support.
+### Best matches: Musician
 
-**Time to qualify:** 6 months to 1 year after Year 12 (about 6 months to 1 year from now) to reach: Working as an aged care worker
+Personal fit **80** · Future opportunity 54 · Pathway feasibility 81 · Match 74% · Confidence Moderate (We'd like to know more about how long you'd be happy to study.)
 
-**Pay (indicative):** $55k–$62k starting, $60k–$70k experienced
+It lines up with your preference for working with people. The job outlook is weaker, so keep a second option in mind.
 
-**Skills:** Person-centred care, Infection control, Mental health support. Core: Oral communication, Teamwork, Planning and organising
+**Why this matches you**
 
-- TAFE or VET: Certificate III in Individual Support (AQF 3), builds Person-centred care, Infection control
-- Traineeship: Certificate III in Individual Support (AQF 3), builds Person-centred care, Infection control
+- Working with people          ++++++++
 
-**Skills also lead to:** Assistant in Nursing (Person-centred care, Infection control); Dental Assistant (Infection control, Person-centred care); Disability Support Worker (Person-centred care, Mental health support)
+**Potential challenges**
 
-### Assistant in Nursing (OSCA 442231)
+- Building confidence in Art/design/media would make entry easier.
+- This work usually involves more flexibility and self-direction than you said you'd prefer.
 
-Personal fit 37 · Future opportunity 100 · Pathway feasibility 91
+**Future outlook**
 
-It's a looser fit with your interests, has a strong job outlook and the way in fits your plans.
+Employment outlook good · Shortage no · AI augmentation High · AI automation Low · Income Average · Education High
 
-**Outlook:** Jobs and Skills Australia projects employment to grow 24.7% by May 2035, compared with 13.3% for all jobs.
+**How to get there:** Bachelor of Music (3–4 years). Another route: Diploma of Music.
 
-**How to get there:** Certificate III in Health Services Assistance (6 months to 1 year). Another route: A traineeship in health services assistance.
+**Time to qualify:** 3–4 years after Year 12 (about 3–4 years from now) · **Pay (indicative):** $30k–$60k starting, $50k–$100k experienced
 
-**Time to qualify:** 6 months to 1 year after Year 12 (about 6 months to 1 year from now) to reach: Working as an assistant in nursing
+- University: Bachelor of Music (AQF 7)
+- TAFE or VET: Diploma of Music (AQF 5)
 
-**Pay (indicative):** $55k–$62k starting, $62k–$72k experienced
+### Best matches: Early Childhood Teacher
 
-**Skills:** Person-centred care, Infection control, Anatomy and physiology. Core: Oral communication, Teamwork, Reading
+Personal fit **79** · Future opportunity 83 · Pathway feasibility 92 · Match 82% · Confidence Moderate (We'd like to know more about how long you'd be happy to study.)
 
-- TAFE or VET: Certificate III in Health Services Assistance (AQF 3), builds Person-centred care, Infection control
-- Traineeship: Certificate III in Health Services Assistance (AQF 3), builds Person-centred care, Infection control
+It lines up with your preference for working with people. It also has a strong job outlook.
 
-**Skills also lead to:** Aged Care Worker (Person-centred care, Infection control); Dental Assistant (Infection control, Person-centred care); Registered Nurse (Person-centred care, Infection control, Anatomy and physiology)
+**Why this matches you**
 
-### Urban and Regional Planner (OSCA 241331)
+- Working with people          ++++++++
 
-Personal fit 39 · Future opportunity 91 · Pathway feasibility 87
+**Potential challenges**
 
-It's a looser fit with your interests, has a strong job outlook and the way in fits your plans.
+- Building your confidence in communication would help: this work leans on it heavily.
+- Building your confidence in working with people would help: this work leans on it heavily.
 
-**Outlook:** Estimated growth of about 21% by May 2035, based on JSA projections for similar jobs (all jobs: 13.3%).
+**Future outlook**
+
+Employment outlook good · Shortage yes · AI augmentation Moderate · AI automation Low · Income Average · Education High
+
+**How to get there:** Bachelor of Early Childhood Education (4 years). Another route: Diploma of Early Childhood Education and Care, then a degree with credit.
+
+**Time to qualify:** 4–5 years after Year 12 (about 4–5 years from now) · **Pay (indicative):** $75k–$85k starting, $90k–$110k experienced
+
+- University: Bachelor of Early Childhood Education (AQF 7)
+- TAFE or VET: Diploma of Early Childhood Education and Care (AQF 5)
+
+### Best matches: Disability Support Worker
+
+Personal fit **79** · Future opportunity 79 · Pathway feasibility 92 · Match 81% · Confidence Moderate (We'd like to know more about how long you'd be happy to study.)
+
+It lines up with your preference for working with people. It has a steady job outlook.
+
+**Why this matches you**
+
+- Working with people          ++++++++
+
+**Potential challenges**
+
+- Building your confidence in working with people would help: this work leans on it heavily.
+
+**Future outlook**
+
+Employment outlook good · Shortage yes · AI augmentation Moderate · AI automation Low · Income Below average · Education Low
+
+**How to get there:** Certificate III in Individual Support (Disability) (6 months to 1 year). Another route: Certificate IV in Disability Support.
+
+**Time to qualify:** 6 months to 1 year after Year 12 (about 6 months to 1 year from now) · **Pay (indicative):** $55k–$65k starting, $62k–$75k experienced
+
+- TAFE or VET: Certificate III in Individual Support (AQF 3)
+- TAFE or VET: Certificate IV in Disability Support (AQF 4)
+- Traineeship: Certificate III in Individual Support (AQF 3)
+
+### Best matches: Occupational Therapist
+
+Personal fit **79** · Future opportunity 84 · Pathway feasibility 84 · Match 81% · Confidence Moderate (We'd like to know more about how long you'd be happy to study.)
+
+It lines up with your preference for working with people. It also has a strong job outlook.
+
+**Why this matches you**
+
+- Working with people          ++++++++
+
+**Potential challenges**
+
+- Building your confidence in communication would help: this work leans on it heavily.
+- Building your confidence in working with people would help: this work leans on it heavily.
+
+**Future outlook**
+
+Employment outlook good · Shortage yes · AI augmentation High · AI automation Low · Income Average · Education High
+
+**How to get there:** Bachelor of Occupational Therapy (4 years).
+
+**Time to qualify:** 4–5 years after Year 12 (about 4–5 years from now) · **Pay (indicative):** $75k–$85k starting, $95k–$120k experienced
+
+- University: Bachelor of Occupational Therapy (AQF 7)
+
+### Best matches: Urban and Regional Planner
+
+Personal fit **79** · Future opportunity 77 · Pathway feasibility 87 · Match 80% · Confidence Moderate (We'd like to know more about how long you'd be happy to study.)
+
+It fits the overall pattern of your answers. It has a steady job outlook.
+
+**Why this matches you**
+
+
+**Potential challenges**
+
+- Building your confidence in communication would help: this work leans on it heavily.
+
+**Future outlook**
+
+Employment outlook good · Shortage yes · AI augmentation High · AI automation Moderate · Income Above average · Education High
 
 **How to get there:** Bachelor of Urban and Regional Planning (4 years).
 
-**Time to qualify:** 4–5 years after Year 12 (about 4–5 years from now) to reach: Working as a planner
+**Time to qualify:** 4–5 years after Year 12 (about 4–5 years from now) · **Pay (indicative):** $70k–$85k starting, $100k–$130k experienced
 
-**Pay (indicative):** $70k–$85k starting, $100k–$130k experienced
+- University: Bachelor of Urban and Regional Planning (AQF 7)
 
-**Skills:** Policy and regulation, GIS and spatial data, Stakeholder engagement, Writing and editing. Core: Writing, Oral communication, Problem solving
+### Worth exploring: Assistant in Nursing
 
-- University: Bachelor of Urban and Regional Planning (AQF 7), builds Policy and regulation, GIS and spatial data, Stakeholder engagement
+Personal fit **76** · Future opportunity 83 · Pathway feasibility 91 · Match 80% · Confidence Moderate (We'd like to know more about how long you'd be happy to study.)
 
-**Skills also lead to:** Environmental Scientist (Policy and regulation, Writing and editing)
+It lines up with your preference for working with people. It also has a strong job outlook.
 
-### Finish school strong (Year 12)
+**Why this matches you**
 
-- Apply through SATAC. Check its key dates now so you don't miss early rounds.
-- Look up early-offer and alternative-entry schemes; many use Year 11 results or a recommendation.
-- Pick a backup pathway (a diploma, a related course or a bridging course) in case your first choice doesn't come through.
+- Working with people          ++++++++
 
-### Study and training after school (About 6 months to 5 years after school, depending on the career)
+**Potential challenges**
 
-- Aged Care Worker: Certificate III in Individual Support (Ageing) (6 months to 1 year). Another route: A traineeship in individual support.
-- Assistant in Nursing: Certificate III in Health Services Assistance (6 months to 1 year). Another route: A traineeship in health services assistance.
-- Urban and Regional Planner: Bachelor of Urban and Regional Planning (4 years).
-- Choose courses with work placements or industry projects; they lead to first jobs.
-- Check which of these courses are offered near you, including online and regional campuses.
+- Building your confidence in working with people would help: this work leans on it heavily.
+- This work usually involves more active, hands-on work than you said you'd prefer.
 
-### Your first years at work (First 3 years of work)
+**Future outlook**
 
-- Complete any registration, licence or accreditation your job needs.
-- Keep building the skills employers want most: person-centred care, infection control, mental health support, anatomy and physiology.
-- Learn to use the AI tools in your field well; they will be part of most jobs.
-- Find a mentor at work and review this plan every year.
-- Starting pay is roughly $55k–$62k as an aged care worker, $55k–$62k as an assistant in nursing, $70k–$85k as an urban and regional planner, rising with experience.
+Employment outlook strong · Shortage yes · AI augmentation Moderate · AI automation Low · Income Below average · Education Low
 
-### Future of work
+**How to get there:** Certificate III in Health Services Assistance (6 months to 1 year). Another route: A traineeship in health services assistance.
+
+**Time to qualify:** 6 months to 1 year after Year 12 (about 6 months to 1 year from now) · **Pay (indicative):** $55k–$62k starting, $62k–$72k experienced
+
+- TAFE or VET: Certificate III in Health Services Assistance (AQF 3)
+- Traineeship: Certificate III in Health Services Assistance (AQF 3)
+
+### Worth exploring: Carpenter
+
+Personal fit **77** · Future opportunity 76 · Pathway feasibility 89 · Match 79% · Confidence Moderate (We'd like to know more about how long you'd be happy to study.)
+
+It fits the overall pattern of your answers. It has a steady job outlook.
+
+**Why this matches you**
+
+
+**Potential challenges**
+
+- Building your confidence in spatial and design thinking would help: this work leans on it heavily.
+- Building your confidence in practical skills would help: this work leans on it heavily.
+- This work usually involves more active, hands-on work than you said you'd prefer.
+
+**Future outlook**
+
+Employment outlook moderate · Shortage yes · AI augmentation Low · AI automation Low · Income Average · Education Moderate
+
+**How to get there:** Carpentry apprenticeship (Certificate III in Carpentry) (3–4 years).
+
+**Time to qualify:** 3–4 years after Year 12 (about 3–4 years from now) · **Pay (indicative):** $70k–$85k starting, $90k–$120k experienced
+
+- Apprenticeship: Certificate III in Carpentry (AQF 3)
+
+### Wildcard: Marketing Specialist
+
+Personal fit **77** · Future opportunity 63 · Pathway feasibility 90 · Match 75% · Confidence Moderate (We'd like to know more about how long you'd be happy to study.)
+
+It lines up with your preference for working with people. It has a steady job outlook.
+
+**Why this matches you**
+
+- Working with people          ++++++++
+
+**Potential challenges**
+
+- Building your confidence in communication would help: this work leans on it heavily.
+- Building your confidence in technology would help: this work leans on it heavily.
+
+**Future outlook**
+
+Employment outlook good · Shortage no · AI augmentation High · AI automation High · Income Above average · Education High
+
+**How to get there:** Bachelor of Business (Marketing) (3 years). Another route: Diploma of Marketing and Communication.
+
+**Time to qualify:** 2–3 years after Year 12 (about 2–3 years from now) · **Pay (indicative):** $65k–$80k starting, $95k–$130k experienced
+
+- University: Bachelor of Business (Marketing) (AQF 7)
+- TAFE or VET: Diploma of Marketing and Communication (AQF 5)
+
+## Your journey towards Musician
+
+| Period | Focus | Actions |
+| --- | --- | --- |
+| Year 12 | Choose and apply for the right course | **applications:** Shortlist Bachelor of Music courses and compare prerequisites and selection ranks through SATAC.<br>**alternative:** Keep a backup route ready: Diploma of Music. |
+| Summer after school | Get a head start | **portfolio:** Join debating, write for a school publication or present to a group.<br>**work:** Find casual work or volunteering where you can practise working with people and taking responsibility. |
+| University Year 1 | Start Bachelor of Music | **study:** Build the core skills: performance, music composition and production.<br>**exploration:** Join a student society linked to the field and start a project portfolio. |
+| University Years 2–4 | Get real-world experience | **work:** Target an internship, placement or research project.<br>**skills:** Add AI and digital tools used in your field to what you can do. |
+| First two years of work | Get established as a musician | **work:** Aim for roles as a musician.<br>**skills:** Build a specialist strength, and complete any registration or licence the job needs. |
+
+## How work is changing
 
 - Over 90% of employment growth to May 2035 is in jobs that usually need a post-school qualification (skill levels 1 to 4).
+- JSA's 2035 projections don't include the effects of generative AI, so AI's likely impact is scored separately for each career.
+- AI will change some tasks; using AI tools well will become part of the job.
 - Most of the work is hands-on or person-to-person, which AI is unlikely to replace.
 
-### Also worth a look
-
-- **Early Childhood Educator**: Matches your top interests: Artistic and Realistic.
-- **Primary School Teacher**: Matches your top interests: Artistic.
-- **Dental Assistant**: Matches your top interests: Realistic.
-
-### Skills worth building whichever you choose
+## Skills worth building whichever you choose
 
 - Oral communication
-- Person-centred care
-- Infection control
-- Teamwork
+- Problem solving
+- Initiative and innovation
+- Stakeholder engagement
+- Planning and organising
 
-### This term
+## This term
 
-1. Talk to your careers adviser about aged care worker and bring this plan.
-1. Look up two courses for aged care worker and note their entry requirements.
+1. Talk to your careers adviser about musician and bring this plan.
+1. Look up two courses for musician and note their entry requirements.
 1. Talk to someone who works in one of these jobs about what a normal day is like.
+1. Come back for a check-in in six months so we can update your plan.
 
-### Keep in mind
+## Keep in mind
 
-- Job projections are estimates and can change. Entry requirements differ between institutions, so always check the course page.
+- Places are competitive, so keep a backup pathway in mind.
+- Jobs are concentrated in cities, which may mean moving.
+- Pay is a rough guide (for example $30k–$60k starting as a musician). Job projections are estimates, and entry requirements differ between institutions, so always check the course page.
 
 _Data: Jobs and Skills Australia, 2025 Employment Projections (May 2025 to May 2035) (https://www.jobsandskills.gov.au/data/employment-projections)_

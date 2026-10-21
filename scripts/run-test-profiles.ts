@@ -1,93 +1,109 @@
 /**
- * Runs the imaginary test students through the full pipeline and writes their plans
+ * Runs the imaginary test students through the full pipeline and writes their results
  * to test-output/ for a careers adviser to review.
  *
- *   npm run test:profiles             # offline template plans
- *   ANTHROPIC_API_KEY=... npm run test:profiles   # AI-written plans
+ *   npm run test:profiles                          # offline template plans
+ *   ANTHROPIC_API_KEY=... npm run test:profiles    # AI-written plans
  */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { advise } from "../src/lib/advise.ts";
-import { questionBank } from "../src/lib/data.ts";
 import { formatRange, formatYears, ROUTE_LABEL } from "../src/lib/careers/facts.ts";
-import type { CareerPlan } from "../src/lib/plan/types.ts";
+import { questionBank } from "../src/lib/data.ts";
+import { careerDnaView } from "../src/lib/plan/context.ts";
 import { PERSONAS, simulate } from "../tests/fixtures/personas.ts";
 
 const outDir = resolve(import.meta.dirname, "../test-output");
 mkdirSync(outDir, { recursive: true });
 
+const bar = (n: number) => "█".repeat(Math.round(n / 10)).padEnd(10, "░");
+const GROUP_TITLE = { best: "Best matches", explore: "Worth exploring", wildcard: "Wildcard", other: "Other" } as const;
+
 function toMarkdown(title: string, asked: number, result: Awaited<ReturnType<typeof advise>>): string {
-  const { profile, matches, plan } = result;
-  const p: CareerPlan = plan;
-  const lines = [
+  const { profile, plan } = result;
+  const dna = careerDnaView(profile);
+  const lines: string[] = [
     `# ${title}`,
     "",
-    `Holland code **${profile.riasec.code}** · ${asked} questions asked · plan by ${p.meta.generatedBy}${p.meta.model ? ` (${p.meta.model})` : ""}` +
-      (p.meta.fallbackReason ? ` · fell back to template: ${p.meta.fallbackReason}` : ""),
+    `${asked} questions · Holland code **${profile.riasec.code}** · plan by ${plan.meta.generatedBy}${plan.meta.model ? ` (${plan.meta.model})` : ""} · instrument v${plan.meta.instrumentVersion}` +
+      (plan.meta.fallbackReason ? ` · fell back to template: ${plan.meta.fallbackReason}` : ""),
     "",
-    `Interest scores: ${Object.entries(profile.riasec.scores).map(([k, v]) => `${k} ${v}`).join(" · ")}`,
+    "## Your Career DNA",
     "",
-    "## Top matches",
+    "```",
+    ...dna.dimensions.map((d) => `${d.label.padEnd(32)} ${bar(d.score)} ${d.score}`),
     "",
-    "| # | Career | OSCA | Overall | Personal fit | Future opportunity | Pathway feasibility | 10-yr growth | Starting pay | Years after school |",
-    "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |",
-    ...matches.map(
-      (m, i) =>
-        `| ${i + 1} | ${m.occupation.title} | ${m.occupation.osca} | ${m.score} | ${m.scores.personalFit.score} | ${m.scores.futureOpportunity.score} | ${m.scores.pathwayFeasibility.score} | ` +
-        `${m.outlook.growth10Pct ?? "–"}%${m.outlook.basis === "jsa-occupation" ? "" : " (est.)"} | ${formatRange(m.occupation.salary.entry)} | ${formatYears(m.occupation.timeToQualify.years)} |`,
+    "CORE INTERESTS",
+    ...dna.interests.map((d) => `${d.label.padEnd(32)} ${bar(d.score)} ${d.score}`),
+    "",
+    "YOUR STRONGEST SIGNALS",
+    ...dna.strongestSignals.map((d) => `${d.label.padEnd(32)} ${d.score}`),
+    "",
+    "WHAT YOU VALUE (relative to your other values)",
+    ...dna.values.map((d) => `${d.label.padEnd(32)} ${d.score}`),
+    "```",
+    "",
+    `**What this suggests:** ${plan.dnaSummary}`,
+    "",
+    "## Careers that fit you",
+    "",
+    plan.summary,
+    "",
+    "| Group | Career | OSCA | Personal fit | Opportunity | Pathway | Match | Confidence |",
+    "| --- | --- | --- | --- | --- | --- | --- | --- |",
+    ...plan.careers.map(
+      (c) =>
+        `| ${GROUP_TITLE[c.group!]} | ${c.title} | ${c.occupationId} | **${c.scores!.personalFit}** | ${c.scores!.futureOpportunity} | ${c.scores!.pathwayFeasibility}` +
+        `${c.improvement ? ` (→${c.improvement.to})` : ""} | ${c.matchScore}% | ${c.confidence!.level} |`,
     ),
     "",
-    "## Plan",
-    "",
-    p.summary,
-    "",
-    ...p.topCareers.flatMap((c) => {
-      const f = c.facts!;
-      const sc = c.scores!;
-      return [
-        `### ${c.title} (OSCA ${f.osca})`,
-        "",
-        `Personal fit ${sc.personalFit} · Future opportunity ${sc.futureOpportunity} · Pathway feasibility ${sc.pathwayFeasibility}`,
-        "",
-        c.whyItFits,
-        "",
-        `**Outlook:** ${c.outlook}`,
-        "",
-        `**How to get there:** ${c.howToGetThere}`,
-        "",
-        `**Time to qualify:** ${formatYears(f.timeToQualify.years)} after Year 12 (about ${formatYears(f.timeToQualify.fromNow)} from now) to reach: ${f.timeToQualify.milestone}`,
-        "",
-        `**Pay (indicative):** ${formatRange(f.salary.entry)} starting, ${formatRange(f.salary.experienced)} experienced${f.salary.note ? `. ${f.salary.note}` : ""}`,
-        "",
-        `**Skills:** ${f.skills.join(", ")}. Core: ${f.coreCompetencies.join(", ")}`,
-        "",
-        ...f.pathways.map((pw) => `- ${ROUTE_LABEL[pw.route]}: ${pw.qualification ? `${pw.qualification.title} (AQF ${pw.qualification.aqfLevel})` : pw.description}${pw.skillsBuilt.length ? `, builds ${pw.skillsBuilt.join(", ")}` : ""}`),
-        "",
-        f.relatedCareers.length ? `**Skills also lead to:** ${f.relatedCareers.map((r) => `${r.title} (${r.sharedSkills.join(", ")})`).join("; ")}` : "",
-        "",
-      ];
-    }),
-    ...p.stages.flatMap((s) => [`### ${s.title} (${s.timeframe})`, "", ...s.actions.map((a) => `- ${a}`), ""]),
-    "### Future of work",
-    "",
-    ...p.futureOfWork.map((f) => `- ${f}`),
-    "",
-    "### Also worth a look",
-    "",
-    ...p.alternatives.map((a) => `- **${a.title}**: ${a.why}`),
-    "",
-    ...(p.skillsBridge?.length ? ["### Skills worth building whichever you choose", "", ...p.skillsBridge.map((sk) => `- ${sk}`), ""] : []),
-    "### This term",
-    "",
-    ...p.nextSteps.map((n) => `1. ${n}`),
-    "",
-    "### Keep in mind",
-    "",
-    ...p.caveats.map((c) => `- ${c}`),
-    "",
-    `_Data: ${p.meta.dataSource}_`,
-    "",
   ];
+  for (const c of plan.careers) {
+    const f = c.facts!;
+    lines.push(
+      `### ${GROUP_TITLE[c.group!]}: ${c.title}`,
+      "",
+      `Personal fit **${c.scores!.personalFit}** · Future opportunity ${c.scores!.futureOpportunity} · Pathway feasibility ${c.scores!.pathwayFeasibility} · Match ${c.matchScore}% · Confidence ${c.confidence!.level}${c.confidence!.note ? ` (${c.confidence!.note})` : ""}`,
+      "",
+      c.whyItFits,
+      "",
+      "**Why this matches you**",
+      "",
+      ...c.strengths!.map((s) => `- ${s.label.padEnd(28)} ${"+".repeat(s.strength)}`),
+      "",
+      ...(c.challenges!.length ? ["**Potential challenges**", "", ...c.challenges!.map((x) => `- ${x}`), ""] : []),
+      "**Future outlook**",
+      "",
+      `Employment outlook ${c.future!.employment} · Shortage ${c.future!.shortage ? "yes" : "no"} · AI augmentation ${c.future!.aiAugmentation} · AI automation ${c.future!.aiAutomation} · Income ${c.future!.income} · Education ${c.future!.education}`,
+      "",
+      `**How to get there:** ${c.howToGetThere}`,
+      "",
+      `**Time to qualify:** ${formatYears(f.timeToQualify.years)} after Year 12 (about ${formatYears(f.timeToQualify.fromNow)} from now) · **Pay (indicative):** ${formatRange(f.salary.entry)} starting, ${formatRange(f.salary.experienced)} experienced`,
+      "",
+      ...f.pathways.map((pw) => `- ${ROUTE_LABEL[pw.route]}: ${pw.qualification ? `${pw.qualification.title} (AQF ${pw.qualification.aqfLevel})` : pw.description}`),
+      "",
+    );
+  }
+  lines.push(`## Your journey towards ${plan.journey.title}`, "", "| Period | Focus | Actions |", "| --- | --- | --- |");
+  for (const p of plan.journey.periods) lines.push(`| ${p.period} | ${p.focus} | ${p.actions.map((a) => `**${a.type}:** ${a.text}`).join("<br>")} |`);
+  lines.push(
+    "",
+    "## How work is changing",
+    "",
+    ...plan.futureOfWork.map((f) => `- ${f}`),
+    "",
+    ...(plan.skillsBridge?.length ? ["## Skills worth building whichever you choose", "", ...plan.skillsBridge.map((sk) => `- ${sk}`), ""] : []),
+    "## This term",
+    "",
+    ...plan.nextSteps.map((n) => `1. ${n}`),
+    "",
+    "## Keep in mind",
+    "",
+    ...plan.caveats.map((c) => `- ${c}`),
+    "",
+    `_Data: ${plan.meta.dataSource}_`,
+    "",
+  );
   return lines.join("\n");
 }
 
@@ -96,11 +112,11 @@ for (const persona of PERSONAS) {
   const { answers, asked } = simulate(questionBank, persona);
   const result = await advise(answers, { apiKey: process.env.ANTHROPIC_API_KEY, model: process.env.ANTHROPIC_MODEL });
   writeFileSync(resolve(outDir, `${persona.key}.md`), toMarkdown(persona.name, asked, result));
-  const top5 = result.matches.slice(0, 5).map((m) => m.occupation.osca);
-  const ok = !persona.expectAnyOf.length || persona.expectAnyOf.some((id) => top5.includes(id));
+  const recommended = result.plan.careers.map((c) => c.occupationId);
+  const ok = !persona.expectAnyOf.length || persona.expectAnyOf.some((id) => recommended.includes(id));
   summary.push(
-    `${ok ? "✓" : "✗"} ${persona.key.padEnd(16)} ${result.profile.riasec.code}  ${String(asked).padStart(2)} qs  ` +
-      result.matches.slice(0, 3).map((m) => `${m.occupation.title} (${m.score}: ${m.scores.personalFit.score}/${m.scores.futureOpportunity.score}/${m.scores.pathwayFeasibility.score})`).join(", "),
+    `${ok ? "✓" : "✗"} ${persona.key.padEnd(16)} ${result.profile.riasec.code}  ` +
+      result.plan.careers.slice(0, 3).map((c) => `${c.title} (fit ${c.scores!.personalFit}, match ${c.matchScore})`).join(", "),
   );
 }
 console.log(summary.join("\n"));

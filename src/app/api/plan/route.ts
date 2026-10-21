@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { advise } from "@/lib/advise.ts";
-import { toMatchSummary } from "@/lib/careers/matching.ts";
+import { advise, resultPayload } from "@/lib/advise.ts";
+import { ALGORITHM_VERSION } from "@/lib/careers/matching.ts";
 import { questionBank } from "@/lib/data.ts";
 import { IncompleteAnswersError } from "@/lib/questionnaire/scoring.ts";
 import type { Answers } from "@/lib/questionnaire/types.ts";
@@ -14,13 +14,18 @@ function parseAnswers(body: unknown): Answers | null {
   const raw = (body as { answers?: unknown })?.answers;
   if (!raw || typeof raw !== "object" || Array.isArray(raw)) return null;
   const known = new Set(questionBank.questions.map((q) => q.id));
+  const short = (x: unknown): x is string => typeof x === "string" && x.length < 64;
   const out: Answers = {};
   const entries = Object.entries(raw as Record<string, unknown>);
   if (entries.length > MAX_ANSWERS) return null;
   for (const [id, v] of entries) {
     if (!known.has(id)) continue;
-    if (typeof v === "string" && v.length < 64) out[id] = v;
-    else if (Array.isArray(v) && v.length <= 10 && v.every((x) => typeof x === "string" && x.length < 64)) out[id] = v;
+    if (short(v)) out[id] = v;
+    else if (Array.isArray(v) && v.length <= 10 && v.every(short)) out[id] = v;
+    else if (v && typeof v === "object" && !Array.isArray(v)) {
+      const cells = Object.entries(v as Record<string, unknown>);
+      if (cells.length <= 40 && cells.every(([k, x]) => k.length < 64 && short(x))) out[id] = Object.fromEntries(cells) as Record<string, string>;
+    }
   }
   return out;
 }
@@ -46,7 +51,8 @@ export async function POST(request: Request) {
     throw e;
   }
 
-  const matches = result.matches.map(toMatchSummary);
+  const payload = resultPayload(result);
+  const matches = payload.matches;
 
   let saved = false;
   if (supabaseConfigured() && process.env.SUPABASE_SERVICE_ROLE_KEY) {
@@ -69,10 +75,33 @@ export async function POST(request: Request) {
       if (session) {
         const { data: res } = await admin
           .from("results")
-          .insert({ session_id: session.id, student_id: data.user.id, holland_code: result.profile.riasec.code, profile: result.profile, matches })
+          .insert({
+            session_id: session.id,
+            student_id: data.user.id,
+            holland_code: result.profile.riasec.code,
+            profile: result.profile,
+            dna: payload.dna,
+            matches,
+            instrument_version: result.profile.instrumentVersion,
+            algorithm_version: ALGORITHM_VERSION,
+          })
           .select("id")
           .single();
         if (res) {
+          await admin.from("match_results").insert(
+            matches.map((m, i) => ({
+              result_id: res.id,
+              student_id: data.user!.id,
+              osca: m.osca,
+              group: m.group,
+              rank: i + 1,
+              personal_fit: m.scores.personalFit.score,
+              future_opportunity: m.scores.futureOpportunity.score,
+              pathway_feasibility: m.scores.pathwayFeasibility.score,
+              match_score: m.score,
+              confidence: m.confidence.level,
+            })),
+          );
           const { error } = await admin.from("plans").insert({
             result_id: res.id,
             student_id: data.user.id,
@@ -87,5 +116,5 @@ export async function POST(request: Request) {
     }
   }
 
-  return NextResponse.json({ profile: result.profile, matches, plan: result.plan, saved });
+  return NextResponse.json({ ...payload, saved });
 }

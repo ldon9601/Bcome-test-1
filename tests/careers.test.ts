@@ -1,12 +1,9 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { matchCareers } from "../src/lib/careers/matching.ts";
 import { bandFor, computeOutlook } from "../src/lib/careers/outlook.ts";
 import type { Occupation } from "../src/lib/careers/types.ts";
-import { jsaOutlook, occupationData, questionBank, subjectLabels } from "../src/lib/data.ts";
-import { buildProfile } from "../src/lib/questionnaire/scoring.ts";
+import { jsaOutlook, occupationData, skillsGraph } from "../src/lib/data.ts";
 import { validateData } from "../scripts/validate-data.ts";
-import { PERSONAS, simulate } from "./fixtures/personas.ts";
 
 const byOsca = (code: string) => occupationData.occupations.find((o) => o.osca === code)!;
 
@@ -53,26 +50,10 @@ test("15-year view moves up for demand drivers and down for high AI exposure", (
   assert.ok(highAi.score < noDrivers.score);
 });
 
-test("each persona's top five includes a career that fits them", () => {
-  for (const p of PERSONAS) {
-    if (!p.expectAnyOf.length) continue;
-    const prof = buildProfile(questionBank, simulate(questionBank, p).answers);
-    const top5 = matchCareers(prof, occupationData.occupations, jsaOutlook, { limit: 5, subjectLabels }).map((m) => m.occupation.osca);
-    assert.ok(p.expectAnyOf.some((id) => top5.includes(id)), `${p.key}: got ${top5.join(", ")}`);
-  }
-});
-
-test("matches explain themselves and flag missing prerequisites", () => {
-  const p = { ...PERSONAS.find((x) => x.key === "mia-health")!, subjectsStrong: ["biology"], yearLevel: 12 as const };
-  const prof = buildProfile(questionBank, simulate(questionBank, p).answers);
-  const gp = matchCareers(prof, [byOsca("264231")], jsaOutlook, { subjectLabels })[0];
-  assert.ok(gp.reasons.length > 0);
-  assert.ok(gp.cautions.some((c) => c.includes("Chemistry")));
-});
-
-test("an apprenticeship-minded student is matched to trades", () => {
-  const p = PERSONAS.find((x) => x.key === "jack-electrical")!;
-  const prof = buildProfile(questionBank, simulate(questionBank, p).answers);
-  const top3 = matchCareers(prof, occupationData.occupations, jsaOutlook, { limit: 3 });
-  assert.ok(top3.every((m) => m.occupation.pathways.some((p) => p.route === "apprenticeship")));
+test("the skills graph links qualifications, skills and related careers", () => {
+  const nurse = byOsca("2654");
+  assert.ok(skillsGraph.skillsFromQualification("he-nursing", nurse).includes("sk-clinical-assessment"));
+  const related = skillsGraph.related(nurse).map((r) => r.occupation.osca);
+  assert.ok(related.includes("264231") || related.includes("269432"));
+  assert.ok(!related.includes("2654"));
 });

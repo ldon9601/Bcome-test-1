@@ -1,4 +1,4 @@
-import bankJson from "../../data/questions/riasec-au.json" with { type: "json" };
+import bankJson from "../../data/questions/career-profile.json" with { type: "json" };
 import occupationsJson from "../../data/occupations/occupations.json" with { type: "json" };
 import jsaJson from "../../data/outlook/jsa-2025.json" with { type: "json" };
 import earningsJson from "../../data/outlook/earnings.json" with { type: "json" };
@@ -19,7 +19,7 @@ export const qualificationData = qualificationsJson as unknown as QualificationD
 export const skillsGraph = new SkillsGraph(skillsData.skills, qualificationData.qualifications, occupationData.occupations);
 
 export const subjectLabels: Record<string, string> = Object.fromEntries(
-  (questionBank.questions.find((q) => q.id === "subjects_enjoyed") as ChoiceQuestion).options.map((o) => [
+  (questionBank.questions.find((q) => q.id === "current_subjects") as ChoiceQuestion).options.map((o) => [
     o.value,
     o.label,
   ]),

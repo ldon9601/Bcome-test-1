@@ -1,142 +1,319 @@
 # Priya, Year 12, VIC: analytical, strong at maths and coding
 
-Holland code **ICR** · 34 questions asked · plan by template
+40 questions · Holland code **ICR** · plan by template · instrument v2.0.0
 
-Interest scores: R 50 · I 100 · A 25 · S 0 · E 25 · C 75
+## Your Career DNA
 
-## Top matches
+```
+Analytical                       █████████░ 91
+Creative                         ██████░░░░ 61
+Interpersonal                    ██░░░░░░░░ 19
+Technical                        █████░░░░░ 52
+Entrepreneurial                  ████░░░░░░ 38
+Structured working preference    ████░░░░░░ 38
+Continuous-learning appetite     ████████░░ 82
 
-| # | Career | OSCA | Overall | Personal fit | Future opportunity | Pathway feasibility | 10-yr growth | Starting pay | Years after school |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | Data Scientist | 223234 | 89 | 86 | 91 | 91 | 21.8% (est.) | $85k–$105k | 3–5 years |
-| 2 | Software Engineer | 273333 | 88 | 86 | 85 | 96 | 24.3% (est.) | $75k–$95k | 3–4 years |
-| 3 | Cyber Security Analyst | 271133 | 87 | 86 | 81 | 96 | 24.3% (est.) | $80k–$100k | 2–4 years |
-| 4 | Civil Engineer | 243231 | 84 | 74 | 91 | 95 | 20.8% (est.) | $75k–$90k | 4 years |
-| 5 | Electrical Engineer | 243331 | 84 | 83 | 79 | 92 | 24.3% (est.) | $75k–$90k | 4 years |
-| 6 | ICT Business Analyst | 273232 | 82 | 75 | 85 | 93 | 24.3% (est.) | $75k–$90k | 3–5 years |
-| 7 | Mechanical Engineer | 243532 | 81 | 73 | 85 | 92 | 20.8% (est.) | $72k–$85k | 4 years |
-| 8 | Environmental Scientist | 2444 | 79 | 65 | 91 | 95 | 24.3% (est.) | $65k–$80k | 3–4 years |
-| 9 | Land Surveyor | 241234 | 79 | 66 | 91 | 94 | 20.8% (est.) | $70k–$85k | 5–6 years |
-| 10 | Agricultural Scientist | 244132 | 78 | 65 | 85 | 96 | 17.3% (est.) | $70k–$85k | 4–6 years |
+CORE INTERESTS
+Investigative                    █████████░ 88
+Conventional                     ██████░░░░ 63
+Realistic                        █████░░░░░ 50
+Artistic                         █████░░░░░ 50
+Enterprising                     ███░░░░░░░ 25
+Social                           ░░░░░░░░░░ 0
 
-## Plan
+YOUR STRONGEST SIGNALS
+Quantitative reasoning           100
+Technology                       100
+Scientific thinking              75
+Communication                    50
+Spatial and design thinking      50
 
-Your strongest interests are Investigative, Conventional and Realistic. Careers like data scientist and software engineer fit those interests and have a positive job outlook.
+WHAT YOU VALUE (relative to your other values)
+Autonomy                         88
+Continuous learning              88
+Income potential                 63
+Innovation                       63
+Job security                     38
+Work-life balance                38
+Positive impact                  13
+Leadership                       13
+```
 
-### Data Scientist (OSCA 223234)
+**What this suggests:** You appear most energised by complex problems and understanding how things work and organising and getting the details right. You prefer variety over repetitive work and working independently, and value autonomy and continuous learning most.
 
-Personal fit 86 · Future opportunity 91 · Pathway feasibility 91
+## Careers that fit you
 
-It suits your interests and values well, has a strong job outlook and the way in fits your plans.
+Your strongest interests are Investigative, Conventional and Realistic. Software Engineer and electrical engineer are your strongest personal fits. Each career below shows how well it fits you, its future opportunities and how realistic the pathway is from where you are now.
 
-**Outlook:** Estimated growth of about 22% by May 2035, based on JSA projections for similar jobs (all jobs: 13.3%).
+| Group | Career | OSCA | Personal fit | Opportunity | Pathway | Match | Confidence |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Best matches | Software Engineer | 273333 | **85** | 65 | 100 | 82% | High |
+| Best matches | Electrical Engineer | 243331 | **80** | 80 | 95 | 82% | High |
+| Best matches | Cyber Security Analyst | 271133 | **84** | 76 | 100 | 84% | High |
+| Best matches | Data Scientist | 223234 | **84** | 65 | 95 | 81% | High |
+| Best matches | Web Designer | 242133 | **77** | 59 | 98 | 76% | High |
+| Worth exploring | Land Surveyor | 241234 | **77** | 83 | 94 | 81% | High |
+| Worth exploring | Civil Engineer | 243231 | **77** | 83 | 98 | 82% | High |
+| Wildcard | Accountant | 211131 | **72** | 78 | 100 | 78% | High |
+
+### Best matches: Software Engineer
+
+Personal fit **85** · Future opportunity 65 · Pathway feasibility 100 · Match 82% · Confidence High
+
+It lines up with your confidence in technology, the importance you place on continuous learning and your enjoyment of Computing/technology. It has a steady job outlook.
+
+**Why this matches you**
+
+- Technology                   +++++++++
+- Continuous learning          +++++++++
+- Enjoying Computing/technology +++++++++
+- Enjoying Mathematics         +++++++++
+- Investigative interests      ++++++++
+- Quantitative reasoning       ++++++++
+
+**Future outlook**
+
+Employment outlook good · Shortage no · AI augmentation High · AI automation Moderate · Income Above average · Education High
+
+**How to get there:** Bachelor of Computer Science or Software Engineering (3–4 years). Another route: Diploma of Information Technology, then a degree or a junior role.
+
+**Time to qualify:** 3–4 years after Year 12 (about 3–4 years from now) · **Pay (indicative):** $75k–$95k starting, $130k–$180k experienced
+
+- University: Bachelor of Computer Science or Software Engineering (AQF 7)
+- TAFE or VET: Diploma of Information Technology (AQF 5)
+- Cadetship: A digital cadetship, where you work while you study
+
+### Best matches: Electrical Engineer
+
+Personal fit **80** · Future opportunity 80 · Pathway feasibility 95 · Match 82% · Confidence High
+
+It lines up with your confidence in quantitative reasoning, the importance you place on continuous learning and your enjoyment of Mathematics. It also has a strong job outlook.
+
+**Why this matches you**
+
+- Quantitative reasoning       +++++++++
+- Continuous learning          +++++++++
+- Enjoying Mathematics         +++++++++
+- Investigative interests      ++++++++
+- Scientific thinking          +++++++
+- Technology                   +++++++
+
+**Future outlook**
+
+Employment outlook good · Shortage yes · AI augmentation High · AI automation Low · Income Above average · Education High
+
+**How to get there:** Bachelor of Engineering (Honours) (Electrical) (4 years).
+
+**Time to qualify:** 4 years after Year 12 (about 4 years from now) · **Pay (indicative):** $75k–$90k starting, $120k–$160k experienced
+
+- University: Bachelor of Engineering (Honours) (Electrical) (AQF 8)
+
+### Best matches: Cyber Security Analyst
+
+Personal fit **84** · Future opportunity 76 · Pathway feasibility 100 · Match 84% · Confidence High
+
+It lines up with your confidence in technology, the importance you place on continuous learning and your enjoyment of Computing/technology. It has a steady job outlook.
+
+**Why this matches you**
+
+- Technology                   +++++++++
+- Continuous learning          +++++++++
+- Enjoying Computing/technology +++++++++
+- Enjoying Mathematics         +++++++++
+- Investigative interests      ++++++++
+- Quantitative reasoning       +++++++
+
+**Future outlook**
+
+Employment outlook good · Shortage yes · AI augmentation High · AI automation Moderate · Income Above average · Education High
+
+**How to get there:** Bachelor of Cyber Security (3 years). Another route: Certificate IV in Cyber Security, then a junior role.
+
+**Time to qualify:** 2–4 years after Year 12 (about 2–4 years from now) · **Pay (indicative):** $80k–$100k starting, $130k–$180k experienced
+
+- University: Bachelor of Cyber Security (AQF 7)
+- TAFE or VET: Certificate IV in Cyber Security (AQF 4)
+- Cadetship: A cyber security cadetship, where you work while you study
+
+### Best matches: Data Scientist
+
+Personal fit **84** · Future opportunity 65 · Pathway feasibility 95 · Match 81% · Confidence High
+
+It lines up with your confidence in quantitative reasoning, your confidence in technology and the importance you place on continuous learning. It has a steady job outlook.
+
+**Why this matches you**
+
+- Quantitative reasoning       +++++++++
+- Technology                   +++++++++
+- Continuous learning          +++++++++
+- Enjoying Computing/technology +++++++++
+- Enjoying Mathematics         +++++++++
+- Investigative interests      ++++++++
+
+**Future outlook**
+
+Employment outlook good · Shortage no · AI augmentation High · AI automation Moderate · Income Above average · Education High
 
 **How to get there:** Bachelor of Science (Data Science or Statistics) (3–4 years).
 
-**Time to qualify:** 3–5 years after Year 12 (about 3–5 years from now) to reach: Working as a data scientist
+**Time to qualify:** 3–5 years after Year 12 (about 3–5 years from now) · **Pay (indicative):** $85k–$105k starting, $130k–$180k experienced
 
-**Pay (indicative):** $85k–$105k starting, $130k–$180k experienced
+- University: Bachelor of Science (Data Science or Statistics) (AQF 7)
 
-**Skills:** Data analysis and statistics, Programming, Research methods, Working with AI tools. Core: Numeracy, Problem solving, Digital engagement
+### Best matches: Web Designer
 
-- University: Bachelor of Science (Data Science or Statistics) (AQF 7), builds Data analysis and statistics, Programming, Research methods
+Personal fit **77** · Future opportunity 59 · Pathway feasibility 98 · Match 76% · Confidence High
 
-**Skills also lead to:** Software Engineer (Programming, Data analysis and statistics, Working with AI tools); Agricultural Scientist (Research methods, Data analysis and statistics); Psychologist (Research methods, Data analysis and statistics)
+It lines up with your confidence in technology, your enjoyment of Computing/technology and the importance you place on autonomy. The job outlook is weaker, so keep a second option in mind.
 
-### Software Engineer (OSCA 273333)
+**Why this matches you**
 
-Personal fit 86 · Future opportunity 85 · Pathway feasibility 96
+- Technology                   +++++++++
+- Enjoying Computing/technology +++++++++
+- Autonomy                     ++++++++
+- Innovation                   ++++++++
+- Continuous learning          ++++++++
+- Investigative interests      ++++++
 
-It suits your interests and values well, has a strong job outlook and the way in fits your plans.
+**Potential challenges**
 
-**Outlook:** Estimated growth of about 24% by May 2035, based on JSA projections for similar jobs (all jobs: 13.3%).
+- Building your confidence in spatial and design thinking would help: this work leans on it heavily.
 
-**How to get there:** Bachelor of Computer Science or Software Engineering (3–4 years). Another route: A digital cadetship, where you work while you study.
+**Future outlook**
 
-**Time to qualify:** 3–4 years after Year 12 (about 3–4 years from now) to reach: Working as a software engineer
+Employment outlook good · Shortage no · AI augmentation High · AI automation High · Income Average · Education High
 
-**Pay (indicative):** $75k–$95k starting, $130k–$180k experienced
+**How to get there:** Bachelor of Design (Visual Communication or Interaction Design) (3 years). Another route: Diploma of Information Technology (web development).
 
-**Skills:** Programming, Software and system design, Data analysis and statistics, Working with AI tools, Networks and cloud systems. Core: Problem solving, Digital engagement, Learning
+**Time to qualify:** 2–3 years after Year 12 (about 2–3 years from now) · **Pay (indicative):** $60k–$72k starting, $80k–$110k experienced
 
-- University: Bachelor of Computer Science or Software Engineering (AQF 7), builds Programming, Software and system design, Data analysis and statistics, Working with AI tools
-- TAFE or VET: Diploma of Information Technology (AQF 5), builds Programming, Networks and cloud systems, Working with AI tools
-- Cadetship: A digital cadetship, where you work while you study
+- University: Bachelor of Design (Visual Communication) (AQF 7)
+- TAFE or VET: Diploma of Information Technology (AQF 5)
 
-**Skills also lead to:** Data Scientist (Data analysis and statistics, Programming, Working with AI tools); ICT Business Analyst (Data analysis and statistics, Software and system design); Accountant (Data analysis and statistics, Working with AI tools)
+### Worth exploring: Land Surveyor
 
-### Cyber Security Analyst (OSCA 271133)
+Personal fit **77** · Future opportunity 83 · Pathway feasibility 94 · Match 81% · Confidence High
 
-Personal fit 86 · Future opportunity 81 · Pathway feasibility 96
+It lines up with your enjoyment of Mathematics, your confidence in quantitative reasoning and the importance you place on autonomy. It also has a strong job outlook.
 
-It suits your interests and values well, has a strong job outlook and the way in fits your plans.
+**Why this matches you**
 
-**Outlook:** Estimated growth of about 24% by May 2035, based on JSA projections for similar jobs (all jobs: 13.3%).
+- Enjoying Mathematics         +++++++++
+- Quantitative reasoning       ++++++++
+- Autonomy                     ++++++++
+- Continuous learning          ++++++++
+- Investigative interests      +++++++
+- Technology                   +++++++
 
-**How to get there:** Bachelor of Cyber Security (3 years). Another route: A cyber security cadetship, where you work while you study.
+**Potential challenges**
 
-**Time to qualify:** 2–4 years after Year 12 (about 2–4 years from now) to reach: Working as a cyber security analyst
+- Requires about 5 years of study or training, longer than you said you'd prefer.
+- Building your confidence in spatial and design thinking would help: this work leans on it heavily.
+- This work usually involves more active, hands-on work than you said you'd prefer.
 
-**Pay (indicative):** $80k–$100k starting, $130k–$180k experienced
+**Future outlook**
 
-**Skills:** Cyber security, Networks and cloud systems, Fault finding, Standards and compliance, Working with AI tools. Core: Problem solving, Digital engagement, Learning
+Employment outlook good · Shortage yes · AI augmentation High · AI automation Moderate · Income Above average · Education High
 
-- University: Bachelor of Cyber Security (AQF 7), builds Cyber security, Networks and cloud systems
-- TAFE or VET: Certificate IV in Cyber Security (AQF 4), builds Cyber security, Networks and cloud systems, Fault finding
-- Cadetship: A cyber security cadetship, where you work while you study
+**How to get there:** Bachelor of Surveying or Spatial Science, then registration (5–6 years).
 
-**Skills also lead to:** Accountant (Standards and compliance, Working with AI tools); Air Conditioning and Refrigeration Technician (Fault finding, Standards and compliance); Software Engineer (Working with AI tools, Networks and cloud systems)
+**Time to qualify:** 5–6 years after Year 12 (about 5–6 years from now) · **Pay (indicative):** $70k–$85k starting, $110k–$140k experienced
 
-### Finish school strong (Year 12)
+- University: Bachelor of Surveying or Spatial Science (AQF 7)
 
-- Apply through VTAC. Check its key dates now so you don't miss early rounds.
-- Look up early-offer and alternative-entry schemes; many use Year 11 results or a recommendation.
-- Pick a backup pathway (a diploma, a related course or a bridging course) in case your first choice doesn't come through.
+### Worth exploring: Civil Engineer
 
-### Study and training after school (About 2–5 years after school, depending on the career)
+Personal fit **77** · Future opportunity 83 · Pathway feasibility 98 · Match 82% · Confidence High
 
-- Data Scientist: Bachelor of Science (Data Science or Statistics) (3–4 years).
-- Software Engineer: Bachelor of Computer Science or Software Engineering (3–4 years). Another route: A digital cadetship, where you work while you study.
-- Cyber Security Analyst: Bachelor of Cyber Security (3 years). Another route: A cyber security cadetship, where you work while you study.
-- Choose courses with work placements or industry projects; they lead to first jobs.
+It lines up with your enjoyment of Mathematics, your investigative interests and your confidence in quantitative reasoning. It also has a strong job outlook.
 
-### Your first years at work (First 3 years of work)
+**Why this matches you**
 
-- Complete any registration, licence or accreditation your job needs.
-- Keep building the skills employers want most: data analysis and statistics, programming, research methods, working with AI tools.
-- Learn to use the AI tools in your field well; they will be part of most jobs.
-- Find a mentor at work and review this plan every year.
-- Starting pay is roughly $85k–$105k as a data scientist, $75k–$95k as a software engineer, $80k–$100k as a cyber security analyst, rising with experience.
+- Enjoying Mathematics         +++++++++
+- Investigative interests      ++++++++
+- Quantitative reasoning       ++++++++
+- Continuous learning          ++++++++
+- Scientific thinking          +++++++
+- Technology                   +++++++
 
-### Future of work
+**Potential challenges**
+
+- Building your confidence in spatial and design thinking would help: this work leans on it heavily.
+- This work usually involves more working in a team than you said you'd prefer.
+- This work usually involves more active, hands-on work than you said you'd prefer.
+
+**Future outlook**
+
+Employment outlook good · Shortage yes · AI augmentation High · AI automation Low · Income Above average · Education High
+
+**How to get there:** Bachelor of Engineering (Honours) (Civil) (4 years). Another route: An engineering cadetship, where you work while you study.
+
+**Time to qualify:** 4 years after Year 12 (about 4 years from now) · **Pay (indicative):** $75k–$90k starting, $120k–$160k experienced
+
+- University: Bachelor of Engineering (Honours) (Civil) (AQF 8)
+- Cadetship: Bachelor of Engineering (Honours) (Civil) (AQF 8)
+
+### Wildcard: Accountant
+
+Personal fit **72** · Future opportunity 78 · Pathway feasibility 100 · Match 78% · Confidence High
+
+It lines up with your enjoyment of Mathematics, your confidence in quantitative reasoning and your confidence in technology. It has a steady job outlook.
+
+**Why this matches you**
+
+- Enjoying Mathematics         +++++++++
+- Quantitative reasoning       ++++++++
+- Technology                   ++++++++
+- Income potential             ++++++++
+- Working with data            ++++++++
+- Investigative interests      ++++++
+
+**Future outlook**
+
+Employment outlook good · Shortage yes · AI augmentation High · AI automation High · Income Above average · Education High
+
+**How to get there:** Bachelor of Commerce (Accounting), then the CA or CPA program (5–6 years). Another route: Diploma of Accounting, then a degree with credit.
+
+**Time to qualify:** 3–6 years after Year 12 (about 3–6 years from now) · **Pay (indicative):** $65k–$75k starting, $95k–$130k experienced
+
+- University: Bachelor of Commerce (Accounting) (AQF 7)
+- TAFE or VET: Diploma of Accounting (AQF 5)
+- Cadetship: Bachelor of Commerce (Accounting) (AQF 7)
+
+## Your journey towards Software Engineer
+
+| Period | Focus | Actions |
+| --- | --- | --- |
+| Year 12 | Choose and apply for the right course | **applications:** Shortlist Bachelor of Computer Science or Software Engineering courses and compare prerequisites and selection ranks through VTAC.<br>**alternative:** Keep a backup route ready: Diploma of Information Technology, then a degree or a junior role. |
+| Summer after school | Get a head start | **portfolio:** Join debating, write for a school publication or present to a group.<br>**work:** Find casual work or volunteering where you can practise working with people and taking responsibility. |
+| University Year 1 | Start Bachelor of Computer Science or Software Engineering | **study:** Build the core skills: programming, software and system design, data analysis and statistics.<br>**exploration:** Join a student society linked to the field and start a project portfolio. |
+| University Years 2–4 | Get real-world experience | **work:** Target an internship, placement or research project.<br>**skills:** Add AI and digital tools used in your field to what you can do. |
+| First two years of work | Get established as a software engineer | **work:** Aim for roles as a software engineer.<br>**skills:** Build a specialist strength, and complete any registration or licence the job needs. |
+
+## How work is changing
 
 - Over 90% of employment growth to May 2035 is in jobs that usually need a post-school qualification (skill levels 1 to 4).
-- AI will change some tasks; using AI tools well will become part of the job.
+- JSA's 2035 projections don't include the effects of generative AI, so AI's likely impact is scored separately for each career.
 - AI and automation are likely to change much of the routine work, so the role will reward people who build specialist and people skills.
+- Most of the work is hands-on or person-to-person, which AI is unlikely to replace.
 
-### Also worth a look
+## Skills worth building whichever you choose
 
-- **Civil Engineer**: Matches your top interests: Realistic, Investigative and Conventional.
-- **Electrical Engineer**: Matches your top interests: Investigative, Realistic and Conventional.
-- **ICT Business Analyst**: Matches your top interests: Investigative and Conventional.
-
-### Skills worth building whichever you choose
-
-- Working with AI tools
 - Problem solving
 - Digital engagement
-- Data analysis and statistics
 - Programming
+- Working with AI tools
+- Learning
 
-### This term
+## This term
 
-1. Talk to your careers adviser about data scientist and bring this plan.
-1. Look up two courses for data scientist and note their entry requirements.
+1. Talk to your careers adviser about software engineer and bring this plan.
+1. Look up two courses for software engineer and note their entry requirements.
 1. Talk to someone who works in one of these jobs about what a normal day is like.
+1. Come back for a check-in in six months so we can update your plan.
 
-### Keep in mind
+## Keep in mind
 
-- AI is likely to change much of this work; plan to build specialist and people skills alongside it.
-- Job projections are estimates and can change. Entry requirements differ between institutions, so always check the course page.
+- Pay is a rough guide (for example $75k–$95k starting as a software engineer). Job projections are estimates, and entry requirements differ between institutions, so always check the course page.
 
 _Data: Jobs and Skills Australia, 2025 Employment Projections (May 2025 to May 2035) (https://www.jobsandskills.gov.au/data/employment-projections)_

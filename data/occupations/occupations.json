@@ -1,11 +1,13 @@
 {
-  "version": "2.0.0",
+  "version": "3.0.0",
   "notes": [
     "osca is the primary identifier: an OSCA 2024 v1.0 occupation (6 digits) or, for broad careers, unit group (4 digits). oscaSource 'abs' = seen in the ABS OSCA 2024 publication; 'correspondence' = from the ABS ANZSCO–OSCA correspondence table as republished at ozlinks.au. Check both against the ABS data downloads before launch.",
     "anzsco is the ANZSCO 2022 unit group, kept only to join Jobs and Skills Australia's 2025 employment projections, which are published on ANZSCO.",
     "salary is an indicative AUD range for full-time work before tax, excluding super: 'entry' = first year fully qualified, 'experienced' = about 5 to 10 years in. These are Bcome editorial estimates from typical 2025 award and market rates, not JSA or ABS data. Run `npm run data:import-earnings` to add JSA median earnings.",
     "timeToQualify.years is the typical full-time range from finishing Year 12 to the milestone, on the most common route.",
-    "riasec codes, values, subjects, skills, pathways, aiExposure and entryCompetitiveness are editorial judgements for guidance. Have a careers adviser review them."
+    "profile holds 0–100 occupational profiles on the same dimensions as the Career Profile questionnaire: interests (RIASEC), skill requirements, work values and work environment. They are editorial ratings to be reviewed by careers professionals and, later, calibrated from student feedback.",
+    "market holds opportunity indicators. Each field's source is recorded in evidence; 'Bcome editorial estimate' fields should be replaced by the named dataset when available.",
+    "riasec (3-letter code), skills, pathways, aiExposure and entryCompetitiveness are editorial judgements for guidance."
   ],
   "occupations": [
     {
@@ -19,12 +21,6 @@
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "SIC",
-      "values": [
-        "helping",
-        "security",
-        "teamwork",
-        "impact"
-      ],
       "subjects": {
         "helpful": [
           "biology",
@@ -90,7 +86,68 @@
         "ageing-population",
         "care-economy"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 44,
+          "I": 67,
+          "A": 22,
+          "S": 100,
+          "E": 33,
+          "C": 56
+        },
+        "skills": {
+          "quantitative": 56,
+          "communication": 78,
+          "scientific": 67,
+          "digital": 56,
+          "spatial": 33,
+          "practical": 78,
+          "interpersonal": 100,
+          "leadership": 56
+        },
+        "values": {
+          "purpose": 100,
+          "financial": 56,
+          "security": 89,
+          "autonomy": 33,
+          "creativity": 33,
+          "leadership": 44,
+          "worklife": 44,
+          "learning": 67
+        },
+        "environment": {
+          "teamwork": 89,
+          "flexibility": 33,
+          "physical": 89,
+          "variety": 78
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 100,
+        "graduateOutcome": 89,
+        "ai": {
+          "automation": 22,
+          "augmentation": 67
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "biology",
+          "chemistry",
+          "english"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "442231",
@@ -103,11 +160,6 @@
       "industry": "Health Care and Social Assistance",
       "skillLevel": 4,
       "riasec": "SRC",
-      "values": [
-        "helping",
-        "security",
-        "teamwork"
-      ],
       "subjects": {
         "helpful": [
           "pdhpe",
@@ -169,9 +221,67 @@
         "ageing-population",
         "care-economy"
       ],
-      "apprenticeshipAreas": [
-        "care"
-      ]
+      "profile": {
+        "interests": {
+          "R": 44,
+          "I": 33,
+          "A": 22,
+          "S": 100,
+          "E": 22,
+          "C": 44
+        },
+        "skills": {
+          "quantitative": 33,
+          "communication": 56,
+          "scientific": 33,
+          "digital": 33,
+          "spatial": 22,
+          "practical": 78,
+          "interpersonal": 89,
+          "leadership": 33
+        },
+        "values": {
+          "purpose": 100,
+          "financial": 33,
+          "security": 78,
+          "autonomy": 22,
+          "creativity": 22,
+          "leadership": 22,
+          "worklife": 56,
+          "learning": 33
+        },
+        "environment": {
+          "teamwork": 89,
+          "flexibility": 22,
+          "physical": 100,
+          "variety": 56
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 89,
+        "graduateOutcome": 78,
+        "ai": {
+          "automation": 22,
+          "augmentation": 44
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "biology",
+          "english"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "421331",
@@ -184,11 +294,6 @@
       "industry": "Health Care and Social Assistance",
       "skillLevel": 4,
       "riasec": "SRC",
-      "values": [
-        "helping",
-        "security",
-        "teamwork"
-      ],
       "subjects": {
         "helpful": [
           "pdhpe",
@@ -250,9 +355,68 @@
         "ageing-population",
         "care-economy"
       ],
-      "apprenticeshipAreas": [
-        "care"
-      ]
+      "profile": {
+        "interests": {
+          "R": 44,
+          "I": 22,
+          "A": 22,
+          "S": 100,
+          "E": 22,
+          "C": 44
+        },
+        "skills": {
+          "quantitative": 22,
+          "communication": 67,
+          "scientific": 22,
+          "digital": 33,
+          "spatial": 22,
+          "practical": 78,
+          "interpersonal": 100,
+          "leadership": 33
+        },
+        "values": {
+          "purpose": 100,
+          "financial": 33,
+          "security": 78,
+          "autonomy": 33,
+          "creativity": 22,
+          "leadership": 22,
+          "worklife": 56,
+          "learning": 33
+        },
+        "environment": {
+          "teamwork": 78,
+          "flexibility": 33,
+          "physical": 100,
+          "variety": 56
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 100,
+        "graduateOutcome": 78,
+        "ai": {
+          "automation": 22,
+          "augmentation": 33
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "biology",
+          "english",
+          "humanities"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "422231",
@@ -265,11 +429,6 @@
       "industry": "Health Care and Social Assistance",
       "skillLevel": 4,
       "riasec": "SER",
-      "values": [
-        "helping",
-        "variety",
-        "independence"
-      ],
       "subjects": {
         "helpful": [
           "pdhpe",
@@ -341,9 +500,68 @@
         "ageing-population",
         "care-economy"
       ],
-      "apprenticeshipAreas": [
-        "care"
-      ]
+      "profile": {
+        "interests": {
+          "R": 44,
+          "I": 33,
+          "A": 33,
+          "S": 100,
+          "E": 44,
+          "C": 33
+        },
+        "skills": {
+          "quantitative": 33,
+          "communication": 67,
+          "scientific": 22,
+          "digital": 33,
+          "spatial": 22,
+          "practical": 67,
+          "interpersonal": 100,
+          "leadership": 56
+        },
+        "values": {
+          "purpose": 100,
+          "financial": 33,
+          "security": 67,
+          "autonomy": 67,
+          "creativity": 56,
+          "leadership": 33,
+          "worklife": 67,
+          "learning": 44
+        },
+        "environment": {
+          "teamwork": 67,
+          "flexibility": 78,
+          "physical": 78,
+          "variety": 89
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 100,
+        "graduateOutcome": 78,
+        "ai": {
+          "automation": 22,
+          "augmentation": 44
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "biology",
+          "english",
+          "humanities"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "262431",
@@ -356,11 +574,6 @@
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "SIR",
-      "values": [
-        "helping",
-        "impact",
-        "independence"
-      ],
       "subjects": {
         "helpful": [
           "biology",
@@ -414,7 +627,68 @@
       "drivers": [
         "ageing-population"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 67,
+          "I": 78,
+          "A": 22,
+          "S": 100,
+          "E": 44,
+          "C": 44
+        },
+        "skills": {
+          "quantitative": 67,
+          "communication": 89,
+          "scientific": 89,
+          "digital": 56,
+          "spatial": 67,
+          "practical": 78,
+          "interpersonal": 100,
+          "leadership": 56
+        },
+        "values": {
+          "purpose": 89,
+          "financial": 67,
+          "security": 78,
+          "autonomy": 78,
+          "creativity": 44,
+          "leadership": 44,
+          "worklife": 67,
+          "learning": 89
+        },
+        "environment": {
+          "teamwork": 67,
+          "flexibility": 56,
+          "physical": 89,
+          "variety": 78
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 78,
+        "graduateOutcome": 100,
+        "ai": {
+          "automation": 22,
+          "augmentation": 67
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "biology",
+          "mathematics",
+          "physics"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "262331",
@@ -427,11 +701,6 @@
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "SIA",
-      "values": [
-        "helping",
-        "creativity",
-        "impact"
-      ],
       "subjects": {
         "helpful": [
           "biology",
@@ -484,7 +753,67 @@
         "ageing-population",
         "care-economy"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 56,
+          "I": 67,
+          "A": 67,
+          "S": 100,
+          "E": 44,
+          "C": 44
+        },
+        "skills": {
+          "quantitative": 56,
+          "communication": 89,
+          "scientific": 67,
+          "digital": 56,
+          "spatial": 78,
+          "practical": 67,
+          "interpersonal": 100,
+          "leadership": 56
+        },
+        "values": {
+          "purpose": 100,
+          "financial": 56,
+          "security": 78,
+          "autonomy": 67,
+          "creativity": 78,
+          "leadership": 44,
+          "worklife": 78,
+          "learning": 78
+        },
+        "environment": {
+          "teamwork": 67,
+          "flexibility": 67,
+          "physical": 67,
+          "variety": 89
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 89,
+        "graduateOutcome": 100,
+        "ai": {
+          "automation": 22,
+          "augmentation": 67
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "biology",
+          "humanities"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "262631",
@@ -497,11 +826,6 @@
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "SIA",
-      "values": [
-        "helping",
-        "impact",
-        "independence"
-      ],
       "subjects": {
         "helpful": [
           "english",
@@ -554,7 +878,67 @@
         "ageing-population",
         "care-economy"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 22,
+          "I": 78,
+          "A": 67,
+          "S": 100,
+          "E": 33,
+          "C": 56
+        },
+        "skills": {
+          "quantitative": 44,
+          "communication": 100,
+          "scientific": 78,
+          "digital": 56,
+          "spatial": 33,
+          "practical": 33,
+          "interpersonal": 100,
+          "leadership": 56
+        },
+        "values": {
+          "purpose": 100,
+          "financial": 56,
+          "security": 78,
+          "autonomy": 67,
+          "creativity": 67,
+          "leadership": 44,
+          "worklife": 78,
+          "learning": 78
+        },
+        "environment": {
+          "teamwork": 56,
+          "flexibility": 56,
+          "physical": 33,
+          "variety": 78
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 78,
+        "graduateOutcome": 100,
+        "ai": {
+          "automation": 22,
+          "augmentation": 67
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "biology",
+          "english"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "264231",
@@ -567,11 +951,6 @@
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "ISE",
-      "values": [
-        "helping",
-        "impact",
-        "income"
-      ],
       "subjects": {
         "helpful": [
           "chemistry",
@@ -629,7 +1008,71 @@
       "drivers": [
         "ageing-population"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 33,
+          "I": 100,
+          "A": 22,
+          "S": 100,
+          "E": 56,
+          "C": 56
+        },
+        "skills": {
+          "quantitative": 67,
+          "communication": 100,
+          "scientific": 100,
+          "digital": 67,
+          "spatial": 33,
+          "practical": 67,
+          "interpersonal": 100,
+          "leadership": 78
+        },
+        "values": {
+          "purpose": 100,
+          "financial": 100,
+          "security": 100,
+          "autonomy": 78,
+          "creativity": 44,
+          "leadership": 67,
+          "worklife": 44,
+          "learning": 100
+        },
+        "environment": {
+          "teamwork": 56,
+          "flexibility": 67,
+          "physical": 56,
+          "variety": 100
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 100,
+        "graduateOutcome": 100,
+        "ai": {
+          "automation": 22,
+          "augmentation": 78
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "biology",
+          "chemistry",
+          "english",
+          "mathematics"
+        ],
+        "required": [
+          "chemistry"
+        ]
+      }
     },
     {
       "osca": "263431",
@@ -642,11 +1085,6 @@
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "ICS",
-      "values": [
-        "helping",
-        "security",
-        "impact"
-      ],
       "subjects": {
         "helpful": [
           "chemistry",
@@ -700,7 +1138,70 @@
       "drivers": [
         "ageing-population"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 22,
+          "I": 89,
+          "A": 11,
+          "S": 78,
+          "E": 44,
+          "C": 89
+        },
+        "skills": {
+          "quantitative": 67,
+          "communication": 89,
+          "scientific": 100,
+          "digital": 67,
+          "spatial": 22,
+          "practical": 44,
+          "interpersonal": 89,
+          "leadership": 44
+        },
+        "values": {
+          "purpose": 78,
+          "financial": 78,
+          "security": 89,
+          "autonomy": 44,
+          "creativity": 22,
+          "leadership": 44,
+          "worklife": 67,
+          "learning": 67
+        },
+        "environment": {
+          "teamwork": 56,
+          "flexibility": 33,
+          "physical": 44,
+          "variety": 44
+        }
+      },
+      "market": {
+        "shortage": "no-shortage",
+        "regionalBreadth": 89,
+        "graduateOutcome": 89,
+        "ai": {
+          "automation": 44,
+          "augmentation": 78
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "biology",
+          "chemistry",
+          "mathematics"
+        ],
+        "required": [
+          "chemistry"
+        ]
+      }
     },
     {
       "osca": "263231",
@@ -713,11 +1214,6 @@
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "ISE",
-      "values": [
-        "helping",
-        "impact",
-        "independence"
-      ],
       "subjects": {
         "helpful": [
           "biology",
@@ -770,7 +1266,68 @@
       "drivers": [
         "ageing-population"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 33,
+          "I": 89,
+          "A": 44,
+          "S": 89,
+          "E": 44,
+          "C": 56
+        },
+        "skills": {
+          "quantitative": 56,
+          "communication": 89,
+          "scientific": 89,
+          "digital": 56,
+          "spatial": 22,
+          "practical": 44,
+          "interpersonal": 89,
+          "leadership": 44
+        },
+        "values": {
+          "purpose": 100,
+          "financial": 56,
+          "security": 67,
+          "autonomy": 67,
+          "creativity": 56,
+          "leadership": 33,
+          "worklife": 78,
+          "learning": 78
+        },
+        "environment": {
+          "teamwork": 44,
+          "flexibility": 67,
+          "physical": 33,
+          "variety": 67
+        }
+      },
+      "market": {
+        "shortage": "no-shortage",
+        "regionalBreadth": 67,
+        "graduateOutcome": 67,
+        "ai": {
+          "automation": 33,
+          "augmentation": 67
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "biology",
+          "chemistry",
+          "practical"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "261231",
@@ -783,11 +1340,6 @@
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "SIA",
-      "values": [
-        "helping",
-        "impact",
-        "independence"
-      ],
       "subjects": {
         "helpful": [
           "society_culture",
@@ -841,7 +1393,69 @@
       "drivers": [
         "care-economy"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 11,
+          "I": 100,
+          "A": 56,
+          "S": 100,
+          "E": 33,
+          "C": 56
+        },
+        "skills": {
+          "quantitative": 67,
+          "communication": 100,
+          "scientific": 89,
+          "digital": 56,
+          "spatial": 22,
+          "practical": 22,
+          "interpersonal": 100,
+          "leadership": 56
+        },
+        "values": {
+          "purpose": 100,
+          "financial": 67,
+          "security": 67,
+          "autonomy": 89,
+          "creativity": 56,
+          "leadership": 44,
+          "worklife": 67,
+          "learning": 100
+        },
+        "environment": {
+          "teamwork": 33,
+          "flexibility": 67,
+          "physical": 11,
+          "variety": 78
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 67,
+        "graduateOutcome": 78,
+        "ai": {
+          "automation": 22,
+          "augmentation": 78
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "biology",
+          "english",
+          "humanities",
+          "mathematics"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "261331",
@@ -854,11 +1468,6 @@
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "SEC",
-      "values": [
-        "helping",
-        "impact",
-        "teamwork"
-      ],
       "subjects": {
         "helpful": [
           "society_culture",
@@ -920,7 +1529,67 @@
       "drivers": [
         "care-economy"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 22,
+          "I": 67,
+          "A": 33,
+          "S": 100,
+          "E": 56,
+          "C": 56
+        },
+        "skills": {
+          "quantitative": 33,
+          "communication": 100,
+          "scientific": 56,
+          "digital": 56,
+          "spatial": 22,
+          "practical": 33,
+          "interpersonal": 100,
+          "leadership": 67
+        },
+        "values": {
+          "purpose": 100,
+          "financial": 44,
+          "security": 78,
+          "autonomy": 67,
+          "creativity": 44,
+          "leadership": 56,
+          "worklife": 56,
+          "learning": 67
+        },
+        "environment": {
+          "teamwork": 67,
+          "flexibility": 67,
+          "physical": 44,
+          "variety": 89
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 89,
+        "graduateOutcome": 78,
+        "ai": {
+          "automation": 22,
+          "augmentation": 67
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "english",
+          "humanities"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "261131",
@@ -933,11 +1602,6 @@
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "SAI",
-      "values": [
-        "helping",
-        "independence",
-        "impact"
-      ],
       "subjects": {
         "helpful": [
           "society_culture",
@@ -998,7 +1662,68 @@
       "drivers": [
         "care-economy"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 11,
+          "I": 67,
+          "A": 56,
+          "S": 100,
+          "E": 33,
+          "C": 33
+        },
+        "skills": {
+          "quantitative": 33,
+          "communication": 100,
+          "scientific": 44,
+          "digital": 44,
+          "spatial": 22,
+          "practical": 22,
+          "interpersonal": 100,
+          "leadership": 44
+        },
+        "values": {
+          "purpose": 100,
+          "financial": 44,
+          "security": 78,
+          "autonomy": 56,
+          "creativity": 78,
+          "leadership": 33,
+          "worklife": 67,
+          "learning": 67
+        },
+        "environment": {
+          "teamwork": 22,
+          "flexibility": 67,
+          "physical": 11,
+          "variety": 67
+        }
+      },
+      "market": {
+        "shortage": "no-shortage",
+        "regionalBreadth": 67,
+        "graduateOutcome": 56,
+        "ai": {
+          "automation": 22,
+          "augmentation": 56
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "biology",
+          "english",
+          "humanities"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "269432",
@@ -1011,12 +1736,6 @@
       "industry": "Health Care and Social Assistance",
       "skillLevel": 2,
       "riasec": "SRI",
-      "values": [
-        "helping",
-        "variety",
-        "teamwork",
-        "impact"
-      ],
       "subjects": {
         "helpful": [
           "biology",
@@ -1069,7 +1788,67 @@
       "drivers": [
         "ageing-population"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 89,
+          "I": 78,
+          "A": 22,
+          "S": 100,
+          "E": 44,
+          "C": 44
+        },
+        "skills": {
+          "quantitative": 56,
+          "communication": 89,
+          "scientific": 78,
+          "digital": 56,
+          "spatial": 44,
+          "practical": 89,
+          "interpersonal": 100,
+          "leadership": 78
+        },
+        "values": {
+          "purpose": 100,
+          "financial": 67,
+          "security": 89,
+          "autonomy": 56,
+          "creativity": 33,
+          "leadership": 56,
+          "worklife": 33,
+          "learning": 67
+        },
+        "environment": {
+          "teamwork": 100,
+          "flexibility": 44,
+          "physical": 100,
+          "variety": 100
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 89,
+        "graduateOutcome": 89,
+        "ai": {
+          "automation": 11,
+          "augmentation": 44
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "biology",
+          "chemistry"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "442331",
@@ -1082,11 +1861,6 @@
       "industry": "Health Care and Social Assistance",
       "skillLevel": 4,
       "riasec": "SCR",
-      "values": [
-        "helping",
-        "security",
-        "teamwork"
-      ],
       "subjects": {
         "helpful": [
           "biology",
@@ -1146,9 +1920,66 @@
       "drivers": [
         "ageing-population"
       ],
-      "apprenticeshipAreas": [
-        "care"
-      ]
+      "profile": {
+        "interests": {
+          "R": 56,
+          "I": 44,
+          "A": 33,
+          "S": 89,
+          "E": 33,
+          "C": 78
+        },
+        "skills": {
+          "quantitative": 33,
+          "communication": 67,
+          "scientific": 44,
+          "digital": 56,
+          "spatial": 44,
+          "practical": 67,
+          "interpersonal": 89,
+          "leadership": 33
+        },
+        "values": {
+          "purpose": 67,
+          "financial": 33,
+          "security": 78,
+          "autonomy": 22,
+          "creativity": 22,
+          "leadership": 22,
+          "worklife": 78,
+          "learning": 33
+        },
+        "environment": {
+          "teamwork": 89,
+          "flexibility": 22,
+          "physical": 67,
+          "variety": 33
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 67,
+        "graduateOutcome": 67,
+        "ai": {
+          "automation": 44,
+          "augmentation": 44
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "biology"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "1413",
@@ -1161,11 +1992,6 @@
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "ESC",
-      "values": [
-        "leadership",
-        "helping",
-        "impact"
-      ],
       "subjects": {
         "helpful": [
           "business",
@@ -1220,7 +2046,68 @@
         "ageing-population",
         "care-economy"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 22,
+          "I": 56,
+          "A": 33,
+          "S": 89,
+          "E": 100,
+          "C": 78
+        },
+        "skills": {
+          "quantitative": 67,
+          "communication": 100,
+          "scientific": 44,
+          "digital": 67,
+          "spatial": 33,
+          "practical": 33,
+          "interpersonal": 100,
+          "leadership": 100
+        },
+        "values": {
+          "purpose": 100,
+          "financial": 78,
+          "security": 78,
+          "autonomy": 78,
+          "creativity": 56,
+          "leadership": 100,
+          "worklife": 44,
+          "learning": 67
+        },
+        "environment": {
+          "teamwork": 78,
+          "flexibility": 67,
+          "physical": 33,
+          "variety": 100
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 78,
+        "graduateOutcome": 78,
+        "ai": {
+          "automation": 33,
+          "augmentation": 78
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "business",
+          "english",
+          "humanities"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "431132",
@@ -1233,11 +2120,6 @@
       "industry": "Health Care and Social Assistance",
       "skillLevel": 4,
       "riasec": "SAR",
-      "values": [
-        "helping",
-        "creativity",
-        "teamwork"
-      ],
       "subjects": {
         "helpful": [
           "society_culture",
@@ -1308,9 +2190,68 @@
       "drivers": [
         "care-economy"
       ],
-      "apprenticeshipAreas": [
-        "care"
-      ]
+      "profile": {
+        "interests": {
+          "R": 56,
+          "I": 33,
+          "A": 78,
+          "S": 100,
+          "E": 33,
+          "C": 44
+        },
+        "skills": {
+          "quantitative": 33,
+          "communication": 78,
+          "scientific": 33,
+          "digital": 33,
+          "spatial": 44,
+          "practical": 67,
+          "interpersonal": 100,
+          "leadership": 44
+        },
+        "values": {
+          "purpose": 100,
+          "financial": 22,
+          "security": 67,
+          "autonomy": 44,
+          "creativity": 78,
+          "leadership": 33,
+          "worklife": 56,
+          "learning": 44
+        },
+        "environment": {
+          "teamwork": 89,
+          "flexibility": 56,
+          "physical": 89,
+          "variety": 78
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 100,
+        "graduateOutcome": 78,
+        "ai": {
+          "automation": 11,
+          "augmentation": 44
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "arts",
+          "english",
+          "humanities"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "251131",
@@ -1323,11 +2264,6 @@
       "industry": "Education and Training",
       "skillLevel": 1,
       "riasec": "SAE",
-      "values": [
-        "helping",
-        "creativity",
-        "impact"
-      ],
       "subjects": {
         "helpful": [
           "english",
@@ -1388,7 +2324,68 @@
       "drivers": [
         "care-economy"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 44,
+          "I": 56,
+          "A": 78,
+          "S": 100,
+          "E": 44,
+          "C": 44
+        },
+        "skills": {
+          "quantitative": 44,
+          "communication": 89,
+          "scientific": 44,
+          "digital": 44,
+          "spatial": 44,
+          "practical": 56,
+          "interpersonal": 100,
+          "leadership": 67
+        },
+        "values": {
+          "purpose": 100,
+          "financial": 44,
+          "security": 78,
+          "autonomy": 56,
+          "creativity": 89,
+          "leadership": 56,
+          "worklife": 56,
+          "learning": 67
+        },
+        "environment": {
+          "teamwork": 78,
+          "flexibility": 67,
+          "physical": 78,
+          "variety": 89
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 100,
+        "graduateOutcome": 89,
+        "ai": {
+          "automation": 22,
+          "augmentation": 56
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "arts",
+          "english",
+          "humanities"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "251231",
@@ -1401,12 +2398,6 @@
       "industry": "Education and Training",
       "skillLevel": 1,
       "riasec": "SAE",
-      "values": [
-        "helping",
-        "variety",
-        "impact",
-        "security"
-      ],
       "subjects": {
         "helpful": [
           "english",
@@ -1459,7 +2450,68 @@
       "drivers": [
         "population-growth"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 33,
+          "I": 56,
+          "A": 67,
+          "S": 100,
+          "E": 56,
+          "C": 56
+        },
+        "skills": {
+          "quantitative": 67,
+          "communication": 100,
+          "scientific": 56,
+          "digital": 56,
+          "spatial": 44,
+          "practical": 44,
+          "interpersonal": 100,
+          "leadership": 78
+        },
+        "values": {
+          "purpose": 100,
+          "financial": 56,
+          "security": 89,
+          "autonomy": 56,
+          "creativity": 78,
+          "leadership": 56,
+          "worklife": 56,
+          "learning": 67
+        },
+        "environment": {
+          "teamwork": 67,
+          "flexibility": 44,
+          "physical": 56,
+          "variety": 89
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 100,
+        "graduateOutcome": 89,
+        "ai": {
+          "automation": 22,
+          "augmentation": 67
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "english",
+          "humanities",
+          "mathematics"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "251331",
@@ -1472,12 +2524,6 @@
       "industry": "Education and Training",
       "skillLevel": 1,
       "riasec": "SAI",
-      "values": [
-        "helping",
-        "variety",
-        "security",
-        "impact"
-      ],
       "subjects": {
         "helpful": [
           "english",
@@ -1530,7 +2576,69 @@
       "drivers": [
         "population-growth"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 33,
+          "I": 78,
+          "A": 56,
+          "S": 100,
+          "E": 56,
+          "C": 44
+        },
+        "skills": {
+          "quantitative": 67,
+          "communication": 100,
+          "scientific": 67,
+          "digital": 56,
+          "spatial": 33,
+          "practical": 33,
+          "interpersonal": 89,
+          "leadership": 78
+        },
+        "values": {
+          "purpose": 100,
+          "financial": 56,
+          "security": 89,
+          "autonomy": 56,
+          "creativity": 67,
+          "leadership": 56,
+          "worklife": 56,
+          "learning": 78
+        },
+        "environment": {
+          "teamwork": 56,
+          "flexibility": 44,
+          "physical": 44,
+          "variety": 78
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 100,
+        "graduateOutcome": 89,
+        "ai": {
+          "automation": 33,
+          "augmentation": 67
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "biology",
+          "english",
+          "humanities",
+          "mathematics"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "273333",
@@ -1543,11 +2651,6 @@
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "IRC",
-      "values": [
-        "creativity",
-        "independence",
-        "income"
-      ],
       "subjects": {
         "helpful": [
           "maths_advanced",
@@ -1619,7 +2722,68 @@
       "drivers": [
         "digital"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 44,
+          "I": 100,
+          "A": 67,
+          "S": 44,
+          "E": 56,
+          "C": 78
+        },
+        "skills": {
+          "quantitative": 89,
+          "communication": 67,
+          "scientific": 67,
+          "digital": 100,
+          "spatial": 56,
+          "practical": 33,
+          "interpersonal": 56,
+          "leadership": 56
+        },
+        "values": {
+          "purpose": 67,
+          "financial": 89,
+          "security": 78,
+          "autonomy": 89,
+          "creativity": 89,
+          "leadership": 56,
+          "worklife": 67,
+          "learning": 100
+        },
+        "environment": {
+          "teamwork": 67,
+          "flexibility": 78,
+          "physical": 11,
+          "variety": 89
+        }
+      },
+      "market": {
+        "shortage": "no-shortage",
+        "regionalBreadth": 33,
+        "graduateOutcome": 78,
+        "ai": {
+          "automation": 56,
+          "augmentation": 100
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "computing",
+          "mathematics",
+          "physics"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "271133",
@@ -1632,11 +2796,6 @@
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "ICR",
-      "values": [
-        "security",
-        "income",
-        "independence"
-      ],
       "subjects": {
         "helpful": [
           "it_software",
@@ -1706,7 +2865,67 @@
       "drivers": [
         "digital"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 33,
+          "I": 100,
+          "A": 44,
+          "S": 33,
+          "E": 44,
+          "C": 89
+        },
+        "skills": {
+          "quantitative": 78,
+          "communication": 78,
+          "scientific": 78,
+          "digital": 100,
+          "spatial": 44,
+          "practical": 33,
+          "interpersonal": 56,
+          "leadership": 56
+        },
+        "values": {
+          "purpose": 67,
+          "financial": 89,
+          "security": 89,
+          "autonomy": 67,
+          "creativity": 56,
+          "leadership": 44,
+          "worklife": 56,
+          "learning": 100
+        },
+        "environment": {
+          "teamwork": 67,
+          "flexibility": 56,
+          "physical": 11,
+          "variety": 78
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 44,
+        "graduateOutcome": 78,
+        "ai": {
+          "automation": 44,
+          "augmentation": 89
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "computing",
+          "mathematics"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "273232",
@@ -1719,11 +2938,6 @@
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "ICE",
-      "values": [
-        "teamwork",
-        "variety",
-        "income"
-      ],
       "subjects": {
         "helpful": [
           "it_software",
@@ -1785,7 +2999,68 @@
       "drivers": [
         "digital"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 22,
+          "I": 78,
+          "A": 44,
+          "S": 67,
+          "E": 67,
+          "C": 89
+        },
+        "skills": {
+          "quantitative": 67,
+          "communication": 89,
+          "scientific": 56,
+          "digital": 89,
+          "spatial": 44,
+          "practical": 22,
+          "interpersonal": 78,
+          "leadership": 67
+        },
+        "values": {
+          "purpose": 56,
+          "financial": 78,
+          "security": 78,
+          "autonomy": 67,
+          "creativity": 67,
+          "leadership": 56,
+          "worklife": 67,
+          "learning": 89
+        },
+        "environment": {
+          "teamwork": 78,
+          "flexibility": 56,
+          "physical": 11,
+          "variety": 78
+        }
+      },
+      "market": {
+        "shortage": "no-shortage",
+        "regionalBreadth": 33,
+        "graduateOutcome": 78,
+        "ai": {
+          "automation": 67,
+          "augmentation": 89
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "business",
+          "computing",
+          "mathematics"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "1132",
@@ -1798,11 +3073,6 @@
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "EIC",
-      "values": [
-        "leadership",
-        "income",
-        "variety"
-      ],
       "subjects": {
         "helpful": [
           "it_software",
@@ -1857,7 +3127,68 @@
       "drivers": [
         "digital"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 22,
+          "I": 78,
+          "A": 44,
+          "S": 56,
+          "E": 100,
+          "C": 78
+        },
+        "skills": {
+          "quantitative": 78,
+          "communication": 89,
+          "scientific": 56,
+          "digital": 89,
+          "spatial": 44,
+          "practical": 22,
+          "interpersonal": 89,
+          "leadership": 100
+        },
+        "values": {
+          "purpose": 67,
+          "financial": 100,
+          "security": 78,
+          "autonomy": 78,
+          "creativity": 67,
+          "leadership": 100,
+          "worklife": 56,
+          "learning": 89
+        },
+        "environment": {
+          "teamwork": 78,
+          "flexibility": 67,
+          "physical": 11,
+          "variety": 89
+        }
+      },
+      "market": {
+        "shortage": "no-shortage",
+        "regionalBreadth": 44,
+        "graduateOutcome": 78,
+        "ai": {
+          "automation": 33,
+          "augmentation": 89
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "business",
+          "computing",
+          "mathematics"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "223234",
@@ -1870,11 +3201,6 @@
       "industry": "Financial and Insurance Services",
       "skillLevel": 1,
       "riasec": "ICR",
-      "values": [
-        "independence",
-        "income",
-        "impact"
-      ],
       "subjects": {
         "helpful": [
           "maths_extension",
@@ -1930,7 +3256,70 @@
       "drivers": [
         "digital"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 22,
+          "I": 100,
+          "A": 56,
+          "S": 33,
+          "E": 44,
+          "C": 89
+        },
+        "skills": {
+          "quantitative": 100,
+          "communication": 78,
+          "scientific": 89,
+          "digital": 100,
+          "spatial": 44,
+          "practical": 22,
+          "interpersonal": 44,
+          "leadership": 44
+        },
+        "values": {
+          "purpose": 67,
+          "financial": 89,
+          "security": 78,
+          "autonomy": 78,
+          "creativity": 78,
+          "leadership": 44,
+          "worklife": 67,
+          "learning": 100
+        },
+        "environment": {
+          "teamwork": 56,
+          "flexibility": 78,
+          "physical": 11,
+          "variety": 78
+        }
+      },
+      "market": {
+        "shortage": "no-shortage",
+        "regionalBreadth": 33,
+        "graduateOutcome": 78,
+        "ai": {
+          "automation": 56,
+          "augmentation": 100
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "business",
+          "computing",
+          "mathematics"
+        ],
+        "required": [
+          "mathematics"
+        ]
+      }
     },
     {
       "osca": "243231",
@@ -1943,11 +3332,6 @@
       "industry": "Construction",
       "skillLevel": 1,
       "riasec": "RIC",
-      "values": [
-        "impact",
-        "teamwork",
-        "income"
-      ],
       "subjects": {
         "helpful": [
           "maths_advanced",
@@ -2014,7 +3398,69 @@
         "infrastructure",
         "population-growth"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 78,
+          "I": 89,
+          "A": 44,
+          "S": 44,
+          "E": 56,
+          "C": 78
+        },
+        "skills": {
+          "quantitative": 89,
+          "communication": 78,
+          "scientific": 89,
+          "digital": 78,
+          "spatial": 89,
+          "practical": 56,
+          "interpersonal": 67,
+          "leadership": 67
+        },
+        "values": {
+          "purpose": 89,
+          "financial": 78,
+          "security": 89,
+          "autonomy": 56,
+          "creativity": 67,
+          "leadership": 56,
+          "worklife": 56,
+          "learning": 89
+        },
+        "environment": {
+          "teamwork": 78,
+          "flexibility": 44,
+          "physical": 56,
+          "variety": 78
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 78,
+        "graduateOutcome": 89,
+        "ai": {
+          "automation": 33,
+          "augmentation": 78
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "mathematics",
+          "physics"
+        ],
+        "required": [
+          "mathematics"
+        ]
+      }
     },
     {
       "osca": "243331",
@@ -2027,11 +3473,6 @@
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "IRC",
-      "values": [
-        "impact",
-        "income",
-        "creativity"
-      ],
       "subjects": {
         "helpful": [
           "maths_advanced",
@@ -2088,7 +3529,69 @@
         "net-zero",
         "infrastructure"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 78,
+          "I": 100,
+          "A": 44,
+          "S": 33,
+          "E": 44,
+          "C": 78
+        },
+        "skills": {
+          "quantitative": 100,
+          "communication": 67,
+          "scientific": 100,
+          "digital": 78,
+          "spatial": 67,
+          "practical": 56,
+          "interpersonal": 56,
+          "leadership": 56
+        },
+        "values": {
+          "purpose": 78,
+          "financial": 89,
+          "security": 89,
+          "autonomy": 56,
+          "creativity": 67,
+          "leadership": 44,
+          "worklife": 56,
+          "learning": 100
+        },
+        "environment": {
+          "teamwork": 67,
+          "flexibility": 44,
+          "physical": 44,
+          "variety": 78
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 67,
+        "graduateOutcome": 89,
+        "ai": {
+          "automation": 33,
+          "augmentation": 78
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "mathematics",
+          "physics"
+        ],
+        "required": [
+          "mathematics"
+        ]
+      }
     },
     {
       "osca": "243532",
@@ -2101,11 +3604,6 @@
       "industry": "Manufacturing",
       "skillLevel": 1,
       "riasec": "RIC",
-      "values": [
-        "creativity",
-        "income",
-        "teamwork"
-      ],
       "subjects": {
         "helpful": [
           "maths_advanced",
@@ -2161,7 +3659,70 @@
       "drivers": [
         "net-zero"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 89,
+          "I": 89,
+          "A": 56,
+          "S": 33,
+          "E": 44,
+          "C": 67
+        },
+        "skills": {
+          "quantitative": 89,
+          "communication": 67,
+          "scientific": 89,
+          "digital": 78,
+          "spatial": 89,
+          "practical": 67,
+          "interpersonal": 56,
+          "leadership": 56
+        },
+        "values": {
+          "purpose": 67,
+          "financial": 78,
+          "security": 78,
+          "autonomy": 67,
+          "creativity": 78,
+          "leadership": 44,
+          "worklife": 56,
+          "learning": 89
+        },
+        "environment": {
+          "teamwork": 67,
+          "flexibility": 44,
+          "physical": 56,
+          "variety": 78
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 67,
+        "graduateOutcome": 89,
+        "ai": {
+          "automation": 33,
+          "augmentation": 78
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "mathematics",
+          "physics",
+          "practical"
+        ],
+        "required": [
+          "mathematics"
+        ]
+      }
     },
     {
       "osca": "241131",
@@ -2174,11 +3735,6 @@
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "AIR",
-      "values": [
-        "creativity",
-        "impact",
-        "independence"
-      ],
       "subjects": {
         "helpful": [
           "visual_arts",
@@ -2234,7 +3790,69 @@
         "infrastructure",
         "population-growth"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 56,
+          "I": 67,
+          "A": 100,
+          "S": 44,
+          "E": 56,
+          "C": 56
+        },
+        "skills": {
+          "quantitative": 67,
+          "communication": 78,
+          "scientific": 56,
+          "digital": 78,
+          "spatial": 100,
+          "practical": 44,
+          "interpersonal": 67,
+          "leadership": 56
+        },
+        "values": {
+          "purpose": 67,
+          "financial": 67,
+          "security": 56,
+          "autonomy": 78,
+          "creativity": 100,
+          "leadership": 44,
+          "worklife": 56,
+          "learning": 78
+        },
+        "environment": {
+          "teamwork": 67,
+          "flexibility": 67,
+          "physical": 33,
+          "variety": 78
+        }
+      },
+      "market": {
+        "shortage": "no-shortage",
+        "regionalBreadth": 56,
+        "graduateOutcome": 67,
+        "ai": {
+          "automation": 44,
+          "augmentation": 89
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "arts",
+          "mathematics",
+          "physics",
+          "practical"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "241234",
@@ -2247,11 +3865,6 @@
       "industry": "Construction",
       "skillLevel": 1,
       "riasec": "RIC",
-      "values": [
-        "outdoors",
-        "variety",
-        "security"
-      ],
       "subjects": {
         "helpful": [
           "maths_advanced",
@@ -2305,7 +3918,68 @@
         "infrastructure",
         "population-growth"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 78,
+          "I": 78,
+          "A": 22,
+          "S": 33,
+          "E": 33,
+          "C": 89
+        },
+        "skills": {
+          "quantitative": 89,
+          "communication": 67,
+          "scientific": 67,
+          "digital": 78,
+          "spatial": 89,
+          "practical": 67,
+          "interpersonal": 44,
+          "leadership": 44
+        },
+        "values": {
+          "purpose": 44,
+          "financial": 67,
+          "security": 78,
+          "autonomy": 67,
+          "creativity": 33,
+          "leadership": 33,
+          "worklife": 67,
+          "learning": 67
+        },
+        "environment": {
+          "teamwork": 56,
+          "flexibility": 44,
+          "physical": 67,
+          "variety": 67
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 89,
+        "graduateOutcome": 89,
+        "ai": {
+          "automation": 44,
+          "augmentation": 67
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "humanities",
+          "mathematics",
+          "physics"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "241331",
@@ -2318,11 +3992,6 @@
       "industry": "Public Administration and Safety",
       "skillLevel": 1,
       "riasec": "IEA",
-      "values": [
-        "impact",
-        "teamwork",
-        "variety"
-      ],
       "subjects": {
         "helpful": [
           "geography",
@@ -2377,7 +4046,68 @@
         "infrastructure",
         "population-growth"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 33,
+          "I": 78,
+          "A": 56,
+          "S": 67,
+          "E": 67,
+          "C": 67
+        },
+        "skills": {
+          "quantitative": 56,
+          "communication": 89,
+          "scientific": 56,
+          "digital": 67,
+          "spatial": 78,
+          "practical": 22,
+          "interpersonal": 78,
+          "leadership": 56
+        },
+        "values": {
+          "purpose": 89,
+          "financial": 56,
+          "security": 78,
+          "autonomy": 56,
+          "creativity": 67,
+          "leadership": 44,
+          "worklife": 78,
+          "learning": 67
+        },
+        "environment": {
+          "teamwork": 67,
+          "flexibility": 44,
+          "physical": 22,
+          "variety": 67
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 67,
+        "graduateOutcome": 78,
+        "ai": {
+          "automation": 44,
+          "augmentation": 78
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "business",
+          "english",
+          "humanities"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "2444",
@@ -2390,11 +4120,6 @@
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "IRC",
-      "values": [
-        "impact",
-        "outdoors",
-        "independence"
-      ],
       "subjects": {
         "helpful": [
           "biology",
@@ -2458,7 +4183,68 @@
       "drivers": [
         "net-zero"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 78,
+          "I": 100,
+          "A": 33,
+          "S": 44,
+          "E": 44,
+          "C": 56
+        },
+        "skills": {
+          "quantitative": 78,
+          "communication": 78,
+          "scientific": 100,
+          "digital": 67,
+          "spatial": 56,
+          "practical": 67,
+          "interpersonal": 56,
+          "leadership": 44
+        },
+        "values": {
+          "purpose": 100,
+          "financial": 44,
+          "security": 67,
+          "autonomy": 67,
+          "creativity": 67,
+          "leadership": 33,
+          "worklife": 67,
+          "learning": 89
+        },
+        "environment": {
+          "teamwork": 56,
+          "flexibility": 67,
+          "physical": 67,
+          "variety": 89
+        }
+      },
+      "market": {
+        "shortage": "no-shortage",
+        "regionalBreadth": 78,
+        "graduateOutcome": 67,
+        "ai": {
+          "automation": 33,
+          "augmentation": 67
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "biology",
+          "chemistry",
+          "humanities"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "244132",
@@ -2471,11 +4257,6 @@
       "industry": "Agriculture, Forestry and Fishing",
       "skillLevel": 1,
       "riasec": "IRC",
-      "values": [
-        "outdoors",
-        "impact",
-        "independence"
-      ],
       "subjects": {
         "helpful": [
           "agriculture",
@@ -2537,7 +4318,67 @@
       "drivers": [
         "net-zero"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 89,
+          "I": 100,
+          "A": 22,
+          "S": 33,
+          "E": 44,
+          "C": 56
+        },
+        "skills": {
+          "quantitative": 78,
+          "communication": 67,
+          "scientific": 100,
+          "digital": 67,
+          "spatial": 44,
+          "practical": 67,
+          "interpersonal": 56,
+          "leadership": 44
+        },
+        "values": {
+          "purpose": 89,
+          "financial": 44,
+          "security": 67,
+          "autonomy": 67,
+          "creativity": 56,
+          "leadership": 33,
+          "worklife": 67,
+          "learning": 89
+        },
+        "environment": {
+          "teamwork": 56,
+          "flexibility": 67,
+          "physical": 67,
+          "variety": 78
+        }
+      },
+      "market": {
+        "shortage": "no-shortage",
+        "regionalBreadth": 89,
+        "graduateOutcome": 67,
+        "ai": {
+          "automation": 33,
+          "augmentation": 67
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "biology",
+          "chemistry"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "244731",
@@ -2550,11 +4391,6 @@
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "IRC",
-      "values": [
-        "security",
-        "impact",
-        "independence"
-      ],
       "subjects": {
         "helpful": [
           "chemistry",
@@ -2618,7 +4454,70 @@
       "drivers": [
         "ageing-population"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 44,
+          "I": 100,
+          "A": 11,
+          "S": 33,
+          "E": 22,
+          "C": 89
+        },
+        "skills": {
+          "quantitative": 78,
+          "communication": 67,
+          "scientific": 100,
+          "digital": 78,
+          "spatial": 33,
+          "practical": 67,
+          "interpersonal": 44,
+          "leadership": 33
+        },
+        "values": {
+          "purpose": 78,
+          "financial": 56,
+          "security": 78,
+          "autonomy": 44,
+          "creativity": 33,
+          "leadership": 22,
+          "worklife": 67,
+          "learning": 78
+        },
+        "environment": {
+          "teamwork": 56,
+          "flexibility": 22,
+          "physical": 44,
+          "variety": 44
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 67,
+        "graduateOutcome": 78,
+        "ai": {
+          "automation": 56,
+          "augmentation": 67
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "biology",
+          "chemistry",
+          "mathematics"
+        ],
+        "required": [
+          "chemistry"
+        ]
+      }
     },
     {
       "osca": "269531",
@@ -2631,11 +4530,6 @@
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "IRS",
-      "values": [
-        "helping",
-        "impact",
-        "independence"
-      ],
       "subjects": {
         "helpful": [
           "biology",
@@ -2687,7 +4581,69 @@
       },
       "aiExposure": "low",
       "drivers": [],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 78,
+          "I": 100,
+          "A": 22,
+          "S": 78,
+          "E": 56,
+          "C": 44
+        },
+        "skills": {
+          "quantitative": 67,
+          "communication": 89,
+          "scientific": 100,
+          "digital": 56,
+          "spatial": 56,
+          "practical": 89,
+          "interpersonal": 89,
+          "leadership": 67
+        },
+        "values": {
+          "purpose": 100,
+          "financial": 67,
+          "security": 67,
+          "autonomy": 78,
+          "creativity": 44,
+          "leadership": 56,
+          "worklife": 33,
+          "learning": 89
+        },
+        "environment": {
+          "teamwork": 67,
+          "flexibility": 56,
+          "physical": 89,
+          "variety": 89
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 100,
+        "graduateOutcome": 89,
+        "ai": {
+          "automation": 22,
+          "augmentation": 56
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "biology",
+          "chemistry"
+        ],
+        "required": [
+          "chemistry"
+        ]
+      }
     },
     {
       "osca": "111531",
@@ -2700,11 +4656,6 @@
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "EIC",
-      "values": [
-        "leadership",
-        "impact",
-        "creativity"
-      ],
       "subjects": {
         "helpful": [
           "maths_advanced",
@@ -2761,7 +4712,69 @@
         "digital",
         "net-zero"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 33,
+          "I": 100,
+          "A": 67,
+          "S": 44,
+          "E": 89,
+          "C": 67
+        },
+        "skills": {
+          "quantitative": 89,
+          "communication": 89,
+          "scientific": 100,
+          "digital": 78,
+          "spatial": 56,
+          "practical": 33,
+          "interpersonal": 78,
+          "leadership": 100
+        },
+        "values": {
+          "purpose": 78,
+          "financial": 100,
+          "security": 67,
+          "autonomy": 89,
+          "creativity": 89,
+          "leadership": 100,
+          "worklife": 56,
+          "learning": 100
+        },
+        "environment": {
+          "teamwork": 78,
+          "flexibility": 78,
+          "physical": 22,
+          "variety": 89
+        }
+      },
+      "market": {
+        "shortage": "no-shortage",
+        "regionalBreadth": 44,
+        "graduateOutcome": 78,
+        "ai": {
+          "automation": 33,
+          "augmentation": 78
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "business",
+          "chemistry",
+          "mathematics",
+          "physics"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "211131",
@@ -2774,11 +4787,6 @@
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "CEI",
-      "values": [
-        "security",
-        "income",
-        "independence"
-      ],
       "subjects": {
         "helpful": [
           "maths_advanced",
@@ -2848,7 +4856,67 @@
       },
       "aiExposure": "high",
       "drivers": [],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 11,
+          "I": 67,
+          "A": 22,
+          "S": 44,
+          "E": 67,
+          "C": 100
+        },
+        "skills": {
+          "quantitative": 89,
+          "communication": 67,
+          "scientific": 44,
+          "digital": 89,
+          "spatial": 22,
+          "practical": 11,
+          "interpersonal": 67,
+          "leadership": 44
+        },
+        "values": {
+          "purpose": 44,
+          "financial": 89,
+          "security": 100,
+          "autonomy": 56,
+          "creativity": 33,
+          "leadership": 44,
+          "worklife": 67,
+          "learning": 67
+        },
+        "environment": {
+          "teamwork": 67,
+          "flexibility": 33,
+          "physical": 11,
+          "variety": 44
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 89,
+        "graduateOutcome": 78,
+        "ai": {
+          "automation": 78,
+          "augmentation": 78
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "business",
+          "mathematics"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "223432",
@@ -2861,11 +4929,6 @@
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "EIC",
-      "values": [
-        "income",
-        "variety",
-        "leadership"
-      ],
       "subjects": {
         "helpful": [
           "business",
@@ -2919,7 +4982,68 @@
       "drivers": [
         "digital"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 11,
+          "I": 89,
+          "A": 44,
+          "S": 56,
+          "E": 100,
+          "C": 67
+        },
+        "skills": {
+          "quantitative": 78,
+          "communication": 100,
+          "scientific": 56,
+          "digital": 78,
+          "spatial": 33,
+          "practical": 11,
+          "interpersonal": 89,
+          "leadership": 89
+        },
+        "values": {
+          "purpose": 56,
+          "financial": 100,
+          "security": 67,
+          "autonomy": 78,
+          "creativity": 78,
+          "leadership": 78,
+          "worklife": 44,
+          "learning": 89
+        },
+        "environment": {
+          "teamwork": 78,
+          "flexibility": 67,
+          "physical": 11,
+          "variety": 89
+        }
+      },
+      "market": {
+        "shortage": "no-shortage",
+        "regionalBreadth": 33,
+        "graduateOutcome": 78,
+        "ai": {
+          "automation": 56,
+          "augmentation": 89
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "business",
+          "english",
+          "mathematics"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "221534",
@@ -2932,11 +5056,6 @@
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "EAC",
-      "values": [
-        "creativity",
-        "variety",
-        "teamwork"
-      ],
       "subjects": {
         "helpful": [
           "business",
@@ -3000,7 +5119,68 @@
       "drivers": [
         "digital"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 11,
+          "I": 56,
+          "A": 89,
+          "S": 67,
+          "E": 100,
+          "C": 44
+        },
+        "skills": {
+          "quantitative": 56,
+          "communication": 89,
+          "scientific": 33,
+          "digital": 89,
+          "spatial": 56,
+          "practical": 22,
+          "interpersonal": 78,
+          "leadership": 67
+        },
+        "values": {
+          "purpose": 56,
+          "financial": 78,
+          "security": 56,
+          "autonomy": 67,
+          "creativity": 100,
+          "leadership": 56,
+          "worklife": 67,
+          "learning": 67
+        },
+        "environment": {
+          "teamwork": 78,
+          "flexibility": 67,
+          "physical": 11,
+          "variety": 78
+        }
+      },
+      "market": {
+        "shortage": "no-shortage",
+        "regionalBreadth": 56,
+        "graduateOutcome": 67,
+        "ai": {
+          "automation": 67,
+          "augmentation": 89
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "arts",
+          "business",
+          "english"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "281331",
@@ -3013,11 +5193,6 @@
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "EIS",
-      "values": [
-        "income",
-        "impact",
-        "leadership"
-      ],
       "subjects": {
         "helpful": [
           "english",
@@ -3069,7 +5244,68 @@
       },
       "aiExposure": "medium",
       "drivers": [],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 11,
+          "I": 89,
+          "A": 44,
+          "S": 67,
+          "E": 100,
+          "C": 67
+        },
+        "skills": {
+          "quantitative": 44,
+          "communication": 100,
+          "scientific": 56,
+          "digital": 56,
+          "spatial": 22,
+          "practical": 11,
+          "interpersonal": 89,
+          "leadership": 67
+        },
+        "values": {
+          "purpose": 78,
+          "financial": 100,
+          "security": 78,
+          "autonomy": 67,
+          "creativity": 44,
+          "leadership": 67,
+          "worklife": 33,
+          "learning": 89
+        },
+        "environment": {
+          "teamwork": 56,
+          "flexibility": 44,
+          "physical": 11,
+          "variety": 78
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 67,
+        "graduateOutcome": 78,
+        "ai": {
+          "automation": 56,
+          "augmentation": 89
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "business",
+          "english",
+          "humanities"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "231332",
@@ -3082,11 +5318,6 @@
       "industry": "Information Media and Telecommunications",
       "skillLevel": 1,
       "riasec": "AIS",
-      "values": [
-        "creativity",
-        "independence",
-        "variety"
-      ],
       "subjects": {
         "helpful": [
           "english",
@@ -3148,7 +5379,68 @@
       "drivers": [
         "digital"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 11,
+          "I": 78,
+          "A": 89,
+          "S": 67,
+          "E": 67,
+          "C": 44
+        },
+        "skills": {
+          "quantitative": 44,
+          "communication": 100,
+          "scientific": 56,
+          "digital": 78,
+          "spatial": 33,
+          "practical": 22,
+          "interpersonal": 89,
+          "leadership": 56
+        },
+        "values": {
+          "purpose": 89,
+          "financial": 44,
+          "security": 33,
+          "autonomy": 78,
+          "creativity": 89,
+          "leadership": 44,
+          "worklife": 44,
+          "learning": 89
+        },
+        "environment": {
+          "teamwork": 56,
+          "flexibility": 78,
+          "physical": 44,
+          "variety": 100
+        }
+      },
+      "market": {
+        "shortage": "no-shortage",
+        "regionalBreadth": 56,
+        "graduateOutcome": 56,
+        "ai": {
+          "automation": 78,
+          "augmentation": 78
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "arts",
+          "english",
+          "humanities"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "242332",
@@ -3161,11 +5453,6 @@
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "ARE",
-      "values": [
-        "creativity",
-        "independence",
-        "variety"
-      ],
       "subjects": {
         "helpful": [
           "visual_arts",
@@ -3227,7 +5514,68 @@
       "drivers": [
         "digital"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 33,
+          "I": 44,
+          "A": 100,
+          "S": 33,
+          "E": 56,
+          "C": 56
+        },
+        "skills": {
+          "quantitative": 44,
+          "communication": 67,
+          "scientific": 22,
+          "digital": 89,
+          "spatial": 100,
+          "practical": 44,
+          "interpersonal": 56,
+          "leadership": 33
+        },
+        "values": {
+          "purpose": 44,
+          "financial": 56,
+          "security": 44,
+          "autonomy": 78,
+          "creativity": 100,
+          "leadership": 33,
+          "worklife": 67,
+          "learning": 67
+        },
+        "environment": {
+          "teamwork": 44,
+          "flexibility": 78,
+          "physical": 11,
+          "variety": 78
+        }
+      },
+      "market": {
+        "shortage": "no-shortage",
+        "regionalBreadth": 44,
+        "graduateOutcome": 56,
+        "ai": {
+          "automation": 78,
+          "augmentation": 89
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "arts",
+          "computing",
+          "practical"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "242133",
@@ -3240,11 +5588,6 @@
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "AIC",
-      "values": [
-        "creativity",
-        "independence",
-        "income"
-      ],
       "subjects": {
         "helpful": [
           "it_software",
@@ -3307,7 +5650,68 @@
       "drivers": [
         "digital"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 33,
+          "I": 67,
+          "A": 100,
+          "S": 33,
+          "E": 44,
+          "C": 67
+        },
+        "skills": {
+          "quantitative": 67,
+          "communication": 67,
+          "scientific": 33,
+          "digital": 100,
+          "spatial": 89,
+          "practical": 33,
+          "interpersonal": 56,
+          "leadership": 33
+        },
+        "values": {
+          "purpose": 44,
+          "financial": 67,
+          "security": 56,
+          "autonomy": 78,
+          "creativity": 100,
+          "leadership": 33,
+          "worklife": 67,
+          "learning": 78
+        },
+        "environment": {
+          "teamwork": 56,
+          "flexibility": 78,
+          "physical": 11,
+          "variety": 78
+        }
+      },
+      "market": {
+        "shortage": "no-shortage",
+        "regionalBreadth": 44,
+        "graduateOutcome": 67,
+        "ai": {
+          "automation": 67,
+          "augmentation": 89
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "arts",
+          "computing",
+          "practical"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "231633",
@@ -3320,11 +5724,6 @@
       "industry": "Arts and Recreation Services",
       "skillLevel": 1,
       "riasec": "AES",
-      "values": [
-        "creativity",
-        "independence",
-        "variety"
-      ],
       "subjects": {
         "helpful": [
           "music",
@@ -3383,7 +5782,66 @@
       },
       "aiExposure": "medium",
       "drivers": [],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 44,
+          "I": 44,
+          "A": 100,
+          "S": 56,
+          "E": 67,
+          "C": 22
+        },
+        "skills": {
+          "quantitative": 44,
+          "communication": 67,
+          "scientific": 22,
+          "digital": 56,
+          "spatial": 44,
+          "practical": 67,
+          "interpersonal": 56,
+          "leadership": 44
+        },
+        "values": {
+          "purpose": 67,
+          "financial": 33,
+          "security": 22,
+          "autonomy": 100,
+          "creativity": 100,
+          "leadership": 44,
+          "worklife": 56,
+          "learning": 67
+        },
+        "environment": {
+          "teamwork": 67,
+          "flexibility": 100,
+          "physical": 67,
+          "variety": 89
+        }
+      },
+      "market": {
+        "shortage": "no-shortage",
+        "regionalBreadth": 44,
+        "graduateOutcome": 33,
+        "ai": {
+          "automation": 33,
+          "augmentation": 67
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "arts"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "231131",
@@ -3396,11 +5854,6 @@
       "industry": "Arts and Recreation Services",
       "skillLevel": 1,
       "riasec": "AES",
-      "values": [
-        "creativity",
-        "variety",
-        "independence"
-      ],
       "subjects": {
         "helpful": [
           "drama",
@@ -3451,7 +5904,67 @@
       },
       "aiExposure": "low",
       "drivers": [],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 33,
+          "I": 44,
+          "A": 100,
+          "S": 67,
+          "E": 78,
+          "C": 22
+        },
+        "skills": {
+          "quantitative": 22,
+          "communication": 89,
+          "scientific": 22,
+          "digital": 33,
+          "spatial": 44,
+          "practical": 44,
+          "interpersonal": 78,
+          "leadership": 44
+        },
+        "values": {
+          "purpose": 67,
+          "financial": 44,
+          "security": 22,
+          "autonomy": 78,
+          "creativity": 100,
+          "leadership": 33,
+          "worklife": 44,
+          "learning": 67
+        },
+        "environment": {
+          "teamwork": 89,
+          "flexibility": 89,
+          "physical": 78,
+          "variety": 100
+        }
+      },
+      "market": {
+        "shortage": "no-shortage",
+        "regionalBreadth": 22,
+        "graduateOutcome": 33,
+        "ai": {
+          "automation": 33,
+          "augmentation": 44
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "arts",
+          "biology"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "381231",
@@ -3464,11 +5977,6 @@
       "industry": "Construction",
       "skillLevel": 3,
       "riasec": "RIC",
-      "values": [
-        "security",
-        "income",
-        "variety"
-      ],
       "subjects": {
         "helpful": [
           "maths_general",
@@ -3526,9 +6034,68 @@
         "infrastructure",
         "housing"
       ],
-      "apprenticeshipAreas": [
-        "electrical"
-      ]
+      "profile": {
+        "interests": {
+          "R": 100,
+          "I": 67,
+          "A": 22,
+          "S": 33,
+          "E": 44,
+          "C": 67
+        },
+        "skills": {
+          "quantitative": 78,
+          "communication": 56,
+          "scientific": 67,
+          "digital": 67,
+          "spatial": 78,
+          "practical": 100,
+          "interpersonal": 56,
+          "leadership": 44
+        },
+        "values": {
+          "purpose": 56,
+          "financial": 78,
+          "security": 89,
+          "autonomy": 67,
+          "creativity": 33,
+          "leadership": 44,
+          "worklife": 67,
+          "learning": 67
+        },
+        "environment": {
+          "teamwork": 56,
+          "flexibility": 44,
+          "physical": 100,
+          "variety": 78
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 100,
+        "graduateOutcome": 100,
+        "ai": {
+          "automation": 22,
+          "augmentation": 44
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "mathematics",
+          "physics",
+          "practical"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "363131",
@@ -3541,11 +6108,6 @@
       "industry": "Construction",
       "skillLevel": 3,
       "riasec": "RCI",
-      "values": [
-        "security",
-        "income",
-        "independence"
-      ],
       "subjects": {
         "helpful": [
           "maths_general",
@@ -3601,9 +6163,67 @@
         "housing",
         "infrastructure"
       ],
-      "apprenticeshipAreas": [
-        "plumbing"
-      ]
+      "profile": {
+        "interests": {
+          "R": 100,
+          "I": 56,
+          "A": 22,
+          "S": 44,
+          "E": 56,
+          "C": 56
+        },
+        "skills": {
+          "quantitative": 67,
+          "communication": 56,
+          "scientific": 44,
+          "digital": 44,
+          "spatial": 78,
+          "practical": 100,
+          "interpersonal": 67,
+          "leadership": 44
+        },
+        "values": {
+          "purpose": 56,
+          "financial": 78,
+          "security": 89,
+          "autonomy": 78,
+          "creativity": 33,
+          "leadership": 44,
+          "worklife": 67,
+          "learning": 44
+        },
+        "environment": {
+          "teamwork": 44,
+          "flexibility": 56,
+          "physical": 100,
+          "variety": 78
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 100,
+        "graduateOutcome": 100,
+        "ai": {
+          "automation": 11,
+          "augmentation": 33
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "mathematics",
+          "practical"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "372132",
@@ -3616,11 +6236,6 @@
       "industry": "Construction",
       "skillLevel": 3,
       "riasec": "RCI",
-      "values": [
-        "outdoors",
-        "security",
-        "variety"
-      ],
       "subjects": {
         "helpful": [
           "design_tech",
@@ -3674,9 +6289,67 @@
       "drivers": [
         "housing"
       ],
-      "apprenticeshipAreas": [
-        "building"
-      ]
+      "profile": {
+        "interests": {
+          "R": 100,
+          "I": 44,
+          "A": 44,
+          "S": 33,
+          "E": 44,
+          "C": 56
+        },
+        "skills": {
+          "quantitative": 67,
+          "communication": 44,
+          "scientific": 33,
+          "digital": 33,
+          "spatial": 89,
+          "practical": 100,
+          "interpersonal": 56,
+          "leadership": 44
+        },
+        "values": {
+          "purpose": 44,
+          "financial": 67,
+          "security": 78,
+          "autonomy": 67,
+          "creativity": 56,
+          "leadership": 33,
+          "worklife": 67,
+          "learning": 44
+        },
+        "environment": {
+          "teamwork": 67,
+          "flexibility": 44,
+          "physical": 100,
+          "variety": 67
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 100,
+        "graduateOutcome": 89,
+        "ai": {
+          "automation": 11,
+          "augmentation": 33
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "mathematics",
+          "practical"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "351131",
@@ -3689,11 +6362,6 @@
       "industry": "Other Services",
       "skillLevel": 3,
       "riasec": "RIC",
-      "values": [
-        "security",
-        "independence",
-        "variety"
-      ],
       "subjects": {
         "helpful": [
           "design_tech",
@@ -3748,9 +6416,67 @@
       "drivers": [
         "net-zero"
       ],
-      "apprenticeshipAreas": [
-        "automotive"
-      ]
+      "profile": {
+        "interests": {
+          "R": 100,
+          "I": 78,
+          "A": 22,
+          "S": 33,
+          "E": 33,
+          "C": 56
+        },
+        "skills": {
+          "quantitative": 56,
+          "communication": 44,
+          "scientific": 56,
+          "digital": 78,
+          "spatial": 56,
+          "practical": 100,
+          "interpersonal": 56,
+          "leadership": 33
+        },
+        "values": {
+          "purpose": 33,
+          "financial": 56,
+          "security": 78,
+          "autonomy": 56,
+          "creativity": 33,
+          "leadership": 22,
+          "worklife": 67,
+          "learning": 67
+        },
+        "environment": {
+          "teamwork": 56,
+          "flexibility": 33,
+          "physical": 89,
+          "variety": 67
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 100,
+        "graduateOutcome": 89,
+        "ai": {
+          "automation": 22,
+          "augmentation": 56
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "physics",
+          "practical"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "382131",
@@ -3763,11 +6489,6 @@
       "industry": "Construction",
       "skillLevel": 3,
       "riasec": "RIC",
-      "values": [
-        "security",
-        "income",
-        "variety"
-      ],
       "subjects": {
         "helpful": [
           "physics",
@@ -3823,9 +6544,68 @@
         "net-zero",
         "housing"
       ],
-      "apprenticeshipAreas": [
-        "electrical"
-      ]
+      "profile": {
+        "interests": {
+          "R": 100,
+          "I": 67,
+          "A": 22,
+          "S": 33,
+          "E": 44,
+          "C": 56
+        },
+        "skills": {
+          "quantitative": 67,
+          "communication": 56,
+          "scientific": 56,
+          "digital": 67,
+          "spatial": 67,
+          "practical": 100,
+          "interpersonal": 56,
+          "leadership": 33
+        },
+        "values": {
+          "purpose": 44,
+          "financial": 78,
+          "security": 89,
+          "autonomy": 67,
+          "creativity": 33,
+          "leadership": 33,
+          "worklife": 67,
+          "learning": 56
+        },
+        "environment": {
+          "teamwork": 44,
+          "flexibility": 44,
+          "physical": 100,
+          "variety": 78
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 89,
+        "graduateOutcome": 89,
+        "ai": {
+          "automation": 22,
+          "augmentation": 44
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "mathematics",
+          "physics",
+          "practical"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "332232",
@@ -3838,11 +6618,6 @@
       "industry": "Manufacturing",
       "skillLevel": 3,
       "riasec": "RIC",
-      "values": [
-        "security",
-        "income",
-        "independence"
-      ],
       "subjects": {
         "helpful": [
           "design_tech",
@@ -3897,9 +6672,68 @@
       "drivers": [
         "net-zero"
       ],
-      "apprenticeshipAreas": [
-        "metal"
-      ]
+      "profile": {
+        "interests": {
+          "R": 100,
+          "I": 67,
+          "A": 33,
+          "S": 22,
+          "E": 33,
+          "C": 67
+        },
+        "skills": {
+          "quantitative": 78,
+          "communication": 44,
+          "scientific": 56,
+          "digital": 67,
+          "spatial": 89,
+          "practical": 100,
+          "interpersonal": 44,
+          "leadership": 33
+        },
+        "values": {
+          "purpose": 33,
+          "financial": 78,
+          "security": 89,
+          "autonomy": 56,
+          "creativity": 44,
+          "leadership": 33,
+          "worklife": 67,
+          "learning": 56
+        },
+        "environment": {
+          "teamwork": 56,
+          "flexibility": 33,
+          "physical": 89,
+          "variety": 56
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 89,
+        "graduateOutcome": 89,
+        "ai": {
+          "automation": 33,
+          "augmentation": 44
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "mathematics",
+          "physics",
+          "practical"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "331133",
@@ -3912,11 +6746,6 @@
       "industry": "Manufacturing",
       "skillLevel": 3,
       "riasec": "RCI",
-      "values": [
-        "security",
-        "income",
-        "outdoors"
-      ],
       "subjects": {
         "helpful": [
           "design_tech",
@@ -3970,9 +6799,67 @@
         "infrastructure",
         "net-zero"
       ],
-      "apprenticeshipAreas": [
-        "metal"
-      ]
+      "profile": {
+        "interests": {
+          "R": 100,
+          "I": 44,
+          "A": 33,
+          "S": 22,
+          "E": 33,
+          "C": 56
+        },
+        "skills": {
+          "quantitative": 56,
+          "communication": 33,
+          "scientific": 44,
+          "digital": 44,
+          "spatial": 78,
+          "practical": 100,
+          "interpersonal": 44,
+          "leadership": 33
+        },
+        "values": {
+          "purpose": 33,
+          "financial": 67,
+          "security": 78,
+          "autonomy": 56,
+          "creativity": 44,
+          "leadership": 22,
+          "worklife": 67,
+          "learning": 44
+        },
+        "environment": {
+          "teamwork": 56,
+          "flexibility": 33,
+          "physical": 100,
+          "variety": 56
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 89,
+        "graduateOutcome": 89,
+        "ai": {
+          "automation": 33,
+          "augmentation": 33
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "physics",
+          "practical"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "321131",
@@ -3985,11 +6872,6 @@
       "industry": "Accommodation and Food Services",
       "skillLevel": 2,
       "riasec": "ARE",
-      "values": [
-        "creativity",
-        "teamwork",
-        "variety"
-      ],
       "subjects": {
         "helpful": [
           "food_tech",
@@ -4050,9 +6932,67 @@
       "drivers": [
         "population-growth"
       ],
-      "apprenticeshipAreas": [
-        "hospitality"
-      ]
+      "profile": {
+        "interests": {
+          "R": 89,
+          "I": 33,
+          "A": 78,
+          "S": 44,
+          "E": 67,
+          "C": 56
+        },
+        "skills": {
+          "quantitative": 44,
+          "communication": 56,
+          "scientific": 44,
+          "digital": 33,
+          "spatial": 56,
+          "practical": 100,
+          "interpersonal": 67,
+          "leadership": 67
+        },
+        "values": {
+          "purpose": 44,
+          "financial": 44,
+          "security": 56,
+          "autonomy": 56,
+          "creativity": 89,
+          "leadership": 56,
+          "worklife": 22,
+          "learning": 56
+        },
+        "environment": {
+          "teamwork": 100,
+          "flexibility": 33,
+          "physical": 100,
+          "variety": 67
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 100,
+        "graduateOutcome": 78,
+        "ai": {
+          "automation": 22,
+          "augmentation": 33
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "business",
+          "practical"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "392132",
@@ -4065,11 +7005,6 @@
       "industry": "Other Services",
       "skillLevel": 3,
       "riasec": "ASR",
-      "values": [
-        "creativity",
-        "helping",
-        "independence"
-      ],
       "subjects": {
         "helpful": [
           "visual_arts",
@@ -4119,9 +7054,67 @@
       },
       "aiExposure": "low",
       "drivers": [],
-      "apprenticeshipAreas": [
-        "hair_beauty"
-      ]
+      "profile": {
+        "interests": {
+          "R": 67,
+          "I": 22,
+          "A": 89,
+          "S": 78,
+          "E": 67,
+          "C": 33
+        },
+        "skills": {
+          "quantitative": 33,
+          "communication": 78,
+          "scientific": 22,
+          "digital": 44,
+          "spatial": 67,
+          "practical": 89,
+          "interpersonal": 89,
+          "leadership": 44
+        },
+        "values": {
+          "purpose": 56,
+          "financial": 44,
+          "security": 56,
+          "autonomy": 78,
+          "creativity": 89,
+          "leadership": 33,
+          "worklife": 56,
+          "learning": 44
+        },
+        "environment": {
+          "teamwork": 67,
+          "flexibility": 67,
+          "physical": 89,
+          "variety": 67
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 100,
+        "graduateOutcome": 67,
+        "ai": {
+          "automation": 11,
+          "augmentation": 33
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "arts",
+          "business"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "451331",
@@ -4134,12 +7127,6 @@
       "industry": "Public Administration and Safety",
       "skillLevel": 2,
       "riasec": "RES",
-      "values": [
-        "helping",
-        "variety",
-        "teamwork",
-        "impact"
-      ],
       "subjects": {
         "helpful": [
           "legal",
@@ -4193,7 +7180,68 @@
       "drivers": [
         "population-growth"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 67,
+          "I": 67,
+          "A": 22,
+          "S": 89,
+          "E": 78,
+          "C": 67
+        },
+        "skills": {
+          "quantitative": 44,
+          "communication": 89,
+          "scientific": 56,
+          "digital": 56,
+          "spatial": 44,
+          "practical": 78,
+          "interpersonal": 89,
+          "leadership": 78
+        },
+        "values": {
+          "purpose": 100,
+          "financial": 67,
+          "security": 100,
+          "autonomy": 33,
+          "creativity": 22,
+          "leadership": 56,
+          "worklife": 33,
+          "learning": 56
+        },
+        "environment": {
+          "teamwork": 100,
+          "flexibility": 22,
+          "physical": 89,
+          "variety": 100
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 100,
+        "graduateOutcome": 100,
+        "ai": {
+          "automation": 11,
+          "augmentation": 56
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "biology",
+          "english",
+          "humanities"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "451131",
@@ -4206,12 +7254,6 @@
       "industry": "Public Administration and Safety",
       "skillLevel": 4,
       "riasec": "RCE",
-      "values": [
-        "teamwork",
-        "variety",
-        "security",
-        "outdoors"
-      ],
       "subjects": {
         "helpful": [
           "pdhpe",
@@ -4264,7 +7306,68 @@
       "drivers": [
         "defence"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 89,
+          "I": 56,
+          "A": 22,
+          "S": 56,
+          "E": 67,
+          "C": 78
+        },
+        "skills": {
+          "quantitative": 56,
+          "communication": 67,
+          "scientific": 56,
+          "digital": 67,
+          "spatial": 56,
+          "practical": 89,
+          "interpersonal": 78,
+          "leadership": 78
+        },
+        "values": {
+          "purpose": 89,
+          "financial": 56,
+          "security": 100,
+          "autonomy": 22,
+          "creativity": 33,
+          "leadership": 56,
+          "worklife": 44,
+          "learning": 67
+        },
+        "environment": {
+          "teamwork": 100,
+          "flexibility": 11,
+          "physical": 100,
+          "variety": 78
+        }
+      },
+      "market": {
+        "shortage": "no-shortage",
+        "regionalBreadth": 78,
+        "graduateOutcome": 100,
+        "ai": {
+          "automation": 22,
+          "augmentation": 56
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "biology",
+          "mathematics",
+          "physics"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "462131",
@@ -4277,11 +7380,6 @@
       "industry": "Arts and Recreation Services",
       "skillLevel": 3,
       "riasec": "SRE",
-      "values": [
-        "helping",
-        "variety",
-        "independence"
-      ],
       "subjects": {
         "helpful": [
           "pdhpe",
@@ -4342,7 +7440,67 @@
       },
       "aiExposure": "low",
       "drivers": [],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 78,
+          "I": 44,
+          "A": 33,
+          "S": 89,
+          "E": 67,
+          "C": 33
+        },
+        "skills": {
+          "quantitative": 33,
+          "communication": 78,
+          "scientific": 56,
+          "digital": 44,
+          "spatial": 44,
+          "practical": 78,
+          "interpersonal": 89,
+          "leadership": 67
+        },
+        "values": {
+          "purpose": 78,
+          "financial": 33,
+          "security": 33,
+          "autonomy": 89,
+          "creativity": 56,
+          "leadership": 56,
+          "worklife": 67,
+          "learning": 44
+        },
+        "environment": {
+          "teamwork": 67,
+          "flexibility": 78,
+          "physical": 100,
+          "variety": 67
+        }
+      },
+      "market": {
+        "shortage": "no-shortage",
+        "regionalBreadth": 89,
+        "graduateOutcome": 56,
+        "ai": {
+          "automation": 22,
+          "augmentation": 44
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "biology",
+          "business"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "299131",
@@ -4355,11 +7513,6 @@
       "industry": "Transport, Postal and Warehousing",
       "skillLevel": 1,
       "riasec": "RIE",
-      "values": [
-        "variety",
-        "income",
-        "independence"
-      ],
       "subjects": {
         "helpful": [
           "physics",
@@ -4428,7 +7581,68 @@
       },
       "aiExposure": "low",
       "drivers": [],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 100,
+          "I": 78,
+          "A": 22,
+          "S": 33,
+          "E": 56,
+          "C": 78
+        },
+        "skills": {
+          "quantitative": 78,
+          "communication": 67,
+          "scientific": 67,
+          "digital": 78,
+          "spatial": 89,
+          "practical": 67,
+          "interpersonal": 67,
+          "leadership": 67
+        },
+        "values": {
+          "purpose": 33,
+          "financial": 100,
+          "security": 67,
+          "autonomy": 56,
+          "creativity": 22,
+          "leadership": 56,
+          "worklife": 33,
+          "learning": 67
+        },
+        "environment": {
+          "teamwork": 78,
+          "flexibility": 22,
+          "physical": 44,
+          "variety": 78
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 44,
+        "graduateOutcome": 67,
+        "ai": {
+          "automation": 33,
+          "augmentation": 67
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "humanities",
+          "mathematics",
+          "physics"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "131131",
@@ -4441,11 +7655,6 @@
       "industry": "Construction",
       "skillLevel": 1,
       "riasec": "ERC",
-      "values": [
-        "leadership",
-        "income",
-        "variety"
-      ],
       "subjects": {
         "helpful": [
           "maths_general",
@@ -4510,7 +7719,68 @@
         "housing",
         "infrastructure"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 78,
+          "I": 44,
+          "A": 22,
+          "S": 44,
+          "E": 100,
+          "C": 78
+        },
+        "skills": {
+          "quantitative": 78,
+          "communication": 89,
+          "scientific": 33,
+          "digital": 67,
+          "spatial": 78,
+          "practical": 67,
+          "interpersonal": 89,
+          "leadership": 100
+        },
+        "values": {
+          "purpose": 56,
+          "financial": 100,
+          "security": 78,
+          "autonomy": 67,
+          "creativity": 44,
+          "leadership": 100,
+          "worklife": 44,
+          "learning": 67
+        },
+        "environment": {
+          "teamwork": 100,
+          "flexibility": 56,
+          "physical": 67,
+          "variety": 89
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 78,
+        "graduateOutcome": 89,
+        "ai": {
+          "automation": 33,
+          "augmentation": 67
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "business",
+          "mathematics",
+          "practical"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "342432",
@@ -4523,11 +7793,6 @@
       "industry": "Administrative and Support Services",
       "skillLevel": 3,
       "riasec": "RAC",
-      "values": [
-        "outdoors",
-        "independence",
-        "creativity"
-      ],
       "subjects": {
         "helpful": [
           "agriculture",
@@ -4578,9 +7843,67 @@
       },
       "aiExposure": "low",
       "drivers": [],
-      "apprenticeshipAreas": [
-        "building"
-      ]
+      "profile": {
+        "interests": {
+          "R": 100,
+          "I": 33,
+          "A": 67,
+          "S": 22,
+          "E": 44,
+          "C": 44
+        },
+        "skills": {
+          "quantitative": 44,
+          "communication": 44,
+          "scientific": 44,
+          "digital": 33,
+          "spatial": 78,
+          "practical": 100,
+          "interpersonal": 56,
+          "leadership": 33
+        },
+        "values": {
+          "purpose": 44,
+          "financial": 44,
+          "security": 56,
+          "autonomy": 67,
+          "creativity": 78,
+          "leadership": 33,
+          "worklife": 67,
+          "learning": 44
+        },
+        "environment": {
+          "teamwork": 56,
+          "flexibility": 56,
+          "physical": 100,
+          "variety": 67
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 100,
+        "graduateOutcome": 78,
+        "ai": {
+          "automation": 22,
+          "augmentation": 33
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "biology",
+          "practical"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "713131",
@@ -4593,11 +7916,6 @@
       "industry": "Transport, Postal and Warehousing",
       "skillLevel": 4,
       "riasec": "RCE",
-      "values": [
-        "independence",
-        "security",
-        "outdoors"
-      ],
       "subjects": {
         "helpful": [],
         "oftenRequired": []
@@ -4642,7 +7960,64 @@
       },
       "aiExposure": "high",
       "drivers": [],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 100,
+          "I": 22,
+          "A": 11,
+          "S": 22,
+          "E": 33,
+          "C": 67
+        },
+        "skills": {
+          "quantitative": 33,
+          "communication": 33,
+          "scientific": 22,
+          "digital": 44,
+          "spatial": 67,
+          "practical": 78,
+          "interpersonal": 33,
+          "leadership": 22
+        },
+        "values": {
+          "purpose": 22,
+          "financial": 56,
+          "security": 78,
+          "autonomy": 78,
+          "creativity": 11,
+          "leadership": 11,
+          "worklife": 44,
+          "learning": 22
+        },
+        "environment": {
+          "teamwork": 11,
+          "flexibility": 33,
+          "physical": 67,
+          "variety": 44
+        }
+      },
+      "market": {
+        "shortage": "shortage",
+        "regionalBreadth": 100,
+        "graduateOutcome": 78,
+        "ai": {
+          "automation": 78,
+          "augmentation": 44
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [],
+        "required": []
+      }
     },
     {
       "osca": "622232",
@@ -4655,11 +8030,6 @@
       "industry": "Rental, Hiring and Real Estate Services",
       "skillLevel": 3,
       "riasec": "ECS",
-      "values": [
-        "income",
-        "independence",
-        "variety"
-      ],
       "subjects": {
         "helpful": [
           "business",
@@ -4715,7 +8085,68 @@
         "population-growth",
         "housing"
       ],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 22,
+          "I": 22,
+          "A": 33,
+          "S": 78,
+          "E": 100,
+          "C": 67
+        },
+        "skills": {
+          "quantitative": 56,
+          "communication": 89,
+          "scientific": 22,
+          "digital": 56,
+          "spatial": 44,
+          "practical": 22,
+          "interpersonal": 100,
+          "leadership": 67
+        },
+        "values": {
+          "purpose": 33,
+          "financial": 100,
+          "security": 33,
+          "autonomy": 89,
+          "creativity": 44,
+          "leadership": 56,
+          "worklife": 44,
+          "learning": 44
+        },
+        "environment": {
+          "teamwork": 44,
+          "flexibility": 78,
+          "physical": 56,
+          "variety": 89
+        }
+      },
+      "market": {
+        "shortage": "no-shortage",
+        "regionalBreadth": 89,
+        "graduateOutcome": 56,
+        "ai": {
+          "automation": 44,
+          "augmentation": 67
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "business",
+          "english",
+          "humanities"
+        ],
+        "required": []
+      }
     },
     {
       "osca": "561131",
@@ -4728,10 +8159,6 @@
       "industry": "Administrative and Support Services",
       "skillLevel": 4,
       "riasec": "CES",
-      "values": [
-        "security",
-        "teamwork"
-      ],
       "subjects": {
         "helpful": [
           "business",
@@ -4790,7 +8217,68 @@
       },
       "aiExposure": "high",
       "drivers": [],
-      "apprenticeshipAreas": []
+      "profile": {
+        "interests": {
+          "R": 11,
+          "I": 33,
+          "A": 11,
+          "S": 44,
+          "E": 33,
+          "C": 100
+        },
+        "skills": {
+          "quantitative": 44,
+          "communication": 56,
+          "scientific": 22,
+          "digital": 78,
+          "spatial": 22,
+          "practical": 22,
+          "interpersonal": 56,
+          "leadership": 22
+        },
+        "values": {
+          "purpose": 33,
+          "financial": 33,
+          "security": 67,
+          "autonomy": 33,
+          "creativity": 22,
+          "leadership": 22,
+          "worklife": 89,
+          "learning": 33
+        },
+        "environment": {
+          "teamwork": 67,
+          "flexibility": 11,
+          "physical": 11,
+          "variety": 22
+        }
+      },
+      "market": {
+        "shortage": "no-shortage",
+        "regionalBreadth": 89,
+        "graduateOutcome": 56,
+        "ai": {
+          "automation": 89,
+          "augmentation": 67
+        }
+      },
+      "evidence": {
+        "employmentGrowth": "Jobs and Skills Australia, 2025 Employment Projections",
+        "shortage": "Bcome editorial estimate (informed by the JSA 2025 Occupation Shortage List headlines; replace with the OSL rating)",
+        "regionalBreadth": "Bcome editorial estimate (replace with JSA NERO regional employment)",
+        "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
+        "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
+        "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+      },
+      "subjectAreas": {
+        "helpful": [
+          "business",
+          "computing",
+          "english"
+        ],
+        "required": []
+      }
     }
   ]
 }

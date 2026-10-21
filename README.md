@@ -1,36 +1,72 @@
 # Bcome
 
-An automated career advisor for Australian students in Years 10–12. Students answer an adaptive RIASEC (Holland) questionnaire. Bcome scores every career on **personal fit**, **future opportunity** and **pathway feasibility**, using Jobs and Skills Australia (JSA) employment projections and a skills layer that links qualifications to the jobs they lead to. Each student gets a plan for the rest of school, study or training, and their first years at work, with rough pay ranges and time to qualify.
+An AI-powered career navigation platform for Australian students in Years 10–12. Students complete the 36-question **Career Profile**. They first see their **Career DNA**, then careers grouped as best matches, careers worth exploring and a wildcard. Each career is scored on **personal fit**, **future opportunity** and **pathway feasibility**, and the student gets a year-by-year journey towards their top match.
+
+Rules and structured data decide the recommendations. The AI only explains them and personalises the journey. It cannot assign scores, invent statistics, salaries or prerequisites, add careers, or tell a student they are unsuitable for a career.
 
 ## How it works
 
-1. **Adaptive questionnaire** (`src/lib/questionnaire/`, questions in `data/questions/riasec-au.json`). Everyone answers 18 interest items (3 per RIASEC type), 10 work-value items, subjects and plans. Deeper interest items are only asked for the types whose ranking is still unclear. A student with clear interests answers about 35 questions; a mixed profile answers up to 65.
-2. **Occupations on OSCA** (`data/occupations/occupations.json`). Each of the 63 careers is identified by its ABS **OSCA 2024** code: a 6-digit occupation, or a 4-digit unit group for broad careers such as Registered Nurse (2654). The ANZSCO 2022 unit group is kept only to join JSA's 2025 projections, which are still published on ANZSCO.
-3. **Skills layer** (`data/skills/`, `src/lib/careers/skills.ts`). It connects **skills ↔ qualifications ↔ occupations**:
-   - 75 specialist skills in 8 clusters, plus the 10 Australian Skills Classification core competencies.
-   - 76 qualifications. VET entries use their training.gov.au code (e.g. UEE30820) and AQF level; university entries are course types with an ASCED field of education code.
-   - Every career lists its skills and its pathways (university, TAFE/VET, apprenticeship, traineeship, cadetship or other), each pathway linked to a qualification.
-   - From these links Bcome works out which skills a course builds for a job, which careers share skills, and how *portable* a career's skills are.
-4. **Three scores** (`src/lib/careers/matching.ts`), each 0–100 with the reasons and cautions behind it:
+### 1. Career Profile (`data/questions/career-profile.json`, `src/lib/questionnaire/`)
 
-   | Score | What it measures | Made up of |
-   | --- | --- | --- |
-   | Personal fit | How well the work suits the student | Interests 65%, values 20%, subjects they enjoy or are strong in 15% |
-   | Future opportunity | How the job market is likely to treat the career over 5–15 years | JSA-based outlook (10-year band and indicative 15-year band) 75%, skill portability to other growing careers 25% |
-   | Pathway feasibility | How realistic the way in is for this student now | Matches their preferred route 35%, prerequisite subjects for their year level 25%, competition for places 20%, time to qualify 10%, number of routes 10% |
+Four non-scoring onboarding questions (year, state, current subjects, broad geographic preference), then 36 questions answered by every student in the same order:
 
-   The overall match ranks careers: personal fit 50%, future opportunity 25%, pathway feasibility 25%.
-5. **Outlook** (`src/lib/careers/outlook.ts`):
-   - **5 and 10 years:** JSA projections to May 2035. Where an occupation's own figure isn't loaded, it's estimated from its major group adjusted for industry growth, labelled as an estimate, and never rated above "good".
-   - **15 years:** an indicative scenario, not a forecast. The 10-year band moves up for long-run demand drivers and down for high exposure to AI and automation.
-6. **Career facts** (`src/lib/careers/facts.ts`):
-   - **Pay:** a rough AUD range, starting and experienced.
-   - **Time to qualify:** years after Year 12, and from now.
-   - **Pathways:** each with its qualification, AQF level and the skills it builds.
-   - **Related careers:** careers that share the same skills.
+| Section | Questions | Scale | Measures |
+| --- | --- | --- | --- |
+| A. Interests | 1–12 | Strongly dislike → Would love it | RIASEC, two items per type |
+| B. Current skill confidence | 13–20 | Not confident yet → Very confident | Quantitative, communication, scientific, digital, spatial, practical, interpersonal, leadership |
+| C. Work values | 21–28 | Not important → Extremely important | Purpose, income, security, autonomy, creativity, leadership, work-life, learning; **centred on each student's own mean** so "everything is important" carries no signal |
+| D. Work environment | 29–33 | Rank + four sliders | People / Ideas / Data / Things; independent↔team, structured↔flexible, seated↔hands-on, regular↔varied |
+| E. School and pathway | 34–36 | Matrix, multi-select, single | Enjoyment and confidence in 10 subject areas; paths they'd consider; how long they'd study |
 
-   These facts come from `/data` and are attached to the plan after it is written, so the AI never makes up a salary or a duration.
-7. **Plan** (`src/lib/plan/`). With `ANTHROPIC_API_KEY` set, Claude writes the plan from the matched data only. The response is validated: it must have the right shape and may only name careers we supplied. If validation fails, or there's no key, a deterministic template writes the plan instead, so students always get one.
+The profile also gives seven **Career DNA** dimensions (analytical, creative, interpersonal, technical, entrepreneurial, structured working preference, continuous-learning appetite). It also produces a profile-quality measure: completeness drops for "not sure" answers, and consistency checks that each pair of interest items agrees and that the student didn't give the same answer to everything.
+
+### 2. Career data
+
+- **Occupations** (`data/occupations/occupations.json`): 63 careers keyed by **OSCA 2024** code. ANZSCO is kept only to join JSA projections. Each career has a 0–100 profile on the questionnaire's own dimensions (interests, skill requirements, values, work environment), plus subject areas, pathways, time to qualify, a pay range, and opportunity indicators.
+- **Skills layer** (`data/skills/`): skills ↔ qualifications ↔ occupations, shaped like the JSA National Skills Taxonomy data model.
+
+### 3. Scoring (`src/lib/careers/matching.ts`, requirements doc sections 6–13)
+
+Similarity = 1 − Σwᵢ|sᵢ − oᵢ| / Σwᵢ, with dimensions that matter more to the occupation weighted more. Skills count unused strengths at half weight, and subject prerequisites count only shortfalls.
+
+| Score | Formula |
+| --- | --- |
+| Personal fit | .35 interests + .20 skill affinity + .20 work values + .15 work environment + .10 subject affinity |
+| Future opportunity | .30 employment growth (JSA) + .20 shortage + .15 regional breadth + .15 graduate outcomes + .10 earnings potential + .10 AI adaptability |
+| AI adaptability | .50 (1 − automation) + .30 augmentation + .20 adaptation (skill portability). Kept separate from growth because JSA's projections exclude generative AI. |
+| Pathway feasibility | .30 subject prerequisites + .25 academic readiness + .20 qualification pathway fit + .10 study-duration preference + .10 alternative pathway breadth + .05 geographic accessibility |
+| **Match score** | **.60 personal fit + .25 future opportunity + .15 pathway feasibility** |
+| Confidence | .40 completeness + .25 consistency + .35 data quality → High / Moderate / Low, naming what would improve it |
+
+**Personal fit always comes first:**
+- Only careers within 12 points of the student's best personal fit (and at least 55) are recommended. A great job outlook can't bring in a poor-fit career.
+- Careers are ordered by personal fit. Opportunity and pathway only reorder careers whose fit is within 5 points of each other.
+- The student's single best fit is always the first career shown.
+- On each career card, personal fit is the headline number.
+- The AI is told to lead every explanation with fit, and the app restores the engine's order whatever order the AI uses.
+
+**Diversity and groups:**
+- Display fit = personal fit − 8 × similarity to careers already chosen, so the list isn't five versions of the same job.
+- *Best matches* are the five strongest fits.
+- *Worth exploring* holds up to two more strong fits, preferring ones that need extra subjects, skills or study.
+- The *Wildcard* is a strong fit from a different field.
+
+**Explanations:**
+- Every career shows its strong matches (+++ bars) and what the student would need to build. Gaps are never framed as unsuitability.
+- Every career shows a future-outlook summary: employment, shortage, AI augmentation and automation, income and education requirement.
+- Where it applies, a career also shows how feasibility could improve, e.g. "72 today, about 90 if you select Chemistry in Year 11".
+
+### 4. Plan and journey (`src/lib/plan/`)
+
+- The journey rules engine (`journey.ts`) builds the factual skeleton for the top match, period by period: the remaining school years, the summer after school, the study or training years, and the first two years of work.
+- Each period covers subject choices, a skill goal (e.g. "Move your communication confidence from 3/5 towards 4/5", with an activity), exploration, applications through the state's admissions centre, a backup route and starting roles.
+- With `ANTHROPIC_API_KEY` set, Claude personalises the prose. The response must keep the same careers and journey periods and must not call a student unsuitable; otherwise a deterministic template writes the plan. Scores, pay, durations and evidence are always attached from our data.
+
+### 5. Storage
+
+- Results record the instrument and algorithm versions and the Career DNA.
+- `match_results` stores each recommended career's three scores.
+- `career_feedback` stores students' reactions, to support calibrating the weights later.
 
 ## About the data
 
@@ -39,7 +75,9 @@ An automated career advisor for Australian students in Years 10–12. Students a
 - **Pay:** indicative ranges for full-time work before tax, excluding super. They are Bcome editorial estimates from typical 2025 award and market rates, not JSA or ABS data. Import JSA median earnings (below) and plans will show them alongside.
 - **Time to qualify:** the typical full-time range on the most common route.
 - **Qualification codes:** VET codes marked `verifyCode: true` may have been superseded; check them on training.gov.au.
-- **Editorial content:** Holland codes, values, subjects, skills, pathways, AI exposure and entry competitiveness are judgements for guidance and should be reviewed by a careers professional.
+- **Editorial content:** the occupation profiles (interests, skills, values, environment), Holland codes, subjects, skills, pathways and entry competitiveness are judgements for guidance and should be reviewed by a careers professional.
+- **Opportunity indicators:** shortage, regional breadth, graduate outcomes, and AI automation and augmentation are Bcome estimates for now. Each career's `evidence` field names its source and the dataset that should replace it: the JSA Occupation Shortage List, JSA NERO, QILT/NCVER outcomes, and the JSA Gen AI Transition study. The app shows these sources on each career card.
+- **Weights:** the weights follow the requirements document. They should be tested and, once there's enough student feedback, calibrated.
 
 ## Getting started
 
@@ -96,17 +134,23 @@ Row Level Security:
 
 Careers advisers can edit content without touching code:
 
-- **Questions** (`data/questions/riasec-au.json`): tier 1 items are always asked; tier 2 and 3 only when needed. Conditional questions use `showIf`.
-- **Occupations** (`data/occupations/occupations.json`): OSCA code, Holland code, values, subjects, skills, pathways, time to qualify, pay range, entry competitiveness, AI exposure and demand drivers.
+- **Questions** (`data/questions/career-profile.json`): wording, scales and options. Keep 36 numbered questions so results stay comparable, and bump `version` when wording changes.
+- **Occupations** (`data/occupations/occupations.json`): OSCA code, profile (interests, skills, values, environment), market indicators with evidence, subjects, skills, pathways, time to qualify, pay range and entry competitiveness.
 - **Skills and qualifications** (`data/skills/skills.json`, `data/skills/qualifications.json`).
 
 Run `npm run data:validate` after any edit.
 
 ## Sample output
 
-`docs/sample-plans/` has plans for the six test students, generated by the template writer, with all three scores, pay, years and skills. They're the quickest way to review matching quality.
+`docs/sample-plans/` has the full output for the six test students (Career DNA, grouped careers with all three scores, explanations and journey), generated by the template writer. They're the quickest way to review matching quality.
 
 ## Known limitations
+
+- Not yet built from the requirements document:
+  - the six-monthly "What's changed?" check-in;
+  - the career explorer ("What would my life look like if I chose this?");
+  - the counsellor and school dashboards;
+  - the Azure / Python (FastAPI) architecture the document recommends. This build stays on Next.js + Supabase; the scoring logic is self-contained and can be ported.
 
 - Only the 7 occupations JSA names in its summary have occupation-level projections until the full file is imported; the rest use labelled estimates.
 - Pay ranges are estimates until JSA earnings are imported.

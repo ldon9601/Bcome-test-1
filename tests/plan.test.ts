@@ -2,8 +2,9 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { matchCareers } from "../src/lib/careers/matching.ts";
 import { earningsData, jsaOutlook, occupationData, questionBank, skillsGraph, subjectLabels } from "../src/lib/data.ts";
-import { buildPlanContext } from "../src/lib/plan/context.ts";
+import { buildPlanContext, dnaSummary } from "../src/lib/plan/context.ts";
 import { extractJson, generatePlan } from "../src/lib/plan/generate.ts";
+import { buildJourney, milestoneFocus } from "../src/lib/plan/journey.ts";
 import { inSentence, templatePlan } from "../src/lib/plan/template.ts";
 import { validatePlanBody } from "../src/lib/plan/types.ts";
 import { buildProfile } from "../src/lib/questionnaire/scoring.ts";
@@ -18,91 +19,97 @@ function contextFor(key: string) {
 
 /** A fetch stand-in that returns the given text as an Anthropic message. */
 function fakeFetch(text: string, status = 200): typeof fetch {
-  return (async () =>
-    new Response(JSON.stringify({ content: [{ type: "text", text }] }), { status })) as unknown as typeof fetch;
+  return (async () => new Response(JSON.stringify({ content: [{ type: "text", text }] }), { status })) as unknown as typeof fetch;
 }
+
+const periodIds = (ctx: ReturnType<typeof contextFor>) => buildJourney(ctx).periods.map((p) => p.id);
 
 test("template plans are valid for every persona", () => {
   for (const p of PERSONAS) {
     const ctx = contextFor(p.key);
-    const plan = templatePlan(ctx, "2026-10-21T00:00:00Z");
-    const allowed = new Set(ctx.topCareers.map((c) => c.occupationId));
-    assert.deepEqual(validatePlanBody(plan, allowed), [], p.key);
+    const plan = templatePlan(ctx, "2026-10-22T00:00:00Z");
+    assert.deepEqual(validatePlanBody(plan, new Set(ctx.careers.map((c) => c.occupationId)), periodIds(ctx)), [], p.key);
   }
 });
 
-test("Year 12 university plans name the state's admissions centre", () => {
-  const plan = templatePlan(contextFor("priya-tech"));
-  assert.ok(plan.stages[0].actions.some((a) => a.includes("VTAC")));
-});
-
-test("Year 10 plans recommend prerequisite subjects", () => {
-  const ctx = contextFor("priya-tech");
-  ctx.student.yearLevel = 10;
+test("plans keep the engine's personal-fit order and carry every score and fact", () => {
+  const ctx = contextFor("leo-creative");
   const plan = templatePlan(ctx);
-  assert.ok(plan.stages[0].actions.some((a) => a.startsWith("Choose Maths")), plan.stages[0].actions.join(" | "));
+  assert.deepEqual(plan.careers.map((c) => c.occupationId), ctx.careers.map((c) => c.occupationId));
+  assert.ok(plan.careers.every((c) => c.scores && c.facts && c.strengths && c.future && c.confidence && c.group));
+  assert.match(plan.careers[0].whyItFits, /^It lines up with your artistic interests/);
 });
 
-test("flat profiles are told to explore rather than given a false 'strongest interest'", () => {
-  const plan = templatePlan(contextFor("ava-flat"));
-  assert.match(plan.summary, /spread fairly evenly/);
-  assert.doesNotMatch(plan.summary, /strongest interests/);
+test("the journey runs from the student's year level to their first years of work", () => {
+  assert.deepEqual(periodIds(contextFor("mia-health")), ["year-10", "year-11", "year-12", "summer", "training-start", "training-later", "early-career"]);
+  assert.deepEqual(periodIds(contextFor("priya-tech")), ["year-12", "summer", "training-start", "training-later", "early-career"]);
+  const jack = buildJourney(contextFor("jack-electrical"));
+  assert.match(jack.periods.find((p) => p.id === "training-start")!.period, /Apprenticeship|Traineeship/);
 });
 
-test("titles keep acronyms in sentences", () => {
+test("Year 10 journeys recommend missing prerequisite subjects", () => {
+  const ctx = contextFor("mia-health");
+  ctx.careers[0].missingPrerequisites = ["Chemistry"];
+  const y10 = buildJourney(ctx).periods[0];
+  assert.match(y10.actions[0].text, /^Choose Chemistry for Years 11 and 12/);
+});
+
+test("the Career DNA summary describes the student before any careers", () => {
+  const prof = buildProfile(questionBank, simulate(questionBank, PERSONAS.find((p) => p.key === "priya-tech")!).answers);
+  assert.match(dnaSummary(prof), /^You appear most energised by complex problems/);
+  const flat = buildProfile(questionBank, simulate(questionBank, PERSONAS.find((p) => p.key === "ava-flat")!).answers);
+  assert.match(dnaSummary(flat), /spread fairly evenly/);
+});
+
+test("titles keep acronyms and milestones read naturally", () => {
   assert.equal(inSentence("ICT Manager"), "ICT manager");
-  assert.equal(inSentence("Graphic / Web Designer"), "graphic / web designer");
+  assert.equal(milestoneFocus("Registered nurse"), "Become a registered nurse");
+  assert.equal(milestoneFocus("Airline first officer"), "Become an airline first officer");
+  assert.equal(milestoneFocus("Working as a planner"), "Get established as a planner");
 });
 
 test("without an API key the template is used", async () => {
-  const plan = await generatePlan(contextFor("mia-health"));
-  assert.equal(plan.meta.generatedBy, "template");
+  assert.equal((await generatePlan(contextFor("mia-health"))).meta.generatedBy, "template");
 });
 
-test("a valid AI plan is accepted", async () => {
+function aiBody(ctx: ReturnType<typeof contextFor>) {
+  const { meta: _meta, ...rest } = templatePlan(ctx);
+  return { ...rest, careers: rest.careers.map(({ occupationId, title, whyItFits, outlook, howToGetThere }) => ({ occupationId, title, whyItFits, outlook, howToGetThere })) };
+}
+
+test("a valid AI plan is accepted, with scores and facts re-attached from our data", async () => {
   const ctx = contextFor("mia-health");
-  const body = templatePlan(ctx);
-  const { meta: _meta, ...rest } = body;
-  const plan = await generatePlan(ctx, { apiKey: "test", fetchImpl: fakeFetch("```json\n" + JSON.stringify(rest) + "\n```") });
+  const body = aiBody(ctx);
+  body.careers.reverse(); // the model reorders careers
+  const plan = await generatePlan(ctx, { apiKey: "test", fetchImpl: fakeFetch("```json\n" + JSON.stringify(body) + "\n```") });
   assert.equal(plan.meta.generatedBy, "claude");
-  assert.equal(plan.meta.fallbackReason, undefined);
+  assert.deepEqual(plan.careers.map((c) => c.occupationId), ctx.careers.map((c) => c.occupationId), "engine order restored");
+  assert.deepEqual(plan.careers[0].scores, ctx.careers[0].scores);
 });
 
-test("scores and facts on an AI plan come from our data, not the model", async () => {
+test("AI plans that add a career, change the journey or call a student unsuitable are rejected", async () => {
   const ctx = contextFor("mia-health");
-  const { meta: _meta, ...rest } = templatePlan(ctx);
-  rest.topCareers = rest.topCareers.map((c) => ({ ...c, scores: { personalFit: 1, futureOpportunity: 1, pathwayFeasibility: 1 }, facts: undefined }));
-  rest.skillsBridge = ["Teamwork", "Juggling"];
-  const plan = await generatePlan(ctx, { apiKey: "test", fetchImpl: fakeFetch(JSON.stringify(rest)) });
-  assert.deepEqual(plan.topCareers[0].scores, ctx.topCareers[0].scores);
-  assert.equal(plan.topCareers[0].facts?.osca, ctx.topCareers[0].occupationId);
-  assert.ok(!plan.skillsBridge?.includes("Juggling"));
-});
+  const extra = aiBody(ctx);
+  extra.careers[0] = { ...extra.careers[0], occupationId: "999999" };
+  assert.equal((await generatePlan(ctx, { apiKey: "test", fetchImpl: fakeFetch(JSON.stringify(extra)) })).meta.generatedBy, "template");
 
-test("template plans quote starting pay and time to qualify", () => {
-  const plan = templatePlan(contextFor("jack-electrical"));
-  assert.match(plan.stages[2].actions.join(" "), /Starting pay is roughly \$\d+k/);
-  assert.match(plan.stages[1].timeframe, /years after school/);
-  assert.ok(plan.topCareers.every((c) => c.facts && c.scores));
-});
+  const journey = aiBody(ctx);
+  journey.journey.periods = journey.journey.periods.slice(1);
+  const j = await generatePlan(ctx, { apiKey: "test", fetchImpl: fakeFetch(JSON.stringify(journey)) });
+  assert.match(j.meta.fallbackReason ?? "", /journey periods/);
 
-test("an AI plan naming a career we didn't supply falls back to the template", async () => {
-  const ctx = contextFor("mia-health");
-  const { meta: _meta, ...rest } = templatePlan(ctx);
-  rest.topCareers[0] = { ...rest.topCareers[0], occupationId: "astronaut" };
-  const plan = await generatePlan(ctx, { apiKey: "test", fetchImpl: fakeFetch(JSON.stringify(rest)) });
-  assert.equal(plan.meta.generatedBy, "template");
-  assert.match(plan.meta.fallbackReason ?? "", /did not supply/);
+  const harsh = aiBody(ctx);
+  harsh.careers[1].whyItFits = "Honestly you are unsuitable for this.";
+  const h = await generatePlan(ctx, { apiKey: "test", fetchImpl: fakeFetch(JSON.stringify(harsh)) });
+  assert.match(h.meta.fallbackReason ?? "", /unsuitable/);
 });
 
 test("API errors fall back to the template", async () => {
   const plan = await generatePlan(contextFor("mia-health"), { apiKey: "test", fetchImpl: fakeFetch("overloaded", 529) });
-  assert.equal(plan.meta.generatedBy, "template");
   assert.match(plan.meta.fallbackReason ?? "", /529/);
 });
 
 test("extractJson handles fences and surrounding text", () => {
   assert.deepEqual(extractJson('Here you go:\n```json\n{"a":1}\n```'), { a: 1 });
-  assert.deepEqual(extractJson('{"a":{"b":2}} trailing'), { a: { b: 2 } });
   assert.throws(() => extractJson("no json here"));
 });

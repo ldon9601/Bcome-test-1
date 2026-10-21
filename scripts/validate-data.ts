@@ -3,7 +3,7 @@
  * Run after editing anything in /data:  npm run data:validate
  */
 import { earningsData, jsaOutlook, occupationData, qualificationData, questionBank, skillsData, subjectLabels } from "../src/lib/data.ts";
-import { RIASEC, WORK_VALUES, type ChoiceQuestion } from "../src/lib/questionnaire/types.ts";
+import { RIASEC, SKILL_DIMS, STYLE_DIMS, SUBJECT_AREAS, VALUE_DIMS } from "../src/lib/questionnaire/types.ts";
 
 const DRIVERS = ["ageing-population", "care-economy", "net-zero", "digital", "infrastructure", "housing", "population-growth", "defence"];
 const ROUTES = ["university", "vet", "apprenticeship", "traineeship", "cadetship", "other"];
@@ -25,15 +25,14 @@ export function validateData(): string[] {
       if (!questionBank.questions.some((other) => other.id === ref)) err(`${q.id}: showIf refers to unknown question ${ref}`);
     }
   }
-  for (const t of RIASEC) {
-    const tier1 = questionBank.questions.filter((q) => q.kind === "likert" && q.scale.type === "riasec" && q.scale.code === t && q.tier === 1).length;
-    if (tier1 < 3) err(`RIASEC ${t}: needs at least 3 tier-1 items, has ${tier1}`);
-  }
-  for (const v of WORK_VALUES) {
-    if (!questionBank.questions.some((q) => q.kind === "likert" && q.scale.type === "value" && q.scale.code === v)) err(`Work value ${v} has no question`);
-  }
-  const areaQ = questionBank.questions.find((q) => q.id === "apprenticeship_area") as ChoiceQuestion | undefined;
-  const areas = new Set(areaQ?.options.map((o) => o.value) ?? []);
+  const numbered = questionBank.questions.filter((q) => q.number !== undefined);
+  if (numbered.length !== 36) err(`The Career Profile should have 36 numbered questions, has ${numbered.length}`);
+  numbered.forEach((q, i) => q.number !== i + 1 && err(`Question ${q.id} is numbered ${q.number}, expected ${i + 1}`));
+  const likert = questionBank.questions.filter((q) => q.kind === "likert");
+  for (const t of RIASEC) if (likert.filter((q) => q.dimension.type === "riasec" && q.dimension.code === t).length !== 2) err(`Interest ${t} needs 2 items`);
+  for (const d of SKILL_DIMS) if (!likert.some((q) => q.dimension.type === "skill" && q.dimension.code === d)) err(`Skill ${d} has no question`);
+  for (const d of VALUE_DIMS) if (!likert.some((q) => q.dimension.type === "value" && q.dimension.code === d)) err(`Value ${d} has no question`);
+  for (const q of likert) if (!questionBank.scales[q.scaleId]) err(`${q.id}: unknown scale ${q.scaleId}`);
 
   // Skills and qualifications
   const clusters = new Set(skillsData.clusters.map((c) => c.id));
@@ -67,10 +66,22 @@ export function validateData(): string[] {
     if (!/^\d{4}$/.test(o.anzsco)) err(`${where}: anzsco should be a 4-digit unit group`);
     if (!(o.skillLevel >= 1 && o.skillLevel <= 5)) err(`${where}: skillLevel must be 1–5`);
     if (!/^[RIASEC]{3}$/.test(o.riasec) || new Set(o.riasec).size !== 3) err(`${where}: riasec must be 3 distinct letters`);
-    for (const v of o.values) if (!(WORK_VALUES as readonly string[]).includes(v)) err(`${where}: unknown value ${v}`);
+    const inRange = (rec: Record<string, number> | undefined, keys: readonly string[], name: string) => {
+      for (const k of keys) if (!(typeof rec?.[k] === "number" && rec[k] >= 0 && rec[k] <= 100)) err(`${where}: profile.${name}.${k} must be 0–100`);
+    };
+    inRange(o.profile?.interests, RIASEC, "interests");
+    inRange(o.profile?.skills, SKILL_DIMS, "skills");
+    inRange(o.profile?.values, VALUE_DIMS, "values");
+    inRange(o.profile?.environment, STYLE_DIMS, "environment");
+    for (const a of [...(o.subjectAreas?.helpful ?? []), ...(o.subjectAreas?.required ?? [])]) if (!(SUBJECT_AREAS as readonly string[]).includes(a)) err(`${where}: unknown subject area ${a}`);
+    const m = o.market;
+    if (!m || !["shortage", "no-shortage"].includes(m.shortage)) err(`${where}: market.shortage missing`);
+    for (const [k, v] of Object.entries({ regionalBreadth: m?.regionalBreadth, graduateOutcome: m?.graduateOutcome, automation: m?.ai?.automation, augmentation: m?.ai?.augmentation })) {
+      if (!(typeof v === "number" && v >= 0 && v <= 100)) err(`${where}: market ${k} must be 0–100`);
+    }
+    for (const k of ["employmentGrowth", "shortage", "regionalBreadth", "graduateOutcome", "ai", "salary", "profile"]) if (!o.evidence?.[k]) err(`${where}: evidence.${k} missing`);
     for (const s of [...o.subjects.helpful, ...o.subjects.oftenRequired]) if (!subjectLabels[s]) err(`${where}: unknown subject ${s}`);
     for (const d of o.drivers) if (!DRIVERS.includes(d)) err(`${where}: unknown driver ${d}`);
-    for (const a of o.apprenticeshipAreas) if (!areas.has(a)) err(`${where}: unknown apprenticeship area ${a}`);
     if (!(o.industry in jsaOutlook.industries)) err(`${where}: industry "${o.industry}" not in JSA industry list`);
     if (o.skills.length < 3) err(`${where}: needs at least 3 specialist skills`);
     for (const s of o.skills) if (!skillIds.has(s) || !s.startsWith("sk-")) err(`${where}: unknown specialist skill ${s}`);

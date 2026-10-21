@@ -1,140 +1,323 @@
-# Leo, Year 11, WA: creative and persuasive, not sure what's next
+# Leo, Year 11, WA: creative and persuasive
 
-Holland code **AES** · 35 questions asked · plan by template
+40 questions · Holland code **AES** · plan by template · instrument v2.0.0
 
-Interest scores: R 25 · I 25 · A 100 · S 50 · E 75 · C 25
+## Your Career DNA
 
-## Top matches
+```
+Analytical                       ██░░░░░░░░ 16
+Creative                         █████████░ 94
+Interpersonal                    ██████░░░░ 64
+Technical                        █████░░░░░ 46
+Entrepreneurial                  ██████░░░░ 56
+Structured working preference    ░░░░░░░░░░ 4
+Continuous-learning appetite     ████░░░░░░ 40
 
-| # | Career | OSCA | Overall | Personal fit | Future opportunity | Pathway feasibility | 10-yr growth | Starting pay | Years after school |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | Marketing Specialist | 221534 | 82 | 78 | 80 | 90 | 24.3% (est.) | $65k–$80k | 2–3 years |
-| 2 | Graphic Designer | 242332 | 80 | 73 | 85 | 90 | 24.3% (est.) | $55k–$65k | 2–3 years |
-| 3 | Actor | 231131 | 77 | 72 | 85 | 79 | 20.3% (est.) | $25k–$50k | 3–4 years |
-| 4 | Early Childhood Teacher | 251131 | 76 | 61 | 91 | 89 | 20.8% (est.) | $75k–$85k | 4–5 years |
-| 5 | Musician | 231633 | 76 | 72 | 77 | 82 | 20.3% (est.) | $30k–$60k | 3–4 years |
-| 6 | Journalist | 231332 | 74 | 65 | 79 | 88 | 21.3% (est.) | $55k–$70k | 3 years |
-| 7 | Web Designer | 242133 | 74 | 63 | 79 | 90 | 24.3% (est.) | $60k–$72k | 2–3 years |
-| 8 | Early Childhood Educator | 431132 | 73 | 55 | 91 | 91 | 18.5% (est.) | $52k–$60k | 6 months to 2 years |
-| 9 | Hairdresser | 392132 | 73 | 75 | 53 | 88 | 7.2% (est.) | $50k–$58k | 3 years |
-| 10 | Chef | 321131 | 72 | 67 | 64 | 90 | 8.2% (est.) | $58k–$65k | 3–4 years |
+CORE INTERESTS
+Artistic                         ██████████ 100
+Enterprising                     ████████░░ 75
+Social                           ████░░░░░░ 38
+Realistic                        ███░░░░░░░ 25
+Investigative                    █░░░░░░░░░ 13
+Conventional                     █░░░░░░░░░ 13
 
-## Plan
+YOUR STRONGEST SIGNALS
+Communication                    75
+Technology                       75
+Spatial and design thinking      75
+Working with people              75
+Practical skills                 50
 
-Your strongest interests are Artistic, Enterprising and Social. Careers like marketing specialist and graphic designer fit those interests and have a positive job outlook.
+WHAT YOU VALUE (relative to your other values)
+Innovation                       91
+Autonomy                         66
+Work-life balance                66
+Positive impact                  41
+Income potential                 41
+Leadership                       41
+Continuous learning              41
+Job security                     16
+```
 
-### Marketing Specialist (OSCA 221534)
+**What this suggests:** You appear most energised by creating and new ideas and leading, persuading and making things happen. You prefer variety over repetitive work and seated, digital work, and value innovation and autonomy most.
 
-Personal fit 78 · Future opportunity 80 · Pathway feasibility 90
+## Careers that fit you
 
-It suits some of your interests, has a strong job outlook and the way in fits your plans.
+Your strongest interests are Artistic, Enterprising and Social. Musician and graphic designer are your strongest personal fits. Each career below shows how well it fits you, its future opportunities and how realistic the pathway is from where you are now.
 
-**Outlook:** Estimated growth of about 24% by May 2035, based on JSA projections for similar jobs (all jobs: 13.3%).
+| Group | Career | OSCA | Personal fit | Opportunity | Pathway | Match | Confidence |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Best matches | Musician | 231633 | **88** | 54 | 98 | 81% | High |
+| Best matches | Graphic Designer | 242332 | **85** | 57 | 98 | 80% | High |
+| Best matches | Hairdresser | 392132 | **81** | 70 | 83 | 79% | High |
+| Best matches | Marketing Specialist | 221534 | **80** | 63 | 98 | 78% | High |
+| Best matches | Architect | 241131 | **79** | 64 | 81 | 76% | High |
+| Worth exploring | Journalist | 231332 | **79** | 59 | 97 | 77% | High |
+| Worth exploring | Actor | 231131 | **85** | 50 | 87 | 77% | High |
+| Wildcard | Early Childhood Teacher | 251131 | **73** | 83 | 98 | 79% | High |
 
-**How to get there:** Bachelor of Business (Marketing) (3 years). Another route: Diploma of Marketing and Communication.
+### Best matches: Musician
 
-**Time to qualify:** 2–3 years after Year 12 (about 3–4 years from now) to reach: Working as a marketing specialist
+Personal fit **88** · Future opportunity 54 · Pathway feasibility 98 · Match 81% · Confidence High
 
-**Pay (indicative):** $65k–$80k starting, $95k–$130k experienced
+It lines up with your artistic interests, the importance you place on innovation and your enjoyment of Art/design/media. The job outlook is weaker, so keep a second option in mind.
 
-**Skills:** Marketing and market research, Data analysis and statistics, Writing and editing, Digital media production, Working with AI tools. Core: Writing, Initiative and innovation, Digital engagement
+**Why this matches you**
 
-- University: Bachelor of Business (Marketing) (AQF 7), builds Marketing and market research, Data analysis and statistics, Writing and editing
-- TAFE or VET: Diploma of Marketing and Communication (AQF 5), builds Marketing and market research, Writing and editing, Digital media production
+- Artistic interests           +++++++++
+- Innovation                   +++++++++
+- Enjoying Art/design/media    +++++++++
+- Autonomy                     ++++++++
+- Enterprising interests       ++++++
+- Communication                ++++++
 
-**Skills also lead to:** Journalist (Writing and editing, Digital media production, Working with AI tools); Actor (Writing and editing, Digital media production); Graphic Designer (Digital media production, Working with AI tools)
+**Future outlook**
 
-### Graphic Designer (OSCA 242332)
+Employment outlook good · Shortage no · AI augmentation High · AI automation Low · Income Average · Education High
 
-Personal fit 73 · Future opportunity 85 · Pathway feasibility 90
+**How to get there:** Bachelor of Music (3–4 years). Another route: Diploma of Music.
 
-It suits some of your interests, has a strong job outlook and the way in fits your plans.
+**Time to qualify:** 3–4 years after Year 12 (about 4–5 years from now) · **Pay (indicative):** $30k–$60k starting, $50k–$100k experienced
 
-**Outlook:** Estimated growth of about 24% by May 2035, based on JSA projections for similar jobs (all jobs: 13.3%).
+- University: Bachelor of Music (AQF 7)
+- TAFE or VET: Diploma of Music (AQF 5)
+
+### Best matches: Graphic Designer
+
+Personal fit **85** · Future opportunity 57 · Pathway feasibility 98 · Match 80% · Confidence High
+
+It lines up with your artistic interests, the importance you place on innovation and your enjoyment of Art/design/media. The job outlook is weaker, so keep a second option in mind.
+
+**Why this matches you**
+
+- Artistic interests           +++++++++
+- Innovation                   +++++++++
+- Enjoying Art/design/media    +++++++++
+- Working with ideas           ++++++++
+- Technology                   +++++++
+- Spatial and design thinking  +++++++
+
+**Future outlook**
+
+Employment outlook good · Shortage no · AI augmentation High · AI automation High · Income Average · Education High
 
 **How to get there:** Bachelor of Design (Visual Communication) (3 years). Another route: Diploma of Graphic Design.
 
-**Time to qualify:** 2–3 years after Year 12 (about 3–4 years from now) to reach: Working as a graphic designer
+**Time to qualify:** 2–3 years after Year 12 (about 3–4 years from now) · **Pay (indicative):** $55k–$65k starting, $75k–$100k experienced
 
-**Pay (indicative):** $55k–$65k starting, $75k–$100k experienced
+- University: Bachelor of Design (Visual Communication) (AQF 7)
+- TAFE or VET: Diploma of Graphic Design (AQF 5)
 
-**Skills:** Visual design, Digital media production, Working with AI tools. Core: Initiative and innovation, Digital engagement, Oral communication
+### Best matches: Hairdresser
 
-- University: Bachelor of Design (Visual Communication) (AQF 7), builds Visual design, Digital media production
-- TAFE or VET: Diploma of Graphic Design (AQF 5), builds Visual design, Digital media production
+Personal fit **81** · Future opportunity 70 · Pathway feasibility 83 · Match 79% · Confidence High
 
-**Skills also lead to:** Journalist (Digital media production, Working with AI tools); Web Designer (Visual design, Digital media production); Marketing Specialist (Digital media production, Working with AI tools)
+It lines up with the importance you place on innovation, your enjoyment of Art/design/media and your artistic interests. It has a steady job outlook.
 
-### Actor (OSCA 231131)
+**Why this matches you**
 
-Personal fit 72 · Future opportunity 85 · Pathway feasibility 79
+- Innovation                   +++++++++
+- Enjoying Art/design/media    +++++++++
+- Artistic interests           ++++++++
+- Autonomy                     ++++++++
+- Communication                +++++++
+- Working with people          +++++++
 
-It suits some of your interests, has a strong job outlook and the way in is realistic with some planning.
+**Potential challenges**
 
-**Outlook:** Estimated growth of about 20% by May 2035, based on JSA projections for similar jobs (all jobs: 13.3%).
+- Building your confidence in practical skills would help: this work leans on it heavily.
+- This work usually involves more active, hands-on work than you said you'd prefer.
+
+**Future outlook**
+
+Employment outlook moderate · Shortage yes · AI augmentation Low · AI automation Low · Income Below average · Education Moderate
+
+**How to get there:** Hairdressing apprenticeship (Certificate III in Hairdressing) (3 years).
+
+**Time to qualify:** 3 years after Year 12 (about 4 years from now) · **Pay (indicative):** $50k–$58k starting, $58k–$75k experienced
+
+- Apprenticeship: Certificate III in Hairdressing (AQF 3)
+
+### Best matches: Marketing Specialist
+
+Personal fit **80** · Future opportunity 63 · Pathway feasibility 98 · Match 78% · Confidence High
+
+It lines up with the importance you place on innovation, your enjoyment of Art/design/media and your artistic interests. It has a steady job outlook.
+
+**Why this matches you**
+
+- Innovation                   +++++++++
+- Enjoying Art/design/media    +++++++++
+- Artistic interests           ++++++++
+- Enterprising interests       +++++++
+- Communication                +++++++
+- Technology                   +++++++
+
+**Future outlook**
+
+Employment outlook good · Shortage no · AI augmentation High · AI automation High · Income Above average · Education High
+
+**How to get there:** Bachelor of Business (Marketing) (3 years). Another route: Diploma of Marketing and Communication.
+
+**Time to qualify:** 2–3 years after Year 12 (about 3–4 years from now) · **Pay (indicative):** $65k–$80k starting, $95k–$130k experienced
+
+- University: Bachelor of Business (Marketing) (AQF 7)
+- TAFE or VET: Diploma of Marketing and Communication (AQF 5)
+
+### Best matches: Architect
+
+Personal fit **79** · Future opportunity 64 · Pathway feasibility 81 · Match 76% · Confidence High
+
+It lines up with your artistic interests, the importance you place on innovation and your enjoyment of Art/design/media. It has a steady job outlook.
+
+**Why this matches you**
+
+- Artistic interests           +++++++++
+- Innovation                   +++++++++
+- Enjoying Art/design/media    +++++++++
+- Working with ideas           ++++++++
+- Communication                +++++++
+- Technology                   +++++++
+
+**Potential challenges**
+
+- Building confidence in Art/design/media and Mathematics would make entry easier.
+- Requires about 7 years of study or training, longer than you said you'd prefer.
+
+**Future outlook**
+
+Employment outlook good · Shortage no · AI augmentation High · AI automation Moderate · Income Above average · Education High
+
+**How to get there:** Bachelor of Design (Architecture) then Master of Architecture, then supervised practice (7–8 years).
+
+**Time to qualify:** 7–8 years after Year 12 (about 8–9 years from now) · **Pay (indicative):** $65k–$80k starting, $100k–$140k experienced
+
+- University: Bachelor of Design (Architecture) then Master of Architecture (AQF 9)
+
+### Worth exploring: Journalist
+
+Personal fit **79** · Future opportunity 59 · Pathway feasibility 97 · Match 77% · Confidence High
+
+It lines up with the importance you place on innovation, your enjoyment of Art/design/media and your artistic interests. The job outlook is weaker, so keep a second option in mind.
+
+**Why this matches you**
+
+- Innovation                   +++++++++
+- Enjoying Art/design/media    +++++++++
+- Artistic interests           ++++++++
+- Working with ideas           ++++++++
+- Communication                +++++++
+- Technology                   +++++++
+
+**Future outlook**
+
+Employment outlook good · Shortage no · AI augmentation High · AI automation High · Income Average · Education High
+
+**How to get there:** Bachelor of Journalism or Communication (3 years). Another route: Diploma of Screen and Media.
+
+**Time to qualify:** 3 years after Year 12 (about 4 years from now) · **Pay (indicative):** $55k–$70k starting, $80k–$110k experienced
+
+- University: Bachelor of Journalism or Communication (AQF 7)
+- TAFE or VET: Diploma of Screen and Media (AQF 5)
+
+### Worth exploring: Actor
+
+Personal fit **85** · Future opportunity 50 · Pathway feasibility 87 · Match 77% · Confidence High
+
+It lines up with your artistic interests, the importance you place on innovation and your enjoyment of Art/design/media. The job outlook is weaker, so keep a second option in mind.
+
+**Why this matches you**
+
+- Artistic interests           +++++++++
+- Innovation                   +++++++++
+- Enjoying Art/design/media    +++++++++
+- Autonomy                     ++++++++
+- Enterprising interests       +++++++
+- Communication                +++++++
+
+**Potential challenges**
+
+- Building confidence in Art/design/media and Biology/health would make entry easier.
+- This work usually involves more active, hands-on work than you said you'd prefer.
+
+**Future outlook**
+
+Employment outlook good · Shortage no · AI augmentation Moderate · AI automation Low · Income Below average · Education High
 
 **How to get there:** Bachelor of Fine Arts (Acting), entry by audition (3 years).
 
-**Time to qualify:** 3–4 years after Year 12 (about 4–5 years from now) to reach: Working as an actor
+**Time to qualify:** 3–4 years after Year 12 (about 4–5 years from now) · **Pay (indicative):** $25k–$50k starting, $40k–$100k experienced
 
-**Pay (indicative):** $25k–$50k starting, $40k–$100k experienced. Work is irregular; most actors have other income between roles.
+- University: Bachelor of Fine Arts (Acting) (AQF 7)
 
-**Skills:** Performance, Writing and editing, Digital media production. Core: Oral communication, Teamwork, Learning
+### Wildcard: Early Childhood Teacher
 
-- University: Bachelor of Fine Arts (Acting) (AQF 7), builds Performance
+Personal fit **73** · Future opportunity 83 · Pathway feasibility 98 · Match 79% · Confidence High
 
-**Skills also lead to:** Musician (Performance, Digital media production); Journalist (Writing and editing, Digital media production); Marketing Specialist (Writing and editing, Digital media production)
+It lines up with the importance you place on innovation, your enjoyment of Art/design/media and your artistic interests. It also has a strong job outlook.
 
-### Finish school strong (Years 11 and 12)
+**Why this matches you**
 
-- Go to at least two university or TAFE open days and talk to current students.
-- Get some real-world experience: a part-time job, volunteering or a short course linked to marketing specialist.
+- Innovation                   +++++++++
+- Enjoying Art/design/media    +++++++++
+- Artistic interests           +++++++
+- Communication                +++++++
+- Working with people          +++++++
+- Enjoying English             +++++++
 
-### Study and training after school (About 2–4 years after school, depending on the career)
+**Potential challenges**
 
-- Marketing Specialist: Bachelor of Business (Marketing) (3 years). Another route: Diploma of Marketing and Communication.
-- Graphic Designer: Bachelor of Design (Visual Communication) (3 years). Another route: Diploma of Graphic Design.
-- Actor: Bachelor of Fine Arts (Acting), entry by audition (3 years).
-- Choose courses with work placements or industry projects; they lead to first jobs.
+- This work usually involves more active, hands-on work than you said you'd prefer.
 
-### Your first years at work (First 3 years of work)
+**Future outlook**
 
-- Complete any registration, licence or accreditation your job needs.
-- Keep building the skills employers want most: marketing and market research, data analysis and statistics, writing and editing, digital media production.
-- Learn to use the AI tools in your field well; they will be part of most jobs.
-- Find a mentor at work and review this plan every year.
-- Starting pay is roughly $65k–$80k as a marketing specialist, $55k–$65k as a graphic designer, $25k–$50k as an actor, rising with experience.
+Employment outlook good · Shortage yes · AI augmentation Moderate · AI automation Low · Income Average · Education High
 
-### Future of work
+**How to get there:** Bachelor of Early Childhood Education (4 years). Another route: Diploma of Early Childhood Education and Care, then a degree with credit.
+
+**Time to qualify:** 4–5 years after Year 12 (about 5–6 years from now) · **Pay (indicative):** $75k–$85k starting, $90k–$110k experienced
+
+- University: Bachelor of Early Childhood Education (AQF 7)
+- TAFE or VET: Diploma of Early Childhood Education and Care (AQF 5)
+
+## Your journey towards Musician
+
+| Period | Focus | Actions |
+| --- | --- | --- |
+| Year 11 | Build the foundations | **academic:** Stay on track in Music, Drama.<br>**exploration:** Interview or shadow someone who works as a musician.<br>**portfolio:** Complete one small project you can show people, and keep a record of it. |
+| Year 12 | Choose and apply for the right course | **applications:** Shortlist Bachelor of Music courses and compare prerequisites and selection ranks through TISC.<br>**alternative:** Keep a backup route ready: Diploma of Music. |
+| Summer after school | Get a head start | **portfolio:** Do something hands-on, such as a first aid course, practical volunteering or a build or repair project.<br>**work:** Find casual work or volunteering where you can practise working with people and taking responsibility. |
+| University Year 1 | Start Bachelor of Music | **study:** Build the core skills: performance, music composition and production.<br>**exploration:** Join a student society linked to the field and start a project portfolio. |
+| University Years 2–4 | Get real-world experience | **work:** Target an internship, placement or research project.<br>**skills:** Add AI and digital tools used in your field to what you can do. |
+| First two years of work | Get established as a musician | **work:** Aim for roles as a musician.<br>**skills:** Build a specialist strength, and complete any registration or licence the job needs. |
+
+## How work is changing
 
 - Over 90% of employment growth to May 2035 is in jobs that usually need a post-school qualification (skill levels 1 to 4).
+- JSA's 2035 projections don't include the effects of generative AI, so AI's likely impact is scored separately for each career.
+- AI will change some tasks; using AI tools well will become part of the job.
 - AI and automation are likely to change much of the routine work, so the role will reward people who build specialist and people skills.
-- Most of the work is hands-on or person-to-person, which AI is unlikely to replace.
 
-### Also worth a look
+## Skills worth building whichever you choose
 
-- **Early Childhood Teacher**: Matches your top interests: Social, Artistic and Enterprising.
-- **Musician**: Matches your top interests: Artistic, Enterprising and Social.
-- **Journalist**: Matches your top interests: Artistic and Social.
-
-### Skills worth building whichever you choose
-
-- Digital media production
-- Writing and editing
-- Working with AI tools
 - Initiative and innovation
-- Digital engagement
+- Digital media production
+- Oral communication
+- Visual design
+- Working with AI tools
 
-### This term
+## This term
 
-1. Talk to your careers adviser about marketing specialist and bring this plan.
-1. Look up two courses for marketing specialist and note their entry requirements.
+1. Talk to your careers adviser about musician and bring this plan.
+1. Look up two courses for musician and note their entry requirements.
 1. Talk to someone who works in one of these jobs about what a normal day is like.
+1. Come back for a check-in in six months so we can update your plan.
 
-### Keep in mind
+## Keep in mind
 
-- AI is likely to change much of this work; plan to build specialist and people skills alongside it.
-- Places are competitive, so have a backup pathway ready.
-- Job projections are estimates and can change. Entry requirements differ between institutions, so always check the course page.
+- Places are competitive, so keep a backup pathway in mind.
+- AI is likely to automate parts of this work, so specialist and people skills will matter more.
+- The usual ways in aren't among the paths you said you'd consider.
+- Pay is a rough guide (for example $30k–$60k starting as a musician). Job projections are estimates, and entry requirements differ between institutions, so always check the course page.
 
 _Data: Jobs and Skills Australia, 2025 Employment Projections (May 2025 to May 2035) (https://www.jobsandskills.gov.au/data/employment-projections)_
