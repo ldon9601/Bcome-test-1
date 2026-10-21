@@ -1,0 +1,1246 @@
+{
+  "version": "1.0.0",
+  "notes": [
+    "VET qualifications use their training.gov.au code as the id. verifyCode = true marks codes that may have been superseded; check training.gov.au before launch.",
+    "Higher education entries are generic course types with an ASCED field of education code (4-digit narrow field where known, otherwise 2-digit broad field).",
+    "durationYears is typical full-time duration. Apprenticeship durations include on-the-job time."
+  ],
+  "qualifications": [
+    {
+      "id": "UEE30820",
+      "title": "Certificate III in Electrotechnology Electrician",
+      "sector": "vet",
+      "aqfLevel": 3,
+      "durationYears": [
+        4,
+        4
+      ],
+      "skills": [
+        "sk-electrical-systems",
+        "sk-renewables",
+        "sk-fault-finding",
+        "sk-technical-drawing",
+        "sk-whs",
+        "sk-compliance"
+      ],
+      "tgaCode": "UEE30820"
+    },
+    {
+      "id": "CPC32420",
+      "title": "Certificate III in Plumbing",
+      "sector": "vet",
+      "aqfLevel": 3,
+      "durationYears": [
+        4,
+        4
+      ],
+      "skills": [
+        "sk-plumbing",
+        "sk-technical-drawing",
+        "sk-whs",
+        "sk-compliance",
+        "sk-customer-service"
+      ],
+      "tgaCode": "CPC32420"
+    },
+    {
+      "id": "CPC30220",
+      "title": "Certificate III in Carpentry",
+      "sector": "vet",
+      "aqfLevel": 3,
+      "durationYears": [
+        3,
+        4
+      ],
+      "skills": [
+        "sk-construction-methods",
+        "sk-measurement",
+        "sk-technical-drawing",
+        "sk-whs"
+      ],
+      "tgaCode": "CPC30220"
+    },
+    {
+      "id": "AUR30620",
+      "title": "Certificate III in Light Vehicle Mechanical Technology",
+      "sector": "vet",
+      "aqfLevel": 3,
+      "durationYears": [
+        3,
+        4
+      ],
+      "skills": [
+        "sk-vehicle-diagnostics",
+        "sk-ev-systems",
+        "sk-mechanical-systems",
+        "sk-fault-finding",
+        "sk-whs"
+      ],
+      "tgaCode": "AUR30620"
+    },
+    {
+      "id": "UEE32220",
+      "title": "Certificate III in Air-conditioning and Refrigeration",
+      "sector": "vet",
+      "aqfLevel": 3,
+      "durationYears": [
+        4,
+        4
+      ],
+      "skills": [
+        "sk-refrigeration",
+        "sk-electrical-systems",
+        "sk-fault-finding",
+        "sk-whs",
+        "sk-compliance"
+      ],
+      "tgaCode": "UEE32220",
+      "verifyCode": true
+    },
+    {
+      "id": "MEM30219",
+      "title": "Certificate III in Engineering – Mechanical Trade",
+      "sector": "vet",
+      "aqfLevel": 3,
+      "durationYears": [
+        4,
+        4
+      ],
+      "skills": [
+        "sk-machining",
+        "sk-mechanical-systems",
+        "sk-technical-drawing",
+        "sk-quality-control",
+        "sk-whs"
+      ],
+      "tgaCode": "MEM30219"
+    },
+    {
+      "id": "MEM30319",
+      "title": "Certificate III in Engineering – Fabrication Trade",
+      "sector": "vet",
+      "aqfLevel": 3,
+      "durationYears": [
+        3,
+        4
+      ],
+      "skills": [
+        "sk-welding",
+        "sk-technical-drawing",
+        "sk-quality-control",
+        "sk-whs"
+      ],
+      "tgaCode": "MEM30319"
+    },
+    {
+      "id": "SIT30821",
+      "title": "Certificate III in Commercial Cookery",
+      "sector": "vet",
+      "aqfLevel": 3,
+      "durationYears": [
+        3,
+        4
+      ],
+      "skills": [
+        "sk-cooking",
+        "sk-food-safety",
+        "sk-whs"
+      ],
+      "tgaCode": "SIT30821"
+    },
+    {
+      "id": "SIT40521",
+      "title": "Certificate IV in Kitchen Management",
+      "sector": "vet",
+      "aqfLevel": 4,
+      "durationYears": [
+        1,
+        1.5
+      ],
+      "skills": [
+        "sk-cooking",
+        "sk-food-safety",
+        "sk-budgeting",
+        "sk-people-leadership"
+      ],
+      "tgaCode": "SIT40521"
+    },
+    {
+      "id": "SHB30416",
+      "title": "Certificate III in Hairdressing",
+      "sector": "vet",
+      "aqfLevel": 3,
+      "durationYears": [
+        3,
+        3
+      ],
+      "skills": [
+        "sk-hair",
+        "sk-customer-service",
+        "sk-whs"
+      ],
+      "tgaCode": "SHB30416",
+      "verifyCode": true
+    },
+    {
+      "id": "CHC33021",
+      "title": "Certificate III in Individual Support",
+      "sector": "vet",
+      "aqfLevel": 3,
+      "durationYears": [
+        0.5,
+        1
+      ],
+      "skills": [
+        "sk-person-centred-care",
+        "sk-infection-control",
+        "sk-whs"
+      ],
+      "tgaCode": "CHC33021"
+    },
+    {
+      "id": "CHC43121",
+      "title": "Certificate IV in Disability Support",
+      "sector": "vet",
+      "aqfLevel": 4,
+      "durationYears": [
+        1,
+        1
+      ],
+      "skills": [
+        "sk-person-centred-care",
+        "sk-case-management",
+        "sk-whs"
+      ],
+      "tgaCode": "CHC43121"
+    },
+    {
+      "id": "HLT33115",
+      "title": "Certificate III in Health Services Assistance",
+      "sector": "vet",
+      "aqfLevel": 3,
+      "durationYears": [
+        0.5,
+        1
+      ],
+      "skills": [
+        "sk-person-centred-care",
+        "sk-infection-control"
+      ],
+      "tgaCode": "HLT33115",
+      "verifyCode": true
+    },
+    {
+      "id": "HLT35021",
+      "title": "Certificate III in Dental Assisting",
+      "sector": "vet",
+      "aqfLevel": 3,
+      "durationYears": [
+        1,
+        1
+      ],
+      "skills": [
+        "sk-infection-control",
+        "sk-person-centred-care",
+        "sk-admin"
+      ],
+      "tgaCode": "HLT35021"
+    },
+    {
+      "id": "HLT54121",
+      "title": "Diploma of Nursing",
+      "sector": "vet",
+      "aqfLevel": 5,
+      "durationYears": [
+        1.5,
+        2
+      ],
+      "skills": [
+        "sk-person-centred-care",
+        "sk-clinical-assessment",
+        "sk-medicines",
+        "sk-infection-control",
+        "sk-anatomy"
+      ],
+      "tgaCode": "HLT54121"
+    },
+    {
+      "id": "CHC30121",
+      "title": "Certificate III in Early Childhood Education and Care",
+      "sector": "vet",
+      "aqfLevel": 3,
+      "durationYears": [
+        0.5,
+        1
+      ],
+      "skills": [
+        "sk-child-development",
+        "sk-person-centred-care",
+        "sk-whs"
+      ],
+      "tgaCode": "CHC30121"
+    },
+    {
+      "id": "CHC50121",
+      "title": "Diploma of Early Childhood Education and Care",
+      "sector": "vet",
+      "aqfLevel": 5,
+      "durationYears": [
+        1.5,
+        2
+      ],
+      "skills": [
+        "sk-child-development",
+        "sk-teaching",
+        "sk-people-leadership"
+      ],
+      "tgaCode": "CHC50121"
+    },
+    {
+      "id": "CHC52021",
+      "title": "Diploma of Community Services",
+      "sector": "vet",
+      "aqfLevel": 5,
+      "durationYears": [
+        1,
+        2
+      ],
+      "skills": [
+        "sk-case-management",
+        "sk-counselling",
+        "sk-mental-health-support"
+      ],
+      "tgaCode": "CHC52021"
+    },
+    {
+      "id": "CHC51015",
+      "title": "Diploma of Counselling",
+      "sector": "vet",
+      "aqfLevel": 5,
+      "durationYears": [
+        1,
+        2
+      ],
+      "skills": [
+        "sk-counselling",
+        "sk-mental-health-support"
+      ],
+      "tgaCode": "CHC51015",
+      "verifyCode": true
+    },
+    {
+      "id": "ICT50220",
+      "title": "Diploma of Information Technology",
+      "sector": "vet",
+      "aqfLevel": 5,
+      "durationYears": [
+        1,
+        2
+      ],
+      "skills": [
+        "sk-programming",
+        "sk-networks",
+        "sk-cyber",
+        "sk-ai-tools"
+      ],
+      "tgaCode": "ICT50220"
+    },
+    {
+      "id": "22603VIC",
+      "title": "Certificate IV in Cyber Security",
+      "sector": "vet",
+      "aqfLevel": 4,
+      "durationYears": [
+        1,
+        1
+      ],
+      "skills": [
+        "sk-cyber",
+        "sk-networks",
+        "sk-fault-finding"
+      ],
+      "tgaCode": "22603VIC",
+      "verifyCode": true
+    },
+    {
+      "id": "BSB30120",
+      "title": "Certificate III in Business",
+      "sector": "vet",
+      "aqfLevel": 3,
+      "durationYears": [
+        0.5,
+        1
+      ],
+      "skills": [
+        "sk-admin",
+        "sk-customer-service"
+      ],
+      "tgaCode": "BSB30120"
+    },
+    {
+      "id": "FNS50222",
+      "title": "Diploma of Accounting",
+      "sector": "vet",
+      "aqfLevel": 5,
+      "durationYears": [
+        1,
+        1.5
+      ],
+      "skills": [
+        "sk-accounting",
+        "sk-budgeting"
+      ],
+      "tgaCode": "FNS50222"
+    },
+    {
+      "id": "BSB50620",
+      "title": "Diploma of Marketing and Communication",
+      "sector": "vet",
+      "aqfLevel": 5,
+      "durationYears": [
+        1,
+        1.5
+      ],
+      "skills": [
+        "sk-marketing",
+        "sk-writing-editing",
+        "sk-digital-media"
+      ],
+      "tgaCode": "BSB50620",
+      "verifyCode": true
+    },
+    {
+      "id": "CUA50720",
+      "title": "Diploma of Graphic Design",
+      "sector": "vet",
+      "aqfLevel": 5,
+      "durationYears": [
+        1.5,
+        2
+      ],
+      "skills": [
+        "sk-visual-design",
+        "sk-digital-media"
+      ],
+      "tgaCode": "CUA50720",
+      "verifyCode": true
+    },
+    {
+      "id": "CUA51020",
+      "title": "Diploma of Screen and Media",
+      "sector": "vet",
+      "aqfLevel": 5,
+      "durationYears": [
+        1,
+        2
+      ],
+      "skills": [
+        "sk-digital-media",
+        "sk-writing-editing"
+      ],
+      "tgaCode": "CUA51020",
+      "verifyCode": true
+    },
+    {
+      "id": "CUA50820",
+      "title": "Diploma of Music",
+      "sector": "vet",
+      "aqfLevel": 5,
+      "durationYears": [
+        1,
+        2
+      ],
+      "skills": [
+        "sk-music-production",
+        "sk-performance"
+      ],
+      "tgaCode": "CUA50820",
+      "verifyCode": true
+    },
+    {
+      "id": "SIS30321",
+      "title": "Certificate III in Fitness",
+      "sector": "vet",
+      "aqfLevel": 3,
+      "durationYears": [
+        0.25,
+        0.5
+      ],
+      "skills": [
+        "sk-fitness",
+        "sk-coaching",
+        "sk-customer-service"
+      ],
+      "tgaCode": "SIS30321"
+    },
+    {
+      "id": "SIS40221",
+      "title": "Certificate IV in Fitness",
+      "sector": "vet",
+      "aqfLevel": 4,
+      "durationYears": [
+        0.5,
+        1
+      ],
+      "skills": [
+        "sk-fitness",
+        "sk-coaching",
+        "sk-anatomy"
+      ],
+      "tgaCode": "SIS40221"
+    },
+    {
+      "id": "CPP41419",
+      "title": "Certificate IV in Real Estate Practice",
+      "sector": "vet",
+      "aqfLevel": 4,
+      "durationYears": [
+        0.5,
+        1
+      ],
+      "skills": [
+        "sk-sales",
+        "sk-negotiation",
+        "sk-legal"
+      ],
+      "tgaCode": "CPP41419",
+      "verifyCode": true
+    },
+    {
+      "id": "AHC30921",
+      "title": "Certificate III in Landscape Construction",
+      "sector": "vet",
+      "aqfLevel": 3,
+      "durationYears": [
+        3,
+        3
+      ],
+      "skills": [
+        "sk-horticulture",
+        "sk-construction-methods",
+        "sk-vehicle-operation",
+        "sk-whs"
+      ],
+      "tgaCode": "AHC30921",
+      "verifyCode": true
+    },
+    {
+      "id": "AHC50122",
+      "title": "Diploma of Agriculture",
+      "sector": "vet",
+      "aqfLevel": 5,
+      "durationYears": [
+        1,
+        2
+      ],
+      "skills": [
+        "sk-plant-science",
+        "sk-budgeting"
+      ],
+      "tgaCode": "AHC50122",
+      "verifyCode": true
+    },
+    {
+      "id": "AHC51120",
+      "title": "Diploma of Conservation and Ecosystem Management",
+      "sector": "vet",
+      "aqfLevel": 5,
+      "durationYears": [
+        1,
+        2
+      ],
+      "skills": [
+        "sk-field-monitoring",
+        "sk-plant-science"
+      ],
+      "tgaCode": "AHC51120",
+      "verifyCode": true
+    },
+    {
+      "id": "MSL40122",
+      "title": "Certificate IV in Laboratory Techniques",
+      "sector": "vet",
+      "aqfLevel": 4,
+      "durationYears": [
+        1,
+        1
+      ],
+      "skills": [
+        "sk-lab-testing",
+        "sk-quality-control"
+      ],
+      "tgaCode": "MSL40122",
+      "verifyCode": true
+    },
+    {
+      "id": "CPC50220",
+      "title": "Diploma of Building and Construction (Building)",
+      "sector": "vet",
+      "aqfLevel": 5,
+      "durationYears": [
+        1,
+        2
+      ],
+      "skills": [
+        "sk-construction-methods",
+        "sk-project-management",
+        "sk-compliance",
+        "sk-budgeting"
+      ],
+      "tgaCode": "CPC50220",
+      "verifyCode": true
+    },
+    {
+      "id": "AVI50222",
+      "title": "Diploma of Aviation (Commercial Pilot Licence – Aeroplane)",
+      "sector": "vet",
+      "aqfLevel": 5,
+      "durationYears": [
+        1.5,
+        2
+      ],
+      "skills": [
+        "sk-navigation",
+        "sk-vehicle-operation"
+      ],
+      "tgaCode": "AVI50222",
+      "verifyCode": true
+    },
+    {
+      "id": "he-nursing",
+      "title": "Bachelor of Nursing",
+      "sector": "higher-ed",
+      "aqfLevel": 7,
+      "durationYears": [
+        3,
+        3
+      ],
+      "skills": [
+        "sk-person-centred-care",
+        "sk-clinical-assessment",
+        "sk-medicines",
+        "sk-infection-control",
+        "sk-anatomy"
+      ],
+      "ascedField": "0603"
+    },
+    {
+      "id": "he-physiotherapy",
+      "title": "Bachelor of Physiotherapy (or Doctor of Physiotherapy)",
+      "sector": "higher-ed",
+      "aqfLevel": 7,
+      "durationYears": [
+        4,
+        6
+      ],
+      "skills": [
+        "sk-anatomy",
+        "sk-clinical-assessment",
+        "sk-therapy-planning"
+      ],
+      "ascedField": "0617"
+    },
+    {
+      "id": "he-occupational-therapy",
+      "title": "Bachelor of Occupational Therapy",
+      "sector": "higher-ed",
+      "aqfLevel": 7,
+      "durationYears": [
+        4,
+        4
+      ],
+      "skills": [
+        "sk-therapy-planning",
+        "sk-clinical-assessment",
+        "sk-person-centred-care"
+      ],
+      "ascedField": "0617"
+    },
+    {
+      "id": "he-speech-pathology",
+      "title": "Bachelor of Speech Pathology",
+      "sector": "higher-ed",
+      "aqfLevel": 7,
+      "durationYears": [
+        4,
+        4
+      ],
+      "skills": [
+        "sk-therapy-planning",
+        "sk-clinical-assessment",
+        "sk-child-development"
+      ],
+      "ascedField": "0617"
+    },
+    {
+      "id": "he-medicine",
+      "title": "Medicine (MBBS or MD)",
+      "sector": "higher-ed",
+      "aqfLevel": 9,
+      "durationYears": [
+        5,
+        7
+      ],
+      "skills": [
+        "sk-clinical-assessment",
+        "sk-anatomy",
+        "sk-medicines",
+        "sk-research-methods"
+      ],
+      "ascedField": "0601"
+    },
+    {
+      "id": "he-pharmacy",
+      "title": "Bachelor of Pharmacy",
+      "sector": "higher-ed",
+      "aqfLevel": 7,
+      "durationYears": [
+        4,
+        4
+      ],
+      "skills": [
+        "sk-medicines",
+        "sk-clinical-assessment",
+        "sk-lab-testing"
+      ],
+      "ascedField": "0605"
+    },
+    {
+      "id": "he-dietetics",
+      "title": "Bachelor of Nutrition and Dietetics",
+      "sector": "higher-ed",
+      "aqfLevel": 7,
+      "durationYears": [
+        4,
+        4
+      ],
+      "skills": [
+        "sk-nutrition",
+        "sk-clinical-assessment",
+        "sk-counselling"
+      ],
+      "ascedField": "06"
+    },
+    {
+      "id": "he-psychology",
+      "title": "Bachelor of Psychology (Honours)",
+      "sector": "higher-ed",
+      "aqfLevel": 8,
+      "durationYears": [
+        4,
+        4
+      ],
+      "skills": [
+        "sk-counselling",
+        "sk-research-methods",
+        "sk-data-analysis",
+        "sk-mental-health-support"
+      ],
+      "ascedField": "0907"
+    },
+    {
+      "id": "he-social-work",
+      "title": "Bachelor of Social Work",
+      "sector": "higher-ed",
+      "aqfLevel": 7,
+      "durationYears": [
+        4,
+        4
+      ],
+      "skills": [
+        "sk-case-management",
+        "sk-counselling",
+        "sk-policy"
+      ],
+      "ascedField": "0905"
+    },
+    {
+      "id": "he-counselling",
+      "title": "Bachelor of Counselling",
+      "sector": "higher-ed",
+      "aqfLevel": 7,
+      "durationYears": [
+        3,
+        3
+      ],
+      "skills": [
+        "sk-counselling",
+        "sk-mental-health-support"
+      ],
+      "ascedField": "0905"
+    },
+    {
+      "id": "he-paramedicine",
+      "title": "Bachelor of Paramedicine",
+      "sector": "higher-ed",
+      "aqfLevel": 7,
+      "durationYears": [
+        3,
+        3
+      ],
+      "skills": [
+        "sk-emergency-care",
+        "sk-clinical-assessment",
+        "sk-medicines"
+      ],
+      "ascedField": "06"
+    },
+    {
+      "id": "he-health-management",
+      "title": "Bachelor of Health Services Management",
+      "sector": "higher-ed",
+      "aqfLevel": 7,
+      "durationYears": [
+        3,
+        3
+      ],
+      "skills": [
+        "sk-people-leadership",
+        "sk-budgeting",
+        "sk-policy"
+      ],
+      "ascedField": "06"
+    },
+    {
+      "id": "he-early-childhood",
+      "title": "Bachelor of Early Childhood Education",
+      "sector": "higher-ed",
+      "aqfLevel": 7,
+      "durationYears": [
+        4,
+        4
+      ],
+      "skills": [
+        "sk-child-development",
+        "sk-teaching"
+      ],
+      "ascedField": "0701"
+    },
+    {
+      "id": "he-primary-teaching",
+      "title": "Bachelor of Education (Primary)",
+      "sector": "higher-ed",
+      "aqfLevel": 7,
+      "durationYears": [
+        4,
+        4
+      ],
+      "skills": [
+        "sk-teaching",
+        "sk-child-development"
+      ],
+      "ascedField": "0701"
+    },
+    {
+      "id": "he-secondary-teaching",
+      "title": "Bachelor of Education (Secondary), or a bachelor's then Master of Teaching",
+      "sector": "higher-ed",
+      "aqfLevel": 7,
+      "durationYears": [
+        4,
+        5
+      ],
+      "skills": [
+        "sk-teaching"
+      ],
+      "ascedField": "0701"
+    },
+    {
+      "id": "he-computer-science",
+      "title": "Bachelor of Computer Science or Software Engineering",
+      "sector": "higher-ed",
+      "aqfLevel": 7,
+      "durationYears": [
+        3,
+        4
+      ],
+      "skills": [
+        "sk-programming",
+        "sk-system-design",
+        "sk-data-analysis",
+        "sk-ai-tools"
+      ],
+      "ascedField": "0201"
+    },
+    {
+      "id": "he-cyber-security",
+      "title": "Bachelor of Cyber Security",
+      "sector": "higher-ed",
+      "aqfLevel": 7,
+      "durationYears": [
+        3,
+        3
+      ],
+      "skills": [
+        "sk-cyber",
+        "sk-networks",
+        "sk-programming"
+      ],
+      "ascedField": "02"
+    },
+    {
+      "id": "he-information-systems",
+      "title": "Bachelor of Information Systems",
+      "sector": "higher-ed",
+      "aqfLevel": 7,
+      "durationYears": [
+        3,
+        3
+      ],
+      "skills": [
+        "sk-requirements",
+        "sk-system-design",
+        "sk-data-analysis"
+      ],
+      "ascedField": "0203"
+    },
+    {
+      "id": "he-data-science",
+      "title": "Bachelor of Science (Data Science or Statistics)",
+      "sector": "higher-ed",
+      "aqfLevel": 7,
+      "durationYears": [
+        3,
+        4
+      ],
+      "skills": [
+        "sk-data-analysis",
+        "sk-programming",
+        "sk-research-methods"
+      ],
+      "ascedField": "0101"
+    },
+    {
+      "id": "he-civil-engineering",
+      "title": "Bachelor of Engineering (Honours) (Civil)",
+      "sector": "higher-ed",
+      "aqfLevel": 8,
+      "durationYears": [
+        4,
+        4
+      ],
+      "skills": [
+        "sk-engineering-design",
+        "sk-cad",
+        "sk-project-management"
+      ],
+      "ascedField": "0309"
+    },
+    {
+      "id": "he-electrical-engineering",
+      "title": "Bachelor of Engineering (Honours) (Electrical)",
+      "sector": "higher-ed",
+      "aqfLevel": 8,
+      "durationYears": [
+        4,
+        4
+      ],
+      "skills": [
+        "sk-engineering-design",
+        "sk-electrical-systems",
+        "sk-renewables"
+      ],
+      "ascedField": "0313"
+    },
+    {
+      "id": "he-mechanical-engineering",
+      "title": "Bachelor of Engineering (Honours) (Mechanical)",
+      "sector": "higher-ed",
+      "aqfLevel": 8,
+      "durationYears": [
+        4,
+        4
+      ],
+      "skills": [
+        "sk-engineering-design",
+        "sk-mechanical-systems",
+        "sk-cad"
+      ],
+      "ascedField": "0307"
+    },
+    {
+      "id": "he-architecture",
+      "title": "Bachelor of Design (Architecture) then Master of Architecture",
+      "sector": "higher-ed",
+      "aqfLevel": 9,
+      "durationYears": [
+        5,
+        5
+      ],
+      "skills": [
+        "sk-spatial-design",
+        "sk-cad",
+        "sk-visual-design"
+      ],
+      "ascedField": "0401"
+    },
+    {
+      "id": "he-surveying",
+      "title": "Bachelor of Surveying or Spatial Science",
+      "sector": "higher-ed",
+      "aqfLevel": 7,
+      "durationYears": [
+        4,
+        4
+      ],
+      "skills": [
+        "sk-measurement",
+        "sk-gis",
+        "sk-cad"
+      ],
+      "ascedField": "0311"
+    },
+    {
+      "id": "he-planning",
+      "title": "Bachelor of Urban and Regional Planning",
+      "sector": "higher-ed",
+      "aqfLevel": 7,
+      "durationYears": [
+        4,
+        4
+      ],
+      "skills": [
+        "sk-policy",
+        "sk-gis",
+        "sk-stakeholder"
+      ],
+      "ascedField": "0401"
+    },
+    {
+      "id": "he-environmental-science",
+      "title": "Bachelor of Environmental Science",
+      "sector": "higher-ed",
+      "aqfLevel": 7,
+      "durationYears": [
+        3,
+        4
+      ],
+      "skills": [
+        "sk-field-monitoring",
+        "sk-research-methods",
+        "sk-data-analysis"
+      ],
+      "ascedField": "0509"
+    },
+    {
+      "id": "he-agricultural-science",
+      "title": "Bachelor of Agricultural Science",
+      "sector": "higher-ed",
+      "aqfLevel": 7,
+      "durationYears": [
+        4,
+        4
+      ],
+      "skills": [
+        "sk-plant-science",
+        "sk-research-methods",
+        "sk-field-monitoring"
+      ],
+      "ascedField": "0501"
+    },
+    {
+      "id": "he-medical-laboratory-science",
+      "title": "Bachelor of Medical Laboratory Science",
+      "sector": "higher-ed",
+      "aqfLevel": 7,
+      "durationYears": [
+        4,
+        4
+      ],
+      "skills": [
+        "sk-lab-testing",
+        "sk-quality-control",
+        "sk-research-methods"
+      ],
+      "ascedField": "01"
+    },
+    {
+      "id": "he-veterinary-science",
+      "title": "Bachelor of Veterinary Science or Doctor of Veterinary Medicine",
+      "sector": "higher-ed",
+      "aqfLevel": 8,
+      "durationYears": [
+        5,
+        6
+      ],
+      "skills": [
+        "sk-animal-health",
+        "sk-clinical-assessment"
+      ],
+      "ascedField": "0611"
+    },
+    {
+      "id": "he-accounting",
+      "title": "Bachelor of Commerce (Accounting)",
+      "sector": "higher-ed",
+      "aqfLevel": 7,
+      "durationYears": [
+        3,
+        3
+      ],
+      "skills": [
+        "sk-accounting",
+        "sk-budgeting",
+        "sk-data-analysis"
+      ],
+      "ascedField": "0801"
+    },
+    {
+      "id": "he-business",
+      "title": "Bachelor of Business",
+      "sector": "higher-ed",
+      "aqfLevel": 7,
+      "durationYears": [
+        3,
+        3
+      ],
+      "skills": [
+        "sk-strategy",
+        "sk-project-management",
+        "sk-data-analysis"
+      ],
+      "ascedField": "0803"
+    },
+    {
+      "id": "he-marketing",
+      "title": "Bachelor of Business (Marketing)",
+      "sector": "higher-ed",
+      "aqfLevel": 7,
+      "durationYears": [
+        3,
+        3
+      ],
+      "skills": [
+        "sk-marketing",
+        "sk-data-analysis",
+        "sk-writing-editing"
+      ],
+      "ascedField": "0805"
+    },
+    {
+      "id": "he-law",
+      "title": "Bachelor of Laws, or a bachelor's then Juris Doctor",
+      "sector": "higher-ed",
+      "aqfLevel": 7,
+      "durationYears": [
+        4,
+        5
+      ],
+      "skills": [
+        "sk-legal",
+        "sk-negotiation",
+        "sk-writing-editing"
+      ],
+      "ascedField": "0909"
+    },
+    {
+      "id": "he-journalism",
+      "title": "Bachelor of Journalism or Communication",
+      "sector": "higher-ed",
+      "aqfLevel": 7,
+      "durationYears": [
+        3,
+        3
+      ],
+      "skills": [
+        "sk-writing-editing",
+        "sk-interviewing",
+        "sk-digital-media"
+      ],
+      "ascedField": "1007"
+    },
+    {
+      "id": "he-design",
+      "title": "Bachelor of Design (Visual Communication)",
+      "sector": "higher-ed",
+      "aqfLevel": 7,
+      "durationYears": [
+        3,
+        3
+      ],
+      "skills": [
+        "sk-visual-design",
+        "sk-ux",
+        "sk-digital-media"
+      ],
+      "ascedField": "1005"
+    },
+    {
+      "id": "he-music",
+      "title": "Bachelor of Music",
+      "sector": "higher-ed",
+      "aqfLevel": 7,
+      "durationYears": [
+        3,
+        4
+      ],
+      "skills": [
+        "sk-performance",
+        "sk-music-production"
+      ],
+      "ascedField": "1001"
+    },
+    {
+      "id": "he-acting",
+      "title": "Bachelor of Fine Arts (Acting)",
+      "sector": "higher-ed",
+      "aqfLevel": 7,
+      "durationYears": [
+        3,
+        3
+      ],
+      "skills": [
+        "sk-performance"
+      ],
+      "ascedField": "1001"
+    },
+    {
+      "id": "he-construction-management",
+      "title": "Bachelor of Construction Management",
+      "sector": "higher-ed",
+      "aqfLevel": 7,
+      "durationYears": [
+        4,
+        4
+      ],
+      "skills": [
+        "sk-construction-methods",
+        "sk-project-management",
+        "sk-budgeting",
+        "sk-compliance"
+      ],
+      "ascedField": "0403"
+    },
+    {
+      "id": "he-aviation",
+      "title": "Bachelor of Aviation",
+      "sector": "higher-ed",
+      "aqfLevel": 7,
+      "durationYears": [
+        3,
+        3
+      ],
+      "skills": [
+        "sk-navigation",
+        "sk-vehicle-operation"
+      ],
+      "ascedField": "0315"
+    },
+    {
+      "id": "he-exercise-science",
+      "title": "Bachelor of Exercise Science",
+      "sector": "higher-ed",
+      "aqfLevel": 7,
+      "durationYears": [
+        3,
+        3
+      ],
+      "skills": [
+        "sk-anatomy",
+        "sk-fitness",
+        "sk-coaching"
+      ],
+      "ascedField": "0921"
+    }
+  ]
+}

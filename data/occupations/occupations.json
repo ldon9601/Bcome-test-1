@@ -1,17 +1,21 @@
 {
-  "version": "1.0.0",
+  "version": "2.0.0",
   "notes": [
-    "anzsco is the ANZSCO 2022 unit group (4-digit) used to join JSA projections. Verify against OSCA concordance when importing.",
-    "riasec codes, values, subjects, skills and pathways are editorial judgements for guidance, written for this project. Have a careers adviser review them.",
-    "aiExposure is an indicative judgement of how much of the work generative AI and automation could change (low/medium/high). It is not JSA data.",
-    "oftenRequired lists subjects that are commonly prerequisites or assumed knowledge. Requirements differ by institution and state; always check the admissions centre."
+    "osca is the primary identifier: an OSCA 2024 v1.0 occupation (6 digits) or, for broad careers, unit group (4 digits). oscaSource 'abs' = seen in the ABS OSCA 2024 publication; 'correspondence' = from the ABS ANZSCO–OSCA correspondence table as republished at ozlinks.au. Check both against the ABS data downloads before launch.",
+    "anzsco is the ANZSCO 2022 unit group, kept only to join Jobs and Skills Australia's 2025 employment projections, which are published on ANZSCO.",
+    "salary is an indicative AUD range for full-time work before tax, excluding super: 'entry' = first year fully qualified, 'experienced' = about 5 to 10 years in. These are Bcome editorial estimates from typical 2025 award and market rates, not JSA or ABS data. Run `npm run data:import-earnings` to add JSA median earnings.",
+    "timeToQualify.years is the typical full-time range from finishing Year 12 to the milestone, on the most common route.",
+    "riasec codes, values, subjects, skills, pathways, aiExposure and entryCompetitiveness are editorial judgements for guidance. Have a careers adviser review them."
   ],
   "occupations": [
     {
-      "id": "registered-nurse",
+      "osca": "2654",
+      "oscaLevel": "unitGroup",
+      "oscaUnitGroup": "2654",
+      "oscaTitle": "Registered Nurses",
+      "oscaSource": "abs",
       "title": "Registered Nurse",
       "anzsco": "2544",
-      "majorGroup": 2,
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "SIC",
@@ -31,15 +35,55 @@
         "oftenRequired": []
       },
       "skills": [
-        "patient care",
-        "clinical assessment",
-        "communication",
-        "teamwork under pressure",
-        "medication safety"
+        "sk-person-centred-care",
+        "sk-clinical-assessment",
+        "sk-medicines",
+        "sk-infection-control",
+        "sk-anatomy",
+        "sk-emergency-care"
       ],
-      "pathways": {
-        "university": "Bachelor of Nursing",
-        "vet": "Diploma of Nursing (Enrolled Nurse), then a bachelor's with credit"
+      "coreCompetencies": [
+        "core-oral-communication",
+        "core-teamwork",
+        "core-problem-solving"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-nursing",
+          "description": "Bachelor of Nursing, then register with AHPRA",
+          "years": [
+            3,
+            3
+          ]
+        },
+        {
+          "route": "vet",
+          "qualification": "HLT54121",
+          "description": "Diploma of Nursing (enrolled nurse), then a nursing degree with credit",
+          "years": [
+            3.5,
+            4
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          3,
+          4
+        ],
+        "milestone": "Registered nurse"
+      },
+      "entryCompetitiveness": "moderate",
+      "salary": {
+        "entry": [
+          75000,
+          85000
+        ],
+        "experienced": [
+          95000,
+          120000
+        ]
       },
       "aiExposure": "low",
       "drivers": [
@@ -49,10 +93,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "nursing-support-personal-care-worker",
-      "title": "Nursing Support / Personal Care Worker",
+      "osca": "442231",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "4422",
+      "oscaTitle": "Assistant in Nursing",
+      "oscaSource": "correspondence",
+      "title": "Assistant in Nursing",
       "anzsco": "4233",
-      "majorGroup": 4,
       "industry": "Health Care and Social Assistance",
       "skillLevel": 4,
       "riasec": "SRC",
@@ -70,15 +117,52 @@
         "oftenRequired": []
       },
       "skills": [
-        "personal care",
-        "observation and reporting",
-        "communication",
-        "infection control",
-        "empathy"
+        "sk-person-centred-care",
+        "sk-infection-control",
+        "sk-anatomy"
       ],
-      "pathways": {
-        "vet": "Certificate III in Health Services Assistance or Individual Support",
-        "apprenticeship": "A traineeship in health services or individual support"
+      "coreCompetencies": [
+        "core-oral-communication",
+        "core-teamwork",
+        "core-reading"
+      ],
+      "pathways": [
+        {
+          "route": "vet",
+          "qualification": "HLT33115",
+          "description": "Certificate III in Health Services Assistance",
+          "years": [
+            0.5,
+            1
+          ]
+        },
+        {
+          "route": "traineeship",
+          "qualification": "HLT33115",
+          "description": "A traineeship in health services assistance",
+          "years": [
+            1,
+            1
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          0.5,
+          1
+        ],
+        "milestone": "Working as an assistant in nursing"
+      },
+      "entryCompetitiveness": "open",
+      "salary": {
+        "entry": [
+          55000,
+          62000
+        ],
+        "experienced": [
+          62000,
+          72000
+        ]
       },
       "aiExposure": "low",
       "drivers": [
@@ -90,17 +174,20 @@
       ]
     },
     {
-      "id": "aged-and-disability-carer",
-      "title": "Aged and Disability Carer",
-      "anzsco": "4231",
-      "majorGroup": 4,
+      "osca": "421331",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "4213",
+      "oscaTitle": "Residential Aged Care Worker",
+      "oscaSource": "abs",
+      "title": "Aged Care Worker",
+      "anzsco": "4233",
       "industry": "Health Care and Social Assistance",
       "skillLevel": 4,
       "riasec": "SRC",
       "values": [
         "helping",
-        "variety",
-        "security"
+        "security",
+        "teamwork"
       ],
       "subjects": {
         "helpful": [
@@ -111,15 +198,52 @@
         "oftenRequired": []
       },
       "skills": [
-        "personal care",
-        "supporting independence",
-        "communication",
-        "safety and risk",
-        "empathy"
+        "sk-person-centred-care",
+        "sk-infection-control",
+        "sk-mental-health-support"
       ],
-      "pathways": {
-        "vet": "Certificate III in Individual Support; Certificate IV in Disability Support",
-        "apprenticeship": "A traineeship in individual support"
+      "coreCompetencies": [
+        "core-oral-communication",
+        "core-teamwork",
+        "core-planning"
+      ],
+      "pathways": [
+        {
+          "route": "vet",
+          "qualification": "CHC33021",
+          "description": "Certificate III in Individual Support (Ageing)",
+          "years": [
+            0.5,
+            1
+          ]
+        },
+        {
+          "route": "traineeship",
+          "qualification": "CHC33021",
+          "description": "A traineeship in individual support",
+          "years": [
+            1,
+            1
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          0.5,
+          1
+        ],
+        "milestone": "Working as an aged care worker"
+      },
+      "entryCompetitiveness": "open",
+      "salary": {
+        "entry": [
+          55000,
+          62000
+        ],
+        "experienced": [
+          60000,
+          70000
+        ]
       },
       "aiExposure": "low",
       "drivers": [
@@ -131,10 +255,104 @@
       ]
     },
     {
-      "id": "physiotherapist",
+      "osca": "422231",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "4222",
+      "oscaTitle": "Disability Support Worker",
+      "oscaSource": "abs",
+      "title": "Disability Support Worker",
+      "anzsco": "4231",
+      "industry": "Health Care and Social Assistance",
+      "skillLevel": 4,
+      "riasec": "SER",
+      "values": [
+        "helping",
+        "variety",
+        "independence"
+      ],
+      "subjects": {
+        "helpful": [
+          "pdhpe",
+          "society_culture",
+          "english"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "sk-person-centred-care",
+        "sk-case-management",
+        "sk-mental-health-support",
+        "sk-coaching"
+      ],
+      "coreCompetencies": [
+        "core-oral-communication",
+        "core-initiative",
+        "core-problem-solving"
+      ],
+      "pathways": [
+        {
+          "route": "vet",
+          "qualification": "CHC33021",
+          "description": "Certificate III in Individual Support (Disability)",
+          "years": [
+            0.5,
+            1
+          ]
+        },
+        {
+          "route": "vet",
+          "qualification": "CHC43121",
+          "description": "Certificate IV in Disability Support",
+          "years": [
+            1,
+            1
+          ]
+        },
+        {
+          "route": "traineeship",
+          "qualification": "CHC33021",
+          "description": "A traineeship in individual support",
+          "years": [
+            1,
+            1
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          0.5,
+          1
+        ],
+        "milestone": "Working as a disability support worker"
+      },
+      "entryCompetitiveness": "open",
+      "salary": {
+        "entry": [
+          55000,
+          65000
+        ],
+        "experienced": [
+          62000,
+          75000
+        ]
+      },
+      "aiExposure": "low",
+      "drivers": [
+        "ageing-population",
+        "care-economy"
+      ],
+      "apprenticeshipAreas": [
+        "care"
+      ]
+    },
+    {
+      "osca": "262431",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2624",
+      "oscaTitle": "Physiotherapist",
+      "oscaSource": "correspondence",
       "title": "Physiotherapist",
       "anzsco": "2525",
-      "majorGroup": 2,
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "SIR",
@@ -153,14 +371,44 @@
         "oftenRequired": []
       },
       "skills": [
-        "anatomy and movement",
-        "clinical reasoning",
-        "rehabilitation planning",
-        "communication",
-        "hands-on treatment"
+        "sk-anatomy",
+        "sk-clinical-assessment",
+        "sk-therapy-planning",
+        "sk-coaching"
       ],
-      "pathways": {
-        "university": "Bachelor of Physiotherapy, or a related bachelor's then Doctor of Physiotherapy"
+      "coreCompetencies": [
+        "core-oral-communication",
+        "core-problem-solving",
+        "core-learning"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-physiotherapy",
+          "description": "Bachelor of Physiotherapy, or a related degree then a Doctor of Physiotherapy",
+          "years": [
+            4,
+            6
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          4,
+          6
+        ],
+        "milestone": "Registered physiotherapist"
+      },
+      "entryCompetitiveness": "high",
+      "salary": {
+        "entry": [
+          75000,
+          85000
+        ],
+        "experienced": [
+          100000,
+          130000
+        ]
       },
       "aiExposure": "low",
       "drivers": [
@@ -169,10 +417,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "occupational-therapist",
+      "osca": "262331",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2623",
+      "oscaTitle": "Occupational Therapist",
+      "oscaSource": "correspondence",
       "title": "Occupational Therapist",
       "anzsco": "2524",
-      "majorGroup": 2,
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "SIA",
@@ -190,14 +441,43 @@
         "oftenRequired": []
       },
       "skills": [
-        "functional assessment",
-        "creative problem solving",
-        "rehabilitation planning",
-        "communication",
-        "home and work adaptation"
+        "sk-therapy-planning",
+        "sk-clinical-assessment",
+        "sk-person-centred-care"
       ],
-      "pathways": {
-        "university": "Bachelor of Occupational Therapy"
+      "coreCompetencies": [
+        "core-problem-solving",
+        "core-oral-communication",
+        "core-planning"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-occupational-therapy",
+          "description": "Bachelor of Occupational Therapy",
+          "years": [
+            4,
+            4
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          4,
+          5
+        ],
+        "milestone": "Registered occupational therapist"
+      },
+      "entryCompetitiveness": "moderate",
+      "salary": {
+        "entry": [
+          75000,
+          85000
+        ],
+        "experienced": [
+          95000,
+          120000
+        ]
       },
       "aiExposure": "low",
       "drivers": [
@@ -207,10 +487,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "speech-pathologist-audiologist",
-      "title": "Speech Pathologist / Audiologist",
+      "osca": "262631",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2626",
+      "oscaTitle": "Speech Pathologist",
+      "oscaSource": "correspondence",
+      "title": "Speech Pathologist",
       "anzsco": "2527",
-      "majorGroup": 2,
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "SIA",
@@ -228,13 +511,43 @@
         "oftenRequired": []
       },
       "skills": [
-        "communication assessment",
-        "therapy planning",
-        "working with children and families",
-        "clinical reasoning"
+        "sk-therapy-planning",
+        "sk-clinical-assessment",
+        "sk-child-development"
       ],
-      "pathways": {
-        "university": "Bachelor of Speech Pathology; Master of Audiology"
+      "coreCompetencies": [
+        "core-oral-communication",
+        "core-writing",
+        "core-problem-solving"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-speech-pathology",
+          "description": "Bachelor of Speech Pathology",
+          "years": [
+            4,
+            4
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          4,
+          5
+        ],
+        "milestone": "Certified speech pathologist"
+      },
+      "entryCompetitiveness": "moderate",
+      "salary": {
+        "entry": [
+          75000,
+          85000
+        ],
+        "experienced": [
+          95000,
+          120000
+        ]
       },
       "aiExposure": "low",
       "drivers": [
@@ -244,10 +557,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "general-practitioner-doctor",
+      "osca": "264231",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2642",
+      "oscaTitle": "General Practitioner",
+      "oscaSource": "correspondence",
       "title": "General Practitioner (Doctor)",
       "anzsco": "2531",
-      "majorGroup": 2,
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "ISE",
@@ -268,14 +584,46 @@
         ]
       },
       "skills": [
-        "diagnosis",
-        "clinical reasoning",
-        "communication",
-        "evidence-based practice",
-        "decision making under uncertainty"
+        "sk-clinical-assessment",
+        "sk-anatomy",
+        "sk-medicines",
+        "sk-research-methods",
+        "sk-person-centred-care"
       ],
-      "pathways": {
-        "university": "Undergraduate medicine, or a bachelor's then Doctor of Medicine (UCAT or GAMSAT entry)"
+      "coreCompetencies": [
+        "core-problem-solving",
+        "core-oral-communication",
+        "core-learning"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-medicine",
+          "description": "Medicine (UCAT or GAMSAT entry), then internship, residency and GP training",
+          "years": [
+            10,
+            12
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          10,
+          12
+        ],
+        "milestone": "Fellowed GP"
+      },
+      "entryCompetitiveness": "high",
+      "salary": {
+        "entry": [
+          180000,
+          250000
+        ],
+        "experienced": [
+          250000,
+          400000
+        ],
+        "note": "Junior doctors earn about $80k–$130k during training."
       },
       "aiExposure": "low",
       "drivers": [
@@ -284,10 +632,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "pharmacist",
+      "osca": "263431",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2634",
+      "oscaTitle": "Community Pharmacist",
+      "oscaSource": "correspondence",
       "title": "Pharmacist",
       "anzsco": "2515",
-      "majorGroup": 2,
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "ICS",
@@ -307,13 +658,43 @@
         ]
       },
       "skills": [
-        "medicines knowledge",
-        "attention to detail",
-        "patient counselling",
-        "clinical checking"
+        "sk-medicines",
+        "sk-clinical-assessment",
+        "sk-customer-service"
       ],
-      "pathways": {
-        "university": "Bachelor of Pharmacy"
+      "coreCompetencies": [
+        "core-reading",
+        "core-oral-communication",
+        "core-problem-solving"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-pharmacy",
+          "description": "Bachelor of Pharmacy, then an intern year",
+          "years": [
+            5,
+            5
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          5,
+          5
+        ],
+        "milestone": "Registered pharmacist"
+      },
+      "entryCompetitiveness": "moderate",
+      "salary": {
+        "entry": [
+          70000,
+          80000
+        ],
+        "experienced": [
+          95000,
+          120000
+        ]
       },
       "aiExposure": "medium",
       "drivers": [
@@ -322,10 +703,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "dietitian",
+      "osca": "263231",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2632",
+      "oscaTitle": "Dietitian",
+      "oscaSource": "correspondence",
       "title": "Dietitian",
       "anzsco": "2511",
-      "majorGroup": 2,
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "ISE",
@@ -344,13 +728,43 @@
         "oftenRequired": []
       },
       "skills": [
-        "nutrition science",
-        "counselling",
-        "meal planning",
-        "research literacy"
+        "sk-nutrition",
+        "sk-clinical-assessment",
+        "sk-counselling"
       ],
-      "pathways": {
-        "university": "Bachelor of Nutrition and Dietetics"
+      "coreCompetencies": [
+        "core-oral-communication",
+        "core-planning",
+        "core-writing"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-dietetics",
+          "description": "Bachelor of Nutrition and Dietetics",
+          "years": [
+            4,
+            4
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          4,
+          5
+        ],
+        "milestone": "Accredited practising dietitian"
+      },
+      "entryCompetitiveness": "moderate",
+      "salary": {
+        "entry": [
+          72000,
+          82000
+        ],
+        "experienced": [
+          90000,
+          110000
+        ]
       },
       "aiExposure": "low",
       "drivers": [
@@ -359,10 +773,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "psychologist",
+      "osca": "261231",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2612",
+      "oscaTitle": "Psychologist",
+      "oscaSource": "abs",
       "title": "Psychologist",
       "anzsco": "2723",
-      "majorGroup": 2,
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "SIA",
@@ -381,14 +798,44 @@
         "oftenRequired": []
       },
       "skills": [
-        "assessment",
-        "counselling",
-        "research and statistics",
-        "ethics",
-        "active listening"
+        "sk-counselling",
+        "sk-mental-health-support",
+        "sk-research-methods",
+        "sk-data-analysis"
       ],
-      "pathways": {
-        "university": "Bachelor of Psychology (Honours), then a master's or supervised practice"
+      "coreCompetencies": [
+        "core-oral-communication",
+        "core-writing",
+        "core-problem-solving"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-psychology",
+          "description": "Psychology (Honours), then a master's or two-year supervised practice",
+          "years": [
+            6,
+            6
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          6,
+          6
+        ],
+        "milestone": "Registered psychologist"
+      },
+      "entryCompetitiveness": "high",
+      "salary": {
+        "entry": [
+          80000,
+          95000
+        ],
+        "experienced": [
+          110000,
+          150000
+        ]
       },
       "aiExposure": "low",
       "drivers": [
@@ -397,10 +844,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "social-worker",
+      "osca": "261331",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2613",
+      "oscaTitle": "Social Worker",
+      "oscaSource": "correspondence",
       "title": "Social Worker",
       "anzsco": "2725",
-      "majorGroup": 2,
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "SEC",
@@ -418,15 +868,53 @@
         "oftenRequired": []
       },
       "skills": [
-        "case management",
-        "advocacy",
-        "crisis support",
-        "communication",
-        "understanding systems"
+        "sk-case-management",
+        "sk-counselling",
+        "sk-policy",
+        "sk-mental-health-support"
       ],
-      "pathways": {
-        "university": "Bachelor of Social Work",
-        "vet": "Diploma of Community Services as a pathway"
+      "coreCompetencies": [
+        "core-oral-communication",
+        "core-writing",
+        "core-problem-solving"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-social-work",
+          "description": "Bachelor of Social Work",
+          "years": [
+            4,
+            4
+          ]
+        },
+        {
+          "route": "vet",
+          "qualification": "CHC52021",
+          "description": "Diploma of Community Services, then a social work degree with credit",
+          "years": [
+            5,
+            5
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          4,
+          5
+        ],
+        "milestone": "Qualified social worker"
+      },
+      "entryCompetitiveness": "moderate",
+      "salary": {
+        "entry": [
+          75000,
+          85000
+        ],
+        "experienced": [
+          95000,
+          115000
+        ]
       },
       "aiExposure": "low",
       "drivers": [
@@ -435,10 +923,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "counsellor",
+      "osca": "261131",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2611",
+      "oscaTitle": "Counsellor (General)",
+      "oscaSource": "correspondence",
       "title": "Counsellor",
       "anzsco": "2721",
-      "majorGroup": 2,
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "SAI",
@@ -456,14 +947,52 @@
         "oftenRequired": []
       },
       "skills": [
-        "active listening",
-        "counselling techniques",
-        "empathy",
-        "ethics"
+        "sk-counselling",
+        "sk-mental-health-support",
+        "sk-case-management"
       ],
-      "pathways": {
-        "university": "Bachelor of Counselling",
-        "vet": "Diploma of Counselling"
+      "coreCompetencies": [
+        "core-oral-communication",
+        "core-writing",
+        "core-learning"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-counselling",
+          "description": "Bachelor of Counselling",
+          "years": [
+            3,
+            3
+          ]
+        },
+        {
+          "route": "vet",
+          "qualification": "CHC51015",
+          "description": "Diploma of Counselling",
+          "years": [
+            1,
+            2
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          2,
+          4
+        ],
+        "milestone": "Working as a counsellor"
+      },
+      "entryCompetitiveness": "moderate",
+      "salary": {
+        "entry": [
+          65000,
+          75000
+        ],
+        "experienced": [
+          80000,
+          100000
+        ]
       },
       "aiExposure": "low",
       "drivers": [
@@ -472,10 +1001,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "paramedic",
+      "osca": "269432",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2694",
+      "oscaTitle": "Paramedic",
+      "oscaSource": "correspondence",
       "title": "Paramedic",
       "anzsco": "4111",
-      "majorGroup": 4,
       "industry": "Health Care and Social Assistance",
       "skillLevel": 2,
       "riasec": "SRI",
@@ -494,14 +1026,44 @@
         "oftenRequired": []
       },
       "skills": [
-        "emergency care",
-        "calm decision making",
-        "teamwork",
-        "physical fitness",
-        "communication"
+        "sk-emergency-care",
+        "sk-clinical-assessment",
+        "sk-medicines",
+        "sk-vehicle-operation"
       ],
-      "pathways": {
-        "university": "Bachelor of Paramedicine"
+      "coreCompetencies": [
+        "core-teamwork",
+        "core-problem-solving",
+        "core-oral-communication"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-paramedicine",
+          "description": "Bachelor of Paramedicine, then a graduate year with an ambulance service",
+          "years": [
+            4,
+            4
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          4,
+          4
+        ],
+        "milestone": "Registered paramedic"
+      },
+      "entryCompetitiveness": "high",
+      "salary": {
+        "entry": [
+          75000,
+          85000
+        ],
+        "experienced": [
+          95000,
+          120000
+        ]
       },
       "aiExposure": "low",
       "drivers": [
@@ -510,10 +1072,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "dental-assistant",
+      "osca": "442331",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "4423",
+      "oscaTitle": "Dental Assistant",
+      "oscaSource": "correspondence",
       "title": "Dental Assistant",
       "anzsco": "4232",
-      "majorGroup": 4,
       "industry": "Health Care and Social Assistance",
       "skillLevel": 4,
       "riasec": "SCR",
@@ -530,14 +1095,52 @@
         "oftenRequired": []
       },
       "skills": [
-        "infection control",
-        "chairside assisting",
-        "patient care",
-        "record keeping"
+        "sk-infection-control",
+        "sk-person-centred-care",
+        "sk-admin"
       ],
-      "pathways": {
-        "vet": "Certificate III / IV in Dental Assisting",
-        "apprenticeship": "A traineeship in dental assisting"
+      "coreCompetencies": [
+        "core-teamwork",
+        "core-reading",
+        "core-planning"
+      ],
+      "pathways": [
+        {
+          "route": "vet",
+          "qualification": "HLT35021",
+          "description": "Certificate III in Dental Assisting",
+          "years": [
+            1,
+            1
+          ]
+        },
+        {
+          "route": "traineeship",
+          "qualification": "HLT35021",
+          "description": "A traineeship in dental assisting",
+          "years": [
+            1,
+            1.5
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          1,
+          1.5
+        ],
+        "milestone": "Qualified dental assistant"
+      },
+      "entryCompetitiveness": "open",
+      "salary": {
+        "entry": [
+          52000,
+          58000
+        ],
+        "experienced": [
+          58000,
+          68000
+        ]
       },
       "aiExposure": "low",
       "drivers": [
@@ -548,10 +1151,13 @@
       ]
     },
     {
-      "id": "health-and-welfare-services-manager",
+      "osca": "1413",
+      "oscaLevel": "unitGroup",
+      "oscaUnitGroup": "1413",
+      "oscaTitle": "Health and Welfare Services Managers",
+      "oscaSource": "correspondence",
       "title": "Health and Welfare Services Manager",
       "anzsco": "1342",
-      "majorGroup": 1,
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "ESC",
@@ -569,13 +1175,45 @@
         "oftenRequired": []
       },
       "skills": [
-        "leadership",
-        "planning and budgeting",
-        "quality and safety",
-        "people management"
+        "sk-people-leadership",
+        "sk-budgeting",
+        "sk-policy",
+        "sk-project-management"
       ],
-      "pathways": {
-        "university": "Bachelor of Health Administration, or a clinical degree plus experience"
+      "coreCompetencies": [
+        "core-planning",
+        "core-oral-communication",
+        "core-problem-solving"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-health-management",
+          "description": "Bachelor of Health Services Management, or a clinical degree, then several years' experience",
+          "years": [
+            8,
+            12
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          8,
+          12
+        ],
+        "milestone": "Managing a health or welfare service"
+      },
+      "entryCompetitiveness": "moderate",
+      "salary": {
+        "entry": [
+          110000,
+          130000
+        ],
+        "experienced": [
+          130000,
+          180000
+        ],
+        "note": "Usually reached after a clinical or care career."
       },
       "aiExposure": "low",
       "drivers": [
@@ -585,10 +1223,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "early-childhood-educator",
+      "osca": "431132",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "4311",
+      "oscaTitle": "Early Childhood Educator",
+      "oscaSource": "correspondence",
       "title": "Early Childhood Educator",
       "anzsco": "4211",
-      "majorGroup": 4,
       "industry": "Health Care and Social Assistance",
       "skillLevel": 4,
       "riasec": "SAR",
@@ -607,14 +1248,61 @@
         "oftenRequired": []
       },
       "skills": [
-        "child development",
-        "play-based learning",
-        "communication with families",
-        "safety and wellbeing"
+        "sk-child-development",
+        "sk-teaching",
+        "sk-person-centred-care"
       ],
-      "pathways": {
-        "vet": "Certificate III / Diploma of Early Childhood Education and Care",
-        "apprenticeship": "A traineeship in early childhood education and care"
+      "coreCompetencies": [
+        "core-oral-communication",
+        "core-teamwork",
+        "core-planning"
+      ],
+      "pathways": [
+        {
+          "route": "vet",
+          "qualification": "CHC30121",
+          "description": "Certificate III in Early Childhood Education and Care",
+          "years": [
+            0.5,
+            1
+          ]
+        },
+        {
+          "route": "vet",
+          "qualification": "CHC50121",
+          "description": "Diploma of Early Childhood Education and Care",
+          "years": [
+            1.5,
+            2
+          ]
+        },
+        {
+          "route": "traineeship",
+          "qualification": "CHC30121",
+          "description": "A traineeship in early childhood education",
+          "years": [
+            1,
+            1
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          0.5,
+          2
+        ],
+        "milestone": "Qualified early childhood educator"
+      },
+      "entryCompetitiveness": "open",
+      "salary": {
+        "entry": [
+          52000,
+          60000
+        ],
+        "experienced": [
+          60000,
+          72000
+        ]
       },
       "aiExposure": "low",
       "drivers": [
@@ -625,10 +1313,13 @@
       ]
     },
     {
-      "id": "early-childhood-teacher",
+      "osca": "251131",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2511",
+      "oscaTitle": "Early Childhood (Pre-primary School) Teacher",
+      "oscaSource": "correspondence",
       "title": "Early Childhood Teacher",
       "anzsco": "2411",
-      "majorGroup": 2,
       "industry": "Education and Training",
       "skillLevel": 1,
       "riasec": "SAE",
@@ -646,14 +1337,52 @@
         "oftenRequired": []
       },
       "skills": [
-        "child development",
-        "curriculum planning",
-        "communication",
-        "creativity"
+        "sk-child-development",
+        "sk-teaching",
+        "sk-stakeholder"
       ],
-      "pathways": {
-        "university": "Bachelor of Early Childhood Education",
-        "vet": "Diploma of Early Childhood Education and Care as a pathway"
+      "coreCompetencies": [
+        "core-oral-communication",
+        "core-planning",
+        "core-writing"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-early-childhood",
+          "description": "Bachelor of Early Childhood Education",
+          "years": [
+            4,
+            4
+          ]
+        },
+        {
+          "route": "vet",
+          "qualification": "CHC50121",
+          "description": "Diploma of Early Childhood Education and Care, then a degree with credit",
+          "years": [
+            4,
+            5
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          4,
+          5
+        ],
+        "milestone": "Registered early childhood teacher"
+      },
+      "entryCompetitiveness": "open",
+      "salary": {
+        "entry": [
+          75000,
+          85000
+        ],
+        "experienced": [
+          90000,
+          110000
+        ]
       },
       "aiExposure": "low",
       "drivers": [
@@ -662,10 +1391,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "primary-school-teacher",
+      "osca": "251231",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2512",
+      "oscaTitle": "Primary School Teacher",
+      "oscaSource": "correspondence",
       "title": "Primary School Teacher",
       "anzsco": "2412",
-      "majorGroup": 2,
       "industry": "Education and Training",
       "skillLevel": 1,
       "riasec": "SAE",
@@ -685,14 +1417,43 @@
         "oftenRequired": []
       },
       "skills": [
-        "teaching and explaining",
-        "classroom management",
-        "planning",
-        "communication",
-        "patience"
+        "sk-teaching",
+        "sk-child-development",
+        "sk-stakeholder"
       ],
-      "pathways": {
-        "university": "Bachelor of Education (Primary)"
+      "coreCompetencies": [
+        "core-oral-communication",
+        "core-planning",
+        "core-writing"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-primary-teaching",
+          "description": "Bachelor of Education (Primary)",
+          "years": [
+            4,
+            4
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          4,
+          4
+        ],
+        "milestone": "Registered primary teacher"
+      },
+      "entryCompetitiveness": "moderate",
+      "salary": {
+        "entry": [
+          80000,
+          90000
+        ],
+        "experienced": [
+          110000,
+          130000
+        ]
       },
       "aiExposure": "low",
       "drivers": [
@@ -701,10 +1462,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "secondary-school-teacher",
+      "osca": "251331",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2513",
+      "oscaTitle": "Secondary School Teacher",
+      "oscaSource": "correspondence",
       "title": "Secondary School Teacher",
       "anzsco": "2414",
-      "majorGroup": 2,
       "industry": "Education and Training",
       "skillLevel": 1,
       "riasec": "SAI",
@@ -724,13 +1488,43 @@
         "oftenRequired": []
       },
       "skills": [
-        "subject expertise",
-        "teaching and explaining",
-        "classroom management",
-        "mentoring"
+        "sk-teaching",
+        "sk-coaching",
+        "sk-stakeholder"
       ],
-      "pathways": {
-        "university": "Bachelor of Education (Secondary), or a bachelor's then Master of Teaching"
+      "coreCompetencies": [
+        "core-oral-communication",
+        "core-planning",
+        "core-learning"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-secondary-teaching",
+          "description": "Bachelor of Education (Secondary), or a degree in your subject then Master of Teaching",
+          "years": [
+            4,
+            5
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          4,
+          5
+        ],
+        "milestone": "Registered secondary teacher"
+      },
+      "entryCompetitiveness": "moderate",
+      "salary": {
+        "entry": [
+          80000,
+          90000
+        ],
+        "experienced": [
+          110000,
+          135000
+        ]
       },
       "aiExposure": "low",
       "drivers": [
@@ -739,10 +1533,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "software-developer-programmer",
-      "title": "Software Developer / Programmer",
+      "osca": "273333",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2733",
+      "oscaTitle": "Software Engineer",
+      "oscaSource": "abs",
+      "title": "Software Engineer",
       "anzsco": "2613",
-      "majorGroup": 2,
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "IRC",
@@ -761,16 +1558,62 @@
         "oftenRequired": []
       },
       "skills": [
-        "programming",
-        "problem solving",
-        "system design",
-        "testing",
-        "working with AI tools"
+        "sk-programming",
+        "sk-system-design",
+        "sk-data-analysis",
+        "sk-ai-tools",
+        "sk-networks"
       ],
-      "pathways": {
-        "university": "Bachelor of Computer Science, Software Engineering or IT",
-        "vet": "Diploma of Information Technology",
-        "apprenticeship": "A digital traineeship or cadetship, where you work while you study"
+      "coreCompetencies": [
+        "core-problem-solving",
+        "core-digital-engagement",
+        "core-learning"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-computer-science",
+          "description": "Bachelor of Computer Science or Software Engineering",
+          "years": [
+            3,
+            4
+          ]
+        },
+        {
+          "route": "vet",
+          "qualification": "ICT50220",
+          "description": "Diploma of Information Technology, then a degree or a junior role",
+          "years": [
+            2,
+            4
+          ]
+        },
+        {
+          "route": "cadetship",
+          "description": "A digital cadetship, where you work while you study",
+          "years": [
+            3,
+            4
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          3,
+          4
+        ],
+        "milestone": "Working as a software engineer"
+      },
+      "entryCompetitiveness": "moderate",
+      "salary": {
+        "entry": [
+          75000,
+          95000
+        ],
+        "experienced": [
+          130000,
+          180000
+        ]
       },
       "aiExposure": "high",
       "drivers": [
@@ -779,10 +1622,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "cyber-security-and-systems-specialist",
-      "title": "Cyber Security and Systems Specialist",
+      "osca": "271133",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2711",
+      "oscaTitle": "Cyber Security Analyst",
+      "oscaSource": "correspondence",
+      "title": "Cyber Security Analyst",
       "anzsco": "2621",
-      "majorGroup": 2,
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "ICR",
@@ -799,15 +1645,62 @@
         "oftenRequired": []
       },
       "skills": [
-        "network security",
-        "risk analysis",
-        "systems administration",
-        "incident response"
+        "sk-cyber",
+        "sk-networks",
+        "sk-fault-finding",
+        "sk-compliance",
+        "sk-ai-tools"
       ],
-      "pathways": {
-        "university": "Bachelor of Cyber Security or IT",
-        "vet": "Certificate IV in Cyber Security",
-        "apprenticeship": "A cyber security cadetship or traineeship, where you work while you study"
+      "coreCompetencies": [
+        "core-problem-solving",
+        "core-digital-engagement",
+        "core-learning"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-cyber-security",
+          "description": "Bachelor of Cyber Security",
+          "years": [
+            3,
+            3
+          ]
+        },
+        {
+          "route": "vet",
+          "qualification": "22603VIC",
+          "description": "Certificate IV in Cyber Security, then a junior role",
+          "years": [
+            1,
+            3
+          ]
+        },
+        {
+          "route": "cadetship",
+          "description": "A cyber security cadetship, where you work while you study",
+          "years": [
+            3,
+            4
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          2,
+          4
+        ],
+        "milestone": "Working as a cyber security analyst"
+      },
+      "entryCompetitiveness": "moderate",
+      "salary": {
+        "entry": [
+          80000,
+          100000
+        ],
+        "experienced": [
+          130000,
+          180000
+        ]
       },
       "aiExposure": "medium",
       "drivers": [
@@ -816,10 +1709,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "ict-business-and-systems-analyst",
-      "title": "ICT Business and Systems Analyst",
+      "osca": "273232",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2732",
+      "oscaTitle": "ICT Business Analyst",
+      "oscaSource": "correspondence",
+      "title": "ICT Business Analyst",
       "anzsco": "2611",
-      "majorGroup": 2,
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "ICE",
@@ -837,14 +1733,53 @@
         "oftenRequired": []
       },
       "skills": [
-        "requirements analysis",
-        "process mapping",
-        "communication",
-        "data analysis"
+        "sk-requirements",
+        "sk-data-analysis",
+        "sk-stakeholder",
+        "sk-system-design"
       ],
-      "pathways": {
-        "university": "Bachelor of Information Systems or IT",
-        "vet": "Diploma of Information Technology"
+      "coreCompetencies": [
+        "core-oral-communication",
+        "core-problem-solving",
+        "core-writing"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-information-systems",
+          "description": "Bachelor of Information Systems",
+          "years": [
+            3,
+            3
+          ]
+        },
+        {
+          "route": "vet",
+          "qualification": "ICT50220",
+          "description": "Diploma of Information Technology, then experience",
+          "years": [
+            3,
+            5
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          3,
+          5
+        ],
+        "milestone": "Working as an ICT business analyst"
+      },
+      "entryCompetitiveness": "moderate",
+      "salary": {
+        "entry": [
+          75000,
+          90000
+        ],
+        "experienced": [
+          120000,
+          160000
+        ]
       },
       "aiExposure": "medium",
       "drivers": [
@@ -853,10 +1788,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "ict-manager",
+      "osca": "1132",
+      "oscaLevel": "unitGroup",
+      "oscaUnitGroup": "1132",
+      "oscaTitle": "ICT Managers",
+      "oscaSource": "abs",
       "title": "ICT Manager",
       "anzsco": "1351",
-      "majorGroup": 1,
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "EIC",
@@ -874,13 +1812,46 @@
         "oftenRequired": []
       },
       "skills": [
-        "leadership",
-        "technology strategy",
-        "project management",
-        "budgeting"
+        "sk-people-leadership",
+        "sk-project-management",
+        "sk-networks",
+        "sk-budgeting",
+        "sk-strategy"
       ],
-      "pathways": {
-        "university": "IT or business degree plus several years' experience"
+      "coreCompetencies": [
+        "core-planning",
+        "core-oral-communication",
+        "core-problem-solving"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-computer-science",
+          "description": "An IT degree, then 5 or more years' experience",
+          "years": [
+            8,
+            12
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          8,
+          12
+        ],
+        "milestone": "Managing an ICT team"
+      },
+      "entryCompetitiveness": "moderate",
+      "salary": {
+        "entry": [
+          130000,
+          160000
+        ],
+        "experienced": [
+          170000,
+          250000
+        ],
+        "note": "Usually reached after several years in a technical role."
       },
       "aiExposure": "medium",
       "drivers": [
@@ -889,10 +1860,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "data-scientist-statistician-actuary",
-      "title": "Data Scientist / Statistician / Actuary",
+      "osca": "223234",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2232",
+      "oscaTitle": "Data Scientist",
+      "oscaSource": "correspondence",
+      "title": "Data Scientist",
       "anzsco": "2241",
-      "majorGroup": 2,
       "industry": "Financial and Insurance Services",
       "skillLevel": 1,
       "riasec": "ICR",
@@ -913,13 +1887,44 @@
         ]
       },
       "skills": [
-        "statistics",
-        "programming",
-        "modelling",
-        "communicating findings"
+        "sk-data-analysis",
+        "sk-programming",
+        "sk-research-methods",
+        "sk-ai-tools"
       ],
-      "pathways": {
-        "university": "Bachelor of Science (Statistics or Data Science), or Actuarial Studies"
+      "coreCompetencies": [
+        "core-numeracy",
+        "core-problem-solving",
+        "core-digital-engagement"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-data-science",
+          "description": "Bachelor of Science (Data Science or Statistics)",
+          "years": [
+            3,
+            4
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          3,
+          5
+        ],
+        "milestone": "Working as a data scientist"
+      },
+      "entryCompetitiveness": "moderate",
+      "salary": {
+        "entry": [
+          85000,
+          105000
+        ],
+        "experienced": [
+          130000,
+          180000
+        ]
       },
       "aiExposure": "medium",
       "drivers": [
@@ -928,10 +1933,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "civil-engineer",
+      "osca": "243231",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2432",
+      "oscaTitle": "Civil Engineer",
+      "oscaSource": "correspondence",
       "title": "Civil Engineer",
       "anzsco": "2332",
-      "majorGroup": 2,
       "industry": "Construction",
       "skillLevel": 1,
       "riasec": "RIC",
@@ -952,15 +1960,54 @@
         ]
       },
       "skills": [
-        "structural analysis",
-        "design software",
-        "project planning",
-        "problem solving"
+        "sk-engineering-design",
+        "sk-cad",
+        "sk-project-management",
+        "sk-measurement",
+        "sk-compliance"
       ],
-      "pathways": {
-        "university": "Bachelor of Engineering (Civil)",
-        "vet": "Advanced Diploma of Civil Engineering Design as a pathway",
-        "apprenticeship": "An engineering cadetship, where you work while you study"
+      "coreCompetencies": [
+        "core-numeracy",
+        "core-problem-solving",
+        "core-teamwork"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-civil-engineering",
+          "description": "Bachelor of Engineering (Honours) (Civil)",
+          "years": [
+            4,
+            4
+          ]
+        },
+        {
+          "route": "cadetship",
+          "qualification": "he-civil-engineering",
+          "description": "An engineering cadetship, where you work while you study",
+          "years": [
+            4,
+            5
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          4,
+          4
+        ],
+        "milestone": "Graduate civil engineer"
+      },
+      "entryCompetitiveness": "moderate",
+      "salary": {
+        "entry": [
+          75000,
+          90000
+        ],
+        "experienced": [
+          120000,
+          160000
+        ]
       },
       "aiExposure": "low",
       "drivers": [
@@ -970,10 +2017,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "electrical-engineer",
+      "osca": "243331",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2433",
+      "oscaTitle": "Electrical Engineer",
+      "oscaSource": "correspondence",
       "title": "Electrical Engineer",
       "anzsco": "2333",
-      "majorGroup": 2,
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "IRC",
@@ -994,13 +2044,44 @@
         ]
       },
       "skills": [
-        "circuit and power systems",
-        "design",
-        "testing",
-        "renewable energy systems"
+        "sk-engineering-design",
+        "sk-electrical-systems",
+        "sk-renewables",
+        "sk-cad"
       ],
-      "pathways": {
-        "university": "Bachelor of Engineering (Electrical)"
+      "coreCompetencies": [
+        "core-numeracy",
+        "core-problem-solving",
+        "core-learning"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-electrical-engineering",
+          "description": "Bachelor of Engineering (Honours) (Electrical)",
+          "years": [
+            4,
+            4
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          4,
+          4
+        ],
+        "milestone": "Graduate electrical engineer"
+      },
+      "entryCompetitiveness": "moderate",
+      "salary": {
+        "entry": [
+          75000,
+          90000
+        ],
+        "experienced": [
+          120000,
+          160000
+        ]
       },
       "aiExposure": "low",
       "drivers": [
@@ -1010,10 +2091,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "mechanical-industrial-engineer",
-      "title": "Mechanical / Industrial Engineer",
+      "osca": "243532",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2435",
+      "oscaTitle": "Mechanical Engineer",
+      "oscaSource": "correspondence",
+      "title": "Mechanical Engineer",
       "anzsco": "2335",
-      "majorGroup": 2,
       "industry": "Manufacturing",
       "skillLevel": 1,
       "riasec": "RIC",
@@ -1034,13 +2118,44 @@
         ]
       },
       "skills": [
-        "mechanical design",
-        "CAD",
-        "manufacturing processes",
-        "problem solving"
+        "sk-engineering-design",
+        "sk-mechanical-systems",
+        "sk-cad",
+        "sk-quality-control"
       ],
-      "pathways": {
-        "university": "Bachelor of Engineering (Mechanical)"
+      "coreCompetencies": [
+        "core-numeracy",
+        "core-problem-solving",
+        "core-initiative"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-mechanical-engineering",
+          "description": "Bachelor of Engineering (Honours) (Mechanical)",
+          "years": [
+            4,
+            4
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          4,
+          4
+        ],
+        "milestone": "Graduate mechanical engineer"
+      },
+      "entryCompetitiveness": "moderate",
+      "salary": {
+        "entry": [
+          72000,
+          85000
+        ],
+        "experienced": [
+          110000,
+          150000
+        ]
       },
       "aiExposure": "low",
       "drivers": [
@@ -1049,10 +2164,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "architect-landscape-architect",
-      "title": "Architect / Landscape Architect",
+      "osca": "241131",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2411",
+      "oscaTitle": "Architect",
+      "oscaSource": "abs",
+      "title": "Architect",
       "anzsco": "2321",
-      "majorGroup": 2,
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "AIR",
@@ -1071,13 +2189,45 @@
         "oftenRequired": []
       },
       "skills": [
-        "design",
-        "3D modelling",
-        "spatial thinking",
-        "client communication"
+        "sk-spatial-design",
+        "sk-cad",
+        "sk-visual-design",
+        "sk-project-management",
+        "sk-compliance"
       ],
-      "pathways": {
-        "university": "Bachelor then Master of Architecture"
+      "coreCompetencies": [
+        "core-initiative",
+        "core-problem-solving",
+        "core-oral-communication"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-architecture",
+          "description": "Bachelor of Design (Architecture) then Master of Architecture, then supervised practice",
+          "years": [
+            7,
+            8
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          7,
+          8
+        ],
+        "milestone": "Registered architect"
+      },
+      "entryCompetitiveness": "moderate",
+      "salary": {
+        "entry": [
+          65000,
+          80000
+        ],
+        "experienced": [
+          100000,
+          140000
+        ]
       },
       "aiExposure": "medium",
       "drivers": [
@@ -1087,10 +2237,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "surveyor-spatial-scientist",
-      "title": "Surveyor / Spatial Scientist",
+      "osca": "241234",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2412",
+      "oscaTitle": "Land Surveyor",
+      "oscaSource": "correspondence",
+      "title": "Land Surveyor",
       "anzsco": "2322",
-      "majorGroup": 2,
       "industry": "Construction",
       "skillLevel": 1,
       "riasec": "RIC",
@@ -1108,14 +2261,44 @@
         "oftenRequired": []
       },
       "skills": [
-        "measurement",
-        "GIS and mapping",
-        "data accuracy",
-        "fieldwork"
+        "sk-measurement",
+        "sk-gis",
+        "sk-cad",
+        "sk-field-monitoring"
       ],
-      "pathways": {
-        "university": "Bachelor of Surveying or Spatial Science",
-        "vet": "Diploma of Surveying"
+      "coreCompetencies": [
+        "core-numeracy",
+        "core-problem-solving",
+        "core-planning"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-surveying",
+          "description": "Bachelor of Surveying or Spatial Science, then registration",
+          "years": [
+            5,
+            6
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          5,
+          6
+        ],
+        "milestone": "Registered land surveyor"
+      },
+      "entryCompetitiveness": "open",
+      "salary": {
+        "entry": [
+          70000,
+          85000
+        ],
+        "experienced": [
+          110000,
+          140000
+        ]
       },
       "aiExposure": "medium",
       "drivers": [
@@ -1125,10 +2308,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "urban-and-regional-planner",
+      "osca": "241331",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2413",
+      "oscaTitle": "Urban and Regional Planner",
+      "oscaSource": "correspondence",
       "title": "Urban and Regional Planner",
       "anzsco": "2326",
-      "majorGroup": 2,
       "industry": "Public Administration and Safety",
       "skillLevel": 1,
       "riasec": "IEA",
@@ -1147,13 +2333,44 @@
         "oftenRequired": []
       },
       "skills": [
-        "planning policy",
-        "spatial analysis",
-        "community consultation",
-        "report writing"
+        "sk-policy",
+        "sk-gis",
+        "sk-stakeholder",
+        "sk-writing-editing"
       ],
-      "pathways": {
-        "university": "Bachelor of Urban and Regional Planning"
+      "coreCompetencies": [
+        "core-writing",
+        "core-oral-communication",
+        "core-problem-solving"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-planning",
+          "description": "Bachelor of Urban and Regional Planning",
+          "years": [
+            4,
+            4
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          4,
+          5
+        ],
+        "milestone": "Working as a planner"
+      },
+      "entryCompetitiveness": "open",
+      "salary": {
+        "entry": [
+          70000,
+          85000
+        ],
+        "experienced": [
+          100000,
+          130000
+        ]
       },
       "aiExposure": "low",
       "drivers": [
@@ -1163,10 +2380,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "environmental-scientist",
+      "osca": "2444",
+      "oscaLevel": "unitGroup",
+      "oscaUnitGroup": "2444",
+      "oscaTitle": "Environmental Consultants and Scientists",
+      "oscaSource": "correspondence",
       "title": "Environmental Scientist",
       "anzsco": "2343",
-      "majorGroup": 2,
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "IRC",
@@ -1185,14 +2405,54 @@
         "oftenRequired": []
       },
       "skills": [
-        "field sampling",
-        "data analysis",
-        "environmental law",
-        "report writing"
+        "sk-field-monitoring",
+        "sk-research-methods",
+        "sk-data-analysis",
+        "sk-policy",
+        "sk-writing-editing"
       ],
-      "pathways": {
-        "university": "Bachelor of Environmental Science",
-        "vet": "Certificate IV / Diploma of Conservation and Ecosystem Management"
+      "coreCompetencies": [
+        "core-writing",
+        "core-problem-solving",
+        "core-learning"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-environmental-science",
+          "description": "Bachelor of Environmental Science",
+          "years": [
+            3,
+            4
+          ]
+        },
+        {
+          "route": "vet",
+          "qualification": "AHC51120",
+          "description": "Diploma of Conservation and Ecosystem Management",
+          "years": [
+            1,
+            2
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          3,
+          4
+        ],
+        "milestone": "Working as an environmental scientist"
+      },
+      "entryCompetitiveness": "moderate",
+      "salary": {
+        "entry": [
+          65000,
+          80000
+        ],
+        "experienced": [
+          95000,
+          125000
+        ]
       },
       "aiExposure": "low",
       "drivers": [
@@ -1201,10 +2461,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "agricultural-scientist",
+      "osca": "244132",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2441",
+      "oscaTitle": "Agricultural Research Scientist",
+      "oscaSource": "correspondence",
       "title": "Agricultural Scientist",
       "anzsco": "2341",
-      "majorGroup": 2,
       "industry": "Agriculture, Forestry and Fishing",
       "skillLevel": 1,
       "riasec": "IRC",
@@ -1222,14 +2485,53 @@
         "oftenRequired": []
       },
       "skills": [
-        "plant and animal science",
-        "field trials",
-        "data analysis",
-        "sustainability"
+        "sk-plant-science",
+        "sk-research-methods",
+        "sk-field-monitoring",
+        "sk-data-analysis"
       ],
-      "pathways": {
-        "university": "Bachelor of Agricultural Science",
-        "vet": "Diploma of Agriculture"
+      "coreCompetencies": [
+        "core-learning",
+        "core-problem-solving",
+        "core-writing"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-agricultural-science",
+          "description": "Bachelor of Agricultural Science",
+          "years": [
+            4,
+            4
+          ]
+        },
+        {
+          "route": "vet",
+          "qualification": "AHC50122",
+          "description": "Diploma of Agriculture, then a degree with credit",
+          "years": [
+            4,
+            5
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          4,
+          6
+        ],
+        "milestone": "Working as an agricultural scientist"
+      },
+      "entryCompetitiveness": "open",
+      "salary": {
+        "entry": [
+          70000,
+          85000
+        ],
+        "experienced": [
+          95000,
+          125000
+        ]
       },
       "aiExposure": "low",
       "drivers": [
@@ -1238,10 +2540,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "medical-laboratory-scientist",
+      "osca": "244731",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2447",
+      "oscaTitle": "Medical Laboratory Scientist",
+      "oscaSource": "correspondence",
       "title": "Medical Laboratory Scientist",
       "anzsco": "2346",
-      "majorGroup": 2,
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "IRC",
@@ -1261,14 +2566,53 @@
         ]
       },
       "skills": [
-        "laboratory testing",
-        "precision",
-        "quality control",
-        "analysis"
+        "sk-lab-testing",
+        "sk-quality-control",
+        "sk-research-methods",
+        "sk-anatomy"
       ],
-      "pathways": {
-        "university": "Bachelor of Medical Laboratory Science",
-        "vet": "Certificate IV in Laboratory Techniques as a pathway"
+      "coreCompetencies": [
+        "core-reading",
+        "core-problem-solving",
+        "core-numeracy"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-medical-laboratory-science",
+          "description": "Bachelor of Medical Laboratory Science",
+          "years": [
+            4,
+            4
+          ]
+        },
+        {
+          "route": "vet",
+          "qualification": "MSL40122",
+          "description": "Certificate IV in Laboratory Techniques (laboratory technician roles)",
+          "years": [
+            1,
+            1
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          4,
+          4
+        ],
+        "milestone": "Working as a medical laboratory scientist"
+      },
+      "entryCompetitiveness": "moderate",
+      "salary": {
+        "entry": [
+          70000,
+          80000
+        ],
+        "experienced": [
+          90000,
+          110000
+        ]
       },
       "aiExposure": "medium",
       "drivers": [
@@ -1277,10 +2621,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "veterinarian",
+      "osca": "269531",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2695",
+      "oscaTitle": "Veterinarian",
+      "oscaSource": "correspondence",
       "title": "Veterinarian",
       "anzsco": "2347",
-      "majorGroup": 2,
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "IRS",
@@ -1300,23 +2647,56 @@
         ]
       },
       "skills": [
-        "animal health",
-        "diagnosis",
-        "surgery",
-        "client communication"
+        "sk-animal-health",
+        "sk-clinical-assessment",
+        "sk-customer-service"
       ],
-      "pathways": {
-        "university": "Bachelor of Veterinary Science / Doctor of Veterinary Medicine"
+      "coreCompetencies": [
+        "core-problem-solving",
+        "core-oral-communication",
+        "core-learning"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-veterinary-science",
+          "description": "Bachelor of Veterinary Science or Doctor of Veterinary Medicine",
+          "years": [
+            5,
+            6
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          5,
+          6
+        ],
+        "milestone": "Registered veterinarian"
+      },
+      "entryCompetitiveness": "high",
+      "salary": {
+        "entry": [
+          70000,
+          85000
+        ],
+        "experienced": [
+          100000,
+          140000
+        ]
       },
       "aiExposure": "low",
       "drivers": [],
       "apprenticeshipAreas": []
     },
     {
-      "id": "research-and-development-manager",
+      "osca": "111531",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "1115",
+      "oscaTitle": "Research and Development Manager",
+      "oscaSource": "abs",
       "title": "Research and Development Manager",
       "anzsco": "1325",
-      "majorGroup": 1,
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "EIC",
@@ -1335,13 +2715,46 @@
         "oftenRequired": []
       },
       "skills": [
-        "research leadership",
-        "innovation",
-        "project and budget management",
-        "communication"
+        "sk-research-methods",
+        "sk-people-leadership",
+        "sk-project-management",
+        "sk-budgeting",
+        "sk-strategy"
       ],
-      "pathways": {
-        "university": "Science or engineering degree, often with postgraduate study"
+      "coreCompetencies": [
+        "core-initiative",
+        "core-planning",
+        "core-oral-communication"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-data-science",
+          "description": "A science or engineering degree, often a PhD, then years of research experience",
+          "years": [
+            10,
+            15
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          10,
+          15
+        ],
+        "milestone": "Leading research and development"
+      },
+      "entryCompetitiveness": "high",
+      "salary": {
+        "entry": [
+          140000,
+          170000
+        ],
+        "experienced": [
+          170000,
+          250000
+        ],
+        "note": "Usually reached after a research or engineering career."
       },
       "aiExposure": "low",
       "drivers": [
@@ -1351,10 +2764,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "accountant",
+      "osca": "211131",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2111",
+      "oscaTitle": "Accountant (General)",
+      "oscaSource": "abs",
       "title": "Accountant",
       "anzsco": "2211",
-      "majorGroup": 2,
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "CEI",
@@ -1372,25 +2788,76 @@
         "oftenRequired": []
       },
       "skills": [
-        "financial analysis",
-        "tax and reporting",
-        "attention to detail",
-        "advising clients"
+        "sk-accounting",
+        "sk-budgeting",
+        "sk-data-analysis",
+        "sk-compliance",
+        "sk-ai-tools"
       ],
-      "pathways": {
-        "university": "Bachelor of Commerce (Accounting), then CA or CPA",
-        "vet": "Diploma of Accounting",
-        "apprenticeship": "An accounting cadetship, where you work while you study"
+      "coreCompetencies": [
+        "core-numeracy",
+        "core-reading",
+        "core-problem-solving"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-accounting",
+          "description": "Bachelor of Commerce (Accounting), then the CA or CPA program",
+          "years": [
+            5,
+            6
+          ]
+        },
+        {
+          "route": "vet",
+          "qualification": "FNS50222",
+          "description": "Diploma of Accounting, then a degree with credit",
+          "years": [
+            4,
+            6
+          ]
+        },
+        {
+          "route": "cadetship",
+          "qualification": "he-accounting",
+          "description": "An accounting cadetship, where you work while you study",
+          "years": [
+            4,
+            6
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          3,
+          6
+        ],
+        "milestone": "Working as an accountant (chartered at about 5–6 years)"
+      },
+      "entryCompetitiveness": "open",
+      "salary": {
+        "entry": [
+          65000,
+          75000
+        ],
+        "experienced": [
+          95000,
+          130000
+        ]
       },
       "aiExposure": "high",
       "drivers": [],
       "apprenticeshipAreas": []
     },
     {
-      "id": "management-consultant-business-analyst",
-      "title": "Management Consultant / Business Analyst",
+      "osca": "223432",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2234",
+      "oscaTitle": "Management Consultant",
+      "oscaSource": "correspondence",
+      "title": "Management Consultant",
       "anzsco": "2247",
-      "majorGroup": 2,
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "EIC",
@@ -1409,13 +2876,44 @@
         "oftenRequired": []
       },
       "skills": [
-        "problem structuring",
-        "data analysis",
-        "presenting",
-        "stakeholder management"
+        "sk-strategy",
+        "sk-data-analysis",
+        "sk-stakeholder",
+        "sk-project-management"
       ],
-      "pathways": {
-        "university": "Bachelor of Business or Commerce"
+      "coreCompetencies": [
+        "core-oral-communication",
+        "core-problem-solving",
+        "core-writing"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-business",
+          "description": "Bachelor of Business or Commerce",
+          "years": [
+            3,
+            4
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          3,
+          4
+        ],
+        "milestone": "Graduate consultant"
+      },
+      "entryCompetitiveness": "moderate",
+      "salary": {
+        "entry": [
+          75000,
+          95000
+        ],
+        "experienced": [
+          130000,
+          200000
+        ]
       },
       "aiExposure": "medium",
       "drivers": [
@@ -1424,10 +2922,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "marketing-professional",
-      "title": "Marketing Professional",
+      "osca": "221534",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2215",
+      "oscaTitle": "Marketing Specialist",
+      "oscaSource": "correspondence",
+      "title": "Marketing Specialist",
       "anzsco": "2251",
-      "majorGroup": 2,
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "EAC",
@@ -1446,14 +2947,54 @@
         "oftenRequired": []
       },
       "skills": [
-        "market research",
-        "content and campaigns",
-        "digital analytics",
-        "communication"
+        "sk-marketing",
+        "sk-data-analysis",
+        "sk-writing-editing",
+        "sk-digital-media",
+        "sk-ai-tools"
       ],
-      "pathways": {
-        "university": "Bachelor of Business (Marketing) or Communications",
-        "vet": "Diploma of Marketing and Communication"
+      "coreCompetencies": [
+        "core-writing",
+        "core-initiative",
+        "core-digital-engagement"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-marketing",
+          "description": "Bachelor of Business (Marketing)",
+          "years": [
+            3,
+            3
+          ]
+        },
+        {
+          "route": "vet",
+          "qualification": "BSB50620",
+          "description": "Diploma of Marketing and Communication",
+          "years": [
+            1,
+            1.5
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          2,
+          3
+        ],
+        "milestone": "Working as a marketing specialist"
+      },
+      "entryCompetitiveness": "open",
+      "salary": {
+        "entry": [
+          65000,
+          80000
+        ],
+        "experienced": [
+          95000,
+          130000
+        ]
       },
       "aiExposure": "high",
       "drivers": [
@@ -1462,10 +3003,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "lawyer-solicitor",
+      "osca": "281331",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2813",
+      "oscaTitle": "Solicitor",
+      "oscaSource": "abs",
       "title": "Lawyer (Solicitor)",
       "anzsco": "2713",
-      "majorGroup": 2,
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "EIS",
@@ -1484,24 +3028,57 @@
         "oftenRequired": []
       },
       "skills": [
-        "legal research",
-        "writing",
-        "negotiation",
-        "advocacy",
-        "ethics"
+        "sk-legal",
+        "sk-negotiation",
+        "sk-writing-editing",
+        "sk-research-methods"
       ],
-      "pathways": {
-        "university": "Bachelor of Laws, or a bachelor's then Juris Doctor"
+      "coreCompetencies": [
+        "core-reading",
+        "core-writing",
+        "core-oral-communication"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-law",
+          "description": "Bachelor of Laws or Juris Doctor, then practical legal training and admission",
+          "years": [
+            5,
+            6
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          5,
+          6
+        ],
+        "milestone": "Admitted solicitor"
+      },
+      "entryCompetitiveness": "moderate",
+      "salary": {
+        "entry": [
+          75000,
+          90000
+        ],
+        "experienced": [
+          120000,
+          180000
+        ]
       },
       "aiExposure": "medium",
       "drivers": [],
       "apprenticeshipAreas": []
     },
     {
-      "id": "journalist-writer",
-      "title": "Journalist / Writer",
+      "osca": "231332",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2313",
+      "oscaTitle": "Journalist",
+      "oscaSource": "correspondence",
+      "title": "Journalist",
       "anzsco": "2124",
-      "majorGroup": 2,
       "industry": "Information Media and Telecommunications",
       "skillLevel": 1,
       "riasec": "AIS",
@@ -1519,14 +3096,53 @@
         "oftenRequired": []
       },
       "skills": [
-        "writing",
-        "research and interviewing",
-        "editing",
-        "digital publishing"
+        "sk-writing-editing",
+        "sk-interviewing",
+        "sk-digital-media",
+        "sk-ai-tools"
       ],
-      "pathways": {
-        "university": "Bachelor of Journalism, Communications or Arts",
-        "vet": "Diploma of Screen and Media"
+      "coreCompetencies": [
+        "core-writing",
+        "core-oral-communication",
+        "core-initiative"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-journalism",
+          "description": "Bachelor of Journalism or Communication",
+          "years": [
+            3,
+            3
+          ]
+        },
+        {
+          "route": "vet",
+          "qualification": "CUA51020",
+          "description": "Diploma of Screen and Media",
+          "years": [
+            1,
+            2
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          3,
+          3
+        ],
+        "milestone": "Working as a journalist"
+      },
+      "entryCompetitiveness": "moderate",
+      "salary": {
+        "entry": [
+          55000,
+          70000
+        ],
+        "experienced": [
+          80000,
+          110000
+        ]
       },
       "aiExposure": "high",
       "drivers": [
@@ -1535,10 +3151,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "graphic-web-designer",
-      "title": "Graphic / Web Designer",
+      "osca": "242332",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2423",
+      "oscaTitle": "Graphic Designer",
+      "oscaSource": "correspondence",
+      "title": "Graphic Designer",
       "anzsco": "2324",
-      "majorGroup": 2,
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "ARE",
@@ -1557,14 +3176,52 @@
         "oftenRequired": []
       },
       "skills": [
-        "visual design",
-        "typography",
-        "UX and web tools",
-        "client briefs"
+        "sk-visual-design",
+        "sk-digital-media",
+        "sk-ai-tools"
       ],
-      "pathways": {
-        "university": "Bachelor of Design (Visual Communication)",
-        "vet": "Diploma of Graphic Design"
+      "coreCompetencies": [
+        "core-initiative",
+        "core-digital-engagement",
+        "core-oral-communication"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-design",
+          "description": "Bachelor of Design (Visual Communication)",
+          "years": [
+            3,
+            3
+          ]
+        },
+        {
+          "route": "vet",
+          "qualification": "CUA50720",
+          "description": "Diploma of Graphic Design",
+          "years": [
+            1.5,
+            2
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          2,
+          3
+        ],
+        "milestone": "Working as a graphic designer"
+      },
+      "entryCompetitiveness": "open",
+      "salary": {
+        "entry": [
+          55000,
+          65000
+        ],
+        "experienced": [
+          75000,
+          100000
+        ]
       },
       "aiExposure": "high",
       "drivers": [
@@ -1573,10 +3230,93 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "musician-music-professional",
-      "title": "Musician / Music Professional",
+      "osca": "242133",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2421",
+      "oscaTitle": "Web Designer",
+      "oscaSource": "correspondence",
+      "title": "Web Designer",
+      "anzsco": "2324",
+      "industry": "Professional, Scientific and Technical Services",
+      "skillLevel": 1,
+      "riasec": "AIC",
+      "values": [
+        "creativity",
+        "independence",
+        "income"
+      ],
+      "subjects": {
+        "helpful": [
+          "it_software",
+          "visual_arts",
+          "design_tech",
+          "media"
+        ],
+        "oftenRequired": []
+      },
+      "skills": [
+        "sk-visual-design",
+        "sk-ux",
+        "sk-programming",
+        "sk-digital-media"
+      ],
+      "coreCompetencies": [
+        "core-digital-engagement",
+        "core-initiative",
+        "core-problem-solving"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-design",
+          "description": "Bachelor of Design (Visual Communication or Interaction Design)",
+          "years": [
+            3,
+            3
+          ]
+        },
+        {
+          "route": "vet",
+          "qualification": "ICT50220",
+          "description": "Diploma of Information Technology (web development)",
+          "years": [
+            1,
+            2
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          2,
+          3
+        ],
+        "milestone": "Working as a web designer"
+      },
+      "entryCompetitiveness": "open",
+      "salary": {
+        "entry": [
+          60000,
+          72000
+        ],
+        "experienced": [
+          80000,
+          110000
+        ]
+      },
+      "aiExposure": "high",
+      "drivers": [
+        "digital"
+      ],
+      "apprenticeshipAreas": []
+    },
+    {
+      "osca": "231633",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2316",
+      "oscaTitle": "Musician (Instrumental)",
+      "oscaSource": "correspondence",
+      "title": "Musician",
       "anzsco": "2112",
-      "majorGroup": 2,
       "industry": "Arts and Recreation Services",
       "skillLevel": 1,
       "riasec": "AES",
@@ -1593,24 +3333,66 @@
         "oftenRequired": []
       },
       "skills": [
-        "performance",
-        "composition",
-        "audio production",
-        "self-promotion"
+        "sk-performance",
+        "sk-music-production",
+        "sk-digital-media"
       ],
-      "pathways": {
-        "university": "Bachelor of Music",
-        "vet": "Diploma of Music"
+      "coreCompetencies": [
+        "core-initiative",
+        "core-learning",
+        "core-teamwork"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-music",
+          "description": "Bachelor of Music",
+          "years": [
+            3,
+            4
+          ]
+        },
+        {
+          "route": "vet",
+          "qualification": "CUA50820",
+          "description": "Diploma of Music",
+          "years": [
+            1,
+            2
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          3,
+          4
+        ],
+        "milestone": "Working as a musician"
+      },
+      "entryCompetitiveness": "high",
+      "salary": {
+        "entry": [
+          30000,
+          60000
+        ],
+        "experienced": [
+          50000,
+          100000
+        ],
+        "note": "Pay varies a lot. Many musicians combine performing with teaching or other work."
       },
       "aiExposure": "medium",
       "drivers": [],
       "apprenticeshipAreas": []
     },
     {
-      "id": "actor-dancer-entertainer",
-      "title": "Actor / Dancer / Entertainer",
+      "osca": "231131",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2311",
+      "oscaTitle": "Actor",
+      "oscaSource": "abs",
+      "title": "Actor",
       "anzsco": "2111",
-      "majorGroup": 2,
       "industry": "Arts and Recreation Services",
       "skillLevel": 1,
       "riasec": "AES",
@@ -1628,24 +3410,57 @@
         "oftenRequired": []
       },
       "skills": [
-        "performance",
-        "auditioning",
-        "teamwork",
-        "resilience"
+        "sk-performance",
+        "sk-writing-editing",
+        "sk-digital-media"
       ],
-      "pathways": {
-        "university": "Bachelor of Fine Arts (Acting) or Dance",
-        "vet": "Diploma of Musical Theatre or Dance"
+      "coreCompetencies": [
+        "core-oral-communication",
+        "core-teamwork",
+        "core-learning"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-acting",
+          "description": "Bachelor of Fine Arts (Acting), entry by audition",
+          "years": [
+            3,
+            3
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          3,
+          4
+        ],
+        "milestone": "Working as an actor"
+      },
+      "entryCompetitiveness": "high",
+      "salary": {
+        "entry": [
+          25000,
+          50000
+        ],
+        "experienced": [
+          40000,
+          100000
+        ],
+        "note": "Work is irregular; most actors have other income between roles."
       },
       "aiExposure": "low",
       "drivers": [],
       "apprenticeshipAreas": []
     },
     {
-      "id": "electrician",
+      "osca": "381231",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "3812",
+      "oscaTitle": "Electrician (General)",
+      "oscaSource": "abs",
       "title": "Electrician",
       "anzsco": "3411",
-      "majorGroup": 3,
       "industry": "Construction",
       "skillLevel": 3,
       "riasec": "RIC",
@@ -1663,13 +3478,47 @@
         "oftenRequired": []
       },
       "skills": [
-        "electrical installation",
-        "safety and compliance",
-        "fault finding",
-        "solar and battery systems"
+        "sk-electrical-systems",
+        "sk-renewables",
+        "sk-fault-finding",
+        "sk-technical-drawing",
+        "sk-whs",
+        "sk-compliance"
       ],
-      "pathways": {
-        "apprenticeship": "Certificate III in Electrotechnology Electrician (4-year apprenticeship)"
+      "coreCompetencies": [
+        "core-problem-solving",
+        "core-numeracy",
+        "core-planning"
+      ],
+      "pathways": [
+        {
+          "route": "apprenticeship",
+          "qualification": "UEE30820",
+          "description": "Electrical apprenticeship (Certificate III in Electrotechnology Electrician), then your licence",
+          "years": [
+            4,
+            4
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          4,
+          4
+        ],
+        "milestone": "Licensed electrician"
+      },
+      "entryCompetitiveness": "moderate",
+      "salary": {
+        "entry": [
+          75000,
+          95000
+        ],
+        "experienced": [
+          100000,
+          140000
+        ],
+        "note": "Apprentices earn about $30k–$60k a year, rising each year."
       },
       "aiExposure": "low",
       "drivers": [
@@ -1682,10 +3531,13 @@
       ]
     },
     {
-      "id": "plumber",
+      "osca": "363131",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "3631",
+      "oscaTitle": "Plumber (General)",
+      "oscaSource": "correspondence",
       "title": "Plumber",
       "anzsco": "3341",
-      "majorGroup": 3,
       "industry": "Construction",
       "skillLevel": 3,
       "riasec": "RCI",
@@ -1703,13 +3555,46 @@
         "oftenRequired": []
       },
       "skills": [
-        "installation and repair",
-        "reading plans",
-        "problem solving",
-        "customer service"
+        "sk-plumbing",
+        "sk-technical-drawing",
+        "sk-fault-finding",
+        "sk-whs",
+        "sk-customer-service"
       ],
-      "pathways": {
-        "apprenticeship": "Certificate III in Plumbing (4-year apprenticeship)"
+      "coreCompetencies": [
+        "core-problem-solving",
+        "core-planning",
+        "core-numeracy"
+      ],
+      "pathways": [
+        {
+          "route": "apprenticeship",
+          "qualification": "CPC32420",
+          "description": "Plumbing apprenticeship (Certificate III in Plumbing), then your licence",
+          "years": [
+            4,
+            4
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          4,
+          4
+        ],
+        "milestone": "Licensed plumber"
+      },
+      "entryCompetitiveness": "moderate",
+      "salary": {
+        "entry": [
+          75000,
+          90000
+        ],
+        "experienced": [
+          95000,
+          130000
+        ],
+        "note": "Apprentices earn about $30k–$60k a year, rising each year."
       },
       "aiExposure": "low",
       "drivers": [
@@ -1721,10 +3606,13 @@
       ]
     },
     {
-      "id": "carpenter-joiner",
-      "title": "Carpenter / Joiner",
+      "osca": "372132",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "3721",
+      "oscaTitle": "Carpenter",
+      "oscaSource": "abs",
+      "title": "Carpenter",
       "anzsco": "3312",
-      "majorGroup": 3,
       "industry": "Construction",
       "skillLevel": 3,
       "riasec": "RCI",
@@ -1742,13 +3630,45 @@
         "oftenRequired": []
       },
       "skills": [
-        "building and framing",
-        "measuring and cutting",
-        "reading plans",
-        "safety"
+        "sk-construction-methods",
+        "sk-measurement",
+        "sk-technical-drawing",
+        "sk-whs"
       ],
-      "pathways": {
-        "apprenticeship": "Certificate III in Carpentry (apprenticeship)"
+      "coreCompetencies": [
+        "core-numeracy",
+        "core-planning",
+        "core-teamwork"
+      ],
+      "pathways": [
+        {
+          "route": "apprenticeship",
+          "qualification": "CPC30220",
+          "description": "Carpentry apprenticeship (Certificate III in Carpentry)",
+          "years": [
+            3,
+            4
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          3,
+          4
+        ],
+        "milestone": "Qualified carpenter"
+      },
+      "entryCompetitiveness": "open",
+      "salary": {
+        "entry": [
+          70000,
+          85000
+        ],
+        "experienced": [
+          90000,
+          120000
+        ],
+        "note": "Apprentices earn about $30k–$55k a year, rising each year."
       },
       "aiExposure": "low",
       "drivers": [
@@ -1759,10 +3679,13 @@
       ]
     },
     {
-      "id": "motor-mechanic",
-      "title": "Motor Mechanic",
+      "osca": "351131",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "3511",
+      "oscaTitle": "Automotive Technician (General)",
+      "oscaSource": "abs",
+      "title": "Automotive Technician (Mechanic)",
       "anzsco": "3212",
-      "majorGroup": 3,
       "industry": "Other Services",
       "skillLevel": 3,
       "riasec": "RIC",
@@ -1780,13 +3703,46 @@
         "oftenRequired": []
       },
       "skills": [
-        "diagnostics",
-        "servicing",
-        "electric and hybrid vehicle systems",
-        "customer service"
+        "sk-vehicle-diagnostics",
+        "sk-ev-systems",
+        "sk-mechanical-systems",
+        "sk-fault-finding",
+        "sk-customer-service"
       ],
-      "pathways": {
-        "apprenticeship": "Certificate III in Light Vehicle Mechanical Technology (apprenticeship)"
+      "coreCompetencies": [
+        "core-problem-solving",
+        "core-learning",
+        "core-digital-engagement"
+      ],
+      "pathways": [
+        {
+          "route": "apprenticeship",
+          "qualification": "AUR30620",
+          "description": "Automotive apprenticeship (Certificate III in Light Vehicle Mechanical Technology)",
+          "years": [
+            3,
+            4
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          3,
+          4
+        ],
+        "milestone": "Qualified automotive technician"
+      },
+      "entryCompetitiveness": "open",
+      "salary": {
+        "entry": [
+          65000,
+          75000
+        ],
+        "experienced": [
+          80000,
+          100000
+        ],
+        "note": "Apprentices earn about $30k–$50k a year, rising each year."
       },
       "aiExposure": "low",
       "drivers": [
@@ -1797,10 +3753,13 @@
       ]
     },
     {
-      "id": "air-conditioning-and-refrigeration-mechanic",
-      "title": "Air Conditioning and Refrigeration Mechanic",
+      "osca": "382131",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "3821",
+      "oscaTitle": "Air Conditioning and Refrigeration Technician",
+      "oscaSource": "correspondence",
+      "title": "Air Conditioning and Refrigeration Technician",
       "anzsco": "3421",
-      "majorGroup": 3,
       "industry": "Construction",
       "skillLevel": 3,
       "riasec": "RIC",
@@ -1818,13 +3777,46 @@
         "oftenRequired": []
       },
       "skills": [
-        "installation",
-        "electrical and refrigeration systems",
-        "fault finding",
-        "energy efficiency"
+        "sk-refrigeration",
+        "sk-electrical-systems",
+        "sk-fault-finding",
+        "sk-compliance",
+        "sk-whs"
       ],
-      "pathways": {
-        "apprenticeship": "Certificate III in Refrigeration and Air Conditioning (apprenticeship)"
+      "coreCompetencies": [
+        "core-problem-solving",
+        "core-numeracy",
+        "core-planning"
+      ],
+      "pathways": [
+        {
+          "route": "apprenticeship",
+          "qualification": "UEE32220",
+          "description": "Refrigeration and air conditioning apprenticeship (Certificate III), then your licence",
+          "years": [
+            4,
+            4
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          4,
+          4
+        ],
+        "milestone": "Licensed technician"
+      },
+      "entryCompetitiveness": "open",
+      "salary": {
+        "entry": [
+          75000,
+          90000
+        ],
+        "experienced": [
+          95000,
+          125000
+        ],
+        "note": "Apprentices earn about $30k–$55k a year, rising each year."
       },
       "aiExposure": "low",
       "drivers": [
@@ -1836,10 +3828,13 @@
       ]
     },
     {
-      "id": "metal-fitter-and-machinist",
-      "title": "Metal Fitter and Machinist",
+      "osca": "332232",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "3322",
+      "oscaTitle": "Fitter and Turner",
+      "oscaSource": "correspondence",
+      "title": "Fitter and Turner",
       "anzsco": "3232",
-      "majorGroup": 3,
       "industry": "Manufacturing",
       "skillLevel": 3,
       "riasec": "RIC",
@@ -1857,13 +3852,46 @@
         "oftenRequired": []
       },
       "skills": [
-        "machining",
-        "fitting and assembly",
-        "technical drawing",
-        "precision"
+        "sk-machining",
+        "sk-mechanical-systems",
+        "sk-technical-drawing",
+        "sk-quality-control",
+        "sk-whs"
       ],
-      "pathways": {
-        "apprenticeship": "Certificate III in Engineering – Mechanical Trade (apprenticeship)"
+      "coreCompetencies": [
+        "core-numeracy",
+        "core-problem-solving",
+        "core-planning"
+      ],
+      "pathways": [
+        {
+          "route": "apprenticeship",
+          "qualification": "MEM30219",
+          "description": "Engineering apprenticeship (Certificate III in Engineering – Mechanical Trade)",
+          "years": [
+            4,
+            4
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          4,
+          4
+        ],
+        "milestone": "Qualified fitter and turner"
+      },
+      "entryCompetitiveness": "open",
+      "salary": {
+        "entry": [
+          75000,
+          90000
+        ],
+        "experienced": [
+          95000,
+          125000
+        ],
+        "note": "Mining and resources roles often pay more."
       },
       "aiExposure": "medium",
       "drivers": [
@@ -1874,10 +3902,13 @@
       ]
     },
     {
-      "id": "welder-steel-fabricator",
-      "title": "Welder / Steel Fabricator",
+      "osca": "331133",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "3311",
+      "oscaTitle": "Welder (First Class)",
+      "oscaSource": "correspondence",
+      "title": "Welder",
       "anzsco": "3223",
-      "majorGroup": 3,
       "industry": "Manufacturing",
       "skillLevel": 3,
       "riasec": "RCI",
@@ -1895,13 +3926,44 @@
         "oftenRequired": []
       },
       "skills": [
-        "welding",
-        "fabrication",
-        "reading drawings",
-        "safety"
+        "sk-welding",
+        "sk-technical-drawing",
+        "sk-quality-control",
+        "sk-whs"
       ],
-      "pathways": {
-        "apprenticeship": "Certificate III in Engineering – Fabrication Trade (apprenticeship)"
+      "coreCompetencies": [
+        "core-numeracy",
+        "core-planning",
+        "core-teamwork"
+      ],
+      "pathways": [
+        {
+          "route": "apprenticeship",
+          "qualification": "MEM30319",
+          "description": "Fabrication apprenticeship (Certificate III in Engineering – Fabrication Trade)",
+          "years": [
+            3,
+            4
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          3,
+          4
+        ],
+        "milestone": "Qualified welder"
+      },
+      "entryCompetitiveness": "open",
+      "salary": {
+        "entry": [
+          65000,
+          80000
+        ],
+        "experienced": [
+          85000,
+          115000
+        ]
       },
       "aiExposure": "low",
       "drivers": [
@@ -1913,10 +3975,13 @@
       ]
     },
     {
-      "id": "chef",
+      "osca": "321131",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "3211",
+      "oscaTitle": "Chef",
+      "oscaSource": "correspondence",
       "title": "Chef",
       "anzsco": "3513",
-      "majorGroup": 3,
       "industry": "Accommodation and Food Services",
       "skillLevel": 2,
       "riasec": "ARE",
@@ -1933,14 +3998,53 @@
         "oftenRequired": []
       },
       "skills": [
-        "cooking techniques",
-        "menu creation",
-        "food safety",
-        "working under pressure"
+        "sk-cooking",
+        "sk-food-safety",
+        "sk-people-leadership",
+        "sk-budgeting"
       ],
-      "pathways": {
-        "vet": "Certificate IV in Commercial Cookery",
-        "apprenticeship": "Certificate III in Commercial Cookery (apprenticeship)"
+      "coreCompetencies": [
+        "core-teamwork",
+        "core-planning",
+        "core-initiative"
+      ],
+      "pathways": [
+        {
+          "route": "apprenticeship",
+          "qualification": "SIT30821",
+          "description": "Commercial cookery apprenticeship (Certificate III in Commercial Cookery)",
+          "years": [
+            3,
+            4
+          ]
+        },
+        {
+          "route": "vet",
+          "qualification": "SIT40521",
+          "description": "Certificate IV in Kitchen Management",
+          "years": [
+            1,
+            1.5
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          3,
+          4
+        ],
+        "milestone": "Qualified chef"
+      },
+      "entryCompetitiveness": "open",
+      "salary": {
+        "entry": [
+          58000,
+          65000
+        ],
+        "experienced": [
+          70000,
+          90000
+        ]
       },
       "aiExposure": "low",
       "drivers": [
@@ -1951,10 +4055,13 @@
       ]
     },
     {
-      "id": "hairdresser",
+      "osca": "392132",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "3921",
+      "oscaTitle": "Hairdresser",
+      "oscaSource": "abs",
       "title": "Hairdresser",
       "anzsco": "3911",
-      "majorGroup": 3,
       "industry": "Other Services",
       "skillLevel": 3,
       "riasec": "ASR",
@@ -1971,13 +4078,44 @@
         "oftenRequired": []
       },
       "skills": [
-        "cutting and colouring",
-        "customer service",
-        "trend awareness",
-        "small business skills"
+        "sk-hair",
+        "sk-customer-service",
+        "sk-sales"
       ],
-      "pathways": {
-        "apprenticeship": "Certificate III in Hairdressing (apprenticeship)"
+      "coreCompetencies": [
+        "core-oral-communication",
+        "core-initiative",
+        "core-planning"
+      ],
+      "pathways": [
+        {
+          "route": "apprenticeship",
+          "qualification": "SHB30416",
+          "description": "Hairdressing apprenticeship (Certificate III in Hairdressing)",
+          "years": [
+            3,
+            3
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          3,
+          3
+        ],
+        "milestone": "Qualified hairdresser"
+      },
+      "entryCompetitiveness": "open",
+      "salary": {
+        "entry": [
+          50000,
+          58000
+        ],
+        "experienced": [
+          58000,
+          75000
+        ],
+        "note": "Salon owners can earn more."
       },
       "aiExposure": "low",
       "drivers": [],
@@ -1986,10 +4124,13 @@
       ]
     },
     {
-      "id": "police-officer",
+      "osca": "451331",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "4513",
+      "oscaTitle": "General Duties Police Officer",
+      "oscaSource": "correspondence",
       "title": "Police Officer",
       "anzsco": "4413",
-      "majorGroup": 4,
       "industry": "Public Administration and Safety",
       "skillLevel": 2,
       "riasec": "RES",
@@ -2009,14 +4150,44 @@
         "oftenRequired": []
       },
       "skills": [
-        "communication under pressure",
-        "investigation",
-        "law and procedure",
-        "physical fitness"
+        "sk-investigation",
+        "sk-emergency-care",
+        "sk-legal",
+        "sk-fitness"
       ],
-      "pathways": {
-        "university": "Some services offer degree pathways (e.g. policing degrees)",
-        "vet": "State police academy after recruitment"
+      "coreCompetencies": [
+        "core-oral-communication",
+        "core-problem-solving",
+        "core-teamwork"
+      ],
+      "pathways": [
+        {
+          "route": "other",
+          "description": "Apply to your state police service, then recruit training at the police academy",
+          "years": [
+            1,
+            2
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          1,
+          2
+        ],
+        "milestone": "Sworn police officer"
+      },
+      "entryCompetitiveness": "moderate",
+      "salary": {
+        "entry": [
+          75000,
+          85000
+        ],
+        "experienced": [
+          95000,
+          120000
+        ],
+        "note": "Recruits are usually paid during academy training."
       },
       "aiExposure": "low",
       "drivers": [
@@ -2025,10 +4196,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "defence-force-member",
+      "osca": "451131",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "4511",
+      "oscaTitle": "Defence Force Member - Other Ranks",
+      "oscaSource": "abs",
       "title": "Defence Force Member",
-      "anzsco": "4412",
-      "majorGroup": 4,
+      "anzsco": "4411",
       "industry": "Public Administration and Safety",
       "skillLevel": 4,
       "riasec": "RCE",
@@ -2047,14 +4221,44 @@
         "oftenRequired": []
       },
       "skills": [
-        "teamwork",
-        "discipline",
-        "technical trade skills",
-        "physical fitness"
+        "sk-fitness",
+        "sk-navigation",
+        "sk-vehicle-operation",
+        "sk-whs"
       ],
-      "pathways": {
-        "university": "ADFA for officer entry (with UNSW degree)",
-        "apprenticeship": "ADF technical trades training"
+      "coreCompetencies": [
+        "core-teamwork",
+        "core-learning",
+        "core-problem-solving"
+      ],
+      "pathways": [
+        {
+          "route": "other",
+          "description": "Join the ADF, then recruit and job training (many roles include a trade qualification)",
+          "years": [
+            0.5,
+            1
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          0.5,
+          1
+        ],
+        "milestone": "Trained ADF member"
+      },
+      "entryCompetitiveness": "moderate",
+      "salary": {
+        "entry": [
+          60000,
+          75000
+        ],
+        "experienced": [
+          80000,
+          110000
+        ],
+        "note": "Pay includes allowances; you're paid from day one of training."
       },
       "aiExposure": "low",
       "drivers": [
@@ -2063,10 +4267,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "fitness-instructor",
+      "osca": "462131",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "4621",
+      "oscaTitle": "Fitness Instructor (General)",
+      "oscaSource": "correspondence",
       "title": "Fitness Instructor",
       "anzsco": "4521",
-      "majorGroup": 4,
       "industry": "Arts and Recreation Services",
       "skillLevel": 3,
       "riasec": "SRE",
@@ -2084,24 +4291,67 @@
         "oftenRequired": []
       },
       "skills": [
-        "exercise programming",
-        "coaching",
-        "motivating people",
-        "anatomy basics"
+        "sk-fitness",
+        "sk-coaching",
+        "sk-anatomy",
+        "sk-customer-service"
       ],
-      "pathways": {
-        "university": "Bachelor of Exercise Science as a pathway to exercise physiology",
-        "vet": "Certificate III / IV in Fitness"
+      "coreCompetencies": [
+        "core-oral-communication",
+        "core-initiative",
+        "core-planning"
+      ],
+      "pathways": [
+        {
+          "route": "vet",
+          "qualification": "SIS40221",
+          "description": "Certificate III and IV in Fitness",
+          "years": [
+            0.5,
+            1
+          ]
+        },
+        {
+          "route": "university",
+          "qualification": "he-exercise-science",
+          "description": "Bachelor of Exercise Science (towards exercise science or physiology)",
+          "years": [
+            3,
+            3
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          0.5,
+          1
+        ],
+        "milestone": "Qualified personal trainer"
+      },
+      "entryCompetitiveness": "open",
+      "salary": {
+        "entry": [
+          50000,
+          60000
+        ],
+        "experienced": [
+          60000,
+          80000
+        ],
+        "note": "Many trainers work casually or run their own business."
       },
       "aiExposure": "low",
       "drivers": [],
       "apprenticeshipAreas": []
     },
     {
-      "id": "pilot",
+      "osca": "299131",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "2991",
+      "oscaTitle": "Aeroplane Pilot",
+      "oscaSource": "correspondence",
       "title": "Pilot",
       "anzsco": "2311",
-      "majorGroup": 2,
       "industry": "Transport, Postal and Warehousing",
       "skillLevel": 1,
       "riasec": "RIE",
@@ -2119,25 +4369,75 @@
         "oftenRequired": []
       },
       "skills": [
-        "aircraft operation",
-        "navigation",
-        "decision making",
-        "situational awareness"
+        "sk-navigation",
+        "sk-vehicle-operation",
+        "sk-emergency-care",
+        "sk-compliance"
       ],
-      "pathways": {
-        "university": "Bachelor of Aviation",
-        "vet": "Diploma of Aviation (Commercial Pilot Licence)",
-        "apprenticeship": "Pilot training through the Australian Defence Force"
+      "coreCompetencies": [
+        "core-problem-solving",
+        "core-planning",
+        "core-teamwork"
+      ],
+      "pathways": [
+        {
+          "route": "vet",
+          "qualification": "AVI50222",
+          "description": "Diploma of Aviation (commercial pilot licence), then flying hours",
+          "years": [
+            2,
+            3
+          ]
+        },
+        {
+          "route": "university",
+          "qualification": "he-aviation",
+          "description": "Bachelor of Aviation",
+          "years": [
+            3,
+            3
+          ]
+        },
+        {
+          "route": "other",
+          "description": "Pilot training through the Australian Defence Force",
+          "years": [
+            2,
+            3
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          3,
+          6
+        ],
+        "milestone": "Airline first officer"
+      },
+      "entryCompetitiveness": "high",
+      "salary": {
+        "entry": [
+          70000,
+          100000
+        ],
+        "experienced": [
+          200000,
+          350000
+        ],
+        "note": "Flight training can cost over $100k unless done through the ADF or an airline cadetship."
       },
       "aiExposure": "low",
       "drivers": [],
       "apprenticeshipAreas": []
     },
     {
-      "id": "construction-manager",
-      "title": "Construction Manager",
+      "osca": "131131",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "1311",
+      "oscaTitle": "Construction Project Manager",
+      "oscaSource": "abs",
+      "title": "Construction Project Manager",
       "anzsco": "1331",
-      "majorGroup": 1,
       "industry": "Construction",
       "skillLevel": 1,
       "riasec": "ERC",
@@ -2156,15 +4456,54 @@
         "oftenRequired": []
       },
       "skills": [
-        "project management",
-        "scheduling and budgeting",
-        "leadership",
-        "safety"
+        "sk-project-management",
+        "sk-construction-methods",
+        "sk-budgeting",
+        "sk-people-leadership",
+        "sk-compliance"
       ],
-      "pathways": {
-        "university": "Bachelor of Construction Management",
-        "vet": "Diploma of Building and Construction",
-        "apprenticeship": "A building trade apprenticeship, then moving into site management"
+      "coreCompetencies": [
+        "core-planning",
+        "core-problem-solving",
+        "core-oral-communication"
+      ],
+      "pathways": [
+        {
+          "route": "university",
+          "qualification": "he-construction-management",
+          "description": "Bachelor of Construction Management, then site experience",
+          "years": [
+            6,
+            8
+          ]
+        },
+        {
+          "route": "vet",
+          "qualification": "CPC50220",
+          "description": "A trade, then the Diploma of Building and Construction and site management experience",
+          "years": [
+            8,
+            10
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          6,
+          10
+        ],
+        "milestone": "Construction project manager"
+      },
+      "entryCompetitiveness": "moderate",
+      "salary": {
+        "entry": [
+          110000,
+          140000
+        ],
+        "experienced": [
+          150000,
+          220000
+        ]
       },
       "aiExposure": "low",
       "drivers": [
@@ -2174,10 +4513,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "gardener-landscaper",
-      "title": "Gardener / Landscaper",
-      "anzsco": "3622",
-      "majorGroup": 3,
+      "osca": "342432",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "3424",
+      "oscaTitle": "Landscape Gardener",
+      "oscaSource": "correspondence",
+      "title": "Landscape Gardener",
+      "anzsco": "3627",
       "industry": "Administrative and Support Services",
       "skillLevel": 3,
       "riasec": "RAC",
@@ -2195,24 +4537,59 @@
         "oftenRequired": []
       },
       "skills": [
-        "horticulture",
-        "landscape construction",
-        "plant care",
-        "customer service"
+        "sk-horticulture",
+        "sk-construction-methods",
+        "sk-vehicle-operation",
+        "sk-whs"
       ],
-      "pathways": {
-        "vet": "Certificate III in Horticulture or Landscape Construction",
-        "apprenticeship": "An apprenticeship in horticulture or landscape construction"
+      "coreCompetencies": [
+        "core-planning",
+        "core-teamwork",
+        "core-problem-solving"
+      ],
+      "pathways": [
+        {
+          "route": "apprenticeship",
+          "qualification": "AHC30921",
+          "description": "Landscape construction apprenticeship (Certificate III)",
+          "years": [
+            3,
+            3
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          3,
+          3
+        ],
+        "milestone": "Qualified landscape gardener"
+      },
+      "entryCompetitiveness": "open",
+      "salary": {
+        "entry": [
+          55000,
+          62000
+        ],
+        "experienced": [
+          62000,
+          80000
+        ]
       },
       "aiExposure": "low",
       "drivers": [],
-      "apprenticeshipAreas": []
+      "apprenticeshipAreas": [
+        "building"
+      ]
     },
     {
-      "id": "truck-driver",
+      "osca": "713131",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "7131",
+      "oscaTitle": "Truck Driver (General)",
+      "oscaSource": "abs",
       "title": "Truck Driver",
       "anzsco": "7331",
-      "majorGroup": 7,
       "industry": "Transport, Postal and Warehousing",
       "skillLevel": 4,
       "riasec": "RCE",
@@ -2226,23 +4603,55 @@
         "oftenRequired": []
       },
       "skills": [
-        "heavy vehicle operation",
-        "logistics",
-        "safety",
-        "fatigue management"
+        "sk-vehicle-operation",
+        "sk-logistics",
+        "sk-whs"
       ],
-      "pathways": {
-        "vet": "Heavy vehicle licence"
+      "coreCompetencies": [
+        "core-planning",
+        "core-reading",
+        "core-problem-solving"
+      ],
+      "pathways": [
+        {
+          "route": "other",
+          "description": "Get a heavy rigid licence, then a heavy combination licence with experience",
+          "years": [
+            1,
+            3
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          1,
+          3
+        ],
+        "milestone": "Licensed heavy vehicle driver"
+      },
+      "entryCompetitiveness": "open",
+      "salary": {
+        "entry": [
+          65000,
+          75000
+        ],
+        "experienced": [
+          80000,
+          110000
+        ]
       },
       "aiExposure": "high",
       "drivers": [],
       "apprenticeshipAreas": []
     },
     {
-      "id": "real-estate-agent",
+      "osca": "622232",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "6222",
+      "oscaTitle": "Real Estate Agent",
+      "oscaSource": "correspondence",
       "title": "Real Estate Agent",
       "anzsco": "6121",
-      "majorGroup": 6,
       "industry": "Rental, Hiring and Real Estate Services",
       "skillLevel": 3,
       "riasec": "ECS",
@@ -2260,13 +4669,46 @@
         "oftenRequired": []
       },
       "skills": [
-        "sales and negotiation",
-        "property knowledge",
-        "marketing",
-        "client relationships"
+        "sk-sales",
+        "sk-negotiation",
+        "sk-customer-service",
+        "sk-legal",
+        "sk-marketing"
       ],
-      "pathways": {
-        "vet": "Certificate IV in Real Estate Practice"
+      "coreCompetencies": [
+        "core-oral-communication",
+        "core-initiative",
+        "core-planning"
+      ],
+      "pathways": [
+        {
+          "route": "vet",
+          "qualification": "CPP41419",
+          "description": "Certificate IV in Real Estate Practice, then your agent's licence",
+          "years": [
+            0.5,
+            1
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          0.5,
+          1
+        ],
+        "milestone": "Licensed real estate agent"
+      },
+      "entryCompetitiveness": "open",
+      "salary": {
+        "entry": [
+          50000,
+          70000
+        ],
+        "experienced": [
+          80000,
+          200000
+        ],
+        "note": "Much of the pay is commission, so income varies."
       },
       "aiExposure": "medium",
       "drivers": [
@@ -2276,10 +4718,13 @@
       "apprenticeshipAreas": []
     },
     {
-      "id": "general-clerk-office-administrator",
-      "title": "General Clerk / Office Administrator",
+      "osca": "561131",
+      "oscaLevel": "occupation",
+      "oscaUnitGroup": "5611",
+      "oscaTitle": "General Clerk",
+      "oscaSource": "correspondence",
+      "title": "General Clerk",
       "anzsco": "5311",
-      "majorGroup": 5,
       "industry": "Administrative and Support Services",
       "skillLevel": 4,
       "riasec": "CES",
@@ -2296,14 +4741,52 @@
         "oftenRequired": []
       },
       "skills": [
-        "administration",
-        "data entry",
-        "digital tools",
-        "customer service"
+        "sk-admin",
+        "sk-customer-service",
+        "sk-data-analysis"
       ],
-      "pathways": {
-        "vet": "Certificate III / IV in Business",
-        "apprenticeship": "A business traineeship"
+      "coreCompetencies": [
+        "core-digital-engagement",
+        "core-planning",
+        "core-reading"
+      ],
+      "pathways": [
+        {
+          "route": "vet",
+          "qualification": "BSB30120",
+          "description": "Certificate III in Business",
+          "years": [
+            0.5,
+            1
+          ]
+        },
+        {
+          "route": "traineeship",
+          "qualification": "BSB30120",
+          "description": "A business traineeship",
+          "years": [
+            1,
+            1
+          ]
+        }
+      ],
+      "timeToQualify": {
+        "years": [
+          0,
+          1
+        ],
+        "milestone": "Working as a clerk"
+      },
+      "entryCompetitiveness": "open",
+      "salary": {
+        "entry": [
+          55000,
+          62000
+        ],
+        "experienced": [
+          62000,
+          75000
+        ]
       },
       "aiExposure": "high",
       "drivers": [],

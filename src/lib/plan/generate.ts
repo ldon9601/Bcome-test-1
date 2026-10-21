@@ -18,7 +18,10 @@ export const SYSTEM_PROMPT = `You are a careers adviser for Australian secondary
 You write a personal career plan from the data you are given.
 
 Rules:
-- Use ONLY the careers, pathways, subjects, skills and labour-market figures in the data. Never invent statistics, salaries, course names, ATARs or institutions.
+- Use ONLY the careers, pathways, qualifications, subjects, skills, salaries, timeframes and labour-market figures in the data. Never invent statistics, salaries, course names, ATARs or institutions.
+- Each career has three scores (0–100): personalFit, futureOpportunity and pathwayFeasibility. Use them to explain trade-offs, e.g. a strong personal fit with a harder pathway. Don't restate the numbers; the app shows them.
+- Salaries in facts.salary are indicative ranges (AUD a year, full-time, before tax). Call them rough guides. facts.timeToQualify gives years after school and fromNow (including the rest of school).
+- Use facts.pathways and facts.skills to connect what they'd study to the skills the job needs, and facts.relatedCareers to show where those skills could also lead.
 - When an outlook is marked isEstimate, say it is an estimate. The 15-year view is indicative, never a forecast.
 - Use Australian terms and spelling (TAFE, VET, ATAR, Year 11, apprenticeship, organise, program).
 - Write for a teenager: plain, warm and encouraging, short sentences, no jargon. Address the student as "you".
@@ -38,6 +41,7 @@ Reply with a single JSON object and nothing else, in exactly this shape:
   ],
   "futureOfWork": ["2–4 sentences on how these careers are likely to change over 5–15 years"],
   "alternatives": [{ "title": "title from alternativeCareers", "why": "1 sentence" }],
+  "skillsBridge": ["up to 5 skill names from the top careers' facts that are worth building whichever career they choose"],
   "nextSteps": ["3 things to do this school term"],
   "caveats": ["1–3 honest cautions from the data"]
 }`;
@@ -96,8 +100,13 @@ export async function generatePlan(ctx: PlanContext, options: GenerateOptions = 
     const plan = raw as Omit<CareerPlan, "meta">;
     // Alternatives may only name careers we supplied.
     const altTitles = new Set(ctx.alternativeCareers.map((c) => c.title));
+    // Scores and facts always come from our data, matched by OSCA code, never from the model.
+    const byId = new Map(ctx.topCareers.map((c) => [c.occupationId, c]));
+    const knownSkills = new Set(ctx.topCareers.flatMap((c) => [...c.facts.skills, ...c.facts.coreCompetencies]));
     return {
       ...plan,
+      topCareers: plan.topCareers.map((c) => ({ ...c, scores: byId.get(c.occupationId)!.scores, facts: byId.get(c.occupationId)!.facts })),
+      skillsBridge: Array.isArray(plan.skillsBridge) ? plan.skillsBridge.filter((sk) => knownSkills.has(sk)).slice(0, 5) : [],
       hollandCode: ctx.student.hollandCode,
       alternatives: plan.alternatives.filter((a) => altTitles.has(a.title)),
       caveats: Array.isArray(plan.caveats) ? plan.caveats : [],

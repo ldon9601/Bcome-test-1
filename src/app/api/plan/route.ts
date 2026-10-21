@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { advise } from "@/lib/advise.ts";
+import { toMatchSummary } from "@/lib/careers/matching.ts";
 import { questionBank } from "@/lib/data.ts";
 import { IncompleteAnswersError } from "@/lib/questionnaire/scoring.ts";
 import type { Answers } from "@/lib/questionnaire/types.ts";
@@ -45,15 +46,7 @@ export async function POST(request: Request) {
     throw e;
   }
 
-  const matches = result.matches.map((m) => ({
-    id: m.occupation.id,
-    title: m.occupation.title,
-    score: m.score,
-    outlook: m.outlook,
-    reasons: m.reasons,
-    cautions: m.cautions,
-    pathways: m.occupation.pathways,
-  }));
+  const matches = result.matches.map(toMatchSummary);
 
   let saved = false;
   if (supabaseConfigured() && process.env.SUPABASE_SERVICE_ROLE_KEY) {

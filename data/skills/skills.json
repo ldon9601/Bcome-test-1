@@ -1,0 +1,654 @@
+{
+  "version": "1.0.0",
+  "scheme": "Bcome skills scheme (structured to align with the JSA National Skills Taxonomy when it is published)",
+  "notes": [
+    "Shaped like the National Skills Taxonomy data model JSA has described: each skill is a SKOS-style concept with a preferred label and a broader grouping, linked to OSCA occupations and to qualifications.",
+    "nstExactMatch is empty until JSA publishes the taxonomy; fill it with the NST concept IRI so data can be swapped over without changing the app.",
+    "Core competencies follow the ten Australian Skills Classification core competencies."
+  ],
+  "clusters": [
+    {
+      "id": "cluster-care",
+      "prefLabel": "Health and care"
+    },
+    {
+      "id": "cluster-people",
+      "prefLabel": "Working with people"
+    },
+    {
+      "id": "cluster-digital",
+      "prefLabel": "Digital and data"
+    },
+    {
+      "id": "cluster-science",
+      "prefLabel": "Science and research"
+    },
+    {
+      "id": "cluster-technical",
+      "prefLabel": "Technical and trade"
+    },
+    {
+      "id": "cluster-business",
+      "prefLabel": "Business and law"
+    },
+    {
+      "id": "cluster-creative",
+      "prefLabel": "Creative and hospitality"
+    },
+    {
+      "id": "cluster-physical",
+      "prefLabel": "Physical, outdoor and safety"
+    },
+    {
+      "id": "cluster-core",
+      "prefLabel": "Core competencies"
+    }
+  ],
+  "skills": [
+    {
+      "id": "sk-person-centred-care",
+      "prefLabel": "Person-centred care",
+      "broader": "cluster-care",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-clinical-assessment",
+      "prefLabel": "Clinical assessment",
+      "broader": "cluster-care",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-infection-control",
+      "prefLabel": "Infection control",
+      "broader": "cluster-care",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-medicines",
+      "prefLabel": "Medicines management",
+      "broader": "cluster-care",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-therapy-planning",
+      "prefLabel": "Rehabilitation and therapy planning",
+      "broader": "cluster-care",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-counselling",
+      "prefLabel": "Counselling",
+      "broader": "cluster-care",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-emergency-care",
+      "prefLabel": "Emergency care",
+      "broader": "cluster-care",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-anatomy",
+      "prefLabel": "Anatomy and physiology",
+      "broader": "cluster-care",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-mental-health-support",
+      "prefLabel": "Mental health support",
+      "broader": "cluster-care",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-nutrition",
+      "prefLabel": "Nutrition science",
+      "broader": "cluster-care",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-teaching",
+      "prefLabel": "Teaching and explaining",
+      "broader": "cluster-people",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-child-development",
+      "prefLabel": "Child development",
+      "broader": "cluster-people",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-case-management",
+      "prefLabel": "Case management and advocacy",
+      "broader": "cluster-people",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-customer-service",
+      "prefLabel": "Customer service",
+      "broader": "cluster-people",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-negotiation",
+      "prefLabel": "Negotiation and persuasion",
+      "broader": "cluster-people",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-people-leadership",
+      "prefLabel": "Leading and managing people",
+      "broader": "cluster-people",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-stakeholder",
+      "prefLabel": "Stakeholder engagement",
+      "broader": "cluster-people",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-coaching",
+      "prefLabel": "Coaching and motivating",
+      "broader": "cluster-people",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-programming",
+      "prefLabel": "Programming",
+      "broader": "cluster-digital",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-system-design",
+      "prefLabel": "Software and system design",
+      "broader": "cluster-digital",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-data-analysis",
+      "prefLabel": "Data analysis and statistics",
+      "broader": "cluster-digital",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-cyber",
+      "prefLabel": "Cyber security",
+      "broader": "cluster-digital",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-networks",
+      "prefLabel": "Networks and cloud systems",
+      "broader": "cluster-digital",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-ai-tools",
+      "prefLabel": "Working with AI tools",
+      "broader": "cluster-digital",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-cad",
+      "prefLabel": "Computer-aided design (CAD)",
+      "broader": "cluster-digital",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-ux",
+      "prefLabel": "User experience (UX) design",
+      "broader": "cluster-digital",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-digital-media",
+      "prefLabel": "Digital media production",
+      "broader": "cluster-digital",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-requirements",
+      "prefLabel": "Requirements and process analysis",
+      "broader": "cluster-digital",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-research-methods",
+      "prefLabel": "Research methods",
+      "broader": "cluster-science",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-lab-testing",
+      "prefLabel": "Laboratory testing",
+      "broader": "cluster-science",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-field-monitoring",
+      "prefLabel": "Fieldwork and environmental monitoring",
+      "broader": "cluster-science",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-animal-health",
+      "prefLabel": "Animal health",
+      "broader": "cluster-science",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-plant-science",
+      "prefLabel": "Plant and soil science",
+      "broader": "cluster-science",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-gis",
+      "prefLabel": "GIS and spatial data",
+      "broader": "cluster-science",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-quality-control",
+      "prefLabel": "Quality control",
+      "broader": "cluster-science",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-engineering-design",
+      "prefLabel": "Engineering design and analysis",
+      "broader": "cluster-technical",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-electrical-systems",
+      "prefLabel": "Electrical systems",
+      "broader": "cluster-technical",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-renewables",
+      "prefLabel": "Solar and battery systems",
+      "broader": "cluster-technical",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-mechanical-systems",
+      "prefLabel": "Mechanical systems",
+      "broader": "cluster-technical",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-machining",
+      "prefLabel": "Machining and fitting",
+      "broader": "cluster-technical",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-welding",
+      "prefLabel": "Welding and fabrication",
+      "broader": "cluster-technical",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-construction-methods",
+      "prefLabel": "Building and construction methods",
+      "broader": "cluster-technical",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-plumbing",
+      "prefLabel": "Plumbing and water systems",
+      "broader": "cluster-technical",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-refrigeration",
+      "prefLabel": "Refrigeration and air conditioning",
+      "broader": "cluster-technical",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-technical-drawing",
+      "prefLabel": "Reading plans and technical drawings",
+      "broader": "cluster-technical",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-measurement",
+      "prefLabel": "Measurement and surveying",
+      "broader": "cluster-technical",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-vehicle-diagnostics",
+      "prefLabel": "Vehicle diagnostics",
+      "broader": "cluster-technical",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-ev-systems",
+      "prefLabel": "Electric and hybrid vehicle systems",
+      "broader": "cluster-technical",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-fault-finding",
+      "prefLabel": "Fault finding",
+      "broader": "cluster-technical",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-whs",
+      "prefLabel": "Work health and safety",
+      "broader": "cluster-technical",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-compliance",
+      "prefLabel": "Standards and compliance",
+      "broader": "cluster-technical",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-accounting",
+      "prefLabel": "Accounting and financial reporting",
+      "broader": "cluster-business",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-budgeting",
+      "prefLabel": "Budgeting and cost control",
+      "broader": "cluster-business",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-project-management",
+      "prefLabel": "Project management",
+      "broader": "cluster-business",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-marketing",
+      "prefLabel": "Marketing and market research",
+      "broader": "cluster-business",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-sales",
+      "prefLabel": "Sales",
+      "broader": "cluster-business",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-admin",
+      "prefLabel": "Office administration",
+      "broader": "cluster-business",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-legal",
+      "prefLabel": "Legal research and drafting",
+      "broader": "cluster-business",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-policy",
+      "prefLabel": "Policy and regulation",
+      "broader": "cluster-business",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-strategy",
+      "prefLabel": "Strategy and problem structuring",
+      "broader": "cluster-business",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-visual-design",
+      "prefLabel": "Visual design",
+      "broader": "cluster-creative",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-writing-editing",
+      "prefLabel": "Writing and editing",
+      "broader": "cluster-creative",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-interviewing",
+      "prefLabel": "Research and interviewing",
+      "broader": "cluster-creative",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-performance",
+      "prefLabel": "Performance",
+      "broader": "cluster-creative",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-music-production",
+      "prefLabel": "Music composition and production",
+      "broader": "cluster-creative",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-cooking",
+      "prefLabel": "Cooking and food preparation",
+      "broader": "cluster-creative",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-food-safety",
+      "prefLabel": "Food safety",
+      "broader": "cluster-creative",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-hair",
+      "prefLabel": "Hair cutting and colouring",
+      "broader": "cluster-creative",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-spatial-design",
+      "prefLabel": "Spatial and architectural design",
+      "broader": "cluster-creative",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-fitness",
+      "prefLabel": "Physical fitness",
+      "broader": "cluster-physical",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-vehicle-operation",
+      "prefLabel": "Operating vehicles and machinery",
+      "broader": "cluster-physical",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-horticulture",
+      "prefLabel": "Horticulture and landscaping",
+      "broader": "cluster-physical",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-navigation",
+      "prefLabel": "Navigation and situational awareness",
+      "broader": "cluster-physical",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-investigation",
+      "prefLabel": "Investigation and law enforcement",
+      "broader": "cluster-physical",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "sk-logistics",
+      "prefLabel": "Logistics and scheduling",
+      "broader": "cluster-physical",
+      "type": "specialist",
+      "nstExactMatch": null
+    },
+    {
+      "id": "core-digital-engagement",
+      "prefLabel": "Digital engagement",
+      "broader": "cluster-core",
+      "type": "core",
+      "nstExactMatch": null,
+      "ascMatch": "ASC core competency: Digital engagement"
+    },
+    {
+      "id": "core-initiative",
+      "prefLabel": "Initiative and innovation",
+      "broader": "cluster-core",
+      "type": "core",
+      "nstExactMatch": null,
+      "ascMatch": "ASC core competency: Initiative and innovation"
+    },
+    {
+      "id": "core-learning",
+      "prefLabel": "Learning",
+      "broader": "cluster-core",
+      "type": "core",
+      "nstExactMatch": null,
+      "ascMatch": "ASC core competency: Learning"
+    },
+    {
+      "id": "core-numeracy",
+      "prefLabel": "Numeracy",
+      "broader": "cluster-core",
+      "type": "core",
+      "nstExactMatch": null,
+      "ascMatch": "ASC core competency: Numeracy"
+    },
+    {
+      "id": "core-oral-communication",
+      "prefLabel": "Oral communication",
+      "broader": "cluster-core",
+      "type": "core",
+      "nstExactMatch": null,
+      "ascMatch": "ASC core competency: Oral communication"
+    },
+    {
+      "id": "core-planning",
+      "prefLabel": "Planning and organising",
+      "broader": "cluster-core",
+      "type": "core",
+      "nstExactMatch": null,
+      "ascMatch": "ASC core competency: Planning and organising"
+    },
+    {
+      "id": "core-problem-solving",
+      "prefLabel": "Problem solving",
+      "broader": "cluster-core",
+      "type": "core",
+      "nstExactMatch": null,
+      "ascMatch": "ASC core competency: Problem solving"
+    },
+    {
+      "id": "core-reading",
+      "prefLabel": "Reading",
+      "broader": "cluster-core",
+      "type": "core",
+      "nstExactMatch": null,
+      "ascMatch": "ASC core competency: Reading"
+    },
+    {
+      "id": "core-teamwork",
+      "prefLabel": "Teamwork",
+      "broader": "cluster-core",
+      "type": "core",
+      "nstExactMatch": null,
+      "ascMatch": "ASC core competency: Teamwork"
+    },
+    {
+      "id": "core-writing",
+      "prefLabel": "Writing",
+      "broader": "cluster-core",
+      "type": "core",
+      "nstExactMatch": null,
+      "ascMatch": "ASC core competency: Writing"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 -- Row Level Security checks. Run on a database with local-auth-stub.sql, the migration and seed applied.
--- Each ERROR in the output is an attempt that should be blocked (role change, forged result, plan edit, re-pointing or forging a guardian link). Counts should read: student A 1 result, adviser 1, parent 0 before consent then 1, stranger 0.
+-- Each ERROR in the output is an attempt that should be blocked (role change, forged result, plan edit, re-pointing or forging a guardian link, writing reference data). Counts should read: student A 1 result, adviser 1, parent 0 before consent then 1, stranger 0; anon can read pathway skills; the occupation title stays "Electrician".
 \set ON_ERROR_STOP 0
 insert into schools (id,name,state) values ('00000000-0000-0000-0000-00000000000a','School X','NSW'),('00000000-0000-0000-0000-00000000000b','School Y','VIC');
 insert into auth.users (id, raw_user_meta_data) values
@@ -50,3 +50,11 @@ select 'stranger parent sees plans:', count(*) from plans;
 reset role;
 select 'plan still intact:', plan from plans where student_id='10000000-0000-0000-0000-000000000001';
 select 'review recorded:', adviser_reviewed_by is not null from plans where student_id='10000000-0000-0000-0000-000000000001';
+
+-- Reference data (OSCA occupations, skills, qualifications): anyone can read, nobody but the service role can write.
+set role anon;
+select 'anon reads pathway skills:', count(*) > 0 from pathway_skills;
+insert into skills (id, pref_label, broader, type) values ('sk-hack', 'Hack', 'cluster-core', 'core');
+update occupations set title = 'Hacked' where osca = '381231';
+reset role;
+select 'occupation title intact:', title from occupations where osca = '381231';

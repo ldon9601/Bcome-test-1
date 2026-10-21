@@ -1,5 +1,7 @@
+import { careerFacts } from "../careers/facts.ts";
 import type { Match } from "../careers/matching.ts";
-import type { JsaOutlookData } from "../careers/types.ts";
+import type { SkillsGraph } from "../careers/skills.ts";
+import type { EarningsData, JsaOutlookData } from "../careers/types.ts";
 import { RIASEC_NAMES, type AuState, type RiasecType, type StudentProfile } from "../questionnaire/types.ts";
 
 /** Tertiary admissions centre by state, for university applications. */
@@ -24,17 +26,28 @@ export function hollandWords(code: string): string {
 }
 
 /** Everything the plan generator is allowed to draw on, as plain data. */
-export function buildPlanContext(profile: StudentProfile, matches: Match[], jsa: JsaOutlookData, subjectLabels: Record<string, string>) {
+export function buildPlanContext(
+  profile: StudentProfile,
+  matches: Match[],
+  jsa: JsaOutlookData,
+  subjectLabels: Record<string, string>,
+  graph: SkillsGraph,
+  earnings: EarningsData,
+) {
   const label = (id: string) => subjectLabels[id] ?? id;
   const career = (m: Match) => ({
-    occupationId: m.occupation.id,
+    occupationId: m.occupation.osca,
     title: m.occupation.title,
     matchScore: m.score,
+    scores: {
+      personalFit: m.scores.personalFit.score,
+      futureOpportunity: m.scores.futureOpportunity.score,
+      pathwayFeasibility: m.scores.pathwayFeasibility.score,
+    },
     hollandCode: m.occupation.riasec,
-    pathways: m.occupation.pathways,
     subjectsHelpful: m.occupation.subjects.helpful.map(label),
     subjectsOftenRequired: m.occupation.subjects.oftenRequired.map(label),
-    keySkills: m.occupation.skills,
+    facts: careerFacts(m.occupation, graph, earnings, profile.yearLevel),
     outlook: {
       summary: m.outlook.summary,
       growth5Pct: m.outlook.growth5Pct,

@@ -1,4 +1,5 @@
 import type { PlanContext } from "./context.ts";
+import { formatRange, formatYears } from "../careers/facts.ts";
 import type { CareerPlan, PlanStage } from "./types.ts";
 
 /**
@@ -15,18 +16,23 @@ export function inSentence(title: string): string {
   return title.replace(/\b([A-Za-z])([a-z]*)\b/g, (_w, a: string, b: string) => a.toLowerCase() + b);
 }
 
+const aOrAn = (w: string) => `${/^[aeiou]/i.test(w) ? "an" : "a"} ${w}`;
+
 const isTradeRoute = (pref: string) => pref === "apprenticeship" || pref === "work";
 
+const ROUTE_ORDER: Record<string, string[]> = {
+  apprenticeship: ["apprenticeship", "traineeship", "cadetship", "vet", "other", "university"],
+  work: ["apprenticeship", "traineeship", "cadetship", "other", "vet", "university"],
+  vet: ["vet", "traineeship", "apprenticeship", "cadetship", "other", "university"],
+  university: ["university", "cadetship", "vet", "other", "apprenticeship", "traineeship"],
+  unsure: ["university", "vet", "apprenticeship", "traineeship", "cadetship", "other"],
+};
+
 function howToGetThere(c: Career, pref: string): string {
-  const p = c.pathways;
-  const order =
-    pref === "apprenticeship" || pref === "work"
-      ? (["apprenticeship", "vet", "university"] as const)
-      : pref === "vet"
-        ? (["vet", "apprenticeship", "university"] as const)
-        : (["university", "vet", "apprenticeship"] as const);
-  const routes = order.filter((k) => p[k]).map((k) => p[k]!);
-  return routes.length > 1 ? `${routes[0]}. Another route: ${routes[1]}.` : `${routes[0]}.`;
+  const order = ROUTE_ORDER[pref] ?? ROUTE_ORDER.unsure;
+  const paths = [...c.facts.pathways].sort((a, b) => order.indexOf(a.route) - order.indexOf(b.route));
+  const first = `${paths[0].description} (${formatYears(paths[0].years)})`;
+  return paths.length > 1 ? `${first}. Another route: ${paths[1].description}.` : `${first}.`;
 }
 
 function schoolActions(ctx: PlanContext): string[] {
@@ -79,14 +85,42 @@ function postSchoolActions(ctx: PlanContext): string[] {
   return actions;
 }
 
+function postSchoolTimeframe(ctx: PlanContext): string {
+  const lo = Math.min(...ctx.topCareers.map((c) => c.facts.timeToQualify.years[0]));
+  const hi = Math.max(...ctx.topCareers.map((c) => c.facts.timeToQualify.years[1]));
+  return `About ${formatYears([lo, hi])} after school, depending on the career`;
+}
+
 function earlyCareerActions(ctx: PlanContext): string[] {
-  const skills = unique(ctx.topCareers.flatMap((c) => c.keySkills)).slice(0, 4);
+  const skills = unique(ctx.topCareers.flatMap((c) => c.facts.skills)).slice(0, 4).map(inSentence);
   return [
     "Complete any registration, licence or accreditation your job needs.",
     `Keep building the skills employers want most: ${skills.join(", ")}.`,
     "Learn to use the AI tools in your field well; they will be part of most jobs.",
     "Find a mentor at work and review this plan every year.",
+    `Starting pay is roughly ${ctx.topCareers.map((c) => `${formatRange(c.facts.salary.entry)} as ${aOrAn(inSentence(c.title))}`).join(", ")}, rising with experience.`,
   ];
+}
+
+/** One sentence on how the three scores balance out, e.g. a strong fit with a harder pathway. */
+export function tradeOff(c: Career): string {
+  const band = (n: number) => (n >= 80 ? 2 : n >= 60 ? 1 : 0);
+  const fit = ["It's a looser fit with your interests", "It suits some of your interests", "It suits your interests and values well"][band(c.scores.personalFit)];
+  const future = ["has a weaker job outlook", "has a steady job outlook", "has a strong job outlook"][band(c.scores.futureOpportunity)];
+  const pathway = [
+    "but getting in will take extra planning",
+    "and the way in is realistic with some planning",
+    "and the way in fits your plans",
+  ][band(c.scores.pathwayFeasibility)];
+  const joiner = band(c.scores.pathwayFeasibility) === 0 ? " " : ", ";
+  return `${fit}, ${future}${joiner}${pathway}.`.replace(", and", " and");
+}
+
+/** Skills shared by the top careers: worth building whichever one the student picks. */
+function skillsBridge(ctx: PlanContext): string[] {
+  const counts = new Map<string, number>();
+  for (const c of ctx.topCareers) for (const sk of new Set([...c.facts.skills, ...c.facts.coreCompetencies])) counts.set(sk, (counts.get(sk) ?? 0) + 1);
+  return [...counts.entries()].filter(([, n]) => n >= 2).sort((a, b) => b[1] - a[1]).map(([sk]) => sk).slice(0, 5);
 }
 
 export function templatePlan(ctx: PlanContext, generatedAt = new Date().toISOString()): CareerPlan {
@@ -96,7 +130,7 @@ export function templatePlan(ctx: PlanContext, generatedAt = new Date().toISOStr
 
   const stages: PlanStage[] = [
     { id: "school", title: "Finish school strong", timeframe: yearsLeft, actions: schoolActions(ctx) },
-    { id: "post-school", title: "Study and training after school", timeframe: "1 to 4 years after school", actions: postSchoolActions(ctx) },
+    { id: "post-school", title: "Study and training after school", timeframe: postSchoolTimeframe(ctx), actions: postSchoolActions(ctx) },
     { id: "early-career", title: "Your first years at work", timeframe: "First 3 years of work", actions: earlyCareerActions(ctx) },
   ];
 
@@ -114,9 +148,11 @@ export function templatePlan(ctx: PlanContext, generatedAt = new Date().toISOStr
     topCareers: ctx.topCareers.map((c) => ({
       occupationId: c.occupationId,
       title: c.title,
-      whyItFits: c.reasonsItFits.filter((r) => r !== c.outlook.summary).slice(0, 3).join(" "),
+      whyItFits: tradeOff(c),
       outlook: c.outlook.summary,
       howToGetThere: howToGetThere(c, s.studyPreference),
+      scores: c.scores,
+      facts: c.facts,
     })),
     stages,
     futureOfWork: unique([
@@ -124,6 +160,7 @@ export function templatePlan(ctx: PlanContext, generatedAt = new Date().toISOStr
       ...ctx.topCareers.flatMap((c) => c.outlook.fifteenYearReasons.slice(-1)),
     ]).slice(0, 4),
     alternatives: ctx.alternativeCareers.map((c) => ({ title: c.title, why: c.reasonsItFits[0] ?? "A good fit with your profile." })),
+    skillsBridge: skillsBridge(ctx),
     nextSteps: [
       `Talk to your careers adviser about ${inSentence(first.title)} and bring this plan.`,
       isTradeRoute(s.studyPreference)

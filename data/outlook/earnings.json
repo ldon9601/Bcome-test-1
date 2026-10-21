@@ -1,0 +1,9 @@
+{
+  "source": {
+    "title": "Jobs and Skills Australia occupation profiles (median weekly earnings, full-time, before tax)",
+    "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles",
+    "retrieved": null,
+    "note": "Empty until imported. Run `npm run data:import-earnings -- <file.csv>` with columns osca,medianWeekly[,name]."
+  },
+  "byOsca": {}
+}

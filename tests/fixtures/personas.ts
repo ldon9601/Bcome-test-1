@@ -18,7 +18,7 @@ export interface Persona {
   studyPreference: StudyPreference;
   apprenticeshipAreas?: string[];
   relocation: "local" | "state" | "anywhere";
-  /** At least one of these should appear in the top five matches. */
+  /** OSCA codes: at least one of these should appear in the top five matches. */
   expectAnyOf: string[];
 }
 
@@ -34,7 +34,7 @@ export const PERSONAS: Persona[] = [
     subjectsStrong: ["biology", "chemistry"],
     studyPreference: "university",
     relocation: "state",
-    expectAnyOf: ["registered-nurse", "physiotherapist", "occupational-therapist", "paramedic", "psychologist"],
+    expectAnyOf: ["2654", "262431", "262331", "269432", "261231"],
   },
   {
     key: "jack-electrical",
@@ -48,7 +48,7 @@ export const PERSONAS: Persona[] = [
     studyPreference: "apprenticeship",
     apprenticeshipAreas: ["electrical"],
     relocation: "local",
-    expectAnyOf: ["electrician", "air-conditioning-and-refrigeration-mechanic"],
+    expectAnyOf: ["381231", "382131"],
   },
   {
     key: "priya-tech",
@@ -61,7 +61,7 @@ export const PERSONAS: Persona[] = [
     subjectsStrong: ["maths_extension", "maths_advanced", "it_software"],
     studyPreference: "university",
     relocation: "anywhere",
-    expectAnyOf: ["software-developer-programmer", "data-scientist-statistician-actuary", "cyber-security-and-systems-specialist"],
+    expectAnyOf: ["273333", "223234", "271133"],
   },
   {
     key: "leo-creative",
@@ -74,7 +74,7 @@ export const PERSONAS: Persona[] = [
     subjectsStrong: ["visual_arts", "media"],
     studyPreference: "unsure",
     relocation: "state",
-    expectAnyOf: ["graphic-web-designer", "marketing-professional", "journalist-writer", "architect-landscape-architect"],
+    expectAnyOf: ["242332", "242133", "221534", "231332", "241131"],
   },
   {
     key: "ava-flat",
@@ -100,7 +100,7 @@ export const PERSONAS: Persona[] = [
     subjectsStrong: ["english", "legal"],
     studyPreference: "university",
     relocation: "anywhere",
-    expectAnyOf: ["lawyer-solicitor", "health-and-welfare-services-manager", "management-consultant-business-analyst", "social-worker"],
+    expectAnyOf: ["281331", "1413", "223432", "261331"],
   },
 ];
 

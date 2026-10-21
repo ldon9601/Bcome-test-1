@@ -17,7 +17,8 @@
     "test:profiles": "node --experimental-strip-types scripts/run-test-profiles.ts",
     "data:validate": "node --experimental-strip-types scripts/validate-data.ts",
     "data:import-jsa": "node --experimental-strip-types scripts/import-jsa.ts",
-    "db:seed-sql": "node --experimental-strip-types scripts/build-seed-sql.ts"
+    "db:seed-sql": "node --experimental-strip-types scripts/build-seed-sql.ts",
+    "data:import-earnings": "node --experimental-strip-types scripts/import-earnings.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.7.0",

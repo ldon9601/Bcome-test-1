@@ -60,7 +60,8 @@ function listText(items: string[]): string {
 export function computeOutlook(occ: Occupation, jsa: JsaOutlookData): Outlook {
   const avg = jsa.total.growth10Pct;
   const own = jsa.occupations[occ.anzsco];
-  const group = jsa.majorGroups[String(occ.majorGroup)];
+  // JSA projections are published on ANZSCO, so join on the ANZSCO unit group and its major group.
+  const group = jsa.majorGroups[occ.anzsco[0]];
 
   let growth5Pct: number | null = null;
   let growth10Pct: number | null = null;

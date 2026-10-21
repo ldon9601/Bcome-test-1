@@ -6,46 +6,86 @@ Interest scores: R 50 · I 100 · A 25 · S 0 · E 25 · C 75
 
 ## Top matches
 
-| # | Career | Fit | 10-yr growth | 10-yr | 15-yr (indicative) |
-| --- | --- | --- | --- | --- | --- |
-| 1 | Cyber Security and Systems Specialist | 87 | 24.3% (est.) | good | strong |
-| 2 | Data Scientist / Statistician / Actuary | 87 | 21.8% (est.) | good | strong |
-| 3 | Software Developer / Programmer | 87 | 24.3% (est.) | good | good |
-| 4 | Electrical Engineer | 85 | 24.3% (est.) | good | strong |
-| 5 | Civil Engineer | 79 | 20.8% (est.) | good | strong |
-| 6 | ICT Business and Systems Analyst | 79 | 24.3% (est.) | good | strong |
-| 7 | Mechanical / Industrial Engineer | 78 | 20.8% (est.) | good | strong |
-| 8 | Agricultural Scientist | 73 | 17.3% (est.) | good | strong |
-| 9 | Environmental Scientist | 73 | 24.3% (est.) | good | strong |
-| 10 | Medical Laboratory Scientist | 73 | 26.3% (est.) | good | strong |
+| # | Career | OSCA | Overall | Personal fit | Future opportunity | Pathway feasibility | 10-yr growth | Starting pay | Years after school |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | Data Scientist | 223234 | 89 | 86 | 91 | 91 | 21.8% (est.) | $85k–$105k | 3–5 years |
+| 2 | Software Engineer | 273333 | 88 | 86 | 85 | 96 | 24.3% (est.) | $75k–$95k | 3–4 years |
+| 3 | Cyber Security Analyst | 271133 | 87 | 86 | 81 | 96 | 24.3% (est.) | $80k–$100k | 2–4 years |
+| 4 | Civil Engineer | 243231 | 84 | 74 | 91 | 95 | 20.8% (est.) | $75k–$90k | 4 years |
+| 5 | Electrical Engineer | 243331 | 84 | 83 | 79 | 92 | 24.3% (est.) | $75k–$90k | 4 years |
+| 6 | ICT Business Analyst | 273232 | 82 | 75 | 85 | 93 | 24.3% (est.) | $75k–$90k | 3–5 years |
+| 7 | Mechanical Engineer | 243532 | 81 | 73 | 85 | 92 | 20.8% (est.) | $72k–$85k | 4 years |
+| 8 | Environmental Scientist | 2444 | 79 | 65 | 91 | 95 | 24.3% (est.) | $65k–$80k | 3–4 years |
+| 9 | Land Surveyor | 241234 | 79 | 66 | 91 | 94 | 20.8% (est.) | $70k–$85k | 5–6 years |
+| 10 | Agricultural Scientist | 244132 | 78 | 65 | 85 | 96 | 17.3% (est.) | $70k–$85k | 4–6 years |
 
 ## Plan
 
-Your strongest interests are Investigative, Conventional and Realistic. Careers like cyber security and systems specialist and data scientist / statistician / actuary fit those interests and have a positive job outlook.
+Your strongest interests are Investigative, Conventional and Realistic. Careers like data scientist and software engineer fit those interests and have a positive job outlook.
 
-### Cyber Security and Systems Specialist
+### Data Scientist (OSCA 223234)
 
-Matches your top interests: Investigative, Conventional and Realistic. Offers what you value: good pay and working your own way. Builds on subjects you enjoy or do well in: IT / Software / Digital Tech and Maths (Advanced / Methods).
+Personal fit 86 · Future opportunity 91 · Pathway feasibility 91
 
-**Outlook:** Estimated growth of about 24% by May 2035, based on JSA projections for similar jobs (all jobs: 13.3%).
-
-**How to get there:** Bachelor of Cyber Security or IT. Another route: Certificate IV in Cyber Security.
-
-### Data Scientist / Statistician / Actuary
-
-Matches your top interests: Investigative, Conventional and Realistic. Offers what you value: working your own way and good pay. Builds on subjects you enjoy or do well in: Maths (Extension / Specialist), Maths (Advanced / Methods) and IT / Software / Digital Tech.
+It suits your interests and values well, has a strong job outlook and the way in fits your plans.
 
 **Outlook:** Estimated growth of about 22% by May 2035, based on JSA projections for similar jobs (all jobs: 13.3%).
 
-**How to get there:** Bachelor of Science (Statistics or Data Science), or Actuarial Studies.
+**How to get there:** Bachelor of Science (Data Science or Statistics) (3–4 years).
 
-### Software Developer / Programmer
+**Time to qualify:** 3–5 years after Year 12 (about 3–5 years from now) to reach: Working as a data scientist
 
-Matches your top interests: Investigative, Realistic and Conventional. Offers what you value: being creative, working your own way and good pay. Builds on subjects you enjoy or do well in: Maths (Advanced / Methods), Maths (Extension / Specialist), IT / Software / Digital Tech and Physics.
+**Pay (indicative):** $85k–$105k starting, $130k–$180k experienced
+
+**Skills:** Data analysis and statistics, Programming, Research methods, Working with AI tools. Core: Numeracy, Problem solving, Digital engagement
+
+- University: Bachelor of Science (Data Science or Statistics) (AQF 7), builds Data analysis and statistics, Programming, Research methods
+
+**Skills also lead to:** Software Engineer (Programming, Data analysis and statistics, Working with AI tools); Agricultural Scientist (Research methods, Data analysis and statistics); Psychologist (Research methods, Data analysis and statistics)
+
+### Software Engineer (OSCA 273333)
+
+Personal fit 86 · Future opportunity 85 · Pathway feasibility 96
+
+It suits your interests and values well, has a strong job outlook and the way in fits your plans.
 
 **Outlook:** Estimated growth of about 24% by May 2035, based on JSA projections for similar jobs (all jobs: 13.3%).
 
-**How to get there:** Bachelor of Computer Science, Software Engineering or IT. Another route: Diploma of Information Technology.
+**How to get there:** Bachelor of Computer Science or Software Engineering (3–4 years). Another route: A digital cadetship, where you work while you study.
+
+**Time to qualify:** 3–4 years after Year 12 (about 3–4 years from now) to reach: Working as a software engineer
+
+**Pay (indicative):** $75k–$95k starting, $130k–$180k experienced
+
+**Skills:** Programming, Software and system design, Data analysis and statistics, Working with AI tools, Networks and cloud systems. Core: Problem solving, Digital engagement, Learning
+
+- University: Bachelor of Computer Science or Software Engineering (AQF 7), builds Programming, Software and system design, Data analysis and statistics, Working with AI tools
+- TAFE or VET: Diploma of Information Technology (AQF 5), builds Programming, Networks and cloud systems, Working with AI tools
+- Cadetship: A digital cadetship, where you work while you study
+
+**Skills also lead to:** Data Scientist (Data analysis and statistics, Programming, Working with AI tools); ICT Business Analyst (Data analysis and statistics, Software and system design); Accountant (Data analysis and statistics, Working with AI tools)
+
+### Cyber Security Analyst (OSCA 271133)
+
+Personal fit 86 · Future opportunity 81 · Pathway feasibility 96
+
+It suits your interests and values well, has a strong job outlook and the way in fits your plans.
+
+**Outlook:** Estimated growth of about 24% by May 2035, based on JSA projections for similar jobs (all jobs: 13.3%).
+
+**How to get there:** Bachelor of Cyber Security (3 years). Another route: A cyber security cadetship, where you work while you study.
+
+**Time to qualify:** 2–4 years after Year 12 (about 2–4 years from now) to reach: Working as a cyber security analyst
+
+**Pay (indicative):** $80k–$100k starting, $130k–$180k experienced
+
+**Skills:** Cyber security, Networks and cloud systems, Fault finding, Standards and compliance, Working with AI tools. Core: Problem solving, Digital engagement, Learning
+
+- University: Bachelor of Cyber Security (AQF 7), builds Cyber security, Networks and cloud systems
+- TAFE or VET: Certificate IV in Cyber Security (AQF 4), builds Cyber security, Networks and cloud systems, Fault finding
+- Cadetship: A cyber security cadetship, where you work while you study
+
+**Skills also lead to:** Accountant (Standards and compliance, Working with AI tools); Air Conditioning and Refrigeration Technician (Fault finding, Standards and compliance); Software Engineer (Working with AI tools, Networks and cloud systems)
 
 ### Finish school strong (Year 12)
 
@@ -53,19 +93,20 @@ Matches your top interests: Investigative, Realistic and Conventional. Offers wh
 - Look up early-offer and alternative-entry schemes; many use Year 11 results or a recommendation.
 - Pick a backup pathway (a diploma, a related course or a bridging course) in case your first choice doesn't come through.
 
-### Study and training after school (1 to 4 years after school)
+### Study and training after school (About 2–5 years after school, depending on the career)
 
-- Cyber Security and Systems Specialist: Bachelor of Cyber Security or IT. Another route: Certificate IV in Cyber Security.
-- Data Scientist / Statistician / Actuary: Bachelor of Science (Statistics or Data Science), or Actuarial Studies.
-- Software Developer / Programmer: Bachelor of Computer Science, Software Engineering or IT. Another route: Diploma of Information Technology.
+- Data Scientist: Bachelor of Science (Data Science or Statistics) (3–4 years).
+- Software Engineer: Bachelor of Computer Science or Software Engineering (3–4 years). Another route: A digital cadetship, where you work while you study.
+- Cyber Security Analyst: Bachelor of Cyber Security (3 years). Another route: A cyber security cadetship, where you work while you study.
 - Choose courses with work placements or industry projects; they lead to first jobs.
 
 ### Your first years at work (First 3 years of work)
 
 - Complete any registration, licence or accreditation your job needs.
-- Keep building the skills employers want most: network security, risk analysis, systems administration, incident response.
+- Keep building the skills employers want most: data analysis and statistics, programming, research methods, working with AI tools.
 - Learn to use the AI tools in your field well; they will be part of most jobs.
 - Find a mentor at work and review this plan every year.
+- Starting pay is roughly $85k–$105k as a data scientist, $75k–$95k as a software engineer, $80k–$100k as a cyber security analyst, rising with experience.
 
 ### Future of work
 
@@ -75,14 +116,22 @@ Matches your top interests: Investigative, Realistic and Conventional. Offers wh
 
 ### Also worth a look
 
-- **Electrical Engineer**: Matches your top interests: Investigative, Realistic and Conventional.
 - **Civil Engineer**: Matches your top interests: Realistic, Investigative and Conventional.
-- **ICT Business and Systems Analyst**: Matches your top interests: Investigative and Conventional.
+- **Electrical Engineer**: Matches your top interests: Investigative, Realistic and Conventional.
+- **ICT Business Analyst**: Matches your top interests: Investigative and Conventional.
+
+### Skills worth building whichever you choose
+
+- Working with AI tools
+- Problem solving
+- Digital engagement
+- Data analysis and statistics
+- Programming
 
 ### This term
 
-1. Talk to your careers adviser about cyber security and systems specialist and bring this plan.
-1. Look up two courses for cyber security and systems specialist and note their entry requirements.
+1. Talk to your careers adviser about data scientist and bring this plan.
+1. Look up two courses for data scientist and note their entry requirements.
 1. Talk to someone who works in one of these jobs about what a normal day is like.
 
 ### Keep in mind

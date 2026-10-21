@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { matchCareers } from "../src/lib/careers/matching.ts";
-import { jsaOutlook, occupationData, questionBank, subjectLabels } from "../src/lib/data.ts";
+import { earningsData, jsaOutlook, occupationData, questionBank, skillsGraph, subjectLabels } from "../src/lib/data.ts";
 import { buildPlanContext } from "../src/lib/plan/context.ts";
 import { extractJson, generatePlan } from "../src/lib/plan/generate.ts";
 import { inSentence, templatePlan } from "../src/lib/plan/template.ts";
@@ -12,8 +12,8 @@ import { PERSONAS, simulate } from "./fixtures/personas.ts";
 function contextFor(key: string) {
   const p = PERSONAS.find((x) => x.key === key)!;
   const profile = buildProfile(questionBank, simulate(questionBank, p).answers);
-  const matches = matchCareers(profile, occupationData.occupations, jsaOutlook, { subjectLabels });
-  return buildPlanContext(profile, matches, jsaOutlook, subjectLabels);
+  const matches = matchCareers(profile, occupationData.occupations, jsaOutlook, { subjectLabels, graph: skillsGraph });
+  return buildPlanContext(profile, matches, jsaOutlook, subjectLabels, skillsGraph, earningsData);
 }
 
 /** A fetch stand-in that returns the given text as an Anthropic message. */
@@ -66,6 +66,24 @@ test("a valid AI plan is accepted", async () => {
   const plan = await generatePlan(ctx, { apiKey: "test", fetchImpl: fakeFetch("```json\n" + JSON.stringify(rest) + "\n```") });
   assert.equal(plan.meta.generatedBy, "claude");
   assert.equal(plan.meta.fallbackReason, undefined);
+});
+
+test("scores and facts on an AI plan come from our data, not the model", async () => {
+  const ctx = contextFor("mia-health");
+  const { meta: _meta, ...rest } = templatePlan(ctx);
+  rest.topCareers = rest.topCareers.map((c) => ({ ...c, scores: { personalFit: 1, futureOpportunity: 1, pathwayFeasibility: 1 }, facts: undefined }));
+  rest.skillsBridge = ["Teamwork", "Juggling"];
+  const plan = await generatePlan(ctx, { apiKey: "test", fetchImpl: fakeFetch(JSON.stringify(rest)) });
+  assert.deepEqual(plan.topCareers[0].scores, ctx.topCareers[0].scores);
+  assert.equal(plan.topCareers[0].facts?.osca, ctx.topCareers[0].occupationId);
+  assert.ok(!plan.skillsBridge?.includes("Juggling"));
+});
+
+test("template plans quote starting pay and time to qualify", () => {
+  const plan = templatePlan(contextFor("jack-electrical"));
+  assert.match(plan.stages[2].actions.join(" "), /Starting pay is roughly \$\d+k/);
+  assert.match(plan.stages[1].timeframe, /years after school/);
+  assert.ok(plan.topCareers.every((c) => c.facts && c.scores));
 });
 
 test("an AI plan naming a career we didn't supply falls back to the template", async () => {

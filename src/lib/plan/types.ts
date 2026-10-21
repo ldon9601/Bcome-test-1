@@ -1,9 +1,21 @@
+import type { CareerFacts } from "../careers/facts.ts";
+
+export interface CareerScores {
+  personalFit: number;
+  futureOpportunity: number;
+  pathwayFeasibility: number;
+}
+
 export interface PlanCareer {
+  /** OSCA code. */
   occupationId: string;
   title: string;
   whyItFits: string;
   outlook: string;
   howToGetThere: string;
+  /** Attached from Bcome's data after writing, never written by the AI. */
+  scores?: CareerScores;
+  facts?: CareerFacts;
 }
 
 export interface PlanStage {
@@ -20,6 +32,8 @@ export interface CareerPlan {
   stages: PlanStage[];
   futureOfWork: string[];
   alternatives: { title: string; why: string }[];
+  /** Skills and core competencies shared by the top careers: worth building whichever one the student picks. */
+  skillsBridge?: string[];
   nextSteps: string[];
   caveats: string[];
   meta: {
