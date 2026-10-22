@@ -1,3 +1,4 @@
+import type { ActivityStore } from "../activity/types.ts";
 import type { Role } from "./policy.ts";
 import type { AuState } from "./validation.ts";
 
@@ -135,12 +136,14 @@ export class DuplicateError extends Error {
 
 type New<T> = Omit<T, "id">;
 
-export interface AuthStore {
+export interface AuthStore extends ActivityStore {
   createSchool(s: New<School>): Promise<School>;
   getSchool(id: string): Promise<School | null>;
   findSchoolByJoinCode(code: string): Promise<School | null>;
   updateSchool(id: string, patch: Partial<Omit<School, "id" | "createdAt">>): Promise<void>;
   listSchools(status?: SchoolStatus): Promise<School[]>;
+  /** Removes the school and, by cascade, every account and record in it. Operator tool only. */
+  deleteSchool(id: string): Promise<void>;
 
   createUser(u: New<User>): Promise<User>;
   getUser(id: string): Promise<User | null>;

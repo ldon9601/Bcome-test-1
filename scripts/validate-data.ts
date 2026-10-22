@@ -1,3 +1,4 @@
+import { missionLibrary } from "../src/lib/activity/missions.ts";
 /**
  * Checks the editable JSON content for mistakes before it reaches students.
  * Run after editing anything in /data:  npm run data:validate
@@ -143,6 +144,19 @@ export function validateData(): string[] {
     if (!t.requirements.length) err(`${where}: no entry requirements`);
   });
   for (const [id, src] of Object.entries(courseOfferings.sources)) if (!src.url.startsWith("https://")) err(`course source ${id}: needs a URL`);
+  // Weekly missions
+  const KNOWN = new Set(["career", "careerLower", "osca", "course", "provider", "atar", "tafeCourse", "tafeProvider", "admissionsCentre", "admissionsUrl", "pay", "employed", "challenge", "project", "family", "year"]);
+  const missionIds = new Set<string>();
+  for (const m of missionLibrary.missions) {
+    if (missionIds.has(m.id)) err(`mission ${m.id}: duplicate id`);
+    missionIds.add(m.id);
+    if (!(m.effort in missionLibrary.points)) err(`mission ${m.id}: unknown effort ${m.effort}`);
+    if (!m.steps.length) err(`mission ${m.id}: no steps`);
+    for (const text of [m.title, m.why, ...m.steps, m.link?.label ?? "", m.link?.url ?? ""]) {
+      for (const [, k] of text.matchAll(/\{(\w+)\}/g)) if (!KNOWN.has(k)) err(`mission ${m.id}: unknown placeholder {${k}}`);
+    }
+  }
+  for (const f of CAREER_FAMILIES) if (!missionLibrary.projects[f]) err(`missions: no mini project for career area ${f}`);
   return errors;
 }
 
@@ -156,6 +170,6 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     `✓ ${questionBank.questions.length} questions, ${occupationData.occupations.length} occupations (OSCA), ` +
       `${skillsData.skills.length} skills, ${qualificationData.qualifications.length} qualifications, ` +
       `${Object.keys(jsaOutlook.occupations).length} occupation-level JSA projections, ${Object.keys(earningsData.byOsca).length} earnings records, ` +
-      `${Object.keys(jsaProfiles.byUnitGroup).length} JSA occupation profiles, ${courseOfferings.university.length} university and ${courseOfferings.tafe.length} TAFE course entries`,
+      `${Object.keys(jsaProfiles.byUnitGroup).length} JSA occupation profiles, ${courseOfferings.university.length} university and ${courseOfferings.tafe.length} TAFE course entries, ${missionLibrary.missions.length} weekly missions`,
   );
 }

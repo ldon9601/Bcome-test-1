@@ -155,7 +155,7 @@ export async function authAction(action: string, body: Body, ctx: ApiContext): P
   }
 }
 
-async function requireSession(ctx: ApiContext): Promise<CurrentSession | ApiResult> {
+export async function requireSession(ctx: ApiContext): Promise<CurrentSession | ApiResult> {
   const cur = await ctx.service.getSession(ctx.cookies[COOKIE.session]);
   if (!cur.ok) {
     return { status: 401, body: { ok: false, error: cur.reason === "idle" ? "You were signed out after a period of inactivity." : "Please sign in again." }, cookies: [{ name: COOKIE.session, value: "", maxAgeMs: 0 }] };

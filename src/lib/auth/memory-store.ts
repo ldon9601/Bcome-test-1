@@ -1,4 +1,5 @@
 import { randomUUID } from "node:crypto";
+import type { CardState, EventResponse, EvidenceInput, EvidenceItem, EventInput, MissionCompletion, SchoolEvent } from "../activity/types.ts";
 import type { Role } from "./policy.ts";
 import {
   DuplicateError,
@@ -30,6 +31,11 @@ export class MemoryStore implements AuthStore {
   assessments = new Map<string, AssessmentRecord>();
   auditLog: (AuditEvent & { id: string })[] = [];
   hits = new Map<string, { windowStart: number; count: number }>();
+  evidence = new Map<string, EvidenceItem>();
+  missions = new Map<string, MissionCompletion>();
+  events = new Map<string, SchoolEvent>();
+  responses: EventResponse[] = [];
+  cards: CardState[] = [];
 
   async createSchool(s: Omit<School, "id">) {
     if ([...this.schools.values()].some((x) => x.joinCode === s.joinCode)) throw new DuplicateError("join_code");
@@ -53,6 +59,13 @@ export class MemoryStore implements AuthStore {
   }
   async listSchools(status?: SchoolStatus) {
     return [...this.schools.values()].filter((s) => !status || s.status === status).map(clone);
+  }
+
+  async deleteSchool(id: string) {
+    for (const u of [...this.users.values()]) if (u.schoolId === id) await this.deleteUser(u.id);
+    for (const [k, v] of this.events) if (v.schoolId === id) this.events.delete(k);
+    for (const [k, v] of this.invites) if (v.schoolId === id) this.invites.delete(k);
+    this.schools.delete(id);
   }
 
   async createUser(u: Omit<User, "id">) {
@@ -81,9 +94,12 @@ export class MemoryStore implements AuthStore {
   }
   async deleteUser(id: string) {
     this.users.delete(id);
-    for (const m of [this.sessions, this.devices, this.challenges, this.assessments] as Map<string, { userId: string }>[]) {
+    for (const m of [this.sessions, this.devices, this.challenges, this.assessments, this.evidence, this.missions] as Map<string, { userId: string }>[]) {
       for (const [k, v] of m) if (v.userId === id) m.delete(k);
     }
+    this.responses = this.responses.filter((r) => r.userId !== id);
+    this.cards = this.cards.filter((c) => c.userId !== id);
+    for (const e of this.events.values()) if (e.createdBy === id) e.createdBy = null;
   }
   async listUsers(schoolId: string, role?: Role) {
     return [...this.users.values()].filter((u) => u.schoolId === schoolId && (!role || u.role === role)).map(clone);
@@ -208,5 +224,94 @@ export class MemoryStore implements AuthStore {
     }
     h.count += 1;
     return h.count;
+  }
+
+  // Activity: portfolio, missions, events and action cards
+  async listEvidence(userId: string) {
+    return [...this.evidence.values()].filter((e) => e.userId === userId).sort((a, b) => b.startMonth.localeCompare(a.startMonth) || b.createdAt.localeCompare(a.createdAt)).map(clone);
+  }
+  async createEvidence(e: Omit<EvidenceItem, "id">) {
+    const item = { ...clone(e), id: randomUUID() };
+    this.evidence.set(item.id, item);
+    return clone(item);
+  }
+  async updateEvidence(userId: string, id: string, patch: Partial<EvidenceInput> & { updatedAt: string }) {
+    const e = this.evidence.get(id);
+    if (!e || e.userId !== userId) return false;
+    Object.assign(e, clone(patch));
+    return true;
+  }
+  async deleteEvidence(userId: string, id: string) {
+    if (this.evidence.get(id)?.userId === userId) this.evidence.delete(id);
+  }
+  async countSchoolEvidence(schoolId: string) {
+    const out: Record<string, number> = {};
+    for (const e of this.evidence.values()) if (e.schoolId === schoolId) out[e.userId] = (out[e.userId] ?? 0) + 1;
+    return out;
+  }
+
+  async listMissionCompletions(userId: string) {
+    return [...this.missions.values()].filter((m) => m.userId === userId).sort((a, b) => b.week.localeCompare(a.week)).map(clone);
+  }
+  async createMissionCompletion(c: Omit<MissionCompletion, "id">) {
+    if ([...this.missions.values()].some((m) => m.userId === c.userId && m.week === c.week)) return null;
+    const rec = { ...clone(c), id: randomUUID() };
+    this.missions.set(rec.id, rec);
+    return clone(rec);
+  }
+  async listSchoolMissionCompletions(schoolId: string) {
+    return [...this.missions.values()].filter((m) => m.schoolId === schoolId).map(({ userId, week, points, completedAt, title }) => ({ userId, week, points, completedAt, title }));
+  }
+
+  async listEvents(schoolId: string, from: string, to: string) {
+    return [...this.events.values()]
+      .filter((e) => e.schoolId === schoolId && e.startsOn <= to && (e.endsOn ?? e.startsOn) >= from)
+      .sort((a, b) => a.startsOn.localeCompare(b.startsOn) || a.title.localeCompare(b.title))
+      .map(clone);
+  }
+  async getEvent(schoolId: string, id: string) {
+    const e = this.events.get(id);
+    return e && e.schoolId === schoolId ? clone(e) : null;
+  }
+  async createEvent(e: Omit<SchoolEvent, "id">) {
+    const ev = { ...clone(e), id: randomUUID() };
+    this.events.set(ev.id, ev);
+    return clone(ev);
+  }
+  async updateEvent(schoolId: string, id: string, patch: Partial<EventInput> & { updatedAt: string }) {
+    const e = this.events.get(id);
+    if (!e || e.schoolId !== schoolId) return false;
+    Object.assign(e, clone(patch));
+    return true;
+  }
+  async deleteEvent(schoolId: string, id: string) {
+    if (this.events.get(id)?.schoolId === schoolId) {
+      this.events.delete(id);
+      this.responses = this.responses.filter((r) => r.eventId !== id);
+    }
+  }
+  async countUpcomingEvents(schoolId: string, from: string) {
+    return [...this.events.values()].filter((e) => e.schoolId === schoolId && (e.endsOn ?? e.startsOn) >= from).length;
+  }
+
+  async listEventResponses(userId: string) {
+    return this.responses.filter((r) => r.userId === userId).map((r) => r.eventId);
+  }
+  async setEventResponse(r: EventResponse, interested: boolean) {
+    this.responses = this.responses.filter((x) => !(x.userId === r.userId && x.eventId === r.eventId));
+    if (interested && this.events.get(r.eventId)?.schoolId === r.schoolId) this.responses.push(clone(r));
+  }
+  async countEventResponses(schoolId: string) {
+    const out: Record<string, number> = {};
+    for (const r of this.responses) if (r.schoolId === schoolId) out[r.eventId] = (out[r.eventId] ?? 0) + 1;
+    return out;
+  }
+
+  async listCardStates(userId: string) {
+    return this.cards.filter((c) => c.userId === userId).map(clone);
+  }
+  async setCardState(s: CardState | (Omit<CardState, "status"> & { status: null })) {
+    this.cards = this.cards.filter((c) => !(c.userId === s.userId && c.cardKey === s.cardKey));
+    if (s.status) this.cards.push(clone(s as CardState));
   }
 }

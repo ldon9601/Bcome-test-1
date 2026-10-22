@@ -27,18 +27,26 @@ export default function PrivacyPage() {
           over time.
         </li>
         <li>
+          <strong>Activities after the Career Profile:</strong> entries a student adds to their Skills Evidence Portfolio (what they did at school,
+          in sport, at work or volunteering, with dates and skills), the weekly missions they complete with a short note and the points earned,
+          which action cards they mark done, and which calendar events they mark as interesting. Calendar events are added by the school&apos;s
+          careers advisers.
+        </li>
+        <li>
           <strong>Security records:</strong> a scrambled (hashed) password, sign-in sessions, trusted devices (a label such as &ldquo;Chrome on
           Windows&rdquo;), and a log of sign-ins and account changes with the network (IP) address used.
         </li>
       </ul>
       <p>
         We don&apos;t collect full dates of birth, home addresses, phone numbers, photos, gender, or health information, and we don&apos;t use
-        advertising or tracking cookies.
+        advertising or tracking cookies. The portfolio asks students not to include phone numbers, addresses or health details. Contact details
+        typed into the CV page stay in the student&apos;s browser and go only into the file they download.
       </p>
 
       <h2>Why we collect it</h2>
       <ul>
         <li>to give students career matches, pathways and a plan, and keep a history of their results;</li>
+        <li>to give students weekly career missions, action cards, their school&apos;s opportunity calendar and a portfolio they can turn into a CV;</li>
         <li>so careers advisers at the student&apos;s own school can support their career planning;</li>
         <li>to produce school-level statistics for the school (for example, which careers and pathways interest their students);</li>
         <li>to keep accounts secure (for example, sign-in codes for new devices and records of sign-in attempts).</li>

@@ -128,7 +128,8 @@ export function Header({ searchIndex, user }: { searchIndex: SearchItem[]; user:
       </Link>
       <nav aria-label="Main">
         {nav.map((n) => {
-          const current = n.href === "/" ? path === "/" || path === "/questionnaire" : path?.startsWith(n.href);
+          const current =
+            n.href === "/" ? path === "/" || path === "/questionnaire" : n.href === "/adviser" ? path === "/adviser" || !!path?.startsWith("/adviser/students") : path?.startsWith(n.href);
           return (
             <Link key={n.href} href={n.href} className="nav-link" aria-current={current ? "page" : undefined}>
               <Icon name={n.icon} size={19} />

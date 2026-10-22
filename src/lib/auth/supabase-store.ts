@@ -1,4 +1,5 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import type { CardState, EventInput, EventResponse, EvidenceInput, EvidenceItem, MissionCompletion, SchoolEvent } from "../activity/types.ts";
 import type { Role } from "./policy.ts";
 import {
   DuplicateError,
@@ -76,6 +77,10 @@ export class SupabaseStore implements AuthStore {
     let q = this.db.from("schools").select("*").order("created_at");
     if (status) q = q.eq("status", status);
     return many<School>(check(await q));
+  }
+
+  async deleteSchool(id: string) {
+    check(await this.db.from("schools").delete().eq("id", id));
   }
 
   createUser(u: Omit<User, "id">) {
@@ -195,5 +200,105 @@ export class SupabaseStore implements AuthStore {
 
   async hit(key: string, windowMs: number) {
     return check(await this.db.rpc("rate_limit_hit", { p_key: key, p_window_ms: windowMs })) as number;
+  }
+
+  // Activity: portfolio, missions, events and action cards
+  async listEvidence(userId: string) {
+    return many<EvidenceItem>(check(await this.db.from("evidence_items").select("*").eq("user_id", userId).order("start_month", { ascending: false }).order("created_at", { ascending: false })));
+  }
+  createEvidence(e: Omit<EvidenceItem, "id">) {
+    return this.insert<EvidenceItem>("evidence_items", e);
+  }
+  async updateEvidence(userId: string, id: string, patch: Partial<EvidenceInput> & { updatedAt: string }) {
+    const rows = check(await this.db.from("evidence_items").update(out(patch)).eq("user_id", userId).eq("id", id).select("id")) as Row[];
+    return rows.length > 0;
+  }
+  async deleteEvidence(userId: string, id: string) {
+    check(await this.db.from("evidence_items").delete().eq("user_id", userId).eq("id", id));
+  }
+  async countSchoolEvidence(schoolId: string) {
+    const rows = check(await this.db.from("evidence_items").select("user_id").eq("school_id", schoolId).limit(100000)) as { user_id: string }[];
+    const counts: Record<string, number> = {};
+    for (const r of rows) counts[r.user_id] = (counts[r.user_id] ?? 0) + 1;
+    return counts;
+  }
+
+  async listMissionCompletions(userId: string) {
+    return many<MissionCompletion>(check(await this.db.from("mission_completions").select("*").eq("user_id", userId).order("week", { ascending: false })));
+  }
+  async createMissionCompletion(c: Omit<MissionCompletion, "id">) {
+    const res = await this.db.from("mission_completions").insert(out(c)).select("*").single();
+    if (res.error?.code === "23505") return null;
+    return inn<MissionCompletion>(check(res));
+  }
+  async listSchoolMissionCompletions(schoolId: string) {
+    const rows = check(await this.db.from("mission_completions").select("user_id,week,points,completed_at,title").eq("school_id", schoolId).limit(100000));
+    return many<Pick<MissionCompletion, "userId" | "week" | "points" | "completedAt" | "title">>(rows as Row[]);
+  }
+
+  async listEvents(schoolId: string, from: string, to: string) {
+    // Overlap: starts on or before `to`, and ends (or starts, for one-day events) on or after `from`.
+    const rows = check(
+      await this.db
+        .from("school_events")
+        .select("*")
+        .eq("school_id", schoolId)
+        .lte("starts_on", to)
+        .or(`ends_on.gte.${from},and(ends_on.is.null,starts_on.gte.${from})`)
+        .order("starts_on")
+        .order("title"),
+    );
+    return many<SchoolEvent>(rows as Row[]);
+  }
+  async getEvent(schoolId: string, id: string) {
+    return inn<SchoolEvent>(check(await this.db.from("school_events").select("*").eq("school_id", schoolId).eq("id", id).maybeSingle()));
+  }
+  createEvent(e: Omit<SchoolEvent, "id">) {
+    return this.insert<SchoolEvent>("school_events", e);
+  }
+  async updateEvent(schoolId: string, id: string, patch: Partial<EventInput> & { updatedAt: string }) {
+    const rows = check(await this.db.from("school_events").update(out(patch)).eq("school_id", schoolId).eq("id", id).select("id")) as Row[];
+    return rows.length > 0;
+  }
+  async deleteEvent(schoolId: string, id: string) {
+    check(await this.db.from("school_events").delete().eq("school_id", schoolId).eq("id", id));
+  }
+  async countUpcomingEvents(schoolId: string, from: string) {
+    const res = await this.db
+      .from("school_events")
+      .select("id", { count: "exact", head: true })
+      .eq("school_id", schoolId)
+      .or(`ends_on.gte.${from},and(ends_on.is.null,starts_on.gte.${from})`);
+    check(res);
+    return res.count ?? 0;
+  }
+
+  async listEventResponses(userId: string) {
+    const rows = check(await this.db.from("event_responses").select("event_id").eq("user_id", userId)) as { event_id: string }[];
+    return rows.map((r) => r.event_id);
+  }
+  async setEventResponse(r: EventResponse, interested: boolean) {
+    if (!interested) {
+      check(await this.db.from("event_responses").delete().eq("user_id", r.userId).eq("event_id", r.eventId));
+      return;
+    }
+    check(await this.db.from("event_responses").upsert(out(r), { onConflict: "user_id,event_id", ignoreDuplicates: true }));
+  }
+  async countEventResponses(schoolId: string) {
+    const rows = check(await this.db.from("event_responses").select("event_id").eq("school_id", schoolId).limit(100000)) as { event_id: string }[];
+    const counts: Record<string, number> = {};
+    for (const r of rows) counts[r.event_id] = (counts[r.event_id] ?? 0) + 1;
+    return counts;
+  }
+
+  async listCardStates(userId: string) {
+    return many<CardState>(check(await this.db.from("action_card_states").select("*").eq("user_id", userId)));
+  }
+  async setCardState(s: CardState | (Omit<CardState, "status"> & { status: null })) {
+    if (!s.status) {
+      check(await this.db.from("action_card_states").delete().eq("user_id", s.userId).eq("card_key", s.cardKey));
+      return;
+    }
+    check(await this.db.from("action_card_states").upsert(out(s), { onConflict: "user_id,card_key" }));
   }
 }

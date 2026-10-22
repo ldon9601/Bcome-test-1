@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import PlanView, { type Result } from "@/app/plan/PlanView.tsx";
 import { Icon } from "@/components/Icon.tsx";
+import { EvidenceList } from "@/components/Portfolio.tsx";
+import { localDate, pointsSummary, weekOf } from "@/lib/activity/missions.ts";
 import { auth, requireAdviser } from "@/lib/auth/server.ts";
 import { RemoveStudent } from "../../AdviserWidgets.tsx";
 
@@ -23,6 +25,10 @@ export default async function StudentPage({ params, searchParams }: { params: Pr
   const history = await service.store.listAssessments(s.id);
   const pick = history.find((h) => h.id === selected) ?? history[0];
   const a = pick ? await service.store.getAssessment(pick.id) : null;
+  const [evidence, missions, interested] = await Promise.all([service.store.listEvidence(s.id), service.store.listMissionCompletions(s.id), service.store.listEventResponses(s.id)]);
+  const today = localDate(service.now(), cur.school.state);
+  const points = pointsSummary(weekOf(today), missions);
+  const events = interested.length ? (await service.store.listEvents(cur.school.id, today, "9999-12-31")).filter((e) => interested.includes(e.id)) : [];
   await service.store.audit({ at: new Date().toISOString(), event: "student.viewed", actorId: cur.user.id, schoolId: cur.school.id, targetId: s.id, ip: null, detail: {} });
 
   return (
@@ -74,6 +80,68 @@ export default async function StudentPage({ params, searchParams }: { params: Pr
           <p className="lead">{s.firstName} hasn&apos;t completed the Career Profile yet.</p>
         </main>
       )}
+      <main className="page-grid activity-strip">
+        <div className="main-col">
+          <section className="card side-card" aria-labelledby="st-portfolio">
+            <div className="group-head" style={{ marginTop: 0 }}>
+              <h2 id="st-portfolio">
+                <Icon name="clipboard" size={22} /> Skills Evidence Portfolio
+              </h2>
+              <span className="small">{evidence.length} entries</span>
+            </div>
+            {evidence.length ? <EvidenceList items={evidence} /> : <p className="muted">{s.firstName} hasn&apos;t added any evidence yet.</p>}
+          </section>
+        </div>
+        <aside className="side-col">
+          <section className="side-card" aria-labelledby="st-missions">
+            <div className="side-head">
+              <span className="side-icon" style={{ background: "var(--tone-amber)", color: "#b45309" }}>
+                <Icon name="target" size={22} />
+              </span>
+              <div>
+                <h2 id="st-missions">Weekly missions</h2>
+                <p>
+                  {points.total} points · {points.completed} done · {points.streak}-week streak
+                </p>
+              </div>
+            </div>
+            {missions.length === 0 ? (
+              <p className="muted">No missions completed yet.</p>
+            ) : (
+              <ul className="recent-missions">
+                {missions.slice(0, 8).map((m) => (
+                  <li key={m.id}>
+                    <span className="pill">+{m.points}</span>
+                    <span>
+                      <strong>{m.title}</strong>
+                      <span className="small">
+                        {fmt(m.completedAt)} · &ldquo;{m.reflection}&rdquo;
+                      </span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </section>
+          <section className="side-card" aria-labelledby="st-events">
+            <h2 id="st-events">Interested in</h2>
+            {events.length === 0 ? (
+              <p className="muted">No upcoming events marked.</p>
+            ) : (
+              <ul className="follow-list">
+                {events.map((e) => (
+                  <li key={e.id}>
+                    <Link href="/adviser/events">
+                      <strong>{e.title}</strong>
+                      <span className="small"> · {new Date(`${e.startsOn}T00:00:00Z`).toLocaleDateString("en-AU", { day: "numeric", month: "short", timeZone: "UTC" })}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </section>
+        </aside>
+      </main>
     </>
   );
 }

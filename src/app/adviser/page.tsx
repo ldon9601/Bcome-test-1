@@ -6,6 +6,8 @@ import { Icon } from "@/components/Icon.tsx";
 import { OccupationArt } from "@/components/OccupationArt.tsx";
 import { schoolAnalytics } from "@/lib/adviser/analytics.ts";
 import { DASHBOARD_LABELS } from "@/lib/adviser/labels.ts";
+import { localDate } from "@/lib/activity/missions.ts";
+import { ActivityService } from "@/lib/activity/service.ts";
 import { auth, requireAdviser } from "@/lib/auth/server.ts";
 import type { RiasecType } from "@/lib/questionnaire/types.ts";
 import { JoinCodeCard } from "./AdviserWidgets.tsx";
@@ -18,9 +20,15 @@ export default async function AdviserDashboard({ searchParams }: { searchParams:
   const { year: y } = await searchParams;
   const year = ["10", "11", "12"].includes(y ?? "") ? Number(y) : null;
   const cur = await requireAdviser("/adviser");
-  const store = (await auth()).store;
+  const service = await auth();
+  const store = service.store;
   const [users, assessments] = await Promise.all([store.listUsers(cur.school.id), store.listSchoolAssessments(cur.school.id)]);
   const a = schoolAnalytics(users, assessments, DASHBOARD_LABELS, { year });
+  const activity = new ActivityService(store, service.now);
+  const today = localDate(service.now(), cur.school.state);
+  const inYear = users.filter((u) => u.role === "student" && (!year || u.yearLevel === year));
+  const [eng, cal] = await Promise.all([activity.engagement(cur.school.id, inYear, today), activity.schoolEvents(cur, { pastMonths: 0, aheadMonths: 6 })]);
+  const nextEvents = cal.events.filter((e) => (e.endsOn ?? e.startsOn) >= today).slice(0, 5);
   const done = a.totals.completed;
   const filter = (v: number | null) => (v ? `/adviser?year=${v}` : "/adviser");
 
@@ -76,6 +84,45 @@ export default async function AdviserDashboard({ searchParams }: { searchParams:
             </span>
             <strong>{a.followUp.length}</strong>
             <span>students to follow up</span>
+          </div>
+        </section>
+
+        <section className="side-card" aria-labelledby="engagement">
+          <div className="group-head" style={{ marginTop: 0 }}>
+            <h2 id="engagement">Missions, portfolios and events</h2>
+            <p>What students are doing after their Career Profile.</p>
+          </div>
+          <div className="kpis compact">
+            <div className="kpi">
+              <span className="kpi-icon tone-amber">
+                <Icon name="target" size={20} />
+              </span>
+              <strong>{eng.missionsThisWeek}</strong>
+              <span>missions done this week</span>
+            </div>
+            <div className="kpi">
+              <span className="kpi-icon tone-green">
+                <Icon name="flame" size={20} />
+              </span>
+              <strong>{eng.activeStudents}</strong>
+              <span>students have done a mission ({eng.missionsTotal} in total)</span>
+            </div>
+            <div className="kpi">
+              <span className="kpi-icon tone-pink">
+                <Icon name="clipboard" size={20} />
+              </span>
+              <strong>{eng.studentsWithPortfolio}</strong>
+              <span>students with portfolio evidence ({eng.evidenceItems} entries)</span>
+            </div>
+            <div className="kpi">
+              <span className="kpi-icon tone-blue">
+                <Icon name="clock" size={20} />
+              </span>
+              <strong>{eng.upcomingEvents}</strong>
+              <span>
+                upcoming events · <Link href="/adviser/events">manage calendar</Link>
+              </span>
+            </div>
           </div>
         </section>
 
@@ -160,6 +207,38 @@ export default async function AdviserDashboard({ searchParams }: { searchParams:
 
       <aside className="side-col" aria-label="School tools">
         <JoinCodeCard joinCode={cur.school.joinCode} domains={cur.school.studentDomains} />
+
+        <section className="side-card" aria-labelledby="next-events">
+          <div className="side-head">
+            <span className="side-icon">
+              <Icon name="clock" size={22} />
+            </span>
+            <div>
+              <h2 id="next-events">Coming up</h2>
+              <p>From your opportunity calendar</p>
+            </div>
+          </div>
+          {nextEvents.length === 0 ? (
+            <p className="muted">No upcoming events. Add open days, work experience and competitions for students to see.</p>
+          ) : (
+            <ul className="follow-list">
+              {nextEvents.map((e) => (
+                <li key={e.id}>
+                  <Link href="/adviser/events">
+                    <strong>{e.title}</strong>
+                    <span className="small">
+                      {" "}
+                      · {new Date(`${e.startsOn}T00:00:00Z`).toLocaleDateString("en-AU", { day: "numeric", month: "short", timeZone: "UTC" })} · {e.interested} interested
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+          <Link href="/adviser/events" className="button primary small-btn" style={{ marginTop: "0.75rem" }}>
+            <Icon name="spark" size={16} /> Add or edit events
+          </Link>
+        </section>
 
         <section className="side-card" aria-labelledby="by-year">
           <h2 id="by-year">Completion by year</h2>

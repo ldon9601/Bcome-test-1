@@ -20,7 +20,7 @@ Status key:
 | A5# MFA for privileged accounts | Advisers (who can see a whole school's data) always use password + email code. Bcome staff access to Supabase, Vercel, GitHub, AWS and email must use MFA. | Built / Organisation |
 | A10# Inactivity lock | Adviser sessions end after 15 minutes without activity (8-hour maximum). Students' sessions end after 60 idle minutes, or after 30 days if they ticked "Remember me". | Built (`policy.ts`) |
 | A11# Password resets | A reset needs a one-time code sent to the account's email (10 minutes, 5 attempts). Afterwards every session and trusted device is revoked, and a "password changed" email is sent. Requests always get the same answer, so they can't be used to find accounts. | Built |
-| A13# Deny by default | All account tables have row level security turned on with no policies, and browser roles have no privileges. Only the server, using the service role key, can read them. Every page and API checks the session and role. | Built (`supabase/migrations/20261023000000_accounts.sql`, checked by `supabase/tests/accounts-checks.sql`) |
+| A13# Deny by default | All account and activity tables (`20261025000000_activity.sql`) have row level security turned on with no policies, and browser roles have no privileges. Only the server, using the service role key, can read them. Every page and API checks the session and role. | Built (`supabase/migrations/20261023000000_accounts.sql`, checked by `supabase/tests/accounts-checks.sql`) |
 | Account lockout | Five wrong passwords lock the account for 15 minutes. Sign-in attempts are also rate-limited per username or email. The limit is per account rather than per IP, because whole schools share one IP address. | Built |
 | A12/A14 SSO | Not yet. Many schools will want Google Workspace or Microsoft Entra sign-in. It's a natural next step and would replace passwords for schools that use it. | Not built |
 
@@ -49,7 +49,7 @@ Status key:
 
 | Criterion | What Bcome does | Status |
 |---|---|---|
-| L1 Audit logging | The `audit_log` table records sign-ins, failures, lockouts, wrong codes, new-device checks, sign-outs, timeouts, password changes and resets, registrations, deletions, school setting changes, invitations, student views and exports. Each entry has a time, actor, target, school and IP address. Passwords and codes are never logged. Entries survive account deletion. | Built |
+| L1 Audit logging | The `audit_log` table records sign-ins, failures, lockouts, wrong codes, new-device checks, sign-outs, timeouts, password changes and resets, registrations, deletions, school setting changes, invitations, student views and exports, calendar event changes and completed missions. Each entry has a time, actor, target, school and IP address. Passwords and codes are never logged. Entries survive account deletion. | Built |
 | L3 Logs on request | Advisers see their school's latest 100 events in School settings. A full export for a school is a query on `audit_log` by `school_id`. | Built |
 | L2/L4 Monitoring and central logging | Send Vercel and Supabase logs to a central service (a log drain) and alert on spikes in `login.locked` and `code.failed`. | Organisation |
 | Retention | `purge_expired()` deletes expired sessions, codes and devices, and audit entries older than 400 days. Schedule it daily with pg_cron (see the migration). | Deploy |
@@ -58,10 +58,10 @@ Status key:
 
 | Criterion | What Bcome does | Status |
 |---|---|---|
-| Data minimisation | Students: first and last name, school email, username, school, school year, and month and year of birth. Nothing else about the person. Assessment answers and results are kept so students and advisers can see change over time. Trusted devices store a coarse label ("Chrome on Windows"), not the user agent. | Built |
+| Data minimisation | Students: first and last name, school email, username, school, school year, and month and year of birth. Nothing else about the person. Assessment answers and results are kept so students and advisers can see change over time. Trusted devices store a coarse label ("Chrome on Windows"), not the user agent. The Skills Evidence Portfolio stores what the student enters (length-limited, with phone numbers and email addresses refused), mission notes, card and event choices. CV contact details are typed in the browser and never sent to Bcome (the Word file is built client-side). | Built |
 | Collection notice (APP 5) | Shown on the sign-up form, which needs explicit acknowledgement, and in full at `/privacy`. **Have it reviewed by a privacy lawyer before launch**, and set `NEXT_PUBLIC_PRIVACY_EMAIL`. | Built (draft) |
 | Access and correction | Students see all their details and results on their profile and can change their year level. Advisers can see everything for their school. | Built |
-| Deletion | Students can delete their account, and all their assessments go with it. Advisers can remove students who have left, and other advisers. Deletion cascades in the database. | Built |
+| Deletion | Students can delete their account, and all their assessments, portfolio entries, missions, card choices and event interest go with it (`supabase/tests/activity-checks.sql`). Advisers can remove students who have left, and other advisers. Deletion cascades in the database. | Built |
 | P11 Advertising | No advertising, tracking cookies or third-party scripts. Fonts are self-hosted at build time. | Built |
 | Guardians | The earlier parent-consent design was removed when accounts became school-registered. The school is the point of contact. If a school wants parental consent for students under 16, add it as a school setting. | Decision for Bcome |
 

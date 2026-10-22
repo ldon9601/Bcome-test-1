@@ -75,6 +75,12 @@ Similarity = 1 − Σwᵢ|sᵢ − oᵢ| / Σwᵢ, with dimensions that matter m
 
 ### 6. Screens (`src/app/`, `src/components/`)
 
+- **Discover hub** (`/` for a signed-in student with results, `DiscoverHub.tsx`, `src/lib/activity/`): once a student has a Career Profile, Discover becomes their week. "Retake Career Profile" (`/?retake=1`) shows the questions again.
+  - **Weekly Career Missions** (`missions.ts`, `data/missions/missions.json`): one practical task a week (talk to someone, research a course, try a mini project, plan work experience…), chosen from the 20 missions that fit the student's top careers, year level, state and study preference. It rotates through their top three careers and doesn't repeat a mission within six weeks. Completing it needs a short note on what they did, and can add it to the portfolio. Points: 50, 75 or 100 by effort, plus 10 for every week in a row (up to 50). Weeks run Monday to Sunday in the school's time zone, and one mission counts per week.
+  - **Real-World Action Cards** (`cards.ts`): each month, prompts to talk to someone in their top career, investigate a specific course from their results, find out about their second career, and go to calendar events that suit their year level and career areas. Students mark cards done or "not now".
+  - **Opportunity calendar** (`OpportunityCalendar.tsx`): a month view of the school's events (open days, work experience, competitions, expos, talks, workshops, key dates). Events that suit the student's career areas are starred, and students can mark "I'm interested". It's also on the student's profile.
+  - **Skills Evidence Portfolio** (`Portfolio.tsx`, `evidence.ts`): entries from school, sport, work, volunteering and other activities, with dates, a description and up to eight skills (employability skills plus skills from their career matches). Phone numbers and email addresses are refused.
+  - **CV** (`/account/cv`, `cv.ts`, `docx.ts`): turns the portfolio into a CV with a drafted career objective, education, key skills and experience sections. Students add contact details (kept in the browser only), edit the objective, choose sections, then download a Word file (built in the browser), print or save as PDF, or copy it as text.
 - **Discover** (`/`, `Discover.tsx`): the questionnaire shows up to three questions per page within a section. It uses likert pills, colour-coded activity cards for the ranking, a five-point slider for the work-style questions and a grid for the subjects. A live RIASEC radar updates as the student answers, next to a "Today's Quest" card and a daily count.
 - **Career Matches** (`/plan`, `PlanView.tsx`): the Career DNA is shown first. Then the #1 match appears as a feature card with a personal-fit ring, fit breakdown, highlight tags and "Why this matches you". The other matches follow as illustrated cards with a detail dialog and a shortlist button. The sidebar holds the RIASEC radar, the top profile types, an "Assessment Complete" badge and a shortlist challenge. Careers are always ordered by personal fit, and the ring shows personal fit; the overall match is secondary text.
 - **Careers** (`/careers`): browse all careers by area, with a filter and a detail dialog. `?career=OSCA` opens one directly; the header search links here.
@@ -83,7 +89,7 @@ Similarity = 1 − Σwᵢ|sᵢ − oᵢ| / Σwᵢ, with dimensions that matter m
 - **Occupation pictures** (`OccupationArt.tsx`): licence-free illustrations, one per career family (`family` in the occupation data). To use a real photo, add `"photo": { "src": "/careers/xyz.jpg", "credit": "…" }` to the occupation and put the file in `public/`. The photo then replaces the illustration everywhere.
 - **Accounts**: `/login` (two tiles), `/signup`, `/register-school`, `/verify`, `/forgot-password`, `/invite/[token]`, `/privacy`.
 - **My profile** (`/account`): the student's details, every saved assessment (each opens as a full results page), password change, trusted devices, sign out everywhere, and delete account.
-- **School dashboard** (`/adviser`): students registered and completed, completion by year, the most recommended careers, career areas, RIASEC interest types, pathways and study length, values, enjoyed subjects, students worth a conversation and why, and a searchable student list with CSV export. It filters by year. Each student page shows their assessment history and full results. **School settings** (`/adviser/settings`) covers the join code, student email domains, the AI-plans switch, inviting or removing advisers, and the activity log.
+- **School dashboard** (`/adviser`): students registered and completed, completion by year, the most recommended careers, career areas, RIASEC interest types, pathways and study length, values, enjoyed subjects, students worth a conversation and why, and a searchable student list with CSV export. It filters by year. It also shows missions done this week, students with portfolios and upcoming events. Each student page shows their assessment history, full results, portfolio, completed missions with their notes, and the events they're interested in. **Opportunity calendar** (`/adviser/events`): advisers add, edit and delete events, choose the year levels and career areas they suit, and see how many students are interested. **School settings** (`/adviser/settings`) covers the join code, student email domains, the AI-plans switch, inviting or removing advisers, and the activity log.
 - **Progress, XP, levels and streaks** (`src/lib/progress/gamification.ts`): these come only from questions actually answered and days actually visited. They are stored in the student's browser (localStorage), so they don't follow a student between devices yet.
 
 ## About the data
@@ -110,7 +116,17 @@ cp .env.example .env.local   # fill in Supabase and (optionally) Anthropic keys
 npm run dev                  # http://localhost:3000
 ```
 
-Without Supabase, `npm run dev` keeps accounts in memory and loads a **demo school** with 28 invented students and their assessments. The sign-in details are printed in the terminal (adviser `demo.adviser`, student `demo.student`, password `Careers demo 2026!`, school code `DEMO-2026`). Email codes are printed there too instead of being sent. Data is lost when the server restarts.
+Without Supabase, `npm run dev` keeps accounts in memory and loads a **demo school** with 28 invented students and their assessments. The sign-in details are printed in the terminal (adviser `demo.adviser`, student `demo.student`, password `Careers demo 2026!`, school code `DEMO-2026`). Email codes are printed there too instead of being sent. The demo school also has sample calendar events, portfolios and a few weeks of missions. Data is lost when the server restarts.
+
+### A test school in your real database
+
+To try the school administrator side on a deployed site, create a test school in Supabase:
+
+```bash
+npm run school -- create-test --email you@example.com
+```
+
+It makes an active school, `test.adviser` (codes go to your email), `test.student` (codes go to `you+teststudent@…`; use `--student-email` if your email provider doesn't support plus addressing), 27 made-up classmates with results, portfolios and missions, and sample calendar events. It prints the usernames, a generated password (or pass `--password`) and the join code. Remove it afterwards with `npm run school -- delete-test <id>`, which only deletes schools named "Bcome Test School".
 
 ### Supabase and email
 
@@ -121,18 +137,18 @@ Without Supabase, `npm run dev` keeps accounts in memory and loads a **demo scho
 5. Email: verify your sending domain in Amazon SES (Sydney), create an IAM key limited to `ses:SendEmail`, and set `EMAIL_PROVIDER=ses` with the AWS variables. Request SES production access so you can email any address.
 6. Deploy to Vercel. `vercel.json` pins functions to Sydney.
 
-The browser never reads the account tables: row level security is on with no policies, and anon and authenticated roles have no privileges. `supabase/tests/accounts-checks.sql` checks this and the constraints on plain Postgres:
+The browser never reads the account or activity tables: row level security is on with no policies, and anon and authenticated roles have no privileges. `supabase/tests/accounts-checks.sql` and `activity-checks.sql` check this and the constraints on plain Postgres:
 
 ```bash
-psql -d test -f supabase/tests/local-auth-stub.sql $(for f in supabase/migrations/*.sql; do echo "-f $f"; done) -f supabase/tests/accounts-checks.sql
+psql -d test -f supabase/tests/local-auth-stub.sql $(for f in supabase/migrations/*.sql; do echo "-f $f"; done) -f supabase/tests/accounts-checks.sql -f supabase/tests/activity-checks.sql
 ```
 
 ## Commands
 
 | Command | What it does |
 | --- | --- |
-| `npm test` | Unit tests (questionnaire, scores, skills graph, outlook, plan validation, importers, accounts and sign-in, adviser dashboard) |
-| `npm run school -- list` | Schools waiting for approval; `approve <id>`, `suspend <id>`, `activate <id>` |
+| `npm test` | Unit tests (questionnaire, scores, skills graph, outlook, plan validation, importers, accounts and sign-in, adviser dashboard, missions, portfolio, calendar and CV) |
+| `npm run school -- list` | Schools waiting for approval; `approve <id>`, `suspend <id>`, `activate <id>`, `create-test --email …`, `delete-test <id>` |
 | `npm run test:profiles` | Runs six imaginary students through the whole pipeline and writes their plans to `test-output/` |
 | `npm run data:validate` | Checks the JSON in `data/` after edits |
 | `npm run data:import-jsa -- <file.xlsx>` | Loads occupation-level JSA projections |
@@ -159,6 +175,7 @@ Careers advisers can edit content without touching code:
 - **Questions** (`data/questions/career-profile.json`): wording, scales and options. Keep 36 numbered questions so results stay comparable, and bump `version` when wording changes.
 - **Occupations** (`data/occupations/occupations.json`): OSCA code, profile (interests, skills, values, environment), market indicators with evidence, subjects, skills, pathways, time to qualify, pay range and entry competitiveness.
 - **Skills and qualifications** (`data/skills/skills.json`, `data/skills/qualifications.json`).
+- **Weekly missions** (`data/missions/missions.json`): mission wording, steps, effort and who they suit (`requires`, `years`, `lead`), the points, and a mini-project idea for each career area. Placeholders like `{career}` and `{course}` are filled from each student's results.
 - **Courses** (`data/courses/offerings.json`): to add a university, add a `sources` entry (provider, URL, `kind`, year), then `university` entries pointing at a Bcome `qualificationId` (a `higher-ed` qualification). Write prerequisites the way the state names its subjects ("Mathematics Methods", "Chemistry"); Bcome matches common ones to the student's subjects and never flags ones it can't read. TAFE entries need a `vet` qualification, the provider's code and URL, and at least one requirement. Then run `npm run db:seed-sql` to refresh the database seed.
 
 Run `npm run data:validate` after any edit.

@@ -1,0 +1,300 @@
+{
+  "version": "1.0.0",
+  "notes": [
+    "Weekly Career Missions. Each week a student gets one mission, chosen from the ones that fit their results (top career matches, year level, state, study preference) and rotated so they don't repeat soon.",
+    "Placeholders filled from the student's results: {career}, {careerLower}, {course}, {provider}, {atar}, {tafeCourse}, {tafeProvider}, {pathway}, {admissionsCentre}, {admissionsUrl}, {pay}, {employed}, {challenge}, {project}, {family}.",
+    "requires: course (a university course is listed for the career), tafe (a TAFE course is listed), jsa (JSA profile figures), challenge (a skill to build), lead (university or tafe: the student's preferred kind of study), years (year levels).",
+    "Effort sets the points: quick 50, standard 75, stretch 100. Students under 18 are always told to arrange contact with adults through a parent, carer or teacher."
+  ],
+  "points": { "quick": 50, "standard": 75, "stretch": 100, "streakBonusPerWeek": 10, "streakBonusMax": 50 },
+  "missions": [
+    {
+      "id": "talk-worker",
+      "kind": "talk",
+      "effort": "stretch",
+      "title": "Interview someone who works as a {careerLower}",
+      "why": "People who do the job can tell you what a normal day is really like, which no website can.",
+      "steps": [
+        "Ask a parent, carer, teacher or your careers adviser if they know someone who works as a {careerLower}. Always arrange it through an adult you trust.",
+        "Write three questions, e.g. What does a normal day look like? What surprised you about the job? What would you do at my age if you were starting again?",
+        "Have a 10 to 15 minute chat in person, by phone or on a video call.",
+        "Write down the most useful thing you heard."
+      ]
+    },
+    {
+      "id": "talk-adviser",
+      "kind": "talk",
+      "effort": "quick",
+      "title": "Talk to your careers adviser about {career}",
+      "why": "Your careers adviser knows the subjects, programs and people at your school that can help you get started.",
+      "steps": [
+        "Open your results and pick the career you most want to know more about: {career}.",
+        "Book a time or drop in to see your careers adviser.",
+        "Ask about subjects, work experience and any upcoming events for this career.",
+        "Note one next step you agreed on."
+      ]
+    },
+    {
+      "id": "research-day",
+      "kind": "research",
+      "effort": "quick",
+      "title": "Watch a day in the life of a {careerLower}",
+      "why": "Seeing the real tasks helps you tell whether you'd enjoy the work, not just the idea of it.",
+      "steps": [
+        "Search for \"day in the life {careerLower} Australia\" and watch one or two short videos.",
+        "List three tasks you would enjoy.",
+        "List one task you think you wouldn't enjoy, and why."
+      ],
+      "link": { "label": "Your Career (Australian Government)", "url": "https://www.yourcareer.gov.au" }
+    },
+    {
+      "id": "research-numbers",
+      "kind": "research",
+      "effort": "quick",
+      "title": "Check the numbers for {career}",
+      "why": "Pay, hours and how many jobs there are make a real difference to everyday life.",
+      "requires": ["jsa"],
+      "steps": [
+        "Open \"The job in numbers\" for {career} on your results. About {employed} people do this work, and median full-time pay is {pay}.",
+        "Look at the part-time rate and the qualifications people in the job hold.",
+        "Write one sentence on whether this fits the life you want."
+      ],
+      "link": { "label": "Career details", "url": "/careers?career={osca}" }
+    },
+    {
+      "id": "research-course",
+      "kind": "research",
+      "effort": "standard",
+      "title": "Look into {course} at {provider}",
+      "why": "Knowing the entry requirements early means you can choose the right subjects and avoid surprises in Year 12.",
+      "requires": ["course"],
+      "steps": [
+        "Find {course} at {provider} on the Explore Uni & TAFE tab (the ATAR listed is {atar}).",
+        "Check the prerequisites and assumed knowledge, how long it takes and whether it includes placements.",
+        "Find one other university offering a similar course and compare the two.",
+        "Write down which you would put first, and why."
+      ],
+      "link": { "label": "Explore Uni & TAFE", "url": "/explore" }
+    },
+    {
+      "id": "research-tafe",
+      "kind": "research",
+      "effort": "standard",
+      "title": "Find out how to start {tafeCourse}",
+      "why": "Many trade and vocational careers can start while you're still at school.",
+      "requires": ["tafe"],
+      "steps": [
+        "Read the entry requirements for {tafeCourse} at {tafeProvider} on the Explore Uni & TAFE tab.",
+        "Find out whether it's offered as an apprenticeship or traineeship, and whether you could start part of it at school (VET in schools).",
+        "Check whether fee-free TAFE places apply in your state.",
+        "Note anything you'd need to do before applying."
+      ],
+      "link": { "label": "Explore Uni & TAFE", "url": "/explore" }
+    },
+    {
+      "id": "apply-sbat",
+      "kind": "apply",
+      "effort": "stretch",
+      "title": "Ask about a school-based apprenticeship for {career}",
+      "why": "A school-based apprenticeship or traineeship lets you earn, learn and finish school at the same time.",
+      "requires": ["tafe"],
+      "lead": "tafe",
+      "years": [10, 11],
+      "steps": [
+        "Ask your careers adviser or VET coordinator whether school-based apprenticeships or traineeships are available for {careerLower} work.",
+        "Find out what you'd need: an employer, a training provider and a timetable that works with school.",
+        "With an adult, look up an Apprenticeship Connect Australia provider near you, the free national apprenticeship service.",
+        "Write down the first step you'll take."
+      ]
+    },
+    {
+      "id": "subjects-check",
+      "kind": "research",
+      "effort": "standard",
+      "title": "Check your subjects against {course}",
+      "why": "Some courses need particular Year 12 subjects. Checking now gives you time to change.",
+      "requires": ["course"],
+      "years": [10, 11],
+      "steps": [
+        "Open {course} at {provider} on the Explore Uni & TAFE tab and note its prerequisites and assumed knowledge.",
+        "Compare them with the subjects you're taking or planning to take.",
+        "If something's missing, write a question to ask your careers adviser (there are often bridging courses)."
+      ],
+      "link": { "label": "Explore Uni & TAFE", "url": "/explore" }
+    },
+    {
+      "id": "admissions-dates",
+      "kind": "research",
+      "effort": "quick",
+      "title": "Put {admissionsCentre} key dates in your calendar",
+      "why": "Missing an application or early-bird date can cost you a place or extra fees.",
+      "years": [12],
+      "steps": [
+        "Visit {admissionsCentre} and find when applications open, the early-bird closing date and the offer rounds.",
+        "Add the dates to your phone calendar with a reminder a week before each.",
+        "Check whether any course you like needs something extra, such as a portfolio, interview or test."
+      ],
+      "link": { "label": "{admissionsCentre}", "url": "{admissionsUrl}" }
+    },
+    {
+      "id": "scholarships",
+      "kind": "research",
+      "effort": "standard",
+      "title": "Find two scholarships for studying towards {career}",
+      "why": "Scholarships and grants can cover fees, books, travel or accommodation, and many go unclaimed.",
+      "years": [11, 12],
+      "steps": [
+        "Search the scholarships pages of two universities or TAFEs you're interested in.",
+        "Find two you could be eligible for (equity, regional, academic, sport or subject-based).",
+        "Note what each one needs and when it closes."
+      ]
+    },
+    {
+      "id": "do-skill",
+      "kind": "do",
+      "effort": "standard",
+      "title": "Build one skill for {career}",
+      "why": "Small, regular practice is the fastest way to grow a skill, and it gives you something real to put in your portfolio.",
+      "requires": ["challenge"],
+      "steps": [
+        "Your results said: {challenge}",
+        "Pick one small way to practise this week, such as a school club, a free online course or a task at home.",
+        "Spend at least 30 minutes on it.",
+        "Write what you did and what you'd do next time."
+      ]
+    },
+    {
+      "id": "do-project",
+      "kind": "do",
+      "effort": "stretch",
+      "title": "Try a mini project a {careerLower} might do",
+      "why": "Doing a small version of the work is one of the best ways to find out if you like it.",
+      "steps": [
+        "This week's project: {project}",
+        "Spend about an hour on it.",
+        "Take a photo or keep what you made, and add it to your Skills Evidence Portfolio."
+      ]
+    },
+    {
+      "id": "reflect-portfolio",
+      "kind": "reflect",
+      "effort": "quick",
+      "title": "Add evidence to your Skills Evidence Portfolio",
+      "why": "Writing down what you've done while it's fresh makes CVs, applications and interviews much easier later.",
+      "steps": [
+        "Think of something from the last month at school, in sport, at work or volunteering.",
+        "Add it to your Skills Evidence Portfolio: what you did, what came of it and the skills it shows.",
+        "Tag at least one skill that a {careerLower} uses."
+      ]
+    },
+    {
+      "id": "reflect-values",
+      "kind": "reflect",
+      "effort": "quick",
+      "title": "Check {career} against what matters to you",
+      "why": "A job that fits your values is one you're more likely to stick with and enjoy.",
+      "steps": [
+        "Look at your Career DNA and write down the three things that matter most to you in work.",
+        "For each one, note how well {career} fits it.",
+        "Write one thing you'd want to check before deciding."
+      ]
+    },
+    {
+      "id": "explore-family",
+      "kind": "explore",
+      "effort": "quick",
+      "title": "Find a career next door to {career}",
+      "why": "Careers in the same area often use similar skills, and one might suit you even better.",
+      "steps": [
+        "Open the Careers browser and filter by {family}.",
+        "Pick one career you haven't looked at before and read about it.",
+        "Write one thing it has in common with {career} and one way it's different."
+      ],
+      "link": { "label": "Browse careers", "url": "/careers" }
+    },
+    {
+      "id": "apply-workexp",
+      "kind": "apply",
+      "effort": "stretch",
+      "title": "Plan work experience in {careerLower} work",
+      "why": "A few days in a real workplace tells you more than any amount of reading, and it looks great on a CV.",
+      "years": [10, 11],
+      "steps": [
+        "Ask your careers adviser how work experience works at your school and when it runs.",
+        "With a parent or carer, list three local workplaces where {careerLower}s work.",
+        "Draft a short, polite email asking about work experience, and have an adult check it before you send it."
+      ]
+    },
+    {
+      "id": "apply-volunteer",
+      "kind": "apply",
+      "effort": "standard",
+      "title": "Find a volunteering role that builds skills for {career}",
+      "why": "Volunteering builds real skills, shows employers you're reliable and helps your community.",
+      "steps": [
+        "With a parent or carer, look for volunteering through your school, local council, sports club or a charity.",
+        "Choose one that uses skills a {careerLower} needs, such as working with people, organising or hands-on work.",
+        "Find out how to sign up, and note the first date you could start."
+      ]
+    },
+    {
+      "id": "explore-campus",
+      "kind": "explore",
+      "effort": "standard",
+      "title": "Plan a visit to {provider}",
+      "why": "Visiting, even virtually, helps you picture yourself studying there.",
+      "requires": ["course"],
+      "steps": [
+        "Find {provider}'s next open day, campus tour or virtual tour (many run all year).",
+        "Write three questions to ask, e.g. about {course}, placements or student support.",
+        "Add the date to your calendar, or take the virtual tour this week."
+      ]
+    },
+    {
+      "id": "talk-student",
+      "kind": "talk",
+      "effort": "standard",
+      "title": "Ask a student what studying for {career} is like",
+      "why": "Current students give an honest picture of workload, placements and student life.",
+      "steps": [
+        "Find a current uni or TAFE student: an older sibling, a former student from your school or a university's student ambassador chat.",
+        "Ask what a normal week looks like, what's hardest and what they wish they'd known in Year {year}.",
+        "Write down one tip you'll use."
+      ]
+    },
+    {
+      "id": "research-future",
+      "kind": "research",
+      "effort": "quick",
+      "title": "Find out how {career} is changing",
+      "why": "Jobs change with technology and demand. Knowing how helps you build the right skills.",
+      "steps": [
+        "Read the job outlook and AI notes for {career} on your results.",
+        "Find one recent news article about the job in Australia.",
+        "Write one way the job might be different by 2035, and one skill that will matter more."
+      ],
+      "link": { "label": "Career details", "url": "/careers?career={osca}" }
+    }
+  ],
+  "projects": {
+    "health": "Learn the DRSABCD first aid action plan and talk a family member through it.",
+    "care": "Plan a small, kind activity for someone in your community, such as helping an older neighbour, and write how you'd make it inclusive.",
+    "education": "Prepare and teach a 10-minute lesson on something you know well to a sibling, friend or family member.",
+    "tech": "Build a simple web page or small program that solves a problem you have, using a free online tutorial.",
+    "data": "Collect some data about your week (sleep, screen time or spending), make a chart and write what it shows.",
+    "engineering": "Design and build a small structure, such as a paper bridge, and test how much weight it holds.",
+    "built": "Sketch a floor plan of your bedroom to scale and redesign it to work better.",
+    "environment": "Do a 30-minute litter or biodiversity count in a local park and record what you find.",
+    "science": "Design and run a simple experiment at home, record your method and results, and write a conclusion.",
+    "animals": "Research the care needs of a common pet or local native animal and make a one-page care guide.",
+    "business": "Come up with a small business idea, work out costs and price, and write a one-page plan.",
+    "creative": "Make a poster, short video or design for a cause you care about, and ask for feedback.",
+    "performing": "Prepare and record a short performance, then watch it back and note two things to improve.",
+    "trades": "Help with a repair or maintenance job at home with an adult, following the safety steps.",
+    "workshop": "Make or fix something by hand from a plan or instructions, and note the tools and steps.",
+    "hospitality": "Plan, budget and cook a meal for your household, timing each dish to be ready together.",
+    "safety": "Make a home emergency plan with your family: exits, a meeting place and emergency numbers.",
+    "fitness": "Design a safe, beginner-friendly 20-minute workout and try it with a friend or family member.",
+    "transport": "Plan a trip across your city or region by public transport, comparing time, cost and connections."
+  }
+}

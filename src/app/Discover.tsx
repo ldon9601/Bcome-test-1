@@ -130,6 +130,14 @@ export default function Discover({ bank, account = null }: { bank: QuestionBank;
         const data = await res.json();
         if (!res.ok) throw new Error(data.error ?? `Request failed (${res.status})`);
         save(RESULT_KEY, data);
+        // The answers are now in the saved result. Clearing them stops a later visit to Discover
+        // from submitting the same answers again, and lets "Retake" start fresh.
+        try {
+          sessionStorage.removeItem(ANSWERS_KEY);
+          sessionStorage.removeItem(HISTORY_KEY);
+        } catch {
+          // Storage blocked: nothing to clear.
+        }
         router.push("/plan");
       })
       .catch((e: Error) => {

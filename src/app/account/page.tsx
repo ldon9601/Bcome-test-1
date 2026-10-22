@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon } from "@/components/Icon.tsx";
 import { OccupationArt } from "@/components/OccupationArt.tsx";
+import { StudentCalendar } from "@/components/StudentCalendar.tsx";
+import { ActivityService } from "@/lib/activity/service.ts";
 import { auth, requireStudent } from "@/lib/auth/server.ts";
 import type { CareerFamily } from "@/lib/careers/types.ts";
 import { AccountSecurity, DeleteAccount, YearLevelForm } from "./AccountForms.tsx";
@@ -21,8 +23,10 @@ interface SavedMatch {
 
 export default async function AccountPage() {
   const cur = await requireStudent("/account");
-  const store = (await auth()).store;
+  const service = await auth();
+  const store = service.store;
   const [assessments, devices] = await Promise.all([store.listAssessments(cur.user.id), store.listDevices(cur.user.id)]);
+  const hub = await new ActivityService(store, service.now).hub(cur);
   const u = cur.user;
   return (
     <main className="page-grid">
@@ -78,11 +82,48 @@ export default async function AccountPage() {
           )}
         </section>
 
+        <StudentCalendar events={hub.events} today={hub.today} interested={hub.interested} />
+
         <AccountSecurity devices={devices.map((d) => ({ id: d.id, label: d.label, lastUsedAt: d.lastUsedAt }))} />
         <DeleteAccount />
       </div>
 
       <aside className="side-col" aria-label="Your details">
+        <section className="side-card" aria-labelledby="progress-head">
+          <div className="side-head">
+            <span className="side-icon" style={{ background: "var(--tone-amber)", color: "#b45309" }}>
+              <Icon name="trophy" size={22} />
+            </span>
+            <div>
+              <h2 id="progress-head">Missions and portfolio</h2>
+              <p>Your weekly missions and evidence</p>
+            </div>
+          </div>
+          <dl className="kv details">
+            <dt>Mission points</dt>
+            <dd>{hub.points.total.toLocaleString("en-AU")}</dd>
+            <dt>This week</dt>
+            <dd>{hub.completed ? `Done (+${hub.completed.points})` : hub.mission ? "Mission waiting" : "—"}</dd>
+            <dt>Streak</dt>
+            <dd>
+              {hub.points.streak} week{hub.points.streak === 1 ? "" : "s"}
+            </dd>
+            <dt>Portfolio</dt>
+            <dd>
+              {hub.evidence.length} entr{hub.evidence.length === 1 ? "y" : "ies"}
+            </dd>
+          </dl>
+          <div className="button-row">
+            <Link href="/" className="button primary small-btn">
+              Go to Discover
+            </Link>
+            {hub.evidence.length > 0 && (
+              <Link href="/account/cv" className="button secondary small-btn">
+                <Icon name="download" size={16} /> Make my CV
+              </Link>
+            )}
+          </div>
+        </section>
         <section className="side-card">
           <div className="side-head">
             <span className="side-icon">
