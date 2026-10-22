@@ -7,7 +7,9 @@ import {
   type AssessmentRecord,
   type AssessmentSummary,
   type AuditEvent,
+  type AuditFilter,
   type AuthStore,
+  type RequestLogEntry,
   type Challenge,
   type ChallengePurpose,
   type Device,
@@ -31,6 +33,18 @@ const inn = <T>(r: Row | null): T | null => (r ? (Object.fromEntries(Object.entr
 const many = <T>(rows: Row[] | null): T[] => (rows ?? []).map((r) => inn<T>(r)!);
 
 const SUMMARY_COLUMNS = "id,user_id,school_id,completed_at,instrument_version,algorithm_version,year_level,holland_code,top_osca,top_title,matches";
+
+/** Supabase returns at most 1,000 rows per request, so platform-wide reads go page by page. */
+async function paged(fetch: (from: number, to: number) => PromiseLike<{ data: unknown; error: { code?: string; message: string } | null }>, max = 200000): Promise<Row[]> {
+  const out: Row[] = [];
+  const size = 1000;
+  for (let from = 0; from < max; from += size) {
+    const rows = (check(await fetch(from, Math.min(from + size, max) - 1)) as Row[] | null) ?? [];
+    out.push(...rows);
+    if (rows.length < size) break;
+  }
+  return out;
+}
 
 function check<T>(res: { data: T; error: { code?: string; message: string } | null }): T {
   if (res.error) {
@@ -300,5 +314,42 @@ export class SupabaseStore implements AuthStore {
       return;
     }
     check(await this.db.from("action_card_states").upsert(out(s), { onConflict: "user_id,card_key" }));
+  }
+
+  // Platform administration
+  async listAllUsers() {
+    return many<User>(await paged((a, b) => this.db.from("app_users").select("*").order("created_at").order("id").range(a, b)));
+  }
+  async listAllAssessments() {
+    return many<AssessmentForAnalytics>(await paged((a, b) => this.db.from("assessments").select(`${SUMMARY_COLUMNS},profile`).order("completed_at", { ascending: false }).order("id").range(a, b)));
+  }
+  async listAllAudit(f: AuditFilter) {
+    const query = (a: number, b: number) => {
+      let q = this.db.from("audit_log").select("*").order("at", { ascending: false }).order("id", { ascending: false });
+      if (f.event) q = q.like("event", `${f.event.replace(/[%_\\]/g, "")}%`);
+      if (f.ip) q = q.eq("ip", f.ip);
+      if (f.schoolId) q = q.eq("school_id", f.schoolId);
+      if (f.since) q = q.gte("at", f.since);
+      return q.range(a, b);
+    };
+    return many<AuditEvent & { id: string }>(await paged(query, f.limit)).map((e) => ({ ...e, id: String(e.id) }));
+  }
+  async logRequest(e: RequestLogEntry) {
+    check(await this.db.from("request_log").insert(out(e)));
+  }
+  async listRequests(since: string, limit: number) {
+    return many<RequestLogEntry>(await paged((a, b) => this.db.from("request_log").select("at,method,path,status,ms,ip,user_agent").gte("at", since).order("at", { ascending: false }).order("id", { ascending: false }).range(a, b), limit));
+  }
+  async countActiveSessions(now: string) {
+    const res = await this.db.from("sessions").select("id", { count: "exact", head: true }).gt("expires_at", now);
+    check(res);
+    return res.count ?? 0;
+  }
+  async purgeExpired() {
+    check(await this.db.rpc("purge_expired"));
+  }
+  async ping() {
+    const res = await this.db.from("schools").select("id").limit(1);
+    return !res.error;
   }
 }

@@ -20,6 +20,7 @@
     "db:seed-sql": "node --experimental-strip-types scripts/build-seed-sql.ts",
     "data:import-earnings": "node --experimental-strip-types scripts/import-earnings.ts",
     "school": "node --experimental-strip-types scripts/school-admin.ts",
+    "admin": "node --experimental-strip-types scripts/platform-admin.ts",
     "data:import-labour": "python3 scripts/import-labour-market.py"
   },
   "dependencies": {

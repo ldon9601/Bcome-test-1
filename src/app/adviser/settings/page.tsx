@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon } from "@/components/Icon.tsx";
+import { EVENT_LABELS } from "@/lib/auth/event-labels.ts";
 import { auth, requireAdviser } from "@/lib/auth/server.ts";
 import { AdviserList, AiToggle, DomainsForm, InviteForm, JoinCodeForm, SignOutButton } from "./SettingsForms.tsx";
 
@@ -9,35 +10,6 @@ export const dynamic = "force-dynamic";
 
 const when = (iso: string) => new Date(iso).toLocaleString("en-AU", { day: "numeric", month: "short", year: "numeric", hour: "numeric", minute: "2-digit" });
 
-const EVENT_LABELS: Record<string, string> = {
-  "login.success": "Signed in",
-  "login.failed": "Failed sign-in",
-  "login.locked": "Account locked",
-  "login.blocked": "Sign-in blocked (locked)",
-  "login.new_device": "New device code sent",
-  "code.failed": "Wrong email code",
-  "email.verified": "Email confirmed",
-  logout: "Signed out",
-  "logout.everywhere": "Signed out everywhere",
-  "session.idle_timeout": "Timed out",
-  "password.changed": "Password changed",
-  "password.reset": "Password reset",
-  "password.reset_requested": "Password reset requested",
-  "student.registered": "Student signed up",
-  "student.updated": "Student updated year",
-  "student.deleted": "Student deleted",
-  "student.viewed": "Student viewed",
-  "students.exported": "Student list exported",
-  "school.registered": "School registered",
-  "school.approved": "School approved",
-  "school.updated": "School settings changed",
-  "school.join_code_changed": "School code changed",
-  "adviser.invited": "Adviser invited",
-  "adviser.joined": "Adviser joined",
-  "adviser.removed": "Adviser removed",
-  "adviser.invite_revoked": "Invite cancelled",
-  "device.removed": "Trusted device removed",
-};
 
 export default async function SettingsPage() {
   const cur = await requireAdviser("/adviser/settings");

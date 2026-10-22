@@ -13,6 +13,8 @@ export type SchoolStatus = "pending" | "active" | "suspended";
 
 export interface School {
   id: string;
+  /** "platform": the hidden home of Bcome's platform administrators (never shown as a school). */
+  kind?: "school" | "platform";
   name: string;
   state: AuState;
   /** Email domains students sign up with, e.g. ["education.nsw.gov.au"]. */
@@ -66,7 +68,8 @@ export interface Device {
   expiresAt: string;
 }
 
-export type ChallengePurpose = "verify_email" | "login" | "reset_password";
+/** set_password: a link an administrator emailed to a new or locked-out user (used once). */
+export type ChallengePurpose = "verify_email" | "login" | "reset_password" | "set_password";
 
 export interface Challenge {
   id: string;
@@ -124,6 +127,25 @@ export interface AuditEvent {
   targetId: string | null;
   ip: string | null;
   detail: Record<string, unknown>;
+}
+
+/** One API request, kept for monitoring (ST4S L1). No request bodies or personal details. */
+export interface RequestLogEntry {
+  at: string;
+  method: string;
+  path: string;
+  status: number;
+  ms: number;
+  ip: string | null;
+  userAgent: string | null;
+}
+
+export interface AuditFilter {
+  limit: number;
+  event?: string;
+  ip?: string;
+  schoolId?: string;
+  since?: string;
 }
 
 export class DuplicateError extends Error {
@@ -185,6 +207,18 @@ export interface AuthStore extends ActivityStore {
 
   audit(e: AuditEvent): Promise<void>;
   listAudit(schoolId: string, limit: number): Promise<(AuditEvent & { id: string })[]>;
+
+  // Platform administration (every school)
+  listAllUsers(): Promise<User[]>;
+  listAllAssessments(): Promise<AssessmentForAnalytics[]>;
+  listAllAudit(filter: AuditFilter): Promise<(AuditEvent & { id: string })[]>;
+  logRequest(e: RequestLogEntry): Promise<void>;
+  listRequests(since: string, limit: number): Promise<RequestLogEntry[]>;
+  countActiveSessions(now: string): Promise<number>;
+  /** Deletes expired sessions, codes and devices, and old audit and request log entries. */
+  purgeExpired(now: Date): Promise<void>;
+  /** A cheap round trip to the database, for the health check. */
+  ping(): Promise<boolean>;
 
   /** Counts a hit against a fixed window and returns the count so far, atomically. */
   hit(key: string, windowMs: number, now: Date): Promise<number>;

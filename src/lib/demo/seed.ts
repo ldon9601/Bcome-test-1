@@ -213,3 +213,59 @@ export async function seedDemoSchool(service: AuthService, opts: SeedOptions = {
   };
 }
 
+
+export const DEMO_ADMIN = { username: "demo.admin", email: "admin@bcome.local", password: DEMO.password } as const;
+
+/**
+ * Local development only: a platform administrator, plus a day of made-up API traffic and
+ * sign-in events (from documentation-only IP ranges) so the monitoring dashboard has something
+ * to show. Never used with a real database.
+ */
+export async function seedDemoAdmin(service: AuthService, now = service.now()) {
+  const r = await service.createPlatformAdmin({ firstName: "Platform", lastName: "Administrator", email: DEMO_ADMIN.email, username: DEMO_ADMIN.username, password: DEMO_ADMIN.password, emailVerified: true });
+  if (!r.ok) throw new Error(r.error);
+  let seed = 7;
+  const rand = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+  const ips = ["203.0.113.14", "203.0.113.52", "198.51.100.23", "198.51.100.77", "192.0.2.41", "203.0.113.90", "2001:db8::1a"];
+  const agents = [
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Safari/537.36",
+    "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1",
+    "Mozilla/5.0 (X11; CrOS x86_64 14541.0.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Safari/537.36",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Safari/605.1.15",
+  ];
+  const paths: [string, string, number][] = [
+    ["POST", "/api/auth/sign-in", 0.18],
+    ["POST", "/api/auth/verify", 0.08],
+    ["POST", "/api/plan", 0.12],
+    ["GET", "/api/careers/A2544/labour", 0.2],
+    ["GET", "/api/careers/261313/labour", 0.14],
+    ["POST", "/api/activity/mission", 0.1],
+    ["POST", "/api/activity/evidence", 0.1],
+    ["POST", "/api/adviser/join-code", 0.03],
+    ["POST", "/api/account/year-level", 0.05],
+  ];
+  const pick = () => {
+    let x = rand();
+    for (const p of paths) if ((x -= p[2]) <= 0) return p;
+    return paths[0];
+  };
+  const entries = [];
+  for (let i = 0; i < 520; i++) {
+    // Busier in school hours (Sydney), quieter overnight.
+    const hoursAgo = rand() * 24;
+    const hourSyd = (now.getUTCHours() + 11 - hoursAgo + 48) % 24;
+    if ((hourSyd < 7 || hourSyd > 21) && rand() < 0.8) continue;
+    const [method, path] = pick();
+    const ip = ips[Math.floor(rand() ** 1.6 * ips.length)];
+    const status = rand() < 0.012 ? 500 : path.endsWith("sign-in") && rand() < 0.15 ? 401 : 200;
+    entries.push({ at: new Date(now.getTime() - hoursAgo * 3600e3).toISOString(), method, path, status, ms: Math.round(25 + rand() ** 3 * (path === "/api/plan" ? 2400 : 400)), ip, userAgent: agents[Math.floor(rand() * agents.length)] });
+  }
+  for (const e of entries.sort((a, b) => a.at.localeCompare(b.at))) await service.store.logRequest(e);
+  // Someone trying passwords from one address.
+  for (let i = 0; i < 7; i++) {
+    const at = new Date(now.getTime() - (3 * 3600e3 - i * 40e3)).toISOString();
+    await service.store.logRequest({ at, method: "POST", path: "/api/auth/sign-in", status: 401, ms: 310, ip: "198.51.100.200", userAgent: "python-requests/2.32" });
+    await service.store.audit({ at, event: "login.failed", actorId: null, schoolId: null, targetId: null, ip: "198.51.100.200", detail: { username: "demo.adviser" } });
+  }
+  return DEMO_ADMIN;
+}

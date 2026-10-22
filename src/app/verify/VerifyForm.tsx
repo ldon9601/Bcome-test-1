@@ -55,7 +55,7 @@ export default function VerifyForm({ purpose, role, emailHint, next }: { purpose
         <button type="button" className="linkish" disabled={resend.busy} onClick={() => resend.submit({}, (d) => setSent(String(d.emailHint)))}>
           Send a new code
         </button>
-        <Link href={role === "adviser" ? "/login/adviser" : "/login/student"}>Start again</Link>
+        <Link href={`/login/${role === "adviser" || role === "admin" ? role : "student"}`}>Start again</Link>
       </p>
     </form>
   );

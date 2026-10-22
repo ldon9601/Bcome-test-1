@@ -7,7 +7,9 @@ import {
   type AssessmentRecord,
   type AssessmentSummary,
   type AuditEvent,
+  type AuditFilter,
   type AuthStore,
+  type RequestLogEntry,
   type Challenge,
   type ChallengePurpose,
   type Device,
@@ -31,6 +33,7 @@ export class MemoryStore implements AuthStore {
   assessments = new Map<string, AssessmentRecord>();
   auditLog: (AuditEvent & { id: string })[] = [];
   hits = new Map<string, { windowStart: number; count: number }>();
+  requests: RequestLogEntry[] = [];
   evidence = new Map<string, EvidenceItem>();
   missions = new Map<string, MissionCompletion>();
   events = new Map<string, SchoolEvent>();
@@ -39,7 +42,7 @@ export class MemoryStore implements AuthStore {
 
   async createSchool(s: Omit<School, "id">) {
     if ([...this.schools.values()].some((x) => x.joinCode === s.joinCode)) throw new DuplicateError("join_code");
-    const school = { ...clone(s), id: randomUUID() };
+    const school = { kind: "school" as const, ...clone(s), id: randomUUID() };
     this.schools.set(school.id, school);
     return clone(school);
   }
@@ -313,5 +316,48 @@ export class MemoryStore implements AuthStore {
   async setCardState(s: CardState | (Omit<CardState, "status"> & { status: null })) {
     this.cards = this.cards.filter((c) => !(c.userId === s.userId && c.cardKey === s.cardKey));
     if (s.status) this.cards.push(clone(s as CardState));
+  }
+
+  // Platform administration
+  async listAllUsers() {
+    return [...this.users.values()].map(clone);
+  }
+  async listAllAssessments(): Promise<AssessmentForAnalytics[]> {
+    return [...this.assessments.values()].sort((a, b) => b.completedAt.localeCompare(a.completedAt)).map(({ answers: _a, plan: _p, dna: _d, ...rest }) => clone(rest));
+  }
+  async listAllAudit(f: AuditFilter) {
+    return this.auditLog
+      .filter((e) => (!f.event || e.event.startsWith(f.event)) && (!f.ip || e.ip === f.ip) && (!f.schoolId || e.schoolId === f.schoolId) && (!f.since || e.at >= f.since))
+      .sort((a, b) => b.at.localeCompare(a.at))
+      .slice(0, f.limit)
+      .map(clone);
+  }
+  async logRequest(e: RequestLogEntry) {
+    this.requests.push(clone(e));
+    if (this.requests.length > 20000) this.requests.splice(0, this.requests.length - 20000);
+  }
+  async listRequests(since: string, limit: number) {
+    return this.requests
+      .filter((r) => r.at >= since)
+      .sort((a, b) => b.at.localeCompare(a.at))
+      .slice(0, limit)
+      .map(clone);
+  }
+  async countActiveSessions(now: string) {
+    return [...this.sessions.values()].filter((s) => s.expiresAt > now).length;
+  }
+  async purgeExpired(now: Date) {
+    const t = now.toISOString();
+    for (const [k, v] of this.sessions) if (v.expiresAt < t) this.sessions.delete(k);
+    for (const [k, v] of this.devices) if (v.expiresAt < t) this.devices.delete(k);
+    const day = new Date(now.getTime() - 864e5).toISOString();
+    for (const [k, v] of this.challenges) if (v.expiresAt < day) this.challenges.delete(k);
+    const auditCut = new Date(now.getTime() - 400 * 864e5).toISOString();
+    this.auditLog = this.auditLog.filter((e) => e.at >= auditCut);
+    const reqCut = new Date(now.getTime() - 30 * 864e5).toISOString();
+    this.requests = this.requests.filter((r) => r.at >= reqCut);
+  }
+  async ping() {
+    return true;
   }
 }

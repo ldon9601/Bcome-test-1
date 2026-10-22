@@ -56,7 +56,7 @@ export function safeNext(next: unknown, fallback: string): string {
   return typeof next === "string" && /^\/(?!\/)[\w\-/?=&.%]*$/.test(next) ? next : fallback;
 }
 
-const home = (role: string) => (role === "adviser" ? "/adviser" : "/account");
+const home = (role: string) => (role === "admin" ? "/admin" : role === "adviser" ? "/adviser" : "/account");
 
 function grantResponse(r: SessionGrant | ChallengeGrant | PendingSchool, next: string | undefined): ApiResult {
   if (r.kind === "pending") return ok({ next: "/register-school/pending" }, [{ name: COOKIE.challenge, value: "", maxAgeMs: 0 }]);
@@ -119,7 +119,8 @@ export async function authAction(action: string, body: Body, ctx: ApiContext): P
         (g) => grantResponse(g, next),
       );
     case "sign-in": {
-      const role = str(body, "role") === "adviser" ? "adviser" : "student";
+      const r = str(body, "role");
+      const role = r === "adviser" ? "adviser" : r === "admin" ? "admin" : "student";
       return respond(
         await s.signIn({ identifier: str(body, "identifier"), password: str(body, "password"), role, remember: bool(body, "remember") }, ctx.meta),
         (g) => grantResponse(g, next),
@@ -137,8 +138,10 @@ export async function authAction(action: string, body: Body, ctx: ApiContext): P
     case "reset":
       return respond(
         await s.resetPassword({ challengeToken: ctx.cookies[COOKIE.challenge] ?? "", code: str(body, "code"), password: str(body, "password") }, ctx.meta),
-        (r) => ok({ next: r.role === "adviser" ? "/login/adviser?reset=1" : "/login/student?reset=1" }, [{ name: COOKIE.challenge, value: "", maxAgeMs: 0 }]),
+        (r) => ok({ next: `/login/${r.role}?reset=1` }, [{ name: COOKIE.challenge, value: "", maxAgeMs: 0 }]),
       );
+    case "set-password":
+      return respond(await s.setPasswordWithLink({ token: str(body, "token"), password: str(body, "password") }, ctx.meta), (r) => ok({ next: `/login/${r.role}?reset=1` }));
     case "accept-invite":
       return respond(
         await s.acceptInvite(

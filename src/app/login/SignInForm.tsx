@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Field, FormError, Notice, PasswordInput, useAction } from "@/components/forms.tsx";
 import { Icon } from "@/components/Icon.tsx";
 
-export default function SignInForm({ role, next, notice }: { role: "student" | "adviser"; next?: string; notice?: string | null }) {
+export default function SignInForm({ role, next, notice }: { role: "student" | "adviser" | "admin"; next?: string; notice?: string | null }) {
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState(false);
@@ -20,7 +20,7 @@ export default function SignInForm({ role, next, notice }: { role: "student" | "
       }}
     >
       {notice && <Notice tone="success">{notice}</Notice>}
-      <Field id="identifier" label={student ? "Username or school email" : "Username or work email"}>
+      <Field id="identifier" label={student ? "Username or school email" : role === "admin" ? "Administrator username or email" : "Username or work email"}>
         <input id="identifier" value={identifier} onChange={(e) => setIdentifier(e.target.value)} autoComplete="username" required autoCapitalize="none" spellCheck={false} maxLength={254} />
       </Field>
       <Field id="password" label="Password">
@@ -45,7 +45,7 @@ export default function SignInForm({ role, next, notice }: { role: "student" | "
       </button>
       <p className="auth-links">
         <Link href="/forgot-password">Forgot your password?</Link>
-        {student ? <Link href="/signup">Create a student account</Link> : <Link href="/register-school">Register your school</Link>}
+        {student ? <Link href="/signup">Create a student account</Link> : role === "adviser" ? <Link href="/register-school">Register your school</Link> : null}
       </p>
     </form>
   );

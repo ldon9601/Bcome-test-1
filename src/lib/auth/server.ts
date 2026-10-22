@@ -40,10 +40,10 @@ export function getAuth(): AuthService {
   if (store instanceof MemoryStore && process.env.DEMO_DATA !== "off") {
     const service = g.__bcomeAuth;
     g.__bcomeSeed = import("../demo/seed.ts")
-      .then(({ seedDemoSchool }) => seedDemoSchool(service))
-      .then((d) =>
+      .then(async ({ seedDemoSchool, seedDemoAdmin }) => ({ d: await seedDemoSchool(service), admin: await seedDemoAdmin(service) }))
+      .then(({ d, admin }) =>
         console.info(
-          `[bcome] No database configured: using in-memory accounts with a demo school.\n  Adviser: ${d.adviserUsername} / ${d.password}\n  Student: ${d.studentUsername} / ${d.password}\n  School code for new students: ${d.school.joinCode} (emails @${d.domain})\n  Email codes are printed here instead of being sent.`,
+          `[bcome] No database configured: using in-memory accounts with a demo school.\n  Administrator: ${admin.username} / ${admin.password} (sign in at /login/admin)\n  Adviser: ${d.adviserUsername} / ${d.password}\n  Student: ${d.studentUsername} / ${d.password}\n  School code for new students: ${d.school.joinCode} (emails @${d.domain})\n  Email codes are printed here instead of being sent.`,
         ),
       );
   }
@@ -87,5 +87,12 @@ export async function requireStudent(next: string): Promise<CurrentSession> {
 export async function requireAdviser(next: string): Promise<CurrentSession> {
   const cur = await currentSession();
   if (!cur || cur.user.role !== "adviser") redirect(`/login/adviser?next=${encodeURIComponent(next)}`);
+  return cur;
+}
+
+/** Bcome platform administrators only. Everyone else is sent to the administrator sign-in. */
+export async function requireAdmin(next: string): Promise<CurrentSession> {
+  const cur = await currentSession();
+  if (!cur || cur.user.role !== "admin" || cur.school.kind !== "platform") redirect(`/login/admin?next=${encodeURIComponent(next)}`);
   return cur;
 }

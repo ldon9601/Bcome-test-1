@@ -1,6 +1,7 @@
 import "server-only";
 import { NextResponse } from "next/server";
 import { COOKIE, serialiseCookie, type ApiContext, type ApiResult } from "./api.ts";
+import { recordRequest } from "../admin/requests.ts";
 import { auth, clientIp } from "./server.ts";
 
 const MAX_BODY = 16 * 1024;
@@ -10,6 +11,13 @@ const MAX_BODY = 16 * 1024;
  * small JSON body limit, and no caching.
  */
 export async function handle(request: Request, run: (body: Record<string, unknown>, ctx: ApiContext) => Promise<ApiResult>) {
+  const started = performance.now();
+  const res = await handleInner(request, run);
+  await recordRequest(request, res.status, started);
+  return res;
+}
+
+async function handleInner(request: Request, run: (body: Record<string, unknown>, ctx: ApiContext) => Promise<ApiResult>) {
   const origin = request.headers.get("origin");
   const host = request.headers.get("x-forwarded-host") ?? request.headers.get("host");
   if (!origin || !host || new URL(origin).host !== host) {

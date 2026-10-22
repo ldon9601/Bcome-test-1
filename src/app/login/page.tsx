@@ -54,6 +54,9 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
       <p className="muted" style={{ textAlign: "center" }}>
         Just exploring? You can <Link href="/">answer the questions</Link> without an account, but your results won&apos;t be saved.
       </p>
+      <p className="small" style={{ textAlign: "center" }}>
+        <Link href="/login/admin">Bcome administrator sign in</Link>
+      </p>
     </main>
   );
 }

@@ -44,3 +44,15 @@ export function passwordChangedEmail(to: string): Email {
     text: "The password for your Bcome account was just changed, and you've been signed out on other devices.\n\nIf this wasn't you, reset your password straight away and tell your careers adviser.\n\nBcome",
   };
 }
+
+export function passwordLinkEmail(to: string, username: string, link: string, days: number, isNew: boolean): Email {
+  return {
+    to,
+    subject: isNew ? "Your Bcome account is ready" : "Set a new Bcome password",
+    text: `${isNew ? "A Bcome account has been set up for you." : "Here's a link to set a new password for your Bcome account."}\n\nYour username is: ${username}\n\nChoose your password here (the link works once and expires in ${days} days):\n${link}${FOOTER}`,
+  };
+}
+
+export function testEmail(to: string, at: Date): Email {
+  return { to, subject: "Bcome test email", text: `This is a test email from Bcome, sent at ${at.toISOString()}. Email delivery is working.\n\nBcome` };
+}

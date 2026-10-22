@@ -38,6 +38,11 @@ export const POLICY = {
       absoluteMs: 8 * HOUR,
       idleMs: 15 * MIN,
     },
+    admin: {
+      /** Platform administrators can see every school: shorter sessions, same 15-minute idle lock. */
+      absoluteMs: 4 * HOUR,
+      idleMs: 15 * MIN,
+    },
     /** How often last-seen is written, to limit database writes. */
     touchEveryMs: MIN,
   },
@@ -47,6 +52,10 @@ export const POLICY = {
     cookieMaxAgeMs: 400 * DAY,
   },
   invite: { ttlMs: 7 * DAY },
+  /** Set-password links an administrator emails to a new or locked-out user. */
+  passwordLink: { ttlMs: 3 * DAY },
+  /** API request log kept for monitoring (with IP addresses). */
+  requestLogRetentionDays: 30,
   rate: {
     /** Per username or email being signed in to. School networks share one IP, so we limit by account, not IP. */
     signInPerIdentifier: { limit: 10, windowMs: 15 * MIN },
@@ -58,9 +67,10 @@ export const POLICY = {
   auditRetentionDays: 400,
 } as const;
 
-export type Role = "student" | "adviser";
+export type Role = "student" | "adviser" | "admin";
 
 export function sessionLimits(role: Role, remember: boolean) {
+  if (role === "admin") return { absoluteMs: POLICY.session.admin.absoluteMs, idleMs: POLICY.session.admin.idleMs, persistent: false };
   if (role === "adviser") return { absoluteMs: POLICY.session.adviser.absoluteMs, idleMs: POLICY.session.adviser.idleMs, persistent: false };
   if (remember) return { absoluteMs: POLICY.session.student.rememberMs, idleMs: POLICY.session.student.rememberMs, persistent: true };
   return { absoluteMs: POLICY.session.student.absoluteMs, idleMs: POLICY.session.student.idleMs, persistent: false };

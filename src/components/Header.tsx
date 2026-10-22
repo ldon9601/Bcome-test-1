@@ -85,7 +85,7 @@ function Search({ index }: { index: SearchItem[] }) {
 export interface HeaderUser {
   firstName: string;
   lastName: string;
-  role: "student" | "adviser";
+  role: "student" | "adviser" | "admin";
   yearLevel: number | null;
 }
 
@@ -104,15 +104,16 @@ function AccountChip({ user }: { user: HeaderUser | null }) {
     );
   }
   const adviser = user.role === "adviser";
+  const admin = user.role === "admin";
   return (
-    <Link href={adviser ? "/adviser/settings" : "/account"} className="student-chip" aria-label={`${user.firstName}'s account`}>
-      <span className={`avatar initials${adviser ? " adviser" : ""}`} aria-hidden="true">
+    <Link href={admin ? "/admin" : adviser ? "/adviser/settings" : "/account"} className="student-chip" aria-label={`${user.firstName}'s account`}>
+      <span className={`avatar initials${adviser || admin ? " adviser" : ""}`} aria-hidden="true">
         {user.firstName[0]}
         {user.lastName[0]}
       </span>
       <span className="who">
         <strong>{user.firstName}</strong>
-        <span>{adviser ? "Careers adviser" : user.yearLevel ? `Year ${user.yearLevel}` : "Student"}</span>
+        <span>{admin ? "Bcome administrator" : adviser ? "Careers adviser" : user.yearLevel ? `Year ${user.yearLevel}` : "Student"}</span>
       </span>
     </Link>
   );
@@ -120,7 +121,18 @@ function AccountChip({ user }: { user: HeaderUser | null }) {
 
 export function Header({ searchIndex, user }: { searchIndex: SearchItem[]; user: HeaderUser | null }) {
   const path = usePathname();
-  const nav = user?.role === "adviser" ? [{ href: "/adviser", label: "Dashboard", icon: "chart" as IconName }, ...NAV] : NAV;
+  const nav =
+    user?.role === "admin"
+      ? [
+          { href: "/admin", label: "Admin", icon: "shield" as IconName },
+          { href: "/admin/schools", label: "Schools", icon: "school" as IconName },
+          { href: "/admin/users", label: "Users", icon: "users" as IconName },
+          { href: "/admin/logs", label: "Logs", icon: "history" as IconName },
+          { href: "/careers", label: "Careers", icon: "briefcase" as IconName },
+        ]
+      : user?.role === "adviser"
+        ? [{ href: "/adviser", label: "Dashboard", icon: "chart" as IconName }, ...NAV]
+        : NAV;
   return (
     <header className="site-header">
       <Link href="/" className="brand" aria-label="Bcome home">
@@ -129,7 +141,7 @@ export function Header({ searchIndex, user }: { searchIndex: SearchItem[]; user:
       <nav aria-label="Main">
         {nav.map((n) => {
           const current =
-            n.href === "/" ? path === "/" || path === "/questionnaire" : n.href === "/adviser" ? path === "/adviser" || !!path?.startsWith("/adviser/students") : path?.startsWith(n.href);
+            n.href === "/" ? path === "/" || path === "/questionnaire" : n.href === "/adviser" ? path === "/adviser" || !!path?.startsWith("/adviser/students") : n.href === "/admin" ? path === "/admin" : path?.startsWith(n.href);
           return (
             <Link key={n.href} href={n.href} className="nav-link" aria-current={current ? "page" : undefined}>
               <Icon name={n.icon} size={19} />

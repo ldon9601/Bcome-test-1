@@ -34,7 +34,7 @@ export default function PrivacyPage() {
         </li>
         <li>
           <strong>Security records:</strong> a scrambled (hashed) password, sign-in sessions, trusted devices (a label such as &ldquo;Chrome on
-          Windows&rdquo;), and a log of sign-ins and account changes with the network (IP) address used.
+          Windows&rdquo;), a log of sign-ins and account changes with the network (IP) address used, and a log of requests to Bcome (the page or action, the time, the IP address and browser type, never what was typed).
         </li>
       </ul>
       <p>
@@ -66,13 +66,13 @@ export default function PrivacyPage() {
       <h2>Where it&apos;s stored and how it&apos;s protected</h2>
       <p>
         Information is stored in Australia (Sydney), encrypted in transit and at rest. Passwords are never stored, only a salted hash. Advisers confirm
-        every sign-in with an emailed code, and students confirm new devices the same way.
+        every sign-in with an emailed code, and students confirm new devices the same way. A small number of Bcome staff (platform administrators) can see accounts and results across schools to run and support the service; they also confirm every sign-in with a code, and everything they do is logged.
       </p>
 
       <h2>How long we keep it</h2>
       <p>
         We keep an account and its results until the student or their school deletes it. Students can delete their account from their profile, and
-        advisers can remove students who have left. Security logs are kept for about 13 months.
+        advisers can remove students who have left. Security logs are kept for about 13 months, and request logs for 30 days.
       </p>
 
       <h2>Access, correction and complaints</h2>

@@ -5,6 +5,7 @@ import { questionBank } from "@/lib/data.ts";
 import { IncompleteAnswersError } from "@/lib/questionnaire/scoring.ts";
 import type { Answers } from "@/lib/questionnaire/types.ts";
 import { auth, currentSession } from "@/lib/auth/server.ts";
+import { recordRequest } from "@/lib/admin/requests.ts";
 
 export const runtime = "nodejs";
 
@@ -35,6 +36,13 @@ function parseAnswers(body: unknown): Answers | null {
  * Anyone can try the questionnaire. Results are stored on the account of a signed-in student.
  */
 export async function POST(request: Request) {
+  const started = performance.now();
+  const res = await plan(request);
+  await recordRequest(request, res.status, started);
+  return res;
+}
+
+async function plan(request: Request) {
   const answers = parseAnswers(await request.json().catch(() => null));
   if (!answers) return NextResponse.json({ error: "Send { answers: { questionId: value } }" }, { status: 400 });
 

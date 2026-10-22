@@ -1,4 +1,4 @@
-import { codeEmail, inviteEmail, passwordChangedEmail, schoolApprovedEmail } from "./emails.ts";
+import { codeEmail, inviteEmail, passwordChangedEmail, passwordLinkEmail, schoolApprovedEmail, testEmail } from "./emails.ts";
 import { hashCode, hashPassword, needsRehash, normaliseJoinCode, OWASP_COST, randomCode, randomJoinCode, randomToken, safeEqual, sha256, verifyPassword, type HashCost } from "./crypto.ts";
 import type { Mailer } from "./mailer.ts";
 import { POLICY, sessionLimits, type Role } from "./policy.ts";
@@ -230,7 +230,7 @@ export class AuthService {
   ): Promise<Result<ChallengeGrant>> {
     if (meta.ip && (await this.limited(`register:${meta.ip}`, POLICY.rate.registerPerIp))) return fail(429, "Too many attempts from this network. Try again later.");
     const school = await this.store.findSchoolByJoinCode(normaliseJoinCode(input.joinCode ?? ""));
-    if (!school || school.status !== "active") return fail(400, "That school code isn't right. Check it with your careers adviser.", "joinCode");
+    if (!school || school.status !== "active" || school.kind === "platform") return fail(400, "That school code isn't right. Check it with your careers adviser.", "joinCode");
     const email = normaliseEmail(input.email);
     const username = normaliseUsername(input.username);
     const checks: [string | null, string][] = [
@@ -278,7 +278,7 @@ export class AuthService {
   // Email codes
   // -------------------------------------------------------------------------
 
-  private async startChallenge(user: User, purpose: ChallengePurpose, remember: boolean): Promise<ChallengeGrant> {
+  private async startChallenge(user: User, purpose: Exclude<ChallengePurpose, "set_password">, remember: boolean): Promise<ChallengeGrant> {
     await this.store.deleteUserChallenges(user.id, purpose);
     const token = randomToken();
     const code = randomCode();
@@ -321,7 +321,7 @@ export class AuthService {
 
   async resendCode(challengeToken: string): Promise<Result<{ emailHint: string }>> {
     const ch = challengeToken ? await this.store.findChallengeByHash(sha256(challengeToken)) : null;
-    if (!ch || ch.consumedAt) return fail(400, "Start again to get a new code.");
+    if (!ch || ch.consumedAt || ch.purpose === "set_password") return fail(400, "Start again to get a new code.");
     if (this.now().getTime() - Date.parse(ch.lastSentAt) < POLICY.code.resendCooldownMs) return fail(429, "Wait a minute before asking for another code.");
     if (ch.sentCount >= POLICY.code.maxPerHour) return fail(429, "Too many codes sent. Start again later.");
     const user = await this.store.getUser(ch.userId);
@@ -388,15 +388,17 @@ export class AuthService {
       ...(needsRehash(user.passwordHash, this.hashCost) ? { passwordHash: await hashPassword(input.password, this.hashCost) } : {}),
     });
     if (user.role !== input.role) {
-      return fail(403, user.role === "adviser" ? "This is a careers adviser account. Use the careers adviser sign-in." : "This is a student account. Use the student sign-in.");
+      const where = { adviser: "This is a careers adviser account. Use the careers adviser sign-in.", student: "This is a student account. Use the student sign-in.", admin: "This is a Bcome administrator account. Use the administrator sign-in." };
+      await this.log("login.wrong_portal", { actor: user, meta, detail: { tried: input.role } });
+      return fail(403, where[user.role]);
     }
     const school = await this.store.getSchool(user.schoolId);
     if (!school || school.status === "suspended") return fail(403, "Your school's Bcome account isn't active. Talk to your careers adviser.");
     const remember = user.role === "student" && !!input.remember;
     if (!user.emailVerifiedAt) return { ok: true, ...(await this.startChallenge(user, "verify_email", remember)) };
     if (school.status === "pending") return { ok: true, kind: "pending" };
-    // Advisers can see a whole school's data, so they confirm every sign-in by email (ST4S A5).
-    if (user.role === "adviser") return { ok: true, ...(await this.startChallenge(user, "login", false)) };
+    // Advisers and administrators can see many students' data, so they confirm every sign-in by email (ST4S A5).
+    if (user.role !== "student") return { ok: true, ...(await this.startChallenge(user, "login", false)) };
     const device = meta.deviceToken ? await this.store.findDevice(user.id, sha256(meta.deviceToken)) : null;
     if (!device || Date.parse(device.expiresAt) <= this.now().getTime()) {
       await this.log("login.new_device", { actor: user, meta });
@@ -719,5 +721,325 @@ export class AuthService {
     await this.store.updateSchool(schoolId, { status });
     await this.log(`school.${status}`, { schoolId });
     return { ok: true };
+  }
+
+  // -------------------------------------------------------------------------
+  // Platform administrators: every school, account and log (ST4S A5 privileged access)
+  // -------------------------------------------------------------------------
+
+  private requireAdmin(cur: CurrentSession): Fail | null {
+    return cur.user.role === "admin" && cur.school.kind === "platform" ? null : fail(403, "Only Bcome administrators can do that.");
+  }
+
+  private async adminLog(cur: CurrentSession, event: string, o: { target?: string | null; schoolId?: string | null; meta?: RequestMeta; detail?: Record<string, unknown> } = {}) {
+    await this.log(`admin.${event}`, { actor: cur.user, schoolId: o.schoolId ?? null, target: o.target ?? null, meta: o.meta, detail: o.detail });
+  }
+
+  /** The hidden school record administrators belong to. Created on first use. */
+  async platformSchool(): Promise<School> {
+    const existing = (await this.store.listSchools()).find((s) => s.kind === "platform");
+    if (existing) return existing;
+    for (let i = 0; i < 5; i++) {
+      try {
+        return await this.store.createSchool({
+          kind: "platform",
+          name: "Bcome platform administration",
+          state: "NSW",
+          studentDomains: ["platform.bcome.invalid"],
+          joinCode: randomJoinCode(),
+          status: "active",
+          allowAiPlans: false,
+          createdAt: this.iso(),
+          approvedAt: this.iso(),
+        });
+      } catch (e) {
+        if (!(e instanceof DuplicateError)) throw e;
+      }
+    }
+    throw new Error("Couldn't create the platform record");
+  }
+
+  /** Creates an administrator. Only run from scripts/platform-admin.ts (or the local demo). */
+  async createPlatformAdmin(input: { firstName: string; lastName: string; email: string; username: string; password: string; emailVerified?: boolean }): Promise<Result<{ user: User }>> {
+    const email = normaliseEmail(input.email);
+    const username = normaliseUsername(input.username);
+    const checks: [string | null, string][] = [
+      [checkName(input.firstName, "first name"), "firstName"],
+      [checkName(input.lastName, "last name"), "lastName"],
+      [checkEmail(email), "email"],
+      [checkUsername(username), "username"],
+      [checkPassword(input.password, [username, email, input.firstName, input.lastName]), "password"],
+    ];
+    const bad = checks.find(([m]) => m);
+    if (bad) return fail(400, bad[0]!, bad[1]);
+    const taken = await this.usernameOrEmailTaken(username, email);
+    if (taken) return taken;
+    const platform = await this.platformSchool();
+    const user = await this.createUserOrFail({
+      schoolId: platform.id,
+      role: "admin",
+      username,
+      email,
+      firstName: input.firstName.trim(),
+      lastName: input.lastName.trim(),
+      yearLevel: null,
+      birthYear: null,
+      birthMonth: null,
+      passwordHash: await hashPassword(input.password, this.hashCost),
+      emailVerifiedAt: input.emailVerified ? this.iso() : null,
+      failedLogins: 0,
+      lockedUntil: null,
+      createdAt: this.iso(),
+      lastLoginAt: null,
+    });
+    if ("ok" in user) return user;
+    await this.log("admin.created", { actor: user, schoolId: platform.id, detail: { username } });
+    return { ok: true, user };
+  }
+
+  async adminCreateSchool(
+    cur: CurrentSession,
+    input: { name: string; state: string; studentDomains: string[] },
+    meta: RequestMeta,
+  ): Promise<Result<{ school: School }>> {
+    const denied = this.requireAdmin(cur);
+    if (denied) return denied;
+    const domains = [...new Set(input.studentDomains.map(normaliseDomain).filter(Boolean))];
+    const checks: [string | null, string][] = [
+      [checkSchoolName(input.name ?? ""), "name"],
+      [STATES.includes(input.state as AuState) ? null : "Choose the state or territory.", "state"],
+      [domains.length === 0 ? "Add the email domain students use." : domains.length > 5 ? "Add up to five domains." : null, "studentDomains"],
+      ...domains.map((d) => [checkSchoolDomain(d), "studentDomains"] as [string | null, string]),
+    ];
+    const bad = checks.find(([m]) => m);
+    if (bad) return fail(400, bad[0]!, bad[1]);
+    for (let i = 0; i < 5; i++) {
+      try {
+        const school = await this.store.createSchool({
+          kind: "school",
+          name: input.name.trim(),
+          state: input.state as AuState,
+          studentDomains: domains,
+          joinCode: randomJoinCode(),
+          status: "active",
+          allowAiPlans: false,
+          createdAt: this.iso(),
+          approvedAt: this.iso(),
+        });
+        await this.adminLog(cur, "school_created", { schoolId: school.id, meta, detail: { name: school.name } });
+        return { ok: true, school };
+      } catch (e) {
+        if (!(e instanceof DuplicateError)) throw e;
+      }
+    }
+    throw new Error("Couldn't create a unique join code");
+  }
+
+  async adminSchoolAction(cur: CurrentSession, schoolId: string, action: "approve" | "suspend" | "activate" | "join-code" | "email-code", meta: RequestMeta): Promise<Result<{ joinCode?: string; sent?: number }>> {
+    const denied = this.requireAdmin(cur);
+    if (denied) return denied;
+    const school = await this.store.getSchool(schoolId);
+    if (!school || school.kind === "platform") return fail(404, "School not found.");
+    if (action === "approve") await this.approveSchool(schoolId);
+    if (action === "suspend" || action === "activate") await this.setSchoolStatus(schoolId, action === "suspend" ? "suspended" : "active");
+    let joinCode: string | undefined;
+    if (action === "join-code") {
+      for (let i = 0; i < 5 && !joinCode; i++) {
+        const c = randomJoinCode();
+        try {
+          await this.store.updateSchool(schoolId, { joinCode: c });
+          joinCode = c;
+        } catch (e) {
+          if (!(e instanceof DuplicateError)) throw e;
+        }
+      }
+    }
+    let sent: number | undefined;
+    if (action === "email-code") {
+      const advisers = await this.store.listUsers(schoolId, "adviser");
+      if (!advisers.length) return fail(400, "This school has no careers advisers to email yet. Invite one first.");
+      for (const a of advisers) await this.mailer.send(schoolApprovedEmail(a.email, school.name, school.joinCode, this.appUrl));
+      sent = advisers.length;
+    }
+    await this.adminLog(cur, `school_${action.replace("-", "_")}`, { schoolId, meta });
+    return { ok: true, joinCode, sent };
+  }
+
+  async adminInviteAdviser(cur: CurrentSession, schoolId: string, emailInput: string, meta: RequestMeta): Promise<Result> {
+    const denied = this.requireAdmin(cur);
+    if (denied) return denied;
+    const school = await this.store.getSchool(schoolId);
+    if (!school || school.kind === "platform") return fail(404, "School not found.");
+    const email = normaliseEmail(emailInput ?? "");
+    const problem = checkEmail(email) ?? (checkSchoolDomain(emailDomain(email)) ? "Use a school email address." : null);
+    if (problem) return fail(400, problem, "email");
+    if (await this.store.findUserByEmail(email)) return fail(409, "There's already a Bcome account with that email.", "email");
+    const token = randomToken();
+    await this.store.createInvite({ schoolId, email, tokenHash: sha256(token), invitedBy: cur.user.id, expiresAt: this.iso(POLICY.invite.ttlMs), acceptedAt: null, createdAt: this.iso() });
+    await this.mailer.send(inviteEmail(email, school.name, "The Bcome team", `${this.appUrl}/invite/${token}`, 7));
+    await this.adminLog(cur, "adviser_invited", { schoolId, meta, detail: { email } });
+    return { ok: true };
+  }
+
+  /**
+   * Creates a student or adviser account at a school. Nobody knows its password: the person gets a
+   * one-time link by email to set their own, which also confirms their email address.
+   */
+  async adminCreateUser(
+    cur: CurrentSession,
+    input: { schoolId: string; role: string; firstName: string; lastName: string; email: string; username: string; yearLevel?: number; birthYear?: number; birthMonth?: number },
+    meta: RequestMeta,
+  ): Promise<Result<{ user: User }>> {
+    const denied = this.requireAdmin(cur);
+    if (denied) return denied;
+    const school = await this.store.getSchool(input.schoolId);
+    if (!school || school.kind === "platform") return fail(400, "Choose a school.", "schoolId");
+    const role = input.role === "adviser" ? "adviser" : input.role === "student" ? "student" : null;
+    if (!role) return fail(400, "Choose student or careers adviser.", "role");
+    const email = normaliseEmail(input.email ?? "");
+    const username = normaliseUsername(input.username ?? "");
+    const checks: [string | null, string][] = [
+      [checkName(input.firstName ?? "", "first name"), "firstName"],
+      [checkName(input.lastName ?? "", "last name"), "lastName"],
+      [
+        checkEmail(email) ??
+          (role === "student"
+            ? emailMatchesDomains(email, school.studentDomains)
+              ? null
+              : `Students use a school email ending in @${school.studentDomains.join(" or @")}.`
+            : checkSchoolDomain(emailDomain(email))
+              ? "Use the adviser's school email address."
+              : null),
+        "email",
+      ],
+      [checkUsername(username), "username"],
+      ...(role === "student"
+        ? ([
+            [checkYearLevel(Number(input.yearLevel)), "yearLevel"],
+            [checkBirth(Number(input.birthYear), Number(input.birthMonth), this.now()), "birth"],
+          ] as [string | null, string][])
+        : []),
+    ];
+    const bad = checks.find(([m]) => m);
+    if (bad) return fail(400, bad[0]!, bad[1]);
+    const taken = await this.usernameOrEmailTaken(username, email);
+    if (taken) return taken;
+    const user = await this.createUserOrFail({
+      schoolId: school.id,
+      role,
+      username,
+      email,
+      firstName: input.firstName.trim(),
+      lastName: input.lastName.trim(),
+      yearLevel: role === "student" ? Number(input.yearLevel) : null,
+      birthYear: role === "student" ? Number(input.birthYear) : null,
+      birthMonth: role === "student" ? Number(input.birthMonth) : null,
+      // Unusable until the person sets their own password from the emailed link.
+      passwordHash: await hashPassword(randomToken(), this.hashCost),
+      emailVerifiedAt: null,
+      failedLogins: 0,
+      lockedUntil: null,
+      createdAt: this.iso(),
+      lastLoginAt: null,
+    });
+    if ("ok" in user) return user;
+    await this.adminLog(cur, "user_created", { schoolId: school.id, target: user.id, meta, detail: { role } });
+    await this.sendPasswordLink(cur, user, true, meta);
+    return { ok: true, user };
+  }
+
+  private async sendPasswordLink(cur: CurrentSession, user: User, isNew: boolean, meta: RequestMeta) {
+    await this.store.deleteUserChallenges(user.id, "set_password");
+    const token = randomToken();
+    await this.store.createChallenge({
+      userId: user.id,
+      purpose: "set_password",
+      codeHash: "link",
+      tokenHash: sha256(token),
+      attempts: 0,
+      sentCount: 1,
+      lastSentAt: this.iso(),
+      expiresAt: this.iso(POLICY.passwordLink.ttlMs),
+      consumedAt: null,
+      remember: false,
+      createdAt: this.iso(),
+    });
+    await this.mailer.send(passwordLinkEmail(user.email, user.username, `${this.appUrl}/set-password/${token}`, POLICY.passwordLink.ttlMs / 864e5, isNew));
+    await this.adminLog(cur, "password_link_sent", { schoolId: user.schoolId, target: user.id, meta });
+  }
+
+  async adminUserAction(cur: CurrentSession, userId: string, action: "password-link" | "unlock" | "sign-out" | "delete", meta: RequestMeta): Promise<Result> {
+    const denied = this.requireAdmin(cur);
+    if (denied) return denied;
+    const user = await this.store.getUser(userId);
+    if (!user) return fail(404, "Account not found.");
+    if (action === "password-link") await this.sendPasswordLink(cur, user, false, meta);
+    if (action === "unlock") {
+      await this.store.updateUser(user.id, { failedLogins: 0, lockedUntil: null });
+      await this.adminLog(cur, "user_unlocked", { schoolId: user.schoolId, target: user.id, meta });
+    }
+    if (action === "sign-out") {
+      await this.store.deleteUserSessions(user.id);
+      await this.store.deleteUserDevices(user.id);
+      await this.adminLog(cur, "user_signed_out", { schoolId: user.schoolId, target: user.id, meta });
+    }
+    if (action === "delete") {
+      if (user.id === cur.user.id) return fail(400, "You can't delete your own administrator account.");
+      if (user.role === "admin" && (await this.store.listUsers(user.schoolId, "admin")).length <= 1) return fail(400, "Keep at least one administrator.");
+      await this.store.deleteUser(user.id);
+      await this.adminLog(cur, "user_deleted", { schoolId: user.schoolId, target: user.id, meta, detail: { role: user.role } });
+    }
+    return { ok: true };
+  }
+
+  async adminSendTestEmail(cur: CurrentSession, to: string, meta: RequestMeta): Promise<Result> {
+    const denied = this.requireAdmin(cur);
+    if (denied) return denied;
+    const email = normaliseEmail(to || cur.user.email);
+    const problem = checkEmail(email);
+    if (problem) return fail(400, problem, "email");
+    await this.mailer.send(testEmail(email, this.now()));
+    await this.adminLog(cur, "test_email_sent", { meta, detail: { to: maskEmail(email) } });
+    return { ok: true };
+  }
+
+  async adminPurge(cur: CurrentSession, meta: RequestMeta): Promise<Result> {
+    const denied = this.requireAdmin(cur);
+    if (denied) return denied;
+    await this.store.purgeExpired(this.now());
+    await this.adminLog(cur, "purge_run", { meta });
+    return { ok: true };
+  }
+
+  async describePasswordLink(token: string): Promise<{ username: string; emailHint: string } | null> {
+    const ch = token ? await this.store.findChallengeByHash(sha256(token)) : null;
+    if (!ch || ch.purpose !== "set_password" || ch.consumedAt || Date.parse(ch.expiresAt) <= this.now().getTime()) return null;
+    const user = await this.store.getUser(ch.userId);
+    return user ? { username: user.username, emailHint: maskEmail(user.email) } : null;
+  }
+
+  /** Sets a password from an administrator's emailed link. The link works once. */
+  async setPasswordWithLink(input: { token: string; password: string }, meta: RequestMeta): Promise<Result<{ role: Role }>> {
+    const ch = input.token ? await this.store.findChallengeByHash(sha256(input.token)) : null;
+    if (!ch || ch.purpose !== "set_password" || ch.consumedAt || Date.parse(ch.expiresAt) <= this.now().getTime()) {
+      return fail(400, "This link has expired or been used. Ask your careers adviser or Bcome for a new one.");
+    }
+    const user = await this.store.getUser(ch.userId);
+    if (!user) return fail(400, "This link has expired or been used.");
+    const problem = checkPassword(input.password ?? "", [user.username, user.email, user.firstName, user.lastName]);
+    if (problem) return fail(400, problem, "password");
+    await this.store.updateChallenge(ch.id, { consumedAt: this.iso() });
+    await this.store.updateUser(user.id, {
+      passwordHash: await hashPassword(input.password, this.hashCost),
+      failedLogins: 0,
+      lockedUntil: null,
+      // The link went to this address, which confirms it.
+      emailVerifiedAt: user.emailVerifiedAt ?? this.iso(),
+    });
+    await this.store.deleteUserSessions(user.id);
+    await this.store.deleteUserDevices(user.id);
+    await this.mailer.send(passwordChangedEmail(user.email));
+    await this.log("password.set_by_link", { actor: user, meta });
+    return { ok: true, role: user.role };
   }
 }

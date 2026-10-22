@@ -80,6 +80,7 @@ Similarity = 1 − Σwᵢ|sᵢ − oᵢ| / Σwᵢ, with dimensions that matter m
 - **Sign in** is with a username or school email and a password, on separate tiles for students and advisers (`/login`). Students get an emailed code the first time they use a device; they can trust it for 90 days, or untick that on shared computers. "Remember me" keeps them signed in for 30 days. Advisers get a code at every sign-in and are signed out after 15 minutes without activity.
 - **Assessment history**: every Career Profile a signed-in student completes is saved on their account with its answers, profile, Career DNA, matches and plan (`assessments` table). Students see the history on `/account`, and advisers see it on each student's page.
 - **Security**: scrypt password hashing, account lockout, rate limits, hashed tokens, an audit log, deny-by-default database access and security headers. See [`docs/security/st4s-controls.md`](docs/security/st4s-controls.md) for how this maps to Safer Technologies 4 Schools.
+- **Platform administrators** (Bcome staff) sign in at `/login/admin` and see every school, account and log at `/admin` (see below).
 - Bcome runs its own sign-in rather than Supabase Auth, so it can do usernames, device codes and per-role timeouts. Only the server reads the account tables, with the service role key.
 
 ### 6. Screens (`src/app/`, `src/components/`)
@@ -137,6 +138,29 @@ npm run school -- create-test --email you@example.com
 
 It makes an active school, `test.adviser` (codes go to your email), `test.student` (codes go to `you+teststudent@…`; use `--student-email` if your email provider doesn't support plus addressing), 27 made-up classmates with results, portfolios and missions, and sample calendar events. It prints the usernames, a generated password (or pass `--password`) and the join code. Remove it afterwards with `npm run school -- delete-test <id>`, which only deletes schools named "Bcome Test School".
 
+### Platform administrator
+
+Administrators have full access: they can add, approve, suspend and reactivate schools, change and email school sign-up codes, invite advisers, create student and adviser accounts, email password links, unlock, sign out and delete accounts, and see platform analytics, monitoring and the audit and request logs with IP addresses.
+
+Because of that, administrators can only be created from the command line by someone with the Supabase service role key (run the `20261027000000_platform_admin.sql` migration first):
+
+```bash
+npm run admin -- create --email you@example.com --username your.name --first Luke --last Donabauer
+```
+
+It prints the sign-in address, the username and a generated password once. Save the password in a password manager. Every administrator sign-in also needs a 6-digit code sent to that email, sessions last 4 hours and end after 15 minutes without activity. Other commands: `npm run admin -- list`, `reset-password --username …`, `remove --username …` (one administrator always remains).
+
+Locally, without Supabase, there is a demo administrator: `demo.admin` / `Careers demo 2026!` (the code is printed in the terminal), with a day of made-up traffic from documentation-only IP addresses so the monitoring screens have something to show.
+
+| Page | What's there |
+| --- | --- |
+| `/admin` | Users by segment (Year 10, 11 and 12; university, TAFE, other and unsure from the latest Career Profile), schools, assessments by month, top careers, interest types, career areas, subjects chosen, system health, API traffic, sign-in security, incoming IP addresses, recent activity, test email and clean-up |
+| `/admin/schools` | Add and manage schools, codes and adviser invites |
+| `/admin/users` | Search every account, see each student's latest result and subjects, create accounts, CSV export |
+| `/admin/logs` | Audit log filtered by event, school, IP and period (CSV export), IP addresses, latest requests and busiest routes |
+
+New accounts made by an administrator have no usable password: the person is emailed a one-time link (valid 3 days) to set their own, which also confirms their email. Every administrator action is in the audit log as `admin.*`.
+
 ### Supabase and email
 
 1. Create a Supabase project in the **Sydney (ap-southeast-2)** region.
@@ -146,18 +170,19 @@ It makes an active school, `test.adviser` (codes go to your email), `test.studen
 5. Email: verify your sending domain in Amazon SES (Sydney), create an IAM key limited to `ses:SendEmail`, and set `EMAIL_PROVIDER=ses` with the AWS variables. Request SES production access so you can email any address.
 6. Deploy to Vercel. `vercel.json` pins functions to Sydney.
 
-The browser never reads the account or activity tables: row level security is on with no policies, and anon and authenticated roles have no privileges. `supabase/tests/accounts-checks.sql` and `activity-checks.sql` check this and the constraints on plain Postgres:
+The browser never reads the account or activity tables: row level security is on with no policies, and anon and authenticated roles have no privileges. `supabase/tests/accounts-checks.sql`, `activity-checks.sql` and `admin-checks.sql` check this and the constraints on plain Postgres:
 
 ```bash
-psql -d test -f supabase/tests/local-auth-stub.sql $(for f in supabase/migrations/*.sql; do echo "-f $f"; done) -f supabase/tests/accounts-checks.sql -f supabase/tests/activity-checks.sql
+psql -d test -f supabase/tests/local-auth-stub.sql $(for f in supabase/migrations/*.sql; do echo "-f $f"; done) -f supabase/tests/accounts-checks.sql -f supabase/tests/activity-checks.sql -f supabase/tests/admin-checks.sql
 ```
 
 ## Commands
 
 | Command | What it does |
 | --- | --- |
-| `npm test` | Unit tests (questionnaire, scores, skills graph, outlook, plan validation, importers, accounts and sign-in, adviser dashboard, missions, portfolio, calendar and CV) |
+| `npm test` | Unit tests (questionnaire, scores, skills graph, outlook, plan validation, importers, accounts and sign-in, adviser dashboard, platform administration and analytics, missions, portfolio, calendar and CV) |
 | `npm run school -- list` | Schools waiting for approval; `approve <id>`, `suspend <id>`, `activate <id>`, `create-test --email …`, `delete-test <id>` |
+| `npm run admin -- create --email … --username …` | Creates a platform administrator and prints its password; `list`, `reset-password --username …`, `remove --username …` |
 | `npm run test:profiles` | Runs six imaginary students through the whole pipeline and writes their plans to `test-output/` |
 | `npm run data:validate` | Checks the JSON in `data/` after edits |
 | `npm run data:import-labour -- --projections <xlsx> --tnv <xlsx> --ivi <xlsx> --industry <xlsx> --osl <xlsx>` | Imports the JSA workbooks into `data/` (needs Python 3 with `openpyxl`) |
