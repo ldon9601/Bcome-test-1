@@ -30,6 +30,8 @@ export default function StudentTable({ rows, year }: { rows: StudentRow[]; year:
     <section className="side-card" aria-labelledby="students">
       <div className="group-head">
         <h2 id="students">Students</h2>
+        {/* A plain link: this is a file download from a route handler, not a page. */}
+        {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
         <a href={`/adviser/export${year ? `?year=${year}` : ""}`} className="button secondary small-btn" download>
           <Icon name="download" size={16} /> Export CSV
         </a>

@@ -16,7 +16,7 @@ const NOTICES: Record<string, string> = {
 export default async function Page({ searchParams }: { searchParams: Promise<Record<string, string | undefined>> }) {
   const sp = await searchParams;
   const cur = await currentSession();
-  if (cur?.user.role === "adviser") redirect(cur.user.role === "adviser" ? "/adviser" : "/account");
+  if (cur?.user.role === "adviser") redirect("/adviser");
   const notice = Object.keys(NOTICES).find((k) => sp[k] !== undefined || sp.reason === k);
   return (
     <AuthShell title="Careers adviser sign in" intro="Sign in to your school dashboard." icon="school" tone="violet">

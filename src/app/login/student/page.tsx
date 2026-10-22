@@ -16,7 +16,7 @@ const NOTICES: Record<string, string> = {
 export default async function Page({ searchParams }: { searchParams: Promise<Record<string, string | undefined>> }) {
   const sp = await searchParams;
   const cur = await currentSession();
-  if (cur?.user.role === "student") redirect(cur.user.role === "adviser" ? "/adviser" : "/account");
+  if (cur?.user.role === "student") redirect("/account");
   const notice = Object.keys(NOTICES).find((k) => sp[k] !== undefined || sp.reason === k);
   return (
     <AuthShell title="Student sign in" intro="Use your Bcome username or your school email address." icon="grad" tone="teal">

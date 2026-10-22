@@ -58,7 +58,7 @@ export function safeNext(next: unknown, fallback: string): string {
 
 const home = (role: string) => (role === "adviser" ? "/adviser" : "/account");
 
-function grantResponse(r: SessionGrant | ChallengeGrant | PendingSchool, next: string | undefined, ctx: ApiContext): ApiResult {
+function grantResponse(r: SessionGrant | ChallengeGrant | PendingSchool, next: string | undefined): ApiResult {
   if (r.kind === "pending") return ok({ next: "/register-school/pending" }, [{ name: COOKIE.challenge, value: "", maxAgeMs: 0 }]);
   if (r.kind === "challenge") {
     const q = new URLSearchParams({ p: r.purpose, to: r.emailHint, role: r.role });
@@ -71,7 +71,6 @@ function grantResponse(r: SessionGrant | ChallengeGrant | PendingSchool, next: s
     { name: COOKIE.challenge, value: "", maxAgeMs: 0 },
   ];
   if (r.deviceToken) cookies.push({ name: COOKIE.device, value: r.deviceToken, maxAgeMs: POLICY.device.cookieMaxAgeMs });
-  void ctx;
   return ok({ next: safeNext(next, home(r.role)), role: r.role }, cookies);
 }
 
@@ -98,7 +97,7 @@ export async function authAction(action: string, body: Body, ctx: ApiContext): P
           },
           ctx.meta,
         ),
-        (g) => grantResponse(g, undefined, ctx),
+        (g) => grantResponse(g, undefined),
       );
     case "register-student":
       return respond(
@@ -117,24 +116,24 @@ export async function authAction(action: string, body: Body, ctx: ApiContext): P
           },
           ctx.meta,
         ),
-        (g) => grantResponse(g, next, ctx),
+        (g) => grantResponse(g, next),
       );
     case "sign-in": {
       const role = str(body, "role") === "adviser" ? "adviser" : "student";
       return respond(
         await s.signIn({ identifier: str(body, "identifier"), password: str(body, "password"), role, remember: bool(body, "remember") }, ctx.meta),
-        (g) => grantResponse(g, next, ctx),
+        (g) => grantResponse(g, next),
       );
     }
     case "verify":
       return respond(
         await s.verifyCode({ challengeToken: ctx.cookies[COOKIE.challenge] ?? "", code: str(body, "code"), trustDevice: bool(body, "trustDevice") }, ctx.meta),
-        (g) => grantResponse(g, next, ctx),
+        (g) => grantResponse(g, next),
       );
     case "resend":
       return respond(await s.resendCode(ctx.cookies[COOKIE.challenge] ?? ""), (r) => ok({ emailHint: r.emailHint }));
     case "forgot":
-      return respond(await s.requestPasswordReset({ identifier: str(body, "identifier") }, ctx.meta), (g) => grantResponse(g, undefined, ctx));
+      return respond(await s.requestPasswordReset({ identifier: str(body, "identifier") }, ctx.meta), (g) => grantResponse(g, undefined));
     case "reset":
       return respond(
         await s.resetPassword({ challengeToken: ctx.cookies[COOKIE.challenge] ?? "", code: str(body, "code"), password: str(body, "password") }, ctx.meta),
