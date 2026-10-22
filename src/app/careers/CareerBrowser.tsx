@@ -1,8 +1,11 @@
 "use client";
 
+import { FAMILY_LABELS } from "@/lib/careers/families.ts";
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { JsaProfileCard } from "@/components/Courses.tsx";
+import { InfoTip, LabourPanel, SkillLevelDefinitions } from "@/components/Labour.tsx";
+import { SKILL_LEVELS } from "@/lib/labour-terms.ts";
 import { Icon } from "@/components/Icon.tsx";
 import { Modal } from "@/components/Modal.tsx";
 import { OccupationImage } from "@/components/OccupationArt.tsx";
@@ -12,35 +15,25 @@ import { formatRange, formatYears, ROUTE_LABEL } from "@/lib/careers/facts.ts";
 import { readShortlist, toggleShortlist } from "@/lib/progress/gamification.ts";
 import { RIASEC_NAMES, type RiasecType } from "@/lib/questionnaire/types.ts";
 
-const FAMILY_LABEL: Record<string, string> = {
-  health: "Health",
-  care: "Care & community",
-  education: "Education",
-  tech: "Technology",
-  data: "Data",
-  engineering: "Engineering",
-  built: "Built environment",
-  environment: "Environment",
-  science: "Science",
-  animals: "Animals",
-  business: "Business",
-  creative: "Creative",
-  performing: "Performing arts",
-  trades: "Trades",
-  workshop: "Workshop & making",
-  hospitality: "Hospitality",
-  safety: "Safety & defence",
-  fitness: "Fitness",
-  transport: "Transport",
-};
+const FAMILY_LABEL = FAMILY_LABELS;
 
 export default function CareerBrowser({ careers }: { careers: CatalogueCareer[] }) {
   const [query, setQuery] = useState("");
   const [family, setFamily] = useState<string | null>(null);
+  const [level, setLevel] = useState<number | null>(null);
+  const [limit, setLimit] = useState(36);
   const [open, setOpen] = useState<string | null>(null);
   const [shortlist, setShortlist] = useState<string[]>([]);
 
+  const [myState, setMyState] = useState<string | null>(null);
+  useEffect(() => setLimit(36), [family, level, query]);
   useEffect(() => {
+    try {
+      const r = JSON.parse(sessionStorage.getItem("bcome:result") ?? "null");
+      if (typeof r?.profile?.state === "string") setMyState(r.profile.state);
+    } catch {
+      // No saved result in this browser.
+    }
     setShortlist(readShortlist());
     const sync = () => setOpen(new URLSearchParams(window.location.search).get("career"));
     sync();
@@ -50,7 +43,12 @@ export default function CareerBrowser({ careers }: { careers: CatalogueCareer[] 
 
   const families = useMemo(() => [...new Set(careers.map((c) => c.family))].sort((a, b) => FAMILY_LABEL[a].localeCompare(FAMILY_LABEL[b])), [careers]);
   const q = query.trim().toLowerCase();
-  const shown = careers.filter((c) => (!family || c.family === family) && (!q || `${c.title} ${c.summary} ${c.osca}`.toLowerCase().includes(q)));
+  const shown = careers.filter(
+    (c) =>
+      (!family || c.family === family) &&
+      (!level || c.skillLevels.includes(level)) &&
+      (!q || `${c.title} ${c.summary} ${c.osca} ${c.anzsco.unitGroup} ${c.anzsco.title} ${c.anzsic?.code ?? ""} ${c.anzsic?.title ?? ""}`.toLowerCase().includes(q)),
+  );
   const current = careers.find((c) => c.osca === open);
 
   const show = (osca: string | null) => {
@@ -66,7 +64,9 @@ export default function CareerBrowser({ careers }: { careers: CatalogueCareer[] 
           <h1>
             Explore <span className="grad-text">Careers</span>
           </h1>
-          <p className="hero-sub">{careers.length} Australian careers, coded to OSCA 2024, with pay, time to qualify and the ways in.</p>
+          <p className="hero-sub">
+            {careers.length} Australian careers covering every occupation group in Jobs and Skills Australia&apos;s projections, with pay, skill levels, vacancies and the ways in.
+          </p>
         </div>
       </section>
       <div className="search" style={{ marginLeft: 0, maxWidth: 480, flex: "none" }}>
@@ -83,11 +83,27 @@ export default function CareerBrowser({ careers }: { careers: CatalogueCareer[] 
           </button>
         ))}
       </div>
+      <div className="filters" role="group" aria-label="Skill level">
+        <span className="small" style={{ alignSelf: "center" }}>
+          Skill level
+        </span>
+        <button aria-pressed={!level} onClick={() => setLevel(null)}>
+          Any
+        </button>
+        {[1, 2, 3, 4, 5].map((l) => (
+          <button key={l} aria-pressed={level === l} onClick={() => setLevel(level === l ? null : l)} title={SKILL_LEVELS[l].short}>
+            {l}
+          </button>
+        ))}
+        <InfoTip label="a skill level">
+          <SkillLevelDefinitions current={level ? [level] : []} />
+        </InfoTip>
+      </div>
       <p className="muted" aria-live="polite" style={{ margin: 0 }}>
-        Showing {shown.length} career{shown.length === 1 ? "" : "s"}
+        Showing {Math.min(limit, shown.length)} of {shown.length} career{shown.length === 1 ? "" : "s"}
       </p>
       <div className="match-grid">
-        {shown.map((c) => (
+        {shown.slice(0, limit).map((c) => (
           <article key={c.osca} className="match-card">
             <div className="match-art">
               <OccupationImage family={c.family} title={c.title} photo={c.photo} />
@@ -96,7 +112,8 @@ export default function CareerBrowser({ careers }: { careers: CatalogueCareer[] 
             <p>{c.summary}</p>
             <Tags tags={c.tags} limit={3} />
             <p className="small" style={{ margin: 0 }}>
-              {formatRange(c.salary.entry)} starting · {formatYears(c.timeToQualify.years)} to qualify
+              Skill level {c.skillLevels.length > 1 ? `${Math.min(...c.skillLevels)}–${Math.max(...c.skillLevels)}` : c.skillLevel} · {formatRange(c.salary.entry)} starting ·{" "}
+              {formatYears(c.timeToQualify.years)} to qualify
               {c.courses.atarRange && ` · ATAR ${c.courses.atarRange[0]}–${c.courses.atarRange[1]}`}
             </p>
             <div className="actions">
@@ -115,6 +132,12 @@ export default function CareerBrowser({ careers }: { careers: CatalogueCareer[] 
           </article>
         ))}
       </div>
+
+      {shown.length > limit && (
+        <button className="button secondary" style={{ justifySelf: "center" }} onClick={() => setLimit((n) => n + 36)}>
+          Show more careers ({shown.length - limit} more)
+        </button>
+      )}
 
       <Modal open={!!current} onClose={() => show(null)} label={current?.title ?? "Career"}>
         {current && (
@@ -172,9 +195,20 @@ export default function CareerBrowser({ careers }: { careers: CatalogueCareer[] 
                   {current.courses.tafe && "TAFE entry requirements listed"}
                 </p>
               )}
-              <h4 style={{ marginTop: "1rem" }}>The job in numbers</h4>
-              <JsaProfileCard unitGroup={current.anzsco.unitGroup} title={current.anzsco.title} occupation={current.anzsco.occupation} profile={current.anzsco.profile} />
-              <p className="source">OSCA {current.osca}. Take the Discover questions to see how well this career fits you.</p>
+              {current.identified && (
+                <p className="notice">This is an identified position: these roles are for Aboriginal and Torres Strait Islander people. Bcome doesn&apos;t recommend it automatically.</p>
+              )}
+              {current.anzsco.profile && (
+                <>
+                  <h4 style={{ marginTop: "1rem" }}>The job in numbers</h4>
+                  <JsaProfileCard unitGroup={current.anzsco.unitGroup} title={current.anzsco.title} occupation={current.anzsco.occupation} profile={current.anzsco.profile} />
+                </>
+              )}
+              <LabourPanel key={current.osca} osca={current.osca} state={myState} />
+              <p className="source">
+                {current.oscaPending ? `ANZSCO ${current.anzsco.unitGroup}; OSCA code to be confirmed. Added from the JSA 2025 projections, with a profile Bcome estimated from similar jobs.` : `OSCA ${current.osca}.`} Take the Discover
+                questions to see how well this career fits you.
+              </p>
             </div>
           </>
         )}

@@ -43,7 +43,7 @@ import {
  */
 
 /** Bump when weights or rules change, so stored results can be compared and recalibrated. */
-export const ALGORITHM_VERSION = "2.1.0";
+export const ALGORITHM_VERSION = "2.2.0";
 
 export const MATCH_WEIGHTS = { personalFit: 0.6, futureOpportunity: 0.25, pathwayFeasibility: 0.15 } as const;
 export type ScoreName = keyof typeof MATCH_WEIGHTS;
@@ -384,9 +384,9 @@ function feasibility(p: StudentProfile, occ: Occupation, label: (id: string) => 
 
 function dataQuality(occ: Occupation, outlook: Outlook): number {
   const basis = { "jsa-occupation": 1, "jsa-major-group-adjusted": 0.7, "jsa-major-group-qualitative": 0.5, none: 0.3 }[outlook.basis];
-  const osca = occ.oscaSource === "abs" ? 1 : 0.9;
+  const osca = { abs: 1, correspondence: 0.9, pending: 0.85 }[occ.oscaSource];
   const fields = Object.values(occ.evidence);
-  const editorial = fields.filter((e) => e.startsWith("Bcome editorial")).length / (fields.length || 1);
+  const editorial = fields.filter((e) => /^(Bcome editorial|Bcome estimate by job type|Generated)/.test(e)).length / (fields.length || 1);
   return mean([basis, osca, 1 - 0.5 * editorial]);
 }
 
@@ -449,7 +449,8 @@ export function byPersonalFitFirst(a: { fit: number; score: number; title: strin
 }
 
 function careerSimilarity(a: Occupation, b: Occupation, graph?: SkillsGraph): number {
-  const sameArea = a.osca.slice(0, 3) === b.osca.slice(0, 3) ? 1 : a.osca.slice(0, 2) === b.osca.slice(0, 2) ? 0.5 : 0;
+  // Same ANZSCO minor group = same area; same sub-major group = related.
+  const sameArea = a.anzsco.slice(0, 3) === b.anzsco.slice(0, 3) ? 1 : a.anzsco.slice(0, 2) === b.anzsco.slice(0, 2) ? 0.5 : 0;
   return graph ? 0.6 * graph.overlap(a, b) + 0.4 * sameArea : sameArea;
 }
 
@@ -476,6 +477,11 @@ function diversify(matches: Match[], graph?: SkillsGraph): Match[] {
  * sorts them into Best matches (up to 5), Worth exploring (up to 2) and one Wildcard.
  * Returns recommended careers first (best, explore, wildcard), then the rest by personal fit.
  */
+/** A job you can usually start within a year of leaving school (ANZSCO skill level 4 or 5). */
+export function isStarterJob(occ: Occupation): boolean {
+  return occ.skillLevel >= 4 && occ.timeToQualify.years[1] <= 1;
+}
+
 export function matchCareers(p: StudentProfile, occupations: Occupation[], jsa: JsaOutlookData, options: MatchOptions = {}): Match[] {
   const { limit = 10, subjectLabels = {}, graph } = options;
   const outlooks = new Map(occupations.map((o) => [o.osca, computeOutlook(o, jsa)]));
@@ -490,7 +496,9 @@ export function matchCareers(p: StudentProfile, occupations: Occupation[], jsa: 
         { fit: b.scores.personalFit.score, score: b.score, title: b.occupation.title },
       ),
     );
-  const ranked = rank(all);
+  // Identified positions (roles for Aboriginal and Torres Strait Islander people) aren't recommended
+  // automatically, because Bcome doesn't ask about cultural identity. They stay searchable.
+  const ranked = rank(all.filter((m) => !m.occupation.identified));
 
   const bestFit = ranked[0].scores.personalFit.score;
   const threshold = Math.max(FIT_FLOOR, bestFit - FIT_WINDOW);
@@ -500,24 +508,46 @@ export function matchCareers(p: StudentProfile, occupations: Occupation[], jsa: 
   // Best matches are the five strongest personal fits (spread across fields). Worth exploring takes the
   // next strong fits, preferring ones that need extra subjects, skills or study.
   const diverse = diversify(eligible, graph);
-  const best = diverse.slice(0, 5);
-  const remaining = diverse.slice(5);
-  const explore = [...remaining.filter((m) => m.stretch), ...remaining.filter((m) => !m.stretch)].slice(0, 2);
+  // Entry-level jobs (skill level 4 or 5, under a year to start) are real options, but best matches
+  // should mostly be careers. A student planning uni, TAFE or an apprenticeship (and not "work and
+  // learn") gets careers that use that study as best matches; anyone else gets at most one
+  // entry-level job there. Others can still appear under "Worth exploring", the wildcard or further down.
+  const plansStudy = p.educationPaths.some((x) => x === "university" || x === "vet" || x === "apprenticeship") && !p.educationPaths.includes("work_learn");
+  const starterCap = plansStudy ? 0 : 1;
+  let starters = 0;
+  const forBest = diverse.filter((m) => !isStarterJob(m.occupation) || starters++ < starterCap);
+  const pool = forBest.length >= 5 ? forBest : diverse;
+  // The student's single best personal fit always comes first.
+  const top = pool.reduce((a, b) => (b.scores.personalFit.score > a.scores.personalFit.score || (b.scores.personalFit.score === a.scores.personalFit.score && b.score > a.score) ? b : a));
+  const best = [top, ...pool.filter((m) => m !== top)].slice(0, 5);
+  // At most two entry-level jobs across all recommendations (none for best matches if planning study).
+  const starterLimit = plansStudy ? 1 : 2;
+  const startersIn = (ms: Match[]) => ms.filter((m) => isStarterJob(m.occupation)).length;
+  const remaining = diverse.filter((m) => !best.includes(m));
+  const explore: Match[] = [];
+  for (const m of [...remaining.filter((m) => m.stretch), ...remaining.filter((m) => !m.stretch)]) {
+    if (explore.length === 2) break;
+    if (isStarterJob(m.occupation) && startersIn([...best, ...explore]) >= starterLimit) continue;
+    explore.push(m);
+  }
   explore.sort((a, b) => remaining.indexOf(a) - remaining.indexOf(b));
 
   const shown = [...best, ...explore];
-  const shownMajor = new Set(shown.map((m) => m.occupation.osca[0]));
+  const shownMajor = new Set(shown.map((m) => m.occupation.anzsco[0]));
   const shownFirstLetter = new Set(shown.map((m) => m.occupation.riasec[0]));
   const wildcard =
-    rank(all.filter((m) => !shown.includes(m) && m.scores.personalFit.score >= Math.max(FIT_FLOOR, bestFit - FIT_WINDOW - 3))).find(
-      (m) => !shownMajor.has(m.occupation.osca[0]) || !shownFirstLetter.has(m.occupation.riasec[0]),
+    rank(ranked.filter((m) => !shown.includes(m) && !(isStarterJob(m.occupation) && startersIn(shown) >= starterLimit) && m.scores.personalFit.score >= Math.max(FIT_FLOOR, bestFit - FIT_WINDOW - 3))).find(
+      (m) => !shownMajor.has(m.occupation.anzsco[0]) || !shownFirstLetter.has(m.occupation.riasec[0]),
     ) ?? null;
 
+  for (const m of [...explore, ...(wildcard ? [wildcard] : [])]) {
+    if (isStarterJob(m.occupation)) m.reasons.push("It's a job you could start soon after school, or part-time while you study, and build experience from there.");
+  }
   best.forEach((m) => (m.group = "best"));
   explore.forEach((m) => (m.group = "explore"));
   if (wildcard) wildcard.group = "wildcard";
   const recommended = [...best, ...explore, ...(wildcard ? [wildcard] : [])];
-  const rest = ranked.filter((m) => !recommended.includes(m));
+  const rest = rank(all).filter((m) => !recommended.includes(m));
   return [...recommended, ...rest].slice(0, Math.max(limit, recommended.length));
 }
 
@@ -549,6 +579,8 @@ export function toMatchSummary(m: Match) {
     salary: m.occupation.salary,
     timeToQualify: m.occupation.timeToQualify,
     evidence: m.occupation.evidence,
+    /** "jsa-unit-group" for careers generated from the JSA projections. */
+    origin: m.occupation.origin ?? "bcome",
   };
 }
 

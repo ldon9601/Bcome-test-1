@@ -28,19 +28,28 @@ export interface Pathway {
 export const CAREER_FAMILIES = [
   "health", "care", "education", "tech", "data", "engineering", "built", "environment", "science", "animals",
   "business", "creative", "performing", "trades", "workshop", "hospitality", "safety", "fitness", "transport",
+  "agriculture", "retail", "office", "manufacturing",
 ] as const;
 export type CareerFamily = (typeof CAREER_FAMILIES)[number];
 
 export type Competitiveness = "open" | "moderate" | "high";
 
 export interface Occupation {
-  /** Primary identifier: OSCA 2024 occupation (6-digit) or unit group (4-digit) code. */
+  /**
+   * Primary identifier: OSCA 2024 occupation (6-digit) or unit group (4-digit) code. Careers added
+   * from the JSA unit-group projections use "A" + their ANZSCO code until OSCA codes are mapped.
+   */
   osca: string;
-  oscaLevel: "occupation" | "unitGroup";
+  oscaLevel: "occupation" | "unitGroup" | "anzsco";
   oscaUnitGroup: string;
+  /** Empty while the OSCA code is still to be mapped (oscaSource "pending"). */
   oscaTitle: string;
-  /** Where the OSCA code was checked: the ABS publication itself, or the ANZSCO–OSCA correspondence. */
-  oscaSource: "abs" | "correspondence";
+  /** Where the OSCA code was checked: the ABS publication, the ANZSCO–OSCA correspondence, or not yet mapped. */
+  oscaSource: "abs" | "correspondence" | "pending";
+  /** "bcome": written by hand; "jsa-unit-group": generated from a JSA projections unit group. */
+  origin?: "bcome" | "jsa-unit-group";
+  /** An identified position for Aboriginal and Torres Strait Islander people: searchable, not auto-recommended. */
+  identified?: boolean;
   title: string;
   /** One plain-English sentence describing the work, for cards. */
   summary: string;
@@ -56,8 +65,12 @@ export interface Occupation {
   jsaProfile?: JsaProfile | null;
   /** ANZSIC division name, as used in the JSA industry projections. */
   industry: string;
-  /** Skill level, 1 (bachelor or higher) to 5 (Certificate I / secondary). */
+  /** Main employing industry (ANZSIC 2006 group, 3 digits), a Bcome estimate. */
+  anzsic: { code: string; title: string; division: string; divisionTitle: string };
+  /** Skill level, 1 (bachelor or higher) to 5 (Certificate I / secondary): the most typical for this career. */
   skillLevel: number;
+  /** Every ANZSCO skill level JSA lists for the unit group (some groups span two or three). */
+  skillLevels: number[];
   /** Three-letter Holland code. */
   riasec: string;
   /** Detailed school subjects (onboarding list ids) that help or are often prerequisites. */
@@ -241,8 +254,14 @@ export interface JsaOutlookData {
   };
   total: { growth5Pct: number; growth10Pct: number; [key: string]: number };
   majorGroups: Record<string, GrowthFigure & { name: string; qualitative?: string }>;
-  occupations: Record<string, GrowthFigure & { name: string; employed2025k?: number }>;
+  occupations: Record<
+    string,
+    GrowthFigure & { name: string; employed2025k?: number | null; employed2030k?: number | null; employed2035k?: number | null; skillLevels?: number[] }
+  >;
+  /** ANZSCO sub-major (2-digit) and minor (3-digit) groups. */
+  occupationGroups?: Record<string, { name: string; employed2025k: number | null; growth10Pct: number | null }>;
   industries: Record<string, number>;
+  divisions?: Record<string, GrowthFigure & { name: string; employed2025k: number | null; employed2035k: number | null }>;
   skillLevels: Record<string, { label: string; growth10Pct: number }>;
   headlines: string[];
 }

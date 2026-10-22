@@ -6,7 +6,13 @@
     "requires: course (a university course is listed for the career), tafe (a TAFE course is listed), jsa (JSA profile figures), challenge (a skill to build), lead (university or tafe: the student's preferred kind of study), years (year levels).",
     "Effort sets the points: quick 50, standard 75, stretch 100. Students under 18 are always told to arrange contact with adults through a parent, carer or teacher."
   ],
-  "points": { "quick": 50, "standard": 75, "stretch": 100, "streakBonusPerWeek": 10, "streakBonusMax": 50 },
+  "points": {
+    "quick": 50,
+    "standard": 75,
+    "stretch": 100,
+    "streakBonusPerWeek": 10,
+    "streakBonusMax": 50
+  },
   "missions": [
     {
       "id": "talk-worker",
@@ -45,7 +51,10 @@
         "List three tasks you would enjoy.",
         "List one task you think you wouldn't enjoy, and why."
       ],
-      "link": { "label": "Your Career (Australian Government)", "url": "https://www.yourcareer.gov.au" }
+      "link": {
+        "label": "Your Career (Australian Government)",
+        "url": "https://www.yourcareer.gov.au"
+      }
     },
     {
       "id": "research-numbers",
@@ -53,13 +62,18 @@
       "effort": "quick",
       "title": "Check the numbers for {career}",
       "why": "Pay, hours and how many jobs there are make a real difference to everyday life.",
-      "requires": ["jsa"],
+      "requires": [
+        "jsa"
+      ],
       "steps": [
         "Open \"The job in numbers\" for {career} on your results. About {employed} people do this work, and median full-time pay is {pay}.",
         "Look at the part-time rate and the qualifications people in the job hold.",
         "Write one sentence on whether this fits the life you want."
       ],
-      "link": { "label": "Career details", "url": "/careers?career={osca}" }
+      "link": {
+        "label": "Career details",
+        "url": "/careers?career={osca}"
+      }
     },
     {
       "id": "research-course",
@@ -67,14 +81,19 @@
       "effort": "standard",
       "title": "Look into {course} at {provider}",
       "why": "Knowing the entry requirements early means you can choose the right subjects and avoid surprises in Year 12.",
-      "requires": ["course"],
+      "requires": [
+        "course"
+      ],
       "steps": [
         "Find {course} at {provider} on the Explore Uni & TAFE tab (the ATAR listed is {atar}).",
         "Check the prerequisites and assumed knowledge, how long it takes and whether it includes placements.",
         "Find one other university offering a similar course and compare the two.",
         "Write down which you would put first, and why."
       ],
-      "link": { "label": "Explore Uni & TAFE", "url": "/explore" }
+      "link": {
+        "label": "Explore Uni & TAFE",
+        "url": "/explore"
+      }
     },
     {
       "id": "research-tafe",
@@ -82,14 +101,19 @@
       "effort": "standard",
       "title": "Find out how to start {tafeCourse}",
       "why": "Many trade and vocational careers can start while you're still at school.",
-      "requires": ["tafe"],
+      "requires": [
+        "tafe"
+      ],
       "steps": [
         "Read the entry requirements for {tafeCourse} at {tafeProvider} on the Explore Uni & TAFE tab.",
         "Find out whether it's offered as an apprenticeship or traineeship, and whether you could start part of it at school (VET in schools).",
         "Check whether fee-free TAFE places apply in your state.",
         "Note anything you'd need to do before applying."
       ],
-      "link": { "label": "Explore Uni & TAFE", "url": "/explore" }
+      "link": {
+        "label": "Explore Uni & TAFE",
+        "url": "/explore"
+      }
     },
     {
       "id": "apply-sbat",
@@ -97,9 +121,14 @@
       "effort": "stretch",
       "title": "Ask about a school-based apprenticeship for {career}",
       "why": "A school-based apprenticeship or traineeship lets you earn, learn and finish school at the same time.",
-      "requires": ["tafe"],
+      "requires": [
+        "tafe"
+      ],
       "lead": "tafe",
-      "years": [10, 11],
+      "years": [
+        10,
+        11
+      ],
       "steps": [
         "Ask your careers adviser or VET coordinator whether school-based apprenticeships or traineeships are available for {careerLower} work.",
         "Find out what you'd need: an employer, a training provider and a timetable that works with school.",
@@ -113,14 +142,22 @@
       "effort": "standard",
       "title": "Check your subjects against {course}",
       "why": "Some courses need particular Year 12 subjects. Checking now gives you time to change.",
-      "requires": ["course"],
-      "years": [10, 11],
+      "requires": [
+        "course"
+      ],
+      "years": [
+        10,
+        11
+      ],
       "steps": [
         "Open {course} at {provider} on the Explore Uni & TAFE tab and note its prerequisites and assumed knowledge.",
         "Compare them with the subjects you're taking or planning to take.",
         "If something's missing, write a question to ask your careers adviser (there are often bridging courses)."
       ],
-      "link": { "label": "Explore Uni & TAFE", "url": "/explore" }
+      "link": {
+        "label": "Explore Uni & TAFE",
+        "url": "/explore"
+      }
     },
     {
       "id": "admissions-dates",
@@ -128,13 +165,18 @@
       "effort": "quick",
       "title": "Put {admissionsCentre} key dates in your calendar",
       "why": "Missing an application or early-bird date can cost you a place or extra fees.",
-      "years": [12],
+      "years": [
+        12
+      ],
       "steps": [
         "Visit {admissionsCentre} and find when applications open, the early-bird closing date and the offer rounds.",
         "Add the dates to your phone calendar with a reminder a week before each.",
         "Check whether any course you like needs something extra, such as a portfolio, interview or test."
       ],
-      "link": { "label": "{admissionsCentre}", "url": "{admissionsUrl}" }
+      "link": {
+        "label": "{admissionsCentre}",
+        "url": "{admissionsUrl}"
+      }
     },
     {
       "id": "scholarships",
@@ -142,7 +184,10 @@
       "effort": "standard",
       "title": "Find two scholarships for studying towards {career}",
       "why": "Scholarships and grants can cover fees, books, travel or accommodation, and many go unclaimed.",
-      "years": [11, 12],
+      "years": [
+        11,
+        12
+      ],
       "steps": [
         "Search the scholarships pages of two universities or TAFEs you're interested in.",
         "Find two you could be eligible for (equity, regional, academic, sport or subject-based).",
@@ -155,7 +200,9 @@
       "effort": "standard",
       "title": "Build one skill for {career}",
       "why": "Small, regular practice is the fastest way to grow a skill, and it gives you something real to put in your portfolio.",
-      "requires": ["challenge"],
+      "requires": [
+        "challenge"
+      ],
       "steps": [
         "Your results said: {challenge}",
         "Pick one small way to practise this week, such as a school club, a free online course or a task at home.",
@@ -210,7 +257,10 @@
         "Pick one career you haven't looked at before and read about it.",
         "Write one thing it has in common with {career} and one way it's different."
       ],
-      "link": { "label": "Browse careers", "url": "/careers" }
+      "link": {
+        "label": "Browse careers",
+        "url": "/careers"
+      }
     },
     {
       "id": "apply-workexp",
@@ -218,7 +268,10 @@
       "effort": "stretch",
       "title": "Plan work experience in {careerLower} work",
       "why": "A few days in a real workplace tells you more than any amount of reading, and it looks great on a CV.",
-      "years": [10, 11],
+      "years": [
+        10,
+        11
+      ],
       "steps": [
         "Ask your careers adviser how work experience works at your school and when it runs.",
         "With a parent or carer, list three local workplaces where {careerLower}s work.",
@@ -243,7 +296,9 @@
       "effort": "standard",
       "title": "Plan a visit to {provider}",
       "why": "Visiting, even virtually, helps you picture yourself studying there.",
-      "requires": ["course"],
+      "requires": [
+        "course"
+      ],
       "steps": [
         "Find {provider}'s next open day, campus tour or virtual tour (many run all year).",
         "Write three questions to ask, e.g. about {course}, placements or student support.",
@@ -273,7 +328,10 @@
         "Find one recent news article about the job in Australia.",
         "Write one way the job might be different by 2035, and one skill that will matter more."
       ],
-      "link": { "label": "Career details", "url": "/careers?career={osca}" }
+      "link": {
+        "label": "Career details",
+        "url": "/careers?career={osca}"
+      }
     }
   ],
   "projects": {
@@ -295,6 +353,10 @@
     "hospitality": "Plan, budget and cook a meal for your household, timing each dish to be ready together.",
     "safety": "Make a home emergency plan with your family: exits, a meeting place and emergency numbers.",
     "fitness": "Design a safe, beginner-friendly 20-minute workout and try it with a friend or family member.",
-    "transport": "Plan a trip across your city or region by public transport, comparing time, cost and connections."
+    "transport": "Plan a trip across your city or region by public transport, comparing time, cost and connections.",
+    "agriculture": "Grow something from seed (herbs, vegetables or a seedling) and keep a short log of watering, sunlight and growth.",
+    "retail": "Plan a display for a product you like: who it's for, where it goes in a shop, the price and how you'd show it off.",
+    "office": "Organise a real task for your household or a club: a schedule, budget or shared document that others can use.",
+    "manufacturing": "Pick an everyday product and map how it's made, step by step, from raw materials to the shop shelf."
   }
 }

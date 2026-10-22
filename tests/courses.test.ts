@@ -10,8 +10,8 @@ const occ = (title: string) => {
   return o;
 };
 
-test("every career maps to an ANZSCO unit group with a JSA occupation profile", () => {
-  for (const o of occupationData.occupations) {
+test("every hand-written career maps to an ANZSCO unit group with a JSA occupation profile", () => {
+  for (const o of occupationData.occupations.filter((x) => x.origin !== "jsa-unit-group")) {
     assert.match(o.anzsco, /^\d{4}$/, o.title);
     const p = jsaProfiles.byUnitGroup[o.anzsco];
     assert.ok(p, `${o.title} has no JSA profile for ${o.anzsco}`);

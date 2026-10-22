@@ -1,4 +1,5 @@
 import missionsJson from "../../../data/missions/missions.json" with { type: "json" };
+import { FAMILY_LABELS } from "../careers/families.ts";
 import type { AuState } from "../auth/validation.ts";
 import type { CareerRef, StudentContext } from "./student.ts";
 import type { MissionCompletion } from "./types.ts";
@@ -124,12 +125,7 @@ export const ADMISSIONS_CENTRE: Record<AuState, { name: string; url: string }> =
   TAS: { name: "the University of Tasmania", url: "https://www.utas.edu.au" },
 };
 
-const FAMILY_NAMES: Record<string, string> = {
-  health: "Health", care: "Care & community", education: "Education", tech: "Technology", data: "Data", engineering: "Engineering",
-  built: "Built environment", environment: "Environment", science: "Science", animals: "Animals", business: "Business", creative: "Creative",
-  performing: "Performing arts", trades: "Trades", workshop: "Workshop & making", hospitality: "Hospitality", safety: "Safety & defence",
-  fitness: "Fitness", transport: "Transport",
-};
+const FAMILY_NAMES: Record<string, string> = FAMILY_LABELS;
 
 function fits(m: MissionTemplate, c: CareerRef, s: StudentContext): boolean {
   if (m.years && !m.years.includes(s.yearLevel)) return false;

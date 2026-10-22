@@ -22,9 +22,16 @@ The profile also gives seven **Career DNA** dimensions (analytical, creative, in
 
 ### 2. Career data
 
-- **Occupations** (`data/occupations/occupations.json`): 63 careers keyed by **OSCA 2024** code. Each career is also coded to its **ANZSCO 2022** unit group (as used by Jobs and Skills Australia) and, where one fits, the closest 6-digit ANZSCO occupation. The unit group joins JSA projections and the JSA occupation profile. Each career has a 0–100 profile on the questionnaire's own dimensions (interests, skill requirements, values, work environment), plus subject areas, pathways, time to qualify, a pay range, and opportunity indicators.
+- **Occupations** (`data/occupations/occupations.json`): 357 careers. 63 are hand-written and keyed by **OSCA 2024** code. The other 294 cover every remaining ANZSCO unit group in the JSA 2025 Employment Projections (`origin: "jsa-unit-group"`); they're keyed `A` + ANZSCO code (e.g. `A2512`) until their OSCA codes are mapped. Three unit groups are left out on purpose: 1392 Senior Non-commissioned Defence Force Members (a promotion, not an entry career), 4518 Other Personal Service Workers (a mixed group including adult services) and 8997 Vending Machine Attendants. Every career has its JSA **skill level(s)** (1 to 5) and Bcome's estimate of its main **ANZSIC** industry group. Each career is also coded to its **ANZSCO 2022** unit group (as used by Jobs and Skills Australia) and, where one fits, the closest 6-digit ANZSCO occupation. The unit group joins JSA projections and the JSA occupation profile. Each career has a 0–100 profile on the questionnaire's own dimensions (interests, skill requirements, values, work environment), plus subject areas, pathways, time to qualify, a pay range, and opportunity indicators.
 - **JSA occupation profiles** (`data/outlook/jsa-occupation-profiles.json`): headline figures from each career's [JSA occupation profile](https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco): employment, median full-time weekly earnings, past-year change, median age, % women, % part-time and the highest-qualification mix. They're shown as "The job in numbers" on results and in the career browser, and the median earnings feed the earnings part of future opportunity.
 - **Courses** (`data/courses/offerings.json`): specific university courses (ATAR, its basis and year, prerequisites, assumed knowledge, other requirements and the source) and TAFE courses (entry requirements, apprenticeship or not, current code). Results show up to four universities and two TAFE courses per career, with the student's state first, TAFE first if they chose TAFE or an apprenticeship, and prerequisites they aren't studying flagged. `/explore` lists them all with state and "my matches" filters.
+- **How the new careers are profiled**: each has its own title, summary, Holland code, skills, industry, pathway and shortage rating. Its skill, value and work-environment levels come from one of about 40 job archetypes (for example "building trade", "allied health professional", "retail"), and its interest profile from its Holland code. Pay ranges are estimates by archetype. They're matched exactly like the hand-written careers; results say when a career was added from JSA data. Review them with a careers adviser, starting with the ones students see most.
+- **Labour market data** (`data/labour/`, `src/lib/labour.ts`), imported from the JSA workbooks with `scripts/import-labour-market.py`:
+  - `vacancies.json`: Total New Vacancies (quarterly since 2016, by ANZSCO major and sub-major group, and by state) and the Internet Vacancy Index (monthly trend since 2006, by skill level and state).
+  - `industries.json`: employment by ANZSIC division, subdivision and group (trend to February 2026), with gender, part-time and median age.
+  - `shortage.json`: the 2025 Occupation Shortage List key findings (share of occupations in shortage by major group and skill level, applicants per vacancy).
+  - `data/outlook/jsa-2025.json` now holds projections for all 358 unit groups, so every career's outlook uses its own JSA figure.
+- **Vacancies on results**: each career in a result carries a snapshot taken when the assessment was completed (`labour` in the saved matches): skill level, ANZSCO and ANZSIC codes, new vacancies for its occupation group in the latest quarter at that time and Bcome's estimate for the job (its share of the group's employment), online ads for its skill level in the student's state, projected growth, industry employment and the shortage rate. The drill-down adds history charts from the latest data (`GET /api/careers/{osca}/labour?state=NSW`). Skill levels and ANZSIC have a "?" button with definitions.
 - **Skills layer** (`data/skills/`): skills ↔ qualifications ↔ occupations, shaped like the JSA National Skills Taxonomy data model.
 
 ### 3. Scoring (`src/lib/careers/matching.ts`, requirements doc sections 6–13)
@@ -44,6 +51,8 @@ Similarity = 1 − Σwᵢ|sᵢ − oᵢ| / Σwᵢ, with dimensions that matter m
 - Only careers within 12 points of the student's best personal fit (and at least 55) are recommended. A great job outlook can't bring in a poor-fit career.
 - Careers are ordered by personal fit. Opportunity and pathway only reorder careers whose fit is within 5 points of each other.
 - The student's single best fit is always the first career shown.
+- Entry-level jobs (skill level 4 or 5, under a year to start) can be recommended, but best matches stay mostly careers: none for a student planning uni, TAFE or an apprenticeship (and not "work and learn"), at most one for anyone else, and at most two across all recommendations. When one is shown, its explanation says it's a job you could start soon or alongside study.
+- Identified positions for Aboriginal and Torres Strait Islander people are searchable but not recommended automatically, because Bcome doesn't ask about cultural identity.
 - On each career card, personal fit is the headline number.
 - The AI is told to lead every explanation with fit, and the app restores the engine's order whatever order the AI uses.
 
@@ -83,7 +92,7 @@ Similarity = 1 − Σwᵢ|sᵢ − oᵢ| / Σwᵢ, with dimensions that matter m
   - **CV** (`/account/cv`, `cv.ts`, `docx.ts`): turns the portfolio into a CV with a drafted career objective, education, key skills and experience sections. Students add contact details (kept in the browser only), edit the objective, choose sections, then download a Word file (built in the browser), print or save as PDF, or copy it as text.
 - **Discover** (`/`, `Discover.tsx`): the questionnaire shows up to three questions per page within a section. It uses likert pills, colour-coded activity cards for the ranking, a five-point slider for the work-style questions and a grid for the subjects. A live RIASEC radar updates as the student answers, next to a "Today's Quest" card and a daily count.
 - **Career Matches** (`/plan`, `PlanView.tsx`): the Career DNA is shown first. Then the #1 match appears as a feature card with a personal-fit ring, fit breakdown, highlight tags and "Why this matches you". The other matches follow as illustrated cards with a detail dialog and a shortlist button. The sidebar holds the RIASEC radar, the top profile types, an "Assessment Complete" badge and a shortlist challenge. Careers are always ordered by personal fit, and the ring shows personal fit; the overall match is secondary text.
-- **Careers** (`/careers`): browse all careers by area, with a filter and a detail dialog. `?career=OSCA` opens one directly; the header search links here.
+- **Careers** (`/careers`): browse all 357 careers by area and skill level, 36 at a time, with a search that also matches ANZSCO and ANZSIC codes, and a detail dialog with the jobs market panel. `?career=OSCA` opens one directly; the header search links here.
 - **Journey** (`/journey`): the year-by-year plan for the top match.
 - **Explore Uni & TAFE** (`/explore`): the qualifications grouped by sector, each linked to the careers it leads to.
 - **Occupation pictures** (`OccupationArt.tsx`): licence-free illustrations, one per career family (`family` in the occupation data). To use a real photo, add `"photo": { "src": "/careers/xyz.jpg", "credit": "…" }` to the occupation and put the file in `public/`. The photo then replaces the illustration everywhere.
@@ -151,17 +160,20 @@ psql -d test -f supabase/tests/local-auth-stub.sql $(for f in supabase/migration
 | `npm run school -- list` | Schools waiting for approval; `approve <id>`, `suspend <id>`, `activate <id>`, `create-test --email …`, `delete-test <id>` |
 | `npm run test:profiles` | Runs six imaginary students through the whole pipeline and writes their plans to `test-output/` |
 | `npm run data:validate` | Checks the JSON in `data/` after edits |
-| `npm run data:import-jsa -- <file.xlsx>` | Loads occupation-level JSA projections |
+| `npm run data:import-labour -- --projections <xlsx> --tnv <xlsx> --ivi <xlsx> --industry <xlsx> --osl <xlsx>` | Imports the JSA workbooks into `data/` (needs Python 3 with `openpyxl`) |
+| `npm run data:import-jsa -- <file.xlsx>` | Older importer for projections only (needs the `xlsx` package) |
 | `npm run data:import-earnings -- <file.csv>` | Loads JSA median weekly earnings by OSCA code |
 | `npm run db:seed-sql` | Rebuilds `supabase/seed.sql` from `data/` |
 
-### Loading the full JSA projections
+### Refreshing the JSA labour market data
 
-`data/outlook/jsa-2025.json` holds the published summary figures: major groups, industries, skill levels and seven named occupations. To use projections for every occupation:
+The data in `data/outlook/jsa-2025.json` and `data/labour/` comes from these Jobs and Skills Australia workbooks: Employment Projections (May 2025 to May 2035), Total New Vacancies, Internet Vacancies by ANZSCO skill level and state, Labour Force Trending: National Industry Trend, and the Occupation Shortage List key findings. When JSA publishes new editions:
 
-1. Download *Employment Projections – May 2025 to May 2035.xlsx* from <https://www.jobsandskills.gov.au/data/employment-projections> into `data/raw/`.
-2. Run `npm run data:import-jsa -- data/raw/<file>.xlsx --dry-run` to check the columns it found, then run it again without `--dry-run`.
-3. Run `npm run db:seed-sql` and re-run the seed.
+1. Download them into `data/raw/` (not committed).
+2. `pip install openpyxl`, then run `npm run data:import-labour -- --projections data/raw/<projections>.xlsx --tnv data/raw/<tnv>.xlsx --ivi data/raw/<ivi>.xlsx --industry data/raw/<industry>.xlsx --osl data/raw/<osl>.xlsx` (any subset works).
+3. Run `npm run data:validate`, `npm test` and `npm run db:seed-sql`, then re-run the seed.
+
+New saved results take their vacancy snapshot from whatever data is loaded when the student finishes; older results keep the figures they were saved with.
 
 ### Loading JSA median earnings
 
@@ -192,7 +204,8 @@ Run `npm run data:validate` after any edit.
   - a district or system-level view across several schools (each school has its own adviser dashboard);
   - the Azure / Python (FastAPI) architecture the document recommends. This build stays on Next.js + Supabase; the scoring logic is self-contained and can be ported.
 
-- Only the 7 occupations JSA names in its summary have occupation-level projections until the full file is imported; the rest use labelled estimates.
+- The 294 careers generated from JSA unit groups have estimated profiles and pay, and no OSCA code yet. Attach the ABS ANZSCO–OSCA correspondence file to map them.
+- Vacancies are published for occupation groups, not single jobs; the per-job number is Bcome's estimate from employment shares. Industry data is national and the industry for each career is an estimate of where most people in that job work.
 - Pay ranges are estimates until JSA earnings are imported; scoring already uses JSA profile median earnings.
 - Course data covers NSW, VIC, QLD and WA universities and TAFE NSW only. Some prerequisites are generic ("Mathematics prerequisite") where the source didn't give the band or level.
 - Subject names are generic; NSW, VIC and QLD course names differ. State-specific subject lists are a good next step.

@@ -144,11 +144,12 @@ export async function seedDemoSchool(service: AuthService, opts: SeedOptions = {
       const persona = vary(i === 0 ? PERSONAS[0] : drawn, r, yearLevel);
       const { answers } = simulate(questionBank, persona);
       const result = await advise(answers);
-      const payload = resultPayload(result);
+      const completedAt = iso(k === 0 && runs === 2 ? 190 + Math.floor(r() * 20) : Math.floor(r() * 120));
+      const payload = resultPayload(result, new Date(completedAt));
       await store.saveAssessment({
         userId: user.id,
         schoolId: school.id,
-        completedAt: iso(k === 0 && runs === 2 ? 190 + Math.floor(r() * 20) : Math.floor(r() * 120)),
+        completedAt,
         instrumentVersion: result.profile.instrumentVersion,
         algorithmVersion: ALGORITHM_VERSION,
         yearLevel,

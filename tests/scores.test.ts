@@ -3,6 +3,7 @@ import { test } from "node:test";
 import { careerFacts, formatRange, formatYears } from "../src/lib/careers/facts.ts";
 import {
   byPersonalFitFirst,
+  isStarterJob,
   FIT_WINDOW,
   matchCareers,
   MATCH_WEIGHTS,
@@ -19,7 +20,7 @@ const byOsca = (code: string) => occupationData.occupations.find((o) => o.osca =
 const profileOf = (key: string, overrides: Partial<Persona> = {}) =>
   buildProfile(questionBank, simulate(questionBank, { ...PERSONAS.find((p) => p.key === key)!, ...overrides }).answers);
 const matchesFor = (key: string, overrides: Partial<Persona> = {}) =>
-  matchCareers(profileOf(key, overrides), occupationData.occupations, jsaOutlook, { graph: skillsGraph, subjectLabels, limit: 63 });
+  matchCareers(profileOf(key, overrides), occupationData.occupations, jsaOutlook, { graph: skillsGraph, subjectLabels, limit: 400 });
 
 test("similarity is 1 for identical profiles and falls with distance", () => {
   const dims = ["a", "b"] as const;
@@ -43,8 +44,12 @@ test("personal fit always decides the order of recommendations", () => {
     const best = Math.max(...matchesFor(p.key).map((m) => m.scores.personalFit.score));
     // Nothing with weak fit is recommended, however good its job outlook.
     assert.ok(rec.every((m) => m.scores.personalFit.score >= best - FIT_WINDOW - 3), p.key);
-    // The student's single best fit is always the first career shown.
-    assert.equal(rec[0].scores.personalFit.score, best, p.key);
+    // The student's single best fit is always the first career shown. (Entry-level jobs are held
+    // back from best matches for students planning further study, and identified roles aren't
+    // recommended automatically.)
+    const plansStudy = p.paths.some((x) => ["university", "vet", "apprenticeship"].includes(x)) && !p.paths.includes("work_learn");
+    const eligible = matchesFor(p.key).filter((m) => !m.occupation.identified && !(plansStudy && isStarterJob(m.occupation)));
+    assert.equal(rec[0].scores.personalFit.score, Math.max(...eligible.map((m) => m.scores.personalFit.score)), p.key);
   }
 });
 
@@ -75,7 +80,7 @@ test("the wildcard comes from a different field", () => {
     if (!wild) continue;
     const others = rec.filter((m) => m !== wild);
     assert.ok(
-      !others.some((m) => m.occupation.osca[0] === wild.occupation.osca[0]) || !others.some((m) => m.occupation.riasec[0] === wild.occupation.riasec[0]),
+      !others.some((m) => m.occupation.anzsco[0] === wild.occupation.anzsco[0]) || !others.some((m) => m.occupation.riasec[0] === wild.occupation.riasec[0]),
       p.key,
     );
   }

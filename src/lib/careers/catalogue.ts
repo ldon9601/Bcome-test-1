@@ -24,6 +24,12 @@ export function careerCatalogue(occupations: Occupation[], jsa: JsaOutlookData, 
         routes: [...new Set(o.pathways.map((p) => p.route))],
         pathways: o.pathways.map((p) => ({ route: p.route, description: p.description, years: p.years, qualification: p.qualification ?? null })),
         anzsco: { unitGroup: o.anzsco, title: o.anzscoTitle, occupation: o.anzscoOccupation, profile: o.jsaProfile ?? null },
+        anzsic: o.anzsic,
+        skillLevel: o.skillLevel,
+        skillLevels: o.skillLevels,
+        origin: o.origin ?? "bcome",
+        identified: o.identified ?? false,
+        oscaPending: o.oscaSource === "pending",
         courses: {
           universities: new Set(uni.map((u) => u.provider)).size,
           atarRange: atars.length ? ([Math.min(...atars), Math.max(...atars)] as [number, number]) : null,
@@ -56,7 +62,7 @@ export type CatalogueCourse = ReturnType<typeof courseCatalogue>[number];
 /** What the header search needs: titles, codes and where each result goes. */
 export function searchIndex(careers: CatalogueCareer[], courses: CatalogueCourse[]) {
   return [
-    ...careers.map((c) => ({ kind: "career" as const, id: c.osca, title: c.title, detail: c.summary, href: `/careers?career=${c.osca}` })),
+    ...careers.map((c) => ({ kind: "career" as const, id: c.osca, title: c.title, detail: `${c.summary} ANZSCO ${c.anzsco.unitGroup} ${c.anzsco.title}`, href: `/careers?career=${c.osca}` })),
     ...courses.map((q) => ({
       kind: "course" as const,
       id: q.id,

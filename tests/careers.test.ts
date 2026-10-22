@@ -22,22 +22,36 @@ test("bands follow JSA growth against the all-jobs average", () => {
 test("occupation-level JSA figures are used when present", () => {
   const o = computeOutlook(byOsca("262431"), jsaOutlook);
   assert.equal(o.basis, "jsa-occupation");
-  assert.equal(o.growth10Pct, 33.6);
+  assert.equal(o.growth10Pct, 35.1); // Physiotherapists, JSA Table 6
   assert.equal(o.band10, "strong");
 });
 
+// With the full JSA import every career has its own figure, so the fallbacks are tested with
+// projections that leave the occupation out.
+const withoutOccupation = (code: string, extra: Partial<typeof jsaOutlook> = {}) => ({ ...jsaOutlook, occupations: Object.fromEntries(Object.entries(jsaOutlook.occupations).filter(([k]) => k !== code)), ...extra });
+
 test("major-group estimates are labelled and never claim 'strong'", () => {
-  const o = computeOutlook(byOsca("2654"), jsaOutlook);
+  const nurse = byOsca("2654");
+  const o = computeOutlook(nurse, withoutOccupation(nurse.anzsco));
   assert.equal(o.basis, "jsa-major-group-adjusted");
-  assert.equal(o.band10, "good");
+  assert.notEqual(o.band10, "strong");
   assert.match(o.summary, /Estimated/);
+  assert.equal(computeOutlook(nurse, jsaOutlook).basis, "jsa-occupation");
 });
 
-test("clerical work carries JSA's weak outlook", () => {
-  const o = computeOutlook(byOsca("561131"), jsaOutlook);
+test("a qualitative major-group outlook is used when that's all there is", () => {
+  const clerk = byOsca("561131");
+  const jsa = withoutOccupation(clerk.anzsco, { majorGroups: { ...jsaOutlook.majorGroups, "5": { name: "Clerical and Administrative Workers", growth5Pct: null, growth10Pct: null, qualitative: "weak or negative" } } });
+  const o = computeOutlook(clerk, jsa);
   assert.equal(o.basis, "jsa-major-group-qualitative");
   assert.equal(o.band10, "limited");
   assert.equal(o.band15, "declining"); // high AI exposure, no demand drivers
+});
+
+test("every unit group in the JSA projections has a career, except three left out on purpose", () => {
+  const covered = new Set(occupationData.occupations.map((o) => o.anzsco));
+  const missing = Object.keys(jsaOutlook.occupations).filter((c) => !covered.has(c));
+  assert.deepEqual(missing.sort(), ["1392", "4518", "8997"]);
 });
 
 test("15-year view moves up for demand drivers and down for high AI exposure", () => {

@@ -1,3 +1,4 @@
+import { industryData } from "../src/lib/labour.ts";
 import { missionLibrary } from "../src/lib/activity/missions.ts";
 /**
  * Checks the editable JSON content for mistakes before it reaches students.
@@ -62,9 +63,20 @@ export function validateData(): string[] {
     const where = `occupation ${o.osca} (${o.title})`;
     if (oscaIds.has(o.osca)) err(`Duplicate OSCA code: ${o.osca}`);
     oscaIds.add(o.osca);
-    const len = o.oscaLevel === "occupation" ? 6 : 4;
-    if (!new RegExp(`^\\d{${len}}$`).test(o.osca)) err(`${where}: OSCA ${o.oscaLevel} codes have ${len} digits`);
-    if (o.oscaUnitGroup !== o.osca.slice(0, 4)) err(`${where}: oscaUnitGroup must be the first 4 digits`);
+    if (o.oscaLevel === "anzsco") {
+      // Generated from a JSA unit group: keyed "A" + ANZSCO code until the OSCA code is mapped.
+      if (o.osca !== `A${o.anzsco}` || o.oscaUnitGroup !== o.osca || o.oscaSource !== "pending") err(`${where}: unmapped careers use osca "A" + ANZSCO code and oscaSource "pending"`);
+    } else {
+      const len = o.oscaLevel === "occupation" ? 6 : 4;
+      if (!new RegExp(`^\\d{${len}}$`).test(o.osca)) err(`${where}: OSCA ${o.oscaLevel} codes have ${len} digits`);
+      if (o.oscaUnitGroup !== o.osca.slice(0, 4)) err(`${where}: oscaUnitGroup must be the first 4 digits`);
+    }
+    const jsaOcc = jsaOutlook.occupations[o.anzsco];
+    if (!jsaOcc) err(`${where}: ANZSCO ${o.anzsco} has no JSA projection`);
+    else if (JSON.stringify(o.skillLevels) !== JSON.stringify(jsaOcc.skillLevels)) err(`${where}: skillLevels should match JSA (${jsaOcc.skillLevels})`);
+    if (!o.skillLevels?.includes(o.skillLevel)) err(`${where}: skillLevel must be one of skillLevels`);
+    const ind = industryData.industries[o.anzsic?.code];
+    if (!ind || ind.level !== 3 || ind.title !== o.anzsic.title || ind.division !== o.anzsic.division) err(`${where}: anzsic must be a 3-digit ANZSIC group from the industry data`);
     if (!(CAREER_FAMILIES as readonly string[]).includes(o.family)) err(`${where}: unknown family ${o.family}`);
     if (!o.summary || o.summary.length > 120) err(`${where}: needs a one-sentence summary under 120 characters`);
     if (!/^\d{4}$/.test(o.anzsco)) err(`${where}: anzsco should be a 4-digit unit group`);
@@ -110,8 +122,11 @@ export function validateData(): string[] {
   for (const o of occupationData.occupations) {
     const where = `occupation ${o.osca} (${o.title})`;
     if (!/^\d{4}$/.test(o.anzsco)) err(`${where}: anzsco must be a 4-digit unit group`);
-    if (!jsaProfiles.byUnitGroup[o.anzsco]) err(`${where}: no JSA occupation profile for ANZSCO ${o.anzsco}`);
-    else if (jsaProfiles.byUnitGroup[o.anzsco].title !== o.anzscoTitle) err(`${where}: anzscoTitle should be "${jsaProfiles.byUnitGroup[o.anzsco].title}"`);
+    const profile = jsaProfiles.byUnitGroup[o.anzsco];
+    if (profile) {
+      if (profile.title !== o.anzscoTitle) err(`${where}: anzscoTitle should be "${profile.title}"`);
+    } else if (o.origin !== "jsa-unit-group") err(`${where}: no JSA occupation profile for ANZSCO ${o.anzsco}`);
+    else if (jsaOutlook.occupations[o.anzsco]?.name !== o.anzscoTitle) err(`${where}: anzscoTitle should match the JSA projections`);
     if (o.anzscoOccupation && !(new RegExp(`^${o.anzsco}\\d{2}$`).test(o.anzscoOccupation.code))) err(`${where}: anzscoOccupation ${o.anzscoOccupation.code} isn't in unit group ${o.anzsco}`);
   }
   for (const [code, p] of Object.entries(jsaProfiles.byUnitGroup)) {
@@ -170,6 +185,6 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     `✓ ${questionBank.questions.length} questions, ${occupationData.occupations.length} occupations (OSCA), ` +
       `${skillsData.skills.length} skills, ${qualificationData.qualifications.length} qualifications, ` +
       `${Object.keys(jsaOutlook.occupations).length} occupation-level JSA projections, ${Object.keys(earningsData.byOsca).length} earnings records, ` +
-      `${Object.keys(jsaProfiles.byUnitGroup).length} JSA occupation profiles, ${courseOfferings.university.length} university and ${courseOfferings.tafe.length} TAFE course entries, ${missionLibrary.missions.length} weekly missions`,
+      `${Object.keys(jsaProfiles.byUnitGroup).length} JSA occupation profiles, ${courseOfferings.university.length} university and ${courseOfferings.tafe.length} TAFE course entries, ${missionLibrary.missions.length} weekly missions, ${Object.keys(jsaOutlook.occupations).length} projected unit groups, ${Object.keys(industryData.industries).length} ANZSIC industries`,
   );
 }

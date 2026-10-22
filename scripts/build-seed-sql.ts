@@ -5,10 +5,12 @@
 import { writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { courseOfferings, earningsData, jsaOutlook, jsaProfiles, occupationData, qualificationData, skillsData } from "../src/lib/data.ts";
+import { industryData, shortageData, vacancyData } from "../src/lib/labour.ts";
 
 const q = (v: unknown) => (v == null ? "null" : `'${String(v).replace(/'/g, "''")}'`);
 const n = (v: unknown) => (typeof v === "number" && Number.isFinite(v) ? String(v) : "null");
 const b = (v: unknown) => (v ? "true" : "false");
+const nums = (v: (number | null)[], type = "numeric") => (v.length ? `array[${v.map(n).join(", ")}]::${type}[]` : `'{}'::${type}[]`);
 const arr = (v: string[]) => (v.length ? `array[${v.map(q).join(", ")}]::text[]` : "'{}'::text[]");
 
 function insert(table: string, columns: string[], rows: string[][]): string {
@@ -27,7 +29,8 @@ export function buildSeedSql(): string {
     "",
     "truncate public.occupation_pathways, public.occupation_skills, public.qualification_skills, public.occupations,",
     "  public.qualifications, public.skills, public.skill_clusters, public.occupation_outlook, public.occupation_earnings,",
-    "  public.anzsco_profiles, public.course_sources, public.university_courses, public.tafe_courses restart identity cascade;",
+    "  public.anzsco_profiles, public.course_sources, public.university_courses, public.tafe_courses,",
+    "  public.anzsic_industries, public.vacancies_tnv, public.vacancies_ivi, public.shortage_summary restart identity cascade;",
     "",
     insert("skill_clusters", ["id", "pref_label"], skillsData.clusters.map((c) => [q(c.id), q(c.prefLabel)])),
     "",
@@ -47,11 +50,12 @@ export function buildSeedSql(): string {
       "occupations",
       ["osca", "osca_level", "osca_unit_group", "osca_title", "title", "anzsco", "anzsco_title", "anzsco_occupation", "anzsco_occupation_title",
         "riasec", "entry_competitiveness", "salary_entry_min", "salary_entry_max", "salary_experienced_min", "salary_experienced_max",
-        "qualify_years_min", "qualify_years_max", "data"],
+        "qualify_years_min", "qualify_years_max", "skill_level", "skill_levels", "anzsic_code", "origin", "data"],
       occ.map(({ jsaProfile: _profile, ...o }) => [
         q(o.osca), q(o.oscaLevel), q(o.oscaUnitGroup), q(o.oscaTitle), q(o.title), q(o.anzsco), q(o.anzscoTitle), q(o.anzscoOccupation?.code), q(o.anzscoOccupation?.title),
         q(o.riasec), q(o.entryCompetitiveness), n(o.salary.entry[0]), n(o.salary.entry[1]), n(o.salary.experienced[0]), n(o.salary.experienced[1]),
-        n(o.timeToQualify.years[0]), n(o.timeToQualify.years[1]), `${q(JSON.stringify(o))}::jsonb`,
+        n(o.timeToQualify.years[0]), n(o.timeToQualify.years[1]), n(o.skillLevel), nums(o.skillLevels, "smallint"), q(o.anzsic?.code), q(o.origin ?? "bcome"),
+        `${q(JSON.stringify(o))}::jsonb`,
       ]),
     ),
     "",
@@ -71,8 +75,44 @@ export function buildSeedSql(): string {
     "",
     insert(
       "occupation_outlook",
-      ["anzsco", "name", "growth5_pct", "growth10_pct", "employed_2025k", "source"],
-      Object.entries(jsaOutlook.occupations).map(([code, f]) => [q(code), q(f.name), n(f.growth5Pct), n(f.growth10Pct), n(f.employed2025k), q(jsaSource)]),
+      ["anzsco", "name", "growth5_pct", "growth10_pct", "employed_2025k", "employed_2030k", "employed_2035k", "skill_levels", "source"],
+      Object.entries(jsaOutlook.occupations).map(([code, f]) => [
+        q(code), q(f.name), n(f.growth5Pct), n(f.growth10Pct), n(f.employed2025k), n(f.employed2030k), n(f.employed2035k), nums(f.skillLevels ?? [], "smallint"), q(jsaSource),
+      ]),
+    ),
+    "",
+    insert(
+      "anzsic_industries",
+      ["code", "level", "nfd", "title", "division", "employed_k", "change_1y_pct", "change_5y_pct", "change_10y_pct", "share_pct", "female_pct", "part_time_pct", "median_age", "series", "reference", "source"],
+      Object.entries(industryData.industries).map(([code, i]) => [
+        q(code), n(i.level), b(i.nfd), q(i.title), q(i.division), n(i.employedK), n(i.change1yPct), n(i.change5yPct), n(i.change10yPct), n(i.sharePct), n(i.femalePct),
+        n(i.partTimePct), n(i.medianAge), nums(i.series ?? []), q(industryData.source.reference), q(industryData.source.title),
+      ]),
+    ),
+    "",
+    insert(
+      "vacancies_tnv",
+      ["occupation_code", "occupation_level", "title", "quarter", "vacancies"],
+      Object.entries(vacancyData.tnv.occupations).flatMap(([code, o]) =>
+        vacancyData.tnv.quarters.map((qtr, i) => [q(code), q(o.level), q(o.title), q(`${qtr}-01`), n(o.values[i])]),
+      ),
+    ),
+    "",
+    insert(
+      "vacancies_ivi",
+      ["state", "skill_level", "month", "ads"],
+      Object.entries(vacancyData.ivi.series).flatMap(([state, levels]) =>
+        Object.entries(levels).flatMap(([level, values]) => vacancyData.ivi.months.map((m, i) => [q(state), n(Number(level)), q(`${m}-01`), n(values[i])])),
+      ),
+    ),
+    "",
+    insert(
+      "shortage_summary",
+      ["dimension", "category", "year", "pct_in_shortage"],
+      [
+        ...Object.entries(shortageData.byMajorGroup).flatMap(([cat, v]) => shortageData.years.map((y, i) => [q("major_group"), q(cat), n(Number(y)), n(v[i])])),
+        ...Object.entries(shortageData.bySkillLevel).flatMap(([cat, v]) => shortageData.years.map((y, i) => [q("skill_level"), q(cat), n(Number(y)), n(v[i])])),
+      ],
     ),
     "",
     insert(

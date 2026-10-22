@@ -27,6 +27,10 @@ const SKY: Record<CareerFamily, [string, string]> = {
   safety: ["#1f3b73", "#4a78c7"],
   fitness: ["#c8f5a6", "#e9fff3"],
   transport: ["#a8dcff", "#f0f9ff"],
+  agriculture: ["#bfe6ff", "#fff3cf"],
+  retail: ["#ffd6e4", "#fff3f7"],
+  office: ["#d6e4f5", "#f4f8fd"],
+  manufacturing: ["#cfd8e6", "#f2f5fa"],
 };
 
 const ground = (fill: string, d = "M0 160 Q80 140 160 152 T320 148 V200 H0Z") => <path d={d} fill={fill} />;
@@ -358,6 +362,100 @@ function Scene({ family }: { family: CareerFamily }) {
             {[-56, -44, 36, 48].map((x, i) => <rect key={i} x={x} y={i % 3 === 0 ? -26 : -20} width="10" height={i % 3 === 0 ? 52 : 40} rx="4" fill="#22c3a6" />)}
           </g>
           <path d="M70 56 C70 46 58 44 56 52 C54 60 70 66 70 72 C70 66 86 60 84 52 C82 44 70 46 70 56Z" fill="#ff5d8f" />
+        </>
+      );
+    case "agriculture":
+      return (
+        <>
+          {sun(262, 44, 20)}
+          {cloud(80, 46)}
+          <path d="M0 118 Q90 96 180 110 T320 104 V200 H0Z" fill="#9fd37a" />
+          <path d="M0 140 Q160 120 320 138 V200 H0Z" fill="#e8c35a" />
+          {[0, 1, 2, 3, 4, 5, 6].map((i) => (
+            <path key={i} d={`M${-20 + i * 52} 200 Q${40 + i * 46} 160 ${110 + i * 34} 140`} stroke="#c99a34" strokeWidth="3" fill="none" />
+          ))}
+          <g transform="translate(36 70)">
+            <rect x="0" y="22" width="56" height="44" fill="#d9534f" />
+            <path d="M-6 24 L28 0 L62 24Z" fill="#a83c39" />
+            <rect x="20" y="40" width="16" height="26" fill="#fff" />
+            <path d="M20 40 L36 66 M36 40 L20 66" stroke="#d9534f" strokeWidth="2" />
+          </g>
+          <g transform="translate(176 120)">
+            <rect x="0" y="0" width="54" height="30" rx="4" fill="#2f9e5b" />
+            <rect x="30" y="-22" width="26" height="26" rx="3" fill="#2f9e5b" />
+            <rect x="34" y="-18" width="18" height="14" rx="2" fill="#cfe7f7" />
+            <rect x="8" y="-12" width="5" height="14" fill="#555" />
+            <circle cx="14" cy="34" r="14" fill="#22252e" />
+            <circle cx="14" cy="34" r="6" fill="#ffd25e" />
+            <circle cx="52" cy="38" r="10" fill="#22252e" />
+            <circle cx="52" cy="38" r="4" fill="#ffd25e" />
+          </g>
+        </>
+      );
+    case "retail":
+      return (
+        <>
+          {ground("#f3c7d6", "M0 170 H320 V200 H0Z")}
+          <rect x="40" y="58" width="240" height="114" rx="6" fill="#fff" />
+          <path d="M34 58 H286 L276 86 H44Z" fill="#ff7aa2" />
+          {[0, 1, 2, 3, 4, 5].map((i) => <path key={i} d={`M${44 + i * 40} 86 a20 14 0 0 0 40 0`} fill={i % 2 ? "#ff7aa2" : "#fff"} stroke="#ff7aa2" strokeWidth="2" />)}
+          <rect x="58" y="108" width="86" height="56" rx="4" fill="#ffe6ef" />
+          <rect x="176" y="108" width="34" height="64" rx="3" fill="#7d5bd6" />
+          <circle cx="204" cy="142" r="2.5" fill="#ffd25e" />
+          <rect x="226" y="108" width="40" height="40" rx="4" fill="#ffe6ef" />
+          <g transform="translate(78 126)">
+            <path d="M0 10 H22 L18 34 H4Z" fill="#14b8a6" />
+            <path d="M5 10 Q11 -2 17 10" stroke="#0d9488" strokeWidth="2.5" fill="none" />
+            <path d="M28 6 H50 L46 34 H32Z" fill="#ffb347" />
+            <path d="M33 6 Q39 -6 45 6" stroke="#e08a1d" strokeWidth="2.5" fill="none" />
+          </g>
+          <g transform="translate(238 118)">
+            <rect x="-6" y="0" width="28" height="20" rx="3" fill="#ffd25e" />
+            <path d="M0 6 h16 M0 12 h10" stroke="#8a5a00" strokeWidth="2" />
+          </g>
+        </>
+      );
+    case "office":
+      return (
+        <>
+          {ground("#b9c9de", "M0 168 H320 V200 H0Z")}
+          <rect x="196" y="34" width="96" height="70" rx="6" fill="#fff" />
+          {[0, 1, 2].map((i) => <rect key={i} x={206} y={46 + i * 18} width={i === 1 ? 56 : 76} height="8" rx="4" fill="#c9d6ea" />)}
+          <rect x="24" y="44" width="70" height="124" rx="4" fill="#8aa6cc" />
+          {[0, 1, 2].map((i) => (
+            <g key={i}>
+              <rect x="30" y={52 + i * 38} width="58" height="32" rx="3" fill="#a9bfdd" />
+              <rect x="52" y={64 + i * 38} width="14" height="5" rx="2" fill="#5d7a92" />
+            </g>
+          ))}
+          <rect x="108" y="134" width="176" height="10" rx="3" fill="#7a5c45" />
+          <rect x="120" y="144" width="8" height="26" fill="#7a5c45" />
+          <rect x="264" y="144" width="8" height="26" fill="#7a5c45" />
+          <rect x="146" y="86" width="72" height="46" rx="4" fill="#2e3f73" />
+          <rect x="151" y="91" width="62" height="34" rx="2" fill="#cfe7f7" />
+          <rect x="176" y="132" width="12" height="4" fill="#2e3f73" />
+          <rect x="230" y="118" width="30" height="16" rx="3" fill="#ffd25e" />
+          {person(126, 92, "#14b8a6", "#c98e66", "#2b1d16", 0.9)}
+        </>
+      );
+    case "manufacturing":
+      return (
+        <>
+          <path d="M0 50 H320 V200 H0Z" fill="#dfe6f0" />
+          <path d="M20 96 V60 L80 82 V60 L140 82 V60 L200 82 V96Z" fill="#94a3b8" />
+          <rect x="230" y="30" width="18" height="66" fill="#7b8794" />
+          <ellipse cx="246" cy="24" rx="16" ry="8" fill="#fff" opacity="0.8" />
+          <rect x="0" y="96" width="320" height="104" fill="#c4cfdd" />
+          <rect x="20" y="146" width="280" height="12" rx="6" fill="#3b4558" />
+          {[36, 76, 116, 156, 196, 236, 276].map((x) => <circle key={x} cx={x} cy="152" r="5" fill="#7b8794" />)}
+          {[50, 128, 206].map((x, i) => <rect key={x} x={x} y="122" width="34" height="24" rx="3" fill={["#ffb347", "#14b8a6", "#7d5bd6"][i]} />)}
+          <g transform="translate(250 104)">
+            <rect x="0" y="0" width="14" height="40" fill="#f59e0b" />
+            <path d="M7 4 L-22 18" stroke="#f59e0b" strokeWidth="8" strokeLinecap="round" />
+            <path d="M-22 18 v10" stroke="#3b4558" strokeWidth="4" />
+          </g>
+          {person(110, 104, "#ff8a5b", "#f2c4a0", "#3b2a20", 0.8)}
+          <rect x="101" y="96" width="18" height="6" rx="3" fill="#ffd25e" />
         </>
       );
     case "transport":

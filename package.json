@@ -2,7 +2,7 @@
   "name": "bcome",
   "version": "0.1.0",
   "private": true,
-  "description": "Automated career advisor for Australian Year 10–12 students: RIASEC questionnaire, future-of-work data and AI-written career plans.",
+  "description": "Automated career advisor for Australian Year 10\u201312 students: RIASEC questionnaire, future-of-work data and AI-written career plans.",
   "type": "module",
   "engines": {
     "node": ">=22.18"
@@ -19,7 +19,8 @@
     "data:import-jsa": "node --experimental-strip-types scripts/import-jsa.ts",
     "db:seed-sql": "node --experimental-strip-types scripts/build-seed-sql.ts",
     "data:import-earnings": "node --experimental-strip-types scripts/import-earnings.ts",
-    "school": "node --experimental-strip-types scripts/school-admin.ts"
+    "school": "node --experimental-strip-types scripts/school-admin.ts",
+    "data:import-labour": "python3 scripts/import-labour-market.py"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.0",

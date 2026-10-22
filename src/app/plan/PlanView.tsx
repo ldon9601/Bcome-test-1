@@ -11,6 +11,7 @@ import { StatsCard } from "@/components/StatsCard.tsx";
 import { Tags } from "@/components/Tags.tsx";
 import { formatRange, formatYears, ROUTE_LABEL } from "@/lib/careers/facts.ts";
 import { JsaProfileCard, TafeCourse, UniversityCourse } from "@/components/Courses.tsx";
+import { LabourPanel } from "@/components/Labour.tsx";
 import type { ResultMatch } from "@/lib/advise.ts";
 import type { CareerPlan, PlanCareer } from "@/lib/plan/types.ts";
 import { readActivity, readShortlist, recordVisit, streakFrom, toggleShortlist, xpFor } from "@/lib/progress/gamification.ts";
@@ -154,6 +155,7 @@ function FeatureCard({ c, m, saved, onToggle, onOpen, journeyHref }: { c: PlanCa
           {formatRange(m.salary.entry)} starting
           {m.anzsco?.profile?.medianWeeklyEarnings ? <> · JSA median full-time pay ${m.anzsco.profile.medianWeeklyEarnings.toLocaleString("en-AU")}/wk</> : null}
         </p>
+        <VacancyLine m={m} />
         <CourseTeaser m={m} onOpen={onOpen} />
       </div>
       <div className="feature-why">
@@ -190,6 +192,7 @@ function MatchCard({ c, m, saved, onToggle, onOpen }: { c: PlanCareer; m: Result
       <p className="small" style={{ margin: 0 }}>
         Future opportunity {c.scores!.futureOpportunity} · Pathway {c.scores!.pathwayFeasibility}
       </p>
+      <VacancyLine m={m} compact />
       <div className="actions">
         <button className="button outline" onClick={onOpen}>
           View Career <Icon name="arrowRight" size={16} />
@@ -197,6 +200,26 @@ function MatchCard({ c, m, saved, onToggle, onOpen }: { c: PlanCareer; m: Result
         <SaveButton osca={c.occupationId} saved={saved} onToggle={onToggle} title={c.title} />
       </div>
     </article>
+  );
+}
+
+/** Skill level and vacancies as they stood when the assessment was completed. */
+function VacancyLine({ m, compact }: { m: ResultMatch; compact?: boolean }) {
+  const l = m.labour;
+  if (!l) return null;
+  const tnv = l.vacancies.tnv;
+  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const q = tnv ? `${months[Number(tnv.quarter.slice(5, 7)) - 1]} ${tnv.quarter.slice(0, 4)}` : "";
+  return (
+    <p className="vacancy-line small">
+      <span className="code-chip mini">Skill level {l.skillLevel.levels.length > 1 ? `${Math.min(...l.skillLevel.levels)}–${Math.max(...l.skillLevel.levels)}` : l.skillLevel.primary}</span>
+      {tnv?.estimate != null && (
+        <span>
+          <Icon name="briefcase" size={13} /> about {tnv.estimate.toLocaleString("en-AU")} new vacancies{compact ? "" : " for jobs like this"} ({q} quarter)
+        </span>
+      )}
+      {!compact && l.projection?.growth10Pct != null && <span>· {l.projection.growth10Pct >= 0 ? "+" : ""}{l.projection.growth10Pct}% projected by 2035</span>}
+    </p>
   );
 }
 
@@ -361,12 +384,19 @@ function CareerDetail({ c, m }: { c: PlanCareer; m: ResultMatch }) {
           <strong>How to get there:</strong> {c.howToGetThere}
         </p>
         <CoursesSection m={m} />
-        {m.anzsco && (
+        {m.origin === "jsa-unit-group" && (
+          <p className="notice">
+            <Icon name="spark" size={16} /> This career was added from Jobs and Skills Australia&apos;s 2025 occupation data. Its fit is worked out the same way
+            as every other career, using a profile Bcome estimated from similar jobs, so talk it through with your careers adviser.
+          </p>
+        )}
+        {m.anzsco?.profile && (
           <>
             <h4 style={{ marginTop: "1rem" }}>The job in numbers</h4>
             <JsaProfileCard unitGroup={m.anzsco.unitGroup} title={m.anzsco.title} occupation={m.anzsco.occupation} profile={m.anzsco.profile} />
           </>
         )}
+        <LabourPanel osca={m.osca} state={m.labour?.vacancies.ivi?.state ?? null} snapshot={m.labour ?? null} />
         {facts && (
           <>
             <h4>Ways in</h4>
@@ -387,7 +417,7 @@ function CareerDetail({ c, m }: { c: PlanCareer; m: ResultMatch }) {
               ))}
             </ul>
             <p className="source">
-              OSCA {facts.osca}: {facts.oscaTitle}
+              {facts.osca.startsWith("A") ? <>ANZSCO {m.anzsco?.unitGroup ?? facts.osca.slice(1)} · OSCA code to be confirmed</> : <>OSCA {facts.osca}: {facts.oscaTitle}</>}
               {m.evidence && <> · Sources: {[...new Set(Object.values(m.evidence).map((e) => e.split(" (")[0]))].join("; ")}</>}
             </p>
           </>

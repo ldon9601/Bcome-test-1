@@ -1,0 +1,147 @@
+{
+ "source": {
+  "title": "Jobs and Skills Australia, 2025 Occupation Shortage List Key Findings Report (charts and tables)",
+  "url": "https://www.jobsandskills.gov.au/data/occupation-shortages-analysis/occupation-shortage-list",
+  "note": "Share of occupations rated in shortage, OSCA basis. The 2025 OSL assessment covers April 2024 to June 2025.",
+  "retrieved": "2026-10-23"
+ },
+ "years": [
+  "2021",
+  "2022",
+  "2023",
+  "2024",
+  "2025"
+ ],
+ "byMajorGroup": {
+  "Managers": [
+   12.1,
+   9.7,
+   7.3,
+   5.6,
+   1.6
+  ],
+  "Professionals": [
+   23.1,
+   39.3,
+   48.1,
+   44.9,
+   38.7
+  ],
+  "Technicians and Trades Workers": [
+   45.0,
+   46.7,
+   50.7,
+   51.6,
+   48.9
+  ],
+  "Community and Personal Service Workers": [
+   11.7,
+   21.4,
+   24.6,
+   22.2,
+   15.1
+  ],
+  "Clerical and Administrative Workers": [
+   0.0,
+   5.6,
+   8.5,
+   4.2,
+   2.8
+  ],
+  "Sales Workers": [
+   0.0,
+   5.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "Machinery Operators and Drivers": [
+   18.0,
+   32.4,
+   39.4,
+   25.4,
+   28.2
+  ],
+  "Labourers": [
+   0.0,
+   29.5,
+   40.9,
+   18.2,
+   18.2
+  ],
+  "All occupations": [
+   21.6,
+   31.2,
+   36.2,
+   32.6,
+   28.7
+  ]
+ },
+ "bySkillLevel": {
+  "Skill Level 1": [
+   21.9,
+   33.3,
+   40.3,
+   37.3,
+   31.4
+  ],
+  "Skill Level 2": [
+   12.4,
+   19.7,
+   20.4,
+   21.1,
+   19.1
+  ],
+  "Skill Level 3": [
+   38.1,
+   44.2,
+   48.5,
+   46.4,
+   42.9
+  ],
+  "Skill Level 4": [
+   8.3,
+   21.1,
+   25.8,
+   16.4,
+   14.6
+  ],
+  "All occupations": [
+   21.6,
+   31.2,
+   36.2,
+   32.6,
+   28.7
+  ]
+ },
+ "applicantsPerVacancy": {
+  "years": [
+   "2020-21",
+   "2021-22",
+   "2022-23",
+   "2023-24",
+   "2024-25"
+  ],
+  "Total applicants per vacancy": [
+   13.5,
+   13.6,
+   16.0,
+   24.2,
+   27.5
+  ],
+  "Qualified applicants per vacancy": [
+   6.6,
+   5.0,
+   5.6,
+   7.6,
+   9.3
+  ],
+  "Suitable applicants per vacancy": [
+   2.9,
+   2.3,
+   2.6,
+   3.0,
+   4.3
+  ]
+ }
+}

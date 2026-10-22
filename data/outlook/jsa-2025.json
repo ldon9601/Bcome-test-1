@@ -1,67 +1,4935 @@
 {
-  "source": {
-    "title": "Jobs and Skills Australia, 2025 Employment Projections (May 2025 to May 2035)",
-    "url": "https://www.jobsandskills.gov.au/data/employment-projections",
-    "summaryUrl": "https://www.jobsandskills.gov.au/sites/default/files/2025-12/employment_projection_-_summary.pdf",
-    "publisher": "Jobs and Skills Australia (projections produced by Victoria University)",
-    "licence": "Check the JSA website for current licence and attribution terms before publishing",
-    "baseline": "May 2025",
-    "horizon5": "May 2030",
-    "horizon10": "May 2035",
-    "retrieved": "2026-10-21",
-    "coverage": "Summary figures only. Run `npm run data:import-jsa -- <file.xlsx>` with the official occupation file to load projections for every occupation."
+ "source": {
+  "title": "Jobs and Skills Australia, 2025 Employment Projections (May 2025 to May 2035)",
+  "url": "https://www.jobsandskills.gov.au/data/employment-projections",
+  "summaryUrl": "https://www.jobsandskills.gov.au/sites/default/files/2025-12/employment_projection_-_summary.pdf",
+  "publisher": "Jobs and Skills Australia (projections produced by Victoria University)",
+  "licence": "Check the JSA website for current licence and attribution terms before publishing",
+  "baseline": "May 2025",
+  "horizon5": "May 2030",
+  "horizon10": "May 2035",
+  "retrieved": "2026-10-23",
+  "coverage": "All 358 ANZSCO unit groups (Table 6), major groups, skill levels and industry divisions, imported from the JSA workbook with scripts/import-labour-market.py.",
+  "classification": "ANZSCO version 1.3 and ANZSIC 2006 (Revision 2.0), as published by JSA"
+ },
+ "total": {
+  "employed2025k": 14701.0,
+  "employed2035k": 16655.5,
+  "growth5Pct": 6.5,
+  "growth10Pct": 13.3,
+  "growth10k": 1954.5
+ },
+ "majorGroups": {
+  "1": {
+   "name": "Managers",
+   "employed2025k": 1872.7,
+   "growth5Pct": 7.7,
+   "growth10Pct": 14.9
   },
-  "total": { "employed2025k": 14701.0, "growth5Pct": 6.5, "growth10Pct": 13.3, "growth10k": 1954.5 },
-  "majorGroups": {
-    "1": { "name": "Managers", "growth5Pct": 7.7, "growth10Pct": 14.9 },
-    "2": { "name": "Professionals", "growth5Pct": 11.6, "growth10Pct": 21.4 },
-    "3": { "name": "Technicians and Trades Workers", "growth5Pct": null, "growth10Pct": 9.8 },
-    "4": { "name": "Community and Personal Service Workers", "growth5Pct": 7.1, "growth10Pct": 13.7 },
-    "5": { "name": "Clerical and Administrative Workers", "growth5Pct": null, "growth10Pct": null, "qualitative": "weak or negative" },
-    "6": { "name": "Sales Workers", "growth5Pct": null, "growth10Pct": null },
-    "7": { "name": "Machinery Operators and Drivers", "growth5Pct": null, "growth10Pct": null },
-    "8": { "name": "Labourers", "growth5Pct": null, "growth10Pct": null, "qualitative": "weak or negative" }
+  "2": {
+   "name": "Professionals",
+   "employed2025k": 3953.3,
+   "growth5Pct": 11.6,
+   "growth10Pct": 21.4
   },
-  "occupations": {
-    "2525": { "name": "Physiotherapists", "growth10Pct": 33.6 },
-    "4232": { "name": "Dental Assistants", "growth10Pct": 26.8 },
-    "1342": { "name": "Health and Welfare Services Managers", "growth10Pct": 27.1 },
-    "1351": { "name": "ICT Managers", "growth10Pct": 25.5 },
-    "4233": { "name": "Nursing Support and Personal Care Workers", "growth10Pct": 24.7 },
-    "1325": { "name": "Research and Development Managers", "growth10Pct": 22.8 },
-    "4111": { "name": "Ambulance Officers and Paramedics", "growth10Pct": 22.6 }
+  "3": {
+   "name": "Technicians and Trades Workers",
+   "employed2025k": 1994.1,
+   "growth5Pct": 4.6,
+   "growth10Pct": 9.8
   },
-  "industries": {
-    "Health Care and Social Assistance": 23,
-    "Professional, Scientific and Technical Services": 19,
-    "Financial and Insurance Services": 14,
-    "Rental, Hiring and Real Estate Services": 14,
-    "Information Media and Telecommunications": 13,
-    "Wholesale Trade": 13,
-    "Manufacturing": 12,
-    "Electricity, Gas, Water and Waste Services": 12,
-    "Construction": 12,
-    "Public Administration and Safety": 12,
-    "Education and Training": 12,
-    "Arts and Recreation Services": 11,
-    "Accommodation and Food Services": 10,
-    "Mining": 9,
-    "Transport, Postal and Warehousing": 9,
-    "Administrative and Support Services": 9,
-    "Other Services": 8,
-    "Retail Trade": 7,
-    "Agriculture, Forestry and Fishing": 5
+  "4": {
+   "name": "Community and Personal Service Workers",
+   "employed2025k": 1725.4,
+   "growth5Pct": 7.1,
+   "growth10Pct": 13.7
   },
-  "skillLevels": {
-    "1": { "label": "Bachelor degree or higher", "growth10Pct": 20.5 },
-    "2": { "label": "Advanced diploma or diploma", "growth10Pct": 11.5 },
-    "3": { "label": "Certificate IV or III (with experience)", "growth10Pct": 8.6 },
-    "4": { "label": "Certificate II or III", "growth10Pct": 11.0 },
-    "5": { "label": "Certificate I or secondary education", "growth10Pct": 5.4 }
+  "5": {
+   "name": "Clerical and Administrative Workers",
+   "employed2025k": 1870.8,
+   "growth5Pct": 3.9,
+   "growth10Pct": 9.5
   },
-  "headlines": [
-    "Over 90% of employment growth to May 2035 is in jobs that usually need a post-school qualification (skill levels 1 to 4).",
-    "Services industries account for about 84% of projected employment growth.",
-    "Health Care and Social Assistance has the fastest projected industry growth (23% over 10 years)."
-  ]
+  "6": {
+   "name": "Sales Workers",
+   "employed2025k": 1154.7,
+   "growth5Pct": 2.5,
+   "growth10Pct": 7.1
+  },
+  "7": {
+   "name": "Machinery Operators and Drivers",
+   "employed2025k": 909.7,
+   "growth5Pct": 4.1,
+   "growth10Pct": 8.8
+  },
+  "8": {
+   "name": "Labourers",
+   "employed2025k": 1220.4,
+   "growth5Pct": 0.8,
+   "growth10Pct": 4.8
+  }
+ },
+ "occupations": {
+  "1111": {
+   "name": "Chief Executives and Managing Directors",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 61.2,
+   "employed2030k": 65.4,
+   "employed2035k": 69.8,
+   "growth5Pct": 6.9,
+   "growth10Pct": 14.1
+  },
+  "1112": {
+   "name": "General Managers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 71.3,
+   "employed2030k": 75.9,
+   "employed2035k": 81.1,
+   "growth5Pct": 6.5,
+   "growth10Pct": 13.7
+  },
+  "1113": {
+   "name": "Legislators",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 2.8,
+   "employed2030k": 3.0,
+   "employed2035k": 3.1,
+   "growth5Pct": 5.9,
+   "growth10Pct": 10.9
+  },
+  "1211": {
+   "name": "Aquaculture Farmers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 1.9,
+   "employed2030k": 2.0,
+   "employed2035k": 2.2,
+   "growth5Pct": 8.7,
+   "growth10Pct": 17.6
+  },
+  "1212": {
+   "name": "Crop Farmers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 33.2,
+   "employed2030k": 32.9,
+   "employed2035k": 34.7,
+   "growth5Pct": -0.8,
+   "growth10Pct": 4.6
+  },
+  "1213": {
+   "name": "Livestock Farmers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 78.9,
+   "employed2030k": 76.6,
+   "employed2035k": 79.8,
+   "growth5Pct": -2.9,
+   "growth10Pct": 1.2
+  },
+  "1214": {
+   "name": "Mixed Crop and Livestock Farmers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 27.6,
+   "employed2030k": 26.8,
+   "employed2035k": 28.0,
+   "growth5Pct": -2.7,
+   "growth10Pct": 1.4
+  },
+  "1311": {
+   "name": "Advertising, Public Relations and Sales Managers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 165.4,
+   "employed2030k": 180.9,
+   "employed2035k": 194.4,
+   "growth5Pct": 9.4,
+   "growth10Pct": 17.5
+  },
+  "1321": {
+   "name": "Corporate Services Managers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 21.7,
+   "employed2030k": 24.4,
+   "employed2035k": 26.4,
+   "growth5Pct": 12.6,
+   "growth10Pct": 21.9
+  },
+  "1322": {
+   "name": "Finance Managers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 76.3,
+   "employed2030k": 85.8,
+   "employed2035k": 93.0,
+   "growth5Pct": 12.4,
+   "growth10Pct": 21.9
+  },
+  "1323": {
+   "name": "Human Resource Managers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 92.9,
+   "employed2030k": 104.4,
+   "employed2035k": 113.1,
+   "growth5Pct": 12.4,
+   "growth10Pct": 21.8
+  },
+  "1324": {
+   "name": "Policy and Planning Managers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 39.3,
+   "employed2030k": 44.1,
+   "employed2035k": 47.3,
+   "growth5Pct": 12.1,
+   "growth10Pct": 20.3
+  },
+  "1325": {
+   "name": "Research and Development Managers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 19.8,
+   "employed2030k": 22.3,
+   "employed2035k": 24.3,
+   "growth5Pct": 12.8,
+   "growth10Pct": 22.8
+  },
+  "1331": {
+   "name": "Construction Managers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 128.2,
+   "employed2030k": 147.3,
+   "employed2035k": 156.6,
+   "growth5Pct": 14.9,
+   "growth10Pct": 22.2
+  },
+  "1332": {
+   "name": "Engineering Managers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 34.8,
+   "employed2030k": 37.6,
+   "employed2035k": 40.3,
+   "growth5Pct": 8.3,
+   "growth10Pct": 15.8
+  },
+  "1333": {
+   "name": "Importers, Exporters and Wholesalers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 18.6,
+   "employed2030k": 20.2,
+   "employed2035k": 21.7,
+   "growth5Pct": 8.3,
+   "growth10Pct": 16.4
+  },
+  "1334": {
+   "name": "Manufacturers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 21.7,
+   "employed2030k": 23.9,
+   "employed2035k": 25.8,
+   "growth5Pct": 10.1,
+   "growth10Pct": 18.8
+  },
+  "1335": {
+   "name": "Production Managers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 62.2,
+   "employed2030k": 67.8,
+   "employed2035k": 72.7,
+   "growth5Pct": 9.0,
+   "growth10Pct": 16.8
+  },
+  "1336": {
+   "name": "Supply, Distribution and Procurement Managers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 55.5,
+   "employed2030k": 59.9,
+   "employed2035k": 64.1,
+   "growth5Pct": 8.1,
+   "growth10Pct": 15.5
+  },
+  "1341": {
+   "name": "Child Care Centre Managers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 18.9,
+   "employed2030k": 20.6,
+   "employed2035k": 21.9,
+   "growth5Pct": 9.0,
+   "growth10Pct": 15.9
+  },
+  "1342": {
+   "name": "Health and Welfare Services Managers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 44.3,
+   "employed2030k": 51.0,
+   "employed2035k": 56.2,
+   "growth5Pct": 15.2,
+   "growth10Pct": 27.1
+  },
+  "1343": {
+   "name": "School Principals",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 29.0,
+   "employed2030k": 31.4,
+   "employed2035k": 33.3,
+   "growth5Pct": 8.3,
+   "growth10Pct": 15.0
+  },
+  "1344": {
+   "name": "Other Education Managers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 15.7,
+   "employed2030k": 17.3,
+   "employed2035k": 18.8,
+   "growth5Pct": 9.7,
+   "growth10Pct": 19.6
+  },
+  "1351": {
+   "name": "ICT Managers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 89.9,
+   "employed2030k": 103.4,
+   "employed2035k": 112.8,
+   "growth5Pct": 15.0,
+   "growth10Pct": 25.5
+  },
+  "1391": {
+   "name": "Commissioned Officers (Management)",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 4.4,
+   "employed2030k": 4.9,
+   "employed2035k": 5.1,
+   "growth5Pct": 10.9,
+   "growth10Pct": 17.5
+  },
+  "1392": {
+   "name": "Senior Non-commissioned Defence Force Members",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 0.3,
+   "employed2030k": 0.3,
+   "employed2035k": 0.3,
+   "growth5Pct": 10.5,
+   "growth10Pct": 16.7
+  },
+  "1399": {
+   "name": "Other Specialist Managers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 68.8,
+   "employed2030k": 76.8,
+   "employed2035k": 82.9,
+   "growth5Pct": 11.5,
+   "growth10Pct": 20.4
+  },
+  "1411": {
+   "name": "Cafe and Restaurant Managers",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 64.5,
+   "employed2030k": 65.6,
+   "employed2035k": 69.1,
+   "growth5Pct": 1.7,
+   "growth10Pct": 7.2
+  },
+  "1412": {
+   "name": "Caravan Park and Camping Ground Managers",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 3.2,
+   "employed2030k": 3.2,
+   "employed2035k": 3.5,
+   "growth5Pct": 0.1,
+   "growth10Pct": 7.6
+  },
+  "1413": {
+   "name": "Hotel and Motel Managers",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 18.2,
+   "employed2030k": 18.4,
+   "employed2035k": 19.6,
+   "growth5Pct": 0.9,
+   "growth10Pct": 7.4
+  },
+  "1414": {
+   "name": "Licensed Club Managers",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 6.5,
+   "employed2030k": 6.6,
+   "employed2035k": 6.9,
+   "growth5Pct": 1.7,
+   "growth10Pct": 7.0
+  },
+  "1419": {
+   "name": "Other Accommodation and Hospitality Managers",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 10.5,
+   "employed2030k": 10.7,
+   "employed2035k": 11.5,
+   "growth5Pct": 2.1,
+   "growth10Pct": 9.3
+  },
+  "1421": {
+   "name": "Retail Managers",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 250.7,
+   "employed2030k": 255.8,
+   "employed2035k": 267.7,
+   "growth5Pct": 2.0,
+   "growth10Pct": 6.8
+  },
+  "1491": {
+   "name": "Amusement, Fitness and Sports Centre Managers",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 19.7,
+   "employed2030k": 20.8,
+   "employed2035k": 22.1,
+   "growth5Pct": 5.7,
+   "growth10Pct": 12.1
+  },
+  "1492": {
+   "name": "Call or Contact Centre and Customer Service Managers",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 39.5,
+   "employed2030k": 42.2,
+   "employed2035k": 44.8,
+   "growth5Pct": 6.8,
+   "growth10Pct": 13.4
+  },
+  "1493": {
+   "name": "Conference and Event Organisers",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 30.3,
+   "employed2030k": 32.0,
+   "employed2035k": 34.0,
+   "growth5Pct": 5.6,
+   "growth10Pct": 12.2
+  },
+  "1494": {
+   "name": "Transport Services Managers",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 20.0,
+   "employed2030k": 21.2,
+   "employed2035k": 22.5,
+   "growth5Pct": 6.0,
+   "growth10Pct": 12.2
+  },
+  "1499": {
+   "name": "Other Hospitality, Retail and Service Managers",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 92.7,
+   "employed2030k": 99.0,
+   "employed2035k": 105.2,
+   "growth5Pct": 6.7,
+   "growth10Pct": 13.4
+  },
+  "2111": {
+   "name": "Actors, Dancers and Other Entertainers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 7.9,
+   "employed2030k": 8.3,
+   "employed2035k": 8.8,
+   "growth5Pct": 5.2,
+   "growth10Pct": 11.7
+  },
+  "2112": {
+   "name": "Music Professionals",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 10.7,
+   "employed2030k": 11.2,
+   "employed2035k": 11.8,
+   "growth5Pct": 5.0,
+   "growth10Pct": 11.0
+  },
+  "2113": {
+   "name": "Photographers",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 15.2,
+   "employed2030k": 16.1,
+   "employed2035k": 17.2,
+   "growth5Pct": 6.0,
+   "growth10Pct": 12.8
+  },
+  "2114": {
+   "name": "Visual Arts and Crafts Professionals",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 12.3,
+   "employed2030k": 13.0,
+   "employed2035k": 13.7,
+   "growth5Pct": 5.6,
+   "growth10Pct": 11.8
+  },
+  "2121": {
+   "name": "Artistic Directors, and Media Producers and Presenters",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 14.3,
+   "employed2030k": 15.7,
+   "employed2035k": 17.0,
+   "growth5Pct": 9.7,
+   "growth10Pct": 18.9
+  },
+  "2122": {
+   "name": "Authors, and Book and Script Editors",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 6.0,
+   "employed2030k": 6.6,
+   "employed2035k": 7.1,
+   "growth5Pct": 9.5,
+   "growth10Pct": 18.2
+  },
+  "2123": {
+   "name": "Film, Television, Radio and Stage Directors",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 15.5,
+   "employed2030k": 17.0,
+   "employed2035k": 18.4,
+   "growth5Pct": 9.7,
+   "growth10Pct": 19.1
+  },
+  "2124": {
+   "name": "Journalists and Other Writers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 23.3,
+   "employed2030k": 25.6,
+   "employed2035k": 27.7,
+   "growth5Pct": 9.5,
+   "growth10Pct": 18.7
+  },
+  "2211": {
+   "name": "Accountants",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 210.3,
+   "employed2030k": 228.0,
+   "employed2035k": 245.3,
+   "growth5Pct": 8.4,
+   "growth10Pct": 16.6
+  },
+  "2212": {
+   "name": "Auditors, Company Secretaries and Corporate Treasurers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 31.5,
+   "employed2030k": 34.1,
+   "employed2035k": 36.6,
+   "growth5Pct": 8.0,
+   "growth10Pct": 15.9
+  },
+  "2221": {
+   "name": "Financial Brokers",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 50.6,
+   "employed2030k": 53.7,
+   "employed2035k": 57.0,
+   "growth5Pct": 6.0,
+   "growth10Pct": 12.6
+  },
+  "2222": {
+   "name": "Financial Dealers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 21.2,
+   "employed2030k": 22.4,
+   "employed2035k": 23.9,
+   "growth5Pct": 5.4,
+   "growth10Pct": 12.5
+  },
+  "2223": {
+   "name": "Financial Investment Advisers and Managers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 65.8,
+   "employed2030k": 69.9,
+   "employed2035k": 74.2,
+   "growth5Pct": 6.1,
+   "growth10Pct": 12.7
+  },
+  "2231": {
+   "name": "Human Resource Professionals",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 89.7,
+   "employed2030k": 96.3,
+   "employed2035k": 102.9,
+   "growth5Pct": 7.4,
+   "growth10Pct": 14.8
+  },
+  "2232": {
+   "name": "ICT Trainers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 3.0,
+   "employed2030k": 3.2,
+   "employed2035k": 3.4,
+   "growth5Pct": 8.4,
+   "growth10Pct": 16.1
+  },
+  "2233": {
+   "name": "Training and Development Professionals",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 31.8,
+   "employed2030k": 34.2,
+   "employed2035k": 36.5,
+   "growth5Pct": 7.5,
+   "growth10Pct": 14.9
+  },
+  "2241": {
+   "name": "Actuaries, Mathematicians and Statisticians",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 12.5,
+   "employed2030k": 14.5,
+   "employed2035k": 15.9,
+   "growth5Pct": 16.1,
+   "growth10Pct": 27.5
+  },
+  "2242": {
+   "name": "Archivists, Curators and Records Managers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 10.2,
+   "employed2030k": 12.0,
+   "employed2035k": 13.2,
+   "growth5Pct": 17.3,
+   "growth10Pct": 29.1
+  },
+  "2243": {
+   "name": "Economists",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 4.4,
+   "employed2030k": 5.1,
+   "employed2035k": 5.6,
+   "growth5Pct": 15.7,
+   "growth10Pct": 26.0
+  },
+  "2244": {
+   "name": "Intelligence and Policy Analysts",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 45.4,
+   "employed2030k": 52.7,
+   "employed2035k": 56.9,
+   "growth5Pct": 16.0,
+   "growth10Pct": 25.2
+  },
+  "2245": {
+   "name": "Land Economists and Valuers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 14.7,
+   "employed2030k": 17.4,
+   "employed2035k": 19.0,
+   "growth5Pct": 18.2,
+   "growth10Pct": 29.3
+  },
+  "2246": {
+   "name": "Librarians",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 11.3,
+   "employed2030k": 13.0,
+   "employed2035k": 14.2,
+   "growth5Pct": 15.7,
+   "growth10Pct": 25.9
+  },
+  "2247": {
+   "name": "Management and Organisation Analysts",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 107.7,
+   "employed2030k": 125.1,
+   "employed2035k": 137.1,
+   "growth5Pct": 16.2,
+   "growth10Pct": 27.3
+  },
+  "2249": {
+   "name": "Other Information and Organisation Professionals",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 57.1,
+   "employed2030k": 66.3,
+   "employed2035k": 72.3,
+   "growth5Pct": 16.0,
+   "growth10Pct": 26.6
+  },
+  "2251": {
+   "name": "Advertising and Marketing Professionals",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 103.0,
+   "employed2030k": 115.9,
+   "employed2035k": 125.7,
+   "growth5Pct": 12.6,
+   "growth10Pct": 22.1
+  },
+  "2252": {
+   "name": "ICT Sales Professionals",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 17.2,
+   "employed2030k": 19.5,
+   "employed2035k": 21.2,
+   "growth5Pct": 13.6,
+   "growth10Pct": 23.1
+  },
+  "2253": {
+   "name": "Public Relations Professionals",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 30.8,
+   "employed2030k": 34.6,
+   "employed2035k": 37.3,
+   "growth5Pct": 12.3,
+   "growth10Pct": 21.2
+  },
+  "2254": {
+   "name": "Technical Sales Representatives",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 27.9,
+   "employed2030k": 31.8,
+   "employed2035k": 34.8,
+   "growth5Pct": 14.0,
+   "growth10Pct": 24.6
+  },
+  "2311": {
+   "name": "Air Transport Professionals",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 15.5,
+   "employed2030k": 16.4,
+   "employed2035k": 17.6,
+   "growth5Pct": 5.7,
+   "growth10Pct": 13.7
+  },
+  "2312": {
+   "name": "Marine Transport Professionals",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 10.5,
+   "employed2030k": 11.1,
+   "employed2035k": 11.8,
+   "growth5Pct": 5.3,
+   "growth10Pct": 12.0
+  },
+  "2321": {
+   "name": "Architects and Landscape Architects",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 30.9,
+   "employed2030k": 34.1,
+   "employed2035k": 36.9,
+   "growth5Pct": 10.3,
+   "growth10Pct": 19.2
+  },
+  "2322": {
+   "name": "Surveyors and Spatial Scientists",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 19.6,
+   "employed2030k": 21.6,
+   "employed2035k": 23.2,
+   "growth5Pct": 10.2,
+   "growth10Pct": 18.6
+  },
+  "2323": {
+   "name": "Fashion, Industrial and Jewellery Designers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 14.6,
+   "employed2030k": 16.2,
+   "employed2035k": 17.7,
+   "growth5Pct": 11.2,
+   "growth10Pct": 20.9
+  },
+  "2324": {
+   "name": "Graphic and Web Designers, and Illustrators",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 55.7,
+   "employed2030k": 61.2,
+   "employed2035k": 66.2,
+   "growth5Pct": 9.9,
+   "growth10Pct": 19.0
+  },
+  "2325": {
+   "name": "Interior Designers",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 19.0,
+   "employed2030k": 21.1,
+   "employed2035k": 22.8,
+   "growth5Pct": 11.0,
+   "growth10Pct": 20.0
+  },
+  "2326": {
+   "name": "Urban and Regional Planners",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 20.5,
+   "employed2030k": 22.6,
+   "employed2035k": 24.1,
+   "growth5Pct": 9.9,
+   "growth10Pct": 17.6
+  },
+  "2331": {
+   "name": "Chemical and Materials Engineers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 7.1,
+   "employed2030k": 8.1,
+   "employed2035k": 8.8,
+   "growth5Pct": 13.2,
+   "growth10Pct": 23.2
+  },
+  "2332": {
+   "name": "Civil Engineering Professionals",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 76.3,
+   "employed2030k": 85.1,
+   "employed2035k": 92.3,
+   "growth5Pct": 11.6,
+   "growth10Pct": 21.0
+  },
+  "2333": {
+   "name": "Electrical Engineers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 32.2,
+   "employed2030k": 36.1,
+   "employed2035k": 39.3,
+   "growth5Pct": 12.0,
+   "growth10Pct": 21.8
+  },
+  "2334": {
+   "name": "Electronics Engineers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 5.6,
+   "employed2030k": 6.3,
+   "employed2035k": 6.9,
+   "growth5Pct": 12.2,
+   "growth10Pct": 22.9
+  },
+  "2335": {
+   "name": "Industrial, Mechanical and Production Engineers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 40.1,
+   "employed2030k": 45.2,
+   "employed2035k": 49.3,
+   "growth5Pct": 12.7,
+   "growth10Pct": 23.1
+  },
+  "2336": {
+   "name": "Mining Engineers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 15.5,
+   "employed2030k": 17.2,
+   "employed2035k": 18.4,
+   "growth5Pct": 11.2,
+   "growth10Pct": 18.5
+  },
+  "2339": {
+   "name": "Other Engineering Professionals",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 17.1,
+   "employed2030k": 19.2,
+   "employed2035k": 21.0,
+   "growth5Pct": 12.4,
+   "growth10Pct": 23.0
+  },
+  "2341": {
+   "name": "Agricultural and Forestry Scientists",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 9.4,
+   "employed2030k": 10.3,
+   "employed2035k": 11.1,
+   "growth5Pct": 8.8,
+   "growth10Pct": 17.5
+  },
+  "2342": {
+   "name": "Chemists, and Food and Wine Scientists",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 10.2,
+   "employed2030k": 11.3,
+   "employed2035k": 12.3,
+   "growth5Pct": 10.3,
+   "growth10Pct": 19.6
+  },
+  "2343": {
+   "name": "Environmental Scientists",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 31.5,
+   "employed2030k": 34.3,
+   "employed2035k": 36.8,
+   "growth5Pct": 8.9,
+   "growth10Pct": 16.6
+  },
+  "2344": {
+   "name": "Geologists, Geophysicists and Hydrogeologists",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 14.0,
+   "employed2030k": 15.4,
+   "employed2035k": 16.3,
+   "growth5Pct": 10.2,
+   "growth10Pct": 16.6
+  },
+  "2345": {
+   "name": "Life Scientists",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 10.5,
+   "employed2030k": 11.6,
+   "employed2035k": 12.6,
+   "growth5Pct": 10.0,
+   "growth10Pct": 19.8
+  },
+  "2346": {
+   "name": "Medical Laboratory Scientists",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 32.3,
+   "employed2030k": 36.4,
+   "employed2035k": 40.4,
+   "growth5Pct": 12.7,
+   "growth10Pct": 24.8
+  },
+  "2347": {
+   "name": "Veterinarians",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 13.1,
+   "employed2030k": 14.3,
+   "employed2035k": 15.5,
+   "growth5Pct": 9.1,
+   "growth10Pct": 17.8
+  },
+  "2349": {
+   "name": "Other Natural and Physical Science Professionals",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 14.9,
+   "employed2030k": 16.8,
+   "employed2035k": 18.5,
+   "growth5Pct": 13.1,
+   "growth10Pct": 24.7
+  },
+  "2411": {
+   "name": "Early Childhood (Pre-primary School) Teachers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 79.8,
+   "employed2030k": 84.4,
+   "employed2035k": 89.4,
+   "growth5Pct": 5.7,
+   "growth10Pct": 12.1
+  },
+  "2412": {
+   "name": "Primary School Teachers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 168.6,
+   "employed2030k": 177.8,
+   "employed2035k": 188.4,
+   "growth5Pct": 5.5,
+   "growth10Pct": 11.7
+  },
+  "2413": {
+   "name": "Middle School Teachers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 1.2,
+   "employed2030k": 1.2,
+   "employed2035k": 1.3,
+   "growth5Pct": 5.5,
+   "growth10Pct": 11.9
+  },
+  "2414": {
+   "name": "Secondary School Teachers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 153.5,
+   "employed2030k": 161.9,
+   "employed2035k": 171.4,
+   "growth5Pct": 5.4,
+   "growth10Pct": 11.7
+  },
+  "2415": {
+   "name": "Special Education Teachers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 29.6,
+   "employed2030k": 31.4,
+   "employed2035k": 33.4,
+   "growth5Pct": 5.9,
+   "growth10Pct": 12.6
+  },
+  "2421": {
+   "name": "University Lecturers and Tutors",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 63.8,
+   "employed2030k": 69.5,
+   "employed2035k": 76.6,
+   "growth5Pct": 8.8,
+   "growth10Pct": 20.0
+  },
+  "2422": {
+   "name": "Vocational Education Teachers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 35.2,
+   "employed2030k": 38.4,
+   "employed2035k": 42.0,
+   "growth5Pct": 9.0,
+   "growth10Pct": 19.2
+  },
+  "2491": {
+   "name": "Education Advisers and Reviewers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 25.4,
+   "employed2030k": 27.2,
+   "employed2035k": 29.1,
+   "growth5Pct": 6.8,
+   "growth10Pct": 14.4
+  },
+  "2492": {
+   "name": "Private Tutors and Teachers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 45.4,
+   "employed2030k": 48.2,
+   "employed2035k": 51.7,
+   "growth5Pct": 6.2,
+   "growth10Pct": 13.8
+  },
+  "2493": {
+   "name": "Teachers of English to Speakers of Other Languages",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 4.2,
+   "employed2030k": 4.5,
+   "employed2035k": 4.8,
+   "growth5Pct": 6.3,
+   "growth10Pct": 14.1
+  },
+  "2511": {
+   "name": "Nutrition Professionals",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 10.9,
+   "employed2030k": 12.7,
+   "employed2035k": 14.2,
+   "growth5Pct": 16.6,
+   "growth10Pct": 30.4
+  },
+  "2512": {
+   "name": "Medical Imaging Professionals",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 22.9,
+   "employed2030k": 27.1,
+   "employed2035k": 30.5,
+   "growth5Pct": 18.1,
+   "growth10Pct": 33.1
+  },
+  "2513": {
+   "name": "Occupational and Environmental Health Professionals",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 40.0,
+   "employed2030k": 44.6,
+   "employed2035k": 47.9,
+   "growth5Pct": 11.3,
+   "growth10Pct": 19.8
+  },
+  "2514": {
+   "name": "Optometrists and Orthoptists",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 10.0,
+   "employed2030k": 11.9,
+   "employed2035k": 13.4,
+   "growth5Pct": 18.0,
+   "growth10Pct": 32.9
+  },
+  "2515": {
+   "name": "Pharmacists",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 42.0,
+   "employed2030k": 46.6,
+   "employed2035k": 50.4,
+   "growth5Pct": 10.9,
+   "growth10Pct": 20.0
+  },
+  "2519": {
+   "name": "Other Health Diagnostic and Promotion Professionals",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 10.4,
+   "employed2030k": 12.0,
+   "employed2035k": 13.3,
+   "growth5Pct": 15.0,
+   "growth10Pct": 27.0
+  },
+  "2521": {
+   "name": "Chiropractors and Osteopaths",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 8.9,
+   "employed2030k": 10.7,
+   "employed2035k": 12.2,
+   "growth5Pct": 20.1,
+   "growth10Pct": 36.0
+  },
+  "2522": {
+   "name": "Complementary Health Therapists",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 9.5,
+   "employed2030k": 11.3,
+   "employed2035k": 12.7,
+   "growth5Pct": 19.0,
+   "growth10Pct": 34.0
+  },
+  "2523": {
+   "name": "Dental Practitioners",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 24.5,
+   "employed2030k": 29.3,
+   "employed2035k": 33.2,
+   "growth5Pct": 20.0,
+   "growth10Pct": 35.8
+  },
+  "2524": {
+   "name": "Occupational Therapists",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 31.3,
+   "employed2030k": 37.2,
+   "employed2035k": 41.6,
+   "growth5Pct": 18.8,
+   "growth10Pct": 33.1
+  },
+  "2525": {
+   "name": "Physiotherapists",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 47.0,
+   "employed2030k": 56.2,
+   "employed2035k": 63.5,
+   "growth5Pct": 19.7,
+   "growth10Pct": 35.1
+  },
+  "2526": {
+   "name": "Podiatrists",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 6.1,
+   "employed2030k": 7.4,
+   "employed2035k": 8.3,
+   "growth5Pct": 20.0,
+   "growth10Pct": 35.7
+  },
+  "2527": {
+   "name": "Audiologists and Speech Pathologists \\ Therapists",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 22.1,
+   "employed2030k": 26.2,
+   "employed2035k": 29.3,
+   "growth5Pct": 18.5,
+   "growth10Pct": 32.7
+  },
+  "2531": {
+   "name": "General Practitioners and Resident Medical Officers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 89.0,
+   "employed2030k": 105.0,
+   "employed2035k": 118.3,
+   "growth5Pct": 18.0,
+   "growth10Pct": 33.0
+  },
+  "2532": {
+   "name": "Anaesthetists",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 7.1,
+   "employed2030k": 8.4,
+   "employed2035k": 9.4,
+   "growth5Pct": 18.1,
+   "growth10Pct": 33.2
+  },
+  "2533": {
+   "name": "Specialist Physicians",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 16.1,
+   "employed2030k": 19.0,
+   "employed2035k": 21.4,
+   "growth5Pct": 18.0,
+   "growth10Pct": 32.8
+  },
+  "2534": {
+   "name": "Psychiatrists",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 6.4,
+   "employed2030k": 7.5,
+   "employed2035k": 8.5,
+   "growth5Pct": 17.7,
+   "growth10Pct": 32.3
+  },
+  "2535": {
+   "name": "Surgeons",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 10.5,
+   "employed2030k": 12.3,
+   "employed2035k": 13.9,
+   "growth5Pct": 18.1,
+   "growth10Pct": 33.1
+  },
+  "2539": {
+   "name": "Other Medical Practitioners",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 21.7,
+   "employed2030k": 25.6,
+   "employed2035k": 28.9,
+   "growth5Pct": 18.0,
+   "growth10Pct": 33.0
+  },
+  "2541": {
+   "name": "Midwives",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 21.3,
+   "employed2030k": 24.2,
+   "employed2035k": 27.0,
+   "growth5Pct": 13.9,
+   "growth10Pct": 26.7
+  },
+  "2542": {
+   "name": "Nurse Educators and Researchers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 8.8,
+   "employed2030k": 9.9,
+   "employed2035k": 10.9,
+   "growth5Pct": 11.7,
+   "growth10Pct": 23.2
+  },
+  "2543": {
+   "name": "Nurse Managers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 21.9,
+   "employed2030k": 24.9,
+   "employed2035k": 27.6,
+   "growth5Pct": 13.6,
+   "growth10Pct": 26.1
+  },
+  "2544": {
+   "name": "Registered Nurses",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 363.8,
+   "employed2030k": 413.5,
+   "employed2035k": 458.6,
+   "growth5Pct": 13.7,
+   "growth10Pct": 26.1
+  },
+  "2611": {
+   "name": "ICT Business and Systems Analysts",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 51.4,
+   "employed2030k": 59.2,
+   "employed2035k": 64.7,
+   "growth5Pct": 15.1,
+   "growth10Pct": 25.9
+  },
+  "2612": {
+   "name": "Multimedia Specialists and Web Developers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 13.5,
+   "employed2030k": 15.6,
+   "employed2035k": 17.1,
+   "growth5Pct": 15.9,
+   "growth10Pct": 26.9
+  },
+  "2613": {
+   "name": "Software and Applications Programmers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 186.1,
+   "employed2030k": 215.3,
+   "employed2035k": 235.7,
+   "growth5Pct": 15.7,
+   "growth10Pct": 26.7
+  },
+  "2621": {
+   "name": "Database and Systems Administrators, and ICT Security Specialists",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 68.9,
+   "employed2030k": 78.5,
+   "employed2035k": 85.4,
+   "growth5Pct": 14.0,
+   "growth10Pct": 24.0
+  },
+  "2631": {
+   "name": "Computer Network Professionals",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 45.0,
+   "employed2030k": 51.7,
+   "employed2035k": 56.4,
+   "growth5Pct": 14.8,
+   "growth10Pct": 25.2
+  },
+  "2632": {
+   "name": "ICT Support and Test Engineers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 15.6,
+   "employed2030k": 17.9,
+   "employed2035k": 19.5,
+   "growth5Pct": 14.9,
+   "growth10Pct": 25.4
+  },
+  "2633": {
+   "name": "Telecommunications Engineering Professionals",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 15.4,
+   "employed2030k": 17.2,
+   "employed2035k": 18.8,
+   "growth5Pct": 11.4,
+   "growth10Pct": 21.9
+  },
+  "2711": {
+   "name": "Barristers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 8.7,
+   "employed2030k": 9.7,
+   "employed2035k": 10.5,
+   "growth5Pct": 11.7,
+   "growth10Pct": 20.9
+  },
+  "2712": {
+   "name": "Judicial and Other Legal Professionals",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 12.9,
+   "employed2030k": 14.4,
+   "employed2035k": 15.5,
+   "growth5Pct": 11.9,
+   "growth10Pct": 20.4
+  },
+  "2713": {
+   "name": "Solicitors",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 100.2,
+   "employed2030k": 111.9,
+   "employed2035k": 121.5,
+   "growth5Pct": 11.7,
+   "growth10Pct": 21.2
+  },
+  "2721": {
+   "name": "Counsellors",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 34.0,
+   "employed2030k": 38.5,
+   "employed2035k": 42.0,
+   "growth5Pct": 13.0,
+   "growth10Pct": 23.4
+  },
+  "2722": {
+   "name": "Ministers of Religion",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 19.5,
+   "employed2030k": 21.3,
+   "employed2035k": 23.1,
+   "growth5Pct": 9.3,
+   "growth10Pct": 18.6
+  },
+  "2723": {
+   "name": "Psychologists",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 51.2,
+   "employed2030k": 59.8,
+   "employed2035k": 66.9,
+   "growth5Pct": 16.8,
+   "growth10Pct": 30.6
+  },
+  "2724": {
+   "name": "Social Professionals",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 15.8,
+   "employed2030k": 17.6,
+   "employed2035k": 19.2,
+   "growth5Pct": 11.6,
+   "growth10Pct": 21.2
+  },
+  "2725": {
+   "name": "Social Workers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 49.8,
+   "employed2030k": 57.1,
+   "employed2035k": 62.5,
+   "growth5Pct": 14.6,
+   "growth10Pct": 25.3
+  },
+  "2726": {
+   "name": "Welfare, Recreation and Community Arts Workers",
+   "skillLevels": [
+    1
+   ],
+   "employed2025k": 40.5,
+   "employed2030k": 46.0,
+   "employed2035k": 49.9,
+   "growth5Pct": 13.7,
+   "growth10Pct": 23.4
+  },
+  "3111": {
+   "name": "Agricultural Technicians",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 2.6,
+   "employed2030k": 2.7,
+   "employed2035k": 2.9,
+   "growth5Pct": 3.2,
+   "growth10Pct": 8.7
+  },
+  "3112": {
+   "name": "Medical Technicians",
+   "skillLevels": [
+    2,
+    3
+   ],
+   "employed2025k": 41.9,
+   "employed2030k": 45.3,
+   "employed2035k": 49.2,
+   "growth5Pct": 8.0,
+   "growth10Pct": 17.4
+  },
+  "3113": {
+   "name": "Primary Products Inspectors",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 3.9,
+   "employed2030k": 3.9,
+   "employed2035k": 4.1,
+   "growth5Pct": 1.8,
+   "growth10Pct": 5.4
+  },
+  "3114": {
+   "name": "Science Technicians",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 22.4,
+   "employed2030k": 23.2,
+   "employed2035k": 24.4,
+   "growth5Pct": 3.3,
+   "growth10Pct": 8.6
+  },
+  "3121": {
+   "name": "Architectural, Building and Surveying Technicians",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 84.2,
+   "employed2030k": 91.2,
+   "employed2035k": 96.1,
+   "growth5Pct": 8.3,
+   "growth10Pct": 14.2
+  },
+  "3122": {
+   "name": "Civil Engineering Draftspersons and Technicians",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 16.0,
+   "employed2030k": 16.9,
+   "employed2035k": 17.8,
+   "growth5Pct": 5.2,
+   "growth10Pct": 11.3
+  },
+  "3123": {
+   "name": "Electrical Engineering Draftspersons and Technicians",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 10.1,
+   "employed2030k": 10.6,
+   "employed2035k": 11.3,
+   "growth5Pct": 5.6,
+   "growth10Pct": 11.9
+  },
+  "3124": {
+   "name": "Electronic Engineering Draftspersons and Technicians",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 6.5,
+   "employed2030k": 6.8,
+   "employed2035k": 7.3,
+   "growth5Pct": 4.9,
+   "growth10Pct": 12.1
+  },
+  "3125": {
+   "name": "Mechanical Engineering Draftspersons and Technicians",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 6.8,
+   "employed2030k": 7.2,
+   "employed2035k": 7.6,
+   "growth5Pct": 5.9,
+   "growth10Pct": 12.6
+  },
+  "3126": {
+   "name": "Safety Inspectors",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 7.4,
+   "employed2030k": 7.8,
+   "employed2035k": 8.2,
+   "growth5Pct": 5.4,
+   "growth10Pct": 10.7
+  },
+  "3129": {
+   "name": "Other Building and Engineering Technicians",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 39.4,
+   "employed2030k": 41.9,
+   "employed2035k": 44.0,
+   "growth5Pct": 6.4,
+   "growth10Pct": 11.7
+  },
+  "3131": {
+   "name": "ICT Support Technicians",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 74.8,
+   "employed2030k": 81.8,
+   "employed2035k": 87.8,
+   "growth5Pct": 9.4,
+   "growth10Pct": 17.4
+  },
+  "3132": {
+   "name": "Telecommunications Technical Specialists",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 3.8,
+   "employed2030k": 4.0,
+   "employed2035k": 4.3,
+   "growth5Pct": 5.5,
+   "growth10Pct": 13.7
+  },
+  "3211": {
+   "name": "Automotive Electricians",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 10.5,
+   "employed2030k": 10.8,
+   "employed2035k": 11.3,
+   "growth5Pct": 3.3,
+   "growth10Pct": 7.8
+  },
+  "3212": {
+   "name": "Motor Mechanics",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 111.2,
+   "employed2030k": 114.2,
+   "employed2035k": 119.5,
+   "growth5Pct": 2.7,
+   "growth10Pct": 7.5
+  },
+  "3221": {
+   "name": "Metal Casting, Forging and Finishing Trades Workers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 2.3,
+   "employed2030k": 2.3,
+   "employed2035k": 2.4,
+   "growth5Pct": 0.7,
+   "growth10Pct": 4.8
+  },
+  "3222": {
+   "name": "Sheetmetal Trades Workers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 5.7,
+   "employed2030k": 6.0,
+   "employed2035k": 6.3,
+   "growth5Pct": 5.3,
+   "growth10Pct": 10.5
+  },
+  "3223": {
+   "name": "Structural Steel and Welding Trades Workers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 77.2,
+   "employed2030k": 79.4,
+   "employed2035k": 83.0,
+   "growth5Pct": 2.9,
+   "growth10Pct": 7.5
+  },
+  "3231": {
+   "name": "Aircraft Maintenance Engineers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 10.0,
+   "employed2030k": 10.1,
+   "employed2035k": 10.7,
+   "growth5Pct": 1.0,
+   "growth10Pct": 6.9
+  },
+  "3232": {
+   "name": "Metal Fitters and Machinists",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 123.0,
+   "employed2030k": 126.6,
+   "employed2035k": 131.8,
+   "growth5Pct": 3.0,
+   "growth10Pct": 7.2
+  },
+  "3233": {
+   "name": "Precision Metal Trades Workers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 8.3,
+   "employed2030k": 8.5,
+   "employed2035k": 8.9,
+   "growth5Pct": 3.0,
+   "growth10Pct": 8.0
+  },
+  "3234": {
+   "name": "Toolmakers and Engineering Patternmakers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 4.1,
+   "employed2030k": 4.3,
+   "employed2035k": 4.5,
+   "growth5Pct": 4.4,
+   "growth10Pct": 10.3
+  },
+  "3241": {
+   "name": "Panelbeaters",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 11.0,
+   "employed2030k": 10.7,
+   "employed2035k": 11.0,
+   "growth5Pct": -3.0,
+   "growth10Pct": 0.0
+  },
+  "3242": {
+   "name": "Vehicle Body Builders and Trimmers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 6.3,
+   "employed2030k": 6.2,
+   "employed2035k": 6.5,
+   "growth5Pct": -1.4,
+   "growth10Pct": 2.5
+  },
+  "3243": {
+   "name": "Vehicle Painters",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 9.8,
+   "employed2030k": 9.5,
+   "employed2035k": 9.8,
+   "growth5Pct": -3.0,
+   "growth10Pct": 0.2
+  },
+  "3311": {
+   "name": "Bricklayers and Stonemasons",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 26.6,
+   "employed2030k": 28.0,
+   "employed2035k": 29.2,
+   "growth5Pct": 5.2,
+   "growth10Pct": 9.8
+  },
+  "3312": {
+   "name": "Carpenters and Joiners",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 149.3,
+   "employed2030k": 158.8,
+   "employed2035k": 165.6,
+   "growth5Pct": 6.4,
+   "growth10Pct": 10.9
+  },
+  "3321": {
+   "name": "Floor Finishers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 10.9,
+   "employed2030k": 11.2,
+   "employed2035k": 11.7,
+   "growth5Pct": 3.4,
+   "growth10Pct": 7.6
+  },
+  "3322": {
+   "name": "Painting Trades Workers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 53.8,
+   "employed2030k": 55.8,
+   "employed2035k": 58.1,
+   "growth5Pct": 3.6,
+   "growth10Pct": 7.9
+  },
+  "3331": {
+   "name": "Glaziers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 8.3,
+   "employed2030k": 8.3,
+   "employed2035k": 8.6,
+   "growth5Pct": 0.1,
+   "growth10Pct": 3.6
+  },
+  "3332": {
+   "name": "Plasterers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 31.4,
+   "employed2030k": 32.2,
+   "employed2035k": 33.2,
+   "growth5Pct": 2.3,
+   "growth10Pct": 5.7
+  },
+  "3333": {
+   "name": "Roof Tilers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 10.3,
+   "employed2030k": 10.4,
+   "employed2035k": 10.7,
+   "growth5Pct": 1.1,
+   "growth10Pct": 4.4
+  },
+  "3334": {
+   "name": "Wall and Floor Tilers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 21.1,
+   "employed2030k": 21.7,
+   "employed2035k": 22.4,
+   "growth5Pct": 3.0,
+   "growth10Pct": 6.4
+  },
+  "3341": {
+   "name": "Plumbers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 103.6,
+   "employed2030k": 109.0,
+   "employed2035k": 114.2,
+   "growth5Pct": 5.2,
+   "growth10Pct": 10.2
+  },
+  "3411": {
+   "name": "Electricians",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 194.9,
+   "employed2030k": 207.9,
+   "employed2035k": 218.3,
+   "growth5Pct": 6.7,
+   "growth10Pct": 12.0
+  },
+  "3421": {
+   "name": "Airconditioning and Refrigeration Mechanics",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 29.2,
+   "employed2030k": 29.9,
+   "employed2035k": 31.2,
+   "growth5Pct": 2.3,
+   "growth10Pct": 6.7
+  },
+  "3422": {
+   "name": "Electrical Distribution Trades Workers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 12.0,
+   "employed2030k": 12.1,
+   "employed2035k": 12.6,
+   "growth5Pct": 0.8,
+   "growth10Pct": 5.2
+  },
+  "3423": {
+   "name": "Electronics Trades Workers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 30.3,
+   "employed2030k": 30.8,
+   "employed2035k": 32.2,
+   "growth5Pct": 1.8,
+   "growth10Pct": 6.2
+  },
+  "3424": {
+   "name": "Telecommunications Trades Workers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 17.0,
+   "employed2030k": 16.8,
+   "employed2035k": 17.6,
+   "growth5Pct": -1.0,
+   "growth10Pct": 3.8
+  },
+  "3511": {
+   "name": "Bakers and Pastrycooks",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 34.3,
+   "employed2030k": 35.3,
+   "employed2035k": 37.0,
+   "growth5Pct": 3.0,
+   "growth10Pct": 8.0
+  },
+  "3512": {
+   "name": "Butchers and Smallgoods Makers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 14.5,
+   "employed2030k": 15.2,
+   "employed2035k": 15.9,
+   "growth5Pct": 4.5,
+   "growth10Pct": 9.5
+  },
+  "3513": {
+   "name": "Chefs",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 124.9,
+   "employed2030k": 132.1,
+   "employed2035k": 140.5,
+   "growth5Pct": 5.8,
+   "growth10Pct": 12.5
+  },
+  "3514": {
+   "name": "Cooks",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 39.4,
+   "employed2030k": 41.8,
+   "employed2035k": 44.4,
+   "growth5Pct": 6.0,
+   "growth10Pct": 12.5
+  },
+  "3611": {
+   "name": "Animal Attendants and Trainers",
+   "skillLevels": [
+    3,
+    4
+   ],
+   "employed2025k": 26.0,
+   "employed2030k": 27.3,
+   "employed2035k": 28.9,
+   "growth5Pct": 5.1,
+   "growth10Pct": 11.0
+  },
+  "3612": {
+   "name": "Shearers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 2.1,
+   "employed2030k": 2.2,
+   "employed2035k": 2.3,
+   "growth5Pct": 3.4,
+   "growth10Pct": 7.8
+  },
+  "3613": {
+   "name": "Veterinary Nurses",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 17.5,
+   "employed2030k": 18.6,
+   "employed2035k": 19.6,
+   "growth5Pct": 5.9,
+   "growth10Pct": 11.7
+  },
+  "3621": {
+   "name": "Florists",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 5.9,
+   "employed2030k": 6.0,
+   "employed2035k": 6.2,
+   "growth5Pct": 1.1,
+   "growth10Pct": 4.8
+  },
+  "3622": {
+   "name": "Gardeners",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 87.2,
+   "employed2030k": 90.8,
+   "employed2035k": 94.9,
+   "growth5Pct": 4.2,
+   "growth10Pct": 8.8
+  },
+  "3623": {
+   "name": "Greenkeepers",
+   "skillLevels": [
+    2,
+    3
+   ],
+   "employed2025k": 13.2,
+   "employed2030k": 13.5,
+   "employed2035k": 14.1,
+   "growth5Pct": 1.9,
+   "growth10Pct": 6.3
+  },
+  "3624": {
+   "name": "Nurserypersons",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 4.1,
+   "employed2030k": 4.2,
+   "employed2035k": 4.5,
+   "growth5Pct": 2.7,
+   "growth10Pct": 8.8
+  },
+  "3911": {
+   "name": "Hairdressers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 64.8,
+   "employed2030k": 65.3,
+   "employed2035k": 68.5,
+   "growth5Pct": 0.7,
+   "growth10Pct": 5.6
+  },
+  "3921": {
+   "name": "Print Finishers and Screen Printers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 3.0,
+   "employed2030k": 3.0,
+   "employed2035k": 3.2,
+   "growth5Pct": -0.2,
+   "growth10Pct": 5.1
+  },
+  "3922": {
+   "name": "Graphic Pre-press Trades Workers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 1.2,
+   "employed2030k": 1.2,
+   "employed2035k": 1.3,
+   "growth5Pct": 1.1,
+   "growth10Pct": 6.5
+  },
+  "3923": {
+   "name": "Printers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 10.9,
+   "employed2030k": 10.8,
+   "employed2035k": 11.4,
+   "growth5Pct": -0.4,
+   "growth10Pct": 5.0
+  },
+  "3931": {
+   "name": "Canvas and Leather Goods Makers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 1.4,
+   "employed2030k": 1.4,
+   "employed2035k": 1.5,
+   "growth5Pct": 1.2,
+   "growth10Pct": 6.0
+  },
+  "3932": {
+   "name": "Clothing Trades Workers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 8.0,
+   "employed2030k": 8.3,
+   "employed2035k": 8.8,
+   "growth5Pct": 3.8,
+   "growth10Pct": 10.0
+  },
+  "3933": {
+   "name": "Upholsterers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 2.1,
+   "employed2030k": 2.1,
+   "employed2035k": 2.2,
+   "growth5Pct": 1.0,
+   "growth10Pct": 6.0
+  },
+  "3941": {
+   "name": "Cabinetmakers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 32.9,
+   "employed2030k": 33.8,
+   "employed2035k": 35.5,
+   "growth5Pct": 2.6,
+   "growth10Pct": 7.8
+  },
+  "3942": {
+   "name": "Wood Machinists and Other Wood Trades Workers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 2.6,
+   "employed2030k": 2.7,
+   "employed2035k": 2.8,
+   "growth5Pct": 1.8,
+   "growth10Pct": 6.1
+  },
+  "3991": {
+   "name": "Boat Builders and Shipwrights",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 3.9,
+   "employed2030k": 3.9,
+   "employed2035k": 4.1,
+   "growth5Pct": -2.2,
+   "growth10Pct": 3.6
+  },
+  "3992": {
+   "name": "Chemical, Gas, Petroleum and Power Generation Plant Operators",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 9.5,
+   "employed2030k": 9.9,
+   "employed2035k": 10.4,
+   "growth5Pct": 4.0,
+   "growth10Pct": 9.1
+  },
+  "3993": {
+   "name": "Gallery, Library and Museum Technicians",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 7.0,
+   "employed2030k": 7.2,
+   "employed2035k": 7.5,
+   "growth5Pct": 3.0,
+   "growth10Pct": 7.0
+  },
+  "3994": {
+   "name": "Jewellers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 4.6,
+   "employed2030k": 5.0,
+   "employed2035k": 5.3,
+   "growth5Pct": 8.3,
+   "growth10Pct": 14.0
+  },
+  "3995": {
+   "name": "Performing Arts Technicians",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 16.3,
+   "employed2030k": 16.7,
+   "employed2035k": 17.6,
+   "growth5Pct": 2.7,
+   "growth10Pct": 8.3
+  },
+  "3996": {
+   "name": "Signwriters",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 6.6,
+   "employed2030k": 6.9,
+   "employed2035k": 7.3,
+   "growth5Pct": 4.7,
+   "growth10Pct": 10.2
+  },
+  "3999": {
+   "name": "Other Miscellaneous Technicians and Trades Workers",
+   "skillLevels": [
+    2,
+    3,
+    4
+   ],
+   "employed2025k": 24.9,
+   "employed2030k": 26.5,
+   "employed2035k": 28.3,
+   "growth5Pct": 6.7,
+   "growth10Pct": 13.9
+  },
+  "4111": {
+   "name": "Ambulance Officers and Paramedics",
+   "skillLevels": [
+    1,
+    2
+   ],
+   "employed2025k": 28.2,
+   "employed2030k": 31.3,
+   "employed2035k": 34.5,
+   "growth5Pct": 11.1,
+   "growth10Pct": 22.6
+  },
+  "4112": {
+   "name": "Dental Hygienists, Technicians and Therapists",
+   "skillLevels": [
+    1,
+    2
+   ],
+   "employed2025k": 7.5,
+   "employed2030k": 8.3,
+   "employed2035k": 9.1,
+   "growth5Pct": 9.5,
+   "growth10Pct": 20.6
+  },
+  "4113": {
+   "name": "Diversional Therapists",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 6.6,
+   "employed2030k": 7.3,
+   "employed2035k": 7.9,
+   "growth5Pct": 9.6,
+   "growth10Pct": 18.5
+  },
+  "4114": {
+   "name": "Enrolled and Mothercraft Nurses",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 22.1,
+   "employed2030k": 24.5,
+   "employed2035k": 26.8,
+   "growth5Pct": 10.6,
+   "growth10Pct": 21.3
+  },
+  "4115": {
+   "name": "Indigenous Health Workers",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 1.2,
+   "employed2030k": 1.3,
+   "employed2035k": 1.4,
+   "growth5Pct": 10.0,
+   "growth10Pct": 20.2
+  },
+  "4116": {
+   "name": "Massage Therapists",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 19.5,
+   "employed2030k": 21.5,
+   "employed2035k": 23.7,
+   "growth5Pct": 10.6,
+   "growth10Pct": 21.8
+  },
+  "4117": {
+   "name": "Welfare Support Workers",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 96.5,
+   "employed2030k": 102.3,
+   "employed2035k": 108.0,
+   "growth5Pct": 6.0,
+   "growth10Pct": 11.9
+  },
+  "4211": {
+   "name": "Child Carers",
+   "skillLevels": [
+    3,
+    4
+   ],
+   "employed2025k": 172.4,
+   "employed2030k": 174.1,
+   "employed2035k": 180.2,
+   "growth5Pct": 1.0,
+   "growth10Pct": 4.5
+  },
+  "4221": {
+   "name": "Education Aides",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 134.7,
+   "employed2030k": 141.4,
+   "employed2035k": 147.7,
+   "growth5Pct": 5.0,
+   "growth10Pct": 9.7
+  },
+  "4231": {
+   "name": "Aged and Disabled Carers",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 370.2,
+   "employed2030k": 409.9,
+   "employed2035k": 437.2,
+   "growth5Pct": 10.7,
+   "growth10Pct": 18.1
+  },
+  "4232": {
+   "name": "Dental Assistants",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 26.1,
+   "employed2030k": 29.9,
+   "employed2035k": 33.1,
+   "growth5Pct": 14.5,
+   "growth10Pct": 26.8
+  },
+  "4233": {
+   "name": "Nursing Support and Personal Care Workers",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 115.0,
+   "employed2030k": 130.9,
+   "employed2035k": 143.4,
+   "growth5Pct": 13.8,
+   "growth10Pct": 24.7
+  },
+  "4234": {
+   "name": "Special Care Workers",
+   "skillLevels": [
+    3,
+    4
+   ],
+   "employed2025k": 4.2,
+   "employed2030k": 4.5,
+   "employed2035k": 4.7,
+   "growth5Pct": 7.9,
+   "growth10Pct": 14.0
+  },
+  "4311": {
+   "name": "Bar Attendants and Baristas",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 120.4,
+   "employed2030k": 126.6,
+   "employed2035k": 134.1,
+   "growth5Pct": 5.2,
+   "growth10Pct": 11.4
+  },
+  "4312": {
+   "name": "Cafe Workers",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 37.4,
+   "employed2030k": 39.4,
+   "employed2035k": 41.6,
+   "growth5Pct": 5.2,
+   "growth10Pct": 11.3
+  },
+  "4313": {
+   "name": "Gaming Workers",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 5.3,
+   "employed2030k": 5.6,
+   "employed2035k": 5.9,
+   "growth5Pct": 5.1,
+   "growth10Pct": 11.3
+  },
+  "4314": {
+   "name": "Hotel Service Managers",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 11.1,
+   "employed2030k": 11.6,
+   "employed2035k": 12.5,
+   "growth5Pct": 5.0,
+   "growth10Pct": 12.6
+  },
+  "4315": {
+   "name": "Waiters",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 126.5,
+   "employed2030k": 133.1,
+   "employed2035k": 141.1,
+   "growth5Pct": 5.2,
+   "growth10Pct": 11.6
+  },
+  "4319": {
+   "name": "Other Hospitality Workers",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 6.1,
+   "employed2030k": 6.4,
+   "employed2035k": 6.8,
+   "growth5Pct": 5.2,
+   "growth10Pct": 11.3
+  },
+  "4411": {
+   "name": "Defence Force Members - Other Ranks",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 4.1,
+   "employed2030k": 4.3,
+   "employed2035k": 4.4,
+   "growth5Pct": 5.2,
+   "growth10Pct": 9.4
+  },
+  "4412": {
+   "name": "Fire and Emergency Workers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 17.1,
+   "employed2030k": 18.2,
+   "employed2035k": 19.1,
+   "growth5Pct": 6.3,
+   "growth10Pct": 11.4
+  },
+  "4413": {
+   "name": "Police",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 67.5,
+   "employed2030k": 71.6,
+   "employed2035k": 74.9,
+   "growth5Pct": 6.2,
+   "growth10Pct": 11.1
+  },
+  "4421": {
+   "name": "Prison Officers",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 18.6,
+   "employed2030k": 19.5,
+   "employed2035k": 20.3,
+   "growth5Pct": 5.3,
+   "growth10Pct": 9.5
+  },
+  "4422": {
+   "name": "Security Officers and Guards",
+   "skillLevels": [
+    3,
+    4,
+    5
+   ],
+   "employed2025k": 65.3,
+   "employed2030k": 68.9,
+   "employed2035k": 72.2,
+   "growth5Pct": 5.5,
+   "growth10Pct": 10.6
+  },
+  "4511": {
+   "name": "Beauty Therapists",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 39.3,
+   "employed2030k": 40.9,
+   "employed2035k": 43.4,
+   "growth5Pct": 4.2,
+   "growth10Pct": 10.6
+  },
+  "4512": {
+   "name": "Driving Instructors",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 6.7,
+   "employed2030k": 6.9,
+   "employed2035k": 7.2,
+   "growth5Pct": 3.0,
+   "growth10Pct": 8.4
+  },
+  "4513": {
+   "name": "Funeral Workers",
+   "skillLevels": [
+    2,
+    3
+   ],
+   "employed2025k": 5.1,
+   "employed2030k": 5.3,
+   "employed2035k": 5.6,
+   "growth5Pct": 4.0,
+   "growth10Pct": 10.1
+  },
+  "4514": {
+   "name": "Gallery, Museum and Tour Guides",
+   "skillLevels": [
+    3,
+    4
+   ],
+   "employed2025k": 6.1,
+   "employed2030k": 6.3,
+   "employed2035k": 6.7,
+   "growth5Pct": 3.6,
+   "growth10Pct": 9.3
+  },
+  "4515": {
+   "name": "Personal Care Consultants",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 4.7,
+   "employed2030k": 5.2,
+   "employed2035k": 5.7,
+   "growth5Pct": 10.8,
+   "growth10Pct": 21.4
+  },
+  "4516": {
+   "name": "Tourism and Travel Advisers",
+   "skillLevels": [
+    3,
+    4
+   ],
+   "employed2025k": 21.9,
+   "employed2030k": 22.7,
+   "employed2035k": 24.0,
+   "growth5Pct": 3.4,
+   "growth10Pct": 9.3
+  },
+  "4517": {
+   "name": "Travel Attendants",
+   "skillLevels": [
+    3,
+    4
+   ],
+   "employed2025k": 10.0,
+   "employed2030k": 10.4,
+   "employed2035k": 11.3,
+   "growth5Pct": 4.4,
+   "growth10Pct": 12.9
+  },
+  "4518": {
+   "name": "Other Personal Service Workers",
+   "skillLevels": [
+    3,
+    4,
+    5
+   ],
+   "employed2025k": 21.0,
+   "employed2030k": 22.1,
+   "employed2035k": 23.5,
+   "growth5Pct": 4.9,
+   "growth10Pct": 11.5
+  },
+  "4521": {
+   "name": "Fitness Instructors",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 35.3,
+   "employed2030k": 37.5,
+   "employed2035k": 39.9,
+   "growth5Pct": 6.4,
+   "growth10Pct": 13.1
+  },
+  "4522": {
+   "name": "Outdoor Adventure Guides",
+   "skillLevels": [
+    2,
+    3
+   ],
+   "employed2025k": 4.1,
+   "employed2030k": 4.3,
+   "employed2035k": 4.5,
+   "growth5Pct": 5.9,
+   "growth10Pct": 12.0
+  },
+  "4523": {
+   "name": "Sports Coaches, Instructors and Officials",
+   "skillLevels": [
+    2,
+    3,
+    4
+   ],
+   "employed2025k": 58.8,
+   "employed2030k": 62.2,
+   "employed2035k": 65.9,
+   "growth5Pct": 5.9,
+   "growth10Pct": 12.1
+  },
+  "4524": {
+   "name": "Sportspersons",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 16.1,
+   "employed2030k": 17.1,
+   "employed2035k": 18.1,
+   "growth5Pct": 6.4,
+   "growth10Pct": 12.7
+  },
+  "5111": {
+   "name": "Contract, Program and Project Administrators",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 164.5,
+   "employed2030k": 180.2,
+   "employed2035k": 193.1,
+   "growth5Pct": 9.5,
+   "growth10Pct": 17.3
+  },
+  "5121": {
+   "name": "Office Managers",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 136.6,
+   "employed2030k": 141.1,
+   "employed2035k": 148.1,
+   "growth5Pct": 3.3,
+   "growth10Pct": 8.4
+  },
+  "5122": {
+   "name": "Practice Managers",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 31.0,
+   "employed2030k": 33.5,
+   "employed2035k": 36.5,
+   "growth5Pct": 8.1,
+   "growth10Pct": 17.6
+  },
+  "5211": {
+   "name": "Personal Assistants",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 49.8,
+   "employed2030k": 46.0,
+   "employed2035k": 46.9,
+   "growth5Pct": -7.7,
+   "growth10Pct": -5.8
+  },
+  "5212": {
+   "name": "Secretaries",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 30.2,
+   "employed2030k": 27.9,
+   "employed2035k": 28.5,
+   "growth5Pct": -7.5,
+   "growth10Pct": -5.7
+  },
+  "5311": {
+   "name": "General Clerks",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 297.9,
+   "employed2030k": 331.6,
+   "employed2035k": 354.5,
+   "growth5Pct": 11.3,
+   "growth10Pct": 19.0
+  },
+  "5321": {
+   "name": "Keyboard Operators",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 46.3,
+   "employed2030k": 43.6,
+   "employed2035k": 44.7,
+   "growth5Pct": -6.0,
+   "growth10Pct": -3.5
+  },
+  "5411": {
+   "name": "Call or Contact Centre Workers",
+   "skillLevels": [
+    3,
+    4
+   ],
+   "employed2025k": 32.2,
+   "employed2030k": 33.2,
+   "employed2035k": 34.9,
+   "growth5Pct": 3.2,
+   "growth10Pct": 8.3
+  },
+  "5412": {
+   "name": "Information Officers",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 81.8,
+   "employed2030k": 84.7,
+   "employed2035k": 88.6,
+   "growth5Pct": 3.5,
+   "growth10Pct": 8.3
+  },
+  "5421": {
+   "name": "Receptionists",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 190.1,
+   "employed2030k": 194.0,
+   "employed2035k": 205.8,
+   "growth5Pct": 2.1,
+   "growth10Pct": 8.3
+  },
+  "5511": {
+   "name": "Accounting Clerks",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 138.7,
+   "employed2030k": 140.5,
+   "employed2035k": 146.9,
+   "growth5Pct": 1.3,
+   "growth10Pct": 5.9
+  },
+  "5512": {
+   "name": "Bookkeepers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 88.3,
+   "employed2030k": 89.4,
+   "employed2035k": 93.5,
+   "growth5Pct": 1.3,
+   "growth10Pct": 5.9
+  },
+  "5513": {
+   "name": "Payroll Clerks",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 52.3,
+   "employed2030k": 52.8,
+   "employed2035k": 55.2,
+   "growth5Pct": 1.0,
+   "growth10Pct": 5.5
+  },
+  "5521": {
+   "name": "Bank Workers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 42.3,
+   "employed2030k": 43.3,
+   "employed2035k": 45.8,
+   "growth5Pct": 2.3,
+   "growth10Pct": 8.4
+  },
+  "5522": {
+   "name": "Credit and Loans Officers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 36.4,
+   "employed2030k": 37.4,
+   "employed2035k": 39.5,
+   "growth5Pct": 2.6,
+   "growth10Pct": 8.4
+  },
+  "5523": {
+   "name": "Insurance, Money Market and Statistical Clerks",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 40.7,
+   "employed2030k": 41.6,
+   "employed2035k": 43.8,
+   "growth5Pct": 2.3,
+   "growth10Pct": 7.6
+  },
+  "5611": {
+   "name": "Betting Clerks",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 2.3,
+   "employed2030k": 2.2,
+   "employed2035k": 2.3,
+   "growth5Pct": -5.4,
+   "growth10Pct": -2.3
+  },
+  "5612": {
+   "name": "Couriers and Postal Deliverers",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 42.5,
+   "employed2030k": 40.8,
+   "employed2035k": 42.2,
+   "growth5Pct": -4.2,
+   "growth10Pct": -0.8
+  },
+  "5613": {
+   "name": "Filing and Registry Clerks",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 17.9,
+   "employed2030k": 17.4,
+   "employed2035k": 17.9,
+   "growth5Pct": -3.2,
+   "growth10Pct": -0.3
+  },
+  "5614": {
+   "name": "Mail Sorters",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 15.5,
+   "employed2030k": 14.8,
+   "employed2035k": 15.3,
+   "growth5Pct": -4.8,
+   "growth10Pct": -1.6
+  },
+  "5615": {
+   "name": "Survey Interviewers",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 1.4,
+   "employed2030k": 1.4,
+   "employed2035k": 1.4,
+   "growth5Pct": -4.3,
+   "growth10Pct": -1.7
+  },
+  "5616": {
+   "name": "Switchboard Operators",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 2.9,
+   "employed2030k": 2.9,
+   "employed2035k": 3.0,
+   "growth5Pct": -2.4,
+   "growth10Pct": 1.6
+  },
+  "5619": {
+   "name": "Other Clerical and Office Support Workers",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 5.7,
+   "employed2030k": 5.5,
+   "employed2035k": 5.7,
+   "growth5Pct": -4.1,
+   "growth10Pct": -1.5
+  },
+  "5911": {
+   "name": "Purchasing and Supply Logistics Clerks",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 117.5,
+   "employed2030k": 123.9,
+   "employed2035k": 130.8,
+   "growth5Pct": 5.4,
+   "growth10Pct": 11.3
+  },
+  "5912": {
+   "name": "Transport and Despatch Clerks",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 46.5,
+   "employed2030k": 48.8,
+   "employed2035k": 51.4,
+   "growth5Pct": 5.0,
+   "growth10Pct": 10.7
+  },
+  "5991": {
+   "name": "Conveyancers and Legal Executives",
+   "skillLevels": [
+    2
+   ],
+   "employed2025k": 19.3,
+   "employed2030k": 20.0,
+   "employed2035k": 21.0,
+   "growth5Pct": 3.2,
+   "growth10Pct": 8.8
+  },
+  "5992": {
+   "name": "Court and Legal Clerks",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 21.0,
+   "employed2030k": 21.7,
+   "employed2035k": 22.7,
+   "growth5Pct": 3.2,
+   "growth10Pct": 7.8
+  },
+  "5993": {
+   "name": "Debt Collectors",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 6.9,
+   "employed2030k": 7.1,
+   "employed2035k": 7.5,
+   "growth5Pct": 2.6,
+   "growth10Pct": 8.0
+  },
+  "5994": {
+   "name": "Human Resource Clerks",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 23.5,
+   "employed2030k": 24.5,
+   "employed2035k": 25.9,
+   "growth5Pct": 4.3,
+   "growth10Pct": 10.1
+  },
+  "5995": {
+   "name": "Inspectors and Regulatory Officers",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 47.5,
+   "employed2030k": 49.0,
+   "employed2035k": 50.8,
+   "growth5Pct": 3.1,
+   "growth10Pct": 7.0
+  },
+  "5996": {
+   "name": "Insurance Investigators, Loss Adjusters and Risk Surveyors",
+   "skillLevels": [
+    2,
+    3
+   ],
+   "employed2025k": 7.9,
+   "employed2030k": 8.1,
+   "employed2035k": 8.5,
+   "growth5Pct": 2.3,
+   "growth10Pct": 7.8
+  },
+  "5997": {
+   "name": "Library Assistants",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 7.0,
+   "employed2030k": 7.2,
+   "employed2035k": 7.5,
+   "growth5Pct": 2.4,
+   "growth10Pct": 6.4
+  },
+  "5999": {
+   "name": "Other Miscellaneous Clerical and Administrative Workers",
+   "skillLevels": [
+    3,
+    4
+   ],
+   "employed2025k": 21.9,
+   "employed2030k": 22.8,
+   "employed2035k": 24.2,
+   "growth5Pct": 4.1,
+   "growth10Pct": 10.6
+  },
+  "6111": {
+   "name": "Auctioneers, and Stock and Station Agents",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 2.7,
+   "employed2030k": 2.7,
+   "employed2035k": 2.8,
+   "growth5Pct": 0.1,
+   "growth10Pct": 4.8
+  },
+  "6112": {
+   "name": "Insurance Agents",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 16.7,
+   "employed2030k": 16.4,
+   "employed2035k": 17.1,
+   "growth5Pct": -1.6,
+   "growth10Pct": 2.6
+  },
+  "6113": {
+   "name": "Sales Representatives",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 76.5,
+   "employed2030k": 76.5,
+   "employed2035k": 79.8,
+   "growth5Pct": 0.0,
+   "growth10Pct": 4.2
+  },
+  "6121": {
+   "name": "Real Estate Sales Agents",
+   "skillLevels": [
+    2,
+    3
+   ],
+   "employed2025k": 114.4,
+   "employed2030k": 123.0,
+   "employed2035k": 130.6,
+   "growth5Pct": 7.6,
+   "growth10Pct": 14.2
+  },
+  "6211": {
+   "name": "Sales Assistants (General)",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 569.4,
+   "employed2030k": 583.9,
+   "employed2035k": 609.2,
+   "growth5Pct": 2.5,
+   "growth10Pct": 7.0
+  },
+  "6212": {
+   "name": "ICT Sales Assistants",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 16.0,
+   "employed2030k": 16.6,
+   "employed2035k": 17.3,
+   "growth5Pct": 3.3,
+   "growth10Pct": 8.1
+  },
+  "6213": {
+   "name": "Motor Vehicle and Vehicle Parts Salespersons",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 36.0,
+   "employed2030k": 37.0,
+   "employed2035k": 38.6,
+   "growth5Pct": 2.9,
+   "growth10Pct": 7.3
+  },
+  "6214": {
+   "name": "Pharmacy Sales Assistants",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 42.5,
+   "employed2030k": 43.5,
+   "employed2035k": 45.3,
+   "growth5Pct": 2.4,
+   "growth10Pct": 6.5
+  },
+  "6215": {
+   "name": "Retail Supervisors",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 52.1,
+   "employed2030k": 53.4,
+   "employed2035k": 55.6,
+   "growth5Pct": 2.5,
+   "growth10Pct": 6.8
+  },
+  "6216": {
+   "name": "Service Station Attendants",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 12.9,
+   "employed2030k": 13.2,
+   "employed2035k": 13.7,
+   "growth5Pct": 2.4,
+   "growth10Pct": 6.6
+  },
+  "6217": {
+   "name": "Street Vendors and Related Salespersons",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 4.6,
+   "employed2030k": 4.8,
+   "employed2035k": 5.0,
+   "growth5Pct": 3.1,
+   "growth10Pct": 7.8
+  },
+  "6219": {
+   "name": "Other Sales Assistants and Salespersons",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 15.5,
+   "employed2030k": 16.0,
+   "employed2035k": 16.8,
+   "growth5Pct": 3.4,
+   "growth10Pct": 8.5
+  },
+  "6311": {
+   "name": "Checkout Operators and Office Cashiers",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 125.2,
+   "employed2030k": 125.9,
+   "employed2035k": 130.5,
+   "growth5Pct": 0.6,
+   "growth10Pct": 4.2
+  },
+  "6391": {
+   "name": "Models and Sales Demonstrators",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 11.4,
+   "employed2030k": 11.4,
+   "employed2035k": 11.9,
+   "growth5Pct": 0.4,
+   "growth10Pct": 4.6
+  },
+  "6392": {
+   "name": "Retail and Wool Buyers",
+   "skillLevels": [
+    3
+   ],
+   "employed2025k": 6.9,
+   "employed2030k": 6.9,
+   "employed2035k": 7.1,
+   "growth5Pct": 0.2,
+   "growth10Pct": 4.1
+  },
+  "6393": {
+   "name": "Telemarketers",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 5.3,
+   "employed2030k": 5.4,
+   "employed2035k": 5.6,
+   "growth5Pct": 1.0,
+   "growth10Pct": 5.4
+  },
+  "6394": {
+   "name": "Ticket Salespersons",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 21.2,
+   "employed2030k": 21.2,
+   "employed2035k": 22.3,
+   "growth5Pct": 0.2,
+   "growth10Pct": 5.4
+  },
+  "6395": {
+   "name": "Visual Merchandisers",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 8.2,
+   "employed2030k": 8.3,
+   "employed2035k": 8.6,
+   "growth5Pct": 0.3,
+   "growth10Pct": 4.3
+  },
+  "6399": {
+   "name": "Other Sales Support Workers",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 7.3,
+   "employed2030k": 7.3,
+   "employed2035k": 7.5,
+   "growth5Pct": 0.0,
+   "growth10Pct": 3.8
+  },
+  "7111": {
+   "name": "Clay, Concrete, Glass and Stone Processing Machine Operators",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 2.5,
+   "employed2030k": 2.6,
+   "employed2035k": 2.7,
+   "growth5Pct": 1.6,
+   "growth10Pct": 6.0
+  },
+  "7112": {
+   "name": "Industrial Spraypainters",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 6.3,
+   "employed2030k": 6.4,
+   "employed2035k": 6.6,
+   "growth5Pct": 1.6,
+   "growth10Pct": 5.8
+  },
+  "7113": {
+   "name": "Paper and Wood Processing Machine Operators",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 6.2,
+   "employed2030k": 6.1,
+   "employed2035k": 6.2,
+   "growth5Pct": -1.6,
+   "growth10Pct": 0.8
+  },
+  "7114": {
+   "name": "Photographic Developers and Printers",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 0.9,
+   "employed2030k": 0.9,
+   "employed2035k": 1.0,
+   "growth5Pct": 0.2,
+   "growth10Pct": 4.9
+  },
+  "7115": {
+   "name": "Plastics and Rubber Production Machine Operators",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 7.3,
+   "employed2030k": 7.4,
+   "employed2035k": 7.7,
+   "growth5Pct": 1.0,
+   "growth10Pct": 5.1
+  },
+  "7116": {
+   "name": "Sewing Machinists",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 6.0,
+   "employed2030k": 6.2,
+   "employed2035k": 6.5,
+   "growth5Pct": 2.1,
+   "growth10Pct": 7.5
+  },
+  "7117": {
+   "name": "Textile and Footwear Production Machine Operators",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 1.7,
+   "employed2030k": 1.7,
+   "employed2035k": 1.7,
+   "growth5Pct": -0.7,
+   "growth10Pct": 3.5
+  },
+  "7119": {
+   "name": "Other Machine Operators",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 13.6,
+   "employed2030k": 14.1,
+   "employed2035k": 14.9,
+   "growth5Pct": 3.7,
+   "growth10Pct": 9.0
+  },
+  "7121": {
+   "name": "Crane, Hoist and Lift Operators",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 15.2,
+   "employed2030k": 15.8,
+   "employed2035k": 16.4,
+   "growth5Pct": 3.6,
+   "growth10Pct": 7.8
+  },
+  "7122": {
+   "name": "Drillers, Miners and Shot Firers",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 64.1,
+   "employed2030k": 66.5,
+   "employed2035k": 67.9,
+   "growth5Pct": 3.8,
+   "growth10Pct": 5.8
+  },
+  "7123": {
+   "name": "Engineering Production Workers",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 23.0,
+   "employed2030k": 24.5,
+   "employed2035k": 25.7,
+   "growth5Pct": 6.3,
+   "growth10Pct": 11.6
+  },
+  "7129": {
+   "name": "Other Stationary Plant Operators",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 25.5,
+   "employed2030k": 26.2,
+   "employed2035k": 27.2,
+   "growth5Pct": 3.0,
+   "growth10Pct": 6.9
+  },
+  "7211": {
+   "name": "Agricultural, Forestry and Horticultural Plant Operators",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 16.1,
+   "employed2030k": 16.0,
+   "employed2035k": 16.8,
+   "growth5Pct": -0.4,
+   "growth10Pct": 4.0
+  },
+  "7212": {
+   "name": "Earthmoving Plant Operators",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 48.6,
+   "employed2030k": 49.2,
+   "employed2035k": 50.7,
+   "growth5Pct": 1.2,
+   "growth10Pct": 4.3
+  },
+  "7213": {
+   "name": "Forklift Drivers",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 69.1,
+   "employed2030k": 69.0,
+   "employed2035k": 71.5,
+   "growth5Pct": -0.1,
+   "growth10Pct": 3.5
+  },
+  "7219": {
+   "name": "Other Mobile Plant Operators",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 13.8,
+   "employed2030k": 13.7,
+   "employed2035k": 14.3,
+   "growth5Pct": -0.6,
+   "growth10Pct": 3.7
+  },
+  "7311": {
+   "name": "Automobile Drivers",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 55.0,
+   "employed2030k": 57.2,
+   "employed2035k": 60.2,
+   "growth5Pct": 3.9,
+   "growth10Pct": 9.3
+  },
+  "7312": {
+   "name": "Bus and Coach Drivers",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 40.2,
+   "employed2030k": 41.9,
+   "employed2035k": 44.0,
+   "growth5Pct": 4.0,
+   "growth10Pct": 9.2
+  },
+  "7313": {
+   "name": "Train and Tram Drivers",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 17.5,
+   "employed2030k": 18.1,
+   "employed2035k": 18.6,
+   "growth5Pct": 3.2,
+   "growth10Pct": 6.3
+  },
+  "7321": {
+   "name": "Delivery Drivers",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 91.6,
+   "employed2030k": 103.6,
+   "employed2035k": 111.1,
+   "growth5Pct": 13.1,
+   "growth10Pct": 21.3
+  },
+  "7331": {
+   "name": "Truck Drivers",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 189.2,
+   "employed2030k": 190.3,
+   "employed2035k": 196.9,
+   "growth5Pct": 0.6,
+   "growth10Pct": 4.0
+  },
+  "7411": {
+   "name": "Storepersons",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 175.7,
+   "employed2030k": 188.4,
+   "employed2035k": 199.0,
+   "growth5Pct": 7.2,
+   "growth10Pct": 13.3
+  },
+  "8111": {
+   "name": "Car Detailers",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 17.4,
+   "employed2030k": 17.1,
+   "employed2035k": 17.7,
+   "growth5Pct": -1.5,
+   "growth10Pct": 1.8
+  },
+  "8112": {
+   "name": "Commercial Cleaners",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 153.0,
+   "employed2030k": 153.6,
+   "employed2035k": 159.9,
+   "growth5Pct": 0.4,
+   "growth10Pct": 4.5
+  },
+  "8113": {
+   "name": "Domestic Cleaners",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 32.5,
+   "employed2030k": 32.8,
+   "employed2035k": 34.2,
+   "growth5Pct": 1.0,
+   "growth10Pct": 5.1
+  },
+  "8114": {
+   "name": "Housekeepers",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 32.9,
+   "employed2030k": 32.5,
+   "employed2035k": 34.3,
+   "growth5Pct": -1.3,
+   "growth10Pct": 4.2
+  },
+  "8115": {
+   "name": "Laundry Workers",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 14.2,
+   "employed2030k": 14.1,
+   "employed2035k": 14.8,
+   "growth5Pct": -0.4,
+   "growth10Pct": 4.1
+  },
+  "8116": {
+   "name": "Other Cleaners",
+   "skillLevels": [
+    4,
+    5
+   ],
+   "employed2025k": 13.4,
+   "employed2030k": 13.4,
+   "employed2035k": 13.9,
+   "growth5Pct": 0.1,
+   "growth10Pct": 3.8
+  },
+  "8211": {
+   "name": "Building and Plumbing Labourers",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 73.0,
+   "employed2030k": 75.2,
+   "employed2035k": 77.7,
+   "growth5Pct": 3.0,
+   "growth10Pct": 6.4
+  },
+  "8212": {
+   "name": "Concreters",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 36.4,
+   "employed2030k": 37.3,
+   "employed2035k": 38.5,
+   "growth5Pct": 2.3,
+   "growth10Pct": 5.7
+  },
+  "8213": {
+   "name": "Fencers",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 13.9,
+   "employed2030k": 14.1,
+   "employed2035k": 14.6,
+   "growth5Pct": 1.8,
+   "growth10Pct": 5.3
+  },
+  "8214": {
+   "name": "Insulation and Home Improvement Installers",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 27.3,
+   "employed2030k": 28.2,
+   "employed2035k": 29.1,
+   "growth5Pct": 3.0,
+   "growth10Pct": 6.5
+  },
+  "8215": {
+   "name": "Paving and Surfacing Labourers",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 6.9,
+   "employed2030k": 6.8,
+   "employed2035k": 6.9,
+   "growth5Pct": -2.3,
+   "growth10Pct": 0.5
+  },
+  "8216": {
+   "name": "Railway Track Workers",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 5.8,
+   "employed2030k": 5.7,
+   "employed2035k": 5.8,
+   "growth5Pct": -1.5,
+   "growth10Pct": 1.2
+  },
+  "8217": {
+   "name": "Structural Steel Construction Workers",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 26.4,
+   "employed2030k": 26.7,
+   "employed2035k": 27.6,
+   "growth5Pct": 1.3,
+   "growth10Pct": 4.6
+  },
+  "8219": {
+   "name": "Other Construction and Mining Labourers",
+   "skillLevels": [
+    4,
+    5
+   ],
+   "employed2025k": 7.9,
+   "employed2030k": 7.9,
+   "employed2035k": 8.0,
+   "growth5Pct": -0.4,
+   "growth10Pct": 1.0
+  },
+  "8311": {
+   "name": "Food and Drink Factory Workers",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 28.1,
+   "employed2030k": 27.9,
+   "employed2035k": 28.9,
+   "growth5Pct": -0.8,
+   "growth10Pct": 2.8
+  },
+  "8312": {
+   "name": "Meat Boners and Slicers, and Slaughterers",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 5.6,
+   "employed2030k": 5.3,
+   "employed2035k": 5.4,
+   "growth5Pct": -5.6,
+   "growth10Pct": -3.4
+  },
+  "8313": {
+   "name": "Meat, Poultry and Seafood Process Workers",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 13.6,
+   "employed2030k": 13.0,
+   "employed2035k": 13.3,
+   "growth5Pct": -4.5,
+   "growth10Pct": -2.0
+  },
+  "8321": {
+   "name": "Packers",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 59.6,
+   "employed2030k": 59.0,
+   "employed2035k": 61.2,
+   "growth5Pct": -1.0,
+   "growth10Pct": 2.6
+  },
+  "8322": {
+   "name": "Product Assemblers",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 27.4,
+   "employed2030k": 28.0,
+   "employed2035k": 29.5,
+   "growth5Pct": 2.2,
+   "growth10Pct": 7.4
+  },
+  "8391": {
+   "name": "Metal Engineering Process Workers",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 8.0,
+   "employed2030k": 8.1,
+   "employed2035k": 8.4,
+   "growth5Pct": 1.3,
+   "growth10Pct": 5.2
+  },
+  "8392": {
+   "name": "Plastics and Rubber Factory Workers",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 1.5,
+   "employed2030k": 1.5,
+   "employed2035k": 1.5,
+   "growth5Pct": -1.0,
+   "growth10Pct": 3.2
+  },
+  "8393": {
+   "name": "Product Quality Controllers",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 11.5,
+   "employed2030k": 11.3,
+   "employed2035k": 11.8,
+   "growth5Pct": -1.7,
+   "growth10Pct": 2.0
+  },
+  "8394": {
+   "name": "Timber and Wood Process Workers",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 4.2,
+   "employed2030k": 4.0,
+   "employed2035k": 4.0,
+   "growth5Pct": -4.5,
+   "growth10Pct": -3.5
+  },
+  "8399": {
+   "name": "Other Factory Process Workers",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 12.4,
+   "employed2030k": 12.4,
+   "employed2035k": 12.9,
+   "growth5Pct": -0.3,
+   "growth10Pct": 3.7
+  },
+  "8411": {
+   "name": "Aquaculture Workers",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 0.7,
+   "employed2030k": 0.8,
+   "employed2035k": 0.9,
+   "growth5Pct": 9.1,
+   "growth10Pct": 18.0
+  },
+  "8412": {
+   "name": "Crop Farm Workers",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 24.0,
+   "employed2030k": 24.0,
+   "employed2035k": 25.3,
+   "growth5Pct": 0.1,
+   "growth10Pct": 5.5
+  },
+  "8413": {
+   "name": "Forestry and Logging Workers",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 2.1,
+   "employed2030k": 2.2,
+   "employed2035k": 2.3,
+   "growth5Pct": 0.7,
+   "growth10Pct": 6.3
+  },
+  "8414": {
+   "name": "Garden and Nursery Labourers",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 32.4,
+   "employed2030k": 32.9,
+   "employed2035k": 34.1,
+   "growth5Pct": 1.3,
+   "growth10Pct": 5.3
+  },
+  "8415": {
+   "name": "Livestock Farm Workers",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 28.3,
+   "employed2030k": 27.7,
+   "employed2035k": 28.9,
+   "growth5Pct": -2.3,
+   "growth10Pct": 1.8
+  },
+  "8416": {
+   "name": "Mixed Crop and Livestock Farm Workers",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 4.0,
+   "employed2030k": 3.9,
+   "employed2035k": 4.1,
+   "growth5Pct": -1.8,
+   "growth10Pct": 2.6
+  },
+  "8419": {
+   "name": "Other Farm, Forestry and Garden Workers",
+   "skillLevels": [
+    4,
+    5
+   ],
+   "employed2025k": 17.1,
+   "employed2030k": 17.2,
+   "employed2035k": 17.8,
+   "growth5Pct": 0.6,
+   "growth10Pct": 4.2
+  },
+  "8511": {
+   "name": "Fast Food Cooks",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 50.2,
+   "employed2030k": 51.3,
+   "employed2035k": 53.7,
+   "growth5Pct": 2.2,
+   "growth10Pct": 7.1
+  },
+  "8512": {
+   "name": "Food Trades Assistants",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 4.5,
+   "employed2030k": 4.6,
+   "employed2035k": 4.7,
+   "growth5Pct": 0.7,
+   "growth10Pct": 4.3
+  },
+  "8513": {
+   "name": "Kitchenhands",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 151.6,
+   "employed2030k": 156.6,
+   "employed2035k": 165.0,
+   "growth5Pct": 3.3,
+   "growth10Pct": 8.8
+  },
+  "8911": {
+   "name": "Freight and Furniture Handlers",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 14.7,
+   "employed2030k": 14.5,
+   "employed2035k": 15.0,
+   "growth5Pct": -1.6,
+   "growth10Pct": 1.5
+  },
+  "8912": {
+   "name": "Shelf Fillers",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 72.0,
+   "employed2030k": 70.2,
+   "employed2035k": 72.1,
+   "growth5Pct": -2.5,
+   "growth10Pct": 0.1
+  },
+  "8991": {
+   "name": "Caretakers",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 7.1,
+   "employed2030k": 7.1,
+   "employed2035k": 7.3,
+   "growth5Pct": 0.4,
+   "growth10Pct": 3.9
+  },
+  "8992": {
+   "name": "Deck and Fishing Hands",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 6.3,
+   "employed2030k": 6.2,
+   "employed2035k": 6.5,
+   "growth5Pct": -1.2,
+   "growth10Pct": 3.0
+  },
+  "8993": {
+   "name": "Handypersons",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 43.8,
+   "employed2030k": 45.4,
+   "employed2035k": 47.2,
+   "growth5Pct": 3.6,
+   "growth10Pct": 7.8
+  },
+  "8994": {
+   "name": "Motor Vehicle Parts and Accessories Fitters",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 14.3,
+   "employed2030k": 14.4,
+   "employed2035k": 14.9,
+   "growth5Pct": 0.8,
+   "growth10Pct": 4.6
+  },
+  "8995": {
+   "name": "Printing Assistants and Table Workers",
+   "skillLevels": [
+    4
+   ],
+   "employed2025k": 2.5,
+   "employed2030k": 2.4,
+   "employed2035k": 2.5,
+   "growth5Pct": -4.4,
+   "growth10Pct": -0.1
+  },
+  "8996": {
+   "name": "Recycling and Rubbish Collectors",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 3.6,
+   "employed2030k": 3.7,
+   "employed2035k": 3.8,
+   "growth5Pct": 1.7,
+   "growth10Pct": 4.9
+  },
+  "8997": {
+   "name": "Vending Machine Attendants",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 3.7,
+   "employed2030k": 3.7,
+   "employed2035k": 3.9,
+   "growth5Pct": -0.1,
+   "growth10Pct": 4.4
+  },
+  "8999": {
+   "name": "Other Miscellaneous Labourers",
+   "skillLevels": [
+    5
+   ],
+   "employed2025k": 68.6,
+   "employed2030k": 69.2,
+   "employed2035k": 71.5,
+   "growth5Pct": 0.8,
+   "growth10Pct": 4.2
+  }
+ },
+ "industries": {
+  "Agriculture, Forestry and Fishing": 5,
+  "Mining": 9,
+  "Manufacturing": 12,
+  "Electricity, Gas, Water and Waste Services": 12,
+  "Construction": 12,
+  "Wholesale Trade": 13,
+  "Retail Trade": 7,
+  "Accommodation and Food Services": 10,
+  "Transport, Postal and Warehousing": 9,
+  "Information Media and Telecommunications": 13,
+  "Financial and Insurance Services": 14,
+  "Rental, Hiring and Real Estate Services": 14,
+  "Professional, Scientific and Technical Services": 18,
+  "Administrative and Support Services": 9,
+  "Public Administration and Safety": 12,
+  "Education and Training": 12,
+  "Health Care and Social Assistance": 23,
+  "Arts and Recreation Services": 11,
+  "Other Services": 8
+ },
+ "skillLevels": {
+  "1": {
+   "label": "Bachelor degree or higher",
+   "employed2025k": 5181.1,
+   "growth5Pct": 11.1,
+   "growth10Pct": 20.5
+  },
+  "2": {
+   "label": "Advanced diploma or diploma",
+   "employed2025k": 1793.5,
+   "growth5Pct": 5.2,
+   "growth10Pct": 11.5
+  },
+  "3": {
+   "label": "Certificate IV or III (with experience)",
+   "employed2025k": 2152.2,
+   "growth5Pct": 3.7,
+   "growth10Pct": 8.6
+  },
+  "4": {
+   "label": "Certificate II or III",
+   "employed2025k": 3562.3,
+   "growth5Pct": 5.3,
+   "growth10Pct": 11.0
+  },
+  "5": {
+   "label": "Certificate I or secondary education",
+   "employed2025k": 2011.9,
+   "growth5Pct": 1.2,
+   "growth10Pct": 5.4
+  }
+ },
+ "headlines": [
+  "Over 90% of employment growth to May 2035 is in jobs that usually need a post-school qualification (skill levels 1 to 4).",
+  "Services industries account for about 84% of projected employment growth.",
+  "Health Care and Social Assistance has the fastest projected industry growth (23% over 10 years)."
+ ],
+ "occupationGroups": {
+  "11": {
+   "name": "Chief Executives, General Managers and Legislators",
+   "employed2025k": 135.5,
+   "growth10Pct": 13.8
+  },
+  "111": {
+   "name": "Chief Executives, General Managers and Legislators",
+   "employed2025k": 135.5,
+   "growth10Pct": 13.8
+  },
+  "12": {
+   "name": "Farmers and Farm Managers",
+   "employed2025k": 159.4,
+   "growth10Pct": 2.6
+  },
+  "121": {
+   "name": "Farmers and Farm Managers",
+   "employed2025k": 159.4,
+   "growth10Pct": 2.6
+  },
+  "13": {
+   "name": "Specialist Managers",
+   "employed2025k": 1014.6,
+   "growth10Pct": 20.2
+  },
+  "131": {
+   "name": "Advertising, Public Relations and Sales Managers",
+   "employed2025k": 165.4,
+   "growth10Pct": 17.5
+  },
+  "132": {
+   "name": "Business Administration Managers",
+   "employed2025k": 251.4,
+   "growth10Pct": 21.6
+  },
+  "133": {
+   "name": "Construction, Distribution and Production Managers",
+   "employed2025k": 321.4,
+   "growth10Pct": 18.7
+  },
+  "134": {
+   "name": "Education, Health and Welfare Services Managers",
+   "employed2025k": 107.9,
+   "growth10Pct": 20.8
+  },
+  "135": {
+   "name": "ICT Managers",
+   "employed2025k": 89.9,
+   "growth10Pct": 25.5
+  },
+  "139": {
+   "name": "Miscellaneous Specialist Managers",
+   "employed2025k": 73.6,
+   "growth10Pct": 20.2
+  },
+  "14": {
+   "name": "Hospitality, Retail and Service Managers",
+   "employed2025k": 557.1,
+   "growth10Pct": 9.2
+  },
+  "141": {
+   "name": "Accommodation and Hospitality Managers",
+   "employed2025k": 103.4,
+   "growth10Pct": 7.4
+  },
+  "142": {
+   "name": "Retail Managers",
+   "employed2025k": 250.7,
+   "growth10Pct": 6.8
+  },
+  "149": {
+   "name": "Miscellaneous Hospitality, Retail and Service Managers",
+   "employed2025k": 202.8,
+   "growth10Pct": 13.0
+  },
+  "21": {
+   "name": "Arts and Media Professionals",
+   "employed2025k": 108.3,
+   "growth10Pct": 15.9
+  },
+  "211": {
+   "name": "Arts Professionals",
+   "employed2025k": 47.8,
+   "growth10Pct": 12.1
+  },
+  "212": {
+   "name": "Media Professionals",
+   "employed2025k": 60.3,
+   "growth10Pct": 18.8
+  },
+  "22": {
+   "name": "Business, Human Resource and Marketing Professionals",
+   "employed2025k": 947.9,
+   "growth10Pct": 19.7
+  },
+  "221": {
+   "name": "Accountants, Auditors and Company Secretaries",
+   "employed2025k": 242.4,
+   "growth10Pct": 16.5
+  },
+  "222": {
+   "name": "Financial Brokers and Dealers, and Investment Advisers",
+   "employed2025k": 138.2,
+   "growth10Pct": 12.7
+  },
+  "223": {
+   "name": "Human Resource and Training Professionals",
+   "employed2025k": 124.7,
+   "growth10Pct": 14.8
+  },
+  "224": {
+   "name": "Information and Organisation Professionals",
+   "employed2025k": 263.5,
+   "growth10Pct": 26.9
+  },
+  "225": {
+   "name": "Sales, Marketing and Public Relations Professionals",
+   "employed2025k": 179.0,
+   "growth10Pct": 22.4
+  },
+  "23": {
+   "name": "Design, Engineering, Science and Transport Professionals",
+   "employed2025k": 552.3,
+   "growth10Pct": 20.1
+  },
+  "231": {
+   "name": "Air and Marine Transport Professionals",
+   "employed2025k": 26.1,
+   "growth10Pct": 13.0
+  },
+  "232": {
+   "name": "Architects, Designers, Planners and Surveyors",
+   "employed2025k": 161.8,
+   "growth10Pct": 19.1
+  },
+  "233": {
+   "name": "Engineering Professionals",
+   "employed2025k": 219.8,
+   "growth10Pct": 21.6
+  },
+  "234": {
+   "name": "Natural and Physical Science Professionals",
+   "employed2025k": 144.4,
+   "growth10Pct": 20.1
+  },
+  "24": {
+   "name": "Education Professionals",
+   "employed2025k": 715.2,
+   "growth10Pct": 13.6
+  },
+  "241": {
+   "name": "School Teachers",
+   "employed2025k": 533.2,
+   "growth10Pct": 12.4
+  },
+  "242": {
+   "name": "Tertiary Education Teachers",
+   "employed2025k": 100.0,
+   "growth10Pct": 19.7
+  },
+  "249": {
+   "name": "Miscellaneous Education Professionals",
+   "employed2025k": 75.6,
+   "growth10Pct": 14.0
+  },
+  "25": {
+   "name": "Health Professionals",
+   "employed2025k": 855.3,
+   "growth10Pct": 28.5
+  },
+  "251": {
+   "name": "Health Diagnostic and Promotion Professionals",
+   "employed2025k": 136.4,
+   "growth10Pct": 24.4
+  },
+  "252": {
+   "name": "Health Therapy Professionals",
+   "employed2025k": 149.6,
+   "growth10Pct": 34.4
+  },
+  "253": {
+   "name": "Medical Practitioners",
+   "employed2025k": 153.1,
+   "growth10Pct": 32.9
+  },
+  "254": {
+   "name": "Midwifery and Nursing Professionals",
+   "employed2025k": 415.9,
+   "growth10Pct": 26.1
+  },
+  "26": {
+   "name": "ICT Professionals",
+   "employed2025k": 419.7,
+   "growth10Pct": 25.4
+  },
+  "261": {
+   "name": "Business and Systems Analysts, and Programmers",
+   "employed2025k": 251.6,
+   "growth10Pct": 26.5
+  },
+  "262": {
+   "name": "Database and Systems Administrators, and ICT Security Specialists",
+   "employed2025k": 68.9,
+   "growth10Pct": 24.0
+  },
+  "263": {
+   "name": "ICT Network and Support Professionals",
+   "employed2025k": 76.3,
+   "growth10Pct": 24.5
+  },
+  "27": {
+   "name": "Legal, Social and Welfare Professionals",
+   "employed2025k": 333.0,
+   "growth10Pct": 23.6
+  },
+  "271": {
+   "name": "Legal Professionals",
+   "employed2025k": 121.9,
+   "growth10Pct": 21.1
+  },
+  "272": {
+   "name": "Social and Welfare Professionals",
+   "employed2025k": 210.9,
+   "growth10Pct": 25.0
+  },
+  "31": {
+   "name": "Engineering, ICT and Science Technicians",
+   "employed2025k": 325.3,
+   "growth10Pct": 14.1
+  },
+  "311": {
+   "name": "Agricultural, Medical and Science Technicians",
+   "employed2025k": 71.2,
+   "growth10Pct": 13.6
+  },
+  "312": {
+   "name": "Building and Engineering Technicians",
+   "employed2025k": 173.3,
+   "growth10Pct": 12.9
+  },
+  "313": {
+   "name": "ICT and Telecommunications Technicians",
+   "employed2025k": 78.6,
+   "growth10Pct": 17.3
+  },
+  "32": {
+   "name": "Automotive and Engineering Trades Workers",
+   "employed2025k": 384.8,
+   "growth10Pct": 7.0
+  },
+  "321": {
+   "name": "Automotive Electricians and Mechanics",
+   "employed2025k": 122.1,
+   "growth10Pct": 7.5
+  },
+  "322": {
+   "name": "Fabrication Engineering Trades Workers",
+   "employed2025k": 85.3,
+   "growth10Pct": 7.6
+  },
+  "323": {
+   "name": "Mechanical Engineering Trades Workers",
+   "employed2025k": 145.8,
+   "growth10Pct": 7.3
+  },
+  "324": {
+   "name": "Panelbeaters, and Vehicle Body Builders, Trimmers and Painters",
+   "employed2025k": 28.0,
+   "growth10Pct": 0.8
+  },
+  "33": {
+   "name": "Construction Trades Workers",
+   "employed2025k": 420.1,
+   "growth10Pct": 9.3
+  },
+  "331": {
+   "name": "Bricklayers, and Carpenters and Joiners",
+   "employed2025k": 178.6,
+   "growth10Pct": 10.8
+  },
+  "332": {
+   "name": "Floor Finishers and Painting Trades Workers",
+   "employed2025k": 64.8,
+   "growth10Pct": 7.8
+  },
+  "333": {
+   "name": "Glaziers, Plasterers and Tilers",
+   "employed2025k": 71.2,
+   "growth10Pct": 5.5
+  },
+  "334": {
+   "name": "Plumbers",
+   "employed2025k": 103.6,
+   "growth10Pct": 10.2
+  },
+  "34": {
+   "name": "Electrotechnology and Telecommunications Trades Workers",
+   "employed2025k": 285.0,
+   "growth10Pct": 10.0
+  },
+  "341": {
+   "name": "Electricians",
+   "employed2025k": 194.9,
+   "growth10Pct": 12.0
+  },
+  "342": {
+   "name": "Electronics and Telecommunications Trades Workers",
+   "employed2025k": 88.6,
+   "growth10Pct": 5.8
+  },
+  "35": {
+   "name": "Food Trades Workers",
+   "employed2025k": 213.2,
+   "growth10Pct": 11.6
+  },
+  "351": {
+   "name": "Food Trades Workers",
+   "employed2025k": 213.2,
+   "growth10Pct": 11.6
+  },
+  "36": {
+   "name": "Skilled Animal and Horticultural Workers",
+   "employed2025k": 156.5,
+   "growth10Pct": 9.1
+  },
+  "361": {
+   "name": "Animal Attendants and Trainers, and Shearers",
+   "employed2025k": 45.8,
+   "growth10Pct": 11.1
+  },
+  "362": {
+   "name": "Horticultural Trades Workers",
+   "employed2025k": 110.7,
+   "growth10Pct": 8.3
+  },
+  "39": {
+   "name": "Other Technicians and Trades Workers",
+   "employed2025k": 200.6,
+   "growth10Pct": 7.9
+  },
+  "391": {
+   "name": "Hairdressers",
+   "employed2025k": 64.8,
+   "growth10Pct": 5.6
+  },
+  "392": {
+   "name": "Printing Trades Workers",
+   "employed2025k": 15.3,
+   "growth10Pct": 5.2
+  },
+  "393": {
+   "name": "Textile, Clothing and Footwear Trades Workers",
+   "employed2025k": 11.6,
+   "growth10Pct": 8.8
+  },
+  "394": {
+   "name": "Wood Trades Workers",
+   "employed2025k": 35.7,
+   "growth10Pct": 7.7
+  },
+  "399": {
+   "name": "Miscellaneous Technicians and Trades Workers",
+   "employed2025k": 72.9,
+   "growth10Pct": 10.5
+  },
+  "41": {
+   "name": "Health and Welfare Support Workers",
+   "employed2025k": 182.1,
+   "growth10Pct": 16.4
+  },
+  "411": {
+   "name": "Health and Welfare Support Workers",
+   "employed2025k": 182.1,
+   "growth10Pct": 16.4
+  },
+  "42": {
+   "name": "Carers and Aides",
+   "employed2025k": 828.2,
+   "growth10Pct": 15.1
+  },
+  "421": {
+   "name": "Child Carers",
+   "employed2025k": 172.4,
+   "growth10Pct": 4.5
+  },
+  "422": {
+   "name": "Education Aides",
+   "employed2025k": 134.7,
+   "growth10Pct": 9.7
+  },
+  "423": {
+   "name": "Personal Carers and Assistants",
+   "employed2025k": 516.3,
+   "growth10Pct": 20.0
+  },
+  "43": {
+   "name": "Hospitality Workers",
+   "employed2025k": 312.6,
+   "growth10Pct": 11.5
+  },
+  "431": {
+   "name": "Hospitality Workers",
+   "employed2025k": 312.6,
+   "growth10Pct": 11.5
+  },
+  "44": {
+   "name": "Protective Service Workers",
+   "employed2025k": 172.8,
+   "growth10Pct": 10.8
+  },
+  "441": {
+   "name": "Defence Force Members, Fire Fighters and Police",
+   "employed2025k": 88.8,
+   "growth10Pct": 11.1
+  },
+  "442": {
+   "name": "Prison and Security Officers",
+   "employed2025k": 83.9,
+   "growth10Pct": 10.4
+  },
+  "45": {
+   "name": "Sports and Personal Service Workers",
+   "employed2025k": 229.5,
+   "growth10Pct": 11.7
+  },
+  "451": {
+   "name": "Personal Service and Travel Workers",
+   "employed2025k": 114.9,
+   "growth10Pct": 10.9
+  },
+  "452": {
+   "name": "Sports and Fitness Workers",
+   "employed2025k": 114.5,
+   "growth10Pct": 12.5
+  },
+  "51": {
+   "name": "Office Managers and Program Administrators",
+   "employed2025k": 332.4,
+   "growth10Pct": 13.7
+  },
+  "511": {
+   "name": "Contract, Program and Project Administrators",
+   "employed2025k": 164.5,
+   "growth10Pct": 17.3
+  },
+  "512": {
+   "name": "Office and Practice Managers",
+   "employed2025k": 167.7,
+   "growth10Pct": 10.1
+  },
+  "52": {
+   "name": "Personal Assistants and Secretaries",
+   "employed2025k": 80.3,
+   "growth10Pct": -5.7
+  },
+  "521": {
+   "name": "Personal Assistants and Secretaries",
+   "employed2025k": 80.3,
+   "growth10Pct": -5.7
+  },
+  "53": {
+   "name": "General Clerical Workers",
+   "employed2025k": 344.4,
+   "growth10Pct": 16.0
+  },
+  "531": {
+   "name": "General Clerks",
+   "employed2025k": 297.9,
+   "growth10Pct": 19.0
+  },
+  "532": {
+   "name": "Keyboard Operators",
+   "employed2025k": 46.3,
+   "growth10Pct": -3.5
+  },
+  "54": {
+   "name": "Inquiry Clerks and Receptionists",
+   "employed2025k": 304.3,
+   "growth10Pct": 8.3
+  },
+  "541": {
+   "name": "Call or Contact Centre Information Clerks",
+   "employed2025k": 114.1,
+   "growth10Pct": 8.3
+  },
+  "542": {
+   "name": "Receptionists",
+   "employed2025k": 190.1,
+   "growth10Pct": 8.3
+  },
+  "55": {
+   "name": "Numerical Clerks",
+   "employed2025k": 399.4,
+   "growth10Pct": 6.5
+  },
+  "551": {
+   "name": "Accounting Clerks and Bookkeepers",
+   "employed2025k": 279.3,
+   "growth10Pct": 5.8
+  },
+  "552": {
+   "name": "Financial and Insurance Clerks",
+   "employed2025k": 119.5,
+   "growth10Pct": 8.1
+  },
+  "56": {
+   "name": "Clerical and Office Support Workers",
+   "employed2025k": 89.8,
+   "growth10Pct": -0.7
+  },
+  "561": {
+   "name": "Clerical and Office Support Workers",
+   "employed2025k": 89.8,
+   "growth10Pct": -0.7
+  },
+  "59": {
+   "name": "Other Clerical and Administrative Workers",
+   "employed2025k": 319.8,
+   "growth10Pct": 9.8
+  },
+  "591": {
+   "name": "Logistics Clerks",
+   "employed2025k": 164.3,
+   "growth10Pct": 11.1
+  },
+  "599": {
+   "name": "Miscellaneous Clerical and Administrative Workers",
+   "employed2025k": 155.2,
+   "growth10Pct": 8.4
+  },
+  "61": {
+   "name": "Sales Representatives and Agents",
+   "employed2025k": 210.8,
+   "growth10Pct": 9.5
+  },
+  "611": {
+   "name": "Insurance Agents and Sales Representatives",
+   "employed2025k": 96.0,
+   "growth10Pct": 4.0
+  },
+  "612": {
+   "name": "Real Estate Sales Agents",
+   "employed2025k": 114.4,
+   "growth10Pct": 14.2
+  },
+  "62": {
+   "name": "Sales Assistants and Salespersons",
+   "employed2025k": 757.5,
+   "growth10Pct": 7.0
+  },
+  "621": {
+   "name": "Sales Assistants and Salespersons",
+   "employed2025k": 757.5,
+   "growth10Pct": 7.0
+  },
+  "63": {
+   "name": "Sales Support Workers",
+   "employed2025k": 185.8,
+   "growth10Pct": 4.4
+  },
+  "631": {
+   "name": "Checkout Operators and Office Cashiers",
+   "employed2025k": 125.2,
+   "growth10Pct": 4.2
+  },
+  "639": {
+   "name": "Miscellaneous Sales Support Workers",
+   "employed2025k": 60.4,
+   "growth10Pct": 4.7
+  },
+  "71": {
+   "name": "Machine and Stationary Plant Operators",
+   "employed2025k": 183.7,
+   "growth10Pct": 7.1
+  },
+  "711": {
+   "name": "Machine Operators",
+   "employed2025k": 55.2,
+   "growth10Pct": 6.5
+  },
+  "712": {
+   "name": "Stationary Plant Operators",
+   "employed2025k": 128.1,
+   "growth10Pct": 7.3
+  },
+  "72": {
+   "name": "Mobile Plant Operators",
+   "employed2025k": 150.6,
+   "growth10Pct": 3.9
+  },
+  "721": {
+   "name": "Mobile Plant Operators",
+   "employed2025k": 150.6,
+   "growth10Pct": 3.9
+  },
+  "73": {
+   "name": "Road and Rail Drivers",
+   "employed2025k": 395.7,
+   "growth10Pct": 9.4
+  },
+  "731": {
+   "name": "Automobile, Bus and Rail Drivers",
+   "employed2025k": 112.9,
+   "growth10Pct": 8.8
+  },
+  "732": {
+   "name": "Delivery Drivers",
+   "employed2025k": 91.6,
+   "growth10Pct": 21.3
+  },
+  "733": {
+   "name": "Truck Drivers",
+   "employed2025k": 189.2,
+   "growth10Pct": 4.0
+  },
+  "74": {
+   "name": "Storepersons",
+   "employed2025k": 175.7,
+   "growth10Pct": 13.3
+  },
+  "741": {
+   "name": "Storepersons",
+   "employed2025k": 175.7,
+   "growth10Pct": 13.3
+  },
+  "81": {
+   "name": "Cleaners and Laundry Workers",
+   "employed2025k": 277.7,
+   "growth10Pct": 4.4
+  },
+  "811": {
+   "name": "Cleaners and Laundry Workers",
+   "employed2025k": 277.7,
+   "growth10Pct": 4.4
+  },
+  "82": {
+   "name": "Construction and Mining Labourers",
+   "employed2025k": 197.9,
+   "growth10Pct": 5.4
+  },
+  "821": {
+   "name": "Construction and Mining Labourers",
+   "employed2025k": 197.9,
+   "growth10Pct": 5.4
+  },
+  "83": {
+   "name": "Factory Process Workers",
+   "employed2025k": 176.6,
+   "growth10Pct": 2.9
+  },
+  "831": {
+   "name": "Food Process Workers",
+   "employed2025k": 47.5,
+   "growth10Pct": 0.7
+  },
+  "832": {
+   "name": "Packers and Product Assemblers",
+   "employed2025k": 87.2,
+   "growth10Pct": 4.1
+  },
+  "839": {
+   "name": "Miscellaneous Factory Process Workers",
+   "employed2025k": 38.0,
+   "growth10Pct": 2.7
+  },
+  "84": {
+   "name": "Farm, Forestry and Garden Workers",
+   "employed2025k": 115.6,
+   "growth10Pct": 4.3
+  },
+  "841": {
+   "name": "Farm, Forestry and Garden Workers",
+   "employed2025k": 115.6,
+   "growth10Pct": 4.3
+  },
+  "85": {
+   "name": "Food Preparation Assistants",
+   "employed2025k": 208.1,
+   "growth10Pct": 8.3
+  },
+  "851": {
+   "name": "Food Preparation Assistants",
+   "employed2025k": 208.1,
+   "growth10Pct": 8.3
+  },
+  "89": {
+   "name": "Other Labourers",
+   "employed2025k": 238.0,
+   "growth10Pct": 3.4
+  },
+  "891": {
+   "name": "Freight Handlers and Shelf Fillers",
+   "employed2025k": 87.0,
+   "growth10Pct": 0.3
+  },
+  "899": {
+   "name": "Miscellaneous Labourers",
+   "employed2025k": 150.5,
+   "growth10Pct": 5.2
+  }
+ },
+ "divisions": {
+  "A": {
+   "name": "Agriculture, Forestry and Fishing",
+   "employed2025k": 305.4,
+   "employed2035k": 320.2,
+   "growth5Pct": -0.5,
+   "growth10Pct": 4.8
+  },
+  "B": {
+   "name": "Mining",
+   "employed2025k": 322.6,
+   "employed2035k": 350.4,
+   "growth5Pct": 5.6,
+   "growth10Pct": 8.6
+  },
+  "C": {
+   "name": "Manufacturing",
+   "employed2025k": 874.3,
+   "employed2035k": 976.3,
+   "growth5Pct": 4.9,
+   "growth10Pct": 11.7
+  },
+  "D": {
+   "name": "Electricity, Gas, Water and Waste Services",
+   "employed2025k": 198.6,
+   "employed2035k": 222.6,
+   "growth5Pct": 6.0,
+   "growth10Pct": 12.1
+  },
+  "E": {
+   "name": "Construction",
+   "employed2025k": 1348.0,
+   "employed2035k": 1508.9,
+   "growth5Pct": 6.9,
+   "growth10Pct": 11.9
+  },
+  "F": {
+   "name": "Wholesale Trade",
+   "employed2025k": 359.5,
+   "employed2035k": 406.6,
+   "growth5Pct": 6.1,
+   "growth10Pct": 13.1
+  },
+  "G": {
+   "name": "Retail Trade",
+   "employed2025k": 1347.0,
+   "employed2035k": 1440.1,
+   "growth5Pct": 2.5,
+   "growth10Pct": 6.9
+  },
+  "H": {
+   "name": "Accommodation and Food Services",
+   "employed2025k": 962.1,
+   "employed2035k": 1054.5,
+   "growth5Pct": 3.5,
+   "growth10Pct": 9.6
+  },
+  "I": {
+   "name": "Transport, Postal and Warehousing",
+   "employed2025k": 754.1,
+   "employed2035k": 821.0,
+   "growth5Pct": 3.5,
+   "growth10Pct": 8.9
+  },
+  "J": {
+   "name": "Information Media and Telecommunications",
+   "employed2025k": 184.7,
+   "employed2035k": 208.4,
+   "growth5Pct": 4.6,
+   "growth10Pct": 12.8
+  },
+  "K": {
+   "name": "Financial and Insurance Services",
+   "employed2025k": 572.1,
+   "employed2035k": 650.5,
+   "growth5Pct": 6.4,
+   "growth10Pct": 13.7
+  },
+  "L": {
+   "name": "Rental, Hiring and Real Estate Services",
+   "employed2025k": 244.5,
+   "employed2035k": 278.4,
+   "growth5Pct": 7.1,
+   "growth10Pct": 13.8
+  },
+  "M": {
+   "name": "Professional, Scientific and Technical Services",
+   "employed2025k": 1351.6,
+   "employed2035k": 1601.7,
+   "growth5Pct": 10.1,
+   "growth10Pct": 18.5
+  },
+  "N": {
+   "name": "Administrative and Support Services",
+   "employed2025k": 429.8,
+   "employed2035k": 469.6,
+   "growth5Pct": 3.6,
+   "growth10Pct": 9.3
+  },
+  "O": {
+   "name": "Public Administration and Safety",
+   "employed2025k": 989.0,
+   "employed2035k": 1111.8,
+   "growth5Pct": 7.4,
+   "growth10Pct": 12.4
+  },
+  "P": {
+   "name": "Education and Training",
+   "employed2025k": 1267.6,
+   "employed2035k": 1425.3,
+   "growth5Pct": 5.7,
+   "growth10Pct": 12.4
+  },
+  "Q": {
+   "name": "Health Care and Social Assistance",
+   "employed2025k": 2369.3,
+   "employed2035k": 2911.2,
+   "growth5Pct": 12.3,
+   "growth10Pct": 22.9
+  },
+  "R": {
+   "name": "Arts and Recreation Services",
+   "employed2025k": 274.1,
+   "employed2035k": 305.0,
+   "growth5Pct": 5.2,
+   "growth10Pct": 11.3
+  },
+  "S": {
+   "name": "Other Services",
+   "employed2025k": 546.7,
+   "employed2035k": 593.1,
+   "growth5Pct": 2.9,
+   "growth10Pct": 8.5
+  }
+ },
+ "skillLevelNote": "Skill levels are set by ANZSCO for each occupation. Where a unit group contains occupations at different skill levels, JSA lists each of them."
 }

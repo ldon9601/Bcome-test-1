@@ -1,3 +1,4 @@
+import { FAMILY_LABELS } from "../careers/families.ts";
 import type { CareerFamily } from "../careers/types.ts";
 import type { AssessmentForAnalytics, User } from "../auth/store.ts";
 import { RIASEC, RIASEC_NAMES, SUBJECT_AREAS, VALUE_DIMS, VALUE_NAMES, type RiasecType, type StudentProfile, type SubjectArea, type ValueDim } from "../questionnaire/types.ts";
@@ -70,27 +71,7 @@ const bump = (m: Map<string, Count>, key: string, label: string, by = 1) => {
 };
 const avg = (xs: number[]) => (xs.length ? Math.round(xs.reduce((a, b) => a + b, 0) / xs.length) : 0);
 
-export const FAMILY_LABELS: Record<CareerFamily, string> = {
-  health: "Health",
-  care: "Care & community",
-  education: "Education",
-  tech: "Technology",
-  data: "Data",
-  engineering: "Engineering",
-  built: "Built environment",
-  environment: "Environment",
-  science: "Science",
-  animals: "Animals",
-  business: "Business",
-  creative: "Creative",
-  performing: "Performing arts",
-  trades: "Trades",
-  workshop: "Workshop & making",
-  hospitality: "Hospitality",
-  safety: "Safety & defence",
-  fitness: "Fitness",
-  transport: "Transport",
-};
+export { FAMILY_LABELS };
 
 /** Why an adviser might want to talk to a student, from their latest assessment. */
 export function followUpReasons(profile: StudentProfile, matches: SavedMatch[], completedAt: string, now: Date): string[] {
