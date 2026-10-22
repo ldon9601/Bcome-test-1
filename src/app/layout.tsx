@@ -4,7 +4,7 @@ import { Header } from "@/components/Header.tsx";
 import { HarbourScene } from "@/components/OccupationArt.tsx";
 import { careerCatalogue, courseCatalogue, searchIndex } from "@/lib/careers/catalogue.ts";
 import { currentSession } from "@/lib/auth/server.ts";
-import { jsaOutlook, occupationData, qualificationData } from "@/lib/data.ts";
+import { courseOfferings, jsaOutlook, occupationData, qualificationData } from "@/lib/data.ts";
 import "./globals.css";
 
 const sans = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-sans", weight: ["400", "500", "600", "700", "800"] });
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "Answer questions about what you enjoy and get personalised career matches, study pathways and a year-by-year plan, built on Australian job projections.",
 };
 
-const index = searchIndex(careerCatalogue(occupationData.occupations, jsaOutlook), courseCatalogue(qualificationData, occupationData.occupations));
+const index = searchIndex(careerCatalogue(occupationData.occupations, jsaOutlook, courseOfferings), courseCatalogue(qualificationData, occupationData.occupations, courseOfferings));
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const cur = await currentSession();

@@ -22,7 +22,9 @@ The profile also gives seven **Career DNA** dimensions (analytical, creative, in
 
 ### 2. Career data
 
-- **Occupations** (`data/occupations/occupations.json`): 63 careers keyed by **OSCA 2024** code. ANZSCO is kept only to join JSA projections. Each career has a 0–100 profile on the questionnaire's own dimensions (interests, skill requirements, values, work environment), plus subject areas, pathways, time to qualify, a pay range, and opportunity indicators.
+- **Occupations** (`data/occupations/occupations.json`): 63 careers keyed by **OSCA 2024** code. Each career is also coded to its **ANZSCO 2022** unit group (as used by Jobs and Skills Australia) and, where one fits, the closest 6-digit ANZSCO occupation. The unit group joins JSA projections and the JSA occupation profile. Each career has a 0–100 profile on the questionnaire's own dimensions (interests, skill requirements, values, work environment), plus subject areas, pathways, time to qualify, a pay range, and opportunity indicators.
+- **JSA occupation profiles** (`data/outlook/jsa-occupation-profiles.json`): headline figures from each career's [JSA occupation profile](https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco): employment, median full-time weekly earnings, past-year change, median age, % women, % part-time and the highest-qualification mix. They're shown as "The job in numbers" on results and in the career browser, and the median earnings feed the earnings part of future opportunity.
+- **Courses** (`data/courses/offerings.json`): specific university courses (ATAR, its basis and year, prerequisites, assumed knowledge, other requirements and the source) and TAFE courses (entry requirements, apprenticeship or not, current code). Results show up to four universities and two TAFE courses per career, with the student's state first, TAFE first if they chose TAFE or an apprenticeship, and prerequisites they aren't studying flagged. `/explore` lists them all with state and "my matches" filters.
 - **Skills layer** (`data/skills/`): skills ↔ qualifications ↔ occupations, shaped like the JSA National Skills Taxonomy data model.
 
 ### 3. Scoring (`src/lib/careers/matching.ts`, requirements doc sections 6–13)
@@ -32,7 +34,7 @@ Similarity = 1 − Σwᵢ|sᵢ − oᵢ| / Σwᵢ, with dimensions that matter m
 | Score | Formula |
 | --- | --- |
 | Personal fit | .35 interests + .20 skill affinity + .20 work values + .15 work environment + .10 subject affinity |
-| Future opportunity | .30 employment growth (JSA) + .20 shortage + .15 regional breadth + .15 graduate outcomes + .10 earnings potential + .10 AI adaptability |
+| Future opportunity | .30 employment growth (JSA) + .20 shortage + .15 regional breadth + .15 graduate outcomes + .10 earnings potential (JSA median full-time earnings where published) + .10 AI adaptability |
 | AI adaptability | .50 (1 − automation) + .30 augmentation + .20 adaptation (skill portability). Kept separate from growth because JSA's projections exclude generative AI. |
 | Pathway feasibility | .30 subject prerequisites + .25 academic readiness + .20 qualification pathway fit + .10 study-duration preference + .10 alternative pathway breadth + .05 geographic accessibility |
 | **Match score** | **.60 personal fit + .25 future opportunity + .15 pathway feasibility** |
@@ -88,6 +90,9 @@ Similarity = 1 − Σwᵢ|sᵢ − oᵢ| / Σwᵢ, with dimensions that matter m
 
 - **OSCA codes:** `oscaSource: "abs"` marks codes seen in the ABS OSCA 2024 publication itself. `"correspondence"` marks codes taken from the ABS ANZSCO–OSCA correspondence table as republished at ozlinks.au. Check them against [the ABS data downloads](https://www.abs.gov.au/statistics/classifications/osca-occupation-standard-classification-australia/2024-version-1-0/data-downloads) before launch. The ABS is consulting on an updated OSCA draft (August 2026), so codes may change.
 - **National Skills Taxonomy:** JSA hasn't published taxonomy data yet; it's still in consultation. The skills scheme follows the data model JSA has described: SKOS-style concepts with a preferred label and broader grouping, linked to OSCA occupations and qualifications. Each skill has an empty `nstExactMatch` field ready for the official concept ID, so the taxonomy can be swapped in without changing the app.
+- **ANZSCO and JSA profiles:** retrieved 22 October 2026 from jobsandskills.gov.au (CC BY 4.0, attribute JSA; ABS source data). 6-digit codes were checked against the ABS ANZSCO 2022 pages. Past-year change is not a projection. Refresh the JSON when JSA updates its profiles and run `npm run data:validate`.
+- **ATARs:** taken from each university's own published page or guide, with what the number means kept alongside it (`guaranteed`, `indicative` selection rank, `minimum`, or just `published`). Sources: University of Sydney 2027 admission guide (indicative), Monash and UQ and QUT guaranteed ATARs 2027, Deakin's find-a-course-by-ATAR page (year not stated), Curtin course pages, and TISC 2026 prerequisites for WA. There's no SA, TAS, ACT or NT data yet. ATARs change every year, so refresh before each admissions round.
+- **TAFE requirements:** from TAFE NSW course pages only. Other states' TAFEs set their own; students in other states see a note saying so.
 - **Pay:** indicative ranges for full-time work before tax, excluding super. They are Bcome editorial estimates from typical 2025 award and market rates, not JSA or ABS data. Import JSA median earnings (below) and plans will show them alongside.
 - **Time to qualify:** the typical full-time range on the most common route.
 - **Qualification codes:** VET codes marked `verifyCode: true` may have been superseded; check them on training.gov.au.
@@ -154,6 +159,7 @@ Careers advisers can edit content without touching code:
 - **Questions** (`data/questions/career-profile.json`): wording, scales and options. Keep 36 numbered questions so results stay comparable, and bump `version` when wording changes.
 - **Occupations** (`data/occupations/occupations.json`): OSCA code, profile (interests, skills, values, environment), market indicators with evidence, subjects, skills, pathways, time to qualify, pay range and entry competitiveness.
 - **Skills and qualifications** (`data/skills/skills.json`, `data/skills/qualifications.json`).
+- **Courses** (`data/courses/offerings.json`): to add a university, add a `sources` entry (provider, URL, `kind`, year), then `university` entries pointing at a Bcome `qualificationId` (a `higher-ed` qualification). Write prerequisites the way the state names its subjects ("Mathematics Methods", "Chemistry"); Bcome matches common ones to the student's subjects and never flags ones it can't read. TAFE entries need a `vet` qualification, the provider's code and URL, and at least one requirement. Then run `npm run db:seed-sql` to refresh the database seed.
 
 Run `npm run data:validate` after any edit.
 
@@ -170,7 +176,8 @@ Run `npm run data:validate` after any edit.
   - the Azure / Python (FastAPI) architecture the document recommends. This build stays on Next.js + Supabase; the scoring logic is self-contained and can be ported.
 
 - Only the 7 occupations JSA names in its summary have occupation-level projections until the full file is imported; the rest use labelled estimates.
-- Pay ranges are estimates until JSA earnings are imported.
+- Pay ranges are estimates until JSA earnings are imported; scoring already uses JSA profile median earnings.
+- Course data covers NSW, VIC, QLD and WA universities and TAFE NSW only. Some prerequisites are generic ("Mathematics prerequisite") where the source didn't give the band or level.
 - Subject names are generic; NSW, VIC and QLD course names differ. State-specific subject lists are a good next step.
 - Sign-in is username and password plus email codes; Google or Microsoft single sign-on for schools isn't built yet.
 - The privacy notice (`/privacy`) is a draft and needs legal review before launch.

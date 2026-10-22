@@ -4,11 +4,12 @@
  */
 import { writeFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { earningsData, jsaOutlook, occupationData, qualificationData, skillsData } from "../src/lib/data.ts";
+import { courseOfferings, earningsData, jsaOutlook, jsaProfiles, occupationData, qualificationData, skillsData } from "../src/lib/data.ts";
 
 const q = (v: unknown) => (v == null ? "null" : `'${String(v).replace(/'/g, "''")}'`);
 const n = (v: unknown) => (typeof v === "number" && Number.isFinite(v) ? String(v) : "null");
 const b = (v: unknown) => (v ? "true" : "false");
+const arr = (v: string[]) => (v.length ? `array[${v.map(q).join(", ")}]::text[]` : "'{}'::text[]");
 
 function insert(table: string, columns: string[], rows: string[][]): string {
   if (!rows.length) return `-- ${table}: no rows`;
@@ -25,7 +26,8 @@ export function buildSeedSql(): string {
     "begin;",
     "",
     "truncate public.occupation_pathways, public.occupation_skills, public.qualification_skills, public.occupations,",
-    "  public.qualifications, public.skills, public.skill_clusters, public.occupation_outlook, public.occupation_earnings restart identity cascade;",
+    "  public.qualifications, public.skills, public.skill_clusters, public.occupation_outlook, public.occupation_earnings,",
+    "  public.anzsco_profiles, public.course_sources, public.university_courses, public.tafe_courses restart identity cascade;",
     "",
     insert("skill_clusters", ["id", "pref_label"], skillsData.clusters.map((c) => [q(c.id), q(c.prefLabel)])),
     "",
@@ -43,11 +45,12 @@ export function buildSeedSql(): string {
     "",
     insert(
       "occupations",
-      ["osca", "osca_level", "osca_unit_group", "osca_title", "title", "anzsco", "riasec", "entry_competitiveness",
-        "salary_entry_min", "salary_entry_max", "salary_experienced_min", "salary_experienced_max", "qualify_years_min", "qualify_years_max", "data"],
-      occ.map((o) => [
-        q(o.osca), q(o.oscaLevel), q(o.oscaUnitGroup), q(o.oscaTitle), q(o.title), q(o.anzsco), q(o.riasec), q(o.entryCompetitiveness),
-        n(o.salary.entry[0]), n(o.salary.entry[1]), n(o.salary.experienced[0]), n(o.salary.experienced[1]),
+      ["osca", "osca_level", "osca_unit_group", "osca_title", "title", "anzsco", "anzsco_title", "anzsco_occupation", "anzsco_occupation_title",
+        "riasec", "entry_competitiveness", "salary_entry_min", "salary_entry_max", "salary_experienced_min", "salary_experienced_max",
+        "qualify_years_min", "qualify_years_max", "data"],
+      occ.map(({ jsaProfile: _profile, ...o }) => [
+        q(o.osca), q(o.oscaLevel), q(o.oscaUnitGroup), q(o.oscaTitle), q(o.title), q(o.anzsco), q(o.anzscoTitle), q(o.anzscoOccupation?.code), q(o.anzscoOccupation?.title),
+        q(o.riasec), q(o.entryCompetitiveness), n(o.salary.entry[0]), n(o.salary.entry[1]), n(o.salary.experienced[0]), n(o.salary.experienced[1]),
         n(o.timeToQualify.years[0]), n(o.timeToQualify.years[1]), `${q(JSON.stringify(o))}::jsonb`,
       ]),
     ),
@@ -70,6 +73,37 @@ export function buildSeedSql(): string {
       "occupation_outlook",
       ["anzsco", "name", "growth5_pct", "growth10_pct", "employed_2025k", "source"],
       Object.entries(jsaOutlook.occupations).map(([code, f]) => [q(code), q(f.name), n(f.growth5Pct), n(f.growth10Pct), n(f.employed2025k), q(jsaSource)]),
+    ),
+    "",
+    insert(
+      "anzsco_profiles",
+      ["unit_group", "title", "url", "employed", "part_time_pct", "female_pct", "median_weekly_earnings", "median_age", "annual_growth", "qualifications", "source", "retrieved"],
+      Object.entries(jsaProfiles.byUnitGroup).map(([code, p]) => [
+        q(code), q(p.title), q(p.url), n(p.employed), n(p.partTimePct), n(p.femalePct), n(p.medianWeeklyEarnings), n(p.medianAge), n(p.annualGrowth),
+        `${q(JSON.stringify(p.qualifications))}::jsonb`, q(jsaProfiles.source.title), q(jsaProfiles.source.retrieved),
+      ]),
+    ),
+    "",
+    insert(
+      "course_sources",
+      ["id", "provider", "title", "url", "kind", "entry_year", "note"],
+      Object.entries(courseOfferings.sources).map(([id, s]) => [q(id), q(s.provider), q(s.title), q(s.url), q(s.kind), n(s.year), q(s.note)]),
+    ),
+    "",
+    insert(
+      "university_courses",
+      ["qualification_id", "source_id", "provider", "state", "campus", "course", "atar_value", "atar_display", "atar_kind", "atar_year",
+        "prerequisites", "assumed_knowledge", "recommended", "other_requirements"],
+      courseOfferings.university.map((u) => [
+        q(u.qualificationId), q(u.source), q(u.provider), q(u.state), q(u.campus), q(u.course), n(u.atar.value), q(u.atar.display), q(u.atar.kind), n(u.atar.year),
+        arr(u.prerequisites), arr(u.assumedKnowledge), arr(u.recommended), arr(u.otherRequirements),
+      ]),
+    ),
+    "",
+    insert(
+      "tafe_courses",
+      ["qualification_id", "provider", "state", "course", "offered_code", "apprenticeship", "requirements", "url"],
+      courseOfferings.tafe.map((t) => [q(t.qualificationId), q(t.provider), q(t.state), q(t.course), q(t.offeredCode), b(t.apprenticeship), arr(t.requirements), q(t.url)]),
     ),
     "",
     insert(

@@ -2,7 +2,7 @@
  * Checks the editable JSON content for mistakes before it reaches students.
  * Run after editing anything in /data:  npm run data:validate
  */
-import { earningsData, jsaOutlook, occupationData, qualificationData, questionBank, skillsData, subjectLabels } from "../src/lib/data.ts";
+import { courseOfferings, earningsData, jsaOutlook, jsaProfiles, occupationData, qualificationData, questionBank, skillsData, subjectLabels } from "../src/lib/data.ts";
 import { CAREER_FAMILIES } from "../src/lib/careers/types.ts";
 import { RIASEC, SKILL_DIMS, STYLE_DIMS, SUBJECT_AREAS, VALUE_DIMS } from "../src/lib/questionnaire/types.ts";
 
@@ -104,6 +104,45 @@ export function validateData(): string[] {
   for (const code of Object.keys(earningsData.byOsca)) {
     if (!occupationData.occupations.some((o) => o.osca === code || o.oscaUnitGroup === code)) err(`earnings: ${code} matches no occupation`);
   }
+
+  // ANZSCO coding and JSA occupation profiles
+  for (const o of occupationData.occupations) {
+    const where = `occupation ${o.osca} (${o.title})`;
+    if (!/^\d{4}$/.test(o.anzsco)) err(`${where}: anzsco must be a 4-digit unit group`);
+    if (!jsaProfiles.byUnitGroup[o.anzsco]) err(`${where}: no JSA occupation profile for ANZSCO ${o.anzsco}`);
+    else if (jsaProfiles.byUnitGroup[o.anzsco].title !== o.anzscoTitle) err(`${where}: anzscoTitle should be "${jsaProfiles.byUnitGroup[o.anzsco].title}"`);
+    if (o.anzscoOccupation && !(new RegExp(`^${o.anzsco}\\d{2}$`).test(o.anzscoOccupation.code))) err(`${where}: anzscoOccupation ${o.anzscoOccupation.code} isn't in unit group ${o.anzsco}`);
+  }
+  for (const [code, p] of Object.entries(jsaProfiles.byUnitGroup)) {
+    if (!p.url.startsWith("https://www.jobsandskills.gov.au/")) err(`JSA profile ${code}: url should be a jobsandskills.gov.au page`);
+    for (const k of ["partTimePct", "femalePct"] as const) if (p[k] !== null && (p[k]! < 0 || p[k]! > 100)) err(`JSA profile ${code}: ${k} out of range`);
+    if (p.medianWeeklyEarnings !== null && (p.medianWeeklyEarnings < 500 || p.medianWeeklyEarnings > 6000)) err(`JSA profile ${code}: weekly earnings look wrong`);
+    const sum = Object.values(p.qualifications).reduce((a, b) => a + b, 0);
+    if (sum > 100.5) err(`JSA profile ${code}: qualification shares add to more than 100%`);
+  }
+
+  // Course offerings (university ATARs and TAFE entry requirements)
+  const quals = new Map(qualificationData.qualifications.map((q) => [q.id, q]));
+  const STATES = ["NSW", "VIC", "QLD", "WA", "SA", "TAS", "ACT", "NT"];
+  courseOfferings.university.forEach((u, i) => {
+    const where = `university offering ${i} (${u.provider}: ${u.course})`;
+    const q = quals.get(u.qualificationId);
+    if (!q) err(`${where}: unknown qualification ${u.qualificationId}`);
+    else if (q.sector !== "higher-ed") err(`${where}: ${u.qualificationId} isn't a higher-education qualification`);
+    if (!courseOfferings.sources[u.source]) err(`${where}: unknown source ${u.source}`);
+    if (!STATES.includes(u.state)) err(`${where}: unknown state ${u.state}`);
+    if (u.atar.value !== null && (u.atar.value < 30 || u.atar.value > 99.95)) err(`${where}: ATAR ${u.atar.value} out of range`);
+    if (u.atar.value !== null && !u.atar.kind) err(`${where}: say what kind of ATAR this is`);
+  });
+  courseOfferings.tafe.forEach((t, i) => {
+    const where = `TAFE offering ${i} (${t.provider}: ${t.course})`;
+    const q = quals.get(t.qualificationId);
+    if (!q) err(`${where}: unknown qualification ${t.qualificationId}`);
+    else if (q.sector !== "vet") err(`${where}: ${t.qualificationId} isn't a VET qualification`);
+    if (!t.url.startsWith("https://")) err(`${where}: needs a source URL`);
+    if (!t.requirements.length) err(`${where}: no entry requirements`);
+  });
+  for (const [id, src] of Object.entries(courseOfferings.sources)) if (!src.url.startsWith("https://")) err(`course source ${id}: needs a URL`);
   return errors;
 }
 
@@ -116,6 +155,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   console.log(
     `✓ ${questionBank.questions.length} questions, ${occupationData.occupations.length} occupations (OSCA), ` +
       `${skillsData.skills.length} skills, ${qualificationData.qualifications.length} qualifications, ` +
-      `${Object.keys(jsaOutlook.occupations).length} occupation-level JSA projections, ${Object.keys(earningsData.byOsca).length} earnings records`,
+      `${Object.keys(jsaOutlook.occupations).length} occupation-level JSA projections, ${Object.keys(earningsData.byOsca).length} earnings records, ` +
+      `${Object.keys(jsaProfiles.byUnitGroup).length} JSA occupation profiles, ${courseOfferings.university.length} university and ${courseOfferings.tafe.length} TAFE course entries`,
   );
 }

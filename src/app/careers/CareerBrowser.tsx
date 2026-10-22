@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
+import { JsaProfileCard } from "@/components/Courses.tsx";
 import { Icon } from "@/components/Icon.tsx";
 import { Modal } from "@/components/Modal.tsx";
 import { OccupationImage } from "@/components/OccupationArt.tsx";
@@ -95,6 +97,7 @@ export default function CareerBrowser({ careers }: { careers: CatalogueCareer[] 
             <Tags tags={c.tags} limit={3} />
             <p className="small" style={{ margin: 0 }}>
               {formatRange(c.salary.entry)} starting · {formatYears(c.timeToQualify.years)} to qualify
+              {c.courses.atarRange && ` · ATAR ${c.courses.atarRange[0]}–${c.courses.atarRange[1]}`}
             </p>
             <div className="actions">
               <button className="button outline" onClick={() => show(c.osca)}>
@@ -147,9 +150,30 @@ export default function CareerBrowser({ careers }: { careers: CatalogueCareer[] 
                 {current.pathways.map((p) => (
                   <li key={`${p.route}-${p.description}`}>
                     <strong>{ROUTE_LABEL[p.route]}</strong> ({formatYears(p.years)}): {p.description}
+                    {p.qualification && (
+                      <>
+                        {" "}
+                        · <Link href={`/explore#${p.qualification}`}>courses and entry requirements</Link>
+                      </>
+                    )}
                   </li>
                 ))}
               </ul>
+              {(current.courses.universities > 0 || current.courses.tafe) && (
+                <p className="small">
+                  {current.courses.universities > 0 && (
+                    <>
+                      Listed at {current.courses.universities} {current.courses.universities === 1 ? "university" : "universities"}
+                      {current.courses.atarRange &&
+                        ` (ATARs from ${current.courses.atarRange[0]} to ${current.courses.atarRange[1]})`}
+                    </>
+                  )}
+                  {current.courses.universities > 0 && current.courses.tafe && " · "}
+                  {current.courses.tafe && "TAFE entry requirements listed"}
+                </p>
+              )}
+              <h4 style={{ marginTop: "1rem" }}>The job in numbers</h4>
+              <JsaProfileCard unitGroup={current.anzsco.unitGroup} title={current.anzsco.title} occupation={current.anzsco.occupation} profile={current.anzsco.profile} />
               <p className="source">OSCA {current.osca}. Take the Discover questions to see how well this career fits you.</p>
             </div>
           </>

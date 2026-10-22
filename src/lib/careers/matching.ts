@@ -26,7 +26,7 @@ import {
  *
  *   Personal fit         = .35 interests + .20 skill affinity + .20 work values + .15 work environment + .10 subject affinity
  *   Future opportunity   = .30 employment growth + .20 shortage + .15 regional breadth + .15 graduate outcomes
- *                          + .10 earnings potential + .10 AI adaptability
+ *                          + .10 earnings potential (JSA median full-time pay when published) + .10 AI adaptability
  *   Pathway feasibility  = .30 subject prerequisites + .25 academic readiness + .20 qualification pathway fit
  *                          + .10 study-duration preference + .10 alternative pathway breadth + .05 geographic accessibility
  *   Match score          = .60 personal fit + .25 future opportunity + .15 pathway feasibility
@@ -43,7 +43,7 @@ import {
  */
 
 /** Bump when weights or rules change, so stored results can be compared and recalibrated. */
-export const ALGORITHM_VERSION = "2.0.0";
+export const ALGORITHM_VERSION = "2.1.0";
 
 export const MATCH_WEIGHTS = { personalFit: 0.6, futureOpportunity: 0.25, pathwayFeasibility: 0.15 } as const;
 export type ScoreName = keyof typeof MATCH_WEIGHTS;
@@ -254,7 +254,9 @@ const level = (n: number): "High" | "Moderate" | "Low" => (n >= 67 ? "High" : n 
 
 function futureOpportunity(occ: Occupation, outlook: Outlook, portability: number | null): ScoreDetail & { future: FutureOutlookSummary } {
   const m = occ.market;
-  const midExperienced = (occ.salary.experienced[0] + occ.salary.experienced[1]) / 2;
+  const jsa = occ.jsaProfile;
+  // JSA's median full-time earnings for the ANZSCO unit group, when published; otherwise our pay estimate.
+  const midExperienced = jsa?.medianWeeklyEarnings ? jsa.medianWeeklyEarnings * 52 : (occ.salary.experienced[0] + occ.salary.experienced[1]) / 2;
   const adaptation = portability ?? 0.5;
   const aiAdaptability = 0.5 * (1 - m.ai.automation / 100) + 0.3 * (m.ai.augmentation / 100) + 0.2 * adaptation;
   const parts = {
@@ -270,6 +272,12 @@ function futureOpportunity(occ: Occupation, outlook: Outlook, portability: numbe
   if (outlook.band10 === "strong" || outlook.band10 === "good") reasons.push(outlook.summary);
   if (outlook.band10 === "limited" || outlook.band10 === "declining") cautions.push(outlook.summary);
   if (m.shortage === "shortage") reasons.push("Employers currently find it hard to fill these roles.");
+  if (jsa?.annualGrowth != null && jsa.employed != null && jsa.annualGrowth / jsa.employed >= 0.03) {
+    reasons.push(`Employment grew by about ${jsa.annualGrowth.toLocaleString("en-AU")} in the past year (JSA).`);
+  }
+  if (jsa?.annualGrowth != null && jsa.annualGrowth < 0) {
+    cautions.push(`Employment fell by about ${Math.abs(jsa.annualGrowth).toLocaleString("en-AU")} in the past year (JSA), so check the longer-term outlook too.`);
+  }
   if (m.ai.augmentation >= 67 && m.ai.automation < 67) reasons.push("AI is more likely to help with this work than replace it.");
   if (m.ai.automation >= 67) cautions.push("AI is likely to automate parts of this work, so specialist and people skills will matter more.");
   const maxYears = occ.timeToQualify.years[1];

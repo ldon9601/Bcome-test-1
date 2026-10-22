@@ -1,0 +1,3574 @@
+{
+  "version": "2026-10-22",
+  "notes": [
+    "University ATARs are what each university published for the stated intake; 'kind' says whether a figure is a guarantee, an indicative selection rank, a minimum, or published without a stated basis. ATARs change every year: always check the course page and the state admissions centre (UAC, VTAC, QTAC, TISC, SATAC).",
+    "Prerequisites, assumed knowledge and recommended subjects use the state's senior secondary subject names (NSW HSC, VIC VCE, QLD QCE, WA WACE).",
+    "TAFE entry requirements are from TAFE NSW course pages; other states' TAFEs set their own, often similar, requirements.",
+    "Coverage so far: NSW (University of Sydney), VIC (Monash, Deakin), QLD (UQ, QUT), WA (Curtin, TISC prerequisites), TAFE NSW. Add more providers to this file in the same shape."
+  ],
+  "retrieved": "2026-10-22",
+  "sources": {
+    "usyd-2027": {
+      "provider": "The University of Sydney",
+      "title": "Admission guide for domestic students applying for 2027 entry",
+      "url": "https://www.sydney.edu.au/content/dam/corporate/documents/study/guides/admission-guide-domestic-stduents-applying-for-2027-entry-.pdf",
+      "kind": "indicative",
+      "year": 2027,
+      "note": "Indicative selection ranks based on the previous year's entry; not guaranteed. Prerequisite and assumed-knowledge subjects are NSW HSC subjects."
+    },
+    "monash-2027": {
+      "provider": "Monash University",
+      "title": "Monash Guarantee ATARs, 2027 entry",
+      "url": "https://www.monash.edu/study/how-to-apply/entry-requirements/entry-schemes/the-monash-guarantee/monash-guarantee-atars",
+      "kind": "guaranteed",
+      "year": 2027,
+      "note": "Meet this ATAR (including adjustments) and the course prerequisites to be guaranteed an offer. RC = range of criteria (extra requirements such as a personal statement, interview or audition). Check VCE prerequisites on each course page."
+    },
+    "deakin": {
+      "provider": "Deakin University",
+      "title": "Find a course by ATAR",
+      "url": "https://www.deakin.edu.au/study/find-a-course-by-atar",
+      "kind": "published",
+      "year": null,
+      "note": "ATARs as published by Deakin; the page doesn't say which intake or whether they are guaranteed or lowest selection ranks."
+    },
+    "uq-2027": {
+      "provider": "The University of Queensland",
+      "title": "ATAR guarantee, Semester 1 2027",
+      "url": "https://study.uq.edu.au/admissions/undergraduate/review-entry-requirements/guaranteed-atar",
+      "kind": "guaranteed",
+      "year": 2027,
+      "note": "Guaranteed thresholds include adjustments; the program must be your first QTAC preference. Final January cut-offs are usually lower. Check prerequisites on each program page."
+    },
+    "qut-2027": {
+      "provider": "Queensland University of Technology",
+      "title": "Guaranteed course offers, 2027",
+      "url": "https://www.qut.edu.au/study/applying/guaranteed-course-offers",
+      "kind": "guaranteed",
+      "year": 2027,
+      "note": "Offer guarantee applies to Semester 1 rounds up to the main January round; you must meet all other course requirements. Check prerequisites on each course page."
+    },
+    "curtin-nursing": {
+      "provider": "Curtin University",
+      "title": "Bachelor of Science (Nursing) course page",
+      "url": "https://www.curtin.edu.au/study/offering/course-ug-bachelor-of-science-nursing--b-nurs",
+      "kind": "minimum",
+      "year": null,
+      "note": "Minimum ATAR; meeting it doesn't guarantee selection. The page notes the Nursing stream is replaced by Advanced Nursing from 2026."
+    },
+    "curtin-engineering": {
+      "provider": "Curtin University",
+      "title": "Bachelor of Engineering (Honours) course page",
+      "url": "https://www.curtin.edu.au/study/offering/course-ug-bachelor-of-engineering-honours--bh-engr/?nocache=1",
+      "kind": "guaranteed",
+      "year": null,
+      "note": "Guaranteed ATAR or equivalent shown on the course page; year not stated."
+    },
+    "tisc-2026": {
+      "provider": "Tertiary Institutions Service Centre (WA)",
+      "title": "2026 Admission Requirements for School Leavers",
+      "url": "https://hedlandshs.wa.edu.au/wp-content/uploads/2024/04/TISC-2026.pdf",
+      "kind": "prerequisites",
+      "year": 2026,
+      "note": "WA prerequisite (scaled score of 50+) and recommended ATAR courses. About 70 is the minimum entry at most WA universities; check each course page for its ATAR."
+    }
+  },
+  "university": [
+    {
+      "qualificationId": "he-nursing",
+      "source": "usyd-2027",
+      "provider": "The University of Sydney",
+      "state": "NSW",
+      "campus": null,
+      "course": "Bachelor of Nursing (Advanced Studies)",
+      "atar": {
+        "value": 84,
+        "display": "84",
+        "kind": "indicative",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": [
+        "Inherent requirements (clinical placements)"
+      ]
+    },
+    {
+      "qualificationId": "he-physiotherapy",
+      "source": "usyd-2027",
+      "provider": "The University of Sydney",
+      "state": "NSW",
+      "campus": null,
+      "course": "Bachelor of Applied Science (Physiotherapy)",
+      "atar": {
+        "value": 99.5,
+        "display": "99.5",
+        "kind": "indicative",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [
+        "Chemistry",
+        "Physics"
+      ],
+      "recommended": [
+        "Mathematics Advanced"
+      ],
+      "otherRequirements": [
+        "Inherent requirements (clinical placements)"
+      ]
+    },
+    {
+      "qualificationId": "he-occupational-therapy",
+      "source": "usyd-2027",
+      "provider": "The University of Sydney",
+      "state": "NSW",
+      "campus": null,
+      "course": "Bachelor of Applied Science (Occupational Therapy)",
+      "atar": {
+        "value": 93,
+        "display": "93",
+        "kind": "indicative",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [
+        "Biology"
+      ],
+      "otherRequirements": [
+        "Inherent requirements (clinical placements)"
+      ]
+    },
+    {
+      "qualificationId": "he-speech-pathology",
+      "source": "usyd-2027",
+      "provider": "The University of Sydney",
+      "state": "NSW",
+      "campus": null,
+      "course": "Bachelor of Applied Science (Speech Pathology)",
+      "atar": {
+        "value": 94,
+        "display": "94",
+        "kind": "indicative",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [
+        "English Advanced"
+      ],
+      "otherRequirements": [
+        "Inherent requirements (clinical placements)"
+      ]
+    },
+    {
+      "qualificationId": "he-pharmacy",
+      "source": "usyd-2027",
+      "provider": "The University of Sydney",
+      "state": "NSW",
+      "campus": null,
+      "course": "Bachelor of Pharmacy (Honours) and Master of Pharmacy Practice",
+      "atar": {
+        "value": 90,
+        "display": "90",
+        "kind": "indicative",
+        "year": 2027
+      },
+      "prerequisites": [
+        "Mathematics (HSC prerequisite; see course page for the band required)"
+      ],
+      "assumedKnowledge": [
+        "Biology",
+        "Chemistry",
+        "Mathematics Advanced"
+      ],
+      "recommended": [
+        "Physics"
+      ],
+      "otherRequirements": [
+        "Inherent requirements (clinical placements)"
+      ]
+    },
+    {
+      "qualificationId": "he-dietetics",
+      "source": "usyd-2027",
+      "provider": "The University of Sydney",
+      "state": "NSW",
+      "campus": null,
+      "course": "Bachelor of Science and Master of Nutrition and Dietetics",
+      "atar": {
+        "value": 97.5,
+        "display": "97.5",
+        "kind": "indicative",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [
+        "Biology",
+        "Chemistry",
+        "Mathematics Advanced"
+      ],
+      "recommended": [],
+      "otherRequirements": [
+        "Credit average in the Bachelor of Science to continue",
+        "Inherent requirements (clinical placements)"
+      ]
+    },
+    {
+      "qualificationId": "he-psychology",
+      "source": "usyd-2027",
+      "provider": "The University of Sydney",
+      "state": "NSW",
+      "campus": null,
+      "course": "Bachelor of Psychology",
+      "atar": {
+        "value": 85,
+        "display": "85",
+        "kind": "indicative",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-social-work",
+      "source": "usyd-2027",
+      "provider": "The University of Sydney",
+      "state": "NSW",
+      "campus": null,
+      "course": "Bachelor of Social Work",
+      "atar": {
+        "value": 80,
+        "display": "80",
+        "kind": "indicative",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": [
+        "Inherent requirements (clinical placements)"
+      ]
+    },
+    {
+      "qualificationId": "he-early-childhood",
+      "source": "usyd-2027",
+      "provider": "The University of Sydney",
+      "state": "NSW",
+      "campus": null,
+      "course": "Bachelor of Education (Early Childhood)",
+      "atar": {
+        "value": 77,
+        "display": "77",
+        "kind": "indicative",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": [
+        "Inherent requirements (clinical placements)"
+      ]
+    },
+    {
+      "qualificationId": "he-primary-teaching",
+      "source": "usyd-2027",
+      "provider": "The University of Sydney",
+      "state": "NSW",
+      "campus": null,
+      "course": "Bachelor of Education (Primary)",
+      "atar": {
+        "value": 85,
+        "display": "85",
+        "kind": "indicative",
+        "year": 2027
+      },
+      "prerequisites": [
+        "NESA teaching requirement: three Band 5 results including English"
+      ],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": [
+        "Teacher education personal statement",
+        "Inherent requirements (clinical placements)"
+      ]
+    },
+    {
+      "qualificationId": "he-secondary-teaching",
+      "source": "usyd-2027",
+      "provider": "The University of Sydney",
+      "state": "NSW",
+      "campus": null,
+      "course": "Bachelor of Education (Secondary)",
+      "atar": {
+        "value": 80,
+        "display": "80",
+        "kind": "indicative",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": [
+        "Teacher education personal statement",
+        "Inherent requirements (clinical placements)"
+      ]
+    },
+    {
+      "qualificationId": "he-computer-science",
+      "source": "usyd-2027",
+      "provider": "The University of Sydney",
+      "state": "NSW",
+      "campus": null,
+      "course": "Bachelor of Advanced Computing",
+      "atar": {
+        "value": 90,
+        "display": "90",
+        "kind": "indicative",
+        "year": 2027
+      },
+      "prerequisites": [
+        "Mathematics (HSC prerequisite; see course page for the band required)"
+      ],
+      "assumedKnowledge": [
+        "Mathematics Extension 1"
+      ],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-cyber-security",
+      "source": "usyd-2027",
+      "provider": "The University of Sydney",
+      "state": "NSW",
+      "campus": null,
+      "course": "Bachelor of Advanced Computing (Cybersecurity major)",
+      "atar": {
+        "value": 90,
+        "display": "90",
+        "kind": "indicative",
+        "year": 2027
+      },
+      "prerequisites": [
+        "Mathematics (HSC prerequisite; see course page for the band required)"
+      ],
+      "assumedKnowledge": [
+        "Mathematics Extension 1"
+      ],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-data-science",
+      "source": "usyd-2027",
+      "provider": "The University of Sydney",
+      "state": "NSW",
+      "campus": null,
+      "course": "Bachelor of Advanced Computing (Data Science major)",
+      "atar": {
+        "value": 90,
+        "display": "90",
+        "kind": "indicative",
+        "year": 2027
+      },
+      "prerequisites": [
+        "Mathematics (HSC prerequisite; see course page for the band required)"
+      ],
+      "assumedKnowledge": [
+        "Mathematics Extension 1"
+      ],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-civil-engineering",
+      "source": "usyd-2027",
+      "provider": "The University of Sydney",
+      "state": "NSW",
+      "campus": null,
+      "course": "Bachelor of Engineering Honours (Civil Engineering)",
+      "atar": {
+        "value": 90,
+        "display": "90",
+        "kind": "indicative",
+        "year": 2027
+      },
+      "prerequisites": [
+        "Mathematics (HSC prerequisite; see course page for the band required)"
+      ],
+      "assumedKnowledge": [
+        "Mathematics Extension 1"
+      ],
+      "recommended": [
+        "Physics"
+      ],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-electrical-engineering",
+      "source": "usyd-2027",
+      "provider": "The University of Sydney",
+      "state": "NSW",
+      "campus": null,
+      "course": "Bachelor of Engineering Honours (Electrical Engineering)",
+      "atar": {
+        "value": 90,
+        "display": "90",
+        "kind": "indicative",
+        "year": 2027
+      },
+      "prerequisites": [
+        "Mathematics (HSC prerequisite; see course page for the band required)"
+      ],
+      "assumedKnowledge": [
+        "Mathematics Extension 1",
+        "Physics"
+      ],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-mechanical-engineering",
+      "source": "usyd-2027",
+      "provider": "The University of Sydney",
+      "state": "NSW",
+      "campus": null,
+      "course": "Bachelor of Engineering Honours (Mechanical Engineering)",
+      "atar": {
+        "value": 90,
+        "display": "90",
+        "kind": "indicative",
+        "year": 2027
+      },
+      "prerequisites": [
+        "Mathematics (HSC prerequisite; see course page for the band required)"
+      ],
+      "assumedKnowledge": [
+        "Mathematics Extension 1"
+      ],
+      "recommended": [
+        "Physics"
+      ],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-architecture",
+      "source": "usyd-2027",
+      "provider": "The University of Sydney",
+      "state": "NSW",
+      "campus": null,
+      "course": "Bachelor of Design in Architecture",
+      "atar": {
+        "value": 95,
+        "display": "95",
+        "kind": "indicative",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [
+        "English Advanced",
+        "Mathematics Advanced"
+      ],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-environmental-science",
+      "source": "usyd-2027",
+      "provider": "The University of Sydney",
+      "state": "NSW",
+      "campus": null,
+      "course": "Bachelor of Science (environmental majors)",
+      "atar": {
+        "value": 80,
+        "display": "80",
+        "kind": "indicative",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-agricultural-science",
+      "source": "usyd-2027",
+      "provider": "The University of Sydney",
+      "state": "NSW",
+      "campus": null,
+      "course": "Bachelor of Agricultural Science",
+      "atar": {
+        "value": 75,
+        "display": "75",
+        "kind": "indicative",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": [
+        "Inherent requirements (clinical placements)"
+      ]
+    },
+    {
+      "qualificationId": "he-veterinary-science",
+      "source": "usyd-2027",
+      "provider": "The University of Sydney",
+      "state": "NSW",
+      "campus": null,
+      "course": "Bachelor of Veterinary Biology and Doctor of Veterinary Medicine",
+      "atar": {
+        "value": 98,
+        "display": "98",
+        "kind": "indicative",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-accounting",
+      "source": "usyd-2027",
+      "provider": "The University of Sydney",
+      "state": "NSW",
+      "campus": null,
+      "course": "Bachelor of Commerce (Professional Accounting)",
+      "atar": {
+        "value": 96,
+        "display": "96",
+        "kind": "indicative",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [
+        "Mathematics Standard"
+      ],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-marketing",
+      "source": "usyd-2027",
+      "provider": "The University of Sydney",
+      "state": "NSW",
+      "campus": null,
+      "course": "Bachelor of Commerce (Marketing major)",
+      "atar": {
+        "value": 96,
+        "display": "96",
+        "kind": "indicative",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [
+        "Mathematics Standard"
+      ],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-law",
+      "source": "usyd-2027",
+      "provider": "The University of Sydney",
+      "state": "NSW",
+      "campus": null,
+      "course": "Bachelor of Arts and Bachelor of Laws",
+      "atar": {
+        "value": 99.5,
+        "display": "99.5",
+        "kind": "indicative",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [
+        "English Advanced"
+      ],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-journalism",
+      "source": "usyd-2027",
+      "provider": "The University of Sydney",
+      "state": "NSW",
+      "campus": null,
+      "course": "Bachelor of Media and Communications",
+      "atar": {
+        "value": 95,
+        "display": "95",
+        "kind": "indicative",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-design",
+      "source": "usyd-2027",
+      "provider": "The University of Sydney",
+      "state": "NSW",
+      "campus": null,
+      "course": "Bachelor of Design (Interaction Design)",
+      "atar": {
+        "value": 80,
+        "display": "80",
+        "kind": "indicative",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [
+        "Mathematics Advanced"
+      ],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-music",
+      "source": "usyd-2027",
+      "provider": "The University of Sydney",
+      "state": "NSW",
+      "campus": null,
+      "course": "Bachelor of Music",
+      "atar": {
+        "value": 70,
+        "display": "70",
+        "kind": "indicative",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": [
+        "Additional criteria (audition)"
+      ]
+    },
+    {
+      "qualificationId": "he-exercise-science",
+      "source": "usyd-2027",
+      "provider": "The University of Sydney",
+      "state": "NSW",
+      "campus": null,
+      "course": "Bachelor of Applied Science (Exercise and Sport Science)",
+      "atar": {
+        "value": 82,
+        "display": "82",
+        "kind": "indicative",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [
+        "Chemistry",
+        "Mathematics Advanced"
+      ],
+      "recommended": [],
+      "otherRequirements": [
+        "Inherent requirements (clinical placements)"
+      ]
+    },
+    {
+      "qualificationId": "he-medicine",
+      "source": "usyd-2027",
+      "provider": "The University of Sydney",
+      "state": "NSW",
+      "campus": null,
+      "course": "Bachelor of Science and Doctor of Medicine",
+      "atar": {
+        "value": 99.95,
+        "display": "99.95 + criteria",
+        "kind": "indicative",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [
+        "Biology",
+        "Chemistry",
+        "Mathematics Advanced"
+      ],
+      "recommended": [],
+      "otherRequirements": [
+        "Written assessment and panel discussion",
+        "Apply by the mid-December UAC deadline",
+        "Inherent requirements (clinical placements)"
+      ]
+    },
+    {
+      "qualificationId": "he-nursing",
+      "source": "monash-2027",
+      "provider": "Monash University",
+      "state": "VIC",
+      "campus": "Clayton",
+      "course": "Bachelor of Nursing",
+      "atar": {
+        "value": 70,
+        "display": "70 RC",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": [
+        "Range of criteria (e.g. personal statement, interview or audition)"
+      ]
+    },
+    {
+      "qualificationId": "he-physiotherapy",
+      "source": "monash-2027",
+      "provider": "Monash University",
+      "state": "VIC",
+      "campus": null,
+      "course": "Bachelor of Physiotherapy (Honours)",
+      "atar": {
+        "value": 92,
+        "display": "92",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-occupational-therapy",
+      "source": "monash-2027",
+      "provider": "Monash University",
+      "state": "VIC",
+      "campus": null,
+      "course": "Bachelor of Occupational Therapy (Honours)",
+      "atar": {
+        "value": 81,
+        "display": "81",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-speech-pathology",
+      "source": "monash-2027",
+      "provider": "Monash University",
+      "state": "VIC",
+      "campus": null,
+      "course": "Bachelor of Speech Pathology (Honours)",
+      "atar": {
+        "value": 81,
+        "display": "81",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-pharmacy",
+      "source": "monash-2027",
+      "provider": "Monash University",
+      "state": "VIC",
+      "campus": null,
+      "course": "Bachelor of Pharmacy (Honours)/Master of Pharmacy",
+      "atar": {
+        "value": 80,
+        "display": "80",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-dietetics",
+      "source": "monash-2027",
+      "provider": "Monash University",
+      "state": "VIC",
+      "campus": null,
+      "course": "Bachelor of Nutrition Science – Scholars Program (Dietetics Pathway)",
+      "atar": {
+        "value": 90,
+        "display": "90",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-psychology",
+      "source": "monash-2027",
+      "provider": "Monash University",
+      "state": "VIC",
+      "campus": null,
+      "course": "Bachelor of Psychology",
+      "atar": {
+        "value": 77,
+        "display": "77",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-paramedicine",
+      "source": "monash-2027",
+      "provider": "Monash University",
+      "state": "VIC",
+      "campus": null,
+      "course": "Bachelor of Paramedicine",
+      "atar": {
+        "value": 72,
+        "display": "72",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-early-childhood",
+      "source": "monash-2027",
+      "provider": "Monash University",
+      "state": "VIC",
+      "campus": null,
+      "course": "Bachelor of Education (Honours) in Early Childhood and Primary Education",
+      "atar": {
+        "value": 70,
+        "display": "70 RC",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": [
+        "Range of criteria (e.g. personal statement, interview or audition)"
+      ]
+    },
+    {
+      "qualificationId": "he-primary-teaching",
+      "source": "monash-2027",
+      "provider": "Monash University",
+      "state": "VIC",
+      "campus": null,
+      "course": "Bachelor of Education (Honours) in Primary Education",
+      "atar": {
+        "value": 70,
+        "display": "70 RC",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": [
+        "Range of criteria (e.g. personal statement, interview or audition)"
+      ]
+    },
+    {
+      "qualificationId": "he-secondary-teaching",
+      "source": "monash-2027",
+      "provider": "Monash University",
+      "state": "VIC",
+      "campus": null,
+      "course": "Bachelor of Education (Honours) in Secondary Education and Bachelor of Arts",
+      "atar": {
+        "value": 70,
+        "display": "70 RC",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": [
+        "Range of criteria (e.g. personal statement, interview or audition)"
+      ]
+    },
+    {
+      "qualificationId": "he-computer-science",
+      "source": "monash-2027",
+      "provider": "Monash University",
+      "state": "VIC",
+      "campus": null,
+      "course": "Bachelor of Computer Science",
+      "atar": {
+        "value": 78,
+        "display": "78",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-cyber-security",
+      "source": "monash-2027",
+      "provider": "Monash University",
+      "state": "VIC",
+      "campus": null,
+      "course": "Bachelor of Cybersecurity",
+      "atar": {
+        "value": 78,
+        "display": "78",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-information-systems",
+      "source": "monash-2027",
+      "provider": "Monash University",
+      "state": "VIC",
+      "campus": null,
+      "course": "Bachelor of Information Technology",
+      "atar": {
+        "value": 73,
+        "display": "73",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-data-science",
+      "source": "monash-2027",
+      "provider": "Monash University",
+      "state": "VIC",
+      "campus": null,
+      "course": "Bachelor of Applied Data Science",
+      "atar": {
+        "value": 75,
+        "display": "75",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-civil-engineering",
+      "source": "monash-2027",
+      "provider": "Monash University",
+      "state": "VIC",
+      "campus": null,
+      "course": "Bachelor of Engineering (Honours)",
+      "atar": {
+        "value": 75,
+        "display": "75",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": [
+        "Choose your engineering specialisation after first year"
+      ]
+    },
+    {
+      "qualificationId": "he-electrical-engineering",
+      "source": "monash-2027",
+      "provider": "Monash University",
+      "state": "VIC",
+      "campus": null,
+      "course": "Bachelor of Engineering (Honours)",
+      "atar": {
+        "value": 75,
+        "display": "75",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": [
+        "Choose your engineering specialisation after first year"
+      ]
+    },
+    {
+      "qualificationId": "he-mechanical-engineering",
+      "source": "monash-2027",
+      "provider": "Monash University",
+      "state": "VIC",
+      "campus": null,
+      "course": "Bachelor of Engineering (Honours)",
+      "atar": {
+        "value": 75,
+        "display": "75",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": [
+        "Choose your engineering specialisation after first year"
+      ]
+    },
+    {
+      "qualificationId": "he-architecture",
+      "source": "monash-2027",
+      "provider": "Monash University",
+      "state": "VIC",
+      "campus": null,
+      "course": "Bachelor of Architectural Design and Master of Architecture (packaged offer)",
+      "atar": {
+        "value": 70,
+        "display": "70",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-accounting",
+      "source": "monash-2027",
+      "provider": "Monash University",
+      "state": "VIC",
+      "campus": null,
+      "course": "Bachelor of Accounting",
+      "atar": {
+        "value": 70,
+        "display": "70",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-business",
+      "source": "monash-2027",
+      "provider": "Monash University",
+      "state": "VIC",
+      "campus": null,
+      "course": "Bachelor of Business",
+      "atar": {
+        "value": 70,
+        "display": "70",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-marketing",
+      "source": "monash-2027",
+      "provider": "Monash University",
+      "state": "VIC",
+      "campus": null,
+      "course": "Bachelor of Marketing",
+      "atar": {
+        "value": 70,
+        "display": "70",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-law",
+      "source": "monash-2027",
+      "provider": "Monash University",
+      "state": "VIC",
+      "campus": null,
+      "course": "Bachelor of Laws (Honours)",
+      "atar": {
+        "value": 85,
+        "display": "85",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-journalism",
+      "source": "monash-2027",
+      "provider": "Monash University",
+      "state": "VIC",
+      "campus": null,
+      "course": "Bachelor of Media Communication",
+      "atar": {
+        "value": 70,
+        "display": "70",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-design",
+      "source": "monash-2027",
+      "provider": "Monash University",
+      "state": "VIC",
+      "campus": null,
+      "course": "Bachelor of Design",
+      "atar": {
+        "value": 70,
+        "display": "70",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-music",
+      "source": "monash-2027",
+      "provider": "Monash University",
+      "state": "VIC",
+      "campus": null,
+      "course": "Bachelor of Music",
+      "atar": {
+        "value": 70,
+        "display": "70 RC",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": [
+        "Range of criteria (e.g. personal statement, interview or audition)"
+      ]
+    },
+    {
+      "qualificationId": "he-nursing",
+      "source": "deakin",
+      "provider": "Deakin University",
+      "state": "VIC",
+      "campus": "Burwood (Melbourne)",
+      "course": "Bachelor of Nursing",
+      "atar": {
+        "value": 70.25,
+        "display": "70.25",
+        "kind": "published",
+        "year": null
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-nursing",
+      "source": "deakin",
+      "provider": "Deakin University",
+      "state": "VIC",
+      "campus": "Waterfront (Geelong)",
+      "course": "Bachelor of Nursing",
+      "atar": {
+        "value": 60.3,
+        "display": "60.3",
+        "kind": "published",
+        "year": null
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-occupational-therapy",
+      "source": "deakin",
+      "provider": "Deakin University",
+      "state": "VIC",
+      "campus": "Waterfront (Geelong)",
+      "course": "Bachelor of Occupational Therapy",
+      "atar": {
+        "value": 72,
+        "display": "72",
+        "kind": "published",
+        "year": null
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-dietetics",
+      "source": "deakin",
+      "provider": "Deakin University",
+      "state": "VIC",
+      "campus": "Burwood (Melbourne)",
+      "course": "Bachelor of Nutrition Science (Dietetics Pathway)",
+      "atar": {
+        "value": 90.25,
+        "display": "90.25",
+        "kind": "published",
+        "year": null
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-psychology",
+      "source": "deakin",
+      "provider": "Deakin University",
+      "state": "VIC",
+      "campus": "Burwood (Melbourne)",
+      "course": "Bachelor of Psychology (Honours)",
+      "atar": {
+        "value": 80,
+        "display": "80",
+        "kind": "published",
+        "year": null
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-social-work",
+      "source": "deakin",
+      "provider": "Deakin University",
+      "state": "VIC",
+      "campus": "Waterfront (Geelong)",
+      "course": "Bachelor of Social Work",
+      "atar": {
+        "value": 66,
+        "display": "66",
+        "kind": "published",
+        "year": null
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-early-childhood",
+      "source": "deakin",
+      "provider": "Deakin University",
+      "state": "VIC",
+      "campus": "Burwood (Melbourne)",
+      "course": "Bachelor of Early Childhood Education",
+      "atar": {
+        "value": 64.15,
+        "display": "64.15",
+        "kind": "published",
+        "year": null
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-secondary-teaching",
+      "source": "deakin",
+      "provider": "Deakin University",
+      "state": "VIC",
+      "campus": "Burwood (Melbourne)",
+      "course": "Bachelor of Science/Master of Teaching (Secondary)",
+      "atar": {
+        "value": 66.8,
+        "display": "66.8",
+        "kind": "published",
+        "year": null
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-computer-science",
+      "source": "deakin",
+      "provider": "Deakin University",
+      "state": "VIC",
+      "campus": "Burwood (Melbourne)",
+      "course": "Bachelor of Computer Science",
+      "atar": {
+        "value": 63.55,
+        "display": "63.55",
+        "kind": "published",
+        "year": null
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-computer-science",
+      "source": "deakin",
+      "provider": "Deakin University",
+      "state": "VIC",
+      "campus": "Burwood (Melbourne)",
+      "course": "Bachelor of Software Engineering (Honours)",
+      "atar": {
+        "value": 69.6,
+        "display": "69.6",
+        "kind": "published",
+        "year": null
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-cyber-security",
+      "source": "deakin",
+      "provider": "Deakin University",
+      "state": "VIC",
+      "campus": "Burwood (Melbourne)",
+      "course": "Bachelor of Cyber Security",
+      "atar": {
+        "value": 63.3,
+        "display": "63.3",
+        "kind": "published",
+        "year": null
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-information-systems",
+      "source": "deakin",
+      "provider": "Deakin University",
+      "state": "VIC",
+      "campus": "Burwood (Melbourne)",
+      "course": "Bachelor of Information Technology",
+      "atar": {
+        "value": 61.2,
+        "display": "61.2",
+        "kind": "published",
+        "year": null
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-data-science",
+      "source": "deakin",
+      "provider": "Deakin University",
+      "state": "VIC",
+      "campus": "Burwood (Melbourne)",
+      "course": "Bachelor of Data Science",
+      "atar": {
+        "value": 65.8,
+        "display": "65.8",
+        "kind": "published",
+        "year": null
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-civil-engineering",
+      "source": "deakin",
+      "provider": "Deakin University",
+      "state": "VIC",
+      "campus": "Burwood (Melbourne)",
+      "course": "Bachelor of Engineering (Honours)",
+      "atar": {
+        "value": 70.5,
+        "display": "70.5",
+        "kind": "published",
+        "year": null
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-electrical-engineering",
+      "source": "deakin",
+      "provider": "Deakin University",
+      "state": "VIC",
+      "campus": "Burwood (Melbourne)",
+      "course": "Bachelor of Engineering (Honours)",
+      "atar": {
+        "value": 70.5,
+        "display": "70.5",
+        "kind": "published",
+        "year": null
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-mechanical-engineering",
+      "source": "deakin",
+      "provider": "Deakin University",
+      "state": "VIC",
+      "campus": "Burwood (Melbourne)",
+      "course": "Bachelor of Engineering (Honours)",
+      "atar": {
+        "value": 70.5,
+        "display": "70.5",
+        "kind": "published",
+        "year": null
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-architecture",
+      "source": "deakin",
+      "provider": "Deakin University",
+      "state": "VIC",
+      "campus": "Waterfront (Geelong)",
+      "course": "Bachelor of Design (Architecture)/Master of Architecture",
+      "atar": {
+        "value": 82.1,
+        "display": "82.1",
+        "kind": "published",
+        "year": null
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-construction-management",
+      "source": "deakin",
+      "provider": "Deakin University",
+      "state": "VIC",
+      "campus": "Waterfront (Geelong)",
+      "course": "Bachelor of Construction Management (Honours)",
+      "atar": {
+        "value": 60.75,
+        "display": "60.75",
+        "kind": "published",
+        "year": null
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-environmental-science",
+      "source": "deakin",
+      "provider": "Deakin University",
+      "state": "VIC",
+      "campus": "Burwood (Melbourne)",
+      "course": "Bachelor of Environmental Science and Sustainability",
+      "atar": {
+        "value": 60.25,
+        "display": "60.25",
+        "kind": "published",
+        "year": null
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-accounting",
+      "source": "deakin",
+      "provider": "Deakin University",
+      "state": "VIC",
+      "campus": "Burwood (Melbourne)",
+      "course": "Bachelor of Commerce",
+      "atar": {
+        "value": 80,
+        "display": "80",
+        "kind": "published",
+        "year": null
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-business",
+      "source": "deakin",
+      "provider": "Deakin University",
+      "state": "VIC",
+      "campus": "Burwood (Melbourne)",
+      "course": "Bachelor of Business",
+      "atar": {
+        "value": 60.05,
+        "display": "60.05",
+        "kind": "published",
+        "year": null
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-law",
+      "source": "deakin",
+      "provider": "Deakin University",
+      "state": "VIC",
+      "campus": "Burwood (Melbourne)",
+      "course": "Bachelor of Laws",
+      "atar": {
+        "value": 90.1,
+        "display": "90.1",
+        "kind": "published",
+        "year": null
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-journalism",
+      "source": "deakin",
+      "provider": "Deakin University",
+      "state": "VIC",
+      "campus": "Burwood (Melbourne)",
+      "course": "Bachelor of Communication",
+      "atar": {
+        "value": 60.35,
+        "display": "60.35",
+        "kind": "published",
+        "year": null
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-design",
+      "source": "deakin",
+      "provider": "Deakin University",
+      "state": "VIC",
+      "campus": "Burwood (Melbourne)",
+      "course": "Bachelor of Design",
+      "atar": {
+        "value": 60.8,
+        "display": "60.8",
+        "kind": "published",
+        "year": null
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-exercise-science",
+      "source": "deakin",
+      "provider": "Deakin University",
+      "state": "VIC",
+      "campus": "Burwood (Melbourne)",
+      "course": "Bachelor of Exercise and Sport Science",
+      "atar": {
+        "value": 70.05,
+        "display": "70.05",
+        "kind": "published",
+        "year": null
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-nursing",
+      "source": "uq-2027",
+      "provider": "The University of Queensland",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Nursing",
+      "atar": {
+        "value": 85,
+        "display": "85",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": [
+        "Limited places"
+      ]
+    },
+    {
+      "qualificationId": "he-occupational-therapy",
+      "source": "uq-2027",
+      "provider": "The University of Queensland",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Occupational Therapy (Honours)",
+      "atar": {
+        "value": 97,
+        "display": "97",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": [
+        "Limited places"
+      ]
+    },
+    {
+      "qualificationId": "he-speech-pathology",
+      "source": "uq-2027",
+      "provider": "The University of Queensland",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Speech Pathology (Honours)",
+      "atar": {
+        "value": 96,
+        "display": "96",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": [
+        "Limited places"
+      ]
+    },
+    {
+      "qualificationId": "he-pharmacy",
+      "source": "uq-2027",
+      "provider": "The University of Queensland",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Pharmacy (Honours)",
+      "atar": {
+        "value": 80,
+        "display": "80",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-dietetics",
+      "source": "uq-2027",
+      "provider": "The University of Queensland",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Nutrition Sciences/Master of Dietetics",
+      "atar": {
+        "value": 93,
+        "display": "93",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": [
+        "Limited places"
+      ]
+    },
+    {
+      "qualificationId": "he-psychology",
+      "source": "uq-2027",
+      "provider": "The University of Queensland",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Psychological Science (Honours)",
+      "atar": {
+        "value": 93,
+        "display": "93",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": [
+        "Limited places"
+      ]
+    },
+    {
+      "qualificationId": "he-social-work",
+      "source": "uq-2027",
+      "provider": "The University of Queensland",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Social Work",
+      "atar": {
+        "value": 75,
+        "display": "75",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-primary-teaching",
+      "source": "uq-2027",
+      "provider": "The University of Queensland",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Education (Primary)",
+      "atar": {
+        "value": 75,
+        "display": "75",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-computer-science",
+      "source": "uq-2027",
+      "provider": "The University of Queensland",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Computer Science",
+      "atar": {
+        "value": 84,
+        "display": "84",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-information-systems",
+      "source": "uq-2027",
+      "provider": "The University of Queensland",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Information Technology",
+      "atar": {
+        "value": 84,
+        "display": "84",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-civil-engineering",
+      "source": "uq-2027",
+      "provider": "The University of Queensland",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Engineering (Honours)",
+      "atar": {
+        "value": 85,
+        "display": "85",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-electrical-engineering",
+      "source": "uq-2027",
+      "provider": "The University of Queensland",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Engineering (Honours)",
+      "atar": {
+        "value": 85,
+        "display": "85",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-mechanical-engineering",
+      "source": "uq-2027",
+      "provider": "The University of Queensland",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Engineering (Honours)",
+      "atar": {
+        "value": 85,
+        "display": "85",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-architecture",
+      "source": "uq-2027",
+      "provider": "The University of Queensland",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Architectural Design",
+      "atar": {
+        "value": 84,
+        "display": "84",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-planning",
+      "source": "uq-2027",
+      "provider": "The University of Queensland",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Urban Planning",
+      "atar": {
+        "value": 80,
+        "display": "80",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-environmental-science",
+      "source": "uq-2027",
+      "provider": "The University of Queensland",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Environmental Management (Honours)",
+      "atar": {
+        "value": 78,
+        "display": "78",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-agricultural-science",
+      "source": "uq-2027",
+      "provider": "The University of Queensland",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Agricultural Science",
+      "atar": {
+        "value": 72,
+        "display": "72",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-accounting",
+      "source": "uq-2027",
+      "provider": "The University of Queensland",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Commerce",
+      "atar": {
+        "value": 82,
+        "display": "82",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-business",
+      "source": "uq-2027",
+      "provider": "The University of Queensland",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Business Management",
+      "atar": {
+        "value": 72,
+        "display": "72",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-law",
+      "source": "uq-2027",
+      "provider": "The University of Queensland",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Laws (Honours)",
+      "atar": {
+        "value": 98,
+        "display": "98",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-journalism",
+      "source": "uq-2027",
+      "provider": "The University of Queensland",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Journalism",
+      "atar": {
+        "value": 78,
+        "display": "78",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-design",
+      "source": "uq-2027",
+      "provider": "The University of Queensland",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Design",
+      "atar": {
+        "value": 84,
+        "display": "84",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-exercise-science",
+      "source": "uq-2027",
+      "provider": "The University of Queensland",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Exercise and Sport Sciences (Honours)",
+      "atar": {
+        "value": 85,
+        "display": "85",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": [
+        "Limited places"
+      ]
+    },
+    {
+      "qualificationId": "he-nursing",
+      "source": "qut-2027",
+      "provider": "Queensland University of Technology",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Nursing",
+      "atar": {
+        "value": 80,
+        "display": "80",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-paramedicine",
+      "source": "qut-2027",
+      "provider": "Queensland University of Technology",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Paramedic Science",
+      "atar": {
+        "value": 95,
+        "display": "95",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-pharmacy",
+      "source": "qut-2027",
+      "provider": "Queensland University of Technology",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Pharmacy (Honours)",
+      "atar": {
+        "value": 78,
+        "display": "78",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-dietetics",
+      "source": "qut-2027",
+      "provider": "Queensland University of Technology",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Nutrition Science",
+      "atar": {
+        "value": 70,
+        "display": "70",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": [
+        "Becoming a dietitian needs further study (e.g. a Master of Dietetics)"
+      ]
+    },
+    {
+      "qualificationId": "he-psychology",
+      "source": "qut-2027",
+      "provider": "Queensland University of Technology",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Behavioural Science (Psychology)",
+      "atar": {
+        "value": 74,
+        "display": "74",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-social-work",
+      "source": "qut-2027",
+      "provider": "Queensland University of Technology",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Social Work",
+      "atar": {
+        "value": 70,
+        "display": "70",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-early-childhood",
+      "source": "qut-2027",
+      "provider": "Queensland University of Technology",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Education (Early Childhood)",
+      "atar": {
+        "value": 70,
+        "display": "70",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-primary-teaching",
+      "source": "qut-2027",
+      "provider": "Queensland University of Technology",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Education (Primary)",
+      "atar": {
+        "value": 70,
+        "display": "70",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-secondary-teaching",
+      "source": "qut-2027",
+      "provider": "Queensland University of Technology",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Education (Secondary)",
+      "atar": {
+        "value": 70,
+        "display": "70",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-computer-science",
+      "source": "qut-2027",
+      "provider": "Queensland University of Technology",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Information Technology (Computer Science major)",
+      "atar": {
+        "value": 70,
+        "display": "70",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-cyber-security",
+      "source": "qut-2027",
+      "provider": "Queensland University of Technology",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Information Technology (Cyber Security major)",
+      "atar": {
+        "value": 70,
+        "display": "70",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-information-systems",
+      "source": "qut-2027",
+      "provider": "Queensland University of Technology",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Information Technology",
+      "atar": {
+        "value": 70,
+        "display": "70",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-data-science",
+      "source": "qut-2027",
+      "provider": "Queensland University of Technology",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Data Science",
+      "atar": {
+        "value": 84,
+        "display": "84",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-civil-engineering",
+      "source": "qut-2027",
+      "provider": "Queensland University of Technology",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Engineering (Honours) (Civil)",
+      "atar": {
+        "value": 87,
+        "display": "87",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-electrical-engineering",
+      "source": "qut-2027",
+      "provider": "Queensland University of Technology",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Engineering (Honours) (Electrical)",
+      "atar": {
+        "value": 87,
+        "display": "87",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-mechanical-engineering",
+      "source": "qut-2027",
+      "provider": "Queensland University of Technology",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Engineering (Honours) (Mechanical)",
+      "atar": {
+        "value": 87,
+        "display": "87",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-architecture",
+      "source": "qut-2027",
+      "provider": "Queensland University of Technology",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Architectural Design",
+      "atar": {
+        "value": 82,
+        "display": "82",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-design",
+      "source": "qut-2027",
+      "provider": "Queensland University of Technology",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Design",
+      "atar": {
+        "value": 70,
+        "display": "70",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-construction-management",
+      "source": "qut-2027",
+      "provider": "Queensland University of Technology",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Built Environment (Honours) (Construction Management)",
+      "atar": {
+        "value": 75,
+        "display": "75",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-planning",
+      "source": "qut-2027",
+      "provider": "Queensland University of Technology",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Built Environment (Honours) (Urban and Regional Planning)",
+      "atar": {
+        "value": 75,
+        "display": "75",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-environmental-science",
+      "source": "qut-2027",
+      "provider": "Queensland University of Technology",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Science (Environmental Science)",
+      "atar": {
+        "value": 70,
+        "display": "70",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-medical-laboratory-science",
+      "source": "qut-2027",
+      "provider": "Queensland University of Technology",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Medical Laboratory Science",
+      "atar": {
+        "value": 72,
+        "display": "72",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-accounting",
+      "source": "qut-2027",
+      "provider": "Queensland University of Technology",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Business (Accountancy)",
+      "atar": {
+        "value": 70,
+        "display": "70",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-business",
+      "source": "qut-2027",
+      "provider": "Queensland University of Technology",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Business",
+      "atar": {
+        "value": 70,
+        "display": "70",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-marketing",
+      "source": "qut-2027",
+      "provider": "Queensland University of Technology",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Business (Marketing)",
+      "atar": {
+        "value": 70,
+        "display": "70",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-law",
+      "source": "qut-2027",
+      "provider": "Queensland University of Technology",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Laws (Honours)",
+      "atar": {
+        "value": 87,
+        "display": "87",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-journalism",
+      "source": "qut-2027",
+      "provider": "Queensland University of Technology",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Communication (Journalism)",
+      "atar": {
+        "value": 70,
+        "display": "70",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-music",
+      "source": "qut-2027",
+      "provider": "Queensland University of Technology",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Creative Arts (Music)",
+      "atar": {
+        "value": 70,
+        "display": "70",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-acting",
+      "source": "qut-2027",
+      "provider": "Queensland University of Technology",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Creative Arts (Drama)",
+      "atar": {
+        "value": 70,
+        "display": "70",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-exercise-science",
+      "source": "qut-2027",
+      "provider": "Queensland University of Technology",
+      "state": "QLD",
+      "campus": null,
+      "course": "Bachelor of Sport and Exercise Science",
+      "atar": {
+        "value": 70,
+        "display": "70",
+        "kind": "guaranteed",
+        "year": 2027
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-nursing",
+      "source": "curtin-nursing",
+      "provider": "Curtin University",
+      "state": "WA",
+      "campus": null,
+      "course": "Bachelor of Science (Nursing)",
+      "atar": {
+        "value": 70,
+        "display": "70",
+        "kind": "minimum",
+        "year": null
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [
+        "Human Biology ATAR",
+        "Integrated Science ATAR"
+      ],
+      "otherRequirements": [
+        "Manual Handling and Basic Life Support certificates before starting",
+        "Clinical placements include rotating shifts"
+      ]
+    },
+    {
+      "qualificationId": "he-civil-engineering",
+      "source": "curtin-engineering",
+      "provider": "Curtin University",
+      "state": "WA",
+      "campus": null,
+      "course": "Bachelor of Engineering (Honours)",
+      "atar": {
+        "value": 80,
+        "display": "80",
+        "kind": "guaranteed",
+        "year": null
+      },
+      "prerequisites": [
+        "Mathematics Methods ATAR",
+        "One of Chemistry, Physics or Engineering Studies ATAR"
+      ],
+      "assumedKnowledge": [],
+      "recommended": [
+        "Mathematics Specialist ATAR"
+      ],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-electrical-engineering",
+      "source": "curtin-engineering",
+      "provider": "Curtin University",
+      "state": "WA",
+      "campus": null,
+      "course": "Bachelor of Engineering (Honours)",
+      "atar": {
+        "value": 80,
+        "display": "80",
+        "kind": "guaranteed",
+        "year": null
+      },
+      "prerequisites": [
+        "Mathematics Methods ATAR",
+        "One of Chemistry, Physics or Engineering Studies ATAR"
+      ],
+      "assumedKnowledge": [],
+      "recommended": [
+        "Mathematics Specialist ATAR"
+      ],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-mechanical-engineering",
+      "source": "curtin-engineering",
+      "provider": "Curtin University",
+      "state": "WA",
+      "campus": null,
+      "course": "Bachelor of Engineering (Honours)",
+      "atar": {
+        "value": 80,
+        "display": "80",
+        "kind": "guaranteed",
+        "year": null
+      },
+      "prerequisites": [
+        "Mathematics Methods ATAR",
+        "One of Chemistry, Physics or Engineering Studies ATAR"
+      ],
+      "assumedKnowledge": [],
+      "recommended": [
+        "Mathematics Specialist ATAR"
+      ],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-physiotherapy",
+      "source": "tisc-2026",
+      "provider": "Curtin University",
+      "state": "WA",
+      "campus": null,
+      "course": "Bachelor of Science (Physiotherapy) (Honours)",
+      "atar": {
+        "value": null,
+        "display": null,
+        "kind": null,
+        "year": null
+      },
+      "prerequisites": [
+        "One science ATAR course"
+      ],
+      "assumedKnowledge": [],
+      "recommended": [
+        "Mathematics Applications",
+        "Physical Education Studies",
+        "Health Studies"
+      ],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-occupational-therapy",
+      "source": "tisc-2026",
+      "provider": "Curtin University",
+      "state": "WA",
+      "campus": null,
+      "course": "Bachelor of Science (Occupational Therapy) (Honours)",
+      "atar": {
+        "value": null,
+        "display": null,
+        "kind": null,
+        "year": null
+      },
+      "prerequisites": [
+        "Physical Education Studies or one science ATAR course"
+      ],
+      "assumedKnowledge": [],
+      "recommended": [
+        "Human Biology",
+        "Physics",
+        "Mathematics Applications"
+      ],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-speech-pathology",
+      "source": "tisc-2026",
+      "provider": "Curtin University",
+      "state": "WA",
+      "campus": null,
+      "course": "Bachelor of Science (Speech Pathology) (Honours)",
+      "atar": {
+        "value": null,
+        "display": null,
+        "kind": null,
+        "year": null
+      },
+      "prerequisites": [
+        "One science ATAR course"
+      ],
+      "assumedKnowledge": [],
+      "recommended": [
+        "Mathematics Applications"
+      ],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-pharmacy",
+      "source": "tisc-2026",
+      "provider": "Curtin University",
+      "state": "WA",
+      "campus": null,
+      "course": "Bachelor of Pharmacy (Honours)",
+      "atar": {
+        "value": null,
+        "display": null,
+        "kind": null,
+        "year": null
+      },
+      "prerequisites": [
+        "Chemistry ATAR",
+        "Mathematics Applications ATAR"
+      ],
+      "assumedKnowledge": [],
+      "recommended": [
+        "Human Biology or Biology"
+      ],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-dietetics",
+      "source": "tisc-2026",
+      "provider": "Curtin University",
+      "state": "WA",
+      "campus": null,
+      "course": "Bachelor of Science (Nutrition and Food Science)",
+      "atar": {
+        "value": null,
+        "display": null,
+        "kind": null,
+        "year": null
+      },
+      "prerequisites": [
+        "One science ATAR course"
+      ],
+      "assumedKnowledge": [],
+      "recommended": [
+        "Chemistry",
+        "Mathematics Applications"
+      ],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-psychology",
+      "source": "tisc-2026",
+      "provider": "Curtin University",
+      "state": "WA",
+      "campus": null,
+      "course": "Bachelor of Psychology",
+      "atar": {
+        "value": null,
+        "display": null,
+        "kind": null,
+        "year": null
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [
+        "Mathematics Applications",
+        "One science ATAR course"
+      ],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-computer-science",
+      "source": "tisc-2026",
+      "provider": "Curtin University",
+      "state": "WA",
+      "campus": null,
+      "course": "Bachelor of Computing (Computer Science)",
+      "atar": {
+        "value": null,
+        "display": null,
+        "kind": null,
+        "year": null
+      },
+      "prerequisites": [
+        "Mathematics Methods ATAR"
+      ],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-cyber-security",
+      "source": "tisc-2026",
+      "provider": "Curtin University",
+      "state": "WA",
+      "campus": null,
+      "course": "Bachelor of Science (Cyber Security)",
+      "atar": {
+        "value": null,
+        "display": null,
+        "kind": null,
+        "year": null
+      },
+      "prerequisites": [
+        "Mathematics Methods ATAR"
+      ],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-data-science",
+      "source": "tisc-2026",
+      "provider": "Curtin University",
+      "state": "WA",
+      "campus": null,
+      "course": "Bachelor of Science (Data Science)",
+      "atar": {
+        "value": null,
+        "display": null,
+        "kind": null,
+        "year": null
+      },
+      "prerequisites": [
+        "Mathematics Methods ATAR"
+      ],
+      "assumedKnowledge": [],
+      "recommended": [
+        "Mathematics Specialist"
+      ],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-surveying",
+      "source": "tisc-2026",
+      "provider": "Curtin University",
+      "state": "WA",
+      "campus": null,
+      "course": "Bachelor of Surveying (Honours)",
+      "atar": {
+        "value": null,
+        "display": null,
+        "kind": null,
+        "year": null
+      },
+      "prerequisites": [
+        "Mathematics Applications ATAR"
+      ],
+      "assumedKnowledge": [],
+      "recommended": [
+        "Mathematics Methods"
+      ],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-environmental-science",
+      "source": "tisc-2026",
+      "provider": "Curtin University",
+      "state": "WA",
+      "campus": null,
+      "course": "Bachelor of Science (Environmental Science)",
+      "atar": {
+        "value": null,
+        "display": null,
+        "kind": null,
+        "year": null
+      },
+      "prerequisites": [
+        "Mathematics Applications ATAR"
+      ],
+      "assumedKnowledge": [],
+      "recommended": [
+        "Chemistry or Biology"
+      ],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-agricultural-science",
+      "source": "tisc-2026",
+      "provider": "Curtin University",
+      "state": "WA",
+      "campus": null,
+      "course": "Bachelor of Science (Agricultural Science)",
+      "atar": {
+        "value": null,
+        "display": null,
+        "kind": null,
+        "year": null
+      },
+      "prerequisites": [
+        "Mathematics Applications ATAR"
+      ],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-medical-laboratory-science",
+      "source": "tisc-2026",
+      "provider": "Curtin University",
+      "state": "WA",
+      "campus": null,
+      "course": "Bachelor of Science (Laboratory Medicine)",
+      "atar": {
+        "value": null,
+        "display": null,
+        "kind": null,
+        "year": null
+      },
+      "prerequisites": [],
+      "assumedKnowledge": [],
+      "recommended": [
+        "Mathematics Applications",
+        "Chemistry",
+        "Human Biology or Biology"
+      ],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-construction-management",
+      "source": "tisc-2026",
+      "provider": "Curtin University",
+      "state": "WA",
+      "campus": null,
+      "course": "Bachelor of Applied Science (Construction Management)",
+      "atar": {
+        "value": null,
+        "display": null,
+        "kind": null,
+        "year": null
+      },
+      "prerequisites": [
+        "Mathematics Applications ATAR"
+      ],
+      "assumedKnowledge": [],
+      "recommended": [
+        "Mathematics Methods or Specialist"
+      ],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-accounting",
+      "source": "tisc-2026",
+      "provider": "Curtin University",
+      "state": "WA",
+      "campus": null,
+      "course": "Bachelor of Commerce (Accounting)",
+      "atar": {
+        "value": null,
+        "display": null,
+        "kind": null,
+        "year": null
+      },
+      "prerequisites": [
+        "Mathematics Applications ATAR"
+      ],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-exercise-science",
+      "source": "tisc-2026",
+      "provider": "Curtin University",
+      "state": "WA",
+      "campus": null,
+      "course": "Bachelor of Science (Exercise and Sports Science)",
+      "atar": {
+        "value": null,
+        "display": null,
+        "kind": null,
+        "year": null
+      },
+      "prerequisites": [
+        "Physical Education Studies",
+        "Mathematics Applications",
+        "Human Biology"
+      ],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": []
+    },
+    {
+      "qualificationId": "he-medicine",
+      "source": "tisc-2026",
+      "provider": "Curtin University",
+      "state": "WA",
+      "campus": null,
+      "course": "Bachelor of Medicine, Bachelor of Surgery",
+      "atar": {
+        "value": null,
+        "display": null,
+        "kind": null,
+        "year": null
+      },
+      "prerequisites": [
+        "Chemistry ATAR",
+        "One of Mathematics Applications, Methods or Specialist",
+        "Human Biology or Biology"
+      ],
+      "assumedKnowledge": [],
+      "recommended": [],
+      "otherRequirements": [
+        "UCAT and Casper tests"
+      ]
+    }
+  ],
+  "tafe": [
+    {
+      "qualificationId": "UEE30820",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Certificate III in Electrotechnology Electrician",
+      "offeredCode": "UEE30820",
+      "apprenticeship": true,
+      "requirements": [
+        "Apprenticeship: employed as an apprentice; ACAP submits Training Proposal Plan.",
+        "Non-apprentice: 21+, 2 years' work experience in the trade, currently employed in the industry.",
+        "Recommended LLN Year 10; may require LLN test.",
+        "Recommended: work at heights; distinguish colours."
+      ],
+      "url": "https://www.tafensw.edu.au/course-areas/electrotechnology/courses/certificate-iii-in-electrotechnology-electrician--UEE30820-01"
+    },
+    {
+      "qualificationId": "CPC32420",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Certificate III in Plumbing",
+      "offeredCode": "CPC32420",
+      "apprenticeship": true,
+      "requirements": [
+        "Apprenticeship: employed as an apprentice; register with ACAP.",
+        "Non-apprentice: 21+, 2 years' work experience, currently employed in industry.",
+        "White card (general construction induction) needed before going on a construction site."
+      ],
+      "url": "https://www.tafensw.edu.au/course-areas/building-and-construction-trades/courses/certificate-iii-in-plumbing-general-plumber--CPC32420-01"
+    },
+    {
+      "qualificationId": "CPC30220",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Certificate III in Carpentry",
+      "offeredCode": "CPC30220",
+      "apprenticeship": true,
+      "requirements": [
+        "Apprenticeship: employed as an apprentice; ACAP submits TPP.",
+        "Non-apprentice: RPL; 21+; 2 years' experience; currently employed.",
+        "Recommended LLN Year 10; may require LLN test."
+      ],
+      "url": "https://www.tafensw.edu.au/course-areas/building-and-construction-trades/courses/certificate-iii-in-carpentry--CPC30220-01"
+    },
+    {
+      "qualificationId": "AUR30620",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Certificate III in Light Vehicle Mechanical Technology",
+      "offeredCode": "AUR30620",
+      "apprenticeship": true,
+      "requirements": [
+        "Apprenticeship: employed as an apprentice; ACAP submits TPP.",
+        "Non-apprentice: 21+; working in industry or 2 years' experience.",
+        "Must complete an LLND test before starting (minimum scores in digital literacy, learning, reading, writing, oral communication and numeracy)."
+      ],
+      "url": "https://www.tafensw.edu.au/course-areas/automotive/courses/certificate-iii-in-light-vehicle-mechanical-technology--AUR30620-01"
+    },
+    {
+      "qualificationId": "UEE32220",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Certificate III in Air-conditioning and Refrigeration",
+      "offeredCode": "UEE32220",
+      "apprenticeship": true,
+      "requirements": [
+        "Apprenticeship: employed as an apprentice; register with ACAP.",
+        "Non-apprentice: 21+, 2 years' experience, currently employed.",
+        "Reading, writing and maths at Year 10 or equivalent.",
+        "Refrigerant Handling Licence evidence during the course."
+      ],
+      "url": "https://www.tafensw.edu.au/course-areas/AUTO/courses/AUTO--UEE32220-01"
+    },
+    {
+      "qualificationId": "MEM30219",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Certificate III in Engineering – Mechanical Trade",
+      "offeredCode": "MEM30219",
+      "apprenticeship": true,
+      "requirements": [
+        "Apprenticeship: employed as an apprentice; submit TPP.",
+        "Recommended LLN Year 10/12; may require LLN test.",
+        "Recommended: School Certificate or equivalent; white card may be needed."
+      ],
+      "url": "https://www.tafensw.edu.au/course-areas/engineering/courses/certificate-iii-in-engineering-mechanical-trade-fitting--MEM30219-04"
+    },
+    {
+      "qualificationId": "MEM30319",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Certificate III in Engineering – Fabrication Trade",
+      "offeredCode": "MEM31922",
+      "apprenticeship": true,
+      "requirements": [
+        "Apprenticeship: employed as an apprentice with employer letter; submit TPP.",
+        "Recommended LLN Year 10.",
+        "TAFE NSW enrols this trade under code MEM31922; check the TAFE page for the current release."
+      ],
+      "url": "https://www.tafensw.edu.au/course-areas/engineering/courses/engineering--MEM31922-06"
+    },
+    {
+      "qualificationId": "SIT30821",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Certificate III in Commercial Cookery",
+      "offeredCode": "SIT30821",
+      "apprenticeship": true,
+      "requirements": [
+        "Apprenticeship: employed as an apprentice; register with ACAP.",
+        "Non-apprentice: no entry requirements stated.",
+        "Recommended LLN Year 10; may require LLN test.",
+        "Supply own chef's uniform and toolkit."
+      ],
+      "url": "https://www.tafensw.edu.au/course-areas/food-and-hospitality/courses/certificate-iii-in-commercial-cookery--SIT30821-01"
+    },
+    {
+      "qualificationId": "SIT40521",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Certificate IV in Kitchen Management",
+      "offeredCode": "SIT40521",
+      "apprenticeship": false,
+      "requirements": [
+        "Evidence of previous experience or study required.",
+        "Apprenticeship or non-apprenticeship.",
+        "LLN skills test.",
+        "Equipment about $350–$420 (uniform and chef's toolbox)."
+      ],
+      "url": "https://www.tafensw.edu.au/course-areas/food-and-hospitality/courses/certificate-iv-in-kitchen-management--SIT40521-01"
+    },
+    {
+      "qualificationId": "SHB30416",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Certificate III in Hairdressing",
+      "offeredCode": "SHB30416",
+      "apprenticeship": true,
+      "requirements": [
+        "Apprenticeship: employed as an apprentice; register with ACAP.",
+        "Non-apprentice: 21+, 2 years' experience, currently employed (RPL plus gap training).",
+        "No prerequisite courses."
+      ],
+      "url": "https://tafensw.edu.au/course-areas/hair-and-beauty/courses/certificate-iii-in-hairdressing--SHB30416-01"
+    },
+    {
+      "qualificationId": "CHC33021",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Certificate III in Individual Support",
+      "offeredCode": "CHC33021",
+      "apprenticeship": false,
+      "requirements": [
+        "No entry requirements (or as a traineeship if employed as a trainee).",
+        "During study: National Police Check, NDIS Worker Check, Working with Children Check, vaccinations (may include COVID-19, hepatitis A and B, influenza). 120 hours' work placement."
+      ],
+      "url": "https://www.tafensw.edu.au/course-areas/healthcare/courses/certificate-iii-in-individual-support-ageing-and-disability--CHC33021-04"
+    },
+    {
+      "qualificationId": "CHC43121",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Certificate IV in Disability Support",
+      "offeredCode": "CHC43121",
+      "apprenticeship": false,
+      "requirements": [
+        "Must have completed Certificate III in Individual Support (Disability) (CHC33021 or CHC33015), or CHC30408 plus the entry skill set.",
+        "During study: Working with Children Check, National Police Check, NDIS Worker Screening Check, vaccinations and health screening."
+      ],
+      "url": "https://www.tafensw.edu.au/course-areas/healthcare/courses/certificate-iv-in-disability-support--CHC43121-01"
+    },
+    {
+      "qualificationId": "HLT33115",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Certificate III in Health Services Assistance",
+      "offeredCode": "HLT33115",
+      "apprenticeship": false,
+      "requirements": [
+        "No entry requirements; Year 10 LLN recommended.",
+        "During study: Working with Children Check, National Police Check, NDIS Worker Check, vaccinations and health screening.",
+        "Minimum 80 hours' work placement.",
+        "Must be able to perform 2 minutes of CPR at floor level."
+      ],
+      "url": "https://www.tafensw.edu.au/course-areas/healthcare/courses/certificate-iii-in-health-services-assistance-assisting-in-nursing-work-in-acute-care--HLT33115-03"
+    },
+    {
+      "qualificationId": "HLT35021",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Certificate III in Dental Assisting",
+      "offeredCode": "HLT35021",
+      "apprenticeship": false,
+      "requirements": [
+        "No entry requirements; LLN test may be required. 350-hour work placement.",
+        "During study: National Police Check, Working with Children Check, vaccinations and health screening.",
+        "Must perform 2 minutes of CPR at floor level."
+      ],
+      "url": "https://www.tafensw.edu.au/course-areas/healthcare/courses/certificate-iii-in-dental-assisting--HLT35021-01"
+    },
+    {
+      "qualificationId": "HLT54121",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Diploma of Nursing",
+      "offeredCode": "HLT54121",
+      "apprenticeship": false,
+      "requirements": [
+        "HSC or Year 12 equivalent, or a Certificate III or above.",
+        "Pre-entry BKSB literacy and numeracy assessment at Exit Level 3+ in English and maths.",
+        "Must meet the Nursing and Midwifery Board of Australia English language standard.",
+        "During study: National Police Check, Working with Children Check, vaccinations and health screening."
+      ],
+      "url": "https://www.tafensw.edu.au/course-areas/healthcare/courses/diploma-of-nursing--HLT54121-01"
+    },
+    {
+      "qualificationId": "CHC30121",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Certificate III in Early Childhood Education and Care",
+      "offeredCode": "CHC30121",
+      "apprenticeship": false,
+      "requirements": [
+        "No prior qualification needed; ability to read, write and speak English.",
+        "Working with Children Check to complete. 160 hours' work placement.",
+        "Can be done as a traineeship.",
+        "Fitness to deliver first aid."
+      ],
+      "url": "https://www.tafensw.edu.au/course-areas/education-and-training/courses/education-and-training--CHC30121-01"
+    },
+    {
+      "qualificationId": "CHC50121",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Diploma of Early Childhood Education and Care",
+      "offeredCode": "CHC50121",
+      "apprenticeship": false,
+      "requirements": [
+        "Must have completed Certificate III in Early Childhood Education and Care (CHC30121 or CHC30113).",
+        "Year 12 LLN recommended. 280 hours' work placement.",
+        "Working with Children Check; vaccinations and health screening.",
+        "Can be done as a traineeship."
+      ],
+      "url": "https://tafensw.edu.au/course-areas/healthcare/courses/healthcare--CHC50121-01"
+    },
+    {
+      "qualificationId": "CHC52021",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Diploma of Community Services",
+      "offeredCode": "CHC52021",
+      "apprenticeship": false,
+      "requirements": [
+        "Evidence of previous experience or study required (industry experience or community services study ideally).",
+        "During study: Working with Children Check, National Police Check, NDIS Check, vaccinations and health screening.",
+        "Minimum 200 hours' work placement.",
+        "Can be a traineeship."
+      ],
+      "url": "https://www.tafensw.edu.au/course-areas/healthcare/courses/diploma-of-community-services--CHC52021-01"
+    },
+    {
+      "qualificationId": "CHC51015",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Diploma of Counselling",
+      "offeredCode": "CHC51015",
+      "apprenticeship": false,
+      "requirements": [
+        "Evidence of previous experience or study required; some delivery options have extra entry requirements.",
+        "Community services experience useful but not essential."
+      ],
+      "url": "https://www.tafensw.edu.au/course-areas/healthcare/courses/diploma-of-counselling--CHC51015-01"
+    },
+    {
+      "qualificationId": "ICT50220",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Diploma of Information Technology",
+      "offeredCode": "ICT50220",
+      "apprenticeship": false,
+      "requirements": [
+        "No additional entry requirements listed for this offering (Database and Data Management specialisation, 6 months full time at St George)."
+      ],
+      "url": "https://www.tafensw.edu.au/course-areas/information-and-communication-technology/courses/diploma-of-information-technology-database-and-data-management--ICT50220-02/offerings/ICT50220-02V02-26SGR-007"
+    },
+    {
+      "qualificationId": "22603VIC",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Certificate IV in Cyber Security",
+      "offeredCode": "22603VIC",
+      "apprenticeship": false,
+      "requirements": [
+        "Certificate III or higher in IT with networking proficiency, or equivalent industry experience (operating systems, Linux and Windows command line, networking protocols, router and switch configuration).",
+        "Year 10 LLN; LLN test may be required."
+      ],
+      "url": "https://www.tafensw.edu.au/course-areas/information-and-communication-technology/courses/certificate-iv-in-cyber-security--22603VIC-01"
+    },
+    {
+      "qualificationId": "BSB30120",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Certificate III in Business",
+      "offeredCode": "BSB30120",
+      "apprenticeship": false,
+      "requirements": [
+        "No entry requirements.",
+        "Year 10 LLN, computer with internet and basic Microsoft Office skills recommended."
+      ],
+      "url": "https://www.tafensw.edu.au/course-areas/business-and-marketing/courses/certificate-iii-in-business--BSB30120-01"
+    },
+    {
+      "qualificationId": "FNS50222",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Diploma of Accounting",
+      "offeredCode": "FNS50222",
+      "apprenticeship": false,
+      "requirements": [
+        "Must have completed FNSACC321, FNSACC322, FNSACC418 and FNSACC421 (e.g.",
+        "Accounting Principles Skill Set or Certificate IV in Accounting and Bookkeeping).",
+        "Year 12 LLN recommended."
+      ],
+      "url": "https://www.tafensw.edu.au/course-areas/accounting-and-finance/courses/diploma-of-accounting--FNS50222-01"
+    },
+    {
+      "qualificationId": "BSB50620",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Diploma of Marketing and Communication",
+      "offeredCode": "BSB50620",
+      "apprenticeship": false,
+      "requirements": [
+        "One of: all core units of the Certificate IV in Marketing and Communication; significant industry experience (RPL for all core units); or two years' full-time relevant work experience.",
+        "Year 12 LLN recommended."
+      ],
+      "url": "https://tafensw.edu.au/course-areas/ABOR/courses/ABOR--BSB50620-01"
+    },
+    {
+      "qualificationId": "CUA50720",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Diploma of Graphic Design",
+      "offeredCode": "CUA50725",
+      "apprenticeship": false,
+      "requirements": [
+        "TAFE NSW now offers the Diploma of Graphic Design as CUA50725.",
+        "Certificate IV in Design (Graphic) or equivalent, or relevant skills/experience; plus a portfolio showing typography and graphic design software skills.",
+        "Head teacher may discuss your portfolio."
+      ],
+      "url": "https://www.tafensw.edu.au/course-areas/art-and-design/courses/diploma-of-graphic-design--CUA50725-01"
+    },
+    {
+      "qualificationId": "CUA51020",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Diploma of Screen and Media",
+      "offeredCode": "CUA51020",
+      "apprenticeship": false,
+      "requirements": [
+        "No formal entry requirements.",
+        "Recommended: Certificate IV in Screen and Media or equivalent experience, Year 12 LLN, a computer that can run Adobe Creative Cloud."
+      ],
+      "url": "https://www.tafensw.edu.au/course-areas/screen-media-and-games/courses/diploma-of-screen-and-media--CUA51020-01"
+    },
+    {
+      "qualificationId": "CUA50820",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Diploma of Music",
+      "offeredCode": "CUA50825",
+      "apprenticeship": false,
+      "requirements": [
+        "TAFE NSW now offers the Diploma of Music (Performance) as CUA50825.",
+        "Either Certificate III or IV in Music (Performance) or equivalent, or a pre-admission interview or audition."
+      ],
+      "url": "https://www.tafensw.edu.au/course-areas/music-and-production/courses/diploma-of-music-performance--CUA50825-02"
+    },
+    {
+      "qualificationId": "SIS30321",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Certificate III in Fitness",
+      "offeredCode": "SIS30321",
+      "apprenticeship": false,
+      "requirements": [
+        "No entry requirements.",
+        "Recommended: at least 17 at enrolment (under 17s meet the head teacher), Year 10 LLN, able to perform CPR kneeling, confident in water.",
+        "Adult Pre-Exercise Screening at orientation."
+      ],
+      "url": "https://www.tafensw.edu.au/course-areas/sport-and-recreation/courses/certificate-iii-in-fitness--SIS30321-01"
+    },
+    {
+      "qualificationId": "SIS40221",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Certificate IV in Fitness",
+      "offeredCode": "SIS40221",
+      "apprenticeship": false,
+      "requirements": [
+        "Must have completed Certificate III in Fitness or equivalent.",
+        "Year 12 LLN recommended.",
+        "Adult Pre-Exercise Screening at orientation."
+      ],
+      "url": "https://www.tafensw.edu.au/course-areas/sport-and-recreation/courses/certificate-iv-in-fitness--SIS40221-01"
+    },
+    {
+      "qualificationId": "CPP41419",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Certificate IV in Real Estate Practice",
+      "offeredCode": "CPP41419",
+      "apprenticeship": false,
+      "requirements": [
+        "No entry requirements; Year 12-level literacy, numeracy and technical skills recommended.",
+        "Leads to applying for a Class 2 licence through NSW Fair Trading (new entrants first hold a certificate of registration)."
+      ],
+      "url": "https://www.tafensw.edu.au/course-areas/property-services/courses/certificate-iv-in-real-estate-practice--CPP41419-01"
+    },
+    {
+      "qualificationId": "AHC30921",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Certificate III in Landscape Construction",
+      "offeredCode": "AHC30921",
+      "apprenticeship": true,
+      "requirements": [
+        "Apprenticeship: employed as an apprentice; ACAP submits TPP.",
+        "Non-apprenticeship possible (check eligibility).",
+        "White card needed before entering a construction site.",
+        "Own PPE including steel-capped boots."
+      ],
+      "url": "https://www.tafensw.edu.au/course-areas/horticulture/courses/certificate-iii-in-landscape-construction--AHC30921-01"
+    },
+    {
+      "qualificationId": "AHC50122",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Diploma of Agriculture",
+      "offeredCode": "AHC50122",
+      "apprenticeship": false,
+      "requirements": [
+        "Certificate III in Agriculture or equivalent, or 2 years' experience in farming and agriculture.",
+        "LLN skills test with set minimum levels."
+      ],
+      "url": "https://www.tafensw.edu.au/course-areas/farming-and-primary-production/courses/diploma-of-agriculture--AHC50122-01"
+    },
+    {
+      "qualificationId": "AHC51120",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Diploma of Conservation and Ecosystem Management",
+      "offeredCode": "AHC51120",
+      "apprenticeship": false,
+      "requirements": [
+        "No prior study required; LLN skills test with set minimum levels.",
+        "Recommended: Certificate III in Conservation and Land Management, relevant work or Landcare experience, or Year 12 with environmental knowledge."
+      ],
+      "url": "https://www.tafensw.edu.au/course-areas/environment-and-sustainability/courses/diploma-of-conservation-and-ecosystem-management--AHC51120-01"
+    },
+    {
+      "qualificationId": "MSL40122",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Certificate IV in Laboratory Techniques",
+      "offeredCode": "MSL40122",
+      "apprenticeship": false,
+      "requirements": [
+        "No entry requirements.",
+        "Recommended: Year 10 LLN, comfort with basic maths, interest in science."
+      ],
+      "url": "https://www.tafensw.edu.au/course-areas/laboratory-science/courses/certificate-iv-in-laboratory-techniques--MSL40122-01"
+    },
+    {
+      "qualificationId": "CPC50220",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Diploma of Building and Construction (Building)",
+      "offeredCode": "CPC50220",
+      "apprenticeship": true,
+      "requirements": [
+        "Certificate IV in Building and Construction (Building), or the 11 specified core units.",
+        "Valid white card.",
+        "LLN test before the first class.",
+        "Also offered as an apprenticeship/traineeship.",
+        "Counts towards (not all of) a NSW builder's licence."
+      ],
+      "url": "https://www.tafensw.edu.au/course-areas/building-and-construction-trades/courses/diploma-of-building-and-construction-building--CPC50220-01"
+    },
+    {
+      "qualificationId": "AVI50222",
+      "provider": "TAFE NSW",
+      "state": "NSW",
+      "course": "Diploma of Aviation (Commercial Pilot Licence – Aeroplane)",
+      "offeredCode": "AVI50222",
+      "apprenticeship": false,
+      "requirements": [
+        "Offered with the Diploma of Aviation (Instrument Rating) as a dual diploma (TAFE NSW lists about $146,000 over 18 months).",
+        "Evidence of prior experience or study; current CASA Class 1 medical certificate; Aviation Reference Number; Aviation Security Identity Card; proof you're over 18; LLN assessment at Level 4; a Flight Experience Package at extra cost."
+      ],
+      "url": "https://tafensw.edu.au/course-areas/aviation-and-aircraft-maintenance/courses/aviation-and-aircraft-maintenance--AVI50222-01"
+    }
+  ]
+}

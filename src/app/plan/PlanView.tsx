@@ -10,7 +10,8 @@ import { OccupationImage } from "@/components/OccupationArt.tsx";
 import { StatsCard } from "@/components/StatsCard.tsx";
 import { Tags } from "@/components/Tags.tsx";
 import { formatRange, formatYears, ROUTE_LABEL } from "@/lib/careers/facts.ts";
-import type { MatchSummary } from "@/lib/careers/matching.ts";
+import { JsaProfileCard, TafeCourse, UniversityCourse } from "@/components/Courses.tsx";
+import type { ResultMatch } from "@/lib/advise.ts";
 import type { CareerPlan, PlanCareer } from "@/lib/plan/types.ts";
 import { readActivity, readShortlist, recordVisit, streakFrom, toggleShortlist, xpFor } from "@/lib/progress/gamification.ts";
 import { RIASEC, type RiasecType } from "@/lib/questionnaire/types.ts";
@@ -28,7 +29,7 @@ interface DnaView {
 }
 export interface Result {
   dna: DnaView;
-  matches: MatchSummary[];
+  matches: ResultMatch[];
   plan: CareerPlan;
   saved: boolean;
 }
@@ -119,7 +120,7 @@ function SaveButton({ osca, saved, onToggle, title }: { osca: string; saved: boo
   );
 }
 
-function FeatureCard({ c, m, saved, onToggle, onOpen, journeyHref }: { c: PlanCareer; m: MatchSummary; saved: boolean; onToggle?: (o: string) => void; onOpen: () => void; journeyHref: string }) {
+function FeatureCard({ c, m, saved, onToggle, onOpen, journeyHref }: { c: PlanCareer; m: ResultMatch; saved: boolean; onToggle?: (o: string) => void; onOpen: () => void; journeyHref: string }) {
   const s = c.scores!;
   return (
     <article className="feature-card" aria-labelledby={`t-${c.occupationId}`}>
@@ -151,7 +152,9 @@ function FeatureCard({ c, m, saved, onToggle, onOpen, journeyHref }: { c: PlanCa
         <p className="small" style={{ margin: "0.4rem 0 0" }}>
           {c.matchScore}% overall match · {c.confidence?.level} confidence · about {formatYears(m.timeToQualify.years)} to qualify ·{" "}
           {formatRange(m.salary.entry)} starting
+          {m.anzsco?.profile?.medianWeeklyEarnings ? <> · JSA median full-time pay ${m.anzsco.profile.medianWeeklyEarnings.toLocaleString("en-AU")}/wk</> : null}
         </p>
+        <CourseTeaser m={m} onOpen={onOpen} />
       </div>
       <div className="feature-why">
         <Icon name="bulb" size={34} className="bulb" />
@@ -174,7 +177,7 @@ function FeatureCard({ c, m, saved, onToggle, onOpen, journeyHref }: { c: PlanCa
   );
 }
 
-function MatchCard({ c, m, saved, onToggle, onOpen }: { c: PlanCareer; m: MatchSummary; saved: boolean; onToggle?: (o: string) => void; onOpen: () => void }) {
+function MatchCard({ c, m, saved, onToggle, onOpen }: { c: PlanCareer; m: ResultMatch; saved: boolean; onToggle?: (o: string) => void; onOpen: () => void }) {
   return (
     <article className="match-card" aria-labelledby={`t-${c.occupationId}`}>
       <div className="match-art">
@@ -197,7 +200,80 @@ function MatchCard({ c, m, saved, onToggle, onOpen }: { c: PlanCareer; m: MatchS
   );
 }
 
-function CareerDetail({ c, m }: { c: PlanCareer; m: MatchSummary }) {
+/** Two courses on the #1 match card, so the next step is visible straight away. */
+function CourseTeaser({ m, onOpen }: { m: ResultMatch; onOpen: () => void }) {
+  const c = m.courses;
+  if (!c || (!c.university.length && !c.tafe.length)) return null;
+  const items =
+    c.lead === "tafe"
+      ? [...c.tafe.map((t) => ({ k: `t${t.qualificationId}${t.provider}`, name: `${t.course}`, where: `${t.provider} (${t.state})`, badge: t.apprenticeship ? "Apprenticeship" : "No ATAR" })), ...c.university.map((u) => ({ k: `u${u.provider}${u.course}`, name: u.course, where: `${u.provider} (${u.state})`, badge: u.atar.display ? `ATAR ${u.atar.display}` : "" }))]
+      : [...c.university.map((u) => ({ k: `u${u.provider}${u.course}`, name: u.course, where: `${u.provider} (${u.state})`, badge: u.atar.display ? `ATAR ${u.atar.display}` : "" })), ...c.tafe.map((t) => ({ k: `t${t.qualificationId}${t.provider}`, name: t.course, where: `${t.provider} (${t.state})`, badge: t.apprenticeship ? "Apprenticeship" : "No ATAR" }))];
+  return (
+    <div className="course-teaser">
+      <span className="small">
+        <Icon name="grad" size={14} /> Courses to consider
+      </span>
+      <ul>
+        {items.slice(0, 2).map((i) => (
+          <li key={i.k}>
+            <span>
+              <strong>{i.name}</strong> <span className="small">{i.where}</span>
+            </span>
+            {i.badge && <span className="pill">{i.badge}</span>}
+          </li>
+        ))}
+      </ul>
+      <button type="button" className="linkish small" onClick={onOpen}>
+        All courses, ATARs and entry requirements
+      </button>
+    </div>
+  );
+}
+
+/** University courses with ATARs and prerequisites, and TAFE courses with entry requirements, for one career. */
+function CoursesSection({ m }: { m: ResultMatch }) {
+  const c = m.courses;
+  if (!c || (!c.university.length && !c.tafe.length)) return null;
+  const uni = c.university.length > 0 && (
+    <div key="uni">
+      <h5 className="course-head">
+        <Icon name="grad" size={16} /> University
+      </h5>
+      <ul className="course-list-compact">
+        {c.university.map((u) => (
+          <UniversityCourse key={`${u.provider}${u.course}${u.campus ?? ""}`} o={u} missing={u.missingPrerequisites} gaps={u.assumedGaps} sourceUrl={u.sourceInfo.url} highlight={u.inState} />
+        ))}
+      </ul>
+    </div>
+  );
+  const tafe = c.tafe.length > 0 && (
+    <div key="tafe">
+      <h5 className="course-head">
+        <Icon name="tools" size={16} /> TAFE
+      </h5>
+      <ul className="course-list-compact">
+        {c.tafe.map((t) => (
+          <TafeCourse key={`${t.provider}${t.qualificationId}`} o={t} />
+        ))}
+      </ul>
+    </div>
+  );
+  return (
+    <section className="courses-section" aria-label="Courses to consider">
+      <h4>Courses to consider</h4>
+      {c.note && <p className="notice warn">{c.note}</p>}
+      {c.lead === "tafe" ? [tafe, uni] : [uni, tafe]}
+      <p className="small">
+        {c.university.length > 0
+          ? "ATARs change every year, and a guaranteed ATAR only guarantees an offer if you also meet the prerequisites. Check each course page and your state's admissions centre. "
+          : "Entry requirements can change, and TAFEs in other states set their own. Check the course page before you apply. "}
+        <Link href="/explore">Explore all Uni &amp; TAFE courses</Link>
+      </p>
+    </section>
+  );
+}
+
+function CareerDetail({ c, m }: { c: PlanCareer; m: ResultMatch }) {
   const s = c.scores!;
   const f = c.future!;
   const facts = c.facts;
@@ -284,6 +360,13 @@ function CareerDetail({ c, m }: { c: PlanCareer; m: MatchSummary }) {
         <p>
           <strong>How to get there:</strong> {c.howToGetThere}
         </p>
+        <CoursesSection m={m} />
+        {m.anzsco && (
+          <>
+            <h4 style={{ marginTop: "1rem" }}>The job in numbers</h4>
+            <JsaProfileCard unitGroup={m.anzsco.unitGroup} title={m.anzsco.title} occupation={m.anzsco.occupation} profile={m.anzsco.profile} />
+          </>
+        )}
         {facts && (
           <>
             <h4>Ways in</h4>

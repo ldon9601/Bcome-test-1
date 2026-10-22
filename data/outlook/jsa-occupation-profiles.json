@@ -1,0 +1,1175 @@
+{
+  "source": {
+    "title": "Jobs and Skills Australia, Occupation and Industry Profiles (ANZSCO unit groups)",
+    "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco",
+    "retrieved": "2026-10-22",
+    "notes": [
+      "Headline figures as published on each JSA occupation profile page.",
+      "Employment, part-time share, female share, median age and qualifications: ABS Labour Force Survey and 2021 Census as cited by JSA. Median weekly earnings: full-time, before tax, ABS Survey of Employee Earnings and Hours (May 2023), via JSA.",
+      "annualGrowth is the change in employment over the past year as shown by JSA, not a projection.",
+      "null means JSA shows N/A (usually too few survey responses).",
+      "Attribution: Jobs and Skills Australia, Occupation profiles data, licensed under CC BY 4.0."
+    ]
+  },
+  "byUnitGroup": {
+    "1325": {
+      "title": "Research and Development Managers",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/1325-research-and-development-managers",
+      "employed": 20500,
+      "partTimePct": 13.0,
+      "femalePct": 54.0,
+      "medianWeeklyEarnings": 2887,
+      "medianAge": 48,
+      "annualGrowth": 1100,
+      "qualifications": {
+        "postgraduate": 47.5,
+        "bachelor": 35.6,
+        "diploma": 6.6,
+        "certificate": 3.8,
+        "year12": 3.7,
+        "year11": 0.5,
+        "year10OrBelow": 0.7
+      }
+    },
+    "1331": {
+      "title": "Construction Managers",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/1331-construction-managers",
+      "employed": 130500,
+      "partTimePct": 8.0,
+      "femalePct": 10.0,
+      "medianWeeklyEarnings": 3691,
+      "medianAge": 42,
+      "annualGrowth": 2800,
+      "qualifications": {
+        "postgraduate": 7.3,
+        "bachelor": 22.2,
+        "diploma": 14.3,
+        "certificate": 38.8,
+        "year12": 7.6,
+        "year11": 1.8,
+        "year10OrBelow": 4.4
+      }
+    },
+    "1342": {
+      "title": "Health and Welfare Services Managers",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/1342-health-and-welfare-services-managers",
+      "employed": 50500,
+      "partTimePct": 18.0,
+      "femalePct": 71.0,
+      "medianWeeklyEarnings": 2016,
+      "medianAge": 45,
+      "annualGrowth": 5600,
+      "qualifications": {
+        "postgraduate": 28.5,
+        "bachelor": 33.7,
+        "diploma": 17.0,
+        "certificate": 10.3,
+        "year12": 5.2,
+        "year11": 0.8,
+        "year10OrBelow": 1.9
+      }
+    },
+    "1351": {
+      "title": "ICT Managers",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/1351-ict-managers",
+      "employed": 91500,
+      "partTimePct": 6.0,
+      "femalePct": 27.0,
+      "medianWeeklyEarnings": 3534,
+      "medianAge": 44,
+      "annualGrowth": 3700,
+      "qualifications": {
+        "postgraduate": 26.0,
+        "bachelor": 42.3,
+        "diploma": 12.2,
+        "certificate": 5.4,
+        "year12": 8.8,
+        "year11": 0.9,
+        "year10OrBelow": 1.1
+      }
+    },
+    "2111": {
+      "title": "Actors, Dancers and Other Entertainers",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2111-actors-dancers-and-other-entertainers",
+      "employed": 8400,
+      "partTimePct": 59.0,
+      "femalePct": 54.0,
+      "medianWeeklyEarnings": 1692,
+      "medianAge": 33,
+      "annualGrowth": 500,
+      "qualifications": {
+        "postgraduate": 7.3,
+        "bachelor": 29.3,
+        "diploma": 14.9,
+        "certificate": 11.3,
+        "year12": 23.5,
+        "year11": 3.4,
+        "year10OrBelow": 6.2
+      }
+    },
+    "2112": {
+      "title": "Music Professionals",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2112-music-professionals",
+      "employed": 10800,
+      "partTimePct": 59.0,
+      "femalePct": 44.0,
+      "medianWeeklyEarnings": null,
+      "medianAge": 32,
+      "annualGrowth": -300,
+      "qualifications": {
+        "postgraduate": 17.8,
+        "bachelor": 35.1,
+        "diploma": 10.5,
+        "certificate": 6.6,
+        "year12": 20.3,
+        "year11": 2.7,
+        "year10OrBelow": 4.3
+      }
+    },
+    "2124": {
+      "title": "Journalists and Other Writers",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2124-journalists-and-other-writers",
+      "employed": 23200,
+      "partTimePct": 31.0,
+      "femalePct": 59.0,
+      "medianWeeklyEarnings": 1842,
+      "medianAge": 39,
+      "annualGrowth": -500,
+      "qualifications": {
+        "postgraduate": 21.5,
+        "bachelor": 52.8,
+        "diploma": 7.0,
+        "certificate": 3.9,
+        "year12": 10.1,
+        "year11": 0.7,
+        "year10OrBelow": 1.1
+      }
+    },
+    "2211": {
+      "title": "Accountants",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2211-accountants",
+      "employed": 215500,
+      "partTimePct": 16.0,
+      "femalePct": 54.0,
+      "medianWeeklyEarnings": 2003,
+      "medianAge": 42,
+      "annualGrowth": 5800,
+      "qualifications": {
+        "postgraduate": 29.1,
+        "bachelor": 56.4,
+        "diploma": 5.9,
+        "certificate": 1.9,
+        "year12": 3.8,
+        "year11": 0.3,
+        "year10OrBelow": 0.6
+      }
+    },
+    "2241": {
+      "title": "Actuaries, Mathematicians and Statisticians",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2241-actuaries-mathematicians-and-statisticians",
+      "employed": 12600,
+      "partTimePct": 17.0,
+      "femalePct": 49.0,
+      "medianWeeklyEarnings": 2072,
+      "medianAge": 38,
+      "annualGrowth": 500,
+      "qualifications": {
+        "postgraduate": 46.2,
+        "bachelor": 45.0,
+        "diploma": 2.0,
+        "certificate": 1.3,
+        "year12": 3.4,
+        "year11": 0.2,
+        "year10OrBelow": 0.5
+      }
+    },
+    "2247": {
+      "title": "Management and Organisation Analysts",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2247-management-and-organisation-analysts",
+      "employed": 108000,
+      "partTimePct": 17.0,
+      "femalePct": 43.0,
+      "medianWeeklyEarnings": 2308,
+      "medianAge": 44,
+      "annualGrowth": 2000,
+      "qualifications": {
+        "postgraduate": 33.1,
+        "bachelor": 42.1,
+        "diploma": 8.6,
+        "certificate": 4.7,
+        "year12": 7.1,
+        "year11": 0.8,
+        "year10OrBelow": 1.1
+      }
+    },
+    "2251": {
+      "title": "Advertising and Marketing Professionals",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2251-advertising-and-marketing-professionals",
+      "employed": 103100,
+      "partTimePct": 18.0,
+      "femalePct": 63.0,
+      "medianWeeklyEarnings": 1957,
+      "medianAge": 36,
+      "annualGrowth": 3000,
+      "qualifications": {
+        "postgraduate": 18.2,
+        "bachelor": 52.5,
+        "diploma": 9.8,
+        "certificate": 4.6,
+        "year12": 10.0,
+        "year11": 0.9,
+        "year10OrBelow": 1.3
+      }
+    },
+    "2311": {
+      "title": "Air Transport Professionals",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2311-air-transport-professionals",
+      "employed": 15800,
+      "partTimePct": 12.0,
+      "femalePct": 4.0,
+      "medianWeeklyEarnings": 2496,
+      "medianAge": 40,
+      "annualGrowth": 200,
+      "qualifications": {
+        "postgraduate": 7.6,
+        "bachelor": 29.5,
+        "diploma": 34.4,
+        "certificate": 10.2,
+        "year12": 12.9,
+        "year11": 0.9,
+        "year10OrBelow": 1.2
+      }
+    },
+    "2321": {
+      "title": "Architects and Landscape Architects",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2321-architects-and-landscape-architects",
+      "employed": 35800,
+      "partTimePct": 22.0,
+      "femalePct": 37.0,
+      "medianWeeklyEarnings": 2308,
+      "medianAge": 41,
+      "annualGrowth": 1000,
+      "qualifications": {
+        "postgraduate": 46.1,
+        "bachelor": 45.3,
+        "diploma": 4.4,
+        "certificate": 0.9,
+        "year12": 1.6,
+        "year11": 0.1,
+        "year10OrBelow": 0.2
+      }
+    },
+    "2322": {
+      "title": "Surveyors and Spatial Scientists",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2322-surveyors-and-spatial-scientists",
+      "employed": 18500,
+      "partTimePct": 7.0,
+      "femalePct": 12.0,
+      "medianWeeklyEarnings": 2300,
+      "medianAge": 39,
+      "annualGrowth": 200,
+      "qualifications": {
+        "postgraduate": 13.8,
+        "bachelor": 44.3,
+        "diploma": 22.2,
+        "certificate": 7.0,
+        "year12": 8.1,
+        "year11": 1.0,
+        "year10OrBelow": 1.2
+      }
+    },
+    "2324": {
+      "title": "Graphic and Web Designers, and Illustrators",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2324-graphic-and-web-designers-and-illustrators",
+      "employed": 56100,
+      "partTimePct": 23.0,
+      "femalePct": 50.0,
+      "medianWeeklyEarnings": 1500,
+      "medianAge": 37,
+      "annualGrowth": 500,
+      "qualifications": {
+        "postgraduate": 9.3,
+        "bachelor": 50.0,
+        "diploma": 21.5,
+        "certificate": 6.6,
+        "year12": 7.7,
+        "year11": 0.9,
+        "year10OrBelow": 1.3
+      }
+    },
+    "2326": {
+      "title": "Urban and Regional Planners",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2326-urban-and-regional-planners",
+      "employed": 19700,
+      "partTimePct": 14.0,
+      "femalePct": 46.0,
+      "medianWeeklyEarnings": 2036,
+      "medianAge": 41,
+      "annualGrowth": 700,
+      "qualifications": {
+        "postgraduate": 37.9,
+        "bachelor": 47.7,
+        "diploma": 5.3,
+        "certificate": 3.1,
+        "year12": 3.8,
+        "year11": 0.4,
+        "year10OrBelow": 0.7
+      }
+    },
+    "2332": {
+      "title": "Civil Engineering Professionals",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2332-civil-engineering-professionals",
+      "employed": 76800,
+      "partTimePct": 7.0,
+      "femalePct": 13.0,
+      "medianWeeklyEarnings": 2217,
+      "medianAge": 35,
+      "annualGrowth": 1700,
+      "qualifications": {
+        "postgraduate": 24.8,
+        "bachelor": 63.8,
+        "diploma": 4.0,
+        "certificate": 1.9,
+        "year12": 3.7,
+        "year11": 0.1,
+        "year10OrBelow": 0.3
+      }
+    },
+    "2333": {
+      "title": "Electrical Engineers",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2333-electrical-engineers",
+      "employed": 32000,
+      "partTimePct": 8.0,
+      "femalePct": 12.0,
+      "medianWeeklyEarnings": null,
+      "medianAge": 35,
+      "annualGrowth": 2500,
+      "qualifications": {
+        "postgraduate": 25.1,
+        "bachelor": 57.4,
+        "diploma": 8.3,
+        "certificate": 4.7,
+        "year12": 2.4,
+        "year11": 0.1,
+        "year10OrBelow": 0.2
+      }
+    },
+    "2335": {
+      "title": "Industrial, Mechanical and Production Engineers",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2335-industrial-mechanical-and-production-engineers",
+      "employed": 42000,
+      "partTimePct": 8.0,
+      "femalePct": 10.0,
+      "medianWeeklyEarnings": 2614,
+      "medianAge": 38,
+      "annualGrowth": 1200,
+      "qualifications": {
+        "postgraduate": 23.4,
+        "bachelor": 56.1,
+        "diploma": 7.4,
+        "certificate": 7.3,
+        "year12": 3.0,
+        "year11": 0.2,
+        "year10OrBelow": 0.5
+      }
+    },
+    "2341": {
+      "title": "Agricultural and Forestry Scientists",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2341-agricultural-and-forestry-scientists",
+      "employed": 8100,
+      "partTimePct": 19.0,
+      "femalePct": 31.0,
+      "medianWeeklyEarnings": 2074,
+      "medianAge": 38,
+      "annualGrowth": -400,
+      "qualifications": {
+        "postgraduate": 27.3,
+        "bachelor": 43.3,
+        "diploma": 11.6,
+        "certificate": 6.1,
+        "year12": 5.0,
+        "year11": 1.6,
+        "year10OrBelow": 3.0
+      }
+    },
+    "2343": {
+      "title": "Environmental Scientists",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2343-environmental-scientists",
+      "employed": 32000,
+      "partTimePct": 15.0,
+      "femalePct": 45.0,
+      "medianWeeklyEarnings": 1953,
+      "medianAge": 39,
+      "annualGrowth": 1000,
+      "qualifications": {
+        "postgraduate": 29.5,
+        "bachelor": 48.7,
+        "diploma": 6.0,
+        "certificate": 6.9,
+        "year12": 3.6,
+        "year11": 1.0,
+        "year10OrBelow": 2.4
+      }
+    },
+    "2346": {
+      "title": "Medical Laboratory Scientists",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2346-medical-laboratory-scientists",
+      "employed": 32100,
+      "partTimePct": 25.0,
+      "femalePct": 65.0,
+      "medianWeeklyEarnings": 2004,
+      "medianAge": 40,
+      "annualGrowth": 1800,
+      "qualifications": {
+        "postgraduate": 44.0,
+        "bachelor": 50.9,
+        "diploma": 2.1,
+        "certificate": 0.4,
+        "year12": 1.1,
+        "year11": 0.1,
+        "year10OrBelow": 0.1
+      }
+    },
+    "2347": {
+      "title": "Veterinarians",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2347-veterinarians",
+      "employed": 14000,
+      "partTimePct": 25.0,
+      "femalePct": 71.0,
+      "medianWeeklyEarnings": 1862,
+      "medianAge": 38,
+      "annualGrowth": 200,
+      "qualifications": {
+        "postgraduate": 23.1,
+        "bachelor": 68.3,
+        "diploma": 1.1,
+        "certificate": 1.3,
+        "year12": 0.9,
+        "year11": 0.2,
+        "year10OrBelow": 0.5
+      }
+    },
+    "2411": {
+      "title": "Early Childhood (Pre-primary School) Teachers",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2411-early-childhood-pre-primary-school-teachers",
+      "employed": 71900,
+      "partTimePct": 43.0,
+      "femalePct": 95.0,
+      "medianWeeklyEarnings": 1906,
+      "medianAge": 37,
+      "annualGrowth": 2700,
+      "qualifications": {
+        "postgraduate": 21.4,
+        "bachelor": 60.4,
+        "diploma": 10.4,
+        "certificate": 3.4,
+        "year12": 2.1,
+        "year11": 0.2,
+        "year10OrBelow": 0.3
+      }
+    },
+    "2412": {
+      "title": "Primary School Teachers",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2412-primary-school-teachers",
+      "employed": 167100,
+      "partTimePct": 35.0,
+      "femalePct": 85.0,
+      "medianWeeklyEarnings": 2000,
+      "medianAge": 39,
+      "annualGrowth": 2300,
+      "qualifications": {
+        "postgraduate": 24.2,
+        "bachelor": 69.2,
+        "diploma": 4.3,
+        "certificate": 0.3,
+        "year12": 0.9,
+        "year11": 0.1,
+        "year10OrBelow": 0.1
+      }
+    },
+    "2414": {
+      "title": "Secondary School Teachers",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2414-secondary-school-teachers",
+      "employed": 161400,
+      "partTimePct": 23.0,
+      "femalePct": 58.0,
+      "medianWeeklyEarnings": 2322,
+      "medianAge": 40,
+      "annualGrowth": 6400,
+      "qualifications": {
+        "postgraduate": 41.8,
+        "bachelor": 54.3,
+        "diploma": 1.9,
+        "certificate": 0.3,
+        "year12": 0.9,
+        "year11": 0.0,
+        "year10OrBelow": 0.0
+      }
+    },
+    "2511": {
+      "title": "Nutrition Professionals",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2511-nutrition-professionals",
+      "employed": 8900,
+      "partTimePct": 47.0,
+      "femalePct": 97.0,
+      "medianWeeklyEarnings": 1667,
+      "medianAge": 35,
+      "annualGrowth": -600,
+      "qualifications": {
+        "postgraduate": 49.7,
+        "bachelor": 43.2,
+        "diploma": 3.7,
+        "certificate": 1.4,
+        "year12": 0.6,
+        "year11": 0.1,
+        "year10OrBelow": 0.1
+      }
+    },
+    "2515": {
+      "title": "Pharmacists",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2515-pharmacists",
+      "employed": 46300,
+      "partTimePct": 32.0,
+      "femalePct": 66.0,
+      "medianWeeklyEarnings": 1956,
+      "medianAge": 38,
+      "annualGrowth": 2900,
+      "qualifications": {
+        "postgraduate": 23.0,
+        "bachelor": 69.8,
+        "diploma": 0.6,
+        "certificate": 0.8,
+        "year12": 3.5,
+        "year11": 0.2,
+        "year10OrBelow": 0.4
+      }
+    },
+    "2524": {
+      "title": "Occupational Therapists",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2524-occupational-therapists",
+      "employed": 35600,
+      "partTimePct": 37.0,
+      "femalePct": 92.0,
+      "medianWeeklyEarnings": 1913,
+      "medianAge": 33,
+      "annualGrowth": 3000,
+      "qualifications": {
+        "postgraduate": 26.5,
+        "bachelor": 71.0,
+        "diploma": 0.8,
+        "certificate": 0.2,
+        "year12": 0.6,
+        "year11": 0.0,
+        "year10OrBelow": 0.1
+      }
+    },
+    "2525": {
+      "title": "Physiotherapists",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2525-physiotherapists",
+      "employed": 45900,
+      "partTimePct": 28.0,
+      "femalePct": 58.0,
+      "medianWeeklyEarnings": 1888,
+      "medianAge": 33,
+      "annualGrowth": 2100,
+      "qualifications": {
+        "postgraduate": 38.4,
+        "bachelor": 58.6,
+        "diploma": 1.4,
+        "certificate": 0.2,
+        "year12": 0.4,
+        "year11": 0.0,
+        "year10OrBelow": 0.0
+      }
+    },
+    "2527": {
+      "title": "Audiologists and Speech Pathologists \\ Therapists",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2527-audiologists-and-speech-pathologists-therapists",
+      "employed": 21400,
+      "partTimePct": 38.0,
+      "femalePct": 90.0,
+      "medianWeeklyEarnings": 1971,
+      "medianAge": 32,
+      "annualGrowth": 1600,
+      "qualifications": {
+        "postgraduate": 44.3,
+        "bachelor": 53.4,
+        "diploma": 0.7,
+        "certificate": 0.3,
+        "year12": 0.6,
+        "year11": 0.0,
+        "year10OrBelow": 0.0
+      }
+    },
+    "2531": {
+      "title": "General Practitioners and Resident Medical Officers",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2531-general-practitioners-and-resident-medical-officers",
+      "employed": 88300,
+      "partTimePct": 22.0,
+      "femalePct": 48.0,
+      "medianWeeklyEarnings": 2616,
+      "medianAge": 40,
+      "annualGrowth": 4200,
+      "qualifications": {
+        "postgraduate": 39.9,
+        "bachelor": 56.6,
+        "diploma": 0.6,
+        "certificate": 0.2,
+        "year12": 0.4,
+        "year11": 0.0,
+        "year10OrBelow": 0.1
+      }
+    },
+    "2544": {
+      "title": "Registered Nurses",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2544-registered-nurses",
+      "employed": 361200,
+      "partTimePct": 45.0,
+      "femalePct": 87.0,
+      "medianWeeklyEarnings": 2156,
+      "medianAge": 39,
+      "annualGrowth": 15800,
+      "qualifications": {
+        "postgraduate": 20.0,
+        "bachelor": 63.7,
+        "diploma": 9.0,
+        "certificate": 2.6,
+        "year12": 1.2,
+        "year11": 0.1,
+        "year10OrBelow": 0.5
+      }
+    },
+    "2611": {
+      "title": "ICT Business and Systems Analysts",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2611-ict-business-and-systems-analysts",
+      "employed": 51500,
+      "partTimePct": 6.0,
+      "femalePct": 34.0,
+      "medianWeeklyEarnings": 2742,
+      "medianAge": 41,
+      "annualGrowth": 1100,
+      "qualifications": {
+        "postgraduate": 29.3,
+        "bachelor": 47.3,
+        "diploma": 8.3,
+        "certificate": 3.7,
+        "year12": 7.0,
+        "year11": 0.8,
+        "year10OrBelow": 0.9
+      }
+    },
+    "2613": {
+      "title": "Software and Applications Programmers",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2613-software-and-applications-programmers",
+      "employed": 185300,
+      "partTimePct": 6.0,
+      "femalePct": 18.0,
+      "medianWeeklyEarnings": 2496,
+      "medianAge": 38,
+      "annualGrowth": 10100,
+      "qualifications": {
+        "postgraduate": 27.4,
+        "bachelor": 56.3,
+        "diploma": 5.1,
+        "certificate": 2.2,
+        "year12": 6.0,
+        "year11": 0.4,
+        "year10OrBelow": 0.5
+      }
+    },
+    "2621": {
+      "title": "Database and Systems Administrators, and ICT Security Specialists",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2621-database-and-systems-administrators-and-ict-security-specialists",
+      "employed": 72600,
+      "partTimePct": 8.0,
+      "femalePct": 24.0,
+      "medianWeeklyEarnings": 2461,
+      "medianAge": 41,
+      "annualGrowth": 3300,
+      "qualifications": {
+        "postgraduate": 21.5,
+        "bachelor": 38.6,
+        "diploma": 13.3,
+        "certificate": 8.9,
+        "year12": 10.5,
+        "year11": 1.3,
+        "year10OrBelow": 1.6
+      }
+    },
+    "2713": {
+      "title": "Solicitors",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2713-solicitors",
+      "employed": 106100,
+      "partTimePct": 11.0,
+      "femalePct": 57.0,
+      "medianWeeklyEarnings": 2070,
+      "medianAge": 37,
+      "annualGrowth": 5400,
+      "qualifications": {
+        "postgraduate": 32.8,
+        "bachelor": 64.7,
+        "diploma": 0.5,
+        "certificate": 0.1,
+        "year12": 0.5,
+        "year11": 0.0,
+        "year10OrBelow": 0.1
+      }
+    },
+    "2721": {
+      "title": "Counsellors",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2721-counsellors",
+      "employed": 40000,
+      "partTimePct": 40.0,
+      "femalePct": 71.0,
+      "medianWeeklyEarnings": 1477,
+      "medianAge": 44,
+      "annualGrowth": 3400,
+      "qualifications": {
+        "postgraduate": 38.7,
+        "bachelor": 34.2,
+        "diploma": 13.2,
+        "certificate": 6.0,
+        "year12": 4.2,
+        "year11": 0.6,
+        "year10OrBelow": 1.2
+      }
+    },
+    "2723": {
+      "title": "Psychologists and Psychotherapists",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2723-psychologists-and-psychotherapists",
+      "employed": 54200,
+      "partTimePct": 50.0,
+      "femalePct": 82.0,
+      "medianWeeklyEarnings": 2204,
+      "medianAge": 44,
+      "annualGrowth": 4400,
+      "qualifications": {
+        "postgraduate": 77.0,
+        "bachelor": 19.6,
+        "diploma": 1.5,
+        "certificate": 0.2,
+        "year12": 0.6,
+        "year11": 0.0,
+        "year10OrBelow": 0.0
+      }
+    },
+    "2725": {
+      "title": "Social Workers",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/2725-social-workers",
+      "employed": 48000,
+      "partTimePct": 32.0,
+      "femalePct": 84.0,
+      "medianWeeklyEarnings": 2172,
+      "medianAge": 38,
+      "annualGrowth": 2300,
+      "qualifications": {
+        "postgraduate": 30.2,
+        "bachelor": 51.5,
+        "diploma": 9.3,
+        "certificate": 4.0,
+        "year12": 2.4,
+        "year11": 0.4,
+        "year10OrBelow": 0.7
+      }
+    },
+    "3212": {
+      "title": "Motor Mechanics",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/3212-motor-mechanics",
+      "employed": 112600,
+      "partTimePct": 9.0,
+      "femalePct": 3.0,
+      "medianWeeklyEarnings": 1622,
+      "medianAge": 33,
+      "annualGrowth": 1800,
+      "qualifications": {
+        "postgraduate": 0.7,
+        "bachelor": 2.5,
+        "diploma": 5.7,
+        "certificate": 68.6,
+        "year12": 9.4,
+        "year11": 3.4,
+        "year10OrBelow": 7.2
+      }
+    },
+    "3223": {
+      "title": "Structural Steel and Welding Trades Workers",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/3223-structural-steel-and-welding-trades-workers",
+      "employed": 79200,
+      "partTimePct": 4.0,
+      "femalePct": 2.0,
+      "medianWeeklyEarnings": 1755,
+      "medianAge": 37,
+      "annualGrowth": 1300,
+      "qualifications": {
+        "postgraduate": 0.4,
+        "bachelor": 2.1,
+        "diploma": 3.3,
+        "certificate": 66.1,
+        "year12": 10.3,
+        "year11": 3.9,
+        "year10OrBelow": 10.8
+      }
+    },
+    "3232": {
+      "title": "Metal Fitters and Machinists",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/3232-metal-fitters-and-machinists",
+      "employed": 118000,
+      "partTimePct": 6.0,
+      "femalePct": 4.0,
+      "medianWeeklyEarnings": 2606,
+      "medianAge": 40,
+      "annualGrowth": 100,
+      "qualifications": {
+        "postgraduate": 0.5,
+        "bachelor": 2.2,
+        "diploma": 5.2,
+        "certificate": 75.4,
+        "year12": 7.5,
+        "year11": 2.3,
+        "year10OrBelow": 4.9
+      }
+    },
+    "3312": {
+      "title": "Carpenters and Joiners",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/3312-carpenters-and-joiners",
+      "employed": 149900,
+      "partTimePct": 8.0,
+      "femalePct": 3.0,
+      "medianWeeklyEarnings": 1787,
+      "medianAge": 32,
+      "annualGrowth": 3400,
+      "qualifications": {
+        "postgraduate": 0.5,
+        "bachelor": 2.8,
+        "diploma": 3.7,
+        "certificate": 67.1,
+        "year12": 12.7,
+        "year11": 4.0,
+        "year10OrBelow": 7.4
+      }
+    },
+    "3341": {
+      "title": "Plumbers",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/3341-plumbers",
+      "employed": 105300,
+      "partTimePct": 7.0,
+      "femalePct": 2.0,
+      "medianWeeklyEarnings": 2000,
+      "medianAge": 33,
+      "annualGrowth": 4700,
+      "qualifications": {
+        "postgraduate": 0.2,
+        "bachelor": 1.2,
+        "diploma": 2.6,
+        "certificate": 72.7,
+        "year12": 10.6,
+        "year11": 4.2,
+        "year10OrBelow": 7.2
+      }
+    },
+    "3411": {
+      "title": "Electricians",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/3411-electricians",
+      "employed": 191500,
+      "partTimePct": 7.0,
+      "femalePct": 4.0,
+      "medianWeeklyEarnings": 2204,
+      "medianAge": 32,
+      "annualGrowth": 7300,
+      "qualifications": {
+        "postgraduate": 0.6,
+        "bachelor": 2.7,
+        "diploma": 5.4,
+        "certificate": 73.1,
+        "year12": 12.2,
+        "year11": 2.3,
+        "year10OrBelow": 2.6
+      }
+    },
+    "3421": {
+      "title": "Airconditioning and Refrigeration Mechanics",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/3421-airconditioning-and-refrigeration-mechanics",
+      "employed": 29700,
+      "partTimePct": 9.0,
+      "femalePct": 1.0,
+      "medianWeeklyEarnings": 2100,
+      "medianAge": 31,
+      "annualGrowth": -400,
+      "qualifications": {
+        "postgraduate": 0.5,
+        "bachelor": 2.6,
+        "diploma": 4.8,
+        "certificate": 69.2,
+        "year12": 12.8,
+        "year11": 3.2,
+        "year10OrBelow": 5.4
+      }
+    },
+    "3513": {
+      "title": "Chefs",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/3513-chefs",
+      "employed": 122700,
+      "partTimePct": 22.0,
+      "femalePct": 26.0,
+      "medianWeeklyEarnings": 1330,
+      "medianAge": 34,
+      "annualGrowth": 2600,
+      "qualifications": {
+        "postgraduate": 3.6,
+        "bachelor": 14.4,
+        "diploma": 22.3,
+        "certificate": 37.3,
+        "year12": 10.9,
+        "year11": 1.5,
+        "year10OrBelow": 5.2
+      }
+    },
+    "3622": {
+      "title": "Gardeners",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/3622-gardeners",
+      "employed": 87000,
+      "partTimePct": 32.0,
+      "femalePct": 11.0,
+      "medianWeeklyEarnings": null,
+      "medianAge": 41,
+      "annualGrowth": 900,
+      "qualifications": {
+        "postgraduate": 1.7,
+        "bachelor": 6.9,
+        "diploma": 10.3,
+        "certificate": 37.6,
+        "year12": 18.2,
+        "year11": 6.0,
+        "year10OrBelow": 15.0
+      }
+    },
+    "3911": {
+      "title": "Hairdressers",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/3911-hairdressers",
+      "employed": 65400,
+      "partTimePct": 49.0,
+      "femalePct": 76.0,
+      "medianWeeklyEarnings": 1209,
+      "medianAge": 36,
+      "annualGrowth": 500,
+      "qualifications": {
+        "postgraduate": 0.4,
+        "bachelor": 1.8,
+        "diploma": 7.1,
+        "certificate": 72.0,
+        "year12": 7.7,
+        "year11": 2.4,
+        "year10OrBelow": 5.6
+      }
+    },
+    "4111": {
+      "title": "Ambulance Officers and Paramedics",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/4111-ambulance-officers-and-paramedics",
+      "employed": 27000,
+      "partTimePct": 14.0,
+      "femalePct": 44.0,
+      "medianWeeklyEarnings": 2556,
+      "medianAge": 36,
+      "annualGrowth": 900,
+      "qualifications": {
+        "postgraduate": 9.5,
+        "bachelor": 56.6,
+        "diploma": 20.6,
+        "certificate": 5.7,
+        "year12": 2.2,
+        "year11": 0.5,
+        "year10OrBelow": 1.2
+      }
+    },
+    "4211": {
+      "title": "Child Carers",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/4211-child-carers",
+      "employed": 174500,
+      "partTimePct": 55.0,
+      "femalePct": 94.0,
+      "medianWeeklyEarnings": 1146,
+      "medianAge": 32,
+      "annualGrowth": 8300,
+      "qualifications": {
+        "postgraduate": 16.4,
+        "bachelor": 13.3,
+        "diploma": 27.2,
+        "certificate": 22.2,
+        "year12": 12.2,
+        "year11": 1.6,
+        "year10OrBelow": 2.8
+      }
+    },
+    "4231": {
+      "title": "Aged and Disabled Carers",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/4231-aged-and-disabled-carers",
+      "employed": 369400,
+      "partTimePct": 60.0,
+      "femalePct": 73.0,
+      "medianWeeklyEarnings": 1761,
+      "medianAge": 41,
+      "annualGrowth": 27300,
+      "qualifications": {
+        "postgraduate": 5.3,
+        "bachelor": 13.4,
+        "diploma": 15.0,
+        "certificate": 36.6,
+        "year12": 12.8,
+        "year11": 2.6,
+        "year10OrBelow": 7.6
+      }
+    },
+    "4232": {
+      "title": "Dental Assistants",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/4232-dental-assistants",
+      "employed": 27300,
+      "partTimePct": 58.0,
+      "femalePct": 92.0,
+      "medianWeeklyEarnings": 1211,
+      "medianAge": 30,
+      "annualGrowth": -1600,
+      "qualifications": {
+        "postgraduate": 3.1,
+        "bachelor": 12.5,
+        "diploma": 10.4,
+        "certificate": 38.4,
+        "year12": 18.9,
+        "year11": 2.9,
+        "year10OrBelow": 4.3
+      }
+    },
+    "4233": {
+      "title": "Nursing Support and Personal Care Workers",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/4233-nursing-support-and-personal-care-workers",
+      "employed": 113300,
+      "partTimePct": 57.0,
+      "femalePct": 76.0,
+      "medianWeeklyEarnings": 1279,
+      "medianAge": 39,
+      "annualGrowth": 6100,
+      "qualifications": {
+        "postgraduate": 5.6,
+        "bachelor": 15.4,
+        "diploma": 13.3,
+        "certificate": 36.0,
+        "year12": 13.7,
+        "year11": 2.2,
+        "year10OrBelow": 6.8
+      }
+    },
+    "4411": {
+      "title": "Defence Force Members - Other Ranks",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/4411-defence-force-members-other-ranks",
+      "employed": 17000,
+      "partTimePct": 8.0,
+      "femalePct": 18.0,
+      "medianWeeklyEarnings": null,
+      "medianAge": 27,
+      "annualGrowth": null,
+      "qualifications": {
+        "postgraduate": 2.9,
+        "bachelor": 7.7,
+        "diploma": 11.0,
+        "certificate": 25.6,
+        "year12": 39.7,
+        "year11": 4.8,
+        "year10OrBelow": 5.5
+      }
+    },
+    "4413": {
+      "title": "Police",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/4413-police",
+      "employed": 68600,
+      "partTimePct": 6.0,
+      "femalePct": 29.0,
+      "medianWeeklyEarnings": 2422,
+      "medianAge": 39,
+      "annualGrowth": 400,
+      "qualifications": {
+        "postgraduate": 6.5,
+        "bachelor": 24.4,
+        "diploma": 43.1,
+        "certificate": 8.0,
+        "year12": 11.7,
+        "year11": 1.4,
+        "year10OrBelow": 1.2
+      }
+    },
+    "4521": {
+      "title": "Fitness Instructors",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/4521-fitness-instructors",
+      "employed": 35900,
+      "partTimePct": 68.0,
+      "femalePct": 62.0,
+      "medianWeeklyEarnings": 1500,
+      "medianAge": 36,
+      "annualGrowth": 400,
+      "qualifications": {
+        "postgraduate": 6.6,
+        "bachelor": 24.4,
+        "diploma": 17.7,
+        "certificate": 32.4,
+        "year12": 8.9,
+        "year11": 1.1,
+        "year10OrBelow": 1.9
+      }
+    },
+    "5311": {
+      "title": "General Clerks",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/5311-general-clerks",
+      "employed": 286600,
+      "partTimePct": 40.0,
+      "femalePct": 81.0,
+      "medianWeeklyEarnings": 1438,
+      "medianAge": 41,
+      "annualGrowth": -3900,
+      "qualifications": {
+        "postgraduate": 6.4,
+        "bachelor": 16.6,
+        "diploma": 14.9,
+        "certificate": 18.7,
+        "year12": 21.7,
+        "year11": 5.3,
+        "year10OrBelow": 10.6
+      }
+    },
+    "6121": {
+      "title": "Real Estate Sales Agents",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/6121-real-estate-sales-agents",
+      "employed": 108500,
+      "partTimePct": 21.0,
+      "femalePct": 52.0,
+      "medianWeeklyEarnings": 1504,
+      "medianAge": 43,
+      "annualGrowth": 3300,
+      "qualifications": {
+        "postgraduate": 7.7,
+        "bachelor": 19.8,
+        "diploma": 18.2,
+        "certificate": 21.5,
+        "year12": 15.3,
+        "year11": 2.5,
+        "year10OrBelow": 4.8
+      }
+    },
+    "7331": {
+      "title": "Truck Drivers",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations-anzsco/7331-truck-drivers",
+      "employed": 184900,
+      "partTimePct": 11.0,
+      "femalePct": 6.0,
+      "medianWeeklyEarnings": 1780,
+      "medianAge": 48,
+      "annualGrowth": -4600,
+      "qualifications": {
+        "postgraduate": 1.3,
+        "bachelor": 3.8,
+        "diploma": 6.0,
+        "certificate": 24.8,
+        "year12": 17.3,
+        "year11": 7.7,
+        "year10OrBelow": 34.2
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import type { SkillsGraph } from "./skills.ts";
-import type { EarningsData, Occupation, Route } from "./types.ts";
+import type { EarningsData, JsaProfile, Occupation, Route } from "./types.ts";
 
 /**
  * Plain facts about a career a student can read: salary, time to qualify, pathways,
@@ -18,6 +18,8 @@ export interface PathwayFact {
 export interface CareerFacts {
   osca: string;
   oscaTitle: string;
+  /** ANZSCO coding and the Jobs and Skills Australia occupation profile for the unit group. */
+  anzsco: { unitGroup: string; title: string; occupation: { code: string; title: string } | null; profile?: JsaProfile };
   salary: {
     entry: [number, number];
     experienced: [number, number];
@@ -51,11 +53,19 @@ export const ROUTE_LABEL: Record<Route, string> = {
 };
 
 export function careerFacts(occ: Occupation, graph: SkillsGraph, earnings: EarningsData, yearLevel: 10 | 11 | 12): CareerFacts {
-  const median = earnings.byOsca[occ.osca] ?? earnings.byOsca[occ.oscaUnitGroup];
+  // OSCA-level earnings when imported; otherwise the JSA occupation profile for the ANZSCO unit group.
+  const jsaWeekly = occ.jsaProfile?.medianWeeklyEarnings;
+  const median = earnings.byOsca[occ.osca] ?? earnings.byOsca[occ.oscaUnitGroup] ?? (jsaWeekly ? { medianWeekly: jsaWeekly } : undefined);
   const left = SCHOOL_YEARS_LEFT[yearLevel];
   return {
     osca: occ.osca,
     oscaTitle: occ.oscaTitle,
+    anzsco: {
+      unitGroup: occ.anzsco,
+      title: occ.anzscoTitle,
+      occupation: occ.anzscoOccupation,
+      ...(occ.jsaProfile ? { profile: occ.jsaProfile } : {}),
+    },
     salary: {
       entry: occ.salary.entry,
       experienced: occ.salary.experienced,

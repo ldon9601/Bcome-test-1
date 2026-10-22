@@ -1,5 +1,6 @@
+import { courseOptions } from "./careers/courses.ts";
 import { matchCareers, toMatchSummary, type Match } from "./careers/matching.ts";
-import { earningsData, jsaOutlook, occupationData, questionBank, skillsGraph, subjectLabels } from "./data.ts";
+import { courseOfferings, earningsData, jsaOutlook, occupationData, questionBank, skillsGraph, subjectLabels } from "./data.ts";
 import { buildPlanContext, careerDnaView } from "./plan/context.ts";
 import { generatePlan, type GenerateOptions } from "./plan/generate.ts";
 import type { CareerPlan } from "./plan/types.ts";
@@ -26,7 +27,17 @@ export function resultPayload(r: AdviceResult) {
   return {
     profile: r.profile,
     dna: careerDnaView(r.profile),
-    matches: r.matches.filter((m) => m.group !== "other").map(toMatchSummary),
+    matches: r.matches
+      .filter((m) => m.group !== "other")
+      .map((m) => ({
+        ...toMatchSummary(m),
+        anzsco: { unitGroup: m.occupation.anzsco, title: m.occupation.anzscoTitle, occupation: m.occupation.anzscoOccupation, profile: m.occupation.jsaProfile ?? null },
+        // Specific university and TAFE courses, ordered for this student's state, subjects and study preferences.
+        courses: courseOptions(m.occupation, r.profile, courseOfferings),
+      })),
     plan: r.plan,
   };
 }
+
+export type ResultPayload = ReturnType<typeof resultPayload>;
+export type ResultMatch = ResultPayload["matches"][number];

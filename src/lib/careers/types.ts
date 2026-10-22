@@ -46,8 +46,14 @@ export interface Occupation {
   summary: string;
   /** Illustration family used for the career's picture (see src/components/OccupationArt.tsx). */
   family: CareerFamily;
-  /** ANZSCO 2022 unit group (4-digit). Only used to join JSA projections, which are published on ANZSCO. */
+  /** ANZSCO 2022 unit group (4-digit), as used by Jobs and Skills Australia for projections and occupation profiles. */
   anzsco: string;
+  /** JSA's title for the ANZSCO unit group, e.g. "Software and Applications Programmers". */
+  anzscoTitle: string;
+  /** Closest 6-digit ANZSCO occupation, or null when the career spans several (e.g. Registered Nurse). */
+  anzscoOccupation: { code: string; title: string } | null;
+  /** Attached at load time from data/outlook/jsa-occupation-profiles.json (see src/lib/data.ts). */
+  jsaProfile?: JsaProfile | null;
   /** ANZSIC division name, as used in the JSA industry projections. */
   industry: string;
   /** Skill level, 1 (bachelor or higher) to 5 (Certificate I / secondary). */
@@ -130,6 +136,86 @@ export interface QualificationData {
   version: string;
   notes: string[];
   qualifications: Qualification[];
+}
+
+/** Highest-qualification shares of people working in an occupation, %. */
+export interface QualificationMix {
+  postgraduate: number;
+  bachelor: number;
+  diploma: number;
+  certificate: number;
+  year12: number;
+  year11: number;
+  year10OrBelow: number;
+}
+
+/** Headline figures from a Jobs and Skills Australia occupation profile (ANZSCO unit group). null = N/A. */
+export interface JsaProfile {
+  title: string;
+  url: string;
+  employed: number | null;
+  partTimePct: number | null;
+  femalePct: number | null;
+  /** Full-time, before tax. */
+  medianWeeklyEarnings: number | null;
+  medianAge: number | null;
+  /** Change in employment over the past year (not a projection). */
+  annualGrowth: number | null;
+  qualifications: QualificationMix;
+}
+
+export interface JsaProfileData {
+  source: { title: string; url: string; retrieved: string; notes: string[] };
+  byUnitGroup: Record<string, JsaProfile>;
+}
+
+export type AtarKind = "guaranteed" | "indicative" | "minimum" | "published";
+
+/** A specific university course that leads to one of Bcome's higher-education qualifications. */
+export interface UniversityOffering {
+  qualificationId: string;
+  /** Key into CourseOfferingsData.sources. */
+  source: string;
+  provider: string;
+  state: string;
+  campus: string | null;
+  course: string;
+  atar: { value: number | null; display: string | null; kind: AtarKind | null; year: number | null };
+  prerequisites: string[];
+  assumedKnowledge: string[];
+  recommended: string[];
+  otherRequirements: string[];
+}
+
+/** A TAFE course for one of Bcome's VET qualifications, with that provider's entry requirements. */
+export interface TafeOffering {
+  qualificationId: string;
+  provider: string;
+  state: string;
+  course: string;
+  /** The code the provider currently enrols under (may be a newer release than qualificationId). */
+  offeredCode: string;
+  apprenticeship: boolean;
+  requirements: string[];
+  url: string;
+}
+
+export interface CourseSource {
+  provider: string;
+  title: string;
+  url: string;
+  kind: AtarKind | "prerequisites";
+  year: number | null;
+  note: string;
+}
+
+export interface CourseOfferingsData {
+  version: string;
+  notes: string[];
+  retrieved: string;
+  sources: Record<string, CourseSource>;
+  university: UniversityOffering[];
+  tafe: TafeOffering[];
 }
 
 /** Median earnings imported from JSA occupation profiles, keyed by OSCA code. */

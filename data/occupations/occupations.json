@@ -7,7 +7,8 @@
     "timeToQualify.years is the typical full-time range from finishing Year 12 to the milestone, on the most common route.",
     "profile holds 0–100 occupational profiles on the same dimensions as the Career Profile questionnaire: interests (RIASEC), skill requirements, work values and work environment. They are editorial ratings to be reviewed by careers professionals and, later, calibrated from student feedback.",
     "market holds opportunity indicators. Each field's source is recorded in evidence; 'Bcome editorial estimate' fields should be replaced by the named dataset when available.",
-    "riasec (3-letter code), skills, pathways, aiExposure and entryCompetitiveness are editorial judgements for guidance."
+    "riasec (3-letter code), skills, pathways, aiExposure and entryCompetitiveness are editorial judgements for guidance.",
+    "anzsco is the ANZSCO 2022 unit group used by Jobs and Skills Australia (projections and occupation profiles); anzscoOccupation is the closest 6-digit ANZSCO occupation, or null where the career spans several (e.g. Registered Nurse)."
   ],
   "occupations": [
     {
@@ -18,6 +19,8 @@
       "oscaSource": "abs",
       "title": "Registered Nurse",
       "anzsco": "2544",
+      "anzscoTitle": "Registered Nurses",
+      "anzscoOccupation": null,
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "SIC",
@@ -138,7 +141,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -159,6 +163,11 @@
       "oscaSource": "correspondence",
       "title": "Assistant in Nursing",
       "anzsco": "4233",
+      "anzscoTitle": "Nursing Support and Personal Care Workers",
+      "anzscoOccupation": {
+        "code": "423312",
+        "title": "Nursing Support Worker"
+      },
       "industry": "Health Care and Social Assistance",
       "skillLevel": 4,
       "riasec": "SRC",
@@ -275,7 +284,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -294,7 +304,12 @@
       "oscaTitle": "Residential Aged Care Worker",
       "oscaSource": "abs",
       "title": "Aged Care Worker",
-      "anzsco": "4233",
+      "anzsco": "4231",
+      "anzscoTitle": "Aged and Disabled Carers",
+      "anzscoOccupation": {
+        "code": "423111",
+        "title": "Aged or Disabled Carer"
+      },
       "industry": "Health Care and Social Assistance",
       "skillLevel": 4,
       "riasec": "SRC",
@@ -411,7 +426,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -432,6 +448,11 @@
       "oscaSource": "abs",
       "title": "Disability Support Worker",
       "anzsco": "4231",
+      "anzscoTitle": "Aged and Disabled Carers",
+      "anzscoOccupation": {
+        "code": "423111",
+        "title": "Aged or Disabled Carer"
+      },
       "industry": "Health Care and Social Assistance",
       "skillLevel": 4,
       "riasec": "SER",
@@ -558,7 +579,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -579,6 +601,11 @@
       "oscaSource": "correspondence",
       "title": "Physiotherapist",
       "anzsco": "2525",
+      "anzscoTitle": "Physiotherapists",
+      "anzscoOccupation": {
+        "code": "252511",
+        "title": "Physiotherapist"
+      },
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "SIR",
@@ -687,7 +714,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -708,6 +736,11 @@
       "oscaSource": "correspondence",
       "title": "Occupational Therapist",
       "anzsco": "2524",
+      "anzscoTitle": "Occupational Therapists",
+      "anzscoOccupation": {
+        "code": "252411",
+        "title": "Occupational Therapist"
+      },
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "SIA",
@@ -815,7 +848,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -835,6 +869,11 @@
       "oscaSource": "correspondence",
       "title": "Speech Pathologist",
       "anzsco": "2527",
+      "anzscoTitle": "Audiologists and Speech Pathologists \\ Therapists",
+      "anzscoOccupation": {
+        "code": "252712",
+        "title": "Speech Pathologist / Speech Language Therapist"
+      },
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "SIA",
@@ -942,7 +981,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -962,6 +1002,11 @@
       "oscaSource": "correspondence",
       "title": "General Practitioner (Doctor)",
       "anzsco": "2531",
+      "anzscoTitle": "General Practitioners and Resident Medical Officers",
+      "anzscoOccupation": {
+        "code": "253111",
+        "title": "General Practitioner"
+      },
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "ISE",
@@ -1074,7 +1119,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -1098,6 +1144,11 @@
       "oscaSource": "correspondence",
       "title": "Pharmacist",
       "anzsco": "2515",
+      "anzscoTitle": "Pharmacists",
+      "anzscoOccupation": {
+        "code": "251513",
+        "title": "Retail Pharmacist"
+      },
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "ICS",
@@ -1206,7 +1257,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -1229,6 +1281,11 @@
       "oscaSource": "correspondence",
       "title": "Dietitian",
       "anzsco": "2511",
+      "anzscoTitle": "Nutrition Professionals",
+      "anzscoOccupation": {
+        "code": "251111",
+        "title": "Dietitian"
+      },
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "ISE",
@@ -1336,7 +1393,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -1357,6 +1415,8 @@
       "oscaSource": "abs",
       "title": "Psychologist",
       "anzsco": "2723",
+      "anzscoTitle": "Psychologists and Psychotherapists",
+      "anzscoOccupation": null,
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "SIA",
@@ -1465,7 +1525,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -1487,6 +1548,11 @@
       "oscaSource": "correspondence",
       "title": "Social Worker",
       "anzsco": "2725",
+      "anzscoTitle": "Social Workers",
+      "anzscoOccupation": {
+        "code": "272511",
+        "title": "Social Worker"
+      },
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "SEC",
@@ -1603,7 +1669,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -1623,6 +1690,8 @@
       "oscaSource": "correspondence",
       "title": "Counsellor",
       "anzsco": "2721",
+      "anzscoTitle": "Counsellors",
+      "anzscoOccupation": null,
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "SAI",
@@ -1738,7 +1807,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -1759,6 +1829,8 @@
       "oscaSource": "correspondence",
       "title": "Paramedic",
       "anzsco": "4111",
+      "anzscoTitle": "Ambulance Officers and Paramedics",
+      "anzscoOccupation": null,
       "industry": "Health Care and Social Assistance",
       "skillLevel": 2,
       "riasec": "SRI",
@@ -1866,7 +1938,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -1886,6 +1959,11 @@
       "oscaSource": "correspondence",
       "title": "Dental Assistant",
       "anzsco": "4232",
+      "anzscoTitle": "Dental Assistants",
+      "anzscoOccupation": {
+        "code": "423211",
+        "title": "Dental Assistant"
+      },
       "industry": "Health Care and Social Assistance",
       "skillLevel": 4,
       "riasec": "SCR",
@@ -2000,7 +2078,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -2019,6 +2098,8 @@
       "oscaSource": "correspondence",
       "title": "Health and Welfare Services Manager",
       "anzsco": "1342",
+      "anzscoTitle": "Health and Welfare Services Managers",
+      "anzscoOccupation": null,
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "ESC",
@@ -2128,7 +2209,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -2149,6 +2231,11 @@
       "oscaSource": "correspondence",
       "title": "Early Childhood Educator",
       "anzsco": "4211",
+      "anzscoTitle": "Child Carers",
+      "anzscoOccupation": {
+        "code": "421111",
+        "title": "Child Care Worker"
+      },
       "industry": "Health Care and Social Assistance",
       "skillLevel": 4,
       "riasec": "SAR",
@@ -2274,7 +2361,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -2295,6 +2383,11 @@
       "oscaSource": "correspondence",
       "title": "Early Childhood Teacher",
       "anzsco": "2411",
+      "anzscoTitle": "Early Childhood (Pre-primary School) Teachers",
+      "anzscoOccupation": {
+        "code": "241111",
+        "title": "Early Childhood (Pre-primary School) Teacher"
+      },
       "industry": "Education and Training",
       "skillLevel": 1,
       "riasec": "SAE",
@@ -2410,7 +2503,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -2431,6 +2525,11 @@
       "oscaSource": "correspondence",
       "title": "Primary School Teacher",
       "anzsco": "2412",
+      "anzscoTitle": "Primary School Teachers",
+      "anzscoOccupation": {
+        "code": "241213",
+        "title": "Primary School Teacher"
+      },
       "industry": "Education and Training",
       "skillLevel": 1,
       "riasec": "SAE",
@@ -2538,7 +2637,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -2559,6 +2659,11 @@
       "oscaSource": "correspondence",
       "title": "Secondary School Teacher",
       "anzsco": "2414",
+      "anzscoTitle": "Secondary School Teachers",
+      "anzscoOccupation": {
+        "code": "241411",
+        "title": "Secondary School Teacher"
+      },
       "industry": "Education and Training",
       "skillLevel": 1,
       "riasec": "SAI",
@@ -2666,7 +2771,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -2688,6 +2794,11 @@
       "oscaSource": "abs",
       "title": "Software Engineer",
       "anzsco": "2613",
+      "anzscoTitle": "Software and Applications Programmers",
+      "anzscoOccupation": {
+        "code": "261313",
+        "title": "Software Engineer"
+      },
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "IRC",
@@ -2814,7 +2925,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -2835,6 +2947,11 @@
       "oscaSource": "correspondence",
       "title": "Cyber Security Analyst",
       "anzsco": "2621",
+      "anzscoTitle": "Database and Systems Administrators, and ICT Security Specialists",
+      "anzscoOccupation": {
+        "code": "262116",
+        "title": "Cyber Security Analyst"
+      },
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "ICR",
@@ -2959,7 +3076,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -2979,6 +3097,11 @@
       "oscaSource": "correspondence",
       "title": "ICT Business Analyst",
       "anzsco": "2611",
+      "anzscoTitle": "ICT Business and Systems Analysts",
+      "anzscoOccupation": {
+        "code": "261111",
+        "title": "ICT Business Analyst"
+      },
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "ICE",
@@ -3095,7 +3218,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -3116,6 +3240,8 @@
       "oscaSource": "abs",
       "title": "ICT Manager",
       "anzsco": "1351",
+      "anzscoTitle": "ICT Managers",
+      "anzscoOccupation": null,
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "EIC",
@@ -3225,7 +3351,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -3246,6 +3373,11 @@
       "oscaSource": "correspondence",
       "title": "Data Scientist",
       "anzsco": "2241",
+      "anzscoTitle": "Actuaries, Mathematicians and Statisticians",
+      "anzscoOccupation": {
+        "code": "224115",
+        "title": "Data Scientist"
+      },
       "industry": "Financial and Insurance Services",
       "skillLevel": 1,
       "riasec": "ICR",
@@ -3356,7 +3488,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -3379,6 +3512,11 @@
       "oscaSource": "correspondence",
       "title": "Civil Engineer",
       "anzsco": "2332",
+      "anzscoTitle": "Civil Engineering Professionals",
+      "anzscoOccupation": {
+        "code": "233211",
+        "title": "Civil Engineer"
+      },
       "industry": "Construction",
       "skillLevel": 1,
       "riasec": "RIC",
@@ -3500,7 +3638,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -3522,6 +3661,11 @@
       "oscaSource": "correspondence",
       "title": "Electrical Engineer",
       "anzsco": "2333",
+      "anzscoTitle": "Electrical Engineers",
+      "anzscoOccupation": {
+        "code": "233311",
+        "title": "Electrical Engineer"
+      },
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "IRC",
@@ -3655,6 +3799,11 @@
       "oscaSource": "correspondence",
       "title": "Mechanical Engineer",
       "anzsco": "2335",
+      "anzscoTitle": "Industrial, Mechanical and Production Engineers",
+      "anzscoOccupation": {
+        "code": "233512",
+        "title": "Mechanical Engineer"
+      },
       "industry": "Manufacturing",
       "skillLevel": 1,
       "riasec": "RIC",
@@ -3765,7 +3914,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -3788,6 +3938,11 @@
       "oscaSource": "abs",
       "title": "Architect",
       "anzsco": "2321",
+      "anzscoTitle": "Architects and Landscape Architects",
+      "anzscoOccupation": {
+        "code": "232111",
+        "title": "Architect"
+      },
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "AIR",
@@ -3898,7 +4053,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -3920,6 +4076,11 @@
       "oscaSource": "correspondence",
       "title": "Land Surveyor",
       "anzsco": "2322",
+      "anzscoTitle": "Surveyors and Spatial Scientists",
+      "anzscoOccupation": {
+        "code": "232212",
+        "title": "Surveyor"
+      },
       "industry": "Construction",
       "skillLevel": 1,
       "riasec": "RIC",
@@ -4028,7 +4189,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -4049,6 +4211,11 @@
       "oscaSource": "correspondence",
       "title": "Urban and Regional Planner",
       "anzsco": "2326",
+      "anzscoTitle": "Urban and Regional Planners",
+      "anzscoOccupation": {
+        "code": "232611",
+        "title": "Urban and Regional Planner"
+      },
       "industry": "Public Administration and Safety",
       "skillLevel": 1,
       "riasec": "IEA",
@@ -4158,7 +4325,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -4179,6 +4347,8 @@
       "oscaSource": "correspondence",
       "title": "Environmental Scientist",
       "anzsco": "2343",
+      "anzscoTitle": "Environmental Scientists",
+      "anzscoOccupation": null,
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "IRC",
@@ -4297,7 +4467,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -4318,6 +4489,11 @@
       "oscaSource": "correspondence",
       "title": "Agricultural Scientist",
       "anzsco": "2341",
+      "anzscoTitle": "Agricultural and Forestry Scientists",
+      "anzscoOccupation": {
+        "code": "234112",
+        "title": "Agricultural Scientist"
+      },
       "industry": "Agriculture, Forestry and Fishing",
       "skillLevel": 1,
       "riasec": "IRC",
@@ -4434,7 +4610,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -4454,6 +4631,11 @@
       "oscaSource": "correspondence",
       "title": "Medical Laboratory Scientist",
       "anzsco": "2346",
+      "anzscoTitle": "Medical Laboratory Scientists",
+      "anzscoOccupation": {
+        "code": "234611",
+        "title": "Medical Laboratory Scientist"
+      },
       "industry": "Health Care and Social Assistance",
       "skillLevel": 1,
       "riasec": "IRC",
@@ -4572,7 +4754,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -4595,6 +4778,11 @@
       "oscaSource": "correspondence",
       "title": "Veterinarian",
       "anzsco": "2347",
+      "anzscoTitle": "Veterinarians",
+      "anzscoOccupation": {
+        "code": "234711",
+        "title": "Veterinarian"
+      },
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "IRS",
@@ -4701,7 +4889,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -4723,6 +4912,11 @@
       "oscaSource": "abs",
       "title": "Research and Development Manager",
       "anzsco": "1325",
+      "anzscoTitle": "Research and Development Managers",
+      "anzscoOccupation": {
+        "code": "132511",
+        "title": "Research and Development Manager"
+      },
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "EIC",
@@ -4834,7 +5028,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -4856,6 +5051,11 @@
       "oscaSource": "abs",
       "title": "Accountant",
       "anzsco": "2211",
+      "anzscoTitle": "Accountants",
+      "anzscoOccupation": {
+        "code": "221111",
+        "title": "Accountant (General)"
+      },
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "CEI",
@@ -4980,7 +5180,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -5000,6 +5201,11 @@
       "oscaSource": "correspondence",
       "title": "Management Consultant",
       "anzsco": "2247",
+      "anzscoTitle": "Management and Organisation Analysts",
+      "anzscoOccupation": {
+        "code": "224711",
+        "title": "Management Consultant"
+      },
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "EIC",
@@ -5108,7 +5314,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -5129,6 +5336,11 @@
       "oscaSource": "correspondence",
       "title": "Marketing Specialist",
       "anzsco": "2251",
+      "anzscoTitle": "Advertising and Marketing Professionals",
+      "anzscoOccupation": {
+        "code": "225113",
+        "title": "Marketing Specialist"
+      },
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "EAC",
@@ -5247,7 +5459,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -5268,6 +5481,11 @@
       "oscaSource": "abs",
       "title": "Lawyer (Solicitor)",
       "anzsco": "2713",
+      "anzscoTitle": "Solicitors",
+      "anzscoOccupation": {
+        "code": "271311",
+        "title": "Solicitor"
+      },
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "EIS",
@@ -5374,7 +5592,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -5395,6 +5614,8 @@
       "oscaSource": "correspondence",
       "title": "Journalist",
       "anzsco": "2124",
+      "anzscoTitle": "Journalists and Other Writers",
+      "anzscoOccupation": null,
       "industry": "Information Media and Telecommunications",
       "skillLevel": 1,
       "riasec": "AIS",
@@ -5511,7 +5732,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -5532,6 +5754,11 @@
       "oscaSource": "correspondence",
       "title": "Graphic Designer",
       "anzsco": "2324",
+      "anzscoTitle": "Graphic and Web Designers, and Illustrators",
+      "anzscoOccupation": {
+        "code": "232411",
+        "title": "Graphic Designer"
+      },
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "ARE",
@@ -5648,7 +5875,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -5669,6 +5897,11 @@
       "oscaSource": "correspondence",
       "title": "Web Designer",
       "anzsco": "2324",
+      "anzscoTitle": "Graphic and Web Designers, and Illustrators",
+      "anzscoOccupation": {
+        "code": "232414",
+        "title": "Web Designer"
+      },
       "industry": "Professional, Scientific and Technical Services",
       "skillLevel": 1,
       "riasec": "AIC",
@@ -5786,7 +6019,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -5807,6 +6041,11 @@
       "oscaSource": "correspondence",
       "title": "Musician",
       "anzsco": "2112",
+      "anzscoTitle": "Music Professionals",
+      "anzscoOccupation": {
+        "code": "211213",
+        "title": "Musician (Instrumental)"
+      },
       "industry": "Arts and Recreation Services",
       "skillLevel": 1,
       "riasec": "AES",
@@ -5939,6 +6178,11 @@
       "oscaSource": "abs",
       "title": "Actor",
       "anzsco": "2111",
+      "anzscoTitle": "Actors, Dancers and Other Entertainers",
+      "anzscoOccupation": {
+        "code": "211111",
+        "title": "Actor"
+      },
       "industry": "Arts and Recreation Services",
       "skillLevel": 1,
       "riasec": "AES",
@@ -6044,7 +6288,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -6064,6 +6309,11 @@
       "oscaSource": "abs",
       "title": "Electrician",
       "anzsco": "3411",
+      "anzscoTitle": "Electricians",
+      "anzscoOccupation": {
+        "code": "341111",
+        "title": "Electrician (General)"
+      },
       "industry": "Construction",
       "skillLevel": 3,
       "riasec": "RIC",
@@ -6176,7 +6426,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -6197,6 +6448,11 @@
       "oscaSource": "correspondence",
       "title": "Plumber",
       "anzsco": "3341",
+      "anzscoTitle": "Plumbers",
+      "anzscoOccupation": {
+        "code": "334111",
+        "title": "Plumber (General)"
+      },
       "industry": "Construction",
       "skillLevel": 3,
       "riasec": "RCI",
@@ -6307,7 +6563,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -6327,6 +6584,11 @@
       "oscaSource": "abs",
       "title": "Carpenter",
       "anzsco": "3312",
+      "anzscoTitle": "Carpenters and Joiners",
+      "anzscoOccupation": {
+        "code": "331212",
+        "title": "Carpenter"
+      },
       "industry": "Construction",
       "skillLevel": 3,
       "riasec": "RCI",
@@ -6435,7 +6697,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -6455,6 +6718,11 @@
       "oscaSource": "abs",
       "title": "Automotive Technician (Mechanic)",
       "anzsco": "3212",
+      "anzscoTitle": "Motor Mechanics",
+      "anzscoOccupation": {
+        "code": "321211",
+        "title": "Motor Mechanic (General)"
+      },
       "industry": "Other Services",
       "skillLevel": 3,
       "riasec": "RIC",
@@ -6564,7 +6832,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -6584,6 +6853,11 @@
       "oscaSource": "correspondence",
       "title": "Air Conditioning and Refrigeration Technician",
       "anzsco": "3421",
+      "anzscoTitle": "Airconditioning and Refrigeration Mechanics",
+      "anzscoOccupation": {
+        "code": "342111",
+        "title": "Airconditioning and Refrigeration Mechanic"
+      },
       "industry": "Construction",
       "skillLevel": 3,
       "riasec": "RIC",
@@ -6694,7 +6968,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -6715,6 +6990,11 @@
       "oscaSource": "correspondence",
       "title": "Fitter and Turner",
       "anzsco": "3232",
+      "anzscoTitle": "Metal Fitters and Machinists",
+      "anzscoOccupation": {
+        "code": "323212",
+        "title": "Fitter and Turner"
+      },
       "industry": "Manufacturing",
       "skillLevel": 3,
       "riasec": "RIC",
@@ -6824,7 +7104,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -6845,6 +7126,11 @@
       "oscaSource": "correspondence",
       "title": "Welder",
       "anzsco": "3223",
+      "anzscoTitle": "Structural Steel and Welding Trades Workers",
+      "anzscoOccupation": {
+        "code": "322313",
+        "title": "Welder (First Class)"
+      },
       "industry": "Manufacturing",
       "skillLevel": 3,
       "riasec": "RCI",
@@ -6953,7 +7239,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -6973,6 +7260,11 @@
       "oscaSource": "correspondence",
       "title": "Chef",
       "anzsco": "3513",
+      "anzscoTitle": "Chefs",
+      "anzscoOccupation": {
+        "code": "351311",
+        "title": "Chef"
+      },
       "industry": "Accommodation and Food Services",
       "skillLevel": 2,
       "riasec": "ARE",
@@ -7088,7 +7380,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -7108,6 +7401,11 @@
       "oscaSource": "abs",
       "title": "Hairdresser",
       "anzsco": "3911",
+      "anzscoTitle": "Hairdressers",
+      "anzscoOccupation": {
+        "code": "391111",
+        "title": "Hairdresser"
+      },
       "industry": "Other Services",
       "skillLevel": 3,
       "riasec": "ASR",
@@ -7212,7 +7510,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -7232,6 +7531,11 @@
       "oscaSource": "correspondence",
       "title": "Police Officer",
       "anzsco": "4413",
+      "anzscoTitle": "Police",
+      "anzscoOccupation": {
+        "code": "441312",
+        "title": "Police Officer"
+      },
       "industry": "Public Administration and Safety",
       "skillLevel": 2,
       "riasec": "RES",
@@ -7340,7 +7644,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -7361,6 +7666,11 @@
       "oscaSource": "abs",
       "title": "Defence Force Member",
       "anzsco": "4411",
+      "anzscoTitle": "Defence Force Members - Other Ranks",
+      "anzscoOccupation": {
+        "code": "441111",
+        "title": "Defence Force Member - Other Ranks"
+      },
       "industry": "Public Administration and Safety",
       "skillLevel": 4,
       "riasec": "RCE",
@@ -7489,6 +7799,11 @@
       "oscaSource": "correspondence",
       "title": "Fitness Instructor",
       "anzsco": "4521",
+      "anzscoTitle": "Fitness Instructors",
+      "anzscoOccupation": {
+        "code": "452111",
+        "title": "Fitness Instructor"
+      },
       "industry": "Arts and Recreation Services",
       "skillLevel": 3,
       "riasec": "SRE",
@@ -7604,7 +7919,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -7624,6 +7940,11 @@
       "oscaSource": "correspondence",
       "title": "Pilot",
       "anzsco": "2311",
+      "anzscoTitle": "Air Transport Professionals",
+      "anzscoOccupation": {
+        "code": "231111",
+        "title": "Aeroplane Pilot"
+      },
       "industry": "Transport, Postal and Warehousing",
       "skillLevel": 1,
       "riasec": "RIE",
@@ -7747,7 +8068,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -7768,6 +8090,11 @@
       "oscaSource": "abs",
       "title": "Construction Project Manager",
       "anzsco": "1331",
+      "anzscoTitle": "Construction Managers",
+      "anzscoOccupation": {
+        "code": "133111",
+        "title": "Construction Project Manager"
+      },
       "industry": "Construction",
       "skillLevel": 1,
       "riasec": "ERC",
@@ -7887,7 +8214,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -7907,7 +8235,12 @@
       "oscaTitle": "Landscape Gardener",
       "oscaSource": "correspondence",
       "title": "Landscape Gardener",
-      "anzsco": "3627",
+      "anzsco": "3622",
+      "anzscoTitle": "Gardeners",
+      "anzscoOccupation": {
+        "code": "362213",
+        "title": "Landscape Gardener"
+      },
       "industry": "Administrative and Support Services",
       "skillLevel": 3,
       "riasec": "RAC",
@@ -8033,6 +8366,11 @@
       "oscaSource": "abs",
       "title": "Truck Driver",
       "anzsco": "7331",
+      "anzscoTitle": "Truck Drivers",
+      "anzscoOccupation": {
+        "code": "733111",
+        "title": "Truck Driver (General)"
+      },
       "industry": "Transport, Postal and Warehousing",
       "skillLevel": 4,
       "riasec": "RCE",
@@ -8132,7 +8470,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [],
@@ -8149,6 +8488,11 @@
       "oscaSource": "correspondence",
       "title": "Real Estate Agent",
       "anzsco": "6121",
+      "anzscoTitle": "Real Estate Sales Agents",
+      "anzscoOccupation": {
+        "code": "612114",
+        "title": "Real Estate Agent"
+      },
       "industry": "Rental, Hiring and Real Estate Services",
       "skillLevel": 3,
       "riasec": "ECS",
@@ -8259,7 +8603,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
@@ -8280,6 +8625,11 @@
       "oscaSource": "correspondence",
       "title": "General Clerk",
       "anzsco": "5311",
+      "anzscoTitle": "General Clerks",
+      "anzscoOccupation": {
+        "code": "531111",
+        "title": "General Clerk"
+      },
       "industry": "Administrative and Support Services",
       "skillLevel": 4,
       "riasec": "CES",
@@ -8393,7 +8743,8 @@
         "graduateOutcome": "Bcome editorial estimate (replace with QILT Graduate Outcomes / NCVER outcomes)",
         "ai": "Bcome editorial estimate (replace with the JSA Gen AI Transition automation and augmentation scores)",
         "salary": "Bcome editorial estimate (replace with JSA occupation profile earnings)",
-        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)"
+        "profile": "Bcome editorial estimate (interest, skill, value and environment profiles; review with a careers adviser)",
+        "medianEarnings": "Jobs and Skills Australia occupation profile (ABS Survey of Employee Earnings and Hours, May 2023)"
       },
       "subjectAreas": {
         "helpful": [
