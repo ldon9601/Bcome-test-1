@@ -355,10 +355,10 @@ function CareerDetail({ c, m }: { c: PlanCareer; m: ResultMatch }) {
               <dd>{BAND_TEXT[f.employment]}</dd>
               <dt>Skills shortage now</dt>
               <dd>{f.shortage ? "Yes" : "No"}</dd>
-              <dt>AI augmentation</dt>
-              <dd>{f.aiAugmentation}</dd>
-              <dt>AI automation</dt>
-              <dd>{f.aiAutomation}</dd>
+              <dt>AI exposure to 2035</dt>
+              <dd>{f.aiAutomation === "Moderate" ? "Medium" : f.aiAutomation}</dd>
+              <dt>AI as a helper</dt>
+              <dd>{f.aiAugmentation === "Moderate" ? "Medium" : f.aiAugmentation}</dd>
               <dt>Income outlook</dt>
               <dd>{f.income}</dd>
             </dl>

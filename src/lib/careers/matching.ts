@@ -43,7 +43,7 @@ import {
  */
 
 /** Bump when weights or rules change, so stored results can be compared and recalibrated. */
-export const ALGORITHM_VERSION = "2.2.0";
+export const ALGORITHM_VERSION = "2.3.0";
 
 export const MATCH_WEIGHTS = { personalFit: 0.6, futureOpportunity: 0.25, pathwayFeasibility: 0.15 } as const;
 export type ScoreName = keyof typeof MATCH_WEIGHTS;
@@ -251,6 +251,7 @@ function personalFit(p: StudentProfile, occ: Occupation): ScoreDetail & { streng
 
 const BAND_SCORE: Record<OutlookBand, number> = { strong: 1, good: 0.8, moderate: 0.6, limited: 0.35, declining: 0.15, unknown: 0.5 };
 const level = (n: number): "High" | "Moderate" | "Low" => (n >= 67 ? "High" : n >= 34 ? "Moderate" : "Low");
+const BAND_LEVEL = { high: "High", medium: "Moderate", low: "Low" } as const;
 
 function futureOpportunity(occ: Occupation, outlook: Outlook, portability: number | null): ScoreDetail & { future: FutureOutlookSummary } {
   const m = occ.market;
@@ -289,8 +290,8 @@ function futureOpportunity(occ: Occupation, outlook: Outlook, portability: numbe
     future: {
       employment: outlook.band10,
       shortage: m.shortage === "shortage",
-      aiAugmentation: level(m.ai.augmentation),
-      aiAutomation: level(m.ai.automation),
+      aiAugmentation: occ.genAi ? BAND_LEVEL[occ.genAi.helper] : level(m.ai.augmentation),
+      aiAutomation: occ.genAi ? BAND_LEVEL[occ.genAi.exposure] : level(m.ai.automation),
       income: midExperienced >= 110000 ? "Above average" : midExperienced >= 75000 ? "Average" : "Below average",
       education: maxYears >= 5 || occ.skillLevel === 1 ? "High" : maxYears >= 2 ? "Moderate" : "Low",
     },

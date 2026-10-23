@@ -6,6 +6,8 @@ import jsaProfilesJson from "../../data/outlook/jsa-occupation-profiles.json" wi
 import offeringsJson from "../../data/courses/offerings.json" with { type: "json" };
 import skillsJson from "../../data/skills/skills.json" with { type: "json" };
 import qualificationsJson from "../../data/skills/qualifications.json" with { type: "json" };
+import genAiJson from "../../data/labour/genai.json" with { type: "json" };
+import { applyGenAi, type GenAiData } from "./careers/genai.ts";
 import { SkillsGraph } from "./careers/skills.ts";
 import type { CourseOfferingsData, EarningsData, JsaOutlookData, JsaProfileData, OccupationData, QualificationData, SkillsData } from "./careers/types.ts";
 import type { ChoiceQuestion, QuestionBank } from "./questionnaire/types.ts";
@@ -19,10 +21,13 @@ export const skillsData = skillsJson as unknown as SkillsData;
 export const qualificationData = qualificationsJson as unknown as QualificationData;
 export const jsaProfiles = jsaProfilesJson as unknown as JsaProfileData;
 export const courseOfferings = offeringsJson as unknown as CourseOfferingsData;
+export const genAiData = genAiJson as unknown as GenAiData;
 
 // Each career carries its JSA occupation profile (joined on the ANZSCO unit group), so scoring,
 // facts and plans can use JSA earnings and workforce figures without passing another dataset around.
 for (const o of occupationData.occupations) o.jsaProfile = jsaProfiles.byUnitGroup[o.anzsco] ?? null;
+// JSA's Gen AI exposure scores replace Bcome's earlier estimates of AI automation and augmentation.
+applyGenAi(occupationData.occupations, genAiData);
 
 export const skillsGraph = new SkillsGraph(skillsData.skills, qualificationData.qualifications, occupationData.occupations);
 

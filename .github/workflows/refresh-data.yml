@@ -1,0 +1,140 @@
+# Checks Jobs and Skills Australia every week for new spreadsheets (data/sources.json lists the
+# pages) and updates Bcome's data.
+#
+# - "auto" sources (vacancies, industry employment, Gen AI exposure): imported, checked and tested,
+#   then committed to main, which redeploys the site.
+# - "review" sources (new editions of the employment projections and the Occupation Shortage List):
+#   imported and tested on a branch, then opened as a pull request for a person to merge.
+# - If a page or file has moved, a workbook's layout has changed, or the tests fail, nothing is
+#   published and an issue is opened with the details.
+#
+# Run it any time from GitHub: Actions > Refresh JSA data > Run workflow.
+name: Refresh JSA data
+
+on:
+  schedule:
+    - cron: "17 20 * * 0" # Mondays 7:17am Sydney time (6:17am outside daylight saving)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: refresh-data
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install openpyxl==3.1.5
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - run: npm install --no-audit --no-fund
+
+      - name: Refresh-script tests
+        run: python3 -m unittest discover -s tests/python
+
+      # ----- Automatic sources -----------------------------------------------------------------
+      - name: Check JSA for new spreadsheets (automatic sources)
+        id: auto
+        continue-on-error: true
+        run: python3 scripts/refresh-data.py --mode auto --report auto-report.md
+
+      - name: Validate and test the new data
+        id: auto_checks
+        if: steps.auto.outputs.updated != ''
+        run: |
+          npm run -s data:validate
+          npm test
+          npm run -s test:profiles
+          npm run -s db:seed-sql
+
+      - name: Publish the new data
+        if: steps.auto.outputs.updated != '' && steps.auto_checks.outcome == 'success'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data supabase/seed.sql
+          git commit -m "Refresh JSA data: ${{ steps.auto.outputs.updated }}" -m "$(cat auto-report.md)"
+          git push origin HEAD:${{ github.ref_name }}
+
+      # ----- Sources that need review ------------------------------------------------------------
+      - name: Check JSA for new editions (review sources)
+        id: review
+        continue-on-error: true
+        run: |
+          # Start from what's published, without anything left over from the automatic step.
+          git reset --hard HEAD
+          git checkout -B data-review/${{ github.run_id }}
+          python3 scripts/refresh-data.py --mode review --report review-report.md
+
+      - name: Validate and test the new edition
+        id: review_checks
+        if: steps.review.outputs.updated != ''
+        continue-on-error: true
+        run: |
+          npm run -s data:validate
+          npm test
+          npm run -s test:profiles
+          npm run -s db:seed-sql
+
+      - name: Open a pull request for review
+        if: steps.review.outputs.updated != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data supabase/seed.sql
+          git commit -m "New JSA edition: ${{ steps.review.outputs.updated }}" -m "$(cat review-report.md)"
+          git push -f origin HEAD
+          {
+            cat review-report.md
+            echo
+            if [ "${{ steps.review_checks.outcome }}" = "success" ]; then
+              echo "The data checks and tests passed."
+            else
+              echo "**The data checks or tests failed** (see the workflow run). Fix them on this branch before merging."
+            fi
+            echo
+            echo "Before merging, check the career pages: a new edition can move the base and target years (for example 2025 to 2035 becoming 2026 to 2036), which appear in the app's wording."
+            echo
+            echo "Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          } > pr-body.md
+          gh pr create --base "${{ github.event.repository.default_branch }}" --title "New JSA edition: ${{ steps.review.outputs.updated }}" --body-file pr-body.md
+
+      # ----- Problems ---------------------------------------------------------------------------
+      - name: Open an issue if something needs attention
+        if: always() && (steps.auto.outcome == 'failure' || steps.auto_checks.outcome == 'failure' || steps.review.outcome == 'failure')
+        run: |
+          {
+            echo "The weekly JSA data refresh needs attention. Nothing that failed was published."
+            echo
+            [ -f auto-report.md ] && cat auto-report.md
+            echo
+            [ -f review-report.md ] && cat review-report.md
+            echo
+            echo "If a page or file has moved, update its \`pages\` or \`match\` in \`data/sources.json\`. If JSA changed a workbook's layout, update \`scripts/import-labour-market.py\`."
+            echo
+            echo "Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          } > issue-body.md
+          title="Bcome data refresh needs attention"
+          existing=$(gh issue list --state open --search "in:title \"$title\"" --json number --jq '.[0].number')
+          if [ -n "$existing" ]; then gh issue comment "$existing" --body-file issue-body.md; else gh issue create --title "$title" --body-file issue-body.md; fi
+
+      - name: Summary
+        if: always()
+        run: cat auto-report.md review-report.md >> "$GITHUB_STEP_SUMMARY" 2>/dev/null || true

@@ -1,6 +1,18 @@
 import Link from "next/link";
 import { Icon, type IconName } from "@/components/Icon.tsx";
 import type { HealthCheck } from "@/lib/admin/health.ts";
+import sourcesJson from "../../../data/sources.json" with { type: "json" };
+
+interface DataSource {
+  id: string;
+  title: string;
+  publisher: string;
+  pages: string[];
+  mode: "auto" | "review";
+  frequency: string;
+  why?: string;
+  latest: { file: string; url: string | null; importedAt: string | null; checkedAt: string | null; period?: string | null; status: string };
+}
 
 export const when = (iso: string | null) =>
   iso ? new Date(iso).toLocaleString("en-AU", { day: "numeric", month: "short", hour: "numeric", minute: "2-digit", timeZone: "Australia/Sydney" }) : "—";
@@ -120,4 +132,67 @@ export function browser(ua: string | null): string {
   const b = /Edg\//.test(ua) ? "Edge" : /Chrome\//.test(ua) ? "Chrome" : /Firefox\//.test(ua) ? "Firefox" : /Safari\//.test(ua) ? "Safari" : /curl|bot|spider|python|node/i.test(ua) ? "Script or bot" : "Other";
   const os = /iPhone|iPad/.test(ua) ? "iOS" : /Android/.test(ua) ? "Android" : /CrOS/.test(ua) ? "ChromeOS" : /Windows/.test(ua) ? "Windows" : /Mac OS X/.test(ua) ? "macOS" : /Linux/.test(ua) ? "Linux" : "";
   return os ? `${b} on ${os}` : b;
+}
+
+const REPO = "https://github.com/ldon9601/bcome-test-1";
+
+/** Where each spreadsheet comes from, what's loaded and how it's kept up to date (data/sources.json). */
+export function DataSources() {
+  const sources = (sourcesJson as unknown as { sources: DataSource[] }).sources;
+  return (
+    <section className="side-card" aria-labelledby="sources">
+      <div className="group-head" style={{ marginTop: 0 }}>
+        <h2 id="sources">Data sources and automatic updates</h2>
+        <p>
+          Every Monday a GitHub workflow checks these Jobs and Skills Australia pages for newer spreadsheets.{" "}
+          <a href={`${REPO}/actions/workflows/refresh-data.yml`} target="_blank" rel="noopener noreferrer">
+            Run it now or see past runs
+          </a>
+        </p>
+      </div>
+      <div className="table-wrap">
+        <table className="data-table compact">
+          <thead>
+            <tr>
+              <th scope="col">Data</th>
+              <th scope="col">Published</th>
+              <th scope="col">Loaded now</th>
+              <th scope="col">Updated</th>
+              <th scope="col">When new data appears</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sources.map((s) => (
+              <tr key={s.id} className={s.latest.status.startsWith("problem") ? "row-flag" : undefined}>
+                <td>
+                  <a href={s.pages[0]} target="_blank" rel="noopener noreferrer">
+                    {s.title}
+                  </a>
+                  <span className="small block">{s.publisher}</span>
+                </td>
+                <td>{s.frequency}</td>
+                <td className="ua">
+                  {s.latest.url ? (
+                    <a href={s.latest.url} target="_blank" rel="noopener noreferrer">
+                      {s.latest.file}
+                    </a>
+                  ) : (
+                    s.latest.file
+                  )}
+                </td>
+                <td className="nowrap">
+                  {dateOnly(s.latest.importedAt)}
+                  <span className="small block">{s.latest.status}</span>
+                </td>
+                <td>
+                  {s.mode === "auto" ? "Goes live automatically once the checks pass" : "Opens a pull request to review"}
+                  {s.why && <span className="small block">{s.why}</span>}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  );
 }

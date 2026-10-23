@@ -4,7 +4,7 @@ import { missionLibrary } from "../src/lib/activity/missions.ts";
  * Checks the editable JSON content for mistakes before it reaches students.
  * Run after editing anything in /data:  npm run data:validate
  */
-import { courseOfferings, earningsData, jsaOutlook, jsaProfiles, occupationData, qualificationData, questionBank, skillsData, subjectLabels } from "../src/lib/data.ts";
+import { genAiData, courseOfferings, earningsData, jsaOutlook, jsaProfiles, occupationData, qualificationData, questionBank, skillsData, subjectLabels } from "../src/lib/data.ts";
 import { CAREER_FAMILIES } from "../src/lib/careers/types.ts";
 import { RIASEC, SKILL_DIMS, STYLE_DIMS, SUBJECT_AREAS, VALUE_DIMS } from "../src/lib/questionnaire/types.ts";
 
@@ -172,6 +172,18 @@ export function validateData(): string[] {
     }
   }
   for (const f of CAREER_FAMILIES) if (!missionLibrary.projects[f]) err(`missions: no mini project for career area ${f}`);
+  // JSA Gen AI exposure
+  const g = genAiData;
+  if (Object.keys(g.occupations).length < 300) err(`genai.json: only ${Object.keys(g.occupations).length} occupations`);
+  for (const k of ["automation", "augmentation"] as const) {
+    const [lo, hi] = g.bands[k];
+    if (!(lo > 0 && lo < hi && hi < 1)) err(`genai.json: ${k} band cut-offs ${lo}, ${hi} look wrong`);
+  }
+  for (const [code, o] of Object.entries(g.occupations)) {
+    if (!/^\d{4}$/.test(code)) err(`genai.json: bad ANZSCO code ${code}`);
+    for (const v of [o.automation, o.augmentation]) if (!(v >= 0 && v <= 1)) err(`genai.json ${code}: score ${v} outside 0–1`);
+  }
+  for (const o of occupationData.occupations) if (!o.genAi) err(`${o.osca} ${o.title}: no Gen AI exposure score for ANZSCO ${o.anzsco}`);
   return errors;
 }
 
@@ -185,6 +197,6 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     `✓ ${questionBank.questions.length} questions, ${occupationData.occupations.length} occupations (OSCA), ` +
       `${skillsData.skills.length} skills, ${qualificationData.qualifications.length} qualifications, ` +
       `${Object.keys(jsaOutlook.occupations).length} occupation-level JSA projections, ${Object.keys(earningsData.byOsca).length} earnings records, ` +
-      `${Object.keys(jsaProfiles.byUnitGroup).length} JSA occupation profiles, ${courseOfferings.university.length} university and ${courseOfferings.tafe.length} TAFE course entries, ${missionLibrary.missions.length} weekly missions, ${Object.keys(jsaOutlook.occupations).length} projected unit groups, ${Object.keys(industryData.industries).length} ANZSIC industries`,
+      `${Object.keys(jsaProfiles.byUnitGroup).length} JSA occupation profiles, ${courseOfferings.university.length} university and ${courseOfferings.tafe.length} TAFE course entries, ${missionLibrary.missions.length} weekly missions, ${Object.keys(jsaOutlook.occupations).length} projected unit groups, ${Object.keys(industryData.industries).length} ANZSIC industries, ${Object.keys(genAiData.occupations).length} Gen AI exposure scores`,
   );
 }

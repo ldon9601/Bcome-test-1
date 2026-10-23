@@ -1,6 +1,8 @@
 import industriesJson from "../../data/labour/industries.json" with { type: "json" };
 import shortageJson from "../../data/labour/shortage.json" with { type: "json" };
 import vacanciesJson from "../../data/labour/vacancies.json" with { type: "json" };
+import genAiJson from "../../data/labour/genai.json" with { type: "json" };
+import type { CareerGenAi, GenAiData } from "./careers/genai.ts";
 import type { JsaOutlookData, Occupation } from "./careers/types.ts";
 
 /**
@@ -57,6 +59,7 @@ export interface ShortageData {
 export const vacancyData = vacanciesJson as unknown as VacancyData;
 export const industryData = industriesJson as unknown as IndustryData;
 export const shortageData = shortageJson as unknown as ShortageData;
+const genAiSource = (genAiJson as unknown as GenAiData).source;
 
 import { SKILL_LEVELS } from "./labour-terms.ts";
 export { ANZSIC_NOTE, SKILL_LEVEL_NOTE, SKILL_LEVELS } from "./labour-terms.ts";
@@ -98,6 +101,8 @@ export interface LabourSnapshot {
   };
   projection: { employed2025k: number | null; employed2035k: number | null; growth5Pct: number | null; growth10Pct: number | null } | null;
   shortage: { year: string; majorGroup: string; majorGroupPct: number | null; skillLevelPct: number | null } | null;
+  /** JSA Gen AI exposure for the career's unit group. Missing on results saved before October 2026. */
+  genAi?: CareerGenAi | null;
 }
 
 export function labourSnapshot(occ: Occupation, state: string, at: Date, jsa: JsaOutlookData, vac: VacancyData = vacancyData, ind: IndustryData = industryData, osl: ShortageData = shortageData): LabourSnapshot {
@@ -160,6 +165,7 @@ export function labourSnapshot(occ: Occupation, state: string, at: Date, jsa: Js
     shortage: major
       ? { year, majorGroup: major, majorGroupPct: osl.byMajorGroup[major]?.at(-1) ?? null, skillLevelPct: osl.bySkillLevel[`Skill Level ${occ.skillLevel}`]?.at(-1) ?? null }
       : null,
+    genAi: occ.genAi ?? null,
   };
 }
 
@@ -193,6 +199,6 @@ export function labourHistory(occ: Occupation, state: string, jsa: JsaOutlookDat
       ? { points: [{ year: "2025", employedK: unit.employed2025k ?? null }, { year: "2030", employedK: unit.employed2030k ?? null }, { year: "2035", employedK: unit.employed2035k ?? null }] }
       : null,
     shortage: major ? { years: osl.years, majorGroup: major, majorGroupPct: osl.byMajorGroup[major] ?? [], skillLevel: occ.skillLevel, skillLevelPct: osl.bySkillLevel[`Skill Level ${occ.skillLevel}`] ?? [] } : null,
-    sources: [vac.source.tnv, vac.source.ivi, ind.source, { title: jsa.source.title, url: jsa.source.url }, osl.source].map((s) => ({ title: s.title, url: s.url })),
+    sources: [vac.source.tnv, vac.source.ivi, ind.source, { title: jsa.source.title, url: jsa.source.url }, osl.source, genAiSource].map((s) => ({ title: s.title, url: s.url })),
   };
 }

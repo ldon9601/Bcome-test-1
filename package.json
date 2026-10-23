@@ -21,7 +21,9 @@
     "data:import-earnings": "node --experimental-strip-types scripts/import-earnings.ts",
     "school": "node --experimental-strip-types scripts/school-admin.ts",
     "admin": "node --experimental-strip-types scripts/platform-admin.ts",
-    "data:import-labour": "python3 scripts/import-labour-market.py"
+    "data:import-labour": "python3 scripts/import-labour-market.py",
+    "data:refresh": "python3 scripts/refresh-data.py",
+    "test:refresh": "python3 -m unittest discover -s tests/python"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.0",

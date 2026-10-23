@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { JsaProfileCard } from "@/components/Courses.tsx";
 import { InfoTip, LabourPanel, SkillLevelDefinitions } from "@/components/Labour.tsx";
-import { SKILL_LEVELS } from "@/lib/labour-terms.ts";
+import { AI_EXPOSURE, AI_EXPOSURE_NOTE, SKILL_LEVELS } from "@/lib/labour-terms.ts";
 import { Icon } from "@/components/Icon.tsx";
 import { Modal } from "@/components/Modal.tsx";
 import { OccupationImage } from "@/components/OccupationArt.tsx";
@@ -21,12 +21,14 @@ export default function CareerBrowser({ careers }: { careers: CatalogueCareer[] 
   const [query, setQuery] = useState("");
   const [family, setFamily] = useState<string | null>(null);
   const [level, setLevel] = useState<number | null>(null);
+  const [ai, setAi] = useState<"high" | "medium" | "low" | null>(null);
+  const [sort, setSort] = useState<"az" | "ai-high" | "ai-low">("az");
   const [limit, setLimit] = useState(36);
   const [open, setOpen] = useState<string | null>(null);
   const [shortlist, setShortlist] = useState<string[]>([]);
 
   const [myState, setMyState] = useState<string | null>(null);
-  useEffect(() => setLimit(36), [family, level, query]);
+  useEffect(() => setLimit(36), [family, level, query, ai, sort]);
   useEffect(() => {
     try {
       const r = JSON.parse(sessionStorage.getItem("bcome:result") ?? "null");
@@ -43,12 +45,15 @@ export default function CareerBrowser({ careers }: { careers: CatalogueCareer[] 
 
   const families = useMemo(() => [...new Set(careers.map((c) => c.family))].sort((a, b) => FAMILY_LABEL[a].localeCompare(FAMILY_LABEL[b])), [careers]);
   const q = query.trim().toLowerCase();
+  const aiScore = (c: CatalogueCareer) => c.aiAutomation ?? { high: 0.6, medium: 0.33, low: 0.15 }[c.aiExposure];
   const shown = careers.filter(
     (c) =>
       (!family || c.family === family) &&
       (!level || c.skillLevels.includes(level)) &&
+      (!ai || c.aiExposure === ai) &&
       (!q || `${c.title} ${c.summary} ${c.osca} ${c.anzsco.unitGroup} ${c.anzsco.title} ${c.anzsic?.code ?? ""} ${c.anzsic?.title ?? ""}`.toLowerCase().includes(q)),
   );
+  if (sort !== "az") shown.sort((a, b) => (sort === "ai-high" ? aiScore(b) - aiScore(a) : aiScore(a) - aiScore(b)) || a.title.localeCompare(b.title));
   const current = careers.find((c) => c.osca === open);
 
   const show = (osca: string | null) => {
@@ -99,6 +104,37 @@ export default function CareerBrowser({ careers }: { careers: CatalogueCareer[] 
           <SkillLevelDefinitions current={level ? [level] : []} />
         </InfoTip>
       </div>
+      <div className="filters" role="group" aria-label="AI exposure to 2035">
+        <span className="small" style={{ alignSelf: "center" }}>
+          AI exposure to 2035
+        </span>
+        <button aria-pressed={!ai} onClick={() => setAi(null)}>
+          Any
+        </button>
+        {(["high", "medium", "low"] as const).map((b) => (
+          <button key={b} aria-pressed={ai === b} onClick={() => setAi(ai === b ? null : b)}>
+            {AI_EXPOSURE[b].label}
+          </button>
+        ))}
+        <InfoTip label="AI exposure">
+          <span className="infotip-lead">{AI_EXPOSURE_NOTE}</span>
+          <ul className="skill-levels">
+            {(["high", "medium", "low"] as const).map((b) => (
+              <li key={b} className={ai === b ? "on" : ""}>
+                <strong>{AI_EXPOSURE[b].label}</strong> {AI_EXPOSURE[b].definition}
+              </li>
+            ))}
+          </ul>
+        </InfoTip>
+        <label className="sort-select">
+          <span className="small">Sort</span>
+          <select value={sort} onChange={(e) => setSort(e.target.value as typeof sort)}>
+            <option value="az">A to Z</option>
+            <option value="ai-high">AI exposure, high to low</option>
+            <option value="ai-low">AI exposure, low to high</option>
+          </select>
+        </label>
+      </div>
       <p className="muted" aria-live="polite" style={{ margin: 0 }}>
         Showing {Math.min(limit, shown.length)} of {shown.length} career{shown.length === 1 ? "" : "s"}
       </p>
@@ -115,6 +151,9 @@ export default function CareerBrowser({ careers }: { careers: CatalogueCareer[] 
               Skill level {c.skillLevels.length > 1 ? `${Math.min(...c.skillLevels)}–${Math.max(...c.skillLevels)}` : c.skillLevel} · {formatRange(c.salary.entry)} starting ·{" "}
               {formatYears(c.timeToQualify.years)} to qualify
               {c.courses.atarRange && ` · ATAR ${c.courses.atarRange[0]}–${c.courses.atarRange[1]}`}
+            </p>
+            <p className={`ai-line ai-${c.aiExposure}`}>
+              <Icon name="ai" size={15} /> AI exposure to 2035: <strong>{AI_EXPOSURE[c.aiExposure].label}</strong>
             </p>
             <div className="actions">
               <button className="button outline" onClick={() => show(c.osca)}>

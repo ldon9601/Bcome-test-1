@@ -42,7 +42,7 @@ Similarity = 1 − Σwᵢ|sᵢ − oᵢ| / Σwᵢ, with dimensions that matter m
 | --- | --- |
 | Personal fit | .35 interests + .20 skill affinity + .20 work values + .15 work environment + .10 subject affinity |
 | Future opportunity | .30 employment growth (JSA) + .20 shortage + .15 regional breadth + .15 graduate outcomes + .10 earnings potential (JSA median full-time earnings where published) + .10 AI adaptability |
-| AI adaptability | .50 (1 − automation) + .30 augmentation + .20 adaptation (skill portability). Kept separate from growth because JSA's projections exclude generative AI. |
+| AI adaptability | .50 (1 − automation) + .30 augmentation + .20 adaptation (skill portability). Automation and augmentation are each career's percentile on JSA's Gen AI exposure scores. Kept separate from growth because JSA's projections exclude generative AI. |
 | Pathway feasibility | .30 subject prerequisites + .25 academic readiness + .20 qualification pathway fit + .10 study-duration preference + .10 alternative pathway breadth + .05 geographic accessibility |
 | **Match score** | **.60 personal fit + .25 future opportunity + .15 pathway feasibility** |
 | Confidence | .40 completeness + .25 consistency + .35 data quality → High / Moderate / Low, naming what would improve it |
@@ -64,7 +64,8 @@ Similarity = 1 − Σwᵢ|sᵢ − oᵢ| / Σwᵢ, with dimensions that matter m
 
 **Explanations:**
 - Every career shows its strong matches (+++ bars) and what the student would need to build. Gaps are never framed as unsuitability.
-- Every career shows a future-outlook summary: employment, shortage, AI augmentation and automation, income and education requirement.
+- Every career shows a future-outlook summary: employment, shortage, AI exposure to 2035, AI as a helper, income and education requirement.
+- **AI exposure to 2035** (High, Medium or Low) comes from Jobs and Skills Australia's *Our Gen AI Transition* scores (`data/labour/genai.json`, joined on the ANZSCO unit group in `src/lib/careers/genai.ts`). JSA scores how much of each occupation's work Gen AI could automate or augment; JSA sets no thresholds, so Bcome splits the 357 occupations into thirds by automation score, recalculated whenever JSA publishes new scores. Career pages show the label with a "?" definition, the scores and the share of entry-level job ads, and the career list can be filtered and sorted by it. One unit group JSA doesn't publish (6399) uses its minor group's average.
 - Where it applies, a career also shows how feasibility could improve, e.g. "72 today, about 90 if you select Chemistry in Year 11".
 
 ### 4. Plan and journey (`src/lib/plan/`)
@@ -113,7 +114,7 @@ Similarity = 1 − Σwᵢ|sᵢ − oᵢ| / Σwᵢ, with dimensions that matter m
 - **Time to qualify:** the typical full-time range on the most common route.
 - **Qualification codes:** VET codes marked `verifyCode: true` may have been superseded; check them on training.gov.au.
 - **Editorial content:** the occupation profiles (interests, skills, values, environment), Holland codes, subjects, skills, pathways and entry competitiveness are judgements for guidance and should be reviewed by a careers professional.
-- **Opportunity indicators:** shortage, regional breadth, graduate outcomes, and AI automation and augmentation are Bcome estimates for now. Each career's `evidence` field names its source and the dataset that should replace it: the JSA Occupation Shortage List, JSA NERO, QILT/NCVER outcomes, and the JSA Gen AI Transition study. The app shows these sources on each career card.
+- **Opportunity indicators:** AI automation and augmentation come from the JSA Gen AI Transition study. Shortage, regional breadth and graduate outcomes are Bcome estimates for now. Each career's `evidence` field names its source and the dataset that should replace it: the JSA Occupation Shortage List, JSA NERO and QILT/NCVER outcomes. The app shows these sources on each career card.
 - **Weights:** the weights follow the requirements document. They should be tested and, once there's enough student feedback, calibrated.
 
 ## Getting started
@@ -176,6 +177,29 @@ The browser never reads the account or activity tables: row level security is on
 psql -d test -f supabase/tests/local-auth-stub.sql $(for f in supabase/migrations/*.sql; do echo "-f $f"; done) -f supabase/tests/accounts-checks.sql -f supabase/tests/activity-checks.sql -f supabase/tests/admin-checks.sql
 ```
 
+## Keeping the data up to date
+
+`data/sources.json` lists where each Jobs and Skills Australia spreadsheet is published, the file now loaded and when it was imported. Every Monday the GitHub workflow `.github/workflows/refresh-data.yml` runs `scripts/refresh-data.py`, which:
+
+1. opens each JSA page and finds the newest matching spreadsheet (by the date in its name or JSA's upload folder);
+2. downloads it if it differs from the one loaded, and imports it with `scripts/import-labour-market.py`;
+3. refuses anything older than the data already loaded, and leaves the data untouched if a workbook can't be read.
+
+Then it validates the data and runs all the tests. What happens next depends on the source:
+
+| Source | Page | When new data appears |
+| --- | --- | --- |
+| Total New Vacancies | [jobsandskills.gov.au/data/total-new-vacancies](https://www.jobsandskills.gov.au/data/total-new-vacancies) | Goes live automatically (committed to `main`, which redeploys) |
+| Internet Vacancy Index (skill level, states) | [jobsandskills.gov.au/data/internet-vacancy-index](https://www.jobsandskills.gov.au/data/internet-vacancy-index) | Goes live automatically |
+| National Industry Trend | [jobsandskills.gov.au/data/labour-force-trending](https://www.jobsandskills.gov.au/data/labour-force-trending) | Goes live automatically |
+| Gen AI exposure (Our Gen AI Transition) | [Generative AI Capacity Study](https://www.jobsandskills.gov.au/studies/generative-artificial-intelligence-capacity-study) | Goes live automatically |
+| Employment Projections | [jobsandskills.gov.au/data/employment-projections](https://www.jobsandskills.gov.au/data/employment-projections) | Opens a pull request: a new edition moves the base and target years |
+| Occupation Shortage List key findings | [jobsandskills.gov.au/data/occupation-shortages-analysis](https://www.jobsandskills.gov.au/data/occupation-shortages-analysis) | Opens a pull request: each year's workbook can change |
+
+If a page or file moves, a layout changes or a test fails, nothing is published and the workflow opens a GitHub issue saying what to fix (usually the `pages` or `match` entry in `data/sources.json`). Run it any time from GitHub (Actions, then **Refresh JSA data**, then **Run workflow**), or locally with `npm run data:refresh -- --dry-run`. The administrator dashboard shows each source, the file loaded and when it was updated.
+
+For the pull requests, turn on **Settings → Actions → General → Allow GitHub Actions to create and approve pull requests**. GitHub pauses scheduled workflows on repositories with no activity for 60 days; re-enable it from the Actions tab if that happens.
+
 ## Commands
 
 | Command | What it does |
@@ -185,7 +209,9 @@ psql -d test -f supabase/tests/local-auth-stub.sql $(for f in supabase/migration
 | `npm run admin -- create --email … --username …` | Creates a platform administrator and prints its password; `list`, `reset-password --username …`, `remove --username …` |
 | `npm run test:profiles` | Runs six imaginary students through the whole pipeline and writes their plans to `test-output/` |
 | `npm run data:validate` | Checks the JSON in `data/` after edits |
-| `npm run data:import-labour -- --projections <xlsx> --tnv <xlsx> --ivi <xlsx> --industry <xlsx> --osl <xlsx>` | Imports the JSA workbooks into `data/` (needs Python 3 with `openpyxl`) |
+| `npm run data:refresh` | Checks the JSA pages in `data/sources.json` for newer spreadsheets and imports them (`-- --dry-run` to only report, `-- --mode auto` or `review`, `-- --only genai,tnv`) |
+| `npm run test:refresh` | Tests for the refresh script (Python) |
+| `npm run data:import-labour -- --projections <xlsx> --tnv <xlsx> --ivi <xlsx> --industry <xlsx> --osl <xlsx> --genai <xlsx>` | Imports the JSA workbooks into `data/` (needs Python 3 with `openpyxl`) |
 | `npm run data:import-jsa -- <file.xlsx>` | Older importer for projections only (needs the `xlsx` package) |
 | `npm run data:import-earnings -- <file.csv>` | Loads JSA median weekly earnings by OSCA code |
 | `npm run db:seed-sql` | Rebuilds `supabase/seed.sql` from `data/` |

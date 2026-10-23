@@ -8,7 +8,8 @@ Imports Jobs and Skills Australia labour market workbooks into Bcome's /data fol
         --tnv          "total_new_vacancies_may_2026.xlsx" \
         --ivi          "internet_vacancies_anzsco_skill_level_states_and_territories_-_august_2026.xlsx" \
         --industry     "national_industry_trend_-_february_2026.xlsx" \
-        --osl          "2025_Key_Findings_Report_downloadable_Charts_and_Tables_0.xlsx"
+        --osl          "2025_Key_Findings_Report_downloadable_Charts_and_Tables_0.xlsx" \
+        --genai        "jsa_gen_ai_interactive_table_data_pack_20250903.xlsx"
 
 Any of the options can be left out to refresh only some files. Writes:
   data/outlook/jsa-2025.json      projections for every ANZSCO unit group, major group, skill level and industry
@@ -16,6 +17,7 @@ Any of the options can be left out to refresh only some files. Writes:
                                   Internet Vacancy Index by skill level and state (monthly, trend)
   data/labour/industries.json     employment by ANZSIC division, subdivision and group (trend)
   data/labour/shortage.json       Occupation Shortage List 2025 key findings
+  data/labour/genai.json          Gen AI Capacity Study exposure scores by ANZSCO unit group and industry
 
 Then run `npm run data:validate` and `npm run db:seed-sql`.
 """
@@ -308,6 +310,102 @@ def import_osl(path):
     write("data/labour/shortage.json", out)
 
 
+# ---------------------------------------------------------------------------
+# Gen AI Capacity Study ("Our Gen AI Transition"), interactive tables data pack
+# ---------------------------------------------------------------------------
+
+def opt(x, digits=3):
+    return round(float(x), digits) if isinstance(x, (int, float)) else None
+
+
+def tercile_cuts(values):
+    """The scores a third and two thirds of the way up, so the bands split occupations evenly."""
+    v = sorted(values)
+    return [round(v[len(v) // 3], 3), round(v[(2 * len(v)) // 3], 3)]
+
+
+def import_genai(path):
+    t = rows(path, sheet_like(path, r"^occupation"))
+    h = next(i for i, r in enumerate(t) if r[0] and str(r[0]).strip().lower() == "anzsco unit code")
+    head = [re.sub(r"\s+", " ", str(c or "")).strip().lower() for c in t[h]]
+
+    def col(pattern):
+        for i, c in enumerate(head):
+            if re.search(pattern, c):
+                return i
+        sys.exit(f"{os.path.basename(path)}: no column matching {pattern} in {head}")
+
+    c = {
+        "title": col(r"unit title"),
+        "group": col(r"matrix group"),
+        "aug": col(r"^augmentation exposure"),
+        "augSd": col(r"^augmentation standard"),
+        "auto": col(r"^automation exposure"),
+        "autoSd": col(r"^automation standard"),
+        "skillChange": col(r"rate of skill change"),
+        "mobility": col(r"historical occupation mobility"),
+        "highFit": col(r"high-fit transition"),
+        "hybrid": col(r"hybridisation"),
+        "special": col(r"specialisation"),
+        "entry": col(r"entry level"),
+    }
+    occ = {}
+    for r in t[h + 1:]:
+        if r[0] is None or not re.fullmatch(r"\d{4}", str(r[0]).strip()):
+            continue
+        if not isinstance(r[c["auto"]], (int, float)) or not isinstance(r[c["aug"]], (int, float)):
+            continue
+        entry = opt(r[c["entry"]])
+        occ[str(r[0]).strip()] = {
+            "title": str(r[c["title"]]).strip(),
+            "group": str(r[c["group"]] or "").strip() or None,
+            "automation": opt(r[c["auto"]]),
+            "automationSd": opt(r[c["autoSd"]]),
+            "augmentation": opt(r[c["aug"]]),
+            "augmentationSd": opt(r[c["augSd"]]),
+            "skillChange": opt(r[c["skillChange"]], 1),
+            "mobility": opt(r[c["mobility"]]),
+            "highFitTransitionPct": None if opt(r[c["highFit"]]) is None else round(opt(r[c["highFit"]]) * 100, 1),
+            "hybridisation": opt(r[c["hybrid"]]),
+            "specialisation": opt(r[c["special"]]),
+            "entryLevelAdsPct": None if entry is None else round(entry * 100, 1),
+        }
+    if len(occ) < 300:
+        sys.exit(f"{os.path.basename(path)}: only {len(occ)} occupations found; has the layout changed?")
+
+    ti = rows(path, sheet_like(path, r"^industry"))
+    hi = next(i for i, r in enumerate(ti) if r[0] and "anzsic division" in str(r[0]).lower())
+    industries = {}
+    for r in ti[hi + 1:]:
+        if r[0] is None or not isinstance(r[1], (int, float)):
+            continue
+        industries[str(r[0]).strip()] = {
+            "augmentation": opt(r[1]),
+            "automation": opt(r[2]),
+            "aiSkillsWorkerProfilesPct": None if opt(r[3], 5) is None else round(r[3] * 100, 2),
+            "aiSkillsJobAdsPct": None if opt(r[4], 5) is None else round(r[4] * 100, 2),
+            "entryLevelAdsPct": None if opt(r[5]) is None else round(r[5] * 100, 1),
+        }
+
+    auto = [o["automation"] for o in occ.values()]
+    aug = [o["augmentation"] for o in occ.values()]
+    m = re.search(r"(20\d{2})(\d{2})(\d{2})", os.path.basename(path))
+    out = {
+        "source": {
+            "title": "Jobs and Skills Australia, Our Gen AI Transition (Generative AI Capacity Study), interactive tables data pack",
+            "url": "https://www.jobsandskills.gov.au/studies/generative-artificial-intelligence-capacity-study",
+            "file": os.path.basename(path),
+            "released": f"{m.group(1)}-{m.group(2)}-{m.group(3)}" if m else None,
+            "note": "Task-based scores from 0 to 1 for how much of an occupation's work Gen AI could automate (do) or augment (help with), assuming it is fully adopted. JSA does not set high, medium or low thresholds; Bcome splits occupations into thirds by score. JSA's modelling looks at adoption to 2035 and 2050.",
+            "retrieved": TODAY,
+        },
+        "bands": {"automation": tercile_cuts(auto), "augmentation": tercile_cuts(aug)},
+        "occupations": dict(sorted(occ.items())),
+        "industries": industries,
+    }
+    write("data/labour/genai.json", out)
+
+
 if __name__ == "__main__":
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--projections")
@@ -315,6 +413,7 @@ if __name__ == "__main__":
     p.add_argument("--ivi")
     p.add_argument("--industry")
     p.add_argument("--osl")
+    p.add_argument("--genai")
     a = p.parse_args()
     if not any(vars(a).values()):
         p.print_help()
@@ -327,3 +426,5 @@ if __name__ == "__main__":
         import_industries(a.industry)
     if a.osl:
         import_osl(a.osl)
+    if a.genai:
+        import_genai(a.genai)

@@ -1,7 +1,7 @@
 import "server-only";
 import type { AuthService } from "../auth/service.ts";
 import { ALGORITHM_VERSION } from "../careers/matching.ts";
-import { jsaOutlook, occupationData } from "../data.ts";
+import { genAiData, jsaOutlook, occupationData } from "../data.ts";
 import { industryData, vacancyData } from "../labour.ts";
 
 export interface HealthCheck {
@@ -42,7 +42,7 @@ export async function healthChecks(service: AuthService, env: NodeJS.ProcessEnv 
     {
       label: "Career data",
       status: "ok",
-      detail: `${occupationData.occupations.length} careers · matching ${ALGORITHM_VERSION} · projections ${jsaOutlook.source.retrieved} · vacancies to ${vacancyData.ivi.latest} · industries ${industryData.source.reference}`,
+      detail: `${occupationData.occupations.length} careers · matching ${ALGORITHM_VERSION} · projections ${jsaOutlook.source.retrieved} · vacancies to ${vacancyData.ivi.latest} · industries ${industryData.source.reference} · Gen AI exposure ${genAiData.source.released ?? genAiData.source.retrieved}`,
     },
   ];
 }

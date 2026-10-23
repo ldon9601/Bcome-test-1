@@ -11,7 +11,7 @@ import { FAMILY_LABELS } from "@/lib/careers/families.ts";
 import { subjectLabels } from "@/lib/data.ts";
 import type { RiasecType } from "@/lib/questionnaire/types.ts";
 import { PurgeButton, TestEmailForm } from "./AdminForms.tsx";
-import { AdminTabs, Columns, dateOnly, HealthList, IpTable, Kpi, when } from "./AdminWidgets.tsx";
+import { AdminTabs, Columns, DataSources, dateOnly, HealthList, IpTable, Kpi, when } from "./AdminWidgets.tsx";
 
 export const metadata: Metadata = { title: "Administration | Bcome" };
 export const dynamic = "force-dynamic";
@@ -272,6 +272,7 @@ export default async function AdminDashboard() {
           </p>
         </section>
       </div>
+      <DataSources />
     </main>
   );
 }

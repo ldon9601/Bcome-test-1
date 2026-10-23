@@ -1,0 +1,160 @@
+{
+ "note": "Where Bcome's labour market data comes from. scripts/refresh-data.py checks each page for a newer spreadsheet, imports it with scripts/import-labour-market.py and records it here. 'auto' sources go live after the checks pass; 'review' sources open a pull request. Edit the pages or match patterns here if JSA moves a file.",
+ "sources": [
+  {
+   "id": "projections",
+   "title": "Employment Projections (10 years)",
+   "publisher": "Jobs and Skills Australia",
+   "pages": [
+    "https://www.jobsandskills.gov.au/data/employment-projections"
+   ],
+   "match": "employment[ _-]*projections",
+   "importer": "--projections",
+   "mode": "review",
+   "frequency": "Yearly",
+   "updates": "data/outlook/jsa-2025.json",
+   "period": {
+    "file": "data/outlook/jsa-2025.json",
+    "path": "source.horizon10"
+   },
+   "why": "A new edition moves the base and target years (for example 2026 to 2036), so it is imported on a branch and opened as a pull request to check before it goes live.",
+   "latest": {
+    "file": "employment_projections_-_may_2025_to_may_2035.xlsx",
+    "url": null,
+    "sha256": "a72d2664a1136f09fed47bf53024422bca63d8f7e5aab73fdf04cbdba1007616",
+    "importedAt": "2026-10-23",
+    "checkedAt": null,
+    "status": "imported by hand"
+   }
+  },
+  {
+   "id": "tnv",
+   "title": "Total New Vacancies",
+   "publisher": "Jobs and Skills Australia",
+   "pages": [
+    "https://www.jobsandskills.gov.au/data/total-new-vacancies"
+   ],
+   "match": "(total[ _-]*new[ _-]*vacanc|\\btnv\\b|tnv[ _-]*data)",
+   "exclude": "report|methodology",
+   "importer": "--tnv",
+   "mode": "auto",
+   "frequency": "Quarterly",
+   "updates": "data/labour/vacancies.json",
+   "period": {
+    "file": "data/labour/vacancies.json",
+    "path": "tnv.latest"
+   },
+   "latest": {
+    "file": "total_new_vacancies_may_2026.xlsx",
+    "url": null,
+    "sha256": "e7ec3ddccef835d016d79a0d14309beda78f97c032fbdf2e887e60f6497ea906",
+    "importedAt": "2026-10-23",
+    "checkedAt": null,
+    "status": "imported by hand"
+   }
+  },
+  {
+   "id": "ivi",
+   "title": "Internet Vacancy Index: ANZSCO skill level, states and territories",
+   "publisher": "Jobs and Skills Australia",
+   "pages": [
+    "https://www.jobsandskills.gov.au/data/internet-vacancy-index"
+   ],
+   "match": "internet[ _-]*vacanc.*skill[ _-]*level",
+   "importer": "--ivi",
+   "mode": "auto",
+   "frequency": "Monthly",
+   "updates": "data/labour/vacancies.json",
+   "period": {
+    "file": "data/labour/vacancies.json",
+    "path": "ivi.latest"
+   },
+   "latest": {
+    "file": "internet_vacancies_anzsco_skill_level_states_and_territories_-_august_2026.xlsx",
+    "url": null,
+    "sha256": "f11faa48e97e1ea5064d85aaf4300c092bfbcee9b58fa6136bdee1c63a8d49e7",
+    "importedAt": "2026-10-23",
+    "checkedAt": null,
+    "status": "imported by hand"
+   }
+  },
+  {
+   "id": "industry",
+   "title": "Labour Force Trending: National Industry Trend",
+   "publisher": "Jobs and Skills Australia",
+   "pages": [
+    "https://www.jobsandskills.gov.au/data/labour-force-trending"
+   ],
+   "match": "national[ _-]*industry[ _-]*trend",
+   "importer": "--industry",
+   "mode": "auto",
+   "frequency": "Quarterly",
+   "updates": "data/labour/industries.json",
+   "period": {
+    "file": "data/labour/industries.json",
+    "path": "source.reference"
+   },
+   "latest": {
+    "file": "national_industry_trend_-_february_2026.xlsx",
+    "url": null,
+    "sha256": "ed1315853b34a8b4f1ee6d565423f010b48f2072fbce1dec3d77701b862c4815",
+    "importedAt": "2026-10-23",
+    "checkedAt": null,
+    "status": "imported by hand"
+   }
+  },
+  {
+   "id": "osl",
+   "title": "Occupation Shortage List: Key Findings figures and tables",
+   "publisher": "Jobs and Skills Australia",
+   "pages": [
+    "https://www.jobsandskills.gov.au/data/occupation-shortages-analysis",
+    "https://www.jobsandskills.gov.au/data/occupation-shortages-analysis/occupation-shortage-list",
+    "https://www.jobsandskills.gov.au/data/occupation-shortage"
+   ],
+   "match": "key[ _-]*findings.*(tables|charts|figures)",
+   "importer": "--osl",
+   "mode": "review",
+   "frequency": "Yearly",
+   "updates": "data/labour/shortage.json",
+   "period": {
+    "file": "data/labour/shortage.json",
+    "path": "years.-1"
+   },
+   "why": "Each year's workbook can change its tables, so a new year is imported on a branch and opened as a pull request to check.",
+   "latest": {
+    "file": "2025_Key_Findings_Report_downloadable_Charts_and_Tables_0.xlsx",
+    "url": null,
+    "sha256": "0518a4022f491c96e67242ecaef5873e4f916852c88af4d7476cee6ce86e510c",
+    "importedAt": "2026-10-23",
+    "checkedAt": null,
+    "status": "imported by hand"
+   }
+  },
+  {
+   "id": "genai",
+   "title": "Our Gen AI Transition: interactive tables data pack",
+   "publisher": "Jobs and Skills Australia",
+   "pages": [
+    "https://www.jobsandskills.gov.au/studies/generative-artificial-intelligence-capacity-study"
+   ],
+   "match": "interactive[ _-]*table",
+   "importer": "--genai",
+   "mode": "auto",
+   "frequency": "Occasional",
+   "updates": "data/labour/genai.json",
+   "period": {
+    "file": "data/labour/genai.json",
+    "path": "source.released"
+   },
+   "latest": {
+    "file": "jsa_gen_ai_interactive_table_data_pack_20250903.xlsx",
+    "url": null,
+    "sha256": "8561156b11fb1506e31cbea7abc2b6440b52d8f98fb7e7e9542940ebba6b431a",
+    "importedAt": "2026-10-23",
+    "checkedAt": null,
+    "status": "imported by hand"
+   }
+  }
+ ]
+}

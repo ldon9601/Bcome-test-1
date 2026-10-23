@@ -13,3 +13,26 @@ export const SKILL_LEVEL_NOTE =
 export const ANZSIC_NOTE =
   "ANZSIC (the Australian and New Zealand Standard Industrial Classification) groups businesses by what they do. The code shown is the industry group that Bcome estimates employs the most people in this job; many jobs are found across several industries.";
 
+
+/** Gen AI exposure bands (JSA Our Gen AI Transition scores, split into thirds by Bcome). */
+export const AI_EXPOSURE: Record<"high" | "medium" | "low", { label: string; definition: string }> = {
+  high: {
+    label: "High",
+    definition: "Gen AI could do a large share of this job's tasks. Expect the work to change a lot by 2035: routine tasks shrink, and specialist knowledge, judgement and people skills matter more.",
+  },
+  medium: {
+    label: "Medium",
+    definition: "Gen AI could do some of this job's tasks. By 2035, using AI tools well is likely to be a normal part of the job, alongside the parts only people do.",
+  },
+  low: {
+    label: "Low",
+    definition: "Most of this job is hands-on, physical or face-to-face work that Gen AI can't do. The core of the job is unlikely to change much because of AI by 2035.",
+  },
+};
+export const AI_HELPER: Record<"high" | "medium" | "low", string> = {
+  high: "AI tools could help a lot with the work",
+  medium: "AI tools could help with some of the work",
+  low: "AI tools are less useful in this work",
+};
+export const AI_EXPOSURE_NOTE =
+  "Jobs and Skills Australia (Our Gen AI Transition, 2025) scored every task in each occupation for how much Gen AI could do it (automation) or help a person do it (augmentation), assuming it's fully taken up. Bcome ranks the 357 occupations by the automation score and splits them into thirds: high, medium and low exposure. JSA's modelling expects these changes to build up between now, 2035 and 2050. Exposure isn't the same as job losses: many exposed jobs change rather than disappear.";

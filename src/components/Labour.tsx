@@ -2,7 +2,8 @@
 
 import { useEffect, useId, useState, type ReactNode } from "react";
 import type { LabourHistory, LabourSnapshot } from "@/lib/labour.ts";
-import { ANZSIC_NOTE, SKILL_LEVEL_NOTE, SKILL_LEVELS } from "@/lib/labour-terms.ts";
+import type { CareerGenAi } from "@/lib/careers/genai.ts";
+import { AI_EXPOSURE, AI_EXPOSURE_NOTE, AI_HELPER, ANZSIC_NOTE, SKILL_LEVEL_NOTE, SKILL_LEVELS } from "@/lib/labour-terms.ts";
 import { Icon } from "./Icon.tsx";
 
 /**
@@ -89,6 +90,52 @@ export function CodeChips({ anzsco, anzsic, levels, primary }: { anzsco: { unitG
           </InfoTip>
         </span>
       )}
+    </div>
+  );
+}
+
+const EXPOSURE_ORDER = ["high", "medium", "low"] as const;
+
+/** "AI exposure to 2035: High / Medium / Low", with a "?" explaining the scale and the scores. */
+export function AiExposureBadge({ genAi }: { genAi: CareerGenAi }) {
+  const e = AI_EXPOSURE[genAi.exposure];
+  return (
+    <div className={`ai-exposure ai-${genAi.exposure}`}>
+      <div className="ai-exposure-head">
+        <span className="ai-exposure-icon" aria-hidden="true">
+          <Icon name="ai" size={20} />
+        </span>
+        <div>
+          <span className="small">AI exposure to 2035</span>
+          <strong>{e.label}</strong>
+        </div>
+        <ol className="ai-scale" aria-label={`Scale from high to low exposure; this job is ${e.label.toLowerCase()}`}>
+          {EXPOSURE_ORDER.map((b) => (
+            <li key={b} className={b === genAi.exposure ? "on" : ""}>
+              {AI_EXPOSURE[b].label}
+            </li>
+          ))}
+        </ol>
+        <InfoTip label="AI exposure">
+          <span className="infotip-lead">{AI_EXPOSURE_NOTE}</span>
+          <ul className="skill-levels">
+            {EXPOSURE_ORDER.map((b) => (
+              <li key={b} className={b === genAi.exposure ? "on" : ""}>
+                <strong>{AI_EXPOSURE[b].label}</strong> {AI_EXPOSURE[b].definition}
+              </li>
+            ))}
+          </ul>
+          <span>
+            This job (ANZSCO {genAi.unitGroup}): automation score {genAi.automation.toFixed(2)}, higher than {genAi.automationPercentile}% of occupations; augmentation score {genAi.augmentation.toFixed(2)}.
+            {genAi.estimated && " JSA hasn't published a score for this exact group, so Bcome uses the average of similar jobs."}
+          </span>
+        </InfoTip>
+      </div>
+      <p className="small">{e.definition}</p>
+      <p className="small ai-exposure-facts">
+        <span>{AI_HELPER[genAi.helper]}.</span>
+        {genAi.entryLevelAdsPct != null && <span> {genAi.entryLevelAdsPct}% of job ads are entry level.</span>}
+      </p>
     </div>
   );
 }
@@ -212,6 +259,7 @@ export function LabourPanel({ osca, state, snapshot, title = "Jobs market" }: { 
         <Icon name="chart" size={18} /> {title}
       </h4>
       {s && <CodeChips anzsco={s.anzsco} anzsic={s.anzsic} levels={s.skillLevel.levels} primary={s.skillLevel.primary} />}
+      {(s?.genAi ?? data?.latest.genAi) && <AiExposureBadge genAi={(s?.genAi ?? data?.latest.genAi)!} />}
       {s && (
         <>
           <p className="small labour-asat">

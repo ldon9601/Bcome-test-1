@@ -1,3 +1,4 @@
+import type { CareerGenAi } from "./genai.ts";
 import type { RiasecType, SkillDim, StyleDim, SubjectArea, ValueDim } from "../questionnaire/types.ts";
 
 export type AiExposure = "low" | "medium" | "high";
@@ -104,6 +105,8 @@ export interface Occupation {
   salary: { entry: [number, number]; experienced: [number, number]; note?: string };
   aiExposure: AiExposure;
   drivers: Driver[];
+  /** JSA Gen AI exposure, joined at load time from data/labour/genai.json (src/lib/careers/genai.ts). */
+  genAi?: CareerGenAi | null;
 }
 
 export interface OccupationData {
