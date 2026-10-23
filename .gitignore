@@ -8,3 +8,4 @@ next-env.d.ts
 test-output/
 data/raw/
 .DS_Store
+__pycache__/
