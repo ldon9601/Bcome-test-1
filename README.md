@@ -183,7 +183,7 @@ Every push and pull request runs `.github/workflows/ci.yml`, four checks in para
 
 | Check | What it runs |
 | --- | --- |
-| Unit tests and data | `npm test`, the refresh-script tests, `data:validate`, the sample students (`test:profiles`), and a check that `supabase/seed.sql` matches `/data` |
+| Unit tests | `npm test`, the refresh-script tests, `data:validate`, the sample students (`test:profiles`), and a check that `supabase/seed.sql` matches `/data` |
 | Build and typecheck | `npm run build` (the production build) and `npm run typecheck` across the app, scripts and tests |
 | Lint | `npm run lint` (Next.js ESLint rules) |
 | Database checks | every migration on an empty Postgres 16, then the seed and the 42 row-level-security, role and constraint checks in `supabase/tests/` |

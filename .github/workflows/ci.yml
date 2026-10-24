@@ -3,7 +3,7 @@
 #
 # To stop a failing change reaching the live site, add these four checks as Vercel Deployment
 # Checks (Vercel project > Settings > Build and Deployment > Deployment Checks > Add Checks >
-# GitHub): "Unit tests and data", "Build and typecheck", "Lint", "Database checks".
+# GitHub): "Unit tests", "Build and typecheck", "Lint", "Database checks".
 # Vercel then holds each new production deployment until they pass. See README > Checks.
 #
 # Changes pushed by other workflows (the weekly data refresh, the first-run lockfile) don't start
@@ -29,7 +29,7 @@ env:
 
 jobs:
   unit:
-    name: Unit tests and data
+    name: Unit tests
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
