@@ -20,6 +20,7 @@ permissions:
   contents: write
   pull-requests: write
   issues: write
+  actions: write # starts the CI checks on the commits this workflow pushes
 
 concurrency:
   group: refresh-data
@@ -44,7 +45,8 @@ jobs:
         with:
           node-version: "22"
 
-      - run: npm install --no-audit --no-fund
+      - name: Install
+        run: if [ -f package-lock.json ]; then npm ci --no-audit --no-fund; else npm install --no-audit --no-fund; fi
 
       - name: Refresh-script tests
         run: python3 -m unittest discover -s tests/python
@@ -72,6 +74,9 @@ jobs:
           git add data supabase/seed.sql
           git commit -m "Refresh JSA data: ${{ steps.auto.outputs.updated }}" -m "$(cat auto-report.md)"
           git push origin HEAD:${{ github.ref_name }}
+          # Pushes from a workflow don't start other workflows, so start CI here: the live site
+          # waits for its checks before using this commit (README > Checks).
+          gh workflow run ci.yml --ref "${{ github.ref_name }}"
 
       # ----- Sources that need review ------------------------------------------------------------
       - name: Check JSA for new editions (review sources)
@@ -101,6 +106,7 @@ jobs:
           git add data supabase/seed.sql
           git commit -m "New JSA edition: ${{ steps.review.outputs.updated }}" -m "$(cat review-report.md)"
           git push -f origin HEAD
+          gh workflow run ci.yml --ref "data-review/${{ github.run_id }}"
           {
             cat review-report.md
             echo

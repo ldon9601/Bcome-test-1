@@ -35,11 +35,14 @@ const nextConfig: NextConfig = {
   // Data files in /data are read on the server at request time.
   outputFileTracingIncludes: { "/api/**": ["./data/**/*"] },
   poweredByHeader: false,
+  // Lint runs as its own check in CI (.github/workflows/ci.yml), so a style warning can't hide a
+  // build failure and the build doesn't lint twice.
+  eslint: { ignoreDuringBuilds: true },
   async headers() {
     return [
       { source: "/:path*", headers: securityHeaders },
       // Signed-in pages are never cached by browsers or proxies.
-      { source: "/(account|adviser|verify|invite)/:path*", headers: [{ key: "Cache-Control", value: "no-store" }] },
+      { source: "/(account|adviser|admin|verify|invite|set-password)/:path*", headers: [{ key: "Cache-Control", value: "no-store" }] },
     ];
   },
 };

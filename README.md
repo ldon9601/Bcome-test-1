@@ -177,6 +177,23 @@ The browser never reads the account or activity tables: row level security is on
 psql -d test -f supabase/tests/local-auth-stub.sql $(for f in supabase/migrations/*.sql; do echo "-f $f"; done) -f supabase/tests/accounts-checks.sql -f supabase/tests/activity-checks.sql -f supabase/tests/admin-checks.sql
 ```
 
+## Checks
+
+Every push and pull request runs `.github/workflows/ci.yml`, four checks in parallel (about 5 minutes):
+
+| Check | What it runs |
+| --- | --- |
+| Unit tests and data | `npm test`, the refresh-script tests, `data:validate`, the sample students (`test:profiles`), and a check that `supabase/seed.sql` matches `/data` |
+| Build and typecheck | `npm run build` (the production build) and `npm run typecheck` across the app, scripts and tests |
+| Lint | `npm run lint` (Next.js ESLint rules) |
+| Database checks | every migration on an empty Postgres 16, then the seed and the 42 row-level-security, role and constraint checks in `supabase/tests/` |
+
+**Stop a failing change going live.** Vercel deploys every push to `main`. To make it wait for the checks, open the Vercel project, go to **Settings → Build and Deployment → Deployment Checks → Add Checks**, choose **GitHub**, and add the four checks above. Vercel then builds each production deployment as before but only puts it on the live domain once they pass. In an emergency, **Force Promote** on the deployment page skips them.
+
+To also stop a failing change being merged, protect the branch: in GitHub, go to **Settings → Rules → Rulesets → New branch ruleset**, target `main`, and require the same four status checks. Leave this off while the weekly data refresh pushes straight to `main`, or add GitHub Actions to the ruleset's bypass list.
+
+`package-lock.json` locks every package version so each install, in CI and on Vercel, uses exactly the same code; CI uses `npm ci`. If the file is missing, the first CI run on `main` generates it from `package.json`, commits it and runs the checks again. Dependabot (`.github/dependabot.yml`) opens a pull request each Tuesday when updates are out, and CI checks it before anyone merges. Workflows that push commits (the data refresh, the lockfile) start CI themselves with `gh workflow run`, because GitHub doesn't run workflows for pushes made by another workflow.
+
 ## Keeping the data up to date
 
 `data/sources.json` lists where each Jobs and Skills Australia spreadsheet is published, the file now loaded and when it was imported. Every Monday the GitHub workflow `.github/workflows/refresh-data.yml` runs `scripts/refresh-data.py`, which:
