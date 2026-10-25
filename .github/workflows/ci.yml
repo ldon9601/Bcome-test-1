@@ -117,6 +117,19 @@ jobs:
       - name: ESLint (Next.js rules)
         run: npm run lint
 
+  audit:
+    name: Security audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Check every locked package against the npm advisory database
+        # Fails on high or critical vulnerabilities; moderate and low are listed as warnings.
+        run: (npm audit --json --package-lock-only || true) | node scripts/audit-report.mjs
+
   database:
     name: Database checks
     runs-on: ubuntu-latest
