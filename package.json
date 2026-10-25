@@ -41,5 +41,8 @@
     "eslint-config-next": "^15.5.0",
     "typescript": "^5.9.0",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
+  },
+  "overrides": {
+    "postcss": "^8.5.23"
   }
 }
