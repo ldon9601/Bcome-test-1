@@ -1,4 +1,5 @@
 import "server-only";
+import { randomBytes } from "node:crypto";
 import { NextResponse } from "next/server";
 import { COOKIE, serialiseCookie, type ApiContext, type ApiResult } from "./api.ts";
 import { recordRequest } from "../admin/requests.ts";
@@ -12,7 +13,19 @@ const MAX_BODY = 16 * 1024;
  */
 export async function handle(request: Request, run: (body: Record<string, unknown>, ctx: ApiContext) => Promise<ApiResult>) {
   const started = performance.now();
-  const res = await handleInner(request, run);
+  let res: Response;
+  try {
+    res = await handleInner(request, run);
+  } catch (e) {
+    // Never a bare crash: log the details with a short reference the person can quote, and tell
+    // them where to look. /api/health explains most set-up problems.
+    const ref = randomBytes(3).toString("hex").toUpperCase();
+    console.error(`[bcome error] ref ${ref} ${request.method} ${new URL(request.url).pathname}:`, e);
+    res = NextResponse.json(
+      { ok: false, error: `Bcome couldn't do that because of a problem on our side (reference ${ref}). Please try again shortly. If you run Bcome, open /api/health to check the set-up.` },
+      { status: 500, headers: { "cache-control": "no-store" } },
+    );
+  }
   await recordRequest(request, res.status, started);
   return res;
 }

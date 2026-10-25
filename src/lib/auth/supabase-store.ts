@@ -348,8 +348,10 @@ export class SupabaseStore implements AuthStore {
   async purgeExpired() {
     check(await this.db.rpc("purge_expired"));
   }
+  /** Throws the database's own error message, so the health page can explain it. */
   async ping() {
     const res = await this.db.from("schools").select("id").limit(1);
-    return !res.error;
+    if (res.error) throw new Error(`${res.error.code ?? ""} ${res.error.message}`.trim());
+    return true;
   }
 }

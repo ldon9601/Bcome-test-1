@@ -162,6 +162,12 @@ Locally, without Supabase, there is a demo administrator: `demo.admin` / `Career
 
 New accounts made by an administrator have no usable password: the person is emailed a one-time link (valid 3 days) to set their own, which also confirms their email. Every administrator action is in the audit log as `admin.*`.
 
+### Is the live site set up correctly?
+
+Open `/api/health` on the live site (for example https://bcome-test-1.vercel.app/api/health). It checks each required Vercel setting (`NEXT_PUBLIC_SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `AUTH_SECRET`, `APP_URL`, `EMAIL_PROVIDER`) and the database connection, and says in plain words what's missing or wrong. It never shows a value. `?format=json` gives the same for monitoring tools. When a request fails, the message now includes a reference code; search the Vercel logs for it to see the details.
+
+On the live site `EMAIL_PROVIDER` must be set: `ses` (with the AWS keys) or `resend` to send email, or `console` while testing, which writes sign-in codes to the Vercel logs (search `bcome email`).
+
 ### Supabase and email
 
 1. Create a Supabase project in the **Sydney (ap-southeast-2)** region.
