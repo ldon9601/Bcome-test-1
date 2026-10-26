@@ -67,7 +67,7 @@ export default async function StudentPage({ params, searchParams }: { params: Pr
       {a ? (
         <PlanView
           mode="adviser"
-          initial={{ dna: a.dna, matches: a.matches, plan: a.plan, saved: true } as Result}
+          initial={{ dna: a.dna, matches: a.matches, ideas: a.ideas ?? undefined, plan: a.plan, saved: true } as Result}
           title={
             <>
               {s.firstName}&apos;s <span className="grad-text">results</span>

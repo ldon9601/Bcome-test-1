@@ -190,7 +190,16 @@ export class SupabaseStore implements AuthStore {
   }
 
   async saveAssessment(a: Omit<AssessmentRecord, "id">) {
-    const row = check(await this.db.from("assessments").insert(out(a)).select("id").single()) as { id: string };
+    let res = await this.db.from("assessments").insert(out(a)).select("id").single();
+    // If the database hasn't had the ideas column added yet (migration 20261028000000), save the
+    // assessment without it rather than lose the student's result.
+    if (res.error && "ideas" in a && /ideas/.test(res.error.message)) {
+      console.warn("[bcome] assessments.ideas column missing; saved without ideas. Run the latest migration.");
+      const rest: Partial<Omit<AssessmentRecord, "id">> = { ...a };
+      delete rest.ideas;
+      res = await this.db.from("assessments").insert(out(rest)).select("id").single();
+    }
+    const row = check(res) as { id: string };
     return { id: row.id };
   }
   async listAssessments(userId: string) {

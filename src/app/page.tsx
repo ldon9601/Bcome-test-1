@@ -1,6 +1,6 @@
 import { ActivityService } from "@/lib/activity/service.ts";
 import { auth, currentSession } from "@/lib/auth/server.ts";
-import { questionBank } from "@/lib/data.ts";
+import { jsaOutlook, occupationData, questionBank } from "@/lib/data.ts";
 import Discover from "./Discover.tsx";
 import DiscoverHub from "./DiscoverHub.tsx";
 
@@ -22,5 +22,9 @@ export default async function Home({ searchParams }: { searchParams?: Promise<{ 
       return <DiscoverHub initial={hub} latestAssessmentId={latest.id} />;
     }
   }
-  return <Discover bank={questionBank} account={cur ? { role: cur.user.role, firstName: cur.user.firstName } : null} />;
+  // Careers a student can name as an idea (Section F), with the ANZSCO title as extra search words.
+  const careers = occupationData.occupations
+    .map((o) => ({ osca: o.osca, title: o.title, also: `${o.anzscoTitle} ${o.anzscoOccupation ?? ""}`, size: jsaOutlook.occupations[o.anzsco]?.employed2025k ?? 0 }))
+    .sort((a, b) => a.title.localeCompare(b.title));
+  return <Discover bank={questionBank} careers={careers} account={cur ? { role: cur.user.role, firstName: cur.user.firstName } : null} />;
 }

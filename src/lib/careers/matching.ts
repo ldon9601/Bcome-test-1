@@ -43,7 +43,7 @@ import {
  */
 
 /** Bump when weights or rules change, so stored results can be compared and recalibrated. */
-export const ALGORITHM_VERSION = "2.3.0";
+export const ALGORITHM_VERSION = "2.4.0";
 
 export const MATCH_WEIGHTS = { personalFit: 0.6, futureOpportunity: 0.25, pathwayFeasibility: 0.15 } as const;
 export type ScoreName = keyof typeof MATCH_WEIGHTS;
@@ -483,13 +483,19 @@ export function isStarterJob(occ: Occupation): boolean {
   return occ.skillLevel >= 4 && occ.timeToQualify.years[1] <= 1;
 }
 
-export function matchCareers(p: StudentProfile, occupations: Occupation[], jsa: JsaOutlookData, options: MatchOptions = {}): Match[] {
-  const { limit = 10, subjectLabels = {}, graph } = options;
+/** Every career scored for this student, in the order given. Used for matching, ideas and plan B. */
+export function scoreAll(p: StudentProfile, occupations: Occupation[], jsa: JsaOutlookData, options: MatchOptions = {}): Match[] {
+  const { subjectLabels = {}, graph } = options;
   const outlooks = new Map(occupations.map((o) => [o.osca, computeOutlook(o, jsa)]));
   const growing = (o: Occupation) => ["strong", "good"].includes(outlooks.get(o.osca)!.band10);
-  const all = occupations.map((occ) =>
+  return occupations.map((occ) =>
     scoreOccupation(p, occ, jsa, { subjectLabels, outlook: outlooks.get(occ.osca), portability: graph ? graph.portability(occ, growing) : null }),
   );
+}
+
+export function matchCareers(p: StudentProfile, occupations: Occupation[], jsa: JsaOutlookData, options: MatchOptions & { scored?: Match[] } = {}): Match[] {
+  const { limit = 10, graph } = options;
+  const all = options.scored ?? scoreAll(p, occupations, jsa, options);
   const rank = (ms: Match[]) =>
     [...ms].sort((a, b) =>
       byPersonalFitFirst(

@@ -195,6 +195,18 @@ export default async function AdviserDashboard({ searchParams }: { searchParams:
             <p className="small">Each student&apos;s highest-rated work value.</p>
             <BarList total={done} items={a.topValues} colour="#f43f5e" />
           </section>
+          <section className="side-card" aria-labelledby="ideas">
+            <h2 id="ideas">Careers students already had in mind</h2>
+            <p className="small">
+              {a.ideas.students} of {done} named at least one career before seeing their results. Each student&apos;s results show how their ideas fit.
+            </p>
+            <BarList total={Math.max(a.ideas.students, 1)} items={a.ideas.careers} colour="#8b5cf6" empty="No student has named a career idea yet." />
+            {a.ideas.sources.length > 0 && (
+              <p className="small" style={{ marginTop: "0.75rem" }}>
+                Where the ideas came from: {a.ideas.sources.map((s) => `${s.label.toLowerCase()} (${s.count})`).join(", ")}
+              </p>
+            )}
+          </section>
           <section className="side-card" aria-labelledby="subjects">
             <h2 id="subjects">Subjects they enjoy</h2>
             <p className="small">Students rating each subject area 4 or 5 out of 5 for enjoyment.</p>

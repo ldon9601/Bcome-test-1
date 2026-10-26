@@ -11,6 +11,8 @@ export function isAnswered(q: Question, value: AnswerValue | undefined): boolean
   switch (q.kind) {
     case "multi":
       return Array.isArray(value) && value.length >= (q.min ?? 1);
+    case "careers":
+      return Array.isArray(value) && value.length >= 1;
     case "rank":
       return Array.isArray(value) && value.length === q.options.length;
     case "matrix":
@@ -21,13 +23,15 @@ export function isAnswered(q: Question, value: AnswerValue | undefined): boolean
 }
 
 export function isVisible(q: Question, answers: Answers): boolean {
-  const conds = q.showIf?.answers;
-  if (!conds) return true;
-  return Object.entries(conds).every(([id, allowed]) => {
+  const given = (id: string) => {
     const v = answers[id];
-    const given = Array.isArray(v) ? v : typeof v === "string" ? [v] : [];
-    return given.some((g) => allowed.includes(g));
-  });
+    return Array.isArray(v) ? v : typeof v === "string" ? [v] : [];
+  };
+  const only = q.showIf?.answers;
+  const except = q.showIf?.except;
+  if (only && !Object.entries(only).every(([id, allowed]) => given(id).some((g) => allowed.includes(g)))) return false;
+  if (except && !Object.entries(except).every(([id, excluded]) => given(id).some((g) => !excluded.includes(g)))) return false;
+  return true;
 }
 
 /** Returns the next question to ask, or null when the assessment is complete. */

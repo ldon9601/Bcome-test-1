@@ -36,6 +36,9 @@ export interface Persona {
   tolerance: "lt1" | "1-2" | "3-4" | "5-6" | "7+" | "any" | "unknown";
   /** OSCA codes: at least one of these should be recommended. */
   expectAnyOf: string[];
+  /** Careers they already have in mind (question career_ideas) and where the ideas came from. */
+  ideas?: string[];
+  ideaSources?: string[];
 }
 
 const flat = <K extends string>(keys: readonly K[], n: number) => Object.fromEntries(keys.map((k) => [k, n])) as Record<K, number>;
@@ -43,6 +46,8 @@ const flat = <K extends string>(keys: readonly K[], n: number) => Object.fromEnt
 export const PERSONAS: Persona[] = [
   {
     key: "mia-health",
+    ideas: ["264231", "281331"],
+    ideaSources: ["family"],
     name: "Mia, Year 10, NSW: caring and science-minded, wants uni",
     yearLevel: 10,
     state: "NSW",
@@ -60,6 +65,8 @@ export const PERSONAS: Persona[] = [
   },
   {
     key: "jack-electrical",
+    ideas: ["299131"],
+    ideaSources: ["media", "self"],
     name: "Jack, Year 11, QLD: hands-on, wants an apprenticeship",
     yearLevel: 11,
     state: "QLD",
@@ -186,6 +193,8 @@ export function simulate(bank: QuestionBank, p: Persona): { answers: Answers; as
           geography: p.geography,
           q35: p.paths,
           q36: p.tolerance,
+          career_ideas: p.ideas?.length ? p.ideas : ["none"],
+          idea_source: p.ideaSources ?? ["self"],
         };
         const v = map[q.id];
         if (v === undefined) throw new Error(`Persona has no answer for ${q.id}`);

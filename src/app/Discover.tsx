@@ -22,7 +22,17 @@ const SECTION_ICON: Record<SectionId, IconName> = {
   values: "heart",
   environment: "building",
   school: "grad",
+  ideas: "compass",
 };
+
+/** A career a student can name as an idea: code, title and other words to search on. */
+export interface CareerOption {
+  osca: string;
+  title: string;
+  also: string;
+  /** People employed (JSA, thousands): more common careers come first in search. */
+  size: number;
+}
 
 /** Icon and colour for options shown as cards. */
 const OPTION_STYLE: Record<string, { icon: IconName; tone: string }> = {
@@ -59,12 +69,13 @@ function save(key: string, value: unknown) {
 function isComplete(q: Question, v: AnswerValue | undefined): boolean {
   if (v === undefined) return false;
   if (q.kind === "multi") return Array.isArray(v) && v.length >= (q.min ?? 1);
+  if (q.kind === "careers") return Array.isArray(v) && v.length >= 1;
   if (q.kind === "rank") return Array.isArray(v) && v.length === q.options.length;
   if (q.kind === "matrix") return typeof v === "object" && !Array.isArray(v) && Object.keys(v).length === q.rows.length * q.columns.length;
   return typeof v === "string" && v !== "";
 }
 
-export default function Discover({ bank, account = null }: { bank: QuestionBank; account?: { role: string; firstName: string } | null }) {
+export default function Discover({ bank, careers = [], account = null }: { bank: QuestionBank; careers?: CareerOption[]; account?: { role: string; firstName: string } | null }) {
   const router = useRouter();
   const [answers, setAnswers] = useState<Answers>({});
   const [history, setHistory] = useState<string[][]>([]);
@@ -211,7 +222,7 @@ export default function Discover({ bank, account = null }: { bank: QuestionBank;
               </header>
 
               {page.map((q, i) => (
-                <QuestionBlock key={q.id} q={q} n={q.number ?? i + 1} bank={bank} value={draft[q.id] ?? answers[q.id]} onChange={(v) => setValue(q.id, v)} />
+                <QuestionBlock key={q.id} q={q} n={q.number ?? i + 1} bank={bank} careers={careers} value={draft[q.id] ?? answers[q.id]} onChange={(v) => setValue(q.id, v)} />
               ))}
 
               <footer className="qc-actions">
@@ -294,7 +305,7 @@ export default function Discover({ bank, account = null }: { bank: QuestionBank;
   );
 }
 
-function QuestionBlock({ q, n, bank, value, onChange }: { q: Question; n: number; bank: QuestionBank; value: AnswerValue | undefined; onChange: (v: AnswerValue) => void }) {
+function QuestionBlock({ q, n, bank, careers, value, onChange }: { q: Question; n: number; bank: QuestionBank; careers: CareerOption[]; value: AnswerValue | undefined; onChange: (v: AnswerValue) => void }) {
   const titleId = `q-${q.id}`;
   return (
     <div className="q-block">
@@ -413,6 +424,8 @@ function QuestionBlock({ q, n, bank, value, onChange }: { q: Question; n: number
         </div>
       )}
 
+      {q.kind === "careers" && <CareerPicker q={q} careers={careers} value={Array.isArray(value) ? value : []} onChange={onChange} labelledBy={titleId} />}
+
       {q.kind === "matrix" && (
         <div className="matrix" role="group" aria-labelledby={titleId}>
           <div className="matrix-head" aria-hidden="true">
@@ -443,6 +456,106 @@ function QuestionBlock({ q, n, bank, value, onChange }: { q: Question; n: number
           <p className="muted">1 = not at all / not confident yet · 5 = love it / very confident</p>
         </div>
       )}
+    </div>
+  );
+}
+
+/** Search Bcome's careers and pick up to `max`, or choose "none in mind". */
+function CareerPicker({ q, careers, value, onChange, labelledBy }: { q: Extract<Question, { kind: "careers" }>; careers: CareerOption[]; value: string[]; onChange: (v: string[]) => void; labelledBy: string }) {
+  const [text, setText] = useState("");
+  const [active, setActive] = useState(0);
+  const none = value.includes("none");
+  const picked = value.filter((v) => v !== "none");
+  const words = text.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  const results = words.length
+    ? careers
+        .filter((c) => !picked.includes(c.osca))
+        .map((c) => {
+          const title = c.title.toLowerCase();
+          const hay = `${title} ${c.also.toLowerCase()}`;
+          if (!words.every((w) => hay.includes(w))) return null;
+          // A word in the title starting with what they typed comes first, then bigger careers.
+          const rank = title.split(/[\s(/-]+/).some((t) => t.startsWith(words[0])) ? 0 : 1;
+          return { c, rank };
+        })
+        .filter((x): x is { c: CareerOption; rank: number } => x !== null)
+        .sort((a, b) => a.rank - b.rank || b.c.size - a.c.size || a.c.title.localeCompare(b.c.title))
+        .slice(0, 8)
+        .map((x) => x.c)
+    : [];
+  const full = picked.length >= q.max;
+  const add = (osca: string) => {
+    onChange([...picked, osca].slice(0, q.max));
+    setText("");
+    setActive(0);
+  };
+  const title = (osca: string) => careers.find((c) => c.osca === osca)?.title ?? osca;
+  const listId = `${labelledBy}-results`;
+  return (
+    <div className="career-picker">
+      {picked.length > 0 && (
+        <ul className="picked-careers" aria-label="Careers you picked">
+          {picked.map((osca) => (
+            <li key={osca}>
+              {title(osca)}
+              <button type="button" aria-label={`Remove ${title(osca)}`} onClick={() => onChange(picked.filter((x) => x !== osca))}>
+                <Icon name="close" size={14} />
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+      {!full && (
+        <div className="picker-search">
+          <Icon name="search" size={18} />
+          <input
+            type="search"
+            role="combobox"
+            aria-expanded={results.length > 0}
+            aria-controls={listId}
+            aria-labelledby={labelledBy}
+            aria-activedescendant={results[active] ? `${listId}-${results[active].osca}` : undefined}
+            placeholder={q.placeholder ?? "Search careers"}
+            value={text}
+            onChange={(e) => {
+              setText(e.target.value);
+              setActive(0);
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "ArrowDown") {
+                e.preventDefault();
+                setActive((a) => Math.min(a + 1, results.length - 1));
+              } else if (e.key === "ArrowUp") {
+                e.preventDefault();
+                setActive((a) => Math.max(a - 1, 0));
+              } else if (e.key === "Enter" && results[active]) {
+                e.preventDefault();
+                add(results[active].osca);
+              }
+            }}
+          />
+        </div>
+      )}
+      {results.length > 0 && (
+        <ul className="picker-results" id={listId} role="listbox">
+          {results.map((c, i) => (
+            <li key={c.osca} id={`${listId}-${c.osca}`} role="option" aria-selected={i === active}>
+              <button type="button" onClick={() => add(c.osca)} onMouseEnter={() => setActive(i)}>
+                {c.title}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+      {words.length > 0 && !results.length && <p className="muted small">No careers match &ldquo;{text}&rdquo;. Try another word, like &ldquo;design&rdquo; or &ldquo;animals&rdquo;.</p>}
+      <p className="muted small">
+        {picked.length} of {q.max} picked
+      </p>
+      <div className="pills five" role="radiogroup" aria-label="Or">
+        <button role="radio" aria-checked={none} onClick={() => onChange(none ? [] : ["none"])}>
+          {q.noneLabel}
+        </button>
+      </div>
     </div>
   );
 }

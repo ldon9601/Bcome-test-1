@@ -1,6 +1,6 @@
 # Bcome
 
-An AI-powered career navigation platform for Australian students in Years 10–12. Students complete the 36-question **Career Profile**. They first see their **Career DNA**, then careers grouped as best matches, careers worth exploring and a wildcard. Each career is scored on **personal fit**, **future opportunity** and **pathway feasibility**, and the student gets a year-by-year journey towards their top match.
+An AI-powered career navigation platform for Australian students in Years 10–12. Students complete the 36-question **Career Profile**, plus optional questions about careers they already have in mind. They first see their **Career DNA**, then careers grouped as best matches, careers worth exploring and a wildcard. Each career is scored on **personal fit**, **future opportunity** and **pathway feasibility**, and the student gets a year-by-year journey towards their top match.
 
 Rules and structured data decide the recommendations. The AI only explains them and personalises the journey. It cannot assign scores, invent statistics, salaries or prerequisites, add careers, or tell a student they are unsuitable for a career.
 
@@ -55,6 +55,23 @@ Similarity = 1 − Σwᵢ|sᵢ − oᵢ| / Σwᵢ, with dimensions that matter m
 - Identified positions for Aboriginal and Torres Strait Islander people are searchable but not recommended automatically, because Bcome doesn't ask about cultural identity.
 - On each career card, personal fit is the headline number.
 - The AI is told to lead every explanation with fit, and the app restores the engine's order whatever order the AI uses.
+
+**Careers students already have in mind** (questionnaire Section F, `src/lib/careers/ideas.ts`):
+- After the 36 scored questions, students can search Bcome's careers and name up to three they're already considering, and say where each idea came from (family, a teacher, friends, online, experience, media, their own interest). Both questions are optional and don't change the scores or the recommended list.
+- Each idea gets its personal fit and where it ranks among all careers for that student ("fits you better than 94% of careers"). It also gets a verdict and the same written detail, courses and jobs-market panel as a recommended career.
+  - **Strong fit:** within the range Bcome recommends from.
+  - **Good fit:** a little below it.
+  - **A stretch for now:** further away. Bcome names the part of personal fit that holds it back most, and never calls a career unsuitable.
+- Up to two similar careers that fit the student better are suggested. Advisers see each student's ideas on their results, and the school dashboard shows which careers students arrived with and where the ideas came from.
+
+**Plan B and resilience** (`src/lib/careers/resilience.ts`):
+- Every career a student sees has a **resilience** rating: High, Medium or Low, meaning the top, middle and bottom thirds of all careers, recalculated from the data. It's built from four equal parts:
+  - JSA's high-fit transition rate: the share of people leaving the job who moved into a growing, similar one. JSA publishes it for about 60% of occupations; elsewhere Bcome uses the share of close neighbours that are growing.
+  - Low Gen AI automation exposure.
+  - JSA's 10-year outlook.
+  - How many growing careers sit close by.
+- Resilience describes the career, not the student, and doesn't change match scores.
+- **Plan B** lists up to three close careers that also fit the student, each from a different occupation group, preferring ones less exposed to AI or with a better outlook. Closeness is .45 similarity of the people who suit each job (interests and strengths) + .35 shared specialist and core skills + .20 closeness in the ANZSCO classification. Each shows the skills that carry over, the student's fit and its AI exposure.
 
 **Diversity and groups:**
 - Display fit = personal fit − 8 × similarity to careers already chosen, so the list isn't five versions of the same job.

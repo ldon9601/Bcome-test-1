@@ -3,6 +3,7 @@ import {
   DNA_DIMS,
   EDUCATION_PATHS,
   GEOGRAPHY,
+  IDEA_SOURCES,
   PIDT,
   RIASEC,
   SKILL_DIMS,
@@ -13,6 +14,7 @@ import {
   type AnswerValue,
   type Answers,
   type AuState,
+  type IdeaSource,
   type DnaDim,
   type EducationPath,
   type EnvDim,
@@ -26,6 +28,7 @@ import {
   type SubjectArea,
   type ValueDim,
 } from "./types.ts";
+import { isVisible } from "./engine.ts";
 
 /** Converts a 1–5 answer to 0–100. Returns null for a missing or invalid answer. */
 export function likertTo100(raw: AnswerValue | undefined): number | null {
@@ -173,13 +176,23 @@ export class IncompleteAnswersError extends Error {
 
 const asArray = (v: AnswerValue | undefined): string[] => (Array.isArray(v) ? v : typeof v === "string" && v ? [v] : []);
 
+/** The careers a student already has in mind (question career_ideas) and where the ideas came from. */
+function careerIdeas(bank: QuestionBank, answers: Answers): { careers: string[]; sources: string[] } {
+  const q = bank.questions.find((x) => x.kind === "careers");
+  if (!q) return { careers: [], sources: [] };
+  const careers = [...new Set(asArray(answers[q.id]).filter((c) => c !== "none" && /^[A-Za-z0-9]{1,12}$/.test(c)))].slice(0, q.kind === "careers" ? q.max : 3);
+  const sources = careers.length ? asArray(answers.idea_source).filter((x): x is IdeaSource => (IDEA_SOURCES as readonly string[]).includes(x)) : [];
+  return { careers, sources };
+}
+
 /** Turns raw answers into the Career Profile the matching engine uses. */
 export function buildProfile(bank: QuestionBank, answers: Answers): StudentProfile {
   const missing = bank.questions
     .filter((q) => {
+      if (!isVisible(q, answers)) return false;
       const a = answers[q.id];
       if (q.kind === "matrix") return !a || typeof a !== "object" || Array.isArray(a) || Object.keys(a).length < q.rows.length * q.columns.length;
-      if (q.kind === "multi" || q.kind === "rank") return !Array.isArray(a) || !a.length;
+      if (q.kind === "multi" || q.kind === "rank" || q.kind === "careers") return !Array.isArray(a) || !a.length;
       return typeof a !== "string" || !a;
     })
     .map((q) => q.id);
@@ -218,5 +231,6 @@ export function buildProfile(bank: QuestionBank, answers: Answers): StudentProfi
     ...base,
     dna: careerDna(base),
     quality: profileQuality(bank, answers, environment, tolerance, educationPaths),
+    ideas: careerIdeas(bank, answers),
   };
 }

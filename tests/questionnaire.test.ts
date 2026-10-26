@@ -32,7 +32,8 @@ test("questions use the wording and scales from the requirements", () => {
 });
 
 test("every student gets the same questions in the same order", () => {
-  for (const p of PERSONAS) assert.equal(simulate(questionBank, p).asked, 40);
+  // 4 onboarding + 36 scored questions + "careers you're already considering", plus where the idea came from when there is one.
+  for (const p of PERSONAS) assert.equal(simulate(questionBank, p).asked, p.ideas?.length ? 42 : 41);
   assert.equal(nextQuestion(questionBank, {})?.id, "year_level");
 });
 
@@ -80,7 +81,7 @@ test("'not sure' answers lower completeness and are named, so the student knows 
 
 test("progress counts every visible question", () => {
   const { answers } = simulate(questionBank, persona("noah-leader"));
-  assert.deepEqual(progress(questionBank, answers), { answered: 40, estimatedTotal: 40 });
+  assert.deepEqual(progress(questionBank, answers), { answered: 41, estimatedTotal: 41 });
 });
 
 test("buildProfile reports what is missing", () => {

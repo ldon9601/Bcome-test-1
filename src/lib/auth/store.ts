@@ -113,6 +113,8 @@ export interface AssessmentRecord {
   dna: unknown;
   matches: unknown[];
   plan: unknown;
+  /** Careers the student already had in mind, checked against their profile (Section F). Null before October 2026. */
+  ideas?: unknown;
 }
 
 /** What the dashboard reads: no raw answers or plan text. */

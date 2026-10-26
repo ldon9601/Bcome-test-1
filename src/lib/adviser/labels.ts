@@ -1,4 +1,4 @@
-import { questionBank } from "../data.ts";
+import { occupationData, questionBank } from "../data.ts";
 import type { Labels } from "./analytics.ts";
 
 const options = (id: string) =>
@@ -11,4 +11,6 @@ export const DASHBOARD_LABELS: Labels = {
   educationPaths: options("q35"),
   studyTolerance: options("q36"),
   subjects: rows("q34"),
+  ideaSources: options("idea_source"),
+  careers: Object.fromEntries(occupationData.occupations.map((o) => [o.osca, o.title])),
 };

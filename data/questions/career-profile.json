@@ -1,6 +1,6 @@
 {
   "id": "bcome-career-profile",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "title": "Bcome Career Profile",
   "scales": {
     "interest": [
@@ -122,6 +122,11 @@
       "id": "school",
       "title": "Section E: School and education pathway",
       "intro": "Nothing here is locked in. You can update it at your next check-in."
+    },
+    {
+      "id": "ideas",
+      "title": "Section F: Careers you're already considering",
+      "intro": "Optional, and it won't change your other results. If you already have a career in mind, we'll show how well it fits you, what you'd need to build and similar careers to look at."
     }
   ],
   "questions": [
@@ -894,6 +899,60 @@
         {
           "value": "unknown",
           "label": "I don't know yet"
+        }
+      ]
+    },
+    {
+      "id": "career_ideas",
+      "section": "ideas",
+      "kind": "careers",
+      "max": 3,
+      "prompt": "Is there a career you're already thinking about?",
+      "help": "Search and pick up to three, even if you're not sure about them.",
+      "placeholder": "Type a career, e.g. nurse, electrician, game designer",
+      "noneLabel": "Not yet, just show me what fits"
+    },
+    {
+      "id": "idea_source",
+      "section": "ideas",
+      "kind": "multi",
+      "showIf": {
+        "except": {
+          "career_ideas": [
+            "none"
+          ]
+        }
+      },
+      "prompt": "Where did the idea come from?",
+      "help": "Pick any that apply. There are no wrong answers.",
+      "options": [
+        {
+          "value": "family",
+          "label": "My family"
+        },
+        {
+          "value": "teacher",
+          "label": "A teacher or careers adviser"
+        },
+        {
+          "value": "friends",
+          "label": "Friends"
+        },
+        {
+          "value": "online",
+          "label": "Social media or online"
+        },
+        {
+          "value": "experience",
+          "label": "Work experience, a job or volunteering"
+        },
+        {
+          "value": "media",
+          "label": "TV, films or books"
+        },
+        {
+          "value": "self",
+          "label": "My own interest or research"
         }
       ]
     }

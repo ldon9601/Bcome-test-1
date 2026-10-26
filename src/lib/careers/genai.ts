@@ -48,6 +48,8 @@ export interface CareerGenAi {
   augmentationPercentile: number;
   entryLevelAdsPct: number | null;
   skillChange: number | null;
+  /** JSA: share of people leaving this job who moved into a growing, similar one (%). */
+  highFitTransitionPct: number | null;
   /** True when this unit group has no published score and its ANZSCO minor group's average is used. */
   estimated: boolean;
   unitGroup: string;
@@ -70,7 +72,7 @@ function percentile(sorted: number[], v: number): number {
 const mean = (xs: number[]) => xs.reduce((a, b) => a + b, 0) / xs.length;
 
 export function careerGenAi(anzsco: string, data: GenAiData): CareerGenAi | null {
-  let row: Pick<GenAiOccupation, "automation" | "augmentation" | "entryLevelAdsPct" | "skillChange"> | undefined = data.occupations[anzsco];
+  let row: Pick<GenAiOccupation, "automation" | "augmentation" | "entryLevelAdsPct" | "skillChange" | "highFitTransitionPct"> | undefined = data.occupations[anzsco];
   let estimated = false;
   if (!row) {
     // No published score (JSA suppresses small occupations): use the minor group's average.
@@ -81,6 +83,7 @@ export function careerGenAi(anzsco: string, data: GenAiData): CareerGenAi | null
       augmentation: Math.round(mean(siblings.map((s) => s.augmentation)) * 100) / 100,
       entryLevelAdsPct: null,
       skillChange: null,
+      highFitTransitionPct: null,
     };
     estimated = true;
   }
@@ -96,6 +99,7 @@ export function careerGenAi(anzsco: string, data: GenAiData): CareerGenAi | null
     augmentationPercentile: percentile(augs, row.augmentation),
     entryLevelAdsPct: row.entryLevelAdsPct,
     skillChange: row.skillChange,
+    highFitTransitionPct: row.highFitTransitionPct,
     estimated,
     unitGroup: anzsco,
     released: data.source.released,

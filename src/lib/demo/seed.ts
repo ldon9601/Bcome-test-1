@@ -161,6 +161,7 @@ export async function seedDemoSchool(service: AuthService, opts: SeedOptions = {
         dna: payload.dna,
         matches: payload.matches,
         plan: result.plan,
+        ideas: payload.ideas,
       });
       latest = { matches: payload.matches, profile: result.profile };
     }

@@ -78,6 +78,11 @@ export function attachFacts(written: Pick<PlanCareer, "occupationId" | "title" |
   };
 }
 
+/** One career's plan entry written from Bcome's templates (no AI), e.g. for a career the student already had in mind. */
+export function templateCareer(c: ContextCareer, ctx: PlanContext): PlanCareer {
+  return attachFacts({ occupationId: c.occupationId, title: c.title, whyItFits: whyItFits(c), outlook: c.outlook.summary, howToGetThere: howToGetThere(c, ctx) }, c);
+}
+
 export function templatePlan(ctx: PlanContext, generatedAt = new Date().toISOString()): CareerPlan {
   const s = ctx.student;
   const [first, second] = ctx.careers;

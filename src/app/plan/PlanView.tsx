@@ -12,7 +12,8 @@ import { Tags } from "@/components/Tags.tsx";
 import { formatRange, formatYears, ROUTE_LABEL } from "@/lib/careers/facts.ts";
 import { JsaProfileCard, TafeCourse, UniversityCourse } from "@/components/Courses.tsx";
 import { LabourPanel } from "@/components/Labour.tsx";
-import type { ResultMatch } from "@/lib/advise.ts";
+import type { ResultIdea, ResultMatch } from "@/lib/advise.ts";
+import { InfoTip } from "@/components/Labour.tsx";
 import type { CareerPlan, PlanCareer } from "@/lib/plan/types.ts";
 import { readActivity, readShortlist, recordVisit, streakFrom, toggleShortlist, xpFor } from "@/lib/progress/gamification.ts";
 import { RIASEC, type RiasecType } from "@/lib/questionnaire/types.ts";
@@ -31,6 +32,8 @@ interface DnaView {
 export interface Result {
   dna: DnaView;
   matches: ResultMatch[];
+  /** Careers the student already had in mind. Missing on results saved before October 2026. */
+  ideas?: { sources: string[]; note: string | null; careers: ResultIdea[] };
   plan: CareerPlan;
   saved: boolean;
 }
@@ -156,6 +159,7 @@ function FeatureCard({ c, m, saved, onToggle, onOpen, journeyHref }: { c: PlanCa
           {m.anzsco?.profile?.medianWeeklyEarnings ? <> · JSA median full-time pay ${m.anzsco.profile.medianWeeklyEarnings.toLocaleString("en-AU")}/wk</> : null}
         </p>
         <VacancyLine m={m} />
+        <ResilienceLine m={m} />
         <CourseTeaser m={m} onOpen={onOpen} />
       </div>
       <div className="feature-why">
@@ -192,12 +196,156 @@ function MatchCard({ c, m, saved, onToggle, onOpen }: { c: PlanCareer; m: Result
       <p className="small" style={{ margin: 0 }}>
         Future opportunity {c.scores!.futureOpportunity} · Pathway {c.scores!.pathwayFeasibility}
       </p>
+      <ResilienceLine m={m} />
       <VacancyLine m={m} compact />
       <div className="actions">
         <button className="button outline" onClick={onOpen}>
           View Career <Icon name="arrowRight" size={16} />
         </button>
         <SaveButton osca={c.occupationId} saved={saved} onToggle={onToggle} title={c.title} />
+      </div>
+    </article>
+  );
+}
+
+const RESILIENCE_TEXT = {
+  High: "More resilient than most careers",
+  Medium: "About as resilient as most careers",
+  Low: "Less resilient than most careers",
+} as const;
+
+/** One line on a career card: how resilient it is and how many plan B careers there are. */
+function ResilienceLine({ m }: { m: ResultMatch }) {
+  const r = m.resilience;
+  if (!r) return null;
+  return (
+    <p className={`resilience-line res-${r.level.toLowerCase()}`}>
+      <Icon name="shield" size={15} /> Resilience: <strong>{r.level}</strong>
+      {r.neighbours.length > 0 && <span className="small"> · {r.neighbours.length} plan B {r.neighbours.length === 1 ? "career" : "careers"}</span>}
+    </p>
+  );
+}
+
+const AI_LABEL = { high: "High", medium: "Medium", low: "Low" } as const;
+
+/** Plan B: how resilient this career is, and close careers that also fit the student. */
+function PlanB({ m }: { m: ResultMatch }) {
+  const r = m.resilience;
+  if (!r) return null;
+  return (
+    <section className={`planb res-${r.level.toLowerCase()}`} aria-labelledby={`planb-${m.osca}`}>
+      <div className="planb-head">
+        <span className="planb-icon" aria-hidden="true">
+          <Icon name="shield" size={20} />
+        </span>
+        <div>
+          <h4 id={`planb-${m.osca}`}>Plan B: if this career changes</h4>
+          <p className="small">
+            Resilience <strong>{r.level}</strong>: {RESILIENCE_TEXT[r.level].toLowerCase()}.
+          </p>
+        </div>
+        <InfoTip label="career resilience">
+          <span className="infotip-lead">
+            How well this career could ride out change, compared with all 357 careers on Bcome. It combines four things equally: how often people who leave it move into growing, similar jobs (Jobs and Skills Australia), how exposed it is to Gen AI automation, JSA&apos;s job outlook to 2035, and how many growing careers sit close to it. High, Medium and Low are the top, middle and bottom thirds.
+          </span>
+          <span>It describes the career, not you, and it doesn&apos;t change your match scores.</span>
+        </InfoTip>
+      </div>
+      {r.reasons.length > 0 && (
+        <ul className="planb-reasons">
+          {r.reasons.map((x) => (
+            <li key={x}>{x}</li>
+          ))}
+        </ul>
+      )}
+      {r.neighbours.length > 0 ? (
+        <>
+          <p className="small planb-lead">Close careers that also fit you, so your skills and interests would carry over:</p>
+          <ul className="planb-list">
+            {r.neighbours.map((n) => (
+              <li key={n.osca}>
+                <div>
+                  <Link href={`/careers?career=${encodeURIComponent(n.osca)}`}>
+                    <strong>{n.title}</strong>
+                  </Link>
+                  <span className="small block">{n.why}</span>
+                  {n.sharedSkills.length > 0 && <span className="small block muted">Shared skills: {n.sharedSkills.join(", ")}</span>}
+                </div>
+                <span className="planb-facts small">
+                  <span>{n.personalFit}% fit</span>
+                  <span>AI exposure {AI_LABEL[n.aiExposure]}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </>
+      ) : (
+        <p className="small">No close careers fit you well enough to suggest. A plan B would mean a bigger change, so keep your other matches in mind.</p>
+      )}
+    </section>
+  );
+}
+
+const VERDICT_TONE = { strong: "teal", good: "blue", stretch: "amber" } as const;
+const VERDICT_LABEL = { strong: "Strong fit", good: "Good fit", stretch: "A stretch for now" } as const;
+
+/** "Careers you're already considering": the student's own ideas, checked against their profile. */
+function IdeaCard({ i, onOpen }: { i: ResultIdea; onOpen: () => void }) {
+  const better = Math.max(0, Math.round(((i.idea.of - i.idea.rank) / Math.max(1, i.idea.of - 1)) * 100));
+  return (
+    <article className={`idea-card verdict-${i.idea.verdict}`} aria-labelledby={`idea-${i.osca}`}>
+      <div className="idea-top">
+        <div className="idea-art">
+          <OccupationImage family={i.family} title={i.title} photo={i.photo} />
+        </div>
+        <div className="idea-main">
+          <span className={`tag ${VERDICT_TONE[i.idea.verdict]}`}>{VERDICT_LABEL[i.idea.verdict]}</span>
+          <h3 id={`idea-${i.osca}`}>{i.title}</h3>
+          <p className="idea-headline">{i.idea.headline}</p>
+          <p className="small">
+            Fits you better than {better}% of careers{i.idea.recommended ? " · it's also in your matches" : ""}.
+          </p>
+        </div>
+        <ScoreRing value={i.scores.personalFit.score} label="Fit" size={74} stroke={7} />
+      </div>
+      <div className="idea-cols">
+        {i.strengths.length > 0 && (
+          <div>
+            <h4>Where it lines up</h4>
+            <ul>
+              {i.strengths.slice(0, 3).map((x) => (
+                <li key={x.label}>{x.label}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {(i.challenges.length > 0 || i.idea.holdingBack) && (
+          <div>
+            <h4>What you&apos;d need to build</h4>
+            <ul>
+              {i.idea.holdingBack && <li>The biggest gap is {i.idea.holdingBack}.</li>}
+              {i.challenges.slice(0, i.idea.holdingBack ? 2 : 3).map((x) => (
+                <li key={x}>{x}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+      {i.idea.alternatives.length > 0 && (
+        <p className="idea-alts small">
+          <strong>Similar careers that fit you even better:</strong>{" "}
+          {i.idea.alternatives.map((a, n) => (
+            <span key={a.osca}>
+              {n > 0 && ", "}
+              <Link href={`/careers?career=${encodeURIComponent(a.osca)}`}>{a.title}</Link> ({a.personalFit}% fit)
+            </span>
+          ))}
+        </p>
+      )}
+      <div className="actions">
+        <button className="button outline" onClick={onOpen}>
+          Details, courses and plan B <Icon name="arrowRight" size={16} />
+        </button>
       </div>
     </article>
   );
@@ -397,6 +545,7 @@ function CareerDetail({ c, m }: { c: PlanCareer; m: ResultMatch }) {
           </>
         )}
         <LabourPanel osca={m.osca} state={m.labour?.vacancies.ivi?.state ?? null} snapshot={m.labour ?? null} />
+        <PlanB m={m} />
         {facts && (
           <>
             <h4>Ways in</h4>
@@ -472,7 +621,8 @@ export default function PlanView({ initial, mode = "live", title, subtitle }: { 
   }
 
   const { plan, matches, dna } = result;
-  const matchFor = (id: string) => matches.find((m) => m.id === id);
+  const ideas = result.ideas?.careers ?? [];
+  const matchFor = (id: string) => matches.find((m) => m.id === id) ?? ideas.find((i) => i.id === id);
   const careers = plan.careers.filter((c) => matchFor(c.occupationId) && c.scores);
   const best = careers.filter((c) => c.group === "best");
   const [top, ...rest] = best;
@@ -484,7 +634,7 @@ export default function PlanView({ initial, mode = "live", title, subtitle }: { 
   const saved = (o: string) => shortlist.includes(o);
   const toggle = (o: string) => setShortlist(toggleShortlist(o));
   const shortlisted = Math.min(shortlist.filter((o) => careers.some((c) => c.occupationId === o)).length, 2);
-  const openCareer = careers.find((c) => c.occupationId === open);
+  const openCareer = careers.find((c) => c.occupationId === open) ?? ideas.find((i) => i.osca === open)?.plan;
 
   const reveal = () => {
     setShowCareers(true);
@@ -562,6 +712,26 @@ export default function PlanView({ initial, mode = "live", title, subtitle }: { 
                 <div className="match-grid" style={{ marginTop: "0.75rem" }}>
                   {rest.map(card)}
                 </div>
+              </section>
+            )}
+
+            {ideas.length > 0 && (
+              <section aria-labelledby="ideas">
+                <div className="group-head">
+                  <h2 id="ideas">{mode === "adviser" ? "Careers they're already considering" : "Careers you're already considering"}</h2>
+                  <p>
+                    {mode === "adviser" ? "How the careers they named fit their answers." : "How the careers you named fit your answers."} {result.ideas?.note}
+                  </p>
+                </div>
+                <div className="idea-grid" style={{ marginTop: "0.75rem" }}>
+                  {ideas.map((i) => (
+                    <IdeaCard key={i.osca} i={i} onOpen={() => setOpen(i.osca)} />
+                  ))}
+                </div>
+                <p className="small" style={{ marginTop: "0.6rem" }}>
+                  Fit describes how well a career matches your answers today, not whether you could do it. Interests and skills grow, so talk your ideas through
+                  with your careers adviser.
+                </p>
               </section>
             )}
 
@@ -672,7 +842,7 @@ export default function PlanView({ initial, mode = "live", title, subtitle }: { 
             )}
             <p className="small-print">
               Job outlooks use {plan.meta.dataSource}. Figures marked &ldquo;about&rdquo; are estimates from projections for similar jobs. JSA&apos;s
-              projections don&apos;t include generative AI, so AI exposure is shown separately and is currently a Bcome estimate. Shortage, regional
+              projections don&apos;t include generative AI, so AI exposure is shown separately, from JSA&apos;s Gen AI study. Shortage, regional
               demand, graduate outcomes and pay are rough guides until official data is loaded. Occupations are coded to OSCA 2024. Pictures are
               illustrations. Always check entry requirements with the course provider.
             </p>

@@ -23,6 +23,9 @@ export interface Labels {
   educationPaths: Record<string, string>;
   studyTolerance: Record<string, string>;
   subjects: Record<string, string>;
+  /** Where career ideas came from (question idea_source) and career titles by OSCA code. */
+  ideaSources?: Record<string, string>;
+  careers?: Record<string, string>;
 }
 
 export interface StudentRow {
@@ -61,6 +64,8 @@ export interface SchoolAnalytics {
   topValues: Count[];
   subjects: { key: SubjectArea; label: string; enjoy: number; avgEnjoyment: number; avgConfidence: number }[];
   followUp: { id: string; name: string; yearLevel: number | null; reasons: string[] }[];
+  /** Careers students already had in mind (Section F), and where the ideas came from. */
+  ideas: { students: number; careers: Count[]; sources: Count[] };
 }
 
 const sortCounts = (m: Map<string, Count>) => [...m.values()].sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
@@ -111,6 +116,9 @@ export function schoolAnalytics(
   const values = new Map<string, Count>();
   const subj = Object.fromEntries(SUBJECT_AREAS.map((s) => [s, { enjoy: 0, e: [] as number[], c: [] as number[] }])) as Record<SubjectArea, { enjoy: number; e: number[]; c: number[] }>;
   const followUp: SchoolAnalytics["followUp"] = [];
+  const ideaCareers = new Map<string, Count>();
+  const ideaSources = new Map<string, Count>();
+  let withIdeas = 0;
   const rows: StudentRow[] = [];
 
   for (const s of students) {
@@ -159,6 +167,11 @@ export function schoolAnalytics(
       bump(tolerance, profile.studyTolerance.answer, labels.studyTolerance[profile.studyTolerance.answer] ?? profile.studyTolerance.answer);
       const topValue = [...VALUE_DIMS].sort((x, y) => profile.values[y] - profile.values[x])[0] as ValueDim;
       bump(values, topValue, VALUE_NAMES[topValue]);
+      if (profile.ideas?.careers.length) {
+        withIdeas += 1;
+        for (const c of profile.ideas.careers) bump(ideaCareers, c, labels.careers?.[c] ?? c);
+        for (const src of profile.ideas.sources) bump(ideaSources, src, labels.ideaSources?.[src] ?? src);
+      }
       for (const area of SUBJECT_AREAS) {
         const sub = profile.subjects[area];
         if (!sub) continue;
@@ -206,6 +219,7 @@ export function schoolAnalytics(
       (a, b) => b.enjoy - a.enjoy || b.avgEnjoyment - a.avgEnjoyment,
     ),
     followUp: followUp.sort((a, b) => b.reasons.length - a.reasons.length || a.name.localeCompare(b.name)),
+    ideas: { students: withIdeas, careers: sortCounts(ideaCareers).slice(0, 10), sources: sortCounts(ideaSources) },
   };
 }
 

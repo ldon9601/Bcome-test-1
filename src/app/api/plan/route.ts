@@ -86,6 +86,7 @@ async function plan(request: Request) {
       dna: payload.dna,
       matches,
       plan: result.plan,
+      ideas: payload.ideas,
     });
     assessmentId = r.id;
     saved = true;

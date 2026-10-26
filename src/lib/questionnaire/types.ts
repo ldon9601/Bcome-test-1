@@ -59,6 +59,10 @@ export const STUDY_TOLERANCE_YEARS: Record<string, number | null> = { lt1: 0.75,
 export const AU_STATES = ["NSW", "VIC", "QLD", "WA", "SA", "TAS", "ACT", "NT"] as const;
 export type AuState = (typeof AU_STATES)[number];
 
+/** Where a student's existing career idea came from (question idea_source). */
+export const IDEA_SOURCES = ["family", "teacher", "friends", "online", "experience", "media", "self"] as const;
+export type IdeaSource = (typeof IDEA_SOURCES)[number];
+
 export const GEOGRAPHY = ["near_home", "state", "city", "regional", "anywhere", "unsure"] as const;
 export type Geography = (typeof GEOGRAPHY)[number];
 
@@ -71,9 +75,11 @@ export interface Option {
 export interface ShowIf {
   /** Question id → one of these answer values. For multi questions, any overlap counts. */
   answers?: Record<string, string[]>;
+  /** Question id → shown once that question has an answer other than these values. */
+  except?: Record<string, string[]>;
 }
 
-export type SectionId = "about" | "interests" | "strengths" | "values" | "environment" | "school";
+export type SectionId = "about" | "interests" | "strengths" | "values" | "environment" | "school" | "ideas";
 export type ScaleId = "interest" | "confidence" | "importance" | "enjoyment";
 
 interface BaseQuestion {
@@ -120,7 +126,16 @@ export interface MatrixQuestion extends BaseQuestion {
   columns: { value: string; label: string; scaleId: ScaleId }[];
 }
 
-export type Question = LikertQuestion | ChoiceQuestion | RankQuestion | BipolarQuestion | MatrixQuestion;
+/** Pick careers from Bcome's list by searching (the careers a student already has in mind). */
+export interface CareersQuestion extends BaseQuestion {
+  kind: "careers";
+  max: number;
+  /** The answer for "none in mind", stored as ["none"]. */
+  noneLabel: string;
+  placeholder?: string;
+}
+
+export type Question = LikertQuestion | ChoiceQuestion | RankQuestion | BipolarQuestion | MatrixQuestion | CareersQuestion;
 
 export interface QuestionBank {
   id: string;
@@ -134,6 +149,7 @@ export interface QuestionBank {
 /**
  * Answers keyed by question id.
  * likert / single / bipolar = "1".."5" or an option value; multi / rank = values in order;
+ * careers = career (OSCA) codes, or ["none"];
  * matrix = { "<row>.<column>": "1".."5" }.
  */
 export type AnswerValue = string | string[] | Record<string, string>;
@@ -184,4 +200,6 @@ export interface StudentProfile {
   dna: Record<DnaDim, number>;
   /** How reliable this profile is as a basis for matching (0–1). */
   quality: { completeness: number; consistency: number; lowInformation: string[] };
+  /** Careers the student already has in mind (OSCA codes, up to three) and where the ideas came from. Missing on profiles saved before October 2026. */
+  ideas?: { careers: string[]; sources: string[] };
 }

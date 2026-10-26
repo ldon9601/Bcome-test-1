@@ -20,7 +20,7 @@ export default async function SavedAssessmentPage({ params }: { params: Promise<
       </p>
       <PlanView
         mode="history"
-        initial={{ dna: a.dna, matches: a.matches, plan: a.plan, saved: true } as Result}
+        initial={{ dna: a.dna, matches: a.matches, ideas: a.ideas ?? undefined, plan: a.plan, saved: true } as Result}
         title={
           <>
             Results from <span className="grad-text">{date}</span>
