@@ -5,7 +5,7 @@
   "description": "Automated career advisor for Australian Year 10\u201312 students: RIASEC questionnaire, future-of-work data and AI-written career plans.",
   "type": "module",
   "engines": {
-    "node": ">=22.18"
+    "node": "22.x"
   },
   "scripts": {
     "dev": "next dev",

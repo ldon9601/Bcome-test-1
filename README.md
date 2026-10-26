@@ -119,7 +119,7 @@ Similarity = 1 − Σwᵢ|sᵢ − oᵢ| / Σwᵢ, with dimensions that matter m
 
 ## Getting started
 
-Requires Node 22.18 or later.
+Requires Node 22 (22.18 or later in the 22 line). `package.json` pins `"node": "22.x"` so Vercel and CI use the same version and Vercel doesn't jump to a new major Node release untested; change it deliberately when upgrading.
 
 ```bash
 npm install
